@@ -645,38 +645,43 @@ namespace OMW15.Models.ProductionModel
 			return _result;
 		} // end UpdateProductionHourItme
 
-		public List<TimeRecordInfo> GetProductionTimeItemByWorker(string workerCode, int workYear, int workMonth)
+		public DataTable GetProductionTimeItemByWorker(string workerCode, int workYear, int workMonth)
 		{
-			return (from p in _om.PRODUCTIONJOBINFOes.AsEnumerable()
-					join j in _om.PRODUCTIONJOBS.AsEnumerable() on p.ERP_ORDER equals j.ERP_ORDER
-					orderby p.DATETIME_START
-					where p.WORKERID == workerCode
-					&& p.WORKYEAR == workYear
-					&& p.WORKPERIOD == workMonth
-					select new TimeRecordInfo
-					{
-						RecordId = p.PRDINFOID,
-						ProductionJob = p.ERP_ORDER,
-						WorkDate = p.DATETIME_START.Value,
-						WorkerId = p.WORKERID,
-						WorkerName = p.WORKERNAME,
-						ItemNo = j.ITEMNO.Trim(),
-						ItemName = j.ITEMNAME.Trim(),
-						DrawingNo = String.IsNullOrEmpty(p.DRAWINGNO) ? j.DRAWINGNO.Trim() : p.DRAWINGNO.Trim(),
-						ProcessId = p.PROCESSID,
-						ProcessName = p.PROCESSNAME.Trim() + " " + p.PROCESSDETAIL.Trim(),
-						FromTime = p.DATETIME_START.Value,
-						ToTime = p.DATETIME_END.Value,
-						OTFrom = p.OT_START.Value.Equals(p.OT_END.Value) ? "" : p.OT_START.Value.ToString("HH:mm"),
-						OTEnd = p.OT_START.Value.Equals(p.OT_END.Value) ? "" : p.OT_END.Value.ToString("HH:mm"),
-						TotalTime = p.TOTAL_HRS,
-						InWorkProcessQty = p.INPROCESS_QTY,
-						GoodQty = p.GOOD_QTY,
-						BadQty = p.BAD_QTY,
-						TotalQty = p.TOTALQTY
-					}).ToList();
+			return new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_WORKTIMEBYWORKER '{workerCode}',{workYear},{workMonth}", omglobal.SysConnectionString).ToDataTable;
+		}
 
-		} // end GetProductionTimeItemByWorker
+		//public List<TimeRecordInfo> GetProductionTimeItemByWorker(string workerCode, int workYear, int workMonth)
+		//{
+		//	return (from p in _om.PRODUCTIONJOBINFOes.AsEnumerable()
+		//			join j in _om.PRODUCTIONJOBS.AsEnumerable() on p.ERP_ORDER equals j.ERP_ORDER
+		//			orderby p.DATETIME_START
+		//			where p.WORKERID == workerCode
+		//			&& p.WORKYEAR == workYear
+		//			&& p.WORKPERIOD == workMonth
+		//			select new TimeRecordInfo
+		//			{
+		//				RecordId = p.PRDINFOID,
+		//				ProductionJob = p.ERP_ORDER,
+		//				WorkDate = p.DATETIME_START.Value,
+		//				WorkerId = p.WORKERID,
+		//				WorkerName = p.WORKERNAME,
+		//				ItemNo = j.ITEMNO.Trim(),
+		//				ItemName = j.ITEMNAME.Trim(),
+		//				DrawingNo = String.IsNullOrEmpty(p.DRAWINGNO) ? j.DRAWINGNO.Trim() : p.DRAWINGNO.Trim(),
+		//				ProcessId = p.PROCESSID,
+		//				ProcessName = p.PROCESSNAME.Trim() + " " + p.PROCESSDETAIL.Trim(),
+		//				FromTime = p.DATETIME_START.Value,
+		//				ToTime = p.DATETIME_END.Value,
+		//				OTFrom = p.OT_START.Value.Equals(p.OT_END.Value) ? "" : p.OT_START.Value.ToString("HH:mm"),
+		//				OTEnd = p.OT_START.Value.Equals(p.OT_END.Value) ? "" : p.OT_END.Value.ToString("HH:mm"),
+		//				TotalTime = p.TOTAL_HRS,
+		//				InWorkProcessQty = p.INPROCESS_QTY,
+		//				GoodQty = p.GOOD_QTY,
+		//				BadQty = p.BAD_QTY,
+		//				TotalQty = p.TOTALQTY
+		//			}).ToList();
+
+		//} // end GetProductionTimeItemByWorker
 
 		public int RemoveTimeRecord(int recordId)
 		{

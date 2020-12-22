@@ -3,6 +3,7 @@ using OMW15.Models.ProductionModel;
 using OMW15.Models.ToolModel;
 using System;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace OMW15.Views.Productions
@@ -35,7 +36,12 @@ namespace OMW15.Views.Productions
 		private int selectedWorkYear = DateTime.Today.Year;
 		private int selectedWorkMonth = DateTime.Today.Month;
 		private int selectedTimeRecordId = 0;
-	
+
+		private bool _loadingYearData = false;
+		private bool _loadingMonthData = false;
+
+		private DataTable _dtworkProperties;
+
 		#endregion
 
 
@@ -60,17 +66,59 @@ namespace OMW15.Views.Productions
 
 		private void GetWorkYear(string workerCode)
 		{
-			cbxYear.DataSource = new ProductionDAL().GetYearForTimeRecord(workerCode);
+			_dtworkProperties = new ProductionDAL().GetYearForTimeRecord(workerCode);
+
+			var _dt = (from yr in _dtworkProperties.AsEnumerable()
+						  select new
+						  {
+							  jobyear = yr.Field<int>("JOBYEAR")
+						  }).Distinct().ToDataTable();
+
+			cbxYear.DataSource = _dt;
 			cbxYear.DisplayMember = "JOBYEAR";
 			cbxYear.ValueMember = "JOBYEAR";
 		}
 
+
+		private void YearValueChanged(object sender, EventArgs e)
+		{
+			try
+			{
+				if (e == null)
+					return;
+
+				selectedWorkYear = Convert.ToInt32(cbxYear.SelectedValue);
+				lbWorkYear.Text = $"{selectedWorkYear}";
+
+
+				GetWorkMonth(selectedWorkerCode, selectedWorkYear);
+			}
+			catch
+			{
+			}
+
+			UpdateUI();
+		}
+
+
+
 		private void GetWorkMonth(string workerCode, int jobYear)
 		{
-			cbxMonth.DataSource = new ProductionDAL().GetMonthForTimeRecord(workerCode, jobYear);
-			cbxMonth.DisplayMember = "JOBMONTHNAME";
-			cbxMonth.ValueMember = "JOBMONTH";
-			cbxMonth.SelectedIndex = 0;
+			var _dtm = (from mm in _dtworkProperties.AsEnumerable()
+							where mm.Field<int>("JOBYEAR") == jobYear
+							select new
+							{
+								jobmonth = mm.Field<int>("JOBMONTH"),
+								jobmonthname = Convert.ToInt32(mm.Field<int>("JOBMONTH")).GetThaiMonthName()
+							}).Distinct().OrderByDescending(o => o.jobmonth).ToDataTable();
+
+			if (_dtm != null)
+			{
+				cbxMonth.DataSource = _dtm;
+				cbxMonth.DisplayMember = "JOBMONTHNAME";
+				cbxMonth.ValueMember = "JOBMONTH";
+				cbxMonth.SelectedIndex = 0;
+			}
 		}
 
 		private void GetTimeRecords(string workerCode, int workYear, int workMonth)
@@ -88,9 +136,9 @@ namespace OMW15.Views.Productions
 			dgv.Columns["WORKERNAME"].Visible = false;
 
 			// format columns
-			dgv.Columns["WORKDATE"].DefaultCellStyle.Format = "dd/MM/yyyy";
-			dgv.Columns["FROMTIME"].DefaultCellStyle.Format = "HH:mm";
-			dgv.Columns["TOTIME"].DefaultCellStyle.Format = "HH:mm";
+			//dgv.Columns["WORKDATE"].DefaultCellStyle.Format = "dd/MM/yyyy";
+			//dgv.Columns["FROMTIME"].DefaultCellStyle.Format = "HH:mm";
+			//dgv.Columns["TOTIME"].DefaultCellStyle.Format = "HH:mm";
 			//dgv.Columns["OTFROM"].DefaultCellStyle.Format = "HH:mm";
 			//dgv.Columns["OTEND"].DefaultCellStyle.Format = "HH:mm";
 			dgv.Columns["INWORKPROCESSQTY"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -99,7 +147,7 @@ namespace OMW15.Views.Productions
 			dgv.Columns["TOTALQTY"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 			dgv.Columns["TOTALTIME"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-			// fotmat headerText
+			//// fotmat headerText
 			dgv.Columns["WORKDATE"].HeaderText = "วันที";
 			dgv.Columns["PRODUCTIONJOB"].HeaderText = "เลขที่ใบสั่งผลิต";
 			dgv.Columns["PROCESSNAME"].HeaderText = "ขั้นตอนการผลิต";
@@ -185,11 +233,13 @@ namespace OMW15.Views.Productions
 				if (e == null)
 					return;
 
+				//if (!_loadingYearData)
+				//{
 				selectedWorkYear = Convert.ToInt32(cbxYear.SelectedValue);
 				lbWorkYear.Text = $"{selectedWorkYear}";
-
-
+				//_loadingMonthData = true;
 				GetWorkMonth(selectedWorkerCode, selectedWorkYear);
+				//}
 			}
 			catch
 			{
@@ -198,14 +248,20 @@ namespace OMW15.Views.Productions
 			UpdateUI();
 		}
 
+
+
 		private void cbxMonth_SelectedValueChanged(object sender, EventArgs e)
 		{
 			try
 			{
 				if (e == null)
 					return;
+
+				//if (!_loadingMonthData)
+				//{
 				selectedWorkMonth = Convert.ToInt32(cbxMonth.SelectedValue);
 				lbWorkMonth.Text = $"{selectedWorkMonth}";
+				//}
 			}
 			catch
 			{
@@ -279,10 +335,12 @@ namespace OMW15.Views.Productions
 				selectedWorkerCode = cbxWorker.SelectedValue.ToString();
 				selectedWorkerName = cbxWorker.Text;
 
+				_loadingYearData = true;
 				GetWorkYear(selectedWorkerCode);
 			}
 			catch
 			{
+				_loadingYearData = false;
 				selectedWorkerCode = "";
 				selectedWorkerName = "";
 			}
@@ -293,9 +351,6 @@ namespace OMW15.Views.Productions
 			UpdateUI();
 		}
 
-		private void cbxWorker_SelectedIndexChanged(object sender, EventArgs e)
-		{
 
-		}
 	}
 }

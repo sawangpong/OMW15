@@ -419,7 +419,6 @@
 			this.cbxWorker.Name = "cbxWorker";
 			this.cbxWorker.Size = new System.Drawing.Size(287, 28);
 			this.cbxWorker.TabIndex = 4;
-			this.cbxWorker.SelectedIndexChanged += new System.EventHandler(this.cbxWorker_SelectedIndexChanged);
 			this.cbxWorker.SelectionChangeCommitted += new System.EventHandler(this.cbxWorker_SelectionChangeCommitted);
 			// 
 			// label2
