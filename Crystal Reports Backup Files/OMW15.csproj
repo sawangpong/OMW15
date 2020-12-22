@@ -1,0 +1,2545 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{32893AEF-0AA4-479A-8ED0-4197619F5B17}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OMW15</RootNamespace>
+    <AssemblyName>OMW2017</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>c2c1b64f</NuGetPackageImportStamp>
+    <PublishUrl>\\om-srv-app\SmartWork17\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>true</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <UpdateUrl>\\om-srv-app\SmartWork17\</UpdateUrl>
+    <SupportUrl>\\om-srv-app\SmartWork17\</SupportUrl>
+    <ProductName>SmartWorks17 %28LAN%29 - 20190715</ProductName>
+    <PublisherName>OMW2017</PublisherName>
+    <SuiteName>Old Moon Suit</SuiteName>
+    <MinimumRequiredVersion>4.0.0.0</MinimumRequiredVersion>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>23</ApplicationRevision>
+    <ApplicationVersion>4.1.1.%2a</ApplicationVersion>
+    <UseApplicationTrust>true</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperComponentsUrl>\\om-srv-app\SmartWork17\</BootstrapperComponentsUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <FileAlignment>512</FileAlignment>
+    <DebugSymbols>true</DebugSymbols>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>OMW15.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>925A0612418806DE2FFD3A8FFEABC2333BCDD5AE</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>OMW15_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine">
+      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Enterprise.Viewing.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ClientDoc">
+      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.ReportAppServer.ClientDoc.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonControls">
+      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.ReportAppServer.CommonControls.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonObjectModel">
+      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.ReportAppServer.CommonObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Controllers">
+      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.ReportAppServer.Controllers.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource">
+      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.ReportSource.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared">
+      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms">
+      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ExcelDataReader, Version=3.3.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.3.3.0\lib\net45\ExcelDataReader.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GAFExtension">
+      <HintPath>.\GAFExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="OMControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\OMControls\bin\x86\Release\OMControls.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="SCTabControl">
+      <HintPath>.\SCTabControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Globalization" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="APPLU.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARPLU.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARPRICETAB.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BANK.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BANKINFO.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BILL.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BILLLINE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COMPANY_PROFILES.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONTACT.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CastingController\CastingControllerUtils.cs" />
+    <Compile Include="Controllers\CastingController\CastingReportControllers.cs" />
+    <Compile Include="Controllers\CastingController\MaterialDeliveryController.cs" />
+    <Compile Include="Controllers\CustomerController\SearchCustomer.cs" />
+    <Compile Include="Controllers\SaleController\BankController.cs" />
+    <Compile Include="Controllers\SaleController\MasterQTController.cs" />
+    <Compile Include="Controllers\SaleController\PIController.cs" />
+    <Compile Include="Controllers\SaleController\SaleContactController.cs" />
+    <Compile Include="Controllers\SaleController\SaleOptionController.cs" />
+    <Compile Include="Controllers\SaleController\SalePersonController.cs" />
+    <Compile Include="Controllers\SaleController\SaleQuotationController.cs" />
+    <Compile Include="Controllers\ServiceController\PMController.cs" />
+    <Compile Include="Controllers\TestTools\ToolStripPanelHost.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\TestTools\ToolStripRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ToolController\Alert.cs" />
+    <Compile Include="Controllers\ToolController\DataGridViewSettingStyle.cs" />
+    <Compile Include="Controllers\ToolController\DataTableTools.cs" />
+    <Compile Include="Controllers\WarehouseContoller\StockCards.cs" />
+    <Compile Include="Controllers\WarehouseContoller\StockCardItem.cs" />
+    <Compile Include="Controllers\WarehouseContoller\StockMasterController.cs" />
+    <Compile Include="CRCODE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CURRENCY.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CUSTMATRETURN.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CUSTOMER.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CUSTPRICEITEMPIC.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CUSTPRICELIST.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CUSTTASK.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CUSTTASKIMG.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CUSTTASKLINE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEPARTMENT.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DISTRICT.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMPLOYEE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMPLOYPIC.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMPSAL.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMPSTATU.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ENGINEER.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ERRORCATEGORY.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EXCHCURR.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExtUtils.cs" />
+    <Compile Include="FGLogInfo.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FGSTOCK.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GOODSMASTER.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ICCAT.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ICDEPT.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITEMCODE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITEMMASTERIMG.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITEMSPRICELIST.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ITEMSTYLE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JOBINFO.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JOBORDER.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOGIN.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MATERIAL.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MATOPENBALANCE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MATPRICE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MATRECEIVE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MATSALE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MCBOM.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MIX.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CastingModel\BillInfoReportDAL.cs" />
+    <Compile Include="Models\CastingModel\BillingDAL.cs" />
+    <Compile Include="Models\CastingModel\CastingJobList.cs" />
+    <Compile Include="Models\CastingModel\CastingPerformanceDAL.cs" />
+    <Compile Include="Models\CastingModel\CastingReportFields.cs" />
+    <Compile Include="Models\CastingModel\CastingSaleOrderDAL.cs" />
+    <Compile Include="Models\CastingModel\CastingSaleOrderDataSource.cs" />
+    <Compile Include="Models\CastingModel\CastingSaleOrderReportItem.cs" />
+    <Compile Include="Models\CastingModel\CastingWorkerDAL.cs" />
+    <Compile Include="Models\CastingModel\JobHistories.cs" />
+    <Compile Include="Models\CastingModel\MaterialBalance.cs" />
+    <Compile Include="Models\CastingModel\MaterialCardDataItems.cs" />
+    <Compile Include="Models\CastingModel\ReturnMaterialDAL.cs" />
+    <Compile Include="Models\CastingModel\WaxTreeReportDAL.cs" />
+    <Compile Include="Models\ProductionModel\BOMDal.cs" />
+    <Compile Include="Models\ProductionModel\ItemProcessInfo.cs" />
+    <Compile Include="Models\ProductionModel\ProductionDAL.cs" />
+    <Compile Include="Models\SaleModel\ERPPriceDAL.cs" />
+    <Compile Include="Models\SaleModel\SalemanDAL.cs" />
+    <Compile Include="Models\SaleModel\SalePIDataItem.cs" />
+    <Compile Include="Models\SaleModel\SalePriceItemDAL.cs" />
+    <Compile Include="Models\SaleModel\SaleQTDAL.cs" />
+    <Compile Include="Models\SaleModel\SaleQTDataSource.cs" />
+    <Compile Include="Models\SaleModel\StockDAL.cs" />
+    <Compile Include="Models\ServiceModel\PMDal.cs" />
+    <Compile Include="Models\ServiceModel\ServiceJobDS.cs" />
+    <Compile Include="Models\ServiceModel\ServiceReportDAL.cs" />
+    <Compile Include="Models\ServiceModel\ServiceStat.cs" />
+    <Compile Include="Models\ToolModel\LoginDAL.cs" />
+    <Compile Include="Models\ToolModel\PrintLog.cs" />
+    <Compile Include="Models\WarehouseModel\FOCIssueDAL.cs" />
+    <Compile Include="Models\WarehouseModel\FOCItems.cs" />
+    <Compile Include="ORDERFIXED.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORDERMAINTENANCE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORDERPIORITY.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORDERSPAREPART.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORDERTYPE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PDITEMPROCESS.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PERMISSION.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PI_INVOICE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PI_ITEMS.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PMCONTRACT.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PMMC.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PMSCHEDULE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRDPROCESS.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRINTLOG.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRODUCT.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRODUCTGROUP.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRODUCTIONJOB.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRODUCTIONJOBINFO.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRODUCTIONSTDITEM.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="QUOTATIONHH.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QUOTATIONLL.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RUBBERBASE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SALEORDER.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SALE_CONTACTS.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SALE_PERSON_PROFILE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="Shared\OMShareMethods.cs" />
+    <Compile Include="Shared\OMShareProduction.cs" />
+    <Compile Include="SKUMOVE.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BankModel\BankDAL.cs" />
+    <Compile Include="Models\CustomerModel\CustomerDAL.cs" />
+    <Compile Include="SOLINE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SYSDATA.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UOFQTY.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USERLOG.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_GetServiceJobList_Result.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_SCSummaryWithVAT_Result.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BankView\BankInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\BankView\BankInfo.Designer.cs">
+      <DependentUpon>BankInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BankView\BankList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\BankView\BankList.Designer.cs">
+      <DependentUpon>BankList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingReports\BillingSO.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BillingSO.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\CastingReports\CastingMonthReportByCustGroup.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CastingMonthReportByCustGroup.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\CastingReports\CastingMonthReportByCustomer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CastingMonthReportByCustomer.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\CastingReports\CastingMonthReportByDocument.cs">
+      <DependentUpon>CastingMonthReportByDocument.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Views\CastingReports\CastingSaleMaterial.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CastingSaleMaterial.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\CastingReports\CastingSaleMaterialNoVAT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CastingSaleMaterialNoVAT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\CastingReports\CastingSaleOrder.cs">
+      <DependentUpon>CastingSaleOrder.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Views\CastingReports\CastingSaleOrderNoVAT.cs">
+      <DependentUpon>CastingSaleOrderNoVAT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Views\CastingReports\JobOrderForm.cs">
+      <DependentUpon>JobOrderForm.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Views\CastingReports\JobOrderFormList.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JobOrderFormList.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\CastingReports\MaterialCard.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MaterialCard.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\CastingReports\SaleMaterialMonthReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaleMaterialMonthReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\CastingReports\WaxTreeReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WaxTreeReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\AvailbleCastingSaleOrderList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\AvailbleCastingSaleOrderList.Designer.cs">
+      <DependentUpon>AvailbleCastingSaleOrderList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\Casting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\Casting.Designer.cs">
+      <DependentUpon>Casting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingFGItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingFGItems.Designer.cs">
+      <DependentUpon>CastingFGItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingHub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingHub.Designer.cs">
+      <DependentUpon>CastingHub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingJobOrderSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingJobOrderSearch.Designer.cs">
+      <DependentUpon>CastingJobOrderSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingMaterialSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingMaterialSummary.Designer.cs">
+      <DependentUpon>CastingMaterialSummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingOrderBilling.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingOrderBilling.Designer.cs">
+      <DependentUpon>CastingOrderBilling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingOrderCustomers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingOrderCustomers.Designer.cs">
+      <DependentUpon>CastingOrderCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingWorker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingWorker.Designer.cs">
+      <DependentUpon>CastingWorker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingWorkPerformance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingWorkPerformance.Designer.cs">
+      <DependentUpon>CastingWorkPerformance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingSaleOrderForSaleMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingSaleOrderForSaleMaterial.Designer.cs">
+      <DependentUpon>CastingSaleOrderForSaleMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingSaleOrderItemInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingSaleOrderItemInfo.Designer.cs">
+      <DependentUpon>CastingSaleOrderItemInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingUserControls\CastingPerformance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingUserControls\CastingPerformance.Designer.cs">
+      <DependentUpon>CastingPerformance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingUserControls\CastingStat.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingUserControls\CastingStat.Designer.cs">
+      <DependentUpon>CastingStat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingUserControls\WorkerPerformance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingUserControls\WorkerPerformance.Designer.cs">
+      <DependentUpon>WorkerPerformance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingWebReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingWebReport.Designer.cs">
+      <DependentUpon>CastingWebReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\ConfirmSelectedFGItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\ConfirmSelectedFGItems.Designer.cs">
+      <DependentUpon>ConfirmSelectedFGItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\GRVInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\GRVInfo.Designer.cs">
+      <DependentUpon>GRVInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\JobListForPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\JobListForPrint.Designer.cs">
+      <DependentUpon>JobListForPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\MaterialCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\MaterialCard.Designer.cs">
+      <DependentUpon>MaterialCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\MaterialClearing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\MaterialClearing.Designer.cs">
+      <DependentUpon>MaterialClearing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\MaterialCutBalance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\MaterialCutBalance.Designer.cs">
+      <DependentUpon>MaterialCutBalance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\MaterialList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\MaterialList.Designer.cs">
+      <DependentUpon>MaterialList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\MaterialPriceList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\MaterialPriceList.Designer.cs">
+      <DependentUpon>MaterialPriceList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\MonthYearOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\MonthYearOption.Designer.cs">
+      <DependentUpon>MonthYearOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\PrintJobOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\PrintJobOption.Designer.cs">
+      <DependentUpon>PrintJobOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\SCBilling.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\SCBilling.Designer.cs">
+      <DependentUpon>SCBilling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\SCCollection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\SCCollection.Designer.cs">
+      <DependentUpon>SCCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\SCOrderSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\SCOrderSummary.Designer.cs">
+      <DependentUpon>SCOrderSummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\SpeedRecords.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\SpeedRecords.Designer.cs">
+      <DependentUpon>SpeedRecords.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\SummaryMatReceive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\SummaryMatReceive.Designer.cs">
+      <DependentUpon>SummaryMatReceive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\SumOfDelivery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\SumOfDelivery.Designer.cs">
+      <DependentUpon>SumOfDelivery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CustomerView\CustomerGroupList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CustomerView\CustomerGroupList.Designer.cs">
+      <DependentUpon>CustomerGroupList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CustomerView\CustomerGroups.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CustomerView\CustomerGroups.Designer.cs">
+      <DependentUpon>CustomerGroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\ActiveProductionJobs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ActiveProductionJobs.Designer.cs">
+      <DependentUpon>ActiveProductionJobs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\BOM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\BOM.Designer.cs">
+      <DependentUpon>BOM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\BOMItemInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\BOMItemInfo.Designer.cs">
+      <DependentUpon>BOMItemInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\ERPPDList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ERPPDList.Designer.cs">
+      <DependentUpon>ERPPDList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\ItemStat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ItemStat.Designer.cs">
+      <DependentUpon>ItemStat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\PDTimeRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\PDTimeRecord.Designer.cs">
+      <DependentUpon>PDTimeRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\Prdprocess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\Prdprocess.Designer.cs">
+      <DependentUpon>Prdprocess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\PRDHOURSINFO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\PRDHOURSINFO.Designer.cs">
+      <DependentUpon>PRDHOURSINFO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\PrdOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\PrdOption.Designer.cs">
+      <DependentUpon>PrdOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\Production.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\Production.Designer.cs">
+      <DependentUpon>Production.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionJobList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionJobList.Designer.cs">
+      <DependentUpon>ProductionJobList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionOrder.Designer.cs">
+      <DependentUpon>ProductionOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionProcessInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionProcessInfo.Designer.cs">
+      <DependentUpon>ProductionProcessInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionUserControl\WorkerTimeRecord.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionUserControl\WorkerTimeRecord.Designer.cs">
+      <DependentUpon>WorkerTimeRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\REQISU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\REQISU.Designer.cs">
+      <DependentUpon>REQISU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\STDItemProcess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\STDItemProcess.Designer.cs">
+      <DependentUpon>STDItemProcess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\STDPartItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\STDPartItem.Designer.cs">
+      <DependentUpon>STDPartItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\STDParts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\STDParts.Designer.cs">
+      <DependentUpon>STDParts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\WorkProcess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\WorkProcess.Designer.cs">
+      <DependentUpon>WorkProcess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductView\MCModelList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ProductView\MCModelList.Designer.cs">
+      <DependentUpon>MCModelList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductView\ModelInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ProductView\ModelInfo.Designer.cs">
+      <DependentUpon>ModelInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductView\ProductWarrantyList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ProductView\ProductWarrantyList.Designer.cs">
+      <DependentUpon>ProductWarrantyList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Reports\ReportView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Reports\ReportView.Designer.cs">
+      <DependentUpon>ReportView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Reports\SalePIForm.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalePIForm.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Reports\SaleQTEn.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaleQTEn.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\DelTerm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\DelTerm.Designer.cs">
+      <DependentUpon>DelTerm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SaleModel\SaleDAL.cs" />
+    <Compile Include="Models\ToolModel\CompanyProfileModel.cs" />
+    <Compile Include="Shared\OMCommonTypes.cs" />
+    <Compile Include="Shared\OMShareSaleEnum.cs" />
+    <Compile Include="Views\Sales\MasterQTList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\MasterQTList.Designer.cs">
+      <DependentUpon>MasterQTList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\PIInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\PIInfo.Designer.cs">
+      <DependentUpon>PIInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\PILines.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\PILines.Designer.cs">
+      <DependentUpon>PILines.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\PriceList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\PriceList.Designer.cs">
+      <DependentUpon>PriceList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\PriceListItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\PriceListItem.Designer.cs">
+      <DependentUpon>PriceListItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\QTInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\QTInfo.Designer.cs">
+      <DependentUpon>QTInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\QTLineInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\QTLineInfo.Designer.cs">
+      <DependentUpon>QTLineInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\Quotations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\Quotations.Designer.cs">
+      <DependentUpon>Quotations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\SaleContact.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\SaleContact.Designer.cs">
+      <DependentUpon>SaleContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\SaleContactInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\SaleContactInfo.Designer.cs">
+      <DependentUpon>SaleContactInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\SaleContactSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\SaleContactSearch.Designer.cs">
+      <DependentUpon>SaleContactSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\SaleMan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\SaleMan.Designer.cs">
+      <DependentUpon>SaleMan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\SalemanInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\SalemanInfo.Designer.cs">
+      <DependentUpon>SalemanInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\SaleOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\SaleOptions.Designer.cs">
+      <DependentUpon>SaleOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\SaleProformaList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\SaleProformaList.Designer.cs">
+      <DependentUpon>SaleProformaList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\SaleWorks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\SaleWorks.Designer.cs">
+      <DependentUpon>SaleWorks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\STDPriceList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\STDPriceList.Designer.cs">
+      <DependentUpon>STDPriceList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceReports\JobHistory.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JobHistory.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceReports\ServiceOrderSP.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServiceOrderSP.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\MCInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\MCInfo.Designer.cs">
+      <DependentUpon>MCInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceView\MCRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\MCRegister.Designer.cs">
+      <DependentUpon>MCRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceView\MCTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\MCTransfer.Designer.cs">
+      <DependentUpon>MCTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceView\PM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\PM.Designer.cs">
+      <DependentUpon>PM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceView\PMInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\PMInfo.Designer.cs">
+      <DependentUpon>PMInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceView\ContractMC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\ContractMC.Designer.cs">
+      <DependentUpon>ContractMC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceView\PMMatching.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\PMMatching.Designer.cs">
+      <DependentUpon>PMMatching.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceView\PMMCList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\PMMCList.Designer.cs">
+      <DependentUpon>PMMCList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceView\ScheduleInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\ScheduleInfo.Designer.cs">
+      <DependentUpon>ScheduleInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceView\ServiceJobs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\ServiceJobs.Designer.cs">
+      <DependentUpon>ServiceJobs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceView\SeviceWorks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\SeviceWorks.Designer.cs">
+      <DependentUpon>SeviceWorks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceView\SrvStat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\SrvStat.Designer.cs">
+      <DependentUpon>SrvStat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolViews\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolViews\About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ADDRBOOK.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ToolController\AppConfigure.cs" />
+    <Compile Include="ARADDRESS.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARCAT.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ARFILE.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CastingModel\CastingJobDataSource.cs" />
+    <Compile Include="Models\CastingModel\CastingJobOrderDataItem.cs" />
+    <Compile Include="Models\CastingModel\CastingOrderReportDataItem.cs" />
+    <Compile Include="Models\CastingModel\CastingOrderReportDS.cs" />
+    <Compile Include="Models\CastingModel\CastingTreeController.cs" />
+    <Compile Include="Views\CastingReports\JobQCReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JobQCReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Models\CastingModel\CastingRubberBase.cs" />
+    <Compile Include="Views\CastingView\CastingCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingCustomer.Designer.cs">
+      <DependentUpon>CastingCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingFGItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingFGItem.Designer.cs">
+      <DependentUpon>CastingFGItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingJobFG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingJobFG.Designer.cs">
+      <DependentUpon>CastingJobFG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingJobInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingJobInfo.Designer.cs">
+      <DependentUpon>CastingJobInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingLoss.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingLoss.Designer.cs">
+      <DependentUpon>CastingLoss.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingMaterialInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingMaterialInfo.Designer.cs">
+      <DependentUpon>CastingMaterialInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingMatList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingMatList.Designer.cs">
+      <DependentUpon>CastingMatList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingPerformanceCharts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingPerformanceCharts.Designer.cs">
+      <DependentUpon>CastingPerformanceCharts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingPriceList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingPriceList.Designer.cs">
+      <DependentUpon>CastingPriceList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingPriceListItemInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingPriceListItemInfo.Designer.cs">
+      <DependentUpon>CastingPriceListItemInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingProgress.Designer.cs">
+      <DependentUpon>CastingProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingReportView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingReportView.Designer.cs">
+      <DependentUpon>CastingReportView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingSaleOrderInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingSaleOrderInfo.Designer.cs">
+      <DependentUpon>CastingSaleOrderInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingSaleOrderList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingSaleOrderList.Designer.cs">
+      <DependentUpon>CastingSaleOrderList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CastingModel\JobDAL.cs" />
+    <Compile Include="Models\CastingModel\MaterialDAL.cs" />
+    <Compile Include="Models\CastingModel\PriceListDAL.cs" />
+    <Compile Include="Models\CastingModel\SCOrderDAL.cs" />
+    <Compile Include="Views\CastingView\CastingTree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingTree.Designer.cs">
+      <DependentUpon>CastingTree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingTreeInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingTreeInfo.Designer.cs">
+      <DependentUpon>CastingTreeInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\ItemImageResize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\ItemImageResize.Designer.cs">
+      <DependentUpon>ItemImageResize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\ItemImageSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\ItemImageSelector.Designer.cs">
+      <DependentUpon>ItemImageSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\JobOrderProgressStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\JobOrderProgressStatus.Designer.cs">
+      <DependentUpon>JobOrderProgressStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\MaterialCost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\MaterialCost.Designer.cs">
+      <DependentUpon>MaterialCost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\MaterialPriceInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\MaterialPriceInfo.Designer.cs">
+      <DependentUpon>MaterialPriceInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\PriceListByCustomerId.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\PriceListByCustomerId.Designer.cs">
+      <DependentUpon>PriceListByCustomerId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\RBInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\RBInfo.Designer.cs">
+      <DependentUpon>RBInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\RBList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\RBList.Designer.cs">
+      <DependentUpon>RBList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ServiceController\MachineListController.cs" />
+    <Compile Include="Controllers\ToolController\ToolGetData.cs" />
+    <Compile Include="DEPTTAB.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOCINFO.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DOCTYPE.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ERP.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERP.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ERP.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ERP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERP.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\EmployeeController\Departments.cs" />
+    <Compile Include="Models\CastingModel\CastingDAL.cs" />
+    <Compile Include="Models\EmployeeModel\EmployeeDAL.cs" />
+    <Compile Include="Models\ServiceModel\ServiceJobDAL.cs" />
+    <Compile Include="Shared\OMShareWarehouseEnums.cs" />
+    <Compile Include="Views\CustomerView\CustomerSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CustomerView\CustomerSearch.Designer.cs">
+      <DependentUpon>CustomerSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CustomerView\MasterCustomerInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CustomerView\MasterCustomerInfo.Designer.cs">
+      <DependentUpon>MasterCustomerInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CustomerView\MasterCustomers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CustomerView\MasterCustomers.Designer.cs">
+      <DependentUpon>MasterCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeView\MasterEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EmployeeView\MasterEmployee.Designer.cs">
+      <DependentUpon>MasterEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeView\MasterEmployeeInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EmployeeView\MasterEmployeeInfo.Designer.cs">
+      <DependentUpon>MasterEmployeeInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CustomerView\SelectProvince.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CustomerView\SelectProvince.Designer.cs">
+      <DependentUpon>SelectProvince.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceModel\MachineDAL.cs" />
+    <Compile Include="Oldmoon.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Oldmoon.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Oldmoon.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Oldmoon.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Oldmoon.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="omglobal.cs" />
+    <Compile Include="OW15.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OW15.Designer.cs">
+      <DependentUpon>OW15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PRJTAB.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductModel\ProductDAL.cs" />
+    <Compile Include="Views\ProductView\ProductList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ProductView\ProductList.Designer.cs">
+      <DependentUpon>ProductList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SALESMAN.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ServiceController\ServiceReportDataSource.cs" />
+    <Compile Include="Views\ServiceReports\ServiceOrderForm.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServiceOrderForm.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceReports\ServicePrintHost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceReports\ServicePrintHost.Designer.cs">
+      <DependentUpon>ServicePrintHost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceView\ErrList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\ErrList.Designer.cs">
+      <DependentUpon>ErrList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceView\ErrorInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\ErrorInfo.Designer.cs">
+      <DependentUpon>ErrorInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceView\JobSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\JobSearch.Designer.cs">
+      <DependentUpon>JobSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceView\JobSPItemInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\JobSPItemInfo.Designer.cs">
+      <DependentUpon>JobSPItemInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceView\MachineList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\MachineList.Designer.cs">
+      <DependentUpon>MachineList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceView\MachineOwnerList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\MachineOwnerList.Designer.cs">
+      <DependentUpon>MachineOwnerList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceView\MachineRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\MachineRecord.Designer.cs">
+      <DependentUpon>MachineRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceView\OrderFixInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\OrderFixInfo.Designer.cs">
+      <DependentUpon>OrderFixInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceView\ServiceEngineerInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\ServiceEngineerInfo.Designer.cs">
+      <DependentUpon>ServiceEngineerInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceView\ServiceEngineers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\ServiceEngineers.Designer.cs">
+      <DependentUpon>ServiceEngineers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceView\ServiceJobInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ServiceView\ServiceJobInfo.Designer.cs">
+      <DependentUpon>ServiceJobInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Shared\OMShareCastingEnums.cs" />
+    <Compile Include="Shared\OMShareCustomerEnums.cs" />
+    <Compile Include="Shared\OMShareEnums.cs" />
+    <Compile Include="Shared\OMShareJobEnums.cs" />
+    <Compile Include="Shared\OMShareServiceEnums.cs" />
+    <Compile Include="Shared\OMShareSysConfigEnums.cs" />
+    <Compile Include="Models\ToolModel\ExchangeCurrencyDAL.cs" />
+    <Compile Include="Models\WarehouseModel\IssueDAL.cs" />
+    <Compile Include="Models\WarehouseModel\WHDDAL.cs" />
+    <Compile Include="Views\BankView\Banks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\BankView\Banks.Designer.cs">
+      <DependentUpon>Banks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolViews\AppUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolViews\AppUpdate.Designer.cs">
+      <DependentUpon>AppUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ToolModel\DataConnect.cs" />
+    <Compile Include="Views\ToolViews\LoadAlert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolViews\LoadAlert.Designer.cs">
+      <DependentUpon>LoadAlert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolViews\TestLoadExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolViews\TestLoadExcel.Designer.cs">
+      <DependentUpon>TestLoadExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WarehouseReports\FOCItems.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FOCItems.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\WarehouseView\FOCIssueParts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\WarehouseView\FOCIssueParts.Designer.cs">
+      <DependentUpon>FOCIssueParts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WarehouseView\MasterImageItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\WarehouseView\MasterImageItem.Designer.cs">
+      <DependentUpon>MasterImageItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WarehouseView\SPIssueList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\WarehouseView\SPIssueList.Designer.cs">
+      <DependentUpon>SPIssueList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SKUBALANCE.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SKUMASTER.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SKUWARELOCATION.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolViews\CompanyProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolViews\CompanyProfile.Designer.cs">
+      <DependentUpon>CompanyProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolViews\ConfigManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolViews\ConfigManager.Designer.cs">
+      <DependentUpon>ConfigManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ToolModel\DatabaseServerList.cs" />
+    <Compile Include="Views\ToolViews\ErrorDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolViews\ErrorDisplay.Designer.cs">
+      <DependentUpon>ErrorDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolViews\ExchangeRate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolViews\ExchangeRate.Designer.cs">
+      <DependentUpon>ExchangeRate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolViews\ExchangeRateList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolViews\ExchangeRateList.Designer.cs">
+      <DependentUpon>ExchangeRateList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolViews\InputBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolViews\InputBox.Designer.cs">
+      <DependentUpon>InputBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ToolModel\ContractStatus.cs" />
+    <Compile Include="Models\ToolModel\Logout.cs" />
+    <Compile Include="Views\ToolViews\Member.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolViews\Member.Designer.cs">
+      <DependentUpon>Member.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolViews\SelectBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolViews\SelectBox.Designer.cs">
+      <DependentUpon>SelectBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolViews\SelectExchangeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolViews\SelectExchangeList.Designer.cs">
+      <DependentUpon>SelectExchangeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ToolModel\SelectOptions.cs" />
+    <Compile Include="Views\ToolViews\ServerList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolViews\ServerList.Designer.cs">
+      <DependentUpon>ServerList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolViews\TestInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolViews\TestInput.Designer.cs">
+      <DependentUpon>TestInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolViews\UserChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolViews\UserChangePassword.Designer.cs">
+      <DependentUpon>UserChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolViews\UserPermissionManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolViews\UserPermissionManager.Designer.cs">
+      <DependentUpon>UserPermissionManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TRANSTKD.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRANSTKH.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolViews\UserLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolViews\UserLogin.Designer.cs">
+      <DependentUpon>UserLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WarehouseView\StockMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\WarehouseView\StockMaster.Designer.cs">
+      <DependentUpon>StockMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WarehouseView\Warehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\WarehouseView\Warehouse.Designer.cs">
+      <DependentUpon>Warehouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WarehouseView\WHMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\WarehouseView\WHMonitor.Designer.cs">
+      <DependentUpon>WHMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WarehouseView\WHStockCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\WarehouseView\WHStockCard.Designer.cs">
+      <DependentUpon>WHStockCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WARRANTy.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WAXTREE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Views\BankView\BankInfo.resx">
+      <DependentUpon>BankInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\BankView\BankList.resx">
+      <DependentUpon>BankList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingReports\BillingSO.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BillingSO.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingReports\CastingMonthReportByCustGroup.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CastingMonthReportByCustGroup.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingReports\CastingMonthReportByCustomer.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CastingMonthReportByCustomer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingReports\CastingMonthReportByDocument.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CastingMonthReportByDocument.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingReports\CastingSaleMaterial.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CastingSaleMaterial.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingReports\CastingSaleMaterialNoVAT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CastingSaleMaterialNoVAT.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingReports\CastingSaleOrder.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CastingSaleOrder.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingReports\CastingSaleOrderNoVAT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CastingSaleOrderNoVAT.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingReports\JobOrderForm.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>JobOrderForm.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingReports\JobOrderFormList.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>JobOrderFormList.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingReports\MaterialCard.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MaterialCard.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingReports\SaleMaterialMonthReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SaleMaterialMonthReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingReports\WaxTreeReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>WaxTreeReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\AvailbleCastingSaleOrderList.resx">
+      <DependentUpon>AvailbleCastingSaleOrderList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\Casting.resx">
+      <DependentUpon>Casting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingFGItems.resx">
+      <DependentUpon>CastingFGItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingHub.resx">
+      <DependentUpon>CastingHub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingJobOrderSearch.resx">
+      <DependentUpon>CastingJobOrderSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingMaterialSummary.resx">
+      <DependentUpon>CastingMaterialSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingOrderBilling.resx">
+      <DependentUpon>CastingOrderBilling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingOrderCustomers.resx">
+      <DependentUpon>CastingOrderCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingWorker.resx">
+      <DependentUpon>CastingWorker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingWorkPerformance.resx">
+      <DependentUpon>CastingWorkPerformance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingSaleOrderForSaleMaterial.resx">
+      <DependentUpon>CastingSaleOrderForSaleMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingSaleOrderItemInfo.resx">
+      <DependentUpon>CastingSaleOrderItemInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingUserControls\CastingPerformance.resx">
+      <DependentUpon>CastingPerformance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingUserControls\CastingStat.resx">
+      <DependentUpon>CastingStat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingUserControls\WorkerPerformance.resx">
+      <DependentUpon>WorkerPerformance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingWebReport.resx">
+      <DependentUpon>CastingWebReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\ConfirmSelectedFGItems.resx">
+      <DependentUpon>ConfirmSelectedFGItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\GRVInfo.resx">
+      <DependentUpon>GRVInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\JobListForPrint.resx">
+      <DependentUpon>JobListForPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\MaterialCard.resx">
+      <DependentUpon>MaterialCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\MaterialClearing.resx">
+      <DependentUpon>MaterialClearing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\MaterialCutBalance.resx">
+      <DependentUpon>MaterialCutBalance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\MaterialList.resx">
+      <DependentUpon>MaterialList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\MaterialPriceList.resx">
+      <DependentUpon>MaterialPriceList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\MonthYearOption.resx">
+      <DependentUpon>MonthYearOption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\PrintJobOption.resx">
+      <DependentUpon>PrintJobOption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\SCBilling.resx">
+      <DependentUpon>SCBilling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\SCCollection.resx">
+      <DependentUpon>SCCollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\SCOrderSummary.resx">
+      <DependentUpon>SCOrderSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\SpeedRecords.resx">
+      <DependentUpon>SpeedRecords.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\SummaryMatReceive.resx">
+      <DependentUpon>SummaryMatReceive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\SumOfDelivery.resx">
+      <DependentUpon>SumOfDelivery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CustomerView\CustomerGroupList.resx">
+      <DependentUpon>CustomerGroupList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CustomerView\CustomerGroups.resx">
+      <DependentUpon>CustomerGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ActiveProductionJobs.resx">
+      <DependentUpon>ActiveProductionJobs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\BOM.resx">
+      <DependentUpon>BOM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\BOMItemInfo.resx">
+      <DependentUpon>BOMItemInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ERPPDList.resx">
+      <DependentUpon>ERPPDList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ItemStat.resx">
+      <DependentUpon>ItemStat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\PDTimeRecord.resx">
+      <DependentUpon>PDTimeRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\Prdprocess.resx">
+      <DependentUpon>Prdprocess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\PRDHOURSINFO.resx">
+      <DependentUpon>PRDHOURSINFO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\PrdOption.resx">
+      <DependentUpon>PrdOption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\Production.resx">
+      <DependentUpon>Production.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionJobList.resx">
+      <DependentUpon>ProductionJobList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionOrder.resx">
+      <DependentUpon>ProductionOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionProcessInfo.resx">
+      <DependentUpon>ProductionProcessInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionUserControl\WorkerTimeRecord.resx">
+      <DependentUpon>WorkerTimeRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\REQISU.resx">
+      <DependentUpon>REQISU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\STDItemProcess.resx">
+      <DependentUpon>STDItemProcess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\STDPartItem.resx">
+      <DependentUpon>STDPartItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\STDParts.resx">
+      <DependentUpon>STDParts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\WorkProcess.resx">
+      <DependentUpon>WorkProcess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProductView\MCModelList.resx">
+      <DependentUpon>MCModelList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProductView\ModelInfo.resx">
+      <DependentUpon>ModelInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProductView\ProductWarrantyList.resx">
+      <DependentUpon>ProductWarrantyList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Reports\ReportView.resx">
+      <DependentUpon>ReportView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Reports\SalePIForm.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SalePIForm.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Reports\SaleQTEn.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SaleQTEn.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\DelTerm.resx">
+      <DependentUpon>DelTerm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\MasterQTList.resx">
+      <DependentUpon>MasterQTList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\PIInfo.resx">
+      <DependentUpon>PIInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\PILines.resx">
+      <DependentUpon>PILines.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\PriceList.resx">
+      <DependentUpon>PriceList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\PriceListItem.resx">
+      <DependentUpon>PriceListItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\QTInfo.resx">
+      <DependentUpon>QTInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\QTLineInfo.resx">
+      <DependentUpon>QTLineInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\Quotations.resx">
+      <DependentUpon>Quotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\SaleContact.resx">
+      <DependentUpon>SaleContact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\SaleContactInfo.resx">
+      <DependentUpon>SaleContactInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\SaleContactSearch.resx">
+      <DependentUpon>SaleContactSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\SaleMan.resx">
+      <DependentUpon>SaleMan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\SalemanInfo.resx">
+      <DependentUpon>SalemanInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\SaleOptions.resx">
+      <DependentUpon>SaleOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\SaleProformaList.resx">
+      <DependentUpon>SaleProformaList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\SaleWorks.resx">
+      <DependentUpon>SaleWorks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\STDPriceList.resx">
+      <DependentUpon>STDPriceList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceReports\JobHistory.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>JobHistory.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceReports\ServiceOrderSP.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ServiceOrderSP.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\MCInfo.resx">
+      <DependentUpon>MCInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\MCRegister.resx">
+      <DependentUpon>MCRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\MCTransfer.resx">
+      <DependentUpon>MCTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\PM.resx">
+      <DependentUpon>PM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\PMInfo.resx">
+      <DependentUpon>PMInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\ContractMC.resx">
+      <DependentUpon>ContractMC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\PMMatching.resx">
+      <DependentUpon>PMMatching.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\PMMCList.resx">
+      <DependentUpon>PMMCList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\ScheduleInfo.resx">
+      <DependentUpon>ScheduleInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\ServiceJobs.resx">
+      <DependentUpon>ServiceJobs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\SeviceWorks.resx">
+      <DependentUpon>SeviceWorks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\SrvStat.resx">
+      <DependentUpon>SrvStat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolViews\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingReports\JobQCReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>JobQCReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingCustomer.resx">
+      <DependentUpon>CastingCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingFGItem.resx">
+      <DependentUpon>CastingFGItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingJobFG.resx">
+      <DependentUpon>CastingJobFG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingJobInfo.resx">
+      <DependentUpon>CastingJobInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingLoss.resx">
+      <DependentUpon>CastingLoss.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingMaterialInfo.resx">
+      <DependentUpon>CastingMaterialInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingMatList.resx">
+      <DependentUpon>CastingMatList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingPerformanceCharts.resx">
+      <DependentUpon>CastingPerformanceCharts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingPriceList.resx">
+      <DependentUpon>CastingPriceList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingPriceListItemInfo.resx">
+      <DependentUpon>CastingPriceListItemInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingProgress.resx">
+      <DependentUpon>CastingProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingReportView.resx">
+      <DependentUpon>CastingReportView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingSaleOrderInfo.resx">
+      <DependentUpon>CastingSaleOrderInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingSaleOrderList.resx">
+      <DependentUpon>CastingSaleOrderList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingTree.resx">
+      <DependentUpon>CastingTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingTreeInfo.resx">
+      <DependentUpon>CastingTreeInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\ItemImageResize.resx">
+      <DependentUpon>ItemImageResize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\ItemImageSelector.resx">
+      <DependentUpon>ItemImageSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\JobOrderProgressStatus.resx">
+      <DependentUpon>JobOrderProgressStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\MaterialCost.resx">
+      <DependentUpon>MaterialCost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\MaterialPriceInfo.resx">
+      <DependentUpon>MaterialPriceInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\PriceListByCustomerId.resx">
+      <DependentUpon>PriceListByCustomerId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\RBInfo.resx">
+      <DependentUpon>RBInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\RBList.resx">
+      <DependentUpon>RBList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CustomerView\CustomerSearch.resx">
+      <DependentUpon>CustomerSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CustomerView\MasterCustomerInfo.resx">
+      <DependentUpon>MasterCustomerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CustomerView\MasterCustomers.resx">
+      <DependentUpon>MasterCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EmployeeView\MasterEmployee.resx">
+      <DependentUpon>MasterEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EmployeeView\MasterEmployeeInfo.resx">
+      <DependentUpon>MasterEmployeeInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CustomerView\SelectProvince.resx">
+      <DependentUpon>SelectProvince.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OW15.resx">
+      <DependentUpon>OW15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProductView\ProductList.resx">
+      <DependentUpon>ProductList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceReports\ServiceOrderForm.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ServiceOrderForm.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceReports\ServicePrintHost.resx">
+      <DependentUpon>ServicePrintHost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\ErrList.resx">
+      <DependentUpon>ErrList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\ErrorInfo.resx">
+      <DependentUpon>ErrorInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\JobSearch.resx">
+      <DependentUpon>JobSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\JobSPItemInfo.resx">
+      <DependentUpon>JobSPItemInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\MachineList.resx">
+      <DependentUpon>MachineList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\MachineOwnerList.resx">
+      <DependentUpon>MachineOwnerList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\MachineRecord.resx">
+      <DependentUpon>MachineRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\OrderFixInfo.resx">
+      <DependentUpon>OrderFixInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\ServiceEngineerInfo.resx">
+      <DependentUpon>ServiceEngineerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\ServiceEngineers.resx">
+      <DependentUpon>ServiceEngineers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServiceView\ServiceJobInfo.resx">
+      <DependentUpon>ServiceJobInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\BankView\Banks.resx">
+      <DependentUpon>Banks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolViews\AppUpdate.resx">
+      <DependentUpon>AppUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolViews\LoadAlert.resx">
+      <DependentUpon>LoadAlert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolViews\TestLoadExcel.resx">
+      <DependentUpon>TestLoadExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WarehouseReports\FOCItems.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FOCItems.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WarehouseView\FOCIssueParts.resx">
+      <DependentUpon>FOCIssueParts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WarehouseView\MasterImageItem.resx">
+      <DependentUpon>MasterImageItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WarehouseView\SPIssueList.resx">
+      <DependentUpon>SPIssueList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolViews\CompanyProfile.resx">
+      <DependentUpon>CompanyProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolViews\ConfigManager.resx">
+      <DependentUpon>ConfigManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolViews\ErrorDisplay.resx">
+      <DependentUpon>ErrorDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolViews\ExchangeRate.resx">
+      <DependentUpon>ExchangeRate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolViews\ExchangeRateList.resx">
+      <DependentUpon>ExchangeRateList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolViews\InputBox.resx">
+      <DependentUpon>InputBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolViews\Member.resx">
+      <DependentUpon>Member.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolViews\SelectBox.resx">
+      <DependentUpon>SelectBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolViews\SelectExchangeList.resx">
+      <DependentUpon>SelectExchangeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolViews\ServerList.resx">
+      <DependentUpon>ServerList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolViews\TestInput.resx">
+      <DependentUpon>TestInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolViews\UserChangePassword.resx">
+      <DependentUpon>UserChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolViews\UserPermissionManager.resx">
+      <DependentUpon>UserPermissionManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolViews\UserLogin.resx">
+      <DependentUpon>UserLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WarehouseView\StockMaster.resx">
+      <DependentUpon>StockMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WarehouseView\Warehouse.resx">
+      <DependentUpon>Warehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WarehouseView\WHMonitor.resx">
+      <DependentUpon>WHMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WarehouseView\WHStockCard.resx">
+      <DependentUpon>WHStockCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Oldmoon.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Oldmoon.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="ERP.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ERP.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ERP.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ERP.Context.cs</LastGenOutput>
+      <DependentUpon>ERP.edmx</DependentUpon>
+    </None>
+    <None Include="ERP.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ERP.cs</LastGenOutput>
+      <DependentUpon>ERP.edmx</DependentUpon>
+    </None>
+    <None Include="ERP.edmx.diagram">
+      <DependentUpon>ERP.edmx</DependentUpon>
+    </None>
+    <None Include="OMW15_2_TemporaryKey.pfx" />
+    <None Include="Oldmoon.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Oldmoon.edmx</DependentUpon>
+      <LastGenOutput>Oldmoon.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Oldmoon.edmx.diagram">
+      <DependentUpon>Oldmoon.edmx</DependentUpon>
+    </None>
+    <None Include="Oldmoon.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Oldmoon.edmx</DependentUpon>
+      <LastGenOutput>Oldmoon.cs</LastGenOutput>
+    </None>
+    <None Include="OMW15_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\OMW15.Casting.CastingController.JobOrderDataItem.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apply.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blueheader.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FindHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\openHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PrintHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redcross2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\server.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZoomHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CLOSE.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\REFRESH.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LockSmall.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Key.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Filter2HS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\otheroptions.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MonthlyViewHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WRENCH.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="SAP.CrystalReports14.NET.2.0">
+      <Visible>False</Visible>
+      <ProductName>SAP Crystal Reports Runtime Engine for .NET Framework</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="GAFExtension">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="stdole">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\graphhs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\employes.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\computer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\toolbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image043.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DeleteHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Graph.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BugFixed.txt" />
+    <None Include="Resources\folder_search.png" />
+    <None Include="Resources\People.png" />
+    <None Include="Resources\user-1.jpg" />
+    <None Include="Resources\printer.ico" />
+    <None Include="Resources\pnt.ico" />
+    <None Include="Resources\EditTableHS.png" />
+    <None Include="Resources\clock.png" />
+    <None Include="Resources\system_update.png" />
+    <None Include="Resources\CommentHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PushpinHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\htmltemplate.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="CrystalReportsCommonObjectModelLib">
+      <Guid>{FDB9B69E-BA79-4B13-9E96-8373AF162AEA}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="CrystalReportsControllersLib">
+      <Guid>{FA810FF5-70DA-4F98-A5E3-387D9577EF24}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="CrystalReportsCubeDefModelLib">
+      <Guid>{44AD71D4-4905-491D-B179-B5D91EB57374}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="CrystalReportsDataDefModelLib">
+      <Guid>{9B2F3E7B-8D45-47E8-95D3-3A9C1B22437F}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="CrystalReportsReportDefModelLib">
+      <Guid>{BF40B97D-06EA-4AB1-91DE-18CB29A2B25A}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

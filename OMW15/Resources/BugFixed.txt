@@ -1,0 +1,22 @@
+[2017-02-10]
+[cause]: Tool bar in form "ServiceJobInfo" has been loss.
+[fixed]: Adding from backup.
+
+[2017-02-08]
+[cause]: service cannot add new service job for every job code like 'SV', 'PM' and so on.
+[fixed]: correcting constructor in form "ServiceJobInfo" by adding default of the textbox object
+[fixed]: txtModel in property tag = "" and txtCustomerCode.tag = 0 
+[fixed]: because of date 2017-02-06, adding new way for open service job by direct open from 
+[fixed]: machine register.
+[cause]: delay loading data from table (casting order)
+[fixed]: re-write LINQ query by separeate of each table before join for last loading.
+[fixed]: in JobDAL module.
+
+[2017-02-07]
+[cause]:
+[fixed]:
+
+[2017-02-06]
+[add feature]: Direct open service job from "Machine register"
+[cause]:
+[fixed]: 

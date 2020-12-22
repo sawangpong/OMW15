@@ -1,0 +1,508 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+	<!-- EF Runtime content -->
+	<edmx:Runtime>
+		<!-- SSDL content -->
+		<edmx:StorageModels>
+		<Schema Namespace="OMPDEF.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="MCBOM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ISACTIVE" Type="bit" Nullable="false" />
+          <Property Name="MODEL" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LEVEL" Type="int" Nullable="false" />
+          <Property Name="POSITION" Type="int" Nullable="false" />
+          <Property Name="PARENT_ID" Type="int" Nullable="false" />
+          <Property Name="REF_NO" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="REF_REV" Type="int" Nullable="false" />
+          <Property Name="PARTNO" Type="nvarchar" MaxLength="30" />
+          <Property Name="PART_REV" Type="int" Nullable="false" />
+          <Property Name="ITEMNAME" Type="nvarchar" MaxLength="150" />
+          <Property Name="DRAWINGNO" Type="nvarchar" MaxLength="50" />
+          <Property Name="CATEGORY" Type="nvarchar" MaxLength="20" />
+          <Property Name="UNIT" Type="nvarchar" MaxLength="10" />
+          <Property Name="UNITCOST" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Qty" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SIZE" Type="nvarchar" MaxLength="150" />
+          <Property Name="MATERIAL" Type="nvarchar" MaxLength="150" />
+          <Property Name="MAKER" Type="nvarchar" MaxLength="30" />
+          <Property Name="PROCESS" Type="nvarchar" MaxLength="100" />
+          <Property Name="PROCESS_COST" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRDPROCESS">
+          <Key>
+            <PropertyRef Name="PRDPROCESSID" />
+          </Key>
+          <Property Name="PRDPROCESSID" Type="int" Nullable="false" />
+          <Property Name="PROCESSNAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="STDHOUR" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SCORE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCTGROUPS">
+          <Key>
+            <PropertyRef Name="PRODUCTGROUPID" />
+          </Key>
+          <Property Name="PRODUCTGROUPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRODUCTGROUPNAME" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCTIONJOBINFO">
+          <Key>
+            <PropertyRef Name="PRDINFOID" />
+          </Key>
+          <Property Name="PRDINFOID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ERP_ORDER" Type="varchar" MaxLength="15" />
+          <Property Name="PROCESSID" Type="int" Nullable="false" />
+          <Property Name="PROCESSNAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="COSTCENTER" Type="nvarchar" MaxLength="10" />
+          <Property Name="WORKERID" Type="varchar" MaxLength="50" />
+          <Property Name="WORKERNAME" Type="varchar" MaxLength="50" />
+          <Property Name="TIME_CAT" Type="varchar" MaxLength="15" />
+          <Property Name="DATETIME_START" Type="datetime" />
+          <Property Name="DATETIME_END" Type="datetime" />
+          <Property Name="TOTAL_NORMAL_HR" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="BREAK_HRS" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="OT_START" Type="datetime" />
+          <Property Name="OT_END" Type="datetime" />
+          <Property Name="OT_BREAK" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TOTAL_OT_HR" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="WORKYEAR" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="WORKPERIOD" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="TOTALQTY" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="GOOD_QTY" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="BAD_QTY" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TOTAL_HRS" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="REGULAR_HR_RATE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="NET85_HR_RATE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="NET75_HR_RATE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="AVG85_HR_RATE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="AVG75_HR_RATE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TOTAL_COST" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TOTAL_COST85" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TOTAL_COST75" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TOTAL_AVG_COST85" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TOTAL_AVG_COST75" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="REMARK" Type="varchar" MaxLength="200" />
+          <Property Name="CREATEUSER" Type="varchar" MaxLength="50" />
+          <Property Name="CREATEDATE" Type="datetime" Nullable="false" />
+          <Property Name="MODIUSER" Type="varchar" MaxLength="50" />
+          <Property Name="MODIDATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCTIONJOBS">
+          <Key>
+            <PropertyRef Name="PDJOBID" />
+          </Key>
+          <Property Name="PDJOBID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STATUS" Type="int" Nullable="false" />
+          <Property Name="CUSTCODE" Type="nvarchar" MaxLength="10" />
+          <Property Name="CUSTOMERNAME" Type="nvarchar" MaxLength="150" />
+          <Property Name="CREATEDATE" Type="datetime" />
+          <Property Name="RELEASEDATE" Type="datetime" />
+          <Property Name="DUEDATE" Type="datetime" />
+          <Property Name="DAYREMAIN" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="ERP_DI" Type="int" Nullable="false" />
+          <Property Name="ERP_ORDER" Type="varchar" MaxLength="15" />
+          <Property Name="JOBTYPE" Type="varchar" MaxLength="2" />
+          <Property Name="DRAWINGNO" Type="nvarchar" MaxLength="25" />
+          <Property Name="DRAWINGREV" Type="nvarchar" MaxLength="2" />
+          <Property Name="ITEMNO" Type="nvarchar" MaxLength="20" />
+          <Property Name="ITEMNAME" Type="nvarchar" MaxLength="150" />
+          <Property Name="ITEMNOTE" Type="nvarchar" MaxLength="1500" />
+          <Property Name="SN" Type="nvarchar" MaxLength="50" />
+          <Property Name="UNITORDER" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="QORDER" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SHIPQTY" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="REMAINQTY" Type="decimal" Precision="19" Scale="2" StoreGeneratedPattern="Computed" />
+          <Property Name="REQUESTBY" Type="nvarchar" MaxLength="50" />
+          <Property Name="STD_MATCOST" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="STD_UNITHOUR" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TOTAL_MAT_COST" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TOTAL_HOURS" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TOTAL_HOUR_COST" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TOTAL_PRODUCTION_COST" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="LABOUR_HR_COST" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="AUDITUSER" Type="nvarchar" MaxLength="50" />
+          <Property Name="MODIUSER" Type="nvarchar" MaxLength="50" />
+          <Property Name="LASTMODIFY" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PRODUCTIONSTDITEMS">
+          <Key>
+            <PropertyRef Name="ItemNo" />
+          </Key>
+          <Property Name="ItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="islock" Type="bit" Nullable="false" />
+          <Property Name="ItemNo" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ItemName" Type="varchar" MaxLength="150" />
+          <Property Name="Unit" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DrawingNo" Type="varchar" MaxLength="25" />
+          <Property Name="DrawingRev" Type="int" Nullable="false" />
+          <Property Name="DrawingDate" Type="datetime" Nullable="false" />
+          <Property Name="SheetNo" Type="varchar" MaxLength="10" />
+          <Property Name="Material" Type="varchar" MaxLength="150" />
+          <Property Name="UnitWeight" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="MaterialCost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="STDProductHours" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ProducionHourCost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ProductionCost" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ItemCost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="ModiUser" Type="varchar" MaxLength="50" />
+          <Property Name="ModiDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OLDMOON.dbo.UNITS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityContainer Name="OMPDEFStoreContainer">
+          <EntitySet Name="MCBOM" EntityType="Self.MCBOM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRDPROCESS" EntityType="Self.PRDPROCESS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTGROUPS" EntityType="Self.PRODUCTGROUPS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTIONJOBINFO" EntityType="Self.PRODUCTIONJOBINFO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTIONJOBS" EntityType="Self.PRODUCTIONJOBS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTIONSTDITEMS" EntityType="Self.PRODUCTIONSTDITEMS" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+		<!-- CSDL content -->
+		<edmx:ConceptualModels>
+			<Schema Namespace="OMPDEF" Alias="Self" annotation:UseStrongSpatialTypes="false"
+			        xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation"
+			        xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation"
+			        xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+				<EntityType Name="PRODUCTGROUP">
+					<Key>
+						<PropertyRef Name="PRODUCTGROUPID" />
+					</Key>
+					<Property Name="PRODUCTGROUPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="PRODUCTGROUPNAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true"
+					          Nullable="false" />
+				</EntityType>
+				<EntityContainer Name="PDEF" annotation:LazyLoadingEnabled="true">
+					<EntitySet Name="PRODUCTGROUPS" EntityType="Self.PRODUCTGROUP" />
+					<EntitySet Name="PRODUCTIONSTDITEMS" EntityType="OMPDEF.PRODUCTIONSTDITEM" />
+					<EntitySet Name="PRDPROCESSes" EntityType="OMPDEF.PRDPROCESS" />
+					<EntitySet Name="PRODUCTIONJOBS" EntityType="OMPDEF.PRODUCTIONJOB" />
+					<EntitySet Name="PRODUCTIONJOBINFOes" EntityType="OMPDEF.PRODUCTIONJOBINFO" />
+          <EntitySet Name="MCBOMs" EntityType="OMPDEF.MCBOM" />
+				</EntityContainer>
+				<EntityType Name="PRODUCTIONSTDITEM">
+					<Key>
+						<PropertyRef Name="ItemNo" />
+					</Key>
+					<Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="ItemNo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+					<Property Name="ItemName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+					<Property Name="Unit" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+					<Property Name="DrawingNo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+					<Property Name="DrawingRev" Type="Int32" Nullable="false" />
+					<Property Name="DrawingDate" Type="DateTime" Nullable="false" Precision="3" />
+					<Property Name="SheetNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+					<Property Name="Material" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+					<Property Name="UnitWeight" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="MaterialCost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="STDProductHours" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="ProducionHourCost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="ProductionCost" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+					<Property Name="ItemCost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="CreateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+					<Property Name="ModiUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="ModiDate" Type="DateTime" Nullable="false" Precision="3" />
+					<Property Name="islock" Type="Boolean" Nullable="false" />
+				</EntityType>
+				<EntityType Name="PRDPROCESS">
+					<Key>
+						<PropertyRef Name="PRDPROCESSID" />
+					</Key>
+					<Property Name="PRDPROCESSID" Type="Int32" Nullable="false" />
+					<Property Name="PROCESSNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="STDHOUR" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="SCORE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+				</EntityType>
+				<EntityType Name="PRODUCTIONJOB">
+					<Key>
+						<PropertyRef Name="PDJOBID" />
+					</Key>
+					<Property Name="PDJOBID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="STATUS" Type="Int32" Nullable="false" />
+					<Property Name="CUSTCODE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+					<Property Name="CUSTOMERNAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+					<Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+					<Property Name="RELEASEDATE" Type="DateTime" Precision="3" />
+					<Property Name="DUEDATE" Type="DateTime" Precision="3" />
+					<Property Name="DAYREMAIN" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="ERP_DI" Type="Int32" Nullable="false" />
+					<Property Name="ERP_ORDER" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+					<Property Name="JOBTYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+					<Property Name="DRAWINGNO" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+					<Property Name="DRAWINGREV" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+					<Property Name="ITEMNO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+					<Property Name="ITEMNAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+					<Property Name="ITEMNOTE" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+					<Property Name="SN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="UNITORDER" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+					<Property Name="QORDER" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="SHIPQTY" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="REMAINQTY" Type="Decimal" Precision="19" Scale="2" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="REQUESTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="STD_MATCOST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="STD_UNITHOUR" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="TOTAL_MAT_COST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="TOTAL_HOURS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="TOTAL_HOUR_COST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="TOTAL_PRODUCTION_COST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="LABOUR_HR_COST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="AUDITUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="MODIUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="LASTMODIFY" Type="DateTime" Precision="3" />
+				</EntityType>
+				<EntityType Name="PRODUCTIONJOBINFO">
+					<Key>
+						<PropertyRef Name="PRDINFOID" />
+					</Key>
+					<Property Name="PRDINFOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="ERP_ORDER" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+					<Property Name="PROCESSID" Type="Int32" Nullable="false" />
+					<Property Name="PROCESSNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="COSTCENTER" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+					<Property Name="WORKERID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="WORKERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="TIME_CAT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+					<Property Name="DATETIME_START" Type="DateTime" Precision="3" />
+					<Property Name="DATETIME_END" Type="DateTime" Precision="3" />
+					<Property Name="TOTAL_NORMAL_HR" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="BREAK_HRS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="OT_START" Type="DateTime" Precision="3" />
+					<Property Name="OT_END" Type="DateTime" Precision="3" />
+					<Property Name="OT_BREAK" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="TOTAL_OT_HR" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="WORKYEAR" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="WORKPERIOD" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+					<Property Name="TOTALQTY" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="GOOD_QTY" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="BAD_QTY" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="TOTAL_HRS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="REGULAR_HR_RATE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="NET85_HR_RATE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="NET75_HR_RATE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="AVG85_HR_RATE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="AVG75_HR_RATE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="TOTAL_COST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="TOTAL_COST85" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="TOTAL_COST75" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="TOTAL_AVG_COST85" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="TOTAL_AVG_COST75" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="REMARK" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+					<Property Name="CREATEUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="CREATEDATE" Type="DateTime" Nullable="false" Precision="3" />
+					<Property Name="MODIUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="MODIDATE" Type="DateTime" Nullable="false" Precision="3" />
+				</EntityType>
+        <EntityType Name="MCBOM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ISACTIVE" Type="Boolean" Nullable="false" />
+          <Property Name="MODEL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LEVEL" Type="Int32" Nullable="false" />
+          <Property Name="POSITION" Type="Int32" Nullable="false" />
+          <Property Name="PARENT_ID" Type="Int32" Nullable="false" />
+          <Property Name="REF_NO" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="REF_REV" Type="Int32" Nullable="false" />
+          <Property Name="PARTNO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PART_REV" Type="Int32" Nullable="false" />
+          <Property Name="ITEMNAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DRAWINGNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CATEGORY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UNIT" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="UNITCOST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Qty" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="SIZE" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MATERIAL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MAKER" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PROCESS" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PROCESS_COST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+			</Schema>
+		</edmx:ConceptualModels>
+		<!-- C-S mapping content -->
+		<edmx:Mappings>
+			<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+				<EntityContainerMapping StorageEntityContainer="OMPDEFStoreContainer" CdmEntityContainer="PDEF">
+					<EntitySetMapping Name="PRODUCTGROUPS">
+						<EntityTypeMapping TypeName="OMPDEF.PRODUCTGROUP">
+							<MappingFragment StoreEntitySet="PRODUCTGROUPS">
+								<ScalarProperty Name="PRODUCTGROUPID" ColumnName="PRODUCTGROUPID" />
+								<ScalarProperty Name="PRODUCTGROUPNAME" ColumnName="PRODUCTGROUPNAME" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="PRODUCTIONSTDITEMS">
+						<EntityTypeMapping TypeName="OMPDEF.PRODUCTIONSTDITEM">
+							<MappingFragment StoreEntitySet="PRODUCTIONSTDITEMS">
+								<ScalarProperty Name="islock" ColumnName="islock" />
+								<ScalarProperty Name="ModiDate" ColumnName="ModiDate" />
+								<ScalarProperty Name="ModiUser" ColumnName="ModiUser" />
+								<ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+								<ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+								<ScalarProperty Name="ItemCost" ColumnName="ItemCost" />
+								<ScalarProperty Name="ProductionCost" ColumnName="ProductionCost" />
+								<ScalarProperty Name="ProducionHourCost" ColumnName="ProducionHourCost" />
+								<ScalarProperty Name="STDProductHours" ColumnName="STDProductHours" />
+								<ScalarProperty Name="MaterialCost" ColumnName="MaterialCost" />
+								<ScalarProperty Name="UnitWeight" ColumnName="UnitWeight" />
+								<ScalarProperty Name="Material" ColumnName="Material" />
+								<ScalarProperty Name="SheetNo" ColumnName="SheetNo" />
+								<ScalarProperty Name="DrawingDate" ColumnName="DrawingDate" />
+								<ScalarProperty Name="DrawingRev" ColumnName="DrawingRev" />
+								<ScalarProperty Name="DrawingNo" ColumnName="DrawingNo" />
+								<ScalarProperty Name="Unit" ColumnName="Unit" />
+								<ScalarProperty Name="ItemName" ColumnName="ItemName" />
+								<ScalarProperty Name="ItemNo" ColumnName="ItemNo" />
+								<ScalarProperty Name="ItemId" ColumnName="ItemId" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="PRDPROCESSes">
+						<EntityTypeMapping TypeName="OMPDEF.PRDPROCESS">
+							<MappingFragment StoreEntitySet="PRDPROCESS">
+								<ScalarProperty Name="SCORE" ColumnName="SCORE" />
+								<ScalarProperty Name="STDHOUR" ColumnName="STDHOUR" />
+								<ScalarProperty Name="PROCESSNAME" ColumnName="PROCESSNAME" />
+								<ScalarProperty Name="PRDPROCESSID" ColumnName="PRDPROCESSID" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="PRODUCTIONJOBS">
+						<EntityTypeMapping TypeName="OMPDEF.PRODUCTIONJOB">
+							<MappingFragment StoreEntitySet="PRODUCTIONJOBS">
+								<ScalarProperty Name="LASTMODIFY" ColumnName="LASTMODIFY" />
+								<ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+								<ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+								<ScalarProperty Name="LABOUR_HR_COST" ColumnName="LABOUR_HR_COST" />
+								<ScalarProperty Name="TOTAL_PRODUCTION_COST" ColumnName="TOTAL_PRODUCTION_COST" />
+								<ScalarProperty Name="TOTAL_HOUR_COST" ColumnName="TOTAL_HOUR_COST" />
+								<ScalarProperty Name="TOTAL_HOURS" ColumnName="TOTAL_HOURS" />
+								<ScalarProperty Name="TOTAL_MAT_COST" ColumnName="TOTAL_MAT_COST" />
+								<ScalarProperty Name="STD_UNITHOUR" ColumnName="STD_UNITHOUR" />
+								<ScalarProperty Name="STD_MATCOST" ColumnName="STD_MATCOST" />
+								<ScalarProperty Name="REQUESTBY" ColumnName="REQUESTBY" />
+								<ScalarProperty Name="REMAINQTY" ColumnName="REMAINQTY" />
+								<ScalarProperty Name="SHIPQTY" ColumnName="SHIPQTY" />
+								<ScalarProperty Name="QORDER" ColumnName="QORDER" />
+								<ScalarProperty Name="UNITORDER" ColumnName="UNITORDER" />
+								<ScalarProperty Name="SN" ColumnName="SN" />
+								<ScalarProperty Name="ITEMNOTE" ColumnName="ITEMNOTE" />
+								<ScalarProperty Name="ITEMNAME" ColumnName="ITEMNAME" />
+								<ScalarProperty Name="ITEMNO" ColumnName="ITEMNO" />
+								<ScalarProperty Name="DRAWINGREV" ColumnName="DRAWINGREV" />
+								<ScalarProperty Name="DRAWINGNO" ColumnName="DRAWINGNO" />
+								<ScalarProperty Name="JOBTYPE" ColumnName="JOBTYPE" />
+								<ScalarProperty Name="ERP_ORDER" ColumnName="ERP_ORDER" />
+								<ScalarProperty Name="ERP_DI" ColumnName="ERP_DI" />
+								<ScalarProperty Name="DAYREMAIN" ColumnName="DAYREMAIN" />
+								<ScalarProperty Name="DUEDATE" ColumnName="DUEDATE" />
+								<ScalarProperty Name="RELEASEDATE" ColumnName="RELEASEDATE" />
+								<ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+								<ScalarProperty Name="CUSTOMERNAME" ColumnName="CUSTOMERNAME" />
+								<ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+								<ScalarProperty Name="STATUS" ColumnName="STATUS" />
+								<ScalarProperty Name="PDJOBID" ColumnName="PDJOBID" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="PRODUCTIONJOBINFOes">
+						<EntityTypeMapping TypeName="OMPDEF.PRODUCTIONJOBINFO">
+							<MappingFragment StoreEntitySet="PRODUCTIONJOBINFO">
+								<ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+								<ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+								<ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+								<ScalarProperty Name="CREATEUSER" ColumnName="CREATEUSER" />
+								<ScalarProperty Name="REMARK" ColumnName="REMARK" />
+								<ScalarProperty Name="TOTAL_AVG_COST75" ColumnName="TOTAL_AVG_COST75" />
+								<ScalarProperty Name="TOTAL_AVG_COST85" ColumnName="TOTAL_AVG_COST85" />
+								<ScalarProperty Name="TOTAL_COST75" ColumnName="TOTAL_COST75" />
+								<ScalarProperty Name="TOTAL_COST85" ColumnName="TOTAL_COST85" />
+								<ScalarProperty Name="TOTAL_COST" ColumnName="TOTAL_COST" />
+								<ScalarProperty Name="AVG75_HR_RATE" ColumnName="AVG75_HR_RATE" />
+								<ScalarProperty Name="AVG85_HR_RATE" ColumnName="AVG85_HR_RATE" />
+								<ScalarProperty Name="NET75_HR_RATE" ColumnName="NET75_HR_RATE" />
+								<ScalarProperty Name="NET85_HR_RATE" ColumnName="NET85_HR_RATE" />
+								<ScalarProperty Name="REGULAR_HR_RATE" ColumnName="REGULAR_HR_RATE" />
+								<ScalarProperty Name="TOTAL_HRS" ColumnName="TOTAL_HRS" />
+								<ScalarProperty Name="BAD_QTY" ColumnName="BAD_QTY" />
+								<ScalarProperty Name="GOOD_QTY" ColumnName="GOOD_QTY" />
+								<ScalarProperty Name="TOTALQTY" ColumnName="TOTALQTY" />
+								<ScalarProperty Name="WORKPERIOD" ColumnName="WORKPERIOD" />
+								<ScalarProperty Name="WORKYEAR" ColumnName="WORKYEAR" />
+								<ScalarProperty Name="TOTAL_OT_HR" ColumnName="TOTAL_OT_HR" />
+								<ScalarProperty Name="OT_BREAK" ColumnName="OT_BREAK" />
+								<ScalarProperty Name="OT_END" ColumnName="OT_END" />
+								<ScalarProperty Name="OT_START" ColumnName="OT_START" />
+								<ScalarProperty Name="BREAK_HRS" ColumnName="BREAK_HRS" />
+								<ScalarProperty Name="TOTAL_NORMAL_HR" ColumnName="TOTAL_NORMAL_HR" />
+								<ScalarProperty Name="DATETIME_END" ColumnName="DATETIME_END" />
+								<ScalarProperty Name="DATETIME_START" ColumnName="DATETIME_START" />
+								<ScalarProperty Name="TIME_CAT" ColumnName="TIME_CAT" />
+								<ScalarProperty Name="WORKERNAME" ColumnName="WORKERNAME" />
+								<ScalarProperty Name="WORKERID" ColumnName="WORKERID" />
+								<ScalarProperty Name="COSTCENTER" ColumnName="COSTCENTER" />
+								<ScalarProperty Name="PROCESSNAME" ColumnName="PROCESSNAME" />
+								<ScalarProperty Name="PROCESSID" ColumnName="PROCESSID" />
+								<ScalarProperty Name="ERP_ORDER" ColumnName="ERP_ORDER" />
+								<ScalarProperty Name="PRDINFOID" ColumnName="PRDINFOID" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+          <EntitySetMapping Name="MCBOMs">
+            <EntityTypeMapping TypeName="OMPDEF.MCBOM">
+              <MappingFragment StoreEntitySet="MCBOM">
+                <ScalarProperty Name="PROCESS_COST" ColumnName="PROCESS_COST" />
+                <ScalarProperty Name="PROCESS" ColumnName="PROCESS" />
+                <ScalarProperty Name="MAKER" ColumnName="MAKER" />
+                <ScalarProperty Name="MATERIAL" ColumnName="MATERIAL" />
+                <ScalarProperty Name="SIZE" ColumnName="SIZE" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="UNITCOST" ColumnName="UNITCOST" />
+                <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="DRAWINGNO" ColumnName="DRAWINGNO" />
+                <ScalarProperty Name="ITEMNAME" ColumnName="ITEMNAME" />
+                <ScalarProperty Name="PART_REV" ColumnName="PART_REV" />
+                <ScalarProperty Name="PARTNO" ColumnName="PARTNO" />
+                <ScalarProperty Name="REF_REV" ColumnName="REF_REV" />
+                <ScalarProperty Name="REF_NO" ColumnName="REF_NO" />
+                <ScalarProperty Name="PARENT_ID" ColumnName="PARENT_ID" />
+                <ScalarProperty Name="POSITION" ColumnName="POSITION" />
+                <ScalarProperty Name="LEVEL" ColumnName="LEVEL" />
+                <ScalarProperty Name="MODEL" ColumnName="MODEL" />
+                <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+				</EntityContainerMapping>
+			</Mapping>
+		</edmx:Mappings>
+	</edmx:Runtime>
+	<!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+	<Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+		<Connection>
+			<DesignerInfoPropertySet>
+				<DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+			</DesignerInfoPropertySet>
+		</Connection>
+		<Options>
+			<DesignerInfoPropertySet>
+				<DesignerProperty Name="ValidateOnBuild" Value="true" />
+				<DesignerProperty Name="EnablePluralization" Value="true" />
+				<DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+				<DesignerProperty Name="UseLegacyProvider" Value="false" />
+				<DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+			</DesignerInfoPropertySet>
+		</Options>
+		<!-- Diagram content (shape and connector positions) -->
+		<Diagrams></Diagrams>
+	</Designer>
+</edmx:Edmx>

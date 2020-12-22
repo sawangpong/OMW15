@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e98303f9befe4d5ebc1c5ac3f5ab6e6f" Name="Diagram1" ZoomLevel="101">
+        <EntityTypeShape EntityType="Oldmoon.BANKINFO" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.BANK" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.BILLLINE" Width="1.5" PointX="12.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.BILL" Width="1.5" PointX="12.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.COMPANY_PROFILES" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.CONTACT" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.CRCODE" Width="1.5" PointX="14.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.CURRENCY" Width="1.5" PointX="14.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.CUSTMATRETURN" Width="1.5" PointX="5.25" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.CUSTOMER" Width="1.5" PointX="0.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.CUSTPRICEITEMPIC" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.CUSTPRICELIST" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.CUSTTASK" Width="1.5" PointX="16.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.CUSTTASKIMG" Width="1.5" PointX="16.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.CUSTTASKLINE" Width="1.5" PointX="16.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.DEPARTMENT" Width="1.5" PointX="7.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.DISTRICT" Width="1.5" PointX="9.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.EMPLOYEE" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.EMPLOYPIC" Width="1.5" PointX="18.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.EMPSTATU" Width="1.5" PointX="14.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.ENGINEER" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.ERRORCATEGORY" Width="1.5" PointX="20.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.EXCHCURR" Width="1.5" PointX="20.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.FGLogInfo" Width="1.5" PointX="7.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.FGSTOCK" Width="1.5" PointX="9.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.ITEMCODE" Width="1.5" PointX="20.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.ITEMMASTERIMG" Width="1.5" PointX="20.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.ITEMSPRICELIST" Width="1.5" PointX="20.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.ITEMSTYLE" Width="1.5" PointX="14.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.JOBINFO" Width="1.5" PointX="5.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.JOBORDER" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.MATERIAL" Width="1.5" PointX="22.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.MATOPENBALANCE" Width="1.5" PointX="22.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.MATPRICE" Width="1.5" PointX="11.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.MATRECEIVE" Width="1.5" PointX="3" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.MATSALE" Width="1.5" PointX="22.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.MCBOM" Width="1.5" PointX="22.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.MemberTimeRecord" Width="1.5" PointX="20.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.MIX" Width="1.5" PointX="22.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.ORDERFIXED" Width="1.5" PointX="10" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.ORDERMAINTENANCE" Width="1.5" PointX="7.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.ORDERPIORITY" Width="1.5" PointX="24.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.ORDERSPAREPART" Width="1.5" PointX="10" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.ORDERTYPE" Width="1.5" PointX="24.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.PDITEMPROCESS" Width="1.5" PointX="24.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.PERMISSION" Width="1.5" PointX="24.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.PI_INVOICE" Width="1.5" PointX="13.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.PI_ITEMS" Width="1.5" PointX="24.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.PMCONTRACT" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.PMMC" Width="1.5" PointX="8" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.PMSCHEDULE" Width="1.5" PointX="10.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.PRDPROCESS" Width="1.5" PointX="15.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.PRINTLOG" Width="1.5" PointX="17.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.PRODUCTGROUP" Width="1.5" PointX="24.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.PRODUCTIONSTDITEM" Width="2" PointX="26.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.PRODUCT" Width="1.5" PointX="26.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.QUOTATIONHH" Width="1.5" PointX="26.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.QUOTATIONLL" Width="1.5" PointX="26.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.RUBBERBASE" Width="1.5" PointX="26.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.SALE_CONTACTS" Width="1.5" PointX="7.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.SALE_PERSON_PROFILE" Width="1.5" PointX="9.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.SALEORDER" Width="1.5" PointX="3" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.SOLINE" Width="1.5" PointX="15.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.SYSDATA" Width="1.5" PointX="28.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.USERLOG" Width="1.5" PointX="28.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.WARRANTy" Width="1.5" PointX="28.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.WAXTREE" Width="1.5" PointX="28.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Oldmoon.OM_VALID_TIME_RECORDS" Width="1.5" PointX="28.75" PointY="21.75" IsExpanded="true" />
+        <AssociationConnector Association="Oldmoon.FK_CUSTMATRETURN_MATRECEIVE" ManuallyRouted="false" />
+        <AssociationConnector Association="Oldmoon.FK_CUSTPRICELIST_CUST" ManuallyRouted="false" />
+        <AssociationConnector Association="Oldmoon.FK_JOBORDERS_CUSTOMER" ManuallyRouted="false" />
+        <AssociationConnector Association="Oldmoon.FK_MATRECEIVE_CUST" ManuallyRouted="false" />
+        <AssociationConnector Association="Oldmoon.FK_SALEORDERS_CUST" ManuallyRouted="false" />
+        <AssociationConnector Association="Oldmoon.FK_JOBINFOS_JOBORDERS" ManuallyRouted="false" />
+        <AssociationConnector Association="Oldmoon.FK_ORDERFIXED_ORDERMAINTENANCE" ManuallyRouted="false" />
+        <AssociationConnector Association="Oldmoon.FK_ORDERSPAREPARTS_ORDERMAINTENANCE" ManuallyRouted="false" />
+        <AssociationConnector Association="Oldmoon.FK_PMMC_PMCONTRACT" ManuallyRouted="false" />
+        <AssociationConnector Association="Oldmoon.FK_PMSCHEDULE_PMMC" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Oldmoon.Maintenace1" Width="1.5" PointX="29.375" PointY="25.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_CASTING_AGING" Width="1.5" PointX="10.375" PointY="30.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_CASTING_BILLING" Width="1.5" PointX="31.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_CASTING_COMU_LABOUR" Width="1.5" PointX="31.375" PointY="7.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_CASTING_COMU_SELL_MAT" Width="1.5" PointX="31.375" PointY="12.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_CASTING_DELIVERY_MAT_SUMMARY" Width="1.5" PointX="12.375" PointY="31.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_CASTING_GRV_INFO" Width="1.5" PointX="31.375" PointY="17.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_CASTING_GRV_SUMMARY" Width="1.5" PointX="31.375" PointY="21.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_CASTING_INV_COLLECTED" Width="1.5" PointX="31.375" PointY="26.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_CASTING_ITEMPRICE" Width="1.5" PointX="27.375" PointY="31.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_CASTING_JOB" Width="1.5" PointX="29.375" PointY="31.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_CASTING_LABOUR" Width="1.5" PointX="31.375" PointY="31.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_CASTING_PENDING_BILL" Width="1.5" PointX="5.375" PointY="32.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_CASTING_SALES" Width="1.5" PointX="7.375" PointY="32.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_CASTING_SELL_MAT" Width="1.5" PointX="22.375" PointY="32.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_CASTING_SO" Width="1.5" PointX="24.375" PointY="32.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_CASTING_SUM_AGING" Width="1.5" PointX="33.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_CASTING_SUMMARY" Width="1.5" PointX="33.375" PointY="4.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_DELIVERY_CASTING_ITEM_R" Width="1.5" PointX="33.375" PointY="9.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_ERP_CUSTOMER" Width="1.5" PointX="33.375" PointY="12.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_ERP_DOCINFO" Width="1.5" PointX="33.375" PointY="18.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_ERP_PRODUCTION_DOCYEAR" Width="1.5" PointX="33.375" PointY="23.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_ERP_PRODUCTION_ISSUE_REQ" Width="1.5" PointX="33.375" PointY="26.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_ERP_PRODUCTION_PROJECT" Width="1.5" PointX="33.375" PointY="33.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_ERP_PRODUCTION_REQLIST" Width="1.5" PointX="9.375" PointY="34.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_ERP_SKU_BALANCE" Width="1.5" PointX="35.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_ERP_STOCK_MOVE" Width="1.5" PointX="35.375" PointY="5.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_ERP_TRH_TRD" Width="1.5" PointX="35.375" PointY="10.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_ERP_WH_ISSUE_ITEMS" Width="1.5" PointX="35.375" PointY="18.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_ERP_WH_ITEM_CLASS" Width="1.5" PointX="18.375" PointY="35.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_ERP_WH_STOCK_ITEM_INFO" Width="1.5" PointX="35.375" PointY="24.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_FS_VALIDTIME_RECORDS" Width="1.5" PointX="35.375" PointY="30.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_JOB_ITEM_R" Width="1.5" PointX="35.375" PointY="35.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_PRODUCTION_MISS_REPORT" Width="2.25" PointX="14.375" PointY="36.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_PRODUCTION_WORKINGTIMES" Width="2.875" PointX="37.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_SALE_MC_RECORD" Width="1.5" PointX="5.375" PointY="37.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_SRV_MACHINE_SERVICE" Width="1.5" PointX="37.375" PointY="6.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_SRV_SERVICE_INCOME" Width="1.5" PointX="37.375" PointY="11.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_SRV_SPAREPART_INCOME" Width="1.5" PointX="11.375" PointY="37.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_SUM_DEL_CASTING_R" Width="1.5" PointX="37.375" PointY="17.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_VSERVICEJOBLIST" Width="1.5" PointX="37.375" PointY="20.75" />
+        <EntityTypeShape EntityType="Oldmoon.TVIEW_JOBORDERS" Width="3" PointX="20.375" PointY="37.75" />
+        <EntityTypeShape EntityType="Oldmoon.LOGIN" Width="1.5" PointX="37.375" PointY="25.75" />
+        <EntityTypeShape EntityType="Oldmoon.EMPSAL" Width="1.5" PointX="26.375" PointY="37.75" />
+        <EntityTypeShape EntityType="Oldmoon.PRODUCTIONJOB" Width="1.5" PointX="31.375" PointY="37.75" />
+        <EntityTypeShape EntityType="Oldmoon.PRODUCTION_OUTSOURCE" Width="1.5" PointX="17.375" PointY="18.75" />
+        <EntityTypeShape EntityType="Oldmoon.PRODUCTIONJOBINFO" Width="1.5" PointX="37.375" PointY="29.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_ERP_PRODUCTION_TRANSFER_REQUEST" Width="1.5" PointX="18.375" PointY="27.75" />
+        <EntityTypeShape EntityType="Oldmoon.OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST" Width="2.875" PointX="7.375" PointY="38.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

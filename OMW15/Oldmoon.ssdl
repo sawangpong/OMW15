@@ -1,0 +1,2037 @@
+<Schema Namespace="OLDMOONModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ACCMAPS">
+    <Key>
+      <PropertyRef Name="ACCMAPKEY" />
+    </Key>
+    <Property Name="ACCMAPKEY" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SALETYPE" Type="int" Nullable="false" />
+    <Property Name="ISVATABLE" Type="bit" Nullable="false" />
+    <Property Name="MATERIALCAT" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="ACCOUNTID" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ACCOUNTSET">
+    <Key>
+      <PropertyRef Name="ACCOUNTNO" />
+    </Key>
+    <Property Name="ACCOUNTNO" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="COSTCENTER" Type="varchar" MaxLength="15" />
+    <Property Name="ACCOUNTNAME" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="APPLOGS">
+    <Key>
+      <PropertyRef Name="PID" />
+    </Key>
+    <Property Name="PID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="APP_NAME" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="REFRECORDID" Type="int" />
+    <Property Name="MACHINE_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MODULE_NAME" Type="varchar" MaxLength="150" />
+    <Property Name="METHOD_NAME" Type="varchar" MaxLength="150" />
+    <Property Name="DOBYUSER" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LOG_DT" Type="datetime" Nullable="false" />
+    <Property Name="LOG_DETAILS" Type="varchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'OLDMOON.dbo.BANKBOOKS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="BANKBOOKS">
+    <Key>
+      <PropertyRef Name="BBSEQ" />
+      <PropertyRef Name="BANKCODE" />
+      <PropertyRef Name="ACCOUNTNO" />
+    </Key>
+    <Property Name="BBSEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BANKCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="ACCOUNTTYPE" Type="nvarchar" MaxLength="50" />
+    <Property Name="ACCOUNTNO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BRANCH" Type="nvarchar" MaxLength="50" />
+    <Property Name="ACCOUNTNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="ACCOUNTDESC" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="BANKS">
+    <Key>
+      <PropertyRef Name="BANKID" />
+    </Key>
+    <Property Name="BANKID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="INACTIVE" Type="bit" Nullable="false" />
+    <Property Name="BANKCODE" Type="nvarchar" MaxLength="10" />
+    <Property Name="BANKNAME" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="BANKTHNAME" Type="nvarchar" MaxLength="70" />
+    <Property Name="ACCOUNTNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="ACCOUNTNO" Type="nvarchar" MaxLength="30" />
+    <Property Name="ACCOUNTBRANCH" Type="nvarchar" MaxLength="50" />
+    <Property Name="ACCOUNTTYPE" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="BANKTRANSLOG">
+    <Key>
+      <PropertyRef Name="BLOGID" />
+    </Key>
+    <Property Name="BLOGID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="LOGDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="REFDOC" Type="nvarchar" MaxLength="50" />
+    <Property Name="REFDOCDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ACCOUNTID" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="TYPE" Type="tinyint" Nullable="false" />
+    <Property Name="TRANSCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="TRANSAMOUNT" Type="money" Nullable="false" />
+    <Property Name="REMARK" Type="nvarchar" MaxLength="150" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="AUDITDATE" Type="datetime" Nullable="false" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="40" />
+    <Property Name="MODIDATE" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'OLDMOON.dbo.BILLLINES' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="BILLLINES">
+    <Key>
+      <PropertyRef Name="BILLLINGSEQ" />
+      <PropertyRef Name="ISDELETE" />
+      <PropertyRef Name="SALETYPE" />
+      <PropertyRef Name="BILLID" />
+      <PropertyRef Name="SONO" />
+      <PropertyRef Name="SODATE" />
+      <PropertyRef Name="TOTALVALUE" />
+      <PropertyRef Name="DISCOUNT" />
+      <PropertyRef Name="TOTALVAT" />
+      <PropertyRef Name="TOTALAMOUNT" />
+      <PropertyRef Name="MODIDATE" />
+    </Key>
+    <Property Name="BILLLINGSEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="SALETYPE" Type="int" Nullable="false" />
+    <Property Name="BILLID" Type="int" Nullable="false" />
+    <Property Name="SOSEQ" Type="int" />
+    <Property Name="SONO" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="SODATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="TOTALVALUE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="DISCOUNT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="NETVALUE" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TOTALVAT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TOTALAMOUNT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="35" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="35" />
+    <Property Name="MODIDATE" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BILLS">
+    <Key>
+      <PropertyRef Name="BILLID" />
+    </Key>
+    <Property Name="ISCOMPLETE" Type="bit" Nullable="false" />
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="ISCANCEL" Type="bit" Nullable="false" />
+    <Property Name="BILLCANCELDATE" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="STATUS" Type="nvarchar" MaxLength="10" />
+    <Property Name="PREFIXID" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="CUSTID" Type="int" Nullable="false" />
+    <Property Name="CUSTCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="SALETYPE" Type="int" />
+    <Property Name="BILLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BILLNO" Type="nvarchar" MaxLength="15" />
+    <Property Name="BILLDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="FISCYEAR" Type="int" Nullable="false" />
+    <Property Name="FISCPERIOD" Type="int" Nullable="false" />
+    <Property Name="DUEDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="COLLECTDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="NUMOFDO" Type="int" Nullable="false" />
+    <Property Name="TOTALVALUE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="DISCOUNT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="NETVALUE" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="VATFACTOR" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TOTALVAT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TOTALAMOUNT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TOTALTEXT" Type="nvarchar" MaxLength="500" />
+    <Property Name="INVSEQ" Type="int" />
+    <Property Name="INVOICENO" Type="nvarchar" MaxLength="15" />
+    <Property Name="INVDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="TOTALPAYVALUE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TOTALWHTAX" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="35" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="35" />
+    <Property Name="MODIDATE" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'OLDMOON.dbo.BOM' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="BOM">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Line" />
+      <PropertyRef Name="MODELID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Line" Type="int" Nullable="false" />
+    <Property Name="MODELID" Type="int" Nullable="false" />
+    <Property Name="MODEL" Type="nvarchar" MaxLength="30" />
+    <Property Name="CLASS" Type="nvarchar" MaxLength="10" />
+    <Property Name="SOURCE" Type="nvarchar" MaxLength="10" />
+    <Property Name="PARENTNO" Type="nvarchar" MaxLength="20" />
+    <Property Name="ITEMNO" Type="nvarchar" MaxLength="20" />
+    <Property Name="ITEMNAME" Type="nvarchar" MaxLength="255" />
+    <Property Name="QTY" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="UNIT" Type="nvarchar" MaxLength="10" />
+    <Property Name="UNIT_COST_THB" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TOTAL_COST_THB" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="LABOUR_COST" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PRODUCTION_COST_THB" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TOTAL_PRODUCTION_COST_THB" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="BOOKINGHH">
+    <Key>
+      <PropertyRef Name="BKHID" />
+    </Key>
+    <Property Name="BKHID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="ISCANCEL" Type="bit" />
+    <Property Name="BKSTATUS" Type="int" Nullable="false" />
+    <Property Name="ORDERSEQ" Type="int" Nullable="false" />
+    <Property Name="ORDERCODE" Type="nvarchar" MaxLength="3" />
+    <Property Name="ORDERNO" Type="nvarchar" MaxLength="10" />
+    <Property Name="BKDATE" Type="int" Nullable="false" />
+    <Property Name="CLOSEDATE" Type="int" Nullable="false" />
+    <Property Name="BKYEAR" Type="int" Nullable="false" />
+    <Property Name="BKPERIOD" Type="int" Nullable="false" />
+    <Property Name="CUSTCODE" Type="nvarchar" MaxLength="10" />
+    <Property Name="COUNTITEM" Type="int" Nullable="false" />
+    <Property Name="BKTOTALCOST" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="BKTOTALAMOUNT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="50" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="50" />
+    <Property Name="MODIDATE" Type="datetime" />
+  </EntityType>
+  <EntityType Name="BOOKINGLL">
+    <Key>
+      <PropertyRef Name="BKLID" />
+    </Key>
+    <Property Name="BKLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BKHID" Type="int" Nullable="false" />
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="ORDERSEQ" Type="int" Nullable="false" />
+    <Property Name="ORDERCODE" Type="nvarchar" MaxLength="3" />
+    <Property Name="ORDERNO" Type="nvarchar" MaxLength="10" />
+    <Property Name="CUSTCODE" Type="nvarchar" MaxLength="10" />
+    <Property Name="ITEMNO" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="ITEMNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="UNIT" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="BOOKEDQTY" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="UNITCOST" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="UNITPRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TOTALCOSTITEM" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TOTALSELLPRICEITEM" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="REMARK" Type="nvarchar" MaxLength="50" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="50" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="50" />
+    <Property Name="MODIDATE" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CONTACTS">
+    <Key>
+      <PropertyRef Name="CONTACTID" />
+    </Key>
+    <Property Name="CONTACTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CONTACTNAME" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="JOBTITLE" Type="nvarchar" MaxLength="150" />
+    <Property Name="COMPANY" Type="nvarchar" MaxLength="150" />
+    <Property Name="ADDR" Type="nvarchar" MaxLength="250" />
+    <Property Name="CITY" Type="nvarchar" MaxLength="100" />
+    <Property Name="COUNTRY" Type="nvarchar" MaxLength="50" />
+    <Property Name="POSTAL" Type="nvarchar" MaxLength="50" />
+    <Property Name="TEL" Type="nvarchar" MaxLength="50" />
+    <Property Name="FAX" Type="nvarchar" MaxLength="50" />
+    <Property Name="MOBILE" Type="nvarchar" MaxLength="50" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="255" />
+    <Property Name="WEBSITE" Type="nvarchar" MaxLength="255" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="50" />
+    <Property Name="LASTMODIFY" Type="date" />
+  </EntityType>
+  <EntityType Name="COUNTRIES">
+    <Key>
+      <PropertyRef Name="CID" />
+    </Key>
+    <Property Name="CID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="COUNTRYNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CRCODE">
+    <Key>
+      <PropertyRef Name="CREDITCODE" />
+    </Key>
+    <Property Name="CREDITCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="CREDITCODENAME" Type="nvarchar" MaxLength="255" />
+    <Property Name="DURATION" Type="int" Nullable="false" />
+    <Property Name="ISCANCEL" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CURRENCY">
+    <Key>
+      <PropertyRef Name="CURCODE" />
+    </Key>
+    <Property Name="CURCODE" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="CURDETAILS" Type="nvarchar" MaxLength="100" />
+    <Property Name="INACTIVE" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CUSTMATRETURN">
+    <Key>
+      <PropertyRef Name="RETSEQ" />
+    </Key>
+    <Property Name="RETSEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="SOSEQ" Type="int" Nullable="false" />
+    <Property Name="CUSTMATSEQ" Type="int" Nullable="false" />
+    <Property Name="GRVNO" Type="int" Nullable="false" />
+    <Property Name="CUSTID" Type="int" Nullable="false" />
+    <Property Name="CUSTCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="REFSONO" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="REFMATDOC" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="REFCUSTDOC" Type="nvarchar" MaxLength="20" />
+    <Property Name="FISCYEAR" Type="int" />
+    <Property Name="FISCPERIOD" Type="int" />
+    <Property Name="RETURNDATE" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="RETURNMATTYPE" Type="int" Nullable="false" />
+    <Property Name="RETURNWEIGHT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="20" />
+    <Property Name="AUDITDATE" Type="smalldatetime" />
+    <Property Name="MODIFYDATE" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="CUSTMOLDS">
+    <Key>
+      <PropertyRef Name="MOLDSEQ" />
+    </Key>
+    <Property Name="MOLDSEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="CUSTID" Type="int" Nullable="false" />
+    <Property Name="CUSTCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="MOLDIMG" Type="image" />
+    <Property Name="ITEMPREFIX" Type="nvarchar" MaxLength="1" />
+    <Property Name="ITEMNO" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="ITEMNAME" Type="nvarchar" MaxLength="70" />
+    <Property Name="MOLDMATTYPE" Type="int" Nullable="false" />
+    <Property Name="MOLDQTY" Type="int" Nullable="false" />
+    <Property Name="MOLDRECEIVER" Type="nvarchar" MaxLength="50" />
+    <Property Name="MOLDRECEIVEDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="RETURNQTY" Type="int" Nullable="false" />
+    <Property Name="MOLDRETURNDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="35" Nullable="false" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="35" Nullable="false" />
+    <Property Name="MODIDATE" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CUSTOMERS">
+    <Key>
+      <PropertyRef Name="CUSTID" />
+    </Key>
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="ISWARNING" Type="bit" Nullable="false" />
+    <Property Name="CUSTTAXID" Type="nvarchar" MaxLength="30" />
+    <Property Name="VATABLE" Type="bit" Nullable="false" />
+    <Property Name="VATRATE" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="CUSTTYPE" Type="int" Nullable="false" />
+    <Property Name="ISHEADQUARTERS" Type="bit" />
+    <Property Name="BRANCHNUMBER" Type="int" />
+    <Property Name="CUSTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CUSTCODE" Type="nvarchar" MaxLength="10" />
+    <Property Name="CUSTNAME" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ADDRESS" Type="nvarchar" MaxLength="1000" />
+    <Property Name="DISTRICT" Type="nvarchar" MaxLength="50" />
+    <Property Name="PROVINCE" Type="nvarchar" MaxLength="50" />
+    <Property Name="POSTAL" Type="nvarchar" MaxLength="10" />
+    <Property Name="COUNTRY" Type="nvarchar" MaxLength="50" />
+    <Property Name="TEL" Type="nvarchar" MaxLength="200" />
+    <Property Name="FAX" Type="nvarchar" MaxLength="200" />
+    <Property Name="CUSTEMAIL" Type="nvarchar" MaxLength="255" />
+    <Property Name="CUSTWWW" Type="nvarchar" MaxLength="255" />
+    <Property Name="CONTACTPERSON" Type="nvarchar" MaxLength="50" />
+    <Property Name="CELLPHONE1" Type="nvarchar" MaxLength="50" />
+    <Property Name="SALEPERSON" Type="nvarchar" MaxLength="50" />
+    <Property Name="MATERIALLIMIT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CREDITLIMIT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CURRENCY" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="CREDITCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="DATEBILL" Type="int" Nullable="false" />
+    <Property Name="DATEPAY" Type="int" Nullable="false" />
+    <Property Name="BILLINGPOINT" Type="nvarchar" MaxLength="500" />
+    <Property Name="PAYMENTPOINT" Type="nvarchar" MaxLength="500" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="50" />
+    <Property Name="AUDITDATE" Type="datetime" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="50" />
+    <Property Name="MODIDATE" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CUSTORDENTRY">
+    <Key>
+      <PropertyRef Name="ORDSEQ" />
+    </Key>
+    <Property Name="ISCOMPLETE" Type="bit" Nullable="false" />
+    <Property Name="ORDSEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CUSTID" Type="int" Nullable="false" />
+    <Property Name="CUSTCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="CUSTORDER" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="CUSTORDDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ORDDELIVERYDATE" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="TOTALLINEORDER" Type="int" Nullable="false" />
+    <Property Name="TOTALLINECOMPLETE" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CUSTPRICEITEMPIC">
+    <Key>
+      <PropertyRef Name="ITEMSEQ" />
+    </Key>
+    <Property Name="ITEMPICID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ITEMSEQ" Type="int" Nullable="false" />
+    <Property Name="ITEMPIC" Type="image" />
+  </EntityType>
+  <EntityType Name="CUSTPRICELIST">
+    <Key>
+      <PropertyRef Name="CUSTID" />
+      <PropertyRef Name="PREFIX" />
+      <PropertyRef Name="ITEMNO" />
+    </Key>
+    <Property Name="PRICESEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="CUSTCODE" Type="nvarchar" MaxLength="10" />
+    <Property Name="CUSTID" Type="int" Nullable="false" />
+    <Property Name="PREFIX" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="ITEMNO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ITEMNAME" Type="nvarchar" MaxLength="100" />
+    <Property Name="PRODUCTSTYLE" Type="int" Nullable="false" />
+    <Property Name="MATERIAL" Type="int" Nullable="false" />
+    <Property Name="BLOCKID" Type="nvarchar" MaxLength="20" />
+    <Property Name="WIDTH" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="HEIGHT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="THICK" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SIZE" Type="nvarchar" MaxLength="25" />
+    <Property Name="WAXWEIGHT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="UNITWEIGHT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="UNITCOUNT" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="CASTINGPRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="UNITPRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SCOREPRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PRICEEFFECTIVEDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="PRICEEXPIREDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="HASPICTURE" Type="bit" Nullable="false" />
+    <Property Name="HASBLOCK" Type="bit" Nullable="false" />
+    <Property Name="BLOCKLOC" Type="nvarchar" MaxLength="50" />
+    <Property Name="DATEENTRY" Type="datetime" Nullable="false" />
+    <Property Name="DATEMODIFY" Type="datetime" Nullable="false" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CUSTTASK">
+    <Key>
+      <PropertyRef Name="CTSEQ" />
+    </Key>
+    <Property Name="CTSEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISDBCUST" Type="bit" Nullable="false" />
+    <Property Name="ISTASKACTIVE" Type="bit" Nullable="false" />
+    <Property Name="CUSTID" Type="int" />
+    <Property Name="CUSTCODE" Type="nvarchar" MaxLength="10" />
+    <Property Name="CUSTOMERNAME" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ADDR1" Type="nvarchar" MaxLength="150" />
+    <Property Name="PROVINCE" Type="nvarchar" MaxLength="50" />
+    <Property Name="COUNTRY" Type="nvarchar" MaxLength="50" />
+    <Property Name="ZIPCODE" Type="nvarchar" MaxLength="50" />
+    <Property Name="TEL" Type="nvarchar" MaxLength="50" />
+    <Property Name="FAX" Type="nvarchar" MaxLength="50" />
+    <Property Name="CONTACTNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="MOBILENO" Type="nvarchar" MaxLength="50" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="250" />
+    <Property Name="WEBSITE" Type="nvarchar" MaxLength="250" />
+    <Property Name="FACEBOOK" Type="nvarchar" MaxLength="250" />
+    <Property Name="SALENAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="TASKONDATE" Type="int" Nullable="false" />
+    <Property Name="TASKENDDATE" Type="int" Nullable="false" />
+    <Property Name="REMARK" Type="nvarchar" MaxLength="500" />
+    <Property Name="ACT_OFFER" Type="bit" Nullable="false" />
+    <Property Name="ACT_MOREINFO" Type="bit" Nullable="false" />
+    <Property Name="ACT_SERVICE" Type="bit" Nullable="false" />
+    <Property Name="ACT_CONTACT" Type="bit" Nullable="false" />
+    <Property Name="PRODUCT_CASTING" Type="bit" Nullable="false" />
+    <Property Name="PRODUCT_BURNNER" Type="bit" Nullable="false" />
+    <Property Name="PRODUCT_INVESTMENTMIX" Type="bit" Nullable="false" />
+    <Property Name="PRODUCT_DIGITALWAX" Type="bit" Nullable="false" />
+    <Property Name="PRODUCT_VULCANIZER" Type="bit" Nullable="false" />
+    <Property Name="PRODUCT_POLISHING" Type="bit" Nullable="false" />
+    <Property Name="PRODUCT_OTHERS" Type="bit" Nullable="false" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MODIDATE" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CUSTTASKIMG">
+    <Key>
+      <PropertyRef Name="CTISEQ" />
+    </Key>
+    <Property Name="CTISEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CTSEQ" Type="int" Nullable="false" />
+    <Property Name="IMG" Type="image" />
+  </EntityType>
+  <EntityType Name="CUSTTASKLINES">
+    <Key>
+      <PropertyRef Name="CTLSEQ" />
+    </Key>
+    <Property Name="CTLSEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CTSEQ" Type="int" Nullable="false" />
+    <Property Name="TASKNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TASKVALUE" Type="bit" Nullable="false" />
+    <Property Name="TASKNOTE" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="DATADICT">
+    <Key>
+      <PropertyRef Name="ColKeyEn" />
+    </Key>
+    <Property Name="ColKeyEn" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ColNameTh" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ColNameEN" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DEPARTMENT">
+    <Key>
+      <PropertyRef Name="DEPARTMENTID" />
+    </Key>
+    <Property Name="DEPARTMENTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DEPARTMENTEN" Type="nvarchar" MaxLength="35" Nullable="false" />
+    <Property Name="DEPARTMENTTH" Type="nvarchar" MaxLength="35" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DEPARTMENTS">
+    <Key>
+      <PropertyRef Name="DEPTID" />
+    </Key>
+    <Property Name="DEPTID" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="DEPTNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DEPTMGR" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DISTRICTS">
+    <Key>
+      <PropertyRef Name="DISTNAME" />
+    </Key>
+    <Property Name="DID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DISTNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EMPLOYEE">
+    <Key>
+      <PropertyRef Name="EMPCODE" />
+    </Key>
+    <Property Name="EMPSEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="ISRESIGN" Type="bit" Nullable="false" />
+    <Property Name="STATUS" Type="int" Nullable="false" />
+    <Property Name="EMPCODE" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="TITLENAME" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="EMPFIRSTNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EMPLASTNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NICKNAME" Type="nvarchar" MaxLength="30" />
+    <Property Name="POSITIONID" Type="int" Nullable="false" />
+    <Property Name="DEPARTMENTID" Type="int" Nullable="false" />
+    <Property Name="GROUPACCOUNT" Type="nvarchar" MaxLength="50" />
+    <Property Name="COSTCENTER" Type="nvarchar" MaxLength="10" />
+    <Property Name="EMPLOYDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="RESIGNDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="WORK-DAYS" Type="nvarchar" MaxLength="25" StoreGeneratedPattern="Computed" />
+    <Property Name="IDCARDNUMBER" Type="nvarchar" MaxLength="13" />
+    <Property Name="CARDADDRESS1" Type="nvarchar" MaxLength="50" />
+    <Property Name="CARDADDRESS2" Type="nvarchar" MaxLength="50" />
+    <Property Name="CARDPROVINCE" Type="nvarchar" MaxLength="50" />
+    <Property Name="CARDCOUNTRY" Type="nvarchar" MaxLength="50" />
+    <Property Name="CARDZIPCODE" Type="nvarchar" MaxLength="10" />
+    <Property Name="CURRENTADDRESS1" Type="nvarchar" MaxLength="50" />
+    <Property Name="CURRENTADDRESS2" Type="nvarchar" MaxLength="50" />
+    <Property Name="CURRENTPROVINCE" Type="nvarchar" MaxLength="50" />
+    <Property Name="CURRENTCOUNTRY" Type="nvarchar" MaxLength="50" />
+    <Property Name="CURRENTZIPCODE" Type="nvarchar" MaxLength="50" />
+    <Property Name="HOMEPHONE" Type="nvarchar" MaxLength="50" />
+    <Property Name="CELLPHONE" Type="nvarchar" MaxLength="50" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="255" />
+    <Property Name="SEX" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="BIRTHDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="AGE" Type="int" Nullable="false" />
+    <Property Name="EDUCATION" Type="nvarchar" MaxLength="50" />
+    <Property Name="PROBATIONDAY" Type="int" />
+    <Property Name="ENDPROBATIONDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="FAMILYSTATUS" Type="int" Nullable="false" />
+    <Property Name="NUMBEROFKID" Type="int" Nullable="false" />
+    <Property Name="ACCOUNTNUMBER" Type="nvarchar" MaxLength="20" />
+    <Property Name="BANKCODE" Type="nvarchar" MaxLength="10" />
+    <Property Name="DAYRATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="MONTHRATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EMPLOYPIC">
+    <Key>
+      <PropertyRef Name="EMPCODE" />
+    </Key>
+    <Property Name="EMPPICSEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EMPCODE" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="EMPIMG" Type="image" />
+  </EntityType>
+  <EntityType Name="EMPSAL">
+    <Key>
+      <PropertyRef Name="YEARSAL" />
+      <PropertyRef Name="EMPCODE" />
+    </Key>
+    <Property Name="EMPSALSEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="YEARSAL" Type="int" Nullable="false" />
+    <Property Name="EMPCODE" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="EMPNAME" Type="nvarchar" MaxLength="100" />
+    <Property Name="GROUPACCOUNT" Type="nvarchar" MaxLength="50" />
+    <Property Name="COSTCENTER" Type="nvarchar" MaxLength="10" />
+    <Property Name="SALTYPE" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="HOURFACTOR" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PSAL1" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PSAL2" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PSAL3" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PSAL4" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PSAL5" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PSAL6" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PSAL7" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PSAL8" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PSAL9" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PSAL10" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PSAL11" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PSAL12" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AVGSALQ1" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AVGSALQ2" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AVGSALQ3" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AVGSALQ4" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CHOURP1" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CHOURP2" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CHOURP3" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CHOURP4" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CHOURP5" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CHOURP6" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CHOURP7" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CHOURP8" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CHOURP9" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CHOURP10" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CHOURP11" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CHOURP12" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AVGCHOURQ1" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AVGCHOURQ2" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AVGCHOURQ3" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AVGCHOURQ4" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AVGYHOUR" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="50" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="50" />
+    <Property Name="MODIDATE" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EMPSTATUS">
+    <Key>
+      <PropertyRef Name="STATUSEN" />
+    </Key>
+    <Property Name="STATUSID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="STATUSEN" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="STATUSTH" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ENGINEER">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="engiseq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="id" Type="nvarchar" MaxLength="4" Nullable="false" />
+    <Property Name="empcode" Type="nvarchar" MaxLength="10" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="lastname" Type="nvarchar" MaxLength="50" />
+    <Property Name="curr" Type="nvarchar" MaxLength="10" />
+    <Property Name="resigndate" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ERROR_LIST">
+    <Key>
+      <PropertyRef Name="ERR_GROUP" />
+      <PropertyRef Name="ERR_CODE" />
+    </Key>
+    <Property Name="ERRSEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ERR_GROUP" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ERR_CODE" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ERR_MSG" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ERRORCATEGORY">
+    <Key>
+      <PropertyRef Name="errorcode" />
+    </Key>
+    <Property Name="errorcatid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="errorcode" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="errorcatname" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ERRORLOG">
+    <Key>
+      <PropertyRef Name="ERRORLINE" />
+    </Key>
+    <Property Name="ERRORLINE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ERRORDT" Type="datetime" Nullable="false" />
+    <Property Name="APPNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="APPVERSION" Type="nvarchar" MaxLength="20" />
+    <Property Name="MODULE" Type="nvarchar" MaxLength="50" />
+    <Property Name="METHODNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="ERRORMSG" Type="text" />
+    <Property Name="USERNAME" Type="nvarchar" MaxLength="35" Nullable="false" />
+    <Property Name="WORKSTATION" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="EXCHCURR">
+    <Key>
+      <PropertyRef Name="LINEID" />
+    </Key>
+    <Property Name="LINEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CURRENCY" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="EXCHANGERATE" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="FISCYEAR" Type="int" Nullable="false" />
+    <Property Name="FISCPERIOD" Type="int" Nullable="false" />
+    <Property Name="EFFECTIVEDT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="EXPIREDT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FGSTOCK">
+    <Key>
+      <PropertyRef Name="FGSEQ" />
+    </Key>
+    <Property Name="FGSEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISCOMPLETION" Type="bit" Nullable="false" />
+    <Property Name="SOSEQ" Type="int" Nullable="false" />
+    <Property Name="SOLINESEQ" Type="int" Nullable="false" />
+    <Property Name="QCSEQ" Type="int" Nullable="false" />
+    <Property Name="APPCODE" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="DOCNO" Type="nvarchar" MaxLength="30" />
+    <Property Name="DOCDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="CUSTID" Type="int" Nullable="false" />
+    <Property Name="CUSTCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="MATID" Type="int" Nullable="false" />
+    <Property Name="PREFIX" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="ITEMID" Type="int" Nullable="false" />
+    <Property Name="ITEMNO" Type="nvarchar" MaxLength="35" Nullable="false" />
+    <Property Name="ITEMNAME" Type="nvarchar" MaxLength="100" />
+    <Property Name="UNIT" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="QTY" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="UNITPRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="UNITWEIGHT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TOTALLINEWT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="DELIVERYQTY" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="REMAINFG" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TOTALDELIVERYWT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="REMAINWEIGHT" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="REMARK" Type="nvarchar" MaxLength="200" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="30" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="30" />
+    <Property Name="MODIDATE" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GASAL">
+    <Key>
+      <PropertyRef Name="s_order" />
+    </Key>
+    <Property Name="s_order" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="nprice1" Type="char" MaxLength="16" Nullable="false" />
+    <Property Name="ordertypeid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GASER">
+    <Key>
+      <PropertyRef Name="s_order" />
+    </Key>
+    <Property Name="s_order" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="nprice2" Type="char" MaxLength="19" Nullable="false" />
+    <Property Name="ordertypeid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="INCMLINES">
+    <Key>
+      <PropertyRef Name="INCMSEQ" />
+    </Key>
+    <Property Name="INCMSEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="REFDOCSEQ" Type="int" Nullable="false" />
+    <Property Name="DOCCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="REFDOC" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DOCDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="INCMDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="TRANSCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="150" />
+    <Property Name="INCMVALUES" Type="money" Nullable="false" />
+    <Property Name="ACCMAPKEY" Type="int" Nullable="false" />
+    <Property Name="ACCOUNTNO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="AUDITDATE" Type="datetime" Nullable="false" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="MODIDATE" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="INVLINES">
+    <Key>
+      <PropertyRef Name="INVLINESEQ" />
+    </Key>
+    <Property Name="INVLINESEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="ISCANCEL" Type="bit" Nullable="false" />
+    <Property Name="SALETYPE" Type="int" Nullable="false" />
+    <Property Name="SOLINESEQ" Type="int" Nullable="false" />
+    <Property Name="SOSEQ" Type="int" Nullable="false" />
+    <Property Name="SALEORDERNO" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="INVSEQ" Type="int" Nullable="false" />
+    <Property Name="INVOICENO" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="SERVICECHARGEID" Type="int" Nullable="false" />
+    <Property Name="JOBNO" Type="nvarchar" MaxLength="15" />
+    <Property Name="PO" Type="nvarchar" MaxLength="15" />
+    <Property Name="ITEMID" Type="int" Nullable="false" />
+    <Property Name="PREFIX" Type="nvarchar" MaxLength="1" />
+    <Property Name="ITEMNO" Type="nvarchar" MaxLength="35" />
+    <Property Name="ITEMNAME" Type="nvarchar" MaxLength="100" />
+    <Property Name="UNIT" Type="nvarchar" MaxLength="50" />
+    <Property Name="SALEQTY" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="UNITPRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="DISCOUNT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="NETPRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="FINALPRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="VATRATE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="VATVALUE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="LINETOTAL" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="MATID" Type="int" Nullable="false" />
+    <Property Name="TOTALWEIGHT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="INVLINEREMARK" Type="nvarchar" MaxLength="250" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="35" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="35" />
+    <Property Name="MODIDATE" Type="datetime" />
+  </EntityType>
+  <EntityType Name="INVOICES">
+    <Key>
+      <PropertyRef Name="INVOICENO" />
+    </Key>
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="ISCANCEL" Type="bit" Nullable="false" />
+    <Property Name="CANCELDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="CANCELBY" Type="nvarchar" MaxLength="35" />
+    <Property Name="VATABLE" Type="bit" Nullable="false" />
+    <Property Name="ISCHEQUE" Type="bit" Nullable="false" />
+    <Property Name="SALETYPE" Type="int" Nullable="false" />
+    <Property Name="STATUS" Type="nvarchar" MaxLength="10" />
+    <Property Name="CUSTID" Type="int" Nullable="false" />
+    <Property Name="CUSTCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="INVPREFIX" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="REFCODE" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="INVCOUNT" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="INVOICEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="INVOICENO" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="INVDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="INVDESCRIPTION" Type="nvarchar" MaxLength="250" />
+    <Property Name="FISCYEAR" Type="int" />
+    <Property Name="FISCPERIOD" Type="int" />
+    <Property Name="INVVALUE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="INVDISCOUNT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="INVNETVALUE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="INVVATRATE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="INVVATVALUE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="WHTAXRATE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="INVWHTAX" Type="decimal" Precision="18" Scale="1" Nullable="false" />
+    <Property Name="INVTOTALAMOUNT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="INVTOTALAMOUNTTEXT" Type="nvarchar" MaxLength="255" />
+    <Property Name="INVACTUALPAYMENT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="INVACTUALPAYMENTTEXT" Type="nvarchar" MaxLength="255" />
+    <Property Name="REMARK" Type="nvarchar" MaxLength="350" />
+    <Property Name="INVCANCELREASON" Type="nvarchar" MaxLength="350" />
+    <Property Name="PAYCODE" Type="nvarchar" MaxLength="2" />
+    <Property Name="CHEQUENO" Type="nvarchar" MaxLength="20" />
+    <Property Name="PAYDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="RECEIPTNO" Type="nvarchar" MaxLength="15" />
+    <Property Name="COLLECTDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="BANKID" Type="int" />
+    <Property Name="BANKCODE" Type="nvarchar" MaxLength="50" />
+    <Property Name="BILLID" Type="int" Nullable="false" />
+    <Property Name="BILLNO" Type="nvarchar" MaxLength="20" />
+    <Property Name="BILLDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="DUEDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="OVERDUEDAYS" Type="int" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="35" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="35" />
+    <Property Name="MODIDATE" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ITEMCODE">
+    <Key>
+      <PropertyRef Name="ITEMCODEID" />
+    </Key>
+    <Property Name="ITEMCODEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ITEMCODE" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="ITEMCODENAME_EN" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ITEMCODENAME_TH" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ITEMMASTER">
+    <Key>
+      <PropertyRef Name="itemno" />
+    </Key>
+    <Property Name="itemseq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="isdelete" Type="bit" Nullable="false" />
+    <Property Name="itemno" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="itemname1" Type="nvarchar" MaxLength="50" />
+    <Property Name="itemname2" Type="nvarchar" MaxLength="50" />
+    <Property Name="itemtype" Type="int" Nullable="false" />
+    <Property Name="itemlevel" Type="nvarchar" MaxLength="2" />
+    <Property Name="stockgroup" Type="nvarchar" MaxLength="4" />
+    <Property Name="barcode" Type="nvarchar" MaxLength="20" />
+    <Property Name="stkcodes" Type="nvarchar" MaxLength="20" />
+    <Property Name="acccode" Type="nvarchar" MaxLength="4" />
+    <Property Name="isinv" Type="nvarchar" MaxLength="1" />
+    <Property Name="itemclass" Type="nvarchar" MaxLength="1" />
+    <Property Name="negallow" Type="nvarchar" MaxLength="1" />
+    <Property Name="itemunit" Type="nvarchar" MaxLength="2" />
+    <Property Name="cqucod" Type="nvarchar" MaxLength="2" />
+    <Property Name="cfactor" Type="float" />
+    <Property Name="stnpr" Type="float" />
+    <Property Name="ispur" Type="nvarchar" MaxLength="1" />
+    <Property Name="purchaseunit" Type="nvarchar" MaxLength="2" />
+    <Property Name="pfactor" Type="float" />
+    <Property Name="lastpurchaseunit" Type="nvarchar" MaxLength="2" />
+    <Property Name="lpurfac" Type="float" />
+    <Property Name="lastpurchaseprice" Type="money" Nullable="false" />
+    <Property Name="lastdiscount" Type="nvarchar" MaxLength="10" />
+    <Property Name="lastpurchasedate" Type="datetime" />
+    <Property Name="supcod" Type="nvarchar" MaxLength="10" />
+    <Property Name="issale" Type="nvarchar" MaxLength="1" />
+    <Property Name="squcod" Type="nvarchar" MaxLength="2" />
+    <Property Name="sfactor" Type="float" />
+    <Property Name="sellprice1" Type="money" Nullable="false" />
+    <Property Name="sellprice2" Type="money" Nullable="false" />
+    <Property Name="sellprice3" Type="money" Nullable="false" />
+    <Property Name="sellprice4" Type="money" Nullable="false" />
+    <Property Name="sellprice5" Type="money" Nullable="false" />
+    <Property Name="tracksal" Type="nvarchar" MaxLength="1" />
+    <Property Name="vatcode" Type="nvarchar" MaxLength="1" />
+    <Property Name="iscom" Type="nvarchar" MaxLength="1" />
+    <Property Name="comrat" Type="nvarchar" MaxLength="10" />
+    <Property Name="lsellqu" Type="nvarchar" MaxLength="2" />
+    <Property Name="lsellfac" Type="money" Nullable="false" />
+    <Property Name="lsellpr" Type="money" Nullable="false" />
+    <Property Name="lsdisc" Type="nvarchar" MaxLength="10" />
+    <Property Name="lseldat" Type="datetime" />
+    <Property Name="numelem" Type="decimal" Precision="4" Scale="0" />
+    <Property Name="totalbalance" Type="money" Nullable="false" />
+    <Property Name="totalvalues" Type="money" Nullable="false" />
+    <Property Name="totreo" Type="money" Nullable="false" />
+    <Property Name="totres" Type="money" Nullable="false" />
+    <Property Name="openbalance" Type="money" Nullable="false" />
+    <Property Name="unitprice" Type="money" Nullable="false" />
+    <Property Name="openvalues" Type="money" Nullable="false" />
+    <Property Name="lastupdate" Type="datetime" />
+    <Property Name="packing" Type="nvarchar" MaxLength="15" />
+    <Property Name="mlotnum" Type="nvarchar" MaxLength="24" />
+    <Property Name="mrembal" Type="float" />
+    <Property Name="mremval" Type="float" />
+    <Property Name="remark" Type="nvarchar" MaxLength="50" />
+    <Property Name="dat1" Type="datetime" />
+    <Property Name="dat2" Type="datetime" />
+    <Property Name="num1" Type="float" />
+    <Property Name="str1" Type="nvarchar" MaxLength="4" />
+    <Property Name="str2" Type="nvarchar" MaxLength="4" />
+    <Property Name="str3" Type="nvarchar" MaxLength="15" />
+    <Property Name="str4" Type="nvarchar" MaxLength="30" />
+    <Property Name="creby" Type="nvarchar" MaxLength="8" />
+    <Property Name="credat" Type="datetime" />
+    <Property Name="userid" Type="nvarchar" MaxLength="8" />
+    <Property Name="chgdat" Type="datetime" />
+    <Property Name="status" Type="nvarchar" MaxLength="1" />
+    <Property Name="inactdat" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ITEMMASTERIMG">
+    <Key>
+      <PropertyRef Name="itemno" />
+    </Key>
+    <Property Name="itemid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="itemno" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="itempicture" Type="image" />
+  </EntityType>
+  <EntityType Name="ITEMSTYLE">
+    <Key>
+      <PropertyRef Name="keyvalue" />
+    </Key>
+    <Property Name="itemseq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="keyvalue" Type="int" Nullable="false" />
+    <Property Name="thkeyname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="enkeyname" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JOBINFOS">
+    <Key>
+      <PropertyRef Name="LINESEQ" />
+    </Key>
+    <Property Name="LINESEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="FGLINESEQ" Type="int" Nullable="false" />
+    <Property Name="CUSTID" Type="int" Nullable="false" />
+    <Property Name="CUSTCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="JOBNO" Type="int" Nullable="false" />
+    <Property Name="GROUPCODE" Type="nvarchar" MaxLength="35" Nullable="false" />
+    <Property Name="MATERIALID" Type="int" />
+    <Property Name="ITEMID" Type="int" />
+    <Property Name="ITEMPREFIX" Type="nvarchar" MaxLength="1" />
+    <Property Name="ITEMNO" Type="nvarchar" MaxLength="35" />
+    <Property Name="FINISHDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="FISCYEAR" Type="int" />
+    <Property Name="FISCPERIOD" Type="int" />
+    <Property Name="OPERATORID" Type="int" />
+    <Property Name="OPERATORNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="ACCEPTQTY" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="REJECTQTY" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TOTALQTY" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TOTALWEIGHT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AVGWEIGHT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="GOODSCORE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="BADSCORE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ERRORID" Type="int" Nullable="false" />
+    <Property Name="RECORDEDBY" Type="nvarchar" MaxLength="50" />
+    <Property Name="RECORDDATE" Type="smalldatetime" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="35" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="35" />
+    <Property Name="MODIDATE" Type="datetime" />
+  </EntityType>
+  <EntityType Name="JOBORDERS">
+    <Key>
+      <PropertyRef Name="JOBNO" />
+    </Key>
+    <Property Name="JOBNO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JOBDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="STATUS" Type="int" Nullable="false" />
+    <Property Name="ISREWORKS" Type="bit" Nullable="false" />
+    <Property Name="ISCANCEL" Type="bit" Nullable="false" />
+    <Property Name="ISPRINTED" Type="bit" Nullable="false" />
+    <Property Name="RELEASEDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="STARTDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="FINISHDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="CUSTID" Type="int" Nullable="false" />
+    <Property Name="CUSTCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="MATERIALTYPE" Type="int" Nullable="false" />
+    <Property Name="SI" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CUSTPO" Type="nvarchar" MaxLength="50" />
+    <Property Name="PODATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="DUEDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="REMAINDAY" Type="int" StoreGeneratedPattern="Computed" />
+    <Property Name="ITEMID" Type="int" />
+    <Property Name="PREFIX" Type="nvarchar" MaxLength="1" />
+    <Property Name="ITEMNO" Type="nvarchar" MaxLength="35" />
+    <Property Name="ITEMNAME" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ITEMSTYLE" Type="int" Nullable="false" />
+    <Property Name="ORDERUNIT" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="ORDERQTY" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="FINISHEDQTY" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="BACKORDQTY" Type="decimal" Precision="19" Scale="2" StoreGeneratedPattern="Computed" />
+    <Property Name="ACTUALPRODUCTIONQTY" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CASTINGPRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TOTALCASTINGPRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="UNITPRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TOTALPRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="UNITWEIGHT" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="TOTALWEIGHT" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="WAXUNITWEIGHT" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="TOTALWAXWEIGHT" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="MAKEBLOCK" Type="bit" Nullable="false" />
+    <Property Name="WAX" Type="bit" Nullable="false" />
+    <Property Name="CASTING" Type="bit" Nullable="false" />
+    <Property Name="DELIVERYQTY" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="DELIVERYDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="DOCNUM" Type="nvarchar" MaxLength="50" />
+    <Property Name="REMARK" Type="nvarchar" MaxLength="500" />
+    <Property Name="WAXWORKER" Type="nvarchar" MaxLength="35" />
+    <Property Name="FINISHINGWORKER" Type="nvarchar" MaxLength="35" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="50" />
+    <Property Name="AUDITDATE" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="50" />
+    <Property Name="MODIDATE" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="JOBTITLES">
+    <Key>
+      <PropertyRef Name="JOBTITLENAME" />
+    </Key>
+    <Property Name="JOBTITLEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JOBTITLENAME" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LOGIN">
+    <Key>
+      <PropertyRef Name="uname" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="uname" Type="nvarchar" MaxLength="35" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="permissionid" Type="int" Nullable="false" />
+    <Property Name="auditclass" Type="nvarchar" MaxLength="50" />
+    <Property Name="islock" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MATERIAL">
+    <Key>
+      <PropertyRef Name="matid" />
+    </Key>
+    <Property Name="matseq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="matid" Type="int" Nullable="false" />
+    <Property Name="matcategory" Type="nvarchar" MaxLength="50" />
+    <Property Name="thmatname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="enmatname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="usedtype" Type="nvarchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'OLDMOON.dbo.MATERIALS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="MATERIALS">
+    <Key>
+      <PropertyRef Name="MATID" />
+      <PropertyRef Name="COMPATMATID" />
+      <PropertyRef Name="MATNAME" />
+      <PropertyRef Name="CONVFACTOR" />
+    </Key>
+    <Property Name="MATID" Type="int" Nullable="false" />
+    <Property Name="COMPATMATID" Type="int" Nullable="false" />
+    <Property Name="MATNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CONVFACTOR" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MATPRICES">
+    <Key>
+      <PropertyRef Name="SEQ" />
+    </Key>
+    <Property Name="SEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MATID" Type="int" Nullable="false" />
+    <Property Name="PRICEDATE" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="FISCYEAR" Type="int" />
+    <Property Name="FISCPERIOD" Type="int" />
+    <Property Name="ORGPRICEUSD" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="EXCHANGERATE" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="EXCHDATE" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="COSTTHBGRAM" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="PRICETHBGRAM" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="50" />
+    <Property Name="AUDITDATE" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="50" />
+    <Property Name="MODIDATE" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="MATRECEIVE">
+    <Key>
+      <PropertyRef Name="GRVSEQ" />
+    </Key>
+    <Property Name="GRVSEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="ISCOMPLETE" Type="bit" Nullable="false" />
+    <Property Name="ISFORSALE" Type="bit" Nullable="false" />
+    <Property Name="CUSTID" Type="int" Nullable="false" />
+    <Property Name="CUSTCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="MATTYPE" Type="int" Nullable="false" />
+    <Property Name="RECEIVEUNIT" Type="int" Nullable="false" />
+    <Property Name="SOSEQ" Type="int" Nullable="false" />
+    <Property Name="REFSONUMBER" Type="nvarchar" MaxLength="15" />
+    <Property Name="CUSTDOCNO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="200" />
+    <Property Name="RECEIVERNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="RECEIVEDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="RECEIVEWEIGHT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TOTALCLEARING" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="BALANCEWEIGHT" Type="decimal" Precision="19" Scale="2" />
+    <Property Name="SENDERNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="SENDINGDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="35" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="35" />
+    <Property Name="MODIDATE" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MATSTOCK">
+    <Key>
+      <PropertyRef Name="SKLINE" />
+    </Key>
+    <Property Name="SKLINE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="CUSTCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="CUSTID" Type="int" Nullable="false" />
+    <Property Name="REFORGISEQ" Type="int" Nullable="false" />
+    <Property Name="REFDOC" Type="nvarchar" MaxLength="50" />
+    <Property Name="SKDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ITEMSEQ" Type="int" Nullable="false" />
+    <Property Name="APPTYPE" Type="nvarchar" MaxLength="25" />
+    <Property Name="SKTYPE" Type="int" Nullable="false" />
+    <Property Name="MATTYPE" Type="int" Nullable="false" />
+    <Property Name="MATUNIT" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="MATWT" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="CONVFACTOR" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="CONVMATWT" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="ACTIONBY" Type="nvarchar" MaxLength="50" />
+    <Property Name="REMARK" Type="nvarchar" MaxLength="200" />
+    <Property Name="WORKSTATION" Type="nvarchar" MaxLength="50" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="50" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="50" />
+    <Property Name="MODIDATE" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MIX">
+    <Key>
+      <PropertyRef Name="mix_id" />
+      <PropertyRef Name="type" />
+      <PropertyRef Name="s_no" />
+      <PropertyRef Name="cus_na" />
+    </Key>
+    <Property Name="productid" Type="nvarchar" MaxLength="4" Nullable="false" />
+    <Property Name="isdelete" Type="bit" Nullable="false" />
+    <Property Name="isexpire" Type="bit" Nullable="false" />
+    <Property Name="isnewproduct" Type="bit" Nullable="false" />
+    <Property Name="istransfer" Type="bit" Nullable="false" />
+    <Property Name="transferdate" Type="datetime" />
+    <Property Name="mix_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="s_no" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="cus_na" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="custid" Type="int" Nullable="false" />
+    <Property Name="acccustcode" Type="nvarchar" MaxLength="15" />
+    <Property Name="qtysale" Type="int" Nullable="false" />
+    <Property Name="sale_date" Type="datetime" />
+    <Property Name="yearsale" Type="int" Nullable="false" />
+    <Property Name="monthsale" Type="int" Nullable="false" />
+    <Property Name="warrantyterm" Type="int" Nullable="false" />
+    <Property Name="monthfactor" Type="int" Nullable="false" />
+    <Property Name="exp" Type="datetime" />
+    <Property Name="yearexpire" Type="int" Nullable="false" />
+    <Property Name="monthexpire" Type="int" Nullable="false" />
+    <Property Name="remark" Type="nvarchar" MaxLength="4000" />
+    <Property Name="audituser" Type="nvarchar" MaxLength="50" />
+    <Property Name="auditdt" Type="datetime" />
+    <Property Name="modiuser" Type="nvarchar" MaxLength="50" />
+    <Property Name="modidt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MSGDICT">
+    <Key>
+      <PropertyRef Name="MEGID" />
+    </Key>
+    <Property Name="MEGID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MSG_KEY" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MSG_DETAILS" Type="nvarchar" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ORDERFIXED">
+    <Key>
+      <PropertyRef Name="lineid" />
+    </Key>
+    <Property Name="lineid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="orderid" Type="int" Nullable="false" />
+    <Property Name="ordercode" Type="nvarchar" MaxLength="3" />
+    <Property Name="s_order" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="datefixed" Type="datetime" Nullable="false" />
+    <Property Name="fixeddetail" Type="ntext" />
+    <Property Name="engcode1" Type="nvarchar" MaxLength="10" />
+    <Property Name="engineer1" Type="nvarchar" MaxLength="30" />
+    <Property Name="engcode2" Type="nvarchar" MaxLength="10" />
+    <Property Name="engineer2" Type="nvarchar" MaxLength="30" />
+    <Property Name="engcode3" Type="nvarchar" MaxLength="10" />
+    <Property Name="engineer3" Type="nvarchar" MaxLength="30" />
+    <Property Name="engcode4" Type="nvarchar" MaxLength="10" />
+    <Property Name="engineer4" Type="nvarchar" MaxLength="30" />
+    <Property Name="isdelete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ORDERMAINTENANCE">
+    <Key>
+      <PropertyRef Name="orderCode" />
+      <PropertyRef Name="s_order" />
+    </Key>
+    <Property Name="isdelete" Type="bit" Nullable="false" />
+    <Property Name="status" Type="int" />
+    <Property Name="isPM" Type="bit" Nullable="false" />
+    <Property Name="pmmasterline" Type="int" Nullable="false" />
+    <Property Name="pmschline" Type="int" Nullable="false" />
+    <Property Name="pmAppointDate" Type="datetime" />
+    <Property Name="orderTypeid" Type="int" Nullable="false" />
+    <Property Name="actionpiority" Type="int" Nullable="false" />
+    <Property Name="orderdate" Type="datetime" />
+    <Property Name="orderid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="orderCode" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="s_order" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="yearservice" Type="int" Nullable="false" />
+    <Property Name="ordercountno" Type="int" Nullable="false" />
+    <Property Name="or_date" Type="nvarchar" MaxLength="10" />
+    <Property Name="custid" Type="int" Nullable="false" />
+    <Property Name="acccustcode" Type="nvarchar" MaxLength="10" />
+    <Property Name="cus_na" Type="nvarchar" MaxLength="100" />
+    <Property Name="productid" Type="nvarchar" MaxLength="10" />
+    <Property Name="type" Type="nvarchar" MaxLength="30" />
+    <Property Name="s_no" Type="nvarchar" MaxLength="30" />
+    <Property Name="errorcode" Type="nvarchar" MaxLength="10" />
+    <Property Name="error" Type="nvarchar" MaxLength="4000" />
+    <Property Name="month" Type="nvarchar" MaxLength="2" />
+    <Property Name="period" Type="int" Nullable="false" />
+    <Property Name="fiscyear" Type="int" Nullable="false" />
+    <Property Name="year" Type="datetime" />
+    <Property Name="duedate" Type="int" Nullable="false" />
+    <Property Name="finishdate" Type="datetime" />
+    <Property Name="inWarrantyService" Type="bit" Nullable="false" />
+    <Property Name="servicecost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="sparepartcost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="audituser" Type="nvarchar" MaxLength="30" />
+    <Property Name="auditdt" Type="datetime" />
+    <Property Name="modiuser" Type="nvarchar" MaxLength="30" />
+    <Property Name="modidt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ORDERPIORITY">
+    <Key>
+      <PropertyRef Name="piorityid" />
+    </Key>
+    <Property Name="piorityid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="piorityname" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ORDERSPAREPARTS">
+    <Key>
+      <PropertyRef Name="spLine" />
+    </Key>
+    <Property Name="spLine" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="issueno" Type="nvarchar" MaxLength="20" />
+    <Property Name="dateneed" Type="datetime" Nullable="false" />
+    <Property Name="orderid" Type="int" Nullable="false" />
+    <Property Name="ordercode" Type="nvarchar" MaxLength="3" />
+    <Property Name="s_order" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="indatabase" Type="bit" Nullable="false" />
+    <Property Name="itemno" Type="nvarchar" MaxLength="30" />
+    <Property Name="itemname" Type="nvarchar" MaxLength="80" />
+    <Property Name="uom" Type="nvarchar" MaxLength="10" />
+    <Property Name="qtyneed" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ucost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="uprice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="discount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="netuprice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="totalprice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="itemremark" Type="nvarchar" MaxLength="1000" />
+    <Property Name="isdelete" Type="bit" Nullable="false" />
+    <Property Name="audituser" Type="nvarchar" MaxLength="30" />
+    <Property Name="auditdt" Type="datetime" />
+    <Property Name="modiuser" Type="nvarchar" MaxLength="30" />
+    <Property Name="modidt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ORDERTYPE">
+    <Key>
+      <PropertyRef Name="ordertypename" />
+    </Key>
+    <Property Name="ordertypeid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ordertypename" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ordertypecode" Type="nvarchar" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="OTNOPR">
+    <Key>
+      <PropertyRef Name="s_order" />
+    </Key>
+    <Property Name="s_order" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="nprice3" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="dnp" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="OTYESPR">
+    <Key>
+      <PropertyRef Name="s_order" />
+    </Key>
+    <Property Name="s_order" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="yprice3" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="dyp" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="PERMISSION">
+    <Key>
+      <PropertyRef Name="P_id" />
+    </Key>
+    <Property Name="P_id" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="permission" Type="int" Nullable="false" />
+    <Property Name="P_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PMCOUNT">
+    <Key>
+      <PropertyRef Name="contractno" />
+    </Key>
+    <Property Name="isdelete" Type="bit" Nullable="false" />
+    <Property Name="isappointment" Type="bit" Nullable="false" />
+    <Property Name="contractfinsh" Type="bit" Nullable="false" />
+    <Property Name="contractno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CONTRACTREF" Type="nvarchar" MaxLength="25" />
+    <Property Name="contractstartdate" Type="datetime" />
+    <Property Name="contractenddate" Type="datetime" />
+    <Property Name="contracttypeid" Type="int" Nullable="false" />
+    <Property Name="status" Type="int" Nullable="false" />
+    <Property Name="custid" Type="int" />
+    <Property Name="acccustcode" Type="nvarchar" MaxLength="10" />
+    <Property Name="custname" Type="nvarchar" MaxLength="70" />
+    <Property Name="type" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="s_no" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="s_order" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="lastpmdate" Type="datetime" />
+    <Property Name="nextpmdate" Type="datetime" />
+    <Property Name="totalcount" Type="int" Nullable="false" />
+    <Property Name="currentcount" Type="int" Nullable="false" />
+    <Property Name="nextcount" Type="int" Nullable="false" />
+    <Property Name="pmmonth" Type="int" Nullable="false" />
+    <Property Name="payment" Type="int" Nullable="false" />
+    <Property Name="audituser" Type="nvarchar" MaxLength="35" />
+    <Property Name="modiuser" Type="nvarchar" MaxLength="35" />
+    <Property Name="modidate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PMSCHEDULE">
+    <Key>
+      <PropertyRef Name="PMRow" />
+    </Key>
+    <Property Name="isdelete" Type="bit" Nullable="false" />
+    <Property Name="iscomplete" Type="bit" Nullable="false" />
+    <Property Name="PMRow" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PMMasterLine" Type="int" Nullable="false" />
+    <Property Name="PMNumber" Type="int" Nullable="false" />
+    <Property Name="PMDate" Type="datetime" />
+    <Property Name="ActualPMDate" Type="datetime" />
+    <Property Name="PMJobNo" Type="nvarchar" MaxLength="10" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="35" />
+    <Property Name="LASTMODIFY" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PRDPROCESS">
+    <Key>
+      <PropertyRef Name="PRDPROCESSID" />
+    </Key>
+    <Property Name="PRDPROCESSID" Type="int" Nullable="false" />
+    <Property Name="PROCESSNAME" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="STDHOUR" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SCORE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PRICELIST">
+    <Key>
+      <PropertyRef Name="pricegroup" />
+      <PropertyRef Name="custcod" />
+      <PropertyRef Name="itemno" />
+    </Key>
+    <Property Name="prseq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="isdelete" Type="bit" Nullable="false" />
+    <Property Name="isexpire" Type="bit" Nullable="false" />
+    <Property Name="materialid" Type="int" Nullable="false" />
+    <Property Name="pricegroup" Type="int" Nullable="false" />
+    <Property Name="custcod" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="itemno" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="itemname" Type="nvarchar" MaxLength="70" />
+    <Property Name="style" Type="int" Nullable="false" />
+    <Property Name="unitcount" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="stdunitprice" Type="money" Nullable="false" />
+    <Property Name="waxcastingprice" Type="money" Nullable="false" />
+    <Property Name="masterwaxprice" Type="money" Nullable="false" />
+    <Property Name="cutsizeprice" Type="money" Nullable="false" />
+    <Property Name="itemscore" Type="int" Nullable="false" />
+    <Property Name="itemwaxweight" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="itemweight" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="priceeffectdate" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="priceexpiredate" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="itemimg" Type="image" />
+  </EntityType>
+  <EntityType Name="PRODUCTGROUPS">
+    <Key>
+      <PropertyRef Name="PRODUCTGROUPID" />
+    </Key>
+    <Property Name="PRODUCTGROUPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PRODUCTGROUPNAME" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PRODUCTIONJOBINFO">
+    <Key>
+      <PropertyRef Name="PRDINFOID" />
+    </Key>
+    <Property Name="PRDINFOID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PRODUCTIONJOBID" Type="int" Nullable="false" />
+    <Property Name="PROCESSID" Type="int" Nullable="false" />
+    <Property Name="PROCESSNAME" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="COSTCENTER" Type="nvarchar" MaxLength="10" />
+    <Property Name="WORKERID" Type="varchar" MaxLength="50" />
+    <Property Name="WORKERNAME" Type="varchar" MaxLength="50" />
+    <Property Name="DATETIME_START" Type="datetime" />
+    <Property Name="DATETIME_END" Type="datetime" />
+    <Property Name="WORKYEAR" Type="int" StoreGeneratedPattern="Computed" />
+    <Property Name="WORKPERIOD" Type="int" StoreGeneratedPattern="Computed" />
+    <Property Name="TOTALQTY" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="GOOD_QTY" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="BAD_QTY" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="BREAK_HRS" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TOTAL_HRS" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="REGULAR_HR_RATE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="NET85_HR_RATE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="NET75_HR_RATE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AVG85_HR_RATE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AVG75_HR_RATE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TOTAL_COST" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TOTAL_COST85" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TOAL_COST75" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TOTAL_AVG_COST85" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TOTAL_AVG_COST75" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PRODUCTIONJOBS">
+    <Key>
+      <PropertyRef Name="PDJOBID" />
+    </Key>
+    <Property Name="PDJOBID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="STATUS" Type="int" Nullable="false" />
+    <Property Name="CUSTCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="CUSTOMERNAME" Type="nvarchar" MaxLength="150" />
+    <Property Name="CREATEDATE" Type="datetime" />
+    <Property Name="RELEASEDATE" Type="datetime" />
+    <Property Name="DUEDATE" Type="datetime" />
+    <Property Name="DAYREMAIN" Type="int" StoreGeneratedPattern="Computed" />
+    <Property Name="ORGIORDER" Type="varchar" MaxLength="15" />
+    <Property Name="JOBTYPE" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="ITEMNO" Type="nvarchar" MaxLength="20" />
+    <Property Name="ITEMNAME" Type="nvarchar" MaxLength="150" />
+    <Property Name="ITEMNOTE" Type="nvarchar" MaxLength="1500" />
+    <Property Name="SN" Type="nvarchar" MaxLength="50" />
+    <Property Name="UNITORDER" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="QORDER" Type="int" Nullable="false" />
+    <Property Name="SHIPQTY" Type="int" Nullable="false" />
+    <Property Name="REMAINQTY" Type="int" StoreGeneratedPattern="Computed" />
+    <Property Name="REQUESTBY" Type="nvarchar" MaxLength="50" />
+    <Property Name="TOTAL_MAT_COST" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TOTAL_HOURS" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TOTAL_HOUR_COST" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TOTAL_PRODUCTION_COST" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="LABOUR_HR_COST" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PURPOST" Type="nvarchar" MaxLength="50" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="50" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="50" />
+    <Property Name="LASTMODIFY" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PRODUCTS">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="type" />
+    </Key>
+    <Property Name="id" Type="nvarchar" MaxLength="4" Nullable="false" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="isdelete" Type="bit" Nullable="false" />
+    <Property Name="productGroupID" Type="int" />
+    <Property Name="products" Type="nvarchar" MaxLength="150" />
+    <Property Name="hasAfterSaleService" Type="bit" Nullable="false" />
+    <Property Name="isOwnProduct" Type="bit" Nullable="false" />
+    <Property Name="isOffProduction" Type="bit" Nullable="false" />
+    <Property Name="isSpecialProduct" Type="bit" Nullable="false" />
+    <Property Name="isBuyForTread" Type="bit" Nullable="false" />
+    <Property Name="productpic" Type="image" />
+  </EntityType>
+  <EntityType Name="PROVISO">
+    <Key>
+      <PropertyRef Name="provisoTYPE" />
+    </Key>
+    <Property Name="provisoID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="provisoTYPE" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="pmfactor" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'OLDMOON.dbo.RECEIPTS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="RECEIPTS">
+    <Key>
+      <PropertyRef Name="REPTID" />
+      <PropertyRef Name="ISDELETE" />
+      <PropertyRef Name="ISCANCEL" />
+      <PropertyRef Name="RECPCANCELDATE" />
+      <PropertyRef Name="INVSEQ" />
+      <PropertyRef Name="REFINVOICENO" />
+      <PropertyRef Name="REPTPREFIX" />
+      <PropertyRef Name="REPTCODE" />
+      <PropertyRef Name="REPTCOUNT" />
+      <PropertyRef Name="RECEIPTNO" />
+      <PropertyRef Name="RECEIPTDATE" />
+      <PropertyRef Name="REPTVALUE" />
+      <PropertyRef Name="MODIDATE" />
+    </Key>
+    <Property Name="REPTID" Type="int" Nullable="false" />
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="ISCANCEL" Type="bit" Nullable="false" />
+    <Property Name="RECPCANCELDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="RECPCANCELBY" Type="nvarchar" MaxLength="30" />
+    <Property Name="INVSEQ" Type="int" Nullable="false" />
+    <Property Name="REFINVOICENO" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="REPTPREFIX" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="REPTCODE" Type="nvarchar" MaxLength="4" Nullable="false" />
+    <Property Name="REPTCOUNT" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="RECEIPTNO" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="RECEIPTDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="REPTVALUE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="REPTVALUETEXT" Type="nvarchar" MaxLength="150" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="35" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="35" />
+    <Property Name="MODIDATE" Type="datetime" Nullable="false" />
+    <Property Name="CANCELREASON" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="RPSTATUS">
+    <Key>
+      <PropertyRef Name="Sname" />
+    </Key>
+    <Property Name="statusid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Sid" Type="int" Nullable="false" />
+    <Property Name="Sname" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RUBBERBASE">
+    <Key>
+      <PropertyRef Name="BASEID" />
+    </Key>
+    <Property Name="BASEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="INACTIVE" Type="bit" Nullable="false" />
+    <Property Name="BASENO" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="BASESIZE" Type="nvarchar" MaxLength="20" />
+    <Property Name="WEIGHTGRAM" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="REMARK" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'OLDMOON.dbo.SALE_PERSON_PROFILE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="SALE_PERSON_PROFILE">
+    <Key>
+      <PropertyRef Name="SALEID" />
+      <PropertyRef Name="ISACTIVE" />
+      <PropertyRef Name="SALE_PERSON" />
+    </Key>
+    <Property Name="SALEID" Type="int" Nullable="false" />
+    <Property Name="ISACTIVE" Type="int" Nullable="false" />
+    <Property Name="SALE_PERSON" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="MOBILE" Type="varchar" MaxLength="50" />
+    <Property Name="EMAIL1" Type="varchar" MaxLength="255" />
+    <Property Name="EMAIL2" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="SALEORDERS">
+    <Key>
+      <PropertyRef Name="SONO" />
+    </Key>
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="ISCANCEL" Type="bit" Nullable="false" />
+    <Property Name="SOCANCELDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ISCOMPLETE" Type="bit" Nullable="false" />
+    <Property Name="ISVAT" Type="bit" Nullable="false" />
+    <Property Name="SALETYPE" Type="int" Nullable="false" />
+    <Property Name="ISAUTONUMBER" Type="bit" Nullable="false" />
+    <Property Name="SOLINECOUNT" Type="int" Nullable="false" />
+    <Property Name="SALEMATID" Type="int" Nullable="false" />
+    <Property Name="SOSEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RUNNINGNO" Type="int" Nullable="false" />
+    <Property Name="SONO" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="SODATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ACTUALDELIVERDT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="DUEDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="SALEDETAILS" Type="nvarchar" MaxLength="200" />
+    <Property Name="FISCYEAR" Type="int" Nullable="false" />
+    <Property Name="FISCPERIOD" Type="int" Nullable="false" />
+    <Property Name="CUSTID" Type="int" Nullable="false" />
+    <Property Name="CUSTCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="CREDITCODE" Type="nvarchar" MaxLength="15" />
+    <Property Name="CREDITTERM" Type="int" Nullable="false" />
+    <Property Name="TOTALVALUE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="DISCOUNT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="NETVALUE" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="VATPERCENT" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="VATVALUE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TOTALAMOUNT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TOTALAMOUNTTEXT" Type="nvarchar" MaxLength="250" />
+    <Property Name="BILLSEQ" Type="int" Nullable="false" />
+    <Property Name="BILLNO" Type="nvarchar" MaxLength="30" />
+    <Property Name="BILLDATE" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="BILLDUEDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="INVSEQ" Type="int" Nullable="false" />
+    <Property Name="INVOICENO" Type="nvarchar" MaxLength="30" />
+    <Property Name="INVOICEDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="MATDOCNO" Type="nvarchar" MaxLength="30" />
+    <Property Name="DELIVERMAT" Type="int" Nullable="false" />
+    <Property Name="DELIVERWEIGHT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="RECEIVEWEIGHT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="OUTSTANDWEIGHT" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SI" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SIWEIGHT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="REMARK" Type="nvarchar" MaxLength="1000" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="30" />
+    <Property Name="AUDITTIME" Type="datetime" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="35" />
+    <Property Name="MODIFYTIME" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SALETYPE">
+    <Key>
+      <PropertyRef Name="SALETYPEID" />
+    </Key>
+    <Property Name="SALETYPEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SALETYPEENNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SALETYPETHNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SERCOST">
+    <Key>
+      <PropertyRef Name="s_order" />
+    </Key>
+    <Property Name="s_order" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="yprice1" Type="char" MaxLength="9" Nullable="false" />
+    <Property Name="ytal1" Type="nvarchar" MaxLength="50" />
+    <Property Name="servicecost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SOLINES">
+    <Key>
+      <PropertyRef Name="SOLINESEQ" />
+    </Key>
+    <Property Name="SOLINESEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISCOMPLETE" Type="bit" Nullable="false" />
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="SERVICECHARGEID" Type="int" Nullable="false" />
+    <Property Name="FGLINESEQ" Type="int" Nullable="false" />
+    <Property Name="SALETYPE" Type="int" Nullable="false" />
+    <Property Name="CUSTID" Type="int" Nullable="false" />
+    <Property Name="CUSTCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="SOSEQ" Type="int" Nullable="false" />
+    <Property Name="SONO" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="DELIVERDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="JOBNO" Type="int" />
+    <Property Name="PO" Type="nvarchar" MaxLength="35" />
+    <Property Name="ITEMID" Type="int" />
+    <Property Name="PREFIX" Type="nvarchar" MaxLength="1" />
+    <Property Name="ITEMNO" Type="nvarchar" MaxLength="35" />
+    <Property Name="ITEMNAME" Type="nvarchar" MaxLength="100" />
+    <Property Name="UNIT" Type="nvarchar" MaxLength="10" />
+    <Property Name="DELIVEREDQTY" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="UNITPRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="DISCOUNTRATE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="DISCOUNT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="NETTVALUE" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TOTALPRICE" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="VATRATE" Type="nvarchar" MaxLength="7" />
+    <Property Name="VATVALUE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="LINEAMOUNT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="MATTYPE" Type="int" Nullable="false" />
+    <Property Name="TOTALWEIGHT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AVGWEIGHT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AVGPRICEWEIGHT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SOLINEREMARK" Type="nvarchar" MaxLength="250" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="35" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="35" />
+    <Property Name="MODIDATE" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SUPCOST">
+    <Key>
+      <PropertyRef Name="s_order" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="s_order" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="yprice2" Type="char" MaxLength="9" />
+    <Property Name="dtool" Type="nvarchar" MaxLength="1200" />
+    <Property Name="ytal2" Type="nvarchar" MaxLength="15" />
+    <Property Name="sparepartcost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="isdelete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SYS_MENUS">
+    <Key>
+      <PropertyRef Name="CAT" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="CAT" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ID" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="NAME_TH" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NAME_EN" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DISP_TH" Type="varchar" MaxLength="58" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="DISP_EN" Type="varchar" MaxLength="58" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SYSDATA">
+    <Key>
+      <PropertyRef Name="GROUPTITLE" />
+      <PropertyRef Name="ENKEYNAME" />
+      <PropertyRef Name="KEYVALUE" />
+    </Key>
+    <Property Name="LINESEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CATEGORY" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="GROUPTITLE" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ENKEYNAME" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="KEYVALUE" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="THKEYNAME" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="GROUPTITLEHEADER" Type="nvarchar" MaxLength="70" />
+    <Property Name="CONVERTFACTOR" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="MATFACTOR" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="SI" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="FURNACETEMP" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CASTINGTEMP" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'OLDMOON.dbo.TR_ERROR' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TR_ERROR">
+    <Key>
+      <PropertyRef Name="s_order" />
+    </Key>
+    <Property Name="orderid" Type="int" />
+    <Property Name="s_order" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="error" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'OLDMOON.dbo.TREEMATITEMS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TREEMATITEMS">
+    <Key>
+      <PropertyRef Name="TREEMATITEMSEQ" />
+      <PropertyRef Name="ISDELETE" />
+      <PropertyRef Name="WAXTREEID" />
+      <PropertyRef Name="MATTYPEID" />
+      <PropertyRef Name="MATITEMWEIGHT" />
+      <PropertyRef Name="MATITEMPERCENT" />
+    </Key>
+    <Property Name="TREEMATITEMSEQ" Type="int" Nullable="false" />
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="WAXTREEID" Type="int" Nullable="false" />
+    <Property Name="MATTYPEID" Type="int" Nullable="false" />
+    <Property Name="MATITEMWEIGHT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="MATITEMPERCENT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'OLDMOON.dbo.UNITCOUNT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="UNITCOUNT">
+    <Key>
+      <PropertyRef Name="unitseq" />
+      <PropertyRef Name="unittexten" />
+      <PropertyRef Name="unittextth" />
+    </Key>
+    <Property Name="unitseq" Type="int" Nullable="false" />
+    <Property Name="unittexten" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="unittextth" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USERLOG">
+    <Key>
+      <PropertyRef Name="USERID" />
+    </Key>
+    <Property Name="USERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USERNAME" Type="nvarchar" MaxLength="35" Nullable="false" />
+    <Property Name="WORKSTATION" Type="nvarchar" MaxLength="30" />
+    <Property Name="APPNAME" Type="nvarchar" MaxLength="250" />
+    <Property Name="APPVERSION" Type="nvarchar" MaxLength="50" />
+    <Property Name="SERVERNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="DATABASENAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="AUDITCLASS" Type="nvarchar" MaxLength="50" />
+    <Property Name="LOGINDT" Type="datetime" Nullable="false" />
+    <Property Name="LOGOUTDT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="USERPERMISSION">
+    <Key>
+      <PropertyRef Name="USERNAME" />
+    </Key>
+    <Property Name="USERSEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USERNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="USERPWD" Type="nvarchar" MaxLength="15" />
+    <Property Name="PERMISSIONID" Type="int" Nullable="false" />
+    <Property Name="PERMISSIONCLASS" Type="nvarchar" MaxLength="50" />
+    <Property Name="ISACTIVE" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WARRANTIES">
+    <Key>
+      <PropertyRef Name="WARRANTYNAME" />
+    </Key>
+    <Property Name="WARRANTYID" Type="int" Nullable="false" />
+    <Property Name="WARRANTYNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="WARRANTYMONTHFACTOR" Type="int" Nullable="false" />
+    <Property Name="RVMAX" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WAXTREEITEMS">
+    <Key>
+      <PropertyRef Name="WAXTREEITEMID" />
+    </Key>
+    <Property Name="WAXTREEITEMID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WAXTREEID" Type="int" Nullable="false" />
+    <Property Name="TREEDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="CUSTCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="CUSTID" Type="int" Nullable="false" />
+    <Property Name="JOBNO" Type="int" Nullable="false" />
+    <Property Name="ITEMNO" Type="nvarchar" MaxLength="20" />
+    <Property Name="ITEMNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="QTY" Type="int" Nullable="false" />
+    <Property Name="UNIT" Type="nvarchar" MaxLength="10" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="35" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="35" />
+    <Property Name="MODIDATE" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WAXTREES">
+    <Key>
+      <PropertyRef Name="WAXTREEID" />
+    </Key>
+    <Property Name="WAXTREEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BUILDDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="CUSTCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="CUSTID" Type="int" Nullable="false" />
+    <Property Name="RUBBERBASENO" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="BASEWEIGHT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="BASENWAXWG" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ACTUALWAX" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="MATCASTING" Type="int" Nullable="false" />
+    <Property Name="MATFACTOR" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="MATADDWEIGHT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="MATWEIGHTBF" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ACTUALMATWEIGHT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="MATWEIGHTAF" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="MATWEIGHTLOSS" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ALLOYTYPE" Type="nvarchar" MaxLength="35" />
+    <Property Name="ALLOYWEIGHT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SILVER100" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SILVER95" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SILVER94" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="GOLD100" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OTHERMAT" Type="nvarchar" MaxLength="50" />
+    <Property Name="OTHERMATWEIGHT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="WEIGHTWITHCONTAINER" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TOTALCOUNTWAX" Type="int" Nullable="false" />
+    <Property Name="FURNACETEMP" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CASTINGTEMP" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ACTUALTEMP" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="REMARK" Type="nvarchar" MaxLength="2000" />
+    <Property Name="TREEIMG" Type="image" />
+    <Property Name="CASTINGBY" Type="nvarchar" MaxLength="30" />
+    <Property Name="ISDELETE" Type="bit" Nullable="false" />
+    <Property Name="AUDITUSER" Type="nvarchar" MaxLength="30" />
+    <Property Name="MODIUSER" Type="nvarchar" MaxLength="30" />
+    <Property Name="MODIDATE" Type="datetime" />
+  </EntityType>
+  <EntityContainer Name="OLDMOONModelStoreContainer">
+    <EntitySet Name="ACCMAPS" EntityType="Self.ACCMAPS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ACCOUNTSET" EntityType="Self.ACCOUNTSET" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="APPLOGS" EntityType="Self.APPLOGS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BANKS" EntityType="Self.BANKS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BANKTRANSLOG" EntityType="Self.BANKTRANSLOG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BILLS" EntityType="Self.BILLS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BOOKINGHH" EntityType="Self.BOOKINGHH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BOOKINGLL" EntityType="Self.BOOKINGLL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CONTACTS" EntityType="Self.CONTACTS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="COUNTRIES" EntityType="Self.COUNTRIES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CRCODE" EntityType="Self.CRCODE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CURRENCY" EntityType="Self.CURRENCY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CUSTMATRETURN" EntityType="Self.CUSTMATRETURN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CUSTMOLDS" EntityType="Self.CUSTMOLDS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CUSTOMERS" EntityType="Self.CUSTOMERS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CUSTORDENTRY" EntityType="Self.CUSTORDENTRY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CUSTPRICEITEMPIC" EntityType="Self.CUSTPRICEITEMPIC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CUSTPRICELIST" EntityType="Self.CUSTPRICELIST" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CUSTTASK" EntityType="Self.CUSTTASK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CUSTTASKIMG" EntityType="Self.CUSTTASKIMG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CUSTTASKLINES" EntityType="Self.CUSTTASKLINES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DATADICT" EntityType="Self.DATADICT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DEPARTMENT" EntityType="Self.DEPARTMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DEPARTMENTS" EntityType="Self.DEPARTMENTS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DISTRICTS" EntityType="Self.DISTRICTS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EMPLOYEE" EntityType="Self.EMPLOYEE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EMPLOYPIC" EntityType="Self.EMPLOYPIC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EMPSAL" EntityType="Self.EMPSAL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EMPSTATUS" EntityType="Self.EMPSTATUS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ENGINEER" EntityType="Self.ENGINEER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ERROR_LIST" EntityType="Self.ERROR_LIST" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ERRORCATEGORY" EntityType="Self.ERRORCATEGORY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ERRORLOG" EntityType="Self.ERRORLOG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EXCHCURR" EntityType="Self.EXCHCURR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FGSTOCK" EntityType="Self.FGSTOCK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GASAL" EntityType="Self.GASAL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GASER" EntityType="Self.GASER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="INCMLINES" EntityType="Self.INCMLINES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="INVLINES" EntityType="Self.INVLINES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="INVOICES" EntityType="Self.INVOICES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ITEMCODE" EntityType="Self.ITEMCODE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ITEMMASTER" EntityType="Self.ITEMMASTER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ITEMMASTERIMG" EntityType="Self.ITEMMASTERIMG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ITEMSTYLE" EntityType="Self.ITEMSTYLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JOBINFOS" EntityType="Self.JOBINFOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JOBORDERS" EntityType="Self.JOBORDERS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JOBTITLES" EntityType="Self.JOBTITLES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOGIN" EntityType="Self.LOGIN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MATERIAL" EntityType="Self.MATERIAL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MATPRICES" EntityType="Self.MATPRICES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MATRECEIVE" EntityType="Self.MATRECEIVE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MATSTOCK" EntityType="Self.MATSTOCK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MIX" EntityType="Self.MIX" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MSGDICT" EntityType="Self.MSGDICT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ORDERFIXED" EntityType="Self.ORDERFIXED" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ORDERMAINTENANCE" EntityType="Self.ORDERMAINTENANCE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ORDERPIORITY" EntityType="Self.ORDERPIORITY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ORDERSPAREPARTS" EntityType="Self.ORDERSPAREPARTS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ORDERTYPE" EntityType="Self.ORDERTYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OTNOPR" EntityType="Self.OTNOPR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OTYESPR" EntityType="Self.OTYESPR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PERMISSION" EntityType="Self.PERMISSION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PMCOUNT" EntityType="Self.PMCOUNT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PMSCHEDULE" EntityType="Self.PMSCHEDULE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRDPROCESS" EntityType="Self.PRDPROCESS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRICELIST" EntityType="Self.PRICELIST" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUCTGROUPS" EntityType="Self.PRODUCTGROUPS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUCTIONJOBINFO" EntityType="Self.PRODUCTIONJOBINFO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUCTIONJOBS" EntityType="Self.PRODUCTIONJOBS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUCTS" EntityType="Self.PRODUCTS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PROVISO" EntityType="Self.PROVISO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RPSTATUS" EntityType="Self.RPSTATUS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RUBBERBASE" EntityType="Self.RUBBERBASE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SALEORDERS" EntityType="Self.SALEORDERS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SALETYPE" EntityType="Self.SALETYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SERCOST" EntityType="Self.SERCOST" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SOLINES" EntityType="Self.SOLINES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SUPCOST" EntityType="Self.SUPCOST" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SYS_MENUS" EntityType="Self.SYS_MENUS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SYSDATA" EntityType="Self.SYSDATA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USERLOG" EntityType="Self.USERLOG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USERPERMISSION" EntityType="Self.USERPERMISSION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WARRANTIES" EntityType="Self.WARRANTIES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WAXTREEITEMS" EntityType="Self.WAXTREEITEMS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WAXTREES" EntityType="Self.WAXTREES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BANKBOOKS" EntityType="Self.BANKBOOKS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [BANKBOOKS].[BBSEQ] AS [BBSEQ], 
+    [BANKBOOKS].[BANKCODE] AS [BANKCODE], 
+    [BANKBOOKS].[ACCOUNTTYPE] AS [ACCOUNTTYPE], 
+    [BANKBOOKS].[ACCOUNTNO] AS [ACCOUNTNO], 
+    [BANKBOOKS].[BRANCH] AS [BRANCH], 
+    [BANKBOOKS].[ACCOUNTNAME] AS [ACCOUNTNAME], 
+    [BANKBOOKS].[ACCOUNTDESC] AS [ACCOUNTDESC]
+    FROM [dbo].[BANKBOOKS] AS [BANKBOOKS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="BILLLINES" EntityType="Self.BILLLINES" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [BILLLINES].[BILLLINGSEQ] AS [BILLLINGSEQ], 
+    [BILLLINES].[ISDELETE] AS [ISDELETE], 
+    [BILLLINES].[SALETYPE] AS [SALETYPE], 
+    [BILLLINES].[BILLID] AS [BILLID], 
+    [BILLLINES].[SOSEQ] AS [SOSEQ], 
+    [BILLLINES].[SONO] AS [SONO], 
+    [BILLLINES].[SODATE] AS [SODATE], 
+    [BILLLINES].[TOTALVALUE] AS [TOTALVALUE], 
+    [BILLLINES].[DISCOUNT] AS [DISCOUNT], 
+    [BILLLINES].[NETVALUE] AS [NETVALUE], 
+    [BILLLINES].[TOTALVAT] AS [TOTALVAT], 
+    [BILLLINES].[TOTALAMOUNT] AS [TOTALAMOUNT], 
+    [BILLLINES].[AUDITUSER] AS [AUDITUSER], 
+    [BILLLINES].[MODIUSER] AS [MODIUSER], 
+    [BILLLINES].[MODIDATE] AS [MODIDATE]
+    FROM [dbo].[BILLLINES] AS [BILLLINES]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="BOM" EntityType="Self.BOM" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [BOM].[ID] AS [ID], 
+    [BOM].[Line] AS [Line], 
+    [BOM].[MODELID] AS [MODELID], 
+    [BOM].[MODEL] AS [MODEL], 
+    [BOM].[CLASS] AS [CLASS], 
+    [BOM].[SOURCE] AS [SOURCE], 
+    [BOM].[PARENTNO] AS [PARENTNO], 
+    [BOM].[ITEMNO] AS [ITEMNO], 
+    [BOM].[ITEMNAME] AS [ITEMNAME], 
+    [BOM].[QTY] AS [QTY], 
+    [BOM].[UNIT] AS [UNIT], 
+    [BOM].[UNIT_COST_THB] AS [UNIT_COST_THB], 
+    [BOM].[TOTAL_COST_THB] AS [TOTAL_COST_THB], 
+    [BOM].[LABOUR_COST] AS [LABOUR_COST], 
+    [BOM].[PRODUCTION_COST_THB] AS [PRODUCTION_COST_THB], 
+    [BOM].[TOTAL_PRODUCTION_COST_THB] AS [TOTAL_PRODUCTION_COST_THB]
+    FROM [dbo].[BOM] AS [BOM]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="MATERIALS" EntityType="Self.MATERIALS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [MATERIALS].[MATID] AS [MATID], 
+    [MATERIALS].[COMPATMATID] AS [COMPATMATID], 
+    [MATERIALS].[MATNAME] AS [MATNAME], 
+    [MATERIALS].[CONVFACTOR] AS [CONVFACTOR]
+    FROM [dbo].[MATERIALS] AS [MATERIALS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="RECEIPTS" EntityType="Self.RECEIPTS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [RECEIPTS].[REPTID] AS [REPTID], 
+    [RECEIPTS].[ISDELETE] AS [ISDELETE], 
+    [RECEIPTS].[ISCANCEL] AS [ISCANCEL], 
+    [RECEIPTS].[RECPCANCELDATE] AS [RECPCANCELDATE], 
+    [RECEIPTS].[RECPCANCELBY] AS [RECPCANCELBY], 
+    [RECEIPTS].[INVSEQ] AS [INVSEQ], 
+    [RECEIPTS].[REFINVOICENO] AS [REFINVOICENO], 
+    [RECEIPTS].[REPTPREFIX] AS [REPTPREFIX], 
+    [RECEIPTS].[REPTCODE] AS [REPTCODE], 
+    [RECEIPTS].[REPTCOUNT] AS [REPTCOUNT], 
+    [RECEIPTS].[RECEIPTNO] AS [RECEIPTNO], 
+    [RECEIPTS].[RECEIPTDATE] AS [RECEIPTDATE], 
+    [RECEIPTS].[REPTVALUE] AS [REPTVALUE], 
+    [RECEIPTS].[REPTVALUETEXT] AS [REPTVALUETEXT], 
+    [RECEIPTS].[AUDITUSER] AS [AUDITUSER], 
+    [RECEIPTS].[MODIUSER] AS [MODIUSER], 
+    [RECEIPTS].[MODIDATE] AS [MODIDATE], 
+    [RECEIPTS].[CANCELREASON] AS [CANCELREASON]
+    FROM [dbo].[RECEIPTS] AS [RECEIPTS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SALE_PERSON_PROFILE" EntityType="Self.SALE_PERSON_PROFILE" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SALE_PERSON_PROFILE].[SALEID] AS [SALEID], 
+    [SALE_PERSON_PROFILE].[ISACTIVE] AS [ISACTIVE], 
+    [SALE_PERSON_PROFILE].[SALE_PERSON] AS [SALE_PERSON], 
+    [SALE_PERSON_PROFILE].[MOBILE] AS [MOBILE], 
+    [SALE_PERSON_PROFILE].[EMAIL1] AS [EMAIL1], 
+    [SALE_PERSON_PROFILE].[EMAIL2] AS [EMAIL2]
+    FROM [dbo].[SALE_PERSON_PROFILE] AS [SALE_PERSON_PROFILE]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TR_ERROR" EntityType="Self.TR_ERROR" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TR_ERROR].[orderid] AS [orderid], 
+    [TR_ERROR].[s_order] AS [s_order], 
+    [TR_ERROR].[error] AS [error]
+    FROM [dbo].[TR_ERROR] AS [TR_ERROR]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TREEMATITEMS" EntityType="Self.TREEMATITEMS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TREEMATITEMS].[TREEMATITEMSEQ] AS [TREEMATITEMSEQ], 
+    [TREEMATITEMS].[ISDELETE] AS [ISDELETE], 
+    [TREEMATITEMS].[WAXTREEID] AS [WAXTREEID], 
+    [TREEMATITEMS].[MATTYPEID] AS [MATTYPEID], 
+    [TREEMATITEMS].[MATITEMWEIGHT] AS [MATITEMWEIGHT], 
+    [TREEMATITEMS].[MATITEMPERCENT] AS [MATITEMPERCENT]
+    FROM [dbo].[TREEMATITEMS] AS [TREEMATITEMS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="UNITCOUNT" EntityType="Self.UNITCOUNT" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [UNITCOUNT].[unitseq] AS [unitseq], 
+    [UNITCOUNT].[unittexten] AS [unittexten], 
+    [UNITCOUNT].[unittextth] AS [unittextth]
+    FROM [dbo].[UNITCOUNT] AS [UNITCOUNT]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

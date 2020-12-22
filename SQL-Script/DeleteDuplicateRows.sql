@@ -1,0 +1,19 @@
+CREATE PROC dbo.usp_DeleteDuplicateTimeRecords AS
+DELETE c
+FROM FingerScan.dbo.CHECKINOUT AS c
+INNER JOIN 
+(
+ SELECT 
+b.USERID,b.CHECKTIME
+FROM FingerScan.dbo.CHECKINOUT b
+JOIN (
+			SELECT chk.CHECKTIME, chk.USERID, COUNT(*) AS 'NRecords'
+			FROM FingerScan.dbo.CHECKINOUT chk 
+			GROUP BY chk.CHECKTIME,chk.USERID 
+			HAVING COUNT(*) > 1
+			) a
+ON b.CHECKTIME = a.CHECKTIME 
+AND b.USERID = a.USERID ) AS d
+ON c.USERID = d.USERID 
+AND c.CHECKTIME =d.CHECKTIME
+

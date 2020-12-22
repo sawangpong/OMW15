@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="90e840e06a094f14a1d9c2b9135edffc" Name="Diagram1" ZoomLevel="91">
+        <EntityTypeShape EntityType="OMPDEF.PRODUCTGROUP" Width="2.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OMPDEF.PRODUCTIONSTDITEM" Width="2.5" PointX="5.375" PointY="0.5" />
+        <EntityTypeShape EntityType="OMPDEF.PRDPROCESS" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="OMPDEF.PRODUCTIONJOB" Width="1.5" PointX="3.375" PointY="6.75" />
+        <EntityTypeShape EntityType="OMPDEF.PRODUCTIONJOBINFO" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="OMPDEF.MCBOM" Width="1.5" PointX="5.375" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,2916 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+	<!-- EF Runtime content -->
+	<edmx:Runtime>
+		<!-- SSDL content -->
+		<edmx:StorageModels>
+		<Schema Namespace="ERPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ADDRBOOK">
+          <Key>
+            <PropertyRef Name="ADDB_KEY" />
+          </Key>
+          <Property Name="ADDB_KEY" Type="int" Nullable="false" />
+          <Property Name="ADDB_COMPANY" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ADDB_BRANCH" Type="varchar" MaxLength="60" />
+          <Property Name="ADDB_TAX_ID" Type="char" MaxLength="13" />
+          <Property Name="ADDB_ADDB_1" Type="varchar" MaxLength="60" />
+          <Property Name="ADDB_ADDB_2" Type="varchar" MaxLength="60" />
+          <Property Name="ADDB_ADDB_3" Type="varchar" MaxLength="60" />
+          <Property Name="ADDB_PROVINCE" Type="varchar" MaxLength="60" />
+          <Property Name="ADDB_POST" Type="char" MaxLength="5" />
+          <Property Name="ADDB_PHONE" Type="varchar" MaxLength="60" />
+          <Property Name="ADDB_FAX" Type="varchar" MaxLength="30" />
+          <Property Name="ADDB_WEBSITE" Type="varchar" MaxLength="60" />
+          <Property Name="ADDB_BT" Type="int" Nullable="false" />
+          <Property Name="ADDB_STA" Type="int" Nullable="false" />
+          <Property Name="ADDB_REMARK" Type="varchar" MaxLength="60" />
+          <Property Name="ADDB_SEARCH" Type="varchar" MaxLength="60" />
+          <Property Name="ADDB_EMAIL" Type="varchar" MaxLength="60" />
+          <Property Name="ADDB_CONNECT" Type="int" />
+          <Property Name="ADDB_GPS_LAT_S" Type="varchar" MaxLength="20" />
+          <Property Name="ADDB_GPS_LONG_S" Type="varchar" MaxLength="20" />
+          <Property Name="ADDB_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="APPLU">
+          <Key>
+            <PropertyRef Name="APPLU_KEY" />
+          </Key>
+          <Property Name="APPLU_KEY" Type="int" Nullable="false" />
+          <Property Name="APPLU_APPRB" Type="int" Nullable="false" />
+          <Property Name="APPLU_GOODS" Type="int" Nullable="false" />
+          <Property Name="APPLU_U_PRC" Type="money" Nullable="false" />
+          <Property Name="APPLU_U_DSC" Type="varchar" MaxLength="60" />
+          <Property Name="APPLU_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="ARADDRESS">
+          <Key>
+            <PropertyRef Name="ARA_KEY" />
+          </Key>
+          <Property Name="ARA_KEY" Type="int" Nullable="false" />
+          <Property Name="ARA_AR" Type="int" Nullable="false" />
+          <Property Name="ARA_ADDB" Type="int" Nullable="false" />
+          <Property Name="ARA_DEFAULT" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ARA_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="ARCAT">
+          <Key>
+            <PropertyRef Name="ARCAT_KEY" />
+          </Key>
+          <Property Name="ARCAT_KEY" Type="int" Nullable="false" />
+          <Property Name="ARCAT_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ARCAT_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ARCAT_ACCESS" Type="smallint" Nullable="false" />
+          <Property Name="ARCAT_UDF_1" Type="money" Nullable="false" />
+          <Property Name="ARCAT_UDF_2" Type="money" Nullable="false" />
+          <Property Name="ARCAT_UDF_3" Type="money" Nullable="false" />
+          <Property Name="ARCAT_UDF_4" Type="money" Nullable="false" />
+          <Property Name="ARCAT_UDF_5" Type="money" Nullable="false" />
+          <Property Name="ARCAT_UDF_6" Type="money" Nullable="false" />
+          <Property Name="ARCAT_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="ARFILE">
+          <Key>
+            <PropertyRef Name="AR_KEY" />
+          </Key>
+          <Property Name="AR_KEY" Type="int" Nullable="false" />
+          <Property Name="AR_CODE" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="AR_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="AR_ARCAT" Type="int" Nullable="false" />
+          <Property Name="AR_AC" Type="int" Nullable="false" />
+          <Property Name="AR_ENABLE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="AR_ACCESS" Type="smallint" Nullable="false" />
+          <Property Name="AR_SLMNCODE" Type="varchar" MaxLength="12" />
+          <Property Name="AR_ARL" Type="int" Nullable="false" />
+          <Property Name="AR_ARTY" Type="int" Nullable="false" />
+          <Property Name="AR_ARG" Type="int" Nullable="false" />
+          <Property Name="AR_ARR" Type="int" Nullable="false" />
+          <Property Name="AR_ARGL" Type="int" Nullable="false" />
+          <Property Name="AR_DEPT" Type="int" Nullable="false" />
+          <Property Name="AR_REMARK" Type="varchar" MaxLength="60" />
+          <Property Name="AR_UDF_1" Type="money" Nullable="false" />
+          <Property Name="AR_UDF_2" Type="money" Nullable="false" />
+          <Property Name="AR_UDF_3" Type="money" Nullable="false" />
+          <Property Name="AR_UDF_4" Type="money" Nullable="false" />
+          <Property Name="AR_UDF_5" Type="money" Nullable="false" />
+          <Property Name="AR_UDF_6" Type="money" Nullable="false" />
+          <Property Name="AR_MBCODE" Type="varchar" MaxLength="20" />
+          <Property Name="AR_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="ARPLU">
+          <Key>
+            <PropertyRef Name="ARPLU_KEY" />
+          </Key>
+          <Property Name="ARPLU_KEY" Type="int" Nullable="false" />
+          <Property Name="ARPLU_ARPRB" Type="int" Nullable="false" />
+          <Property Name="ARPLU_GOODS" Type="int" Nullable="false" />
+          <Property Name="ARPLU_ARPRBCODE" Type="varchar" MaxLength="16" />
+          <Property Name="ARPLU_GOODSCODE" Type="varchar" MaxLength="24" />
+          <Property Name="ARPLU_U_PRC" Type="money" Nullable="false" />
+          <Property Name="ARPLU_U_DSC" Type="varchar" MaxLength="60" />
+          <Property Name="ARPLU_TAG" Type="int" Nullable="false" />
+          <Property Name="ARPLU_AUTO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ARPLU_AUTO_GP" Type="money" />
+          <Property Name="ARPLU_AUTO_ROUND" Type="int" />
+          <Property Name="ARPLU_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="ARPRICETAB">
+          <Key>
+            <PropertyRef Name="ARPRB_KEY" />
+          </Key>
+          <Property Name="ARPRB_KEY" Type="int" Nullable="false" />
+          <Property Name="ARPRB_CODE" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="ARPRB_NAME" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="ARPRB_VATIO" Type="int" />
+          <Property Name="ARPRB_ALWAYS" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ARPRB_ENABLE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ARPRB_REMARK" Type="varchar" MaxLength="60" />
+          <Property Name="ARPRB_DEFAULT" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="ARPRB_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="DEPTTAB">
+          <Key>
+            <PropertyRef Name="DEPT_KEY" />
+          </Key>
+          <Property Name="DEPT_KEY" Type="int" Nullable="false" />
+          <Property Name="DEPT_CODE" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DEPT_THAIDESC" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="DEPT_ENGDESC" Type="varchar" MaxLength="60" />
+          <Property Name="DEPT_DEFAULT" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="DEPT_UDF_1" Type="money" Nullable="false" />
+          <Property Name="DEPT_UDF_2" Type="money" Nullable="false" />
+          <Property Name="DEPT_UDF_3" Type="money" Nullable="false" />
+          <Property Name="DEPT_UDF_4" Type="money" Nullable="false" />
+          <Property Name="DEPT_UDF_5" Type="money" Nullable="false" />
+          <Property Name="DEPT_UDF_6" Type="money" Nullable="false" />
+          <Property Name="DEPT_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="DOCINFO">
+          <Key>
+            <PropertyRef Name="DI_KEY" />
+          </Key>
+          <Property Name="DI_KEY" Type="int" Nullable="false" />
+          <Property Name="DI_DT" Type="int" Nullable="false" />
+          <Property Name="DI_SUBS_DI" Type="int" />
+          <Property Name="DI_REVISION" Type="int" />
+          <Property Name="DI_ACTIVE" Type="int" />
+          <Property Name="DI_EDIT_TIME" Type="int" />
+          <Property Name="DI_FLAG" Type="int" />
+          <Property Name="DI_REF" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="DI_DATE" Type="datetime" Nullable="false" />
+          <Property Name="DI_CRE_DATE" Type="datetime" Nullable="false" />
+          <Property Name="DI_CRE_BY" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="DI_CRE_CPTN" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="DI_CRE_LGNN" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DI_UPD_DATE" Type="datetime" Nullable="false" />
+          <Property Name="DI_UPD_BY" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="DI_UPD_CPTN" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="DI_UPD_LGNN" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DI_DEL_DATE" Type="datetime" />
+          <Property Name="DI_DEL_BY" Type="varchar" MaxLength="15" />
+          <Property Name="DI_DEL_CPTN" Type="varchar" MaxLength="15" />
+          <Property Name="DI_DEL_LGNN" Type="varchar" MaxLength="20" />
+          <Property Name="DI_PRN_TIME" Type="smallint" Nullable="false" />
+          <Property Name="DI_PRN_DATE" Type="datetime" />
+          <Property Name="DI_PRN_BY" Type="varchar" MaxLength="15" />
+          <Property Name="DI_PRN_CPTN" Type="varchar" MaxLength="15" />
+          <Property Name="DI_PRN_LGNN" Type="varchar" MaxLength="20" />
+          <Property Name="DI_PRN_STATUS" Type="int" />
+          <Property Name="DI_EXM_DATE" Type="datetime" />
+          <Property Name="DI_EXM_BY" Type="varchar" MaxLength="15" />
+          <Property Name="DI_EXM_CPTN" Type="varchar" MaxLength="15" />
+          <Property Name="DI_EXM_LGNN" Type="varchar" MaxLength="20" />
+          <Property Name="DI_APV_DATE" Type="datetime" />
+          <Property Name="DI_APV_BY" Type="varchar" MaxLength="15" />
+          <Property Name="DI_APV_CPTN" Type="varchar" MaxLength="15" />
+          <Property Name="DI_APV_LGNN" Type="varchar" MaxLength="20" />
+          <Property Name="DI_APV_STATUS" Type="int" />
+          <Property Name="DI_DFRS" Type="int" />
+          <Property Name="DI_1ST_ITEMS" Type="int" />
+          <Property Name="DI_1ST_AMOUNT" Type="money" Nullable="false" />
+          <Property Name="DI_ITEMS" Type="int" />
+          <Property Name="DI_AMOUNT" Type="money" Nullable="false" />
+          <Property Name="DI_AUTO" Type="int" />
+          <Property Name="DI_CREATOR_DI" Type="int" />
+          <Property Name="DI_REMARK" Type="varchar" MaxLength="7000" />
+          <Property Name="DI_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="DOCTYPE">
+          <Key>
+            <PropertyRef Name="DT_KEY" />
+          </Key>
+          <Property Name="DT_KEY" Type="int" Nullable="false" />
+          <Property Name="DT_DOCCODE" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="DT_THAIDESC" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="DT_ENGDESC" Type="varchar" MaxLength="60" />
+          <Property Name="DT_PROPERTIES" Type="int" />
+          <Property Name="DT_RUNTYPE" Type="smallint" Nullable="false" />
+          <Property Name="DT_PREFIX" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="DT_DIGIT" Type="smallint" Nullable="false" />
+          <Property Name="DT_BOOKSIZE" Type="int" />
+          <Property Name="DT_ACCESS" Type="smallint" Nullable="false" />
+          <Property Name="DT_CANEDIT" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="DT_DUPTYPE" Type="int" />
+          <Property Name="DT_RPF_CODE" Type="varchar" MaxLength="16" />
+          <Property Name="DT_SHOW_SINCE" Type="int" />
+          <Property Name="DT_SHOW_NEXT" Type="int" />
+          <Property Name="DT_NEW_SINCE" Type="int" />
+          <Property Name="DT_NEW_NEXT" Type="int" />
+          <Property Name="DT_ENABLE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="DT_PREVIEW" Type="int" />
+          <Property Name="DT_NEED_APV" Type="int" />
+          <Property Name="DT_SELECT_PRT" Type="int" />
+          <Property Name="DT_APV_POS" Type="int" />
+          <Property Name="DT_EDIT_AF_POS" Type="int" />
+          <Property Name="DT_EDIT_PRT_POS" Type="int" />
+          <Property Name="DT_CHANGE_POS" Type="int" />
+          <Property Name="DT_CANCEL_POS" Type="int" />
+          <Property Name="DT_REPRT_POS" Type="int" />
+          <Property Name="DT_REF_B4_PRINT" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="DT_PRINT_CANCEL" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="DT_REPRT_MSG" Type="varchar" MaxLength="60" />
+          <Property Name="DT_VAT_PREFIX" Type="varchar" MaxLength="20" />
+          <Property Name="DT_BRANCH" Type="varchar" MaxLength="20" />
+          <Property Name="DT_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="GOODSMASTER">
+          <Key>
+            <PropertyRef Name="GOODS_KEY" />
+          </Key>
+          <Property Name="GOODS_KEY" Type="int" Nullable="false" />
+          <Property Name="GOODS_CODE" Type="varchar" MaxLength="24" Nullable="false" />
+          <Property Name="GOODS_BARTYPE" Type="smallint" Nullable="false" />
+          <Property Name="GOODS_SKU" Type="int" Nullable="false" />
+          <Property Name="GOODS_UTQ" Type="int" Nullable="false" />
+          <Property Name="GOODS_WEIGHT" Type="money" />
+          <Property Name="GOODS_VOLUME" Type="money" />
+          <Property Name="GOODS_ENABLE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="GOODS_P_ENABLE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="GOODS_MASTER" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="GOODS_PRICE" Type="money" Nullable="false" />
+          <Property Name="GOODS_ALIAS" Type="varchar" MaxLength="60" />
+          <Property Name="GOODS_E_ALIAS" Type="varchar" MaxLength="60" />
+          <Property Name="GOODS_PRT_BAR" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="GOODS_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="ICCAT">
+          <Key>
+            <PropertyRef Name="ICCAT_KEY" />
+          </Key>
+          <Property Name="ICCAT_KEY" Type="int" Nullable="false" />
+          <Property Name="ICCAT_CODE" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="ICCAT_NAME" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="ICCAT_ACCESS" Type="smallint" Nullable="false" />
+          <Property Name="ICCAT_UDF_1" Type="money" Nullable="false" />
+          <Property Name="ICCAT_UDF_2" Type="money" Nullable="false" />
+          <Property Name="ICCAT_UDF_3" Type="money" Nullable="false" />
+          <Property Name="ICCAT_UDF_4" Type="money" Nullable="false" />
+          <Property Name="ICCAT_UDF_5" Type="money" Nullable="false" />
+          <Property Name="ICCAT_UDF_6" Type="money" Nullable="false" />
+          <Property Name="ICCAT_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="ICDEPT">
+          <Key>
+            <PropertyRef Name="ICDEPT_KEY" />
+          </Key>
+          <Property Name="ICDEPT_KEY" Type="int" Nullable="false" />
+          <Property Name="ICDEPT_CODE" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="ICDEPT_THAIDESC" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="ICDEPT_ENGDESC" Type="varchar" MaxLength="60" />
+          <Property Name="ICDEPT_ACCESS" Type="smallint" Nullable="false" />
+          <Property Name="ICDEPT_LEVEL" Type="int" />
+          <Property Name="ICDEPT_ABS_INDEX" Type="int" />
+          <Property Name="ICDEPT_PARENT" Type="int" />
+          <Property Name="ICDEPT_P_ABS_INDEX" Type="int" />
+          <Property Name="ICDEPT_FIRSTCHILD" Type="int" />
+          <Property Name="ICDEPT_UDF_1" Type="money" Nullable="false" />
+          <Property Name="ICDEPT_UDF_2" Type="money" Nullable="false" />
+          <Property Name="ICDEPT_UDF_3" Type="money" Nullable="false" />
+          <Property Name="ICDEPT_UDF_4" Type="money" Nullable="false" />
+          <Property Name="ICDEPT_UDF_5" Type="money" Nullable="false" />
+          <Property Name="ICDEPT_UDF_6" Type="money" Nullable="false" />
+          <Property Name="ICDEPT_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="PRJTAB">
+          <Key>
+            <PropertyRef Name="PRJ_KEY" />
+          </Key>
+          <Property Name="PRJ_KEY" Type="int" Nullable="false" />
+          <Property Name="PRJ_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PRJ_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PRJ_ENABLE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="PRJ_FM_DATE" Type="datetime" />
+          <Property Name="PRJ_TO_DATE" Type="datetime" />
+          <Property Name="PRJ_REMARK" Type="varchar" MaxLength="255" />
+          <Property Name="PRJ_UDF_1" Type="money" Nullable="false" />
+          <Property Name="PRJ_UDF_2" Type="money" Nullable="false" />
+          <Property Name="PRJ_UDF_3" Type="money" Nullable="false" />
+          <Property Name="PRJ_UDF_4" Type="money" Nullable="false" />
+          <Property Name="PRJ_UDF_5" Type="money" Nullable="false" />
+          <Property Name="PRJ_UDF_6" Type="money" Nullable="false" />
+          <Property Name="PRJ_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="SALESMAN">
+          <Key>
+            <PropertyRef Name="SLMN_KEY" />
+          </Key>
+          <Property Name="SLMN_KEY" Type="int" Nullable="false" />
+          <Property Name="SLMN_CODE" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="SLMN_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SLMN_REMARK" Type="varchar" MaxLength="255" />
+          <Property Name="SLMN_SLCAT" Type="int" Nullable="false" />
+          <Property Name="SLMN_CMRH" Type="int" Nullable="false" />
+          <Property Name="SLMN_AC" Type="int" Nullable="false" />
+          <Property Name="SLMN_SLL" Type="int" Nullable="false" />
+          <Property Name="SLMN_SLU" Type="int" Nullable="false" />
+          <Property Name="SLMN_SLT" Type="int" Nullable="false" />
+          <Property Name="SLMN_SLR" Type="int" Nullable="false" />
+          <Property Name="SLMN_ENABLE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="SLMN_UDF_1" Type="money" Nullable="false" />
+          <Property Name="SLMN_UDF_2" Type="money" Nullable="false" />
+          <Property Name="SLMN_UDF_3" Type="money" Nullable="false" />
+          <Property Name="SLMN_UDF_4" Type="money" Nullable="false" />
+          <Property Name="SLMN_UDF_5" Type="money" Nullable="false" />
+          <Property Name="SLMN_UDF_6" Type="money" Nullable="false" />
+          <Property Name="SLMN_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="SKUBALANCE">
+          <Key>
+            <PropertyRef Name="SKB_KEY" />
+          </Key>
+          <Property Name="SKB_KEY" Type="int" Nullable="false" />
+          <Property Name="SKB_SKU" Type="int" Nullable="false" />
+          <Property Name="SKB_DATE" Type="datetime" Nullable="false" />
+          <Property Name="SKB_WL" Type="int" Nullable="false" />
+          <Property Name="SKB_FIFO" Type="int" />
+          <Property Name="SKB_LOT_NO" Type="varchar" MaxLength="16" />
+          <Property Name="SKB_SERIAL" Type="varchar" MaxLength="30" />
+          <Property Name="SKB_UTQ" Type="int" Nullable="false" />
+          <Property Name="SKB_UTQQTY" Type="money" Nullable="false" />
+          <Property Name="SKB_U_PRC" Type="money" Nullable="false" />
+          <Property Name="SKB_QTY" Type="money" Nullable="false" />
+          <Property Name="SKB_COST" Type="money" Nullable="false" />
+          <Property Name="SKB_EXP_D" Type="datetime" />
+          <Property Name="SKB_MAN_D" Type="datetime" />
+          <Property Name="SKB_DI" Type="int" Nullable="false" />
+          <Property Name="SKB_CREATOR" Type="int" />
+          <Property Name="SKB_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="SKUMASTER">
+          <Key>
+            <PropertyRef Name="SKU_KEY" />
+          </Key>
+          <Property Name="SKU_KEY" Type="int" Nullable="false" />
+          <Property Name="SKU_CODE" Type="varchar" MaxLength="24" Nullable="false" />
+          <Property Name="SKU_NAME" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="SKU_E_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="SKU_BARCODE" Type="varchar" MaxLength="24" />
+          <Property Name="SKU_BRN" Type="int" Nullable="false" />
+          <Property Name="SKU_ICCAT" Type="int" Nullable="false" />
+          <Property Name="SKU_S_UTQ" Type="int" Nullable="false" />
+          <Property Name="SKU_T_UTQ" Type="int" Nullable="false" />
+          <Property Name="SKU_K_UTQ" Type="int" Nullable="false" />
+          <Property Name="SKU_VAT_TY" Type="smallint" Nullable="false" />
+          <Property Name="SKU_VAT" Type="money" Nullable="false" />
+          <Property Name="SKU_COST_TY" Type="smallint" Nullable="false" />
+          <Property Name="SKU_STD_COST" Type="money" Nullable="false" />
+          <Property Name="SKU_STOCK" Type="smallint" Nullable="false" />
+          <Property Name="SKU_SKUALT" Type="int" Nullable="false" />
+          <Property Name="SKU_WH_TY" Type="smallint" Nullable="false" />
+          <Property Name="SKU_WH_RATE" Type="money" Nullable="false" />
+          <Property Name="SKU_MSG_1" Type="varchar" MaxLength="60" />
+          <Property Name="SKU_MSG_2" Type="varchar" MaxLength="60" />
+          <Property Name="SKU_MSG_3" Type="varchar" MaxLength="60" />
+          <Property Name="SKU_MIXCOLOR" Type="int" Nullable="false" />
+          <Property Name="SKU_ICCOLOR" Type="int" Nullable="false" />
+          <Property Name="SKU_ICSIZE" Type="int" Nullable="false" />
+          <Property Name="SKU_ICDEPT" Type="int" Nullable="false" />
+          <Property Name="SKU_ICGL" Type="int" Nullable="false" />
+          <Property Name="SKU_ICPRT" Type="int" Nullable="false" />
+          <Property Name="SKU_WL" Type="int" Nullable="false" />
+          <Property Name="SKU_ENABLE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="SKU_P_ENABLE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="SKU_MIN_QTY" Type="money" Nullable="false" />
+          <Property Name="SKU_MAX_QTY" Type="money" Nullable="false" />
+          <Property Name="SKU_MIN_ORDER" Type="money" Nullable="false" />
+          <Property Name="SKU_MAX_ORDER" Type="money" Nullable="false" />
+          <Property Name="SKU_LEAD_TIME" Type="money" Nullable="false" />
+          <Property Name="SKU_SATISFY" Type="money" Nullable="false" />
+          <Property Name="SKU_SAFTY" Type="money" Nullable="false" />
+          <Property Name="SKU_FREQUENCY" Type="int" />
+          <Property Name="SKU_ACCESS" Type="smallint" Nullable="false" />
+          <Property Name="SKU_ABC" Type="int" />
+          <Property Name="SKU_EOQ_A" Type="money" Nullable="false" />
+          <Property Name="SKU_EOQ_P" Type="money" Nullable="false" />
+          <Property Name="SKU_EOQ_C" Type="money" Nullable="false" />
+          <Property Name="SKU_EOQ_NO" Type="money" Nullable="false" />
+          <Property Name="SKU_SPEC" Type="varchar" MaxLength="7000" />
+          <Property Name="SKU_USAGE" Type="varchar" MaxLength="7000" />
+          <Property Name="SKU_REMARK" Type="varchar" MaxLength="255" />
+          <Property Name="SKU_LAST_O" Type="datetime" Nullable="false" />
+          <Property Name="SKU_LAST_R" Type="datetime" Nullable="false" />
+          <Property Name="SKU_LAST_RCOST" Type="money" Nullable="false" />
+          <Property Name="SKU_LAST_RQTY" Type="money" Nullable="false" />
+          <Property Name="SKU_LAST_COMMIT" Type="datetime" />
+          <Property Name="SKU_SENSITIVITY" Type="int" />
+          <Property Name="SKU_SENS_POS" Type="int" />
+          <Property Name="SKU_LAST_UBCOST" Type="money" Nullable="false" />
+          <Property Name="SKU_LAST_UCCOST" Type="money" Nullable="false" />
+          <Property Name="SKU_ALERT" Type="smallint" Nullable="false" />
+          <Property Name="SKU_ALERT_MSG" Type="varchar" MaxLength="255" />
+          <Property Name="SKU_PRICE" Type="int" />
+          <Property Name="SKU_EQ_FACTOR" Type="varchar" MaxLength="20" />
+          <Property Name="SKU_EQ_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="SKU_UDF_1" Type="money" Nullable="false" />
+          <Property Name="SKU_UDF_2" Type="money" Nullable="false" />
+          <Property Name="SKU_UDF_3" Type="money" Nullable="false" />
+          <Property Name="SKU_UDF_4" Type="money" Nullable="false" />
+          <Property Name="SKU_UDF_5" Type="money" Nullable="false" />
+          <Property Name="SKU_UDF_6" Type="money" Nullable="false" />
+          <Property Name="SKU_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="SKUMOVE">
+          <Key>
+            <PropertyRef Name="SKM_KEY" />
+          </Key>
+          <Property Name="SKM_KEY" Type="int" Nullable="false" />
+          <Property Name="SKM_SKU" Type="int" Nullable="false" />
+          <Property Name="SKM_DI" Type="int" Nullable="false" />
+          <Property Name="SKM_WL" Type="int" Nullable="false" />
+          <Property Name="SKM_REFER_DI" Type="int" />
+          <Property Name="SKM_LOT_NO" Type="varchar" MaxLength="16" />
+          <Property Name="SKM_SERIAL" Type="varchar" MaxLength="30" />
+          <Property Name="SKM_QTY" Type="money" Nullable="false" />
+          <Property Name="SKM_COST" Type="money" Nullable="false" />
+          <Property Name="SKM_SELL" Type="money" Nullable="false" />
+          <Property Name="SKM_VAT" Type="money" Nullable="false" />
+          <Property Name="SKM_B4_DISC" Type="money" Nullable="false" />
+          <Property Name="SKM_AF_GP" Type="money" Nullable="false" />
+          <Property Name="SKM_Q_FREE" Type="money" Nullable="false" />
+          <Property Name="SKM_EXP_D" Type="datetime" />
+          <Property Name="SKM_MAN_D" Type="datetime" />
+          <Property Name="SKM_SHOW_ORDER" Type="int" />
+          <Property Name="SKM_AC" Type="int" Nullable="false" />
+          <Property Name="SKM_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="SKUWARELOCATION">
+          <Key>
+            <PropertyRef Name="SKUWL_KEY" />
+          </Key>
+          <Property Name="SKUWL_KEY" Type="int" Nullable="false" />
+          <Property Name="SKUWL_SKU" Type="int" Nullable="false" />
+          <Property Name="SKUWL_WL" Type="int" Nullable="false" />
+          <Property Name="SKUWL_SEQ" Type="int" Nullable="false" />
+          <Property Name="SKUWL_GOODS" Type="int" Nullable="false" />
+          <Property Name="SKUWL_USED_QTY" Type="money" Nullable="false" />
+          <Property Name="SKUWL_FREQUENCY" Type="int" Nullable="false" />
+          <Property Name="SKUWL_MIN_QTY" Type="int" Nullable="false" />
+          <Property Name="SKUWL_MAX_QTY" Type="int" Nullable="false" />
+          <Property Name="SKUWL_DT" Type="int" Nullable="false" />
+          <Property Name="SKUWL_RPLN_FROM" Type="int" Nullable="false" />
+          <Property Name="SKUWL_RPLN_WL" Type="int" Nullable="false" />
+          <Property Name="SKUWL_RPLN_WHEN" Type="int" Nullable="false" />
+          <Property Name="SKUWL_RPLN_QTY" Type="int" Nullable="false" />
+          <Property Name="SKUWL_RPLN_ROUND" Type="int" Nullable="false" />
+          <Property Name="SKUWL_TOPV_ABC" Type="int" Nullable="false" />
+          <Property Name="SKUWL_TOPQ_ABC" Type="int" Nullable="false" />
+          <Property Name="SKUWL_UPRC_ABC" Type="int" Nullable="false" />
+          <Property Name="SKUWL_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="TRANSTKD">
+          <Key>
+            <PropertyRef Name="TRD_KEY" />
+          </Key>
+          <Property Name="TRD_KEY" Type="int" Nullable="false" />
+          <Property Name="TRD_TRH" Type="int" Nullable="false" />
+          <Property Name="TRD_SEQ" Type="int" />
+          <Property Name="TRD_GOODS" Type="int" Nullable="false" />
+          <Property Name="TRD_KEYIN" Type="varchar" MaxLength="24" Nullable="false" />
+          <Property Name="TRD_VAT_TY" Type="smallint" Nullable="false" />
+          <Property Name="TRD_VAT" Type="money" Nullable="false" />
+          <Property Name="TRD_VAT_R" Type="money" Nullable="false" />
+          <Property Name="TRD_NM_PRC" Type="money" Nullable="false" />
+          <Property Name="TRD_NM_VATIO" Type="int" />
+          <Property Name="TRD_NM_U_DSC" Type="varchar" MaxLength="60" />
+          <Property Name="TRD_QTY" Type="money" Nullable="false" />
+          <Property Name="TRD_Q_FREE" Type="money" Nullable="false" />
+          <Property Name="TRD_K_U_PRC" Type="money" Nullable="false" />
+          <Property Name="TRD_U_PRC" Type="money" Nullable="false" />
+          <Property Name="TRD_U_VATIO" Type="int" />
+          <Property Name="TRD_DSC_KEYIN" Type="varchar" MaxLength="60" />
+          <Property Name="TRD_DSC_KEYINV" Type="money" Nullable="false" />
+          <Property Name="TRD_G_KEYIN" Type="money" Nullable="false" />
+          <Property Name="TRD_G_SELL" Type="money" Nullable="false" />
+          <Property Name="TRD_G_VAT" Type="money" Nullable="false" />
+          <Property Name="TRD_G_AMT" Type="money" Nullable="false" />
+          <Property Name="TRD_TDSC_KEYINV" Type="money" Nullable="false" />
+          <Property Name="TRD_N_SELL" Type="money" Nullable="false" />
+          <Property Name="TRD_N_VAT" Type="money" Nullable="false" />
+          <Property Name="TRD_N_AMT" Type="money" Nullable="false" />
+          <Property Name="TRD_B_SELL" Type="money" Nullable="false" />
+          <Property Name="TRD_B_VAT" Type="money" Nullable="false" />
+          <Property Name="TRD_B_AMT" Type="money" Nullable="false" />
+          <Property Name="TRD_B_GROUP" Type="int" />
+          <Property Name="TRD_B_RELOCATE" Type="money" Nullable="false" />
+          <Property Name="TRD_B_UPRC" Type="money" Nullable="false" />
+          <Property Name="TRD_SKU" Type="int" Nullable="false" />
+          <Property Name="TRD_UTQQTY" Type="money" Nullable="false" />
+          <Property Name="TRD_UTQNAME" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="TRD_WEIGHT" Type="money" Nullable="false" />
+          <Property Name="TRD_COST_TY" Type="smallint" Nullable="false" />
+          <Property Name="TRD_WH_TY" Type="smallint" Nullable="false" />
+          <Property Name="TRD_WH_RATE" Type="money" Nullable="false" />
+          <Property Name="TRD_WH_TAX" Type="money" Nullable="false" />
+          <Property Name="TRD_LOT_NO" Type="varchar" MaxLength="16" />
+          <Property Name="TRD_SERIAL" Type="varchar" MaxLength="30" />
+          <Property Name="TRD_EXP_D" Type="datetime" />
+          <Property Name="TRD_MAN_D" Type="datetime" />
+          <Property Name="TRD_WL" Type="int" />
+          <Property Name="TRD_TO_WL" Type="int" />
+          <Property Name="TRD_SH_AUTO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="TRD_SH_CODE" Type="varchar" MaxLength="60" />
+          <Property Name="TRD_SH_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="TRD_SH_QTY" Type="money" Nullable="false" />
+          <Property Name="TRD_SH_UPRC" Type="money" Nullable="false" />
+          <Property Name="TRD_SH_GSELL" Type="money" Nullable="false" />
+          <Property Name="TRD_SH_GVAT" Type="money" Nullable="false" />
+          <Property Name="TRD_SH_GAMT" Type="money" Nullable="false" />
+          <Property Name="TRD_SH_REMARK" Type="varchar" MaxLength="7000" />
+          <Property Name="TRD_RTN_UPRC" Type="money" Nullable="false" />
+          <Property Name="TRD_RTN_AMT" Type="money" Nullable="false" />
+          <Property Name="TRD_COMM_RATE" Type="money" Nullable="false" />
+          <Property Name="TRD_COMM_AMT" Type="money" Nullable="false" />
+          <Property Name="TRD_AC" Type="int" Nullable="false" />
+          <Property Name="TRD_UQTY" Type="money" Nullable="false" />
+          <Property Name="TRD_UQ_FREE" Type="money" Nullable="false" />
+          <Property Name="TRD_OPTION" Type="int" />
+          <Property Name="TRD_REFER_REF" Type="varchar" MaxLength="16" />
+          <Property Name="TRD_REFER_DATE" Type="datetime" />
+          <Property Name="TRD_REFER_DI" Type="int" />
+          <Property Name="TRD_REFER_TRH" Type="int" />
+          <Property Name="TRD_REFER_TRD" Type="int" />
+          <Property Name="TRD_OR_QTY" Type="money" Nullable="false" />
+          <Property Name="TRD_OR_U_PRC" Type="money" Nullable="false" />
+          <Property Name="TRD_OR_DSC_KEYINV" Type="money" Nullable="false" />
+          <Property Name="TRD_OR_G_KEYIN" Type="money" Nullable="false" />
+          <Property Name="TRD_OR_Q_FREE" Type="money" Nullable="false" />
+          <Property Name="TRD_AC_QTY" Type="money" Nullable="false" />
+          <Property Name="TRD_AC_G_KEYIN" Type="money" Nullable="false" />
+          <Property Name="TRD_AC_Q_FREE" Type="money" Nullable="false" />
+          <Property Name="TRD_NX_QTY" Type="money" Nullable="false" />
+          <Property Name="TRD_NX_DSC_KEYIN" Type="varchar" MaxLength="60" />
+          <Property Name="TRD_NX_DSC_KEYINV" Type="money" Nullable="false" />
+          <Property Name="TRD_NX_G_KEYIN" Type="money" Nullable="false" />
+          <Property Name="TRD_NX_Q_FREE" Type="money" Nullable="false" />
+          <Property Name="TRD_ADJ_PAMT" Type="money" Nullable="false" />
+          <Property Name="TRD_ADJ_MAMT" Type="money" Nullable="false" />
+          <Property Name="TRD_B_PCNT" Type="money" Nullable="false" />
+          <Property Name="TRD_PRICE" Type="int" />
+          <Property Name="TRD_EQ_FACTOR" Type="varchar" MaxLength="20" />
+          <Property Name="TRD_EQ_V" Type="money" Nullable="false" />
+          <Property Name="TRD_CAMPAIGN" Type="int" />
+          <Property Name="TRD_ARCPGN" Type="int" />
+          <Property Name="TRD_ARCPGN_C" Type="varchar" MaxLength="16" />
+          <Property Name="TRD_C_U_PRC" Type="money" Nullable="false" />
+          <Property Name="TRD_C_DSC" Type="varchar" MaxLength="60" />
+          <Property Name="TRD_C_DSCV" Type="money" Nullable="false" />
+          <Property Name="TRD_CONSIGN" Type="varchar" MaxLength="30" />
+          <Property Name="TRD_CNSN_B4" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="TRD_CREATOR" Type="int" />
+          <Property Name="TRD_SKUALT" Type="int" />
+          <Property Name="TRD_ASRTH" Type="int" />
+          <Property Name="TRD_ICCOLOR" Type="int" />
+          <Property Name="TRD_ASRT_QTY" Type="money" Nullable="false" />
+          <Property Name="TRD_ASRT_FREE" Type="money" Nullable="false" />
+          <Property Name="TRD_ASRT_U_PRC" Type="money" Nullable="false" />
+          <Property Name="TRD_ASRT_U_DSC" Type="varchar" MaxLength="60" />
+          <Property Name="TRD_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="TRANSTKH">
+          <Key>
+            <PropertyRef Name="TRH_KEY" />
+          </Key>
+          <Property Name="TRH_KEY" Type="int" Nullable="false" />
+          <Property Name="TRH_DI" Type="int" Nullable="false" />
+          <Property Name="TRH_PSTATUS" Type="int" />
+          <Property Name="TRH_LSTATUS" Type="int" />
+          <Property Name="TRH_FLAG" Type="int" />
+          <Property Name="TRH_DEPT" Type="int" Nullable="false" />
+          <Property Name="TRH_BR" Type="int" Nullable="false" />
+          <Property Name="TRH_MKTP" Type="int" Nullable="false" />
+          <Property Name="TRH_PRMT" Type="int" Nullable="false" />
+          <Property Name="TRH_ARPRB" Type="varchar" MaxLength="16" />
+          <Property Name="TRH_N_QTY" Type="money" Nullable="false" />
+          <Property Name="TRH_N_ITEMS" Type="int" />
+          <Property Name="TRH_REMARK" Type="varchar" MaxLength="7000" />
+          <Property Name="TRH_SB" Type="int" Nullable="false" />
+          <Property Name="TRH_SHIP_REMARK" Type="varchar" MaxLength="255" />
+          <Property Name="TRH_SHIP_DATE" Type="datetime" Nullable="false" />
+          <Property Name="TRH_SHIP_ADDB" Type="int" />
+          <Property Name="TRH_VAT_TY" Type="smallint" Nullable="false" />
+          <Property Name="TRH_VAT" Type="money" Nullable="false" />
+          <Property Name="TRH_VAT_R" Type="money" Nullable="false" />
+          <Property Name="TRH_VATIO" Type="int" />
+          <Property Name="TRH_PRJ" Type="int" Nullable="false" />
+          <Property Name="TRH_CANCEL_DATE" Type="datetime" />
+          <Property Name="TRH_LAST_DATE" Type="datetime" />
+          <Property Name="TRH_OPTION" Type="int" />
+          <Property Name="TRH_REFER_XREF" Type="varchar" MaxLength="16" />
+          <Property Name="TRH_REFER_IREF" Type="varchar" MaxLength="16" />
+          <Property Name="TRH_REFER_PERSON" Type="varchar" MaxLength="255" />
+          <Property Name="TRH_REFER_XTRA1" Type="varchar" MaxLength="255" />
+          <Property Name="TRH_REFER_XTRA2" Type="varchar" MaxLength="255" />
+          <Property Name="TRH_TAP" Type="int" />
+          <Property Name="TRH_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <EntityType Name="UOFQTY">
+          <Key>
+            <PropertyRef Name="UTQ_KEY" />
+          </Key>
+          <Property Name="UTQ_KEY" Type="int" Nullable="false" />
+          <Property Name="UTQ_NAME" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="UTQ_QTY" Type="money" Nullable="false" />
+          <Property Name="UTQ_LASTUPD" Type="varchar" MaxLength="17" />
+        </EntityType>
+        <Association Name="APPLU2GOODS">
+          <End Role="GOODSMASTER" Type="Self.GOODSMASTER" Multiplicity="1" />
+          <End Role="APPLU" Type="Self.APPLU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GOODSMASTER">
+              <PropertyRef Name="GOODS_KEY" />
+            </Principal>
+            <Dependent Role="APPLU">
+              <PropertyRef Name="APPLU_GOODS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AR2ARCAT">
+          <End Role="ARCAT" Type="Self.ARCAT" Multiplicity="1" />
+          <End Role="ARFILE" Type="Self.ARFILE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARCAT">
+              <PropertyRef Name="ARCAT_KEY" />
+            </Principal>
+            <Dependent Role="ARFILE">
+              <PropertyRef Name="AR_ARCAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AR2DEPT">
+          <End Role="DEPTTAB" Type="Self.DEPTTAB" Multiplicity="1" />
+          <End Role="ARFILE" Type="Self.ARFILE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPTTAB">
+              <PropertyRef Name="DEPT_KEY" />
+            </Principal>
+            <Dependent Role="ARFILE">
+              <PropertyRef Name="AR_DEPT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ARA2ADDB">
+          <End Role="ADDRBOOK" Type="Self.ADDRBOOK" Multiplicity="1" />
+          <End Role="ARADDRESS" Type="Self.ARADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADDRBOOK">
+              <PropertyRef Name="ADDB_KEY" />
+            </Principal>
+            <Dependent Role="ARADDRESS">
+              <PropertyRef Name="ARA_ADDB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ARA2AR">
+          <End Role="ARFILE" Type="Self.ARFILE" Multiplicity="1" />
+          <End Role="ARADDRESS" Type="Self.ARADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARFILE">
+              <PropertyRef Name="AR_KEY" />
+            </Principal>
+            <Dependent Role="ARADDRESS">
+              <PropertyRef Name="ARA_AR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ARPLU2ARPRB">
+          <End Role="ARPRICETAB" Type="Self.ARPRICETAB" Multiplicity="1" />
+          <End Role="ARPLU" Type="Self.ARPLU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARPRICETAB">
+              <PropertyRef Name="ARPRB_KEY" />
+            </Principal>
+            <Dependent Role="ARPLU">
+              <PropertyRef Name="ARPLU_ARPRB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ARPLU2GOODS">
+          <End Role="GOODSMASTER" Type="Self.GOODSMASTER" Multiplicity="1" />
+          <End Role="ARPLU" Type="Self.ARPLU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GOODSMASTER">
+              <PropertyRef Name="GOODS_KEY" />
+            </Principal>
+            <Dependent Role="ARPLU">
+              <PropertyRef Name="ARPLU_GOODS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DI2DT">
+          <End Role="DOCTYPE" Type="Self.DOCTYPE" Multiplicity="1" />
+          <End Role="DOCINFO" Type="Self.DOCINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCTYPE">
+              <PropertyRef Name="DT_KEY" />
+            </Principal>
+            <Dependent Role="DOCINFO">
+              <PropertyRef Name="DI_DT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GOODS2SKU">
+          <End Role="SKUMASTER" Type="Self.SKUMASTER" Multiplicity="1" />
+          <End Role="GOODSMASTER" Type="Self.GOODSMASTER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SKUMASTER">
+              <PropertyRef Name="SKU_KEY" />
+            </Principal>
+            <Dependent Role="GOODSMASTER">
+              <PropertyRef Name="GOODS_SKU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GOODS2UTQ">
+          <End Role="UOFQTY" Type="Self.UOFQTY" Multiplicity="1" />
+          <End Role="GOODSMASTER" Type="Self.GOODSMASTER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UOFQTY">
+              <PropertyRef Name="UTQ_KEY" />
+            </Principal>
+            <Dependent Role="GOODSMASTER">
+              <PropertyRef Name="GOODS_UTQ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SKB2DI">
+          <End Role="DOCINFO" Type="Self.DOCINFO" Multiplicity="1" />
+          <End Role="SKUBALANCE" Type="Self.SKUBALANCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCINFO">
+              <PropertyRef Name="DI_KEY" />
+            </Principal>
+            <Dependent Role="SKUBALANCE">
+              <PropertyRef Name="SKB_DI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SKB2SKU">
+          <End Role="SKUMASTER" Type="Self.SKUMASTER" Multiplicity="1" />
+          <End Role="SKUBALANCE" Type="Self.SKUBALANCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SKUMASTER">
+              <PropertyRef Name="SKU_KEY" />
+            </Principal>
+            <Dependent Role="SKUBALANCE">
+              <PropertyRef Name="SKB_SKU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SKB2UTQ">
+          <End Role="UOFQTY" Type="Self.UOFQTY" Multiplicity="1" />
+          <End Role="SKUBALANCE" Type="Self.SKUBALANCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UOFQTY">
+              <PropertyRef Name="UTQ_KEY" />
+            </Principal>
+            <Dependent Role="SKUBALANCE">
+              <PropertyRef Name="SKB_UTQ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SKM2DI">
+          <End Role="DOCINFO" Type="Self.DOCINFO" Multiplicity="1" />
+          <End Role="SKUMOVE" Type="Self.SKUMOVE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCINFO">
+              <PropertyRef Name="DI_KEY" />
+            </Principal>
+            <Dependent Role="SKUMOVE">
+              <PropertyRef Name="SKM_DI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SKM2SKU">
+          <End Role="SKUMASTER" Type="Self.SKUMASTER" Multiplicity="1" />
+          <End Role="SKUMOVE" Type="Self.SKUMOVE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SKUMASTER">
+              <PropertyRef Name="SKU_KEY" />
+            </Principal>
+            <Dependent Role="SKUMOVE">
+              <PropertyRef Name="SKM_SKU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SKU2ICCAT">
+          <End Role="ICCAT" Type="Self.ICCAT" Multiplicity="1" />
+          <End Role="SKUMASTER" Type="Self.SKUMASTER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ICCAT">
+              <PropertyRef Name="ICCAT_KEY" />
+            </Principal>
+            <Dependent Role="SKUMASTER">
+              <PropertyRef Name="SKU_ICCAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SKU2ICDEPT">
+          <End Role="ICDEPT" Type="Self.ICDEPT" Multiplicity="1" />
+          <End Role="SKUMASTER" Type="Self.SKUMASTER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ICDEPT">
+              <PropertyRef Name="ICDEPT_KEY" />
+            </Principal>
+            <Dependent Role="SKUMASTER">
+              <PropertyRef Name="SKU_ICDEPT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SKUK2UTQ">
+          <End Role="UOFQTY" Type="Self.UOFQTY" Multiplicity="1" />
+          <End Role="SKUMASTER" Type="Self.SKUMASTER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UOFQTY">
+              <PropertyRef Name="UTQ_KEY" />
+            </Principal>
+            <Dependent Role="SKUMASTER">
+              <PropertyRef Name="SKU_K_UTQ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SKUS2UTQ">
+          <End Role="UOFQTY" Type="Self.UOFQTY" Multiplicity="1" />
+          <End Role="SKUMASTER" Type="Self.SKUMASTER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UOFQTY">
+              <PropertyRef Name="UTQ_KEY" />
+            </Principal>
+            <Dependent Role="SKUMASTER">
+              <PropertyRef Name="SKU_S_UTQ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SKUT2UTQ">
+          <End Role="UOFQTY" Type="Self.UOFQTY" Multiplicity="1" />
+          <End Role="SKUMASTER" Type="Self.SKUMASTER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UOFQTY">
+              <PropertyRef Name="UTQ_KEY" />
+            </Principal>
+            <Dependent Role="SKUMASTER">
+              <PropertyRef Name="SKU_T_UTQ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SKUWL2DT">
+          <End Role="DOCTYPE" Type="Self.DOCTYPE" Multiplicity="1" />
+          <End Role="SKUWARELOCATION" Type="Self.SKUWARELOCATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCTYPE">
+              <PropertyRef Name="DT_KEY" />
+            </Principal>
+            <Dependent Role="SKUWARELOCATION">
+              <PropertyRef Name="SKUWL_DT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SKUWL2GOODS">
+          <End Role="GOODSMASTER" Type="Self.GOODSMASTER" Multiplicity="1" />
+          <End Role="SKUWARELOCATION" Type="Self.SKUWARELOCATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GOODSMASTER">
+              <PropertyRef Name="GOODS_KEY" />
+            </Principal>
+            <Dependent Role="SKUWARELOCATION">
+              <PropertyRef Name="SKUWL_GOODS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SKUWL2SKU">
+          <End Role="SKUMASTER" Type="Self.SKUMASTER" Multiplicity="1" />
+          <End Role="SKUWARELOCATION" Type="Self.SKUWARELOCATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SKUMASTER">
+              <PropertyRef Name="SKU_KEY" />
+            </Principal>
+            <Dependent Role="SKUWARELOCATION">
+              <PropertyRef Name="SKUWL_SKU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRD2TRH">
+          <End Role="TRANSTKH" Type="Self.TRANSTKH" Multiplicity="1" />
+          <End Role="TRANSTKD" Type="Self.TRANSTKD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRANSTKH">
+              <PropertyRef Name="TRH_KEY" />
+            </Principal>
+            <Dependent Role="TRANSTKD">
+              <PropertyRef Name="TRD_TRH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRH2DEPT">
+          <End Role="DEPTTAB" Type="Self.DEPTTAB" Multiplicity="1" />
+          <End Role="TRANSTKH" Type="Self.TRANSTKH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPTTAB">
+              <PropertyRef Name="DEPT_KEY" />
+            </Principal>
+            <Dependent Role="TRANSTKH">
+              <PropertyRef Name="TRH_DEPT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRH2DI">
+          <End Role="DOCINFO" Type="Self.DOCINFO" Multiplicity="1" />
+          <End Role="TRANSTKH" Type="Self.TRANSTKH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCINFO">
+              <PropertyRef Name="DI_KEY" />
+            </Principal>
+            <Dependent Role="TRANSTKH">
+              <PropertyRef Name="TRH_DI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRH2PRJ">
+          <End Role="PRJTAB" Type="Self.PRJTAB" Multiplicity="1" />
+          <End Role="TRANSTKH" Type="Self.TRANSTKH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRJTAB">
+              <PropertyRef Name="PRJ_KEY" />
+            </Principal>
+            <Dependent Role="TRANSTKH">
+              <PropertyRef Name="TRH_PRJ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ERPModelStoreContainer">
+          <EntitySet Name="ADDRBOOK" EntityType="Self.ADDRBOOK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APPLU" EntityType="Self.APPLU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARADDRESS" EntityType="Self.ARADDRESS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARCAT" EntityType="Self.ARCAT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARFILE" EntityType="Self.ARFILE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARPLU" EntityType="Self.ARPLU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARPRICETAB" EntityType="Self.ARPRICETAB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DEPTTAB" EntityType="Self.DEPTTAB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DOCINFO" EntityType="Self.DOCINFO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DOCTYPE" EntityType="Self.DOCTYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GOODSMASTER" EntityType="Self.GOODSMASTER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ICCAT" EntityType="Self.ICCAT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ICDEPT" EntityType="Self.ICDEPT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRJTAB" EntityType="Self.PRJTAB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SALESMAN" EntityType="Self.SALESMAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SKUBALANCE" EntityType="Self.SKUBALANCE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SKUMASTER" EntityType="Self.SKUMASTER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SKUMOVE" EntityType="Self.SKUMOVE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SKUWARELOCATION" EntityType="Self.SKUWARELOCATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRANSTKD" EntityType="Self.TRANSTKD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRANSTKH" EntityType="Self.TRANSTKH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UOFQTY" EntityType="Self.UOFQTY" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="APPLU2GOODS" Association="Self.APPLU2GOODS">
+            <End Role="GOODSMASTER" EntitySet="GOODSMASTER" />
+            <End Role="APPLU" EntitySet="APPLU" />
+          </AssociationSet>
+          <AssociationSet Name="AR2ARCAT" Association="Self.AR2ARCAT">
+            <End Role="ARCAT" EntitySet="ARCAT" />
+            <End Role="ARFILE" EntitySet="ARFILE" />
+          </AssociationSet>
+          <AssociationSet Name="AR2DEPT" Association="Self.AR2DEPT">
+            <End Role="DEPTTAB" EntitySet="DEPTTAB" />
+            <End Role="ARFILE" EntitySet="ARFILE" />
+          </AssociationSet>
+          <AssociationSet Name="ARA2ADDB" Association="Self.ARA2ADDB">
+            <End Role="ADDRBOOK" EntitySet="ADDRBOOK" />
+            <End Role="ARADDRESS" EntitySet="ARADDRESS" />
+          </AssociationSet>
+          <AssociationSet Name="ARA2AR" Association="Self.ARA2AR">
+            <End Role="ARFILE" EntitySet="ARFILE" />
+            <End Role="ARADDRESS" EntitySet="ARADDRESS" />
+          </AssociationSet>
+          <AssociationSet Name="ARPLU2ARPRB" Association="Self.ARPLU2ARPRB">
+            <End Role="ARPRICETAB" EntitySet="ARPRICETAB" />
+            <End Role="ARPLU" EntitySet="ARPLU" />
+          </AssociationSet>
+          <AssociationSet Name="ARPLU2GOODS" Association="Self.ARPLU2GOODS">
+            <End Role="GOODSMASTER" EntitySet="GOODSMASTER" />
+            <End Role="ARPLU" EntitySet="ARPLU" />
+          </AssociationSet>
+          <AssociationSet Name="DI2DT" Association="Self.DI2DT">
+            <End Role="DOCTYPE" EntitySet="DOCTYPE" />
+            <End Role="DOCINFO" EntitySet="DOCINFO" />
+          </AssociationSet>
+          <AssociationSet Name="GOODS2SKU" Association="Self.GOODS2SKU">
+            <End Role="SKUMASTER" EntitySet="SKUMASTER" />
+            <End Role="GOODSMASTER" EntitySet="GOODSMASTER" />
+          </AssociationSet>
+          <AssociationSet Name="GOODS2UTQ" Association="Self.GOODS2UTQ">
+            <End Role="UOFQTY" EntitySet="UOFQTY" />
+            <End Role="GOODSMASTER" EntitySet="GOODSMASTER" />
+          </AssociationSet>
+          <AssociationSet Name="SKB2DI" Association="Self.SKB2DI">
+            <End Role="DOCINFO" EntitySet="DOCINFO" />
+            <End Role="SKUBALANCE" EntitySet="SKUBALANCE" />
+          </AssociationSet>
+          <AssociationSet Name="SKB2SKU" Association="Self.SKB2SKU">
+            <End Role="SKUMASTER" EntitySet="SKUMASTER" />
+            <End Role="SKUBALANCE" EntitySet="SKUBALANCE" />
+          </AssociationSet>
+          <AssociationSet Name="SKB2UTQ" Association="Self.SKB2UTQ">
+            <End Role="UOFQTY" EntitySet="UOFQTY" />
+            <End Role="SKUBALANCE" EntitySet="SKUBALANCE" />
+          </AssociationSet>
+          <AssociationSet Name="SKM2DI" Association="Self.SKM2DI">
+            <End Role="DOCINFO" EntitySet="DOCINFO" />
+            <End Role="SKUMOVE" EntitySet="SKUMOVE" />
+          </AssociationSet>
+          <AssociationSet Name="SKM2SKU" Association="Self.SKM2SKU">
+            <End Role="SKUMASTER" EntitySet="SKUMASTER" />
+            <End Role="SKUMOVE" EntitySet="SKUMOVE" />
+          </AssociationSet>
+          <AssociationSet Name="SKU2ICCAT" Association="Self.SKU2ICCAT">
+            <End Role="ICCAT" EntitySet="ICCAT" />
+            <End Role="SKUMASTER" EntitySet="SKUMASTER" />
+          </AssociationSet>
+          <AssociationSet Name="SKU2ICDEPT" Association="Self.SKU2ICDEPT">
+            <End Role="ICDEPT" EntitySet="ICDEPT" />
+            <End Role="SKUMASTER" EntitySet="SKUMASTER" />
+          </AssociationSet>
+          <AssociationSet Name="SKUK2UTQ" Association="Self.SKUK2UTQ">
+            <End Role="UOFQTY" EntitySet="UOFQTY" />
+            <End Role="SKUMASTER" EntitySet="SKUMASTER" />
+          </AssociationSet>
+          <AssociationSet Name="SKUS2UTQ" Association="Self.SKUS2UTQ">
+            <End Role="UOFQTY" EntitySet="UOFQTY" />
+            <End Role="SKUMASTER" EntitySet="SKUMASTER" />
+          </AssociationSet>
+          <AssociationSet Name="SKUT2UTQ" Association="Self.SKUT2UTQ">
+            <End Role="UOFQTY" EntitySet="UOFQTY" />
+            <End Role="SKUMASTER" EntitySet="SKUMASTER" />
+          </AssociationSet>
+          <AssociationSet Name="SKUWL2DT" Association="Self.SKUWL2DT">
+            <End Role="DOCTYPE" EntitySet="DOCTYPE" />
+            <End Role="SKUWARELOCATION" EntitySet="SKUWARELOCATION" />
+          </AssociationSet>
+          <AssociationSet Name="SKUWL2GOODS" Association="Self.SKUWL2GOODS">
+            <End Role="GOODSMASTER" EntitySet="GOODSMASTER" />
+            <End Role="SKUWARELOCATION" EntitySet="SKUWARELOCATION" />
+          </AssociationSet>
+          <AssociationSet Name="SKUWL2SKU" Association="Self.SKUWL2SKU">
+            <End Role="SKUMASTER" EntitySet="SKUMASTER" />
+            <End Role="SKUWARELOCATION" EntitySet="SKUWARELOCATION" />
+          </AssociationSet>
+          <AssociationSet Name="TRD2TRH" Association="Self.TRD2TRH">
+            <End Role="TRANSTKH" EntitySet="TRANSTKH" />
+            <End Role="TRANSTKD" EntitySet="TRANSTKD" />
+          </AssociationSet>
+          <AssociationSet Name="TRH2DEPT" Association="Self.TRH2DEPT">
+            <End Role="DEPTTAB" EntitySet="DEPTTAB" />
+            <End Role="TRANSTKH" EntitySet="TRANSTKH" />
+          </AssociationSet>
+          <AssociationSet Name="TRH2DI" Association="Self.TRH2DI">
+            <End Role="DOCINFO" EntitySet="DOCINFO" />
+            <End Role="TRANSTKH" EntitySet="TRANSTKH" />
+          </AssociationSet>
+          <AssociationSet Name="TRH2PRJ" Association="Self.TRH2PRJ">
+            <End Role="PRJTAB" EntitySet="PRJTAB" />
+            <End Role="TRANSTKH" EntitySet="TRANSTKH" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+		<!-- CSDL content -->
+		<edmx:ConceptualModels>
+			<Schema Namespace="ERPModel" Alias="Self" annotation:UseStrongSpatialTypes="false"
+			        xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation"
+			        xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation"
+			        xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+				<EntityType Name="ADDRBOOK">
+					<Key>
+						<PropertyRef Name="ADDB_KEY" />
+					</Key>
+					<Property Name="ADDB_KEY" Type="Int32" Nullable="false" />
+					<Property Name="ADDB_COMPANY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="ADDB_BRANCH" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="ADDB_TAX_ID" Type="String" MaxLength="13" FixedLength="true" Unicode="false" />
+					<Property Name="ADDB_ADDB_1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="ADDB_ADDB_2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="ADDB_ADDB_3" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="ADDB_PROVINCE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="ADDB_POST" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+					<Property Name="ADDB_PHONE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="ADDB_FAX" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+					<Property Name="ADDB_WEBSITE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="ADDB_BT" Type="Int32" Nullable="false" />
+					<Property Name="ADDB_STA" Type="Int32" Nullable="false" />
+					<Property Name="ADDB_REMARK" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="ADDB_SEARCH" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="ADDB_EMAIL" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="ADDB_CONNECT" Type="Int32" />
+					<Property Name="ADDB_GPS_LAT_S" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+					<Property Name="ADDB_GPS_LONG_S" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+					<Property Name="ADDB_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+					<NavigationProperty Name="ARADDRESSes" Relationship="Self.ARA2ADDB" FromRole="ADDRBOOK" ToRole="ARADDRESS" />
+				</EntityType>
+				<EntityType Name="ARADDRESS">
+					<Key>
+						<PropertyRef Name="ARA_KEY" />
+					</Key>
+					<Property Name="ARA_KEY" Type="Int32" Nullable="false" />
+					<Property Name="ARA_AR" Type="Int32" Nullable="false" />
+					<Property Name="ARA_ADDB" Type="Int32" Nullable="false" />
+					<Property Name="ARA_DEFAULT" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+					<Property Name="ARA_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+					<NavigationProperty Name="ADDRBOOK" Relationship="Self.ARA2ADDB" FromRole="ARADDRESS" ToRole="ADDRBOOK" />
+					<NavigationProperty Name="ARFILE" Relationship="Self.ARA2AR" FromRole="ARADDRESS" ToRole="ARFILE" />
+				</EntityType>
+				<EntityType Name="ARCAT">
+					<Key>
+						<PropertyRef Name="ARCAT_KEY" />
+					</Key>
+					<Property Name="ARCAT_KEY" Type="Int32" Nullable="false" />
+					<Property Name="ARCAT_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="ARCAT_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="ARCAT_ACCESS" Type="Int16" Nullable="false" />
+					<Property Name="ARCAT_UDF_1" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="ARCAT_UDF_2" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="ARCAT_UDF_3" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="ARCAT_UDF_4" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="ARCAT_UDF_5" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="ARCAT_UDF_6" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="ARCAT_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+					<NavigationProperty Name="ARFILEs" Relationship="Self.AR2ARCAT" FromRole="ARCAT" ToRole="ARFILE" />
+				</EntityType>
+				<EntityType Name="ARFILE">
+					<Key>
+						<PropertyRef Name="AR_KEY" />
+					</Key>
+					<Property Name="AR_KEY" Type="Int32" Nullable="false" />
+					<Property Name="AR_CODE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="AR_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="AR_ARCAT" Type="Int32" Nullable="false" />
+					<Property Name="AR_AC" Type="Int32" Nullable="false" />
+					<Property Name="AR_ENABLE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+					<Property Name="AR_ACCESS" Type="Int16" Nullable="false" />
+					<Property Name="AR_SLMNCODE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+					<Property Name="AR_ARL" Type="Int32" Nullable="false" />
+					<Property Name="AR_ARTY" Type="Int32" Nullable="false" />
+					<Property Name="AR_ARG" Type="Int32" Nullable="false" />
+					<Property Name="AR_ARR" Type="Int32" Nullable="false" />
+					<Property Name="AR_ARGL" Type="Int32" Nullable="false" />
+					<Property Name="AR_DEPT" Type="Int32" Nullable="false" />
+					<Property Name="AR_REMARK" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="AR_UDF_1" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="AR_UDF_2" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="AR_UDF_3" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="AR_UDF_4" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="AR_UDF_5" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="AR_UDF_6" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="AR_MBCODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+					<Property Name="AR_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+					<NavigationProperty Name="ARADDRESSes" Relationship="Self.ARA2AR" FromRole="ARFILE" ToRole="ARADDRESS" />
+					<NavigationProperty Name="ARCAT" Relationship="Self.AR2ARCAT" FromRole="ARFILE" ToRole="ARCAT" />
+					<NavigationProperty Name="DEPTTAB" Relationship="Self.AR2DEPT" FromRole="ARFILE" ToRole="DEPTTAB" />
+				</EntityType>
+				<EntityType Name="DEPTTAB">
+					<Key>
+						<PropertyRef Name="DEPT_KEY" />
+					</Key>
+					<Property Name="DEPT_KEY" Type="Int32" Nullable="false" />
+					<Property Name="DEPT_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="DEPT_THAIDESC" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="DEPT_ENGDESC" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="DEPT_DEFAULT" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+					<Property Name="DEPT_UDF_1" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="DEPT_UDF_2" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="DEPT_UDF_3" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="DEPT_UDF_4" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="DEPT_UDF_5" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="DEPT_UDF_6" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="DEPT_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+					<NavigationProperty Name="ARFILEs" Relationship="Self.AR2DEPT" FromRole="DEPTTAB" ToRole="ARFILE" />
+					<NavigationProperty Name="TRANSTKHs" Relationship="ERPModel.TRH2DEPT" FromRole="DEPTTAB" ToRole="TRANSTKH" />
+				</EntityType>
+				<EntityType Name="SALESMAN">
+					<Key>
+						<PropertyRef Name="SLMN_KEY" />
+					</Key>
+					<Property Name="SLMN_KEY" Type="Int32" Nullable="false" />
+					<Property Name="SLMN_CODE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="SLMN_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="SLMN_REMARK" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+					<Property Name="SLMN_SLCAT" Type="Int32" Nullable="false" />
+					<Property Name="SLMN_CMRH" Type="Int32" Nullable="false" />
+					<Property Name="SLMN_AC" Type="Int32" Nullable="false" />
+					<Property Name="SLMN_SLL" Type="Int32" Nullable="false" />
+					<Property Name="SLMN_SLU" Type="Int32" Nullable="false" />
+					<Property Name="SLMN_SLT" Type="Int32" Nullable="false" />
+					<Property Name="SLMN_SLR" Type="Int32" Nullable="false" />
+					<Property Name="SLMN_ENABLE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+					<Property Name="SLMN_UDF_1" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SLMN_UDF_2" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SLMN_UDF_3" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SLMN_UDF_4" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SLMN_UDF_5" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SLMN_UDF_6" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SLMN_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+				</EntityType>
+				<EntityType Name="SKUBALANCE">
+					<Key>
+						<PropertyRef Name="SKB_KEY" />
+					</Key>
+					<Property Name="SKB_KEY" Type="Int32" Nullable="false" />
+					<Property Name="SKB_SKU" Type="Int32" Nullable="false" />
+					<Property Name="SKB_DATE" Type="DateTime" Nullable="false" Precision="3" />
+					<Property Name="SKB_WL" Type="Int32" Nullable="false" />
+					<Property Name="SKB_FIFO" Type="Int32" />
+					<Property Name="SKB_LOT_NO" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+					<Property Name="SKB_SERIAL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+					<Property Name="SKB_UTQ" Type="Int32" Nullable="false" />
+					<Property Name="SKB_UTQQTY" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKB_U_PRC" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKB_QTY" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKB_COST" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKB_EXP_D" Type="DateTime" Precision="3" />
+					<Property Name="SKB_MAN_D" Type="DateTime" Precision="3" />
+					<Property Name="SKB_DI" Type="Int32" Nullable="false" />
+					<Property Name="SKB_CREATOR" Type="Int32" />
+					<Property Name="SKB_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+					<NavigationProperty Name="SKUMASTER" Relationship="Self.SKB2SKU" FromRole="SKUBALANCE" ToRole="SKUMASTER" />
+					<NavigationProperty Name="DOCINFO" Relationship="ERPModel.SKB2DI" FromRole="SKUBALANCE" ToRole="DOCINFO" />
+					<NavigationProperty Name="UOFQTY" Relationship="ERPModel.SKB2UTQ" FromRole="SKUBALANCE" ToRole="UOFQTY" />
+				</EntityType>
+				<EntityType Name="SKUMASTER">
+					<Key>
+						<PropertyRef Name="SKU_KEY" />
+					</Key>
+					<Property Name="SKU_KEY" Type="Int32" Nullable="false" />
+					<Property Name="SKU_CODE" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="SKU_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="SKU_E_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="SKU_BARCODE" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+					<Property Name="SKU_BRN" Type="Int32" Nullable="false" />
+					<Property Name="SKU_ICCAT" Type="Int32" Nullable="false" />
+					<Property Name="SKU_S_UTQ" Type="Int32" Nullable="false" />
+					<Property Name="SKU_T_UTQ" Type="Int32" Nullable="false" />
+					<Property Name="SKU_K_UTQ" Type="Int32" Nullable="false" />
+					<Property Name="SKU_VAT_TY" Type="Int16" Nullable="false" />
+					<Property Name="SKU_VAT" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_COST_TY" Type="Int16" Nullable="false" />
+					<Property Name="SKU_STD_COST" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_STOCK" Type="Int16" Nullable="false" />
+					<Property Name="SKU_SKUALT" Type="Int32" Nullable="false" />
+					<Property Name="SKU_WH_TY" Type="Int16" Nullable="false" />
+					<Property Name="SKU_WH_RATE" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_MSG_1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="SKU_MSG_2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="SKU_MSG_3" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="SKU_MIXCOLOR" Type="Int32" Nullable="false" />
+					<Property Name="SKU_ICCOLOR" Type="Int32" Nullable="false" />
+					<Property Name="SKU_ICSIZE" Type="Int32" Nullable="false" />
+					<Property Name="SKU_ICDEPT" Type="Int32" Nullable="false" />
+					<Property Name="SKU_ICGL" Type="Int32" Nullable="false" />
+					<Property Name="SKU_ICPRT" Type="Int32" Nullable="false" />
+					<Property Name="SKU_WL" Type="Int32" Nullable="false" />
+					<Property Name="SKU_ENABLE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+					<Property Name="SKU_P_ENABLE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+					<Property Name="SKU_MIN_QTY" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_MAX_QTY" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_MIN_ORDER" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_MAX_ORDER" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_LEAD_TIME" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_SATISFY" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_SAFTY" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_FREQUENCY" Type="Int32" />
+					<Property Name="SKU_ACCESS" Type="Int16" Nullable="false" />
+					<Property Name="SKU_ABC" Type="Int32" />
+					<Property Name="SKU_EOQ_A" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_EOQ_P" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_EOQ_C" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_EOQ_NO" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_SPEC" Type="String" MaxLength="7000" FixedLength="false" Unicode="false" />
+					<Property Name="SKU_USAGE" Type="String" MaxLength="7000" FixedLength="false" Unicode="false" />
+					<Property Name="SKU_REMARK" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+					<Property Name="SKU_LAST_O" Type="DateTime" Nullable="false" Precision="3" />
+					<Property Name="SKU_LAST_R" Type="DateTime" Nullable="false" Precision="3" />
+					<Property Name="SKU_LAST_RCOST" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_LAST_RQTY" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_LAST_COMMIT" Type="DateTime" Precision="3" />
+					<Property Name="SKU_SENSITIVITY" Type="Int32" />
+					<Property Name="SKU_SENS_POS" Type="Int32" />
+					<Property Name="SKU_LAST_UBCOST" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_LAST_UCCOST" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_ALERT" Type="Int16" Nullable="false" />
+					<Property Name="SKU_ALERT_MSG" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+					<Property Name="SKU_PRICE" Type="Int32" />
+					<Property Name="SKU_EQ_FACTOR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+					<Property Name="SKU_EQ_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="SKU_UDF_1" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_UDF_2" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_UDF_3" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_UDF_4" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_UDF_5" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_UDF_6" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKU_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+					<NavigationProperty Name="SKUBALANCEs" Relationship="Self.SKB2SKU" FromRole="SKUMASTER" ToRole="SKUBALANCE" />
+					<NavigationProperty Name="SKUWARELOCATIONs" Relationship="Self.SKUWL2SKU" FromRole="SKUMASTER"
+					                    ToRole="SKUWARELOCATION" />
+					<NavigationProperty Name="UOFQTY" Relationship="ERPModel.SKUK2UTQ" FromRole="SKUMASTER" ToRole="UOFQTY" />
+					<NavigationProperty Name="UOFQTY1" Relationship="ERPModel.SKUS2UTQ" FromRole="SKUMASTER" ToRole="UOFQTY" />
+					<NavigationProperty Name="UOFQTY2" Relationship="ERPModel.SKUT2UTQ" FromRole="SKUMASTER" ToRole="UOFQTY" />
+					<NavigationProperty Name="ICCAT" Relationship="ERPModel.SKU2ICCAT" FromRole="SKUMASTER" ToRole="ICCAT" />
+					<NavigationProperty Name="ICDEPT" Relationship="ERPModel.SKU2ICDEPT" FromRole="SKUMASTER" ToRole="ICDEPT" />
+					<NavigationProperty Name="GOODSMASTERs" Relationship="ERPModel.GOODS2SKU" FromRole="SKUMASTER"
+					                    ToRole="GOODSMASTER" />
+					<NavigationProperty Name="SKUMOVEs" Relationship="ERPModel.SKM2SKU" FromRole="SKUMASTER" ToRole="SKUMOVE" />
+				</EntityType>
+				<EntityType Name="SKUWARELOCATION">
+					<Key>
+						<PropertyRef Name="SKUWL_KEY" />
+					</Key>
+					<Property Name="SKUWL_KEY" Type="Int32" Nullable="false" />
+					<Property Name="SKUWL_SKU" Type="Int32" Nullable="false" />
+					<Property Name="SKUWL_WL" Type="Int32" Nullable="false" />
+					<Property Name="SKUWL_SEQ" Type="Int32" Nullable="false" />
+					<Property Name="SKUWL_GOODS" Type="Int32" Nullable="false" />
+					<Property Name="SKUWL_USED_QTY" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+					<Property Name="SKUWL_FREQUENCY" Type="Int32" Nullable="false" />
+					<Property Name="SKUWL_MIN_QTY" Type="Int32" Nullable="false" />
+					<Property Name="SKUWL_MAX_QTY" Type="Int32" Nullable="false" />
+					<Property Name="SKUWL_DT" Type="Int32" Nullable="false" />
+					<Property Name="SKUWL_RPLN_FROM" Type="Int32" Nullable="false" />
+					<Property Name="SKUWL_RPLN_WL" Type="Int32" Nullable="false" />
+					<Property Name="SKUWL_RPLN_WHEN" Type="Int32" Nullable="false" />
+					<Property Name="SKUWL_RPLN_QTY" Type="Int32" Nullable="false" />
+					<Property Name="SKUWL_RPLN_ROUND" Type="Int32" Nullable="false" />
+					<Property Name="SKUWL_TOPV_ABC" Type="Int32" Nullable="false" />
+					<Property Name="SKUWL_TOPQ_ABC" Type="Int32" Nullable="false" />
+					<Property Name="SKUWL_UPRC_ABC" Type="Int32" Nullable="false" />
+					<Property Name="SKUWL_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+					<NavigationProperty Name="SKUMASTER" Relationship="Self.SKUWL2SKU" FromRole="SKUWARELOCATION" ToRole="SKUMASTER" />
+					<NavigationProperty Name="DOCTYPE" Relationship="ERPModel.SKUWL2DT" FromRole="SKUWARELOCATION" ToRole="DOCTYPE" />
+					<NavigationProperty Name="GOODSMASTER" Relationship="ERPModel.SKUWL2GOODS" FromRole="SKUWARELOCATION"
+					                    ToRole="GOODSMASTER" />
+				</EntityType>
+				<Association Name="ARA2ADDB">
+					<End Role="ADDRBOOK" Type="Self.ADDRBOOK" Multiplicity="1" />
+					<End Role="ARADDRESS" Type="Self.ARADDRESS" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="ADDRBOOK">
+							<PropertyRef Name="ADDB_KEY" />
+						</Principal>
+						<Dependent Role="ARADDRESS">
+							<PropertyRef Name="ARA_ADDB" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="ARA2AR">
+					<End Role="ARFILE" Type="Self.ARFILE" Multiplicity="1" />
+					<End Role="ARADDRESS" Type="Self.ARADDRESS" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="ARFILE">
+							<PropertyRef Name="AR_KEY" />
+						</Principal>
+						<Dependent Role="ARADDRESS">
+							<PropertyRef Name="ARA_AR" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="AR2ARCAT">
+					<End Role="ARCAT" Type="Self.ARCAT" Multiplicity="1" />
+					<End Role="ARFILE" Type="Self.ARFILE" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="ARCAT">
+							<PropertyRef Name="ARCAT_KEY" />
+						</Principal>
+						<Dependent Role="ARFILE">
+							<PropertyRef Name="AR_ARCAT" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="AR2DEPT">
+					<End Role="DEPTTAB" Type="Self.DEPTTAB" Multiplicity="1" />
+					<End Role="ARFILE" Type="Self.ARFILE" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="DEPTTAB">
+							<PropertyRef Name="DEPT_KEY" />
+						</Principal>
+						<Dependent Role="ARFILE">
+							<PropertyRef Name="AR_DEPT" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="SKB2SKU">
+					<End Role="SKUMASTER" Type="Self.SKUMASTER" Multiplicity="1" />
+					<End Role="SKUBALANCE" Type="Self.SKUBALANCE" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="SKUMASTER">
+							<PropertyRef Name="SKU_KEY" />
+						</Principal>
+						<Dependent Role="SKUBALANCE">
+							<PropertyRef Name="SKB_SKU" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="SKUWL2SKU">
+					<End Role="SKUMASTER" Type="Self.SKUMASTER" Multiplicity="1" />
+					<End Role="SKUWARELOCATION" Type="Self.SKUWARELOCATION" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="SKUMASTER">
+							<PropertyRef Name="SKU_KEY" />
+						</Principal>
+						<Dependent Role="SKUWARELOCATION">
+							<PropertyRef Name="SKUWL_SKU" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<EntityContainer Name="ERP" annotation:LazyLoadingEnabled="true">
+					<EntitySet Name="ADDRBOOKs" EntityType="Self.ADDRBOOK" />
+					<EntitySet Name="ARADDRESSes" EntityType="Self.ARADDRESS" />
+					<EntitySet Name="ARCATs" EntityType="Self.ARCAT" />
+					<EntitySet Name="ARFILEs" EntityType="Self.ARFILE" />
+					<EntitySet Name="DEPTTABs" EntityType="Self.DEPTTAB" />
+					<EntitySet Name="SALESMen" EntityType="Self.SALESMAN" />
+					<EntitySet Name="SKUBALANCEs" EntityType="Self.SKUBALANCE" />
+					<EntitySet Name="SKUMASTERs" EntityType="Self.SKUMASTER" />
+					<EntitySet Name="SKUWARELOCATIONs" EntityType="Self.SKUWARELOCATION" />
+					<AssociationSet Name="ARA2ADDB" Association="Self.ARA2ADDB">
+						<End Role="ADDRBOOK" EntitySet="ADDRBOOKs" />
+						<End Role="ARADDRESS" EntitySet="ARADDRESSes" />
+					</AssociationSet>
+					<AssociationSet Name="ARA2AR" Association="Self.ARA2AR">
+						<End Role="ARFILE" EntitySet="ARFILEs" />
+						<End Role="ARADDRESS" EntitySet="ARADDRESSes" />
+					</AssociationSet>
+					<AssociationSet Name="AR2ARCAT" Association="Self.AR2ARCAT">
+						<End Role="ARCAT" EntitySet="ARCATs" />
+						<End Role="ARFILE" EntitySet="ARFILEs" />
+					</AssociationSet>
+					<AssociationSet Name="AR2DEPT" Association="Self.AR2DEPT">
+						<End Role="DEPTTAB" EntitySet="DEPTTABs" />
+						<End Role="ARFILE" EntitySet="ARFILEs" />
+					</AssociationSet>
+					<AssociationSet Name="SKB2SKU" Association="Self.SKB2SKU">
+						<End Role="SKUMASTER" EntitySet="SKUMASTERs" />
+						<End Role="SKUBALANCE" EntitySet="SKUBALANCEs" />
+					</AssociationSet>
+					<AssociationSet Name="SKUWL2SKU" Association="Self.SKUWL2SKU">
+						<End Role="SKUMASTER" EntitySet="SKUMASTERs" />
+						<End Role="SKUWARELOCATION" EntitySet="SKUWARELOCATIONs" />
+					</AssociationSet>
+					<EntitySet Name="DOCINFOes" EntityType="ERPModel.DOCINFO" />
+					<EntitySet Name="DOCTYPEs" EntityType="ERPModel.DOCTYPE" />
+					<EntitySet Name="TRANSTKDs" EntityType="ERPModel.TRANSTKD" />
+					<EntitySet Name="TRANSTKHs" EntityType="ERPModel.TRANSTKH" />
+					<AssociationSet Name="TRH2DEPT" Association="ERPModel.TRH2DEPT">
+						<End Role="DEPTTAB" EntitySet="DEPTTABs" />
+						<End Role="TRANSTKH" EntitySet="TRANSTKHs" />
+					</AssociationSet>
+					<AssociationSet Name="DI2DT" Association="ERPModel.DI2DT">
+						<End Role="DOCTYPE" EntitySet="DOCTYPEs" />
+						<End Role="DOCINFO" EntitySet="DOCINFOes" />
+					</AssociationSet>
+					<AssociationSet Name="SKB2DI" Association="ERPModel.SKB2DI">
+						<End Role="DOCINFO" EntitySet="DOCINFOes" />
+						<End Role="SKUBALANCE" EntitySet="SKUBALANCEs" />
+					</AssociationSet>
+					<AssociationSet Name="TRH2DI" Association="ERPModel.TRH2DI">
+						<End Role="DOCINFO" EntitySet="DOCINFOes" />
+						<End Role="TRANSTKH" EntitySet="TRANSTKHs" />
+					</AssociationSet>
+					<AssociationSet Name="SKUWL2DT" Association="ERPModel.SKUWL2DT">
+						<End Role="DOCTYPE" EntitySet="DOCTYPEs" />
+						<End Role="SKUWARELOCATION" EntitySet="SKUWARELOCATIONs" />
+					</AssociationSet>
+					<AssociationSet Name="TRD2TRH" Association="ERPModel.TRD2TRH">
+						<End Role="TRANSTKH" EntitySet="TRANSTKHs" />
+						<End Role="TRANSTKD" EntitySet="TRANSTKDs" />
+					</AssociationSet>
+					<EntitySet Name="PRJTABs" EntityType="ERPModel.PRJTAB" />
+					<AssociationSet Name="TRH2PRJ" Association="ERPModel.TRH2PRJ">
+						<End Role="PRJTAB" EntitySet="PRJTABs" />
+						<End Role="TRANSTKH" EntitySet="TRANSTKHs" />
+					</AssociationSet>
+					<EntitySet Name="ARPRICETABs" EntityType="ERPModel.ARPRICETAB" />
+					<EntitySet Name="UOFQTies" EntityType="ERPModel.UOFQTY" />
+					<AssociationSet Name="SKB2UTQ" Association="ERPModel.SKB2UTQ">
+						<End Role="UOFQTY" EntitySet="UOFQTies" />
+						<End Role="SKUBALANCE" EntitySet="SKUBALANCEs" />
+					</AssociationSet>
+					<AssociationSet Name="SKUK2UTQ" Association="ERPModel.SKUK2UTQ">
+						<End Role="UOFQTY" EntitySet="UOFQTies" />
+						<End Role="SKUMASTER" EntitySet="SKUMASTERs" />
+					</AssociationSet>
+					<AssociationSet Name="SKUS2UTQ" Association="ERPModel.SKUS2UTQ">
+						<End Role="UOFQTY" EntitySet="UOFQTies" />
+						<End Role="SKUMASTER" EntitySet="SKUMASTERs" />
+					</AssociationSet>
+					<AssociationSet Name="SKUT2UTQ" Association="ERPModel.SKUT2UTQ">
+						<End Role="UOFQTY" EntitySet="UOFQTies" />
+						<End Role="SKUMASTER" EntitySet="SKUMASTERs" />
+					</AssociationSet>
+					<EntitySet Name="ICCATs" EntityType="ERPModel.ICCAT" />
+					<EntitySet Name="ICDEPTs" EntityType="ERPModel.ICDEPT" />
+					<AssociationSet Name="SKU2ICCAT" Association="ERPModel.SKU2ICCAT">
+						<End Role="ICCAT" EntitySet="ICCATs" />
+						<End Role="SKUMASTER" EntitySet="SKUMASTERs" />
+					</AssociationSet>
+					<AssociationSet Name="SKU2ICDEPT" Association="ERPModel.SKU2ICDEPT">
+						<End Role="ICDEPT" EntitySet="ICDEPTs" />
+						<End Role="SKUMASTER" EntitySet="SKUMASTERs" />
+					</AssociationSet>
+					<EntitySet Name="APPLUs" EntityType="ERPModel.APPLU" />
+					<EntitySet Name="GOODSMASTERs" EntityType="ERPModel.GOODSMASTER" />
+					<AssociationSet Name="APPLU2GOODS" Association="ERPModel.APPLU2GOODS">
+						<End Role="GOODSMASTER" EntitySet="GOODSMASTERs" />
+						<End Role="APPLU" EntitySet="APPLUs" />
+					</AssociationSet>
+					<AssociationSet Name="GOODS2SKU" Association="ERPModel.GOODS2SKU">
+						<End Role="SKUMASTER" EntitySet="SKUMASTERs" />
+						<End Role="GOODSMASTER" EntitySet="GOODSMASTERs" />
+					</AssociationSet>
+					<AssociationSet Name="GOODS2UTQ" Association="ERPModel.GOODS2UTQ">
+						<End Role="UOFQTY" EntitySet="UOFQTies" />
+						<End Role="GOODSMASTER" EntitySet="GOODSMASTERs" />
+					</AssociationSet>
+					<AssociationSet Name="SKUWL2GOODS" Association="ERPModel.SKUWL2GOODS">
+						<End Role="GOODSMASTER" EntitySet="GOODSMASTERs" />
+						<End Role="SKUWARELOCATION" EntitySet="SKUWARELOCATIONs" />
+					</AssociationSet>
+					<EntitySet Name="ARPLUs" EntityType="ERPModel.ARPLU" />
+					<AssociationSet Name="ARPLU2ARPRB" Association="ERPModel.ARPLU2ARPRB">
+						<End Role="ARPRICETAB" EntitySet="ARPRICETABs" />
+						<End Role="ARPLU" EntitySet="ARPLUs" />
+					</AssociationSet>
+					<AssociationSet Name="ARPLU2GOODS" Association="ERPModel.ARPLU2GOODS">
+						<End Role="GOODSMASTER" EntitySet="GOODSMASTERs" />
+						<End Role="ARPLU" EntitySet="ARPLUs" />
+					</AssociationSet>
+					<EntitySet Name="SKUMOVEs" EntityType="ERPModel.SKUMOVE" />
+					<AssociationSet Name="SKM2DI" Association="ERPModel.SKM2DI">
+						<End Role="DOCINFO" EntitySet="DOCINFOes" />
+						<End Role="SKUMOVE" EntitySet="SKUMOVEs" />
+					</AssociationSet>
+					<AssociationSet Name="SKM2SKU" Association="ERPModel.SKM2SKU">
+						<End Role="SKUMASTER" EntitySet="SKUMASTERs" />
+						<End Role="SKUMOVE" EntitySet="SKUMOVEs" />
+					</AssociationSet>
+				</EntityContainer>
+				<EntityType Name="DOCINFO">
+					<Key>
+						<PropertyRef Name="DI_KEY" />
+					</Key>
+					<Property Name="DI_KEY" Type="Int32" Nullable="false" />
+					<Property Name="DI_DT" Type="Int32" Nullable="false" />
+					<Property Name="DI_SUBS_DI" Type="Int32" />
+					<Property Name="DI_REVISION" Type="Int32" />
+					<Property Name="DI_ACTIVE" Type="Int32" />
+					<Property Name="DI_EDIT_TIME" Type="Int32" />
+					<Property Name="DI_FLAG" Type="Int32" />
+					<Property Name="DI_REF" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+					<Property Name="DI_DATE" Type="DateTime" Nullable="false" Precision="3" />
+					<Property Name="DI_CRE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+					<Property Name="DI_CRE_BY" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+					<Property Name="DI_CRE_CPTN" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+					<Property Name="DI_CRE_LGNN" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+					<Property Name="DI_UPD_DATE" Type="DateTime" Nullable="false" Precision="3" />
+					<Property Name="DI_UPD_BY" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+					<Property Name="DI_UPD_CPTN" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+					<Property Name="DI_UPD_LGNN" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+					<Property Name="DI_DEL_DATE" Type="DateTime" Precision="3" />
+					<Property Name="DI_DEL_BY" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+					<Property Name="DI_DEL_CPTN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+					<Property Name="DI_DEL_LGNN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+					<Property Name="DI_PRN_TIME" Type="Int16" Nullable="false" />
+					<Property Name="DI_PRN_DATE" Type="DateTime" Precision="3" />
+					<Property Name="DI_PRN_BY" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+					<Property Name="DI_PRN_CPTN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+					<Property Name="DI_PRN_LGNN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+					<Property Name="DI_PRN_STATUS" Type="Int32" />
+					<Property Name="DI_EXM_DATE" Type="DateTime" Precision="3" />
+					<Property Name="DI_EXM_BY" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+					<Property Name="DI_EXM_CPTN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+					<Property Name="DI_EXM_LGNN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+					<Property Name="DI_APV_DATE" Type="DateTime" Precision="3" />
+					<Property Name="DI_APV_BY" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+					<Property Name="DI_APV_CPTN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+					<Property Name="DI_APV_LGNN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+					<Property Name="DI_APV_STATUS" Type="Int32" />
+					<Property Name="DI_DFRS" Type="Int32" />
+					<Property Name="DI_1ST_ITEMS" Type="Int32" />
+					<Property Name="DI_1ST_AMOUNT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="DI_ITEMS" Type="Int32" />
+					<Property Name="DI_AMOUNT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="DI_AUTO" Type="Int32" />
+					<Property Name="DI_CREATOR_DI" Type="Int32" />
+					<Property Name="DI_REMARK" Type="String" MaxLength="7000" FixedLength="false" Unicode="false" />
+					<Property Name="DI_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+					<NavigationProperty Name="DOCTYPE" Relationship="ERPModel.DI2DT" FromRole="DOCINFO" ToRole="DOCTYPE" />
+					<NavigationProperty Name="SKUBALANCEs" Relationship="ERPModel.SKB2DI" FromRole="DOCINFO" ToRole="SKUBALANCE" />
+					<NavigationProperty Name="TRANSTKHs" Relationship="ERPModel.TRH2DI" FromRole="DOCINFO" ToRole="TRANSTKH" />
+					<NavigationProperty Name="SKUMOVEs" Relationship="ERPModel.SKM2DI" FromRole="DOCINFO" ToRole="SKUMOVE" />
+				</EntityType>
+				<EntityType Name="DOCTYPE">
+					<Key>
+						<PropertyRef Name="DT_KEY" />
+					</Key>
+					<Property Name="DT_KEY" Type="Int32" Nullable="false" />
+					<Property Name="DT_DOCCODE" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+					<Property Name="DT_THAIDESC" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="DT_ENGDESC" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="DT_PROPERTIES" Type="Int32" />
+					<Property Name="DT_RUNTYPE" Type="Int16" Nullable="false" />
+					<Property Name="DT_PREFIX" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+					<Property Name="DT_DIGIT" Type="Int16" Nullable="false" />
+					<Property Name="DT_BOOKSIZE" Type="Int32" />
+					<Property Name="DT_ACCESS" Type="Int16" Nullable="false" />
+					<Property Name="DT_CANEDIT" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+					<Property Name="DT_DUPTYPE" Type="Int32" />
+					<Property Name="DT_RPF_CODE" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+					<Property Name="DT_SHOW_SINCE" Type="Int32" />
+					<Property Name="DT_SHOW_NEXT" Type="Int32" />
+					<Property Name="DT_NEW_SINCE" Type="Int32" />
+					<Property Name="DT_NEW_NEXT" Type="Int32" />
+					<Property Name="DT_ENABLE" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+					<Property Name="DT_PREVIEW" Type="Int32" />
+					<Property Name="DT_NEED_APV" Type="Int32" />
+					<Property Name="DT_SELECT_PRT" Type="Int32" />
+					<Property Name="DT_APV_POS" Type="Int32" />
+					<Property Name="DT_EDIT_AF_POS" Type="Int32" />
+					<Property Name="DT_EDIT_PRT_POS" Type="Int32" />
+					<Property Name="DT_CHANGE_POS" Type="Int32" />
+					<Property Name="DT_CANCEL_POS" Type="Int32" />
+					<Property Name="DT_REPRT_POS" Type="Int32" />
+					<Property Name="DT_REF_B4_PRINT" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+					<Property Name="DT_PRINT_CANCEL" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+					<Property Name="DT_REPRT_MSG" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="DT_VAT_PREFIX" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+					<Property Name="DT_BRANCH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+					<Property Name="DT_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+					<NavigationProperty Name="DOCINFOes" Relationship="ERPModel.DI2DT" FromRole="DOCTYPE" ToRole="DOCINFO" />
+					<NavigationProperty Name="SKUWARELOCATIONs" Relationship="ERPModel.SKUWL2DT" FromRole="DOCTYPE"
+					                    ToRole="SKUWARELOCATION" />
+				</EntityType>
+				<EntityType Name="TRANSTKD">
+					<Key>
+						<PropertyRef Name="TRD_KEY" />
+					</Key>
+					<Property Name="TRD_KEY" Type="Int32" Nullable="false" />
+					<Property Name="TRD_TRH" Type="Int32" Nullable="false" />
+					<Property Name="TRD_SEQ" Type="Int32" />
+					<Property Name="TRD_GOODS" Type="Int32" Nullable="false" />
+					<Property Name="TRD_KEYIN" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
+					<Property Name="TRD_VAT_TY" Type="Int16" Nullable="false" />
+					<Property Name="TRD_VAT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_VAT_R" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_NM_PRC" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_NM_VATIO" Type="Int32" />
+					<Property Name="TRD_NM_U_DSC" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="TRD_QTY" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_Q_FREE" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_K_U_PRC" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_U_PRC" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_U_VATIO" Type="Int32" />
+					<Property Name="TRD_DSC_KEYIN" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="TRD_DSC_KEYINV" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_G_KEYIN" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_G_SELL" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_G_VAT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_G_AMT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_TDSC_KEYINV" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_N_SELL" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_N_VAT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_N_AMT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_B_SELL" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_B_VAT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_B_AMT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_B_GROUP" Type="Int32" />
+					<Property Name="TRD_B_RELOCATE" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_B_UPRC" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_SKU" Type="Int32" Nullable="false" />
+					<Property Name="TRD_UTQQTY" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_UTQNAME" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+					<Property Name="TRD_WEIGHT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_COST_TY" Type="Int16" Nullable="false" />
+					<Property Name="TRD_WH_TY" Type="Int16" Nullable="false" />
+					<Property Name="TRD_WH_RATE" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_WH_TAX" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_LOT_NO" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+					<Property Name="TRD_SERIAL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+					<Property Name="TRD_EXP_D" Type="DateTime" Precision="3" />
+					<Property Name="TRD_MAN_D" Type="DateTime" Precision="3" />
+					<Property Name="TRD_WL" Type="Int32" />
+					<Property Name="TRD_TO_WL" Type="Int32" />
+					<Property Name="TRD_SH_AUTO" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+					<Property Name="TRD_SH_CODE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="TRD_SH_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="TRD_SH_QTY" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_SH_UPRC" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_SH_GSELL" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_SH_GVAT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_SH_GAMT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_SH_REMARK" Type="String" MaxLength="7000" FixedLength="false" Unicode="false" />
+					<Property Name="TRD_RTN_UPRC" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_RTN_AMT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_COMM_RATE" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_COMM_AMT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_AC" Type="Int32" Nullable="false" />
+					<Property Name="TRD_UQTY" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_UQ_FREE" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_OPTION" Type="Int32" />
+					<Property Name="TRD_REFER_REF" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+					<Property Name="TRD_REFER_DATE" Type="DateTime" Precision="3" />
+					<Property Name="TRD_REFER_DI" Type="Int32" />
+					<Property Name="TRD_REFER_TRH" Type="Int32" />
+					<Property Name="TRD_REFER_TRD" Type="Int32" />
+					<Property Name="TRD_OR_QTY" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_OR_U_PRC" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_OR_DSC_KEYINV" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_OR_G_KEYIN" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_OR_Q_FREE" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_AC_QTY" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_AC_G_KEYIN" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_AC_Q_FREE" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_NX_QTY" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_NX_DSC_KEYIN" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="TRD_NX_DSC_KEYINV" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_NX_G_KEYIN" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_NX_Q_FREE" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_ADJ_PAMT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_ADJ_MAMT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_B_PCNT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_PRICE" Type="Int32" />
+					<Property Name="TRD_EQ_FACTOR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+					<Property Name="TRD_EQ_V" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_CAMPAIGN" Type="Int32" />
+					<Property Name="TRD_ARCPGN" Type="Int32" />
+					<Property Name="TRD_ARCPGN_C" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+					<Property Name="TRD_C_U_PRC" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_C_DSC" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="TRD_C_DSCV" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_CONSIGN" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+					<Property Name="TRD_CNSN_B4" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+					<Property Name="TRD_CREATOR" Type="Int32" />
+					<Property Name="TRD_SKUALT" Type="Int32" />
+					<Property Name="TRD_ASRTH" Type="Int32" />
+					<Property Name="TRD_ICCOLOR" Type="Int32" />
+					<Property Name="TRD_ASRT_QTY" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_ASRT_FREE" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_ASRT_U_PRC" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRD_ASRT_U_DSC" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="TRD_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+					<NavigationProperty Name="TRANSTKH" Relationship="ERPModel.TRD2TRH" FromRole="TRANSTKD" ToRole="TRANSTKH" />
+				</EntityType>
+				<EntityType Name="TRANSTKH">
+					<Key>
+						<PropertyRef Name="TRH_KEY" />
+					</Key>
+					<Property Name="TRH_KEY" Type="Int32" Nullable="false" />
+					<Property Name="TRH_DI" Type="Int32" Nullable="false" />
+					<Property Name="TRH_PSTATUS" Type="Int32" />
+					<Property Name="TRH_LSTATUS" Type="Int32" />
+					<Property Name="TRH_FLAG" Type="Int32" />
+					<Property Name="TRH_DEPT" Type="Int32" Nullable="false" />
+					<Property Name="TRH_BR" Type="Int32" Nullable="false" />
+					<Property Name="TRH_MKTP" Type="Int32" Nullable="false" />
+					<Property Name="TRH_PRMT" Type="Int32" Nullable="false" />
+					<Property Name="TRH_ARPRB" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+					<Property Name="TRH_N_QTY" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRH_N_ITEMS" Type="Int32" />
+					<Property Name="TRH_REMARK" Type="String" MaxLength="7000" FixedLength="false" Unicode="false" />
+					<Property Name="TRH_SB" Type="Int32" Nullable="false" />
+					<Property Name="TRH_SHIP_REMARK" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+					<Property Name="TRH_SHIP_DATE" Type="DateTime" Nullable="false" Precision="3" />
+					<Property Name="TRH_SHIP_ADDB" Type="Int32" />
+					<Property Name="TRH_VAT_TY" Type="Int16" Nullable="false" />
+					<Property Name="TRH_VAT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRH_VAT_R" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="TRH_VATIO" Type="Int32" />
+					<Property Name="TRH_PRJ" Type="Int32" Nullable="false" />
+					<Property Name="TRH_CANCEL_DATE" Type="DateTime" Precision="3" />
+					<Property Name="TRH_LAST_DATE" Type="DateTime" Precision="3" />
+					<Property Name="TRH_OPTION" Type="Int32" />
+					<Property Name="TRH_REFER_XREF" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+					<Property Name="TRH_REFER_IREF" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+					<Property Name="TRH_REFER_PERSON" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+					<Property Name="TRH_REFER_XTRA1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+					<Property Name="TRH_REFER_XTRA2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+					<Property Name="TRH_TAP" Type="Int32" />
+					<Property Name="TRH_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+					<NavigationProperty Name="DEPTTAB" Relationship="ERPModel.TRH2DEPT" FromRole="TRANSTKH" ToRole="DEPTTAB" />
+					<NavigationProperty Name="DOCINFO" Relationship="ERPModel.TRH2DI" FromRole="TRANSTKH" ToRole="DOCINFO" />
+					<NavigationProperty Name="TRANSTKDs" Relationship="ERPModel.TRD2TRH" FromRole="TRANSTKH" ToRole="TRANSTKD" />
+					<NavigationProperty Name="PRJTAB" Relationship="ERPModel.TRH2PRJ" FromRole="TRANSTKH" ToRole="PRJTAB" />
+				</EntityType>
+				<Association Name="TRH2DEPT">
+					<End Type="ERPModel.DEPTTAB" Role="DEPTTAB" Multiplicity="1" />
+					<End Type="ERPModel.TRANSTKH" Role="TRANSTKH" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="DEPTTAB">
+							<PropertyRef Name="DEPT_KEY" />
+						</Principal>
+						<Dependent Role="TRANSTKH">
+							<PropertyRef Name="TRH_DEPT" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="DI2DT">
+					<End Type="ERPModel.DOCTYPE" Role="DOCTYPE" Multiplicity="1" />
+					<End Type="ERPModel.DOCINFO" Role="DOCINFO" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="DOCTYPE">
+							<PropertyRef Name="DT_KEY" />
+						</Principal>
+						<Dependent Role="DOCINFO">
+							<PropertyRef Name="DI_DT" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="SKB2DI">
+					<End Type="ERPModel.DOCINFO" Role="DOCINFO" Multiplicity="1" />
+					<End Type="ERPModel.SKUBALANCE" Role="SKUBALANCE" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="DOCINFO">
+							<PropertyRef Name="DI_KEY" />
+						</Principal>
+						<Dependent Role="SKUBALANCE">
+							<PropertyRef Name="SKB_DI" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="TRH2DI">
+					<End Type="ERPModel.DOCINFO" Role="DOCINFO" Multiplicity="1" />
+					<End Type="ERPModel.TRANSTKH" Role="TRANSTKH" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="DOCINFO">
+							<PropertyRef Name="DI_KEY" />
+						</Principal>
+						<Dependent Role="TRANSTKH">
+							<PropertyRef Name="TRH_DI" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="SKUWL2DT">
+					<End Type="ERPModel.DOCTYPE" Role="DOCTYPE" Multiplicity="1" />
+					<End Type="ERPModel.SKUWARELOCATION" Role="SKUWARELOCATION" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="DOCTYPE">
+							<PropertyRef Name="DT_KEY" />
+						</Principal>
+						<Dependent Role="SKUWARELOCATION">
+							<PropertyRef Name="SKUWL_DT" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="TRD2TRH">
+					<End Type="ERPModel.TRANSTKH" Role="TRANSTKH" Multiplicity="1" />
+					<End Type="ERPModel.TRANSTKD" Role="TRANSTKD" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="TRANSTKH">
+							<PropertyRef Name="TRH_KEY" />
+						</Principal>
+						<Dependent Role="TRANSTKD">
+							<PropertyRef Name="TRD_TRH" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<EntityType Name="PRJTAB">
+					<Key>
+						<PropertyRef Name="PRJ_KEY" />
+					</Key>
+					<Property Name="PRJ_KEY" Type="Int32" Nullable="false" />
+					<Property Name="PRJ_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+					<Property Name="PRJ_NAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+					<Property Name="PRJ_ENABLE" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+					<Property Name="PRJ_FM_DATE" Type="DateTime" Precision="3" />
+					<Property Name="PRJ_TO_DATE" Type="DateTime" Precision="3" />
+					<Property Name="PRJ_REMARK" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+					<Property Name="PRJ_UDF_1" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="PRJ_UDF_2" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="PRJ_UDF_3" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="PRJ_UDF_4" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="PRJ_UDF_5" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="PRJ_UDF_6" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="PRJ_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+					<NavigationProperty Name="TRANSTKHs" Relationship="ERPModel.TRH2PRJ" FromRole="PRJTAB" ToRole="TRANSTKH" />
+				</EntityType>
+				<Association Name="TRH2PRJ">
+					<End Type="ERPModel.PRJTAB" Role="PRJTAB" Multiplicity="1" />
+					<End Type="ERPModel.TRANSTKH" Role="TRANSTKH" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="PRJTAB">
+							<PropertyRef Name="PRJ_KEY" />
+						</Principal>
+						<Dependent Role="TRANSTKH">
+							<PropertyRef Name="TRH_PRJ" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<EntityType Name="ARPRICETAB">
+					<Key>
+						<PropertyRef Name="ARPRB_KEY" />
+					</Key>
+					<Property Name="ARPRB_KEY" Type="Int32" Nullable="false" />
+					<Property Name="ARPRB_CODE" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+					<Property Name="ARPRB_NAME" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="ARPRB_VATIO" Type="Int32" />
+					<Property Name="ARPRB_ALWAYS" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+					<Property Name="ARPRB_ENABLE" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+					<Property Name="ARPRB_REMARK" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="ARPRB_DEFAULT" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+					<Property Name="ARPRB_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+					<NavigationProperty Name="ARPLUs" Relationship="ERPModel.ARPLU2ARPRB" FromRole="ARPRICETAB" ToRole="ARPLU" />
+				</EntityType>
+				<EntityType Name="UOFQTY">
+					<Key>
+						<PropertyRef Name="UTQ_KEY" />
+					</Key>
+					<Property Name="UTQ_KEY" Type="Int32" Nullable="false" />
+					<Property Name="UTQ_NAME" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+					<Property Name="UTQ_QTY" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="UTQ_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+					<NavigationProperty Name="SKUBALANCEs" Relationship="ERPModel.SKB2UTQ" FromRole="UOFQTY" ToRole="SKUBALANCE" />
+					<NavigationProperty Name="SKUMASTERs" Relationship="ERPModel.SKUK2UTQ" FromRole="UOFQTY" ToRole="SKUMASTER" />
+					<NavigationProperty Name="SKUMASTERs1" Relationship="ERPModel.SKUS2UTQ" FromRole="UOFQTY" ToRole="SKUMASTER" />
+					<NavigationProperty Name="SKUMASTERs2" Relationship="ERPModel.SKUT2UTQ" FromRole="UOFQTY" ToRole="SKUMASTER" />
+					<NavigationProperty Name="GOODSMASTERs" Relationship="ERPModel.GOODS2UTQ" FromRole="UOFQTY" ToRole="GOODSMASTER" />
+				</EntityType>
+				<Association Name="SKB2UTQ">
+					<End Type="ERPModel.UOFQTY" Role="UOFQTY" Multiplicity="1" />
+					<End Type="ERPModel.SKUBALANCE" Role="SKUBALANCE" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="UOFQTY">
+							<PropertyRef Name="UTQ_KEY" />
+						</Principal>
+						<Dependent Role="SKUBALANCE">
+							<PropertyRef Name="SKB_UTQ" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="SKUK2UTQ">
+					<End Type="ERPModel.UOFQTY" Role="UOFQTY" Multiplicity="1" />
+					<End Type="ERPModel.SKUMASTER" Role="SKUMASTER" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="UOFQTY">
+							<PropertyRef Name="UTQ_KEY" />
+						</Principal>
+						<Dependent Role="SKUMASTER">
+							<PropertyRef Name="SKU_K_UTQ" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="SKUS2UTQ">
+					<End Type="ERPModel.UOFQTY" Role="UOFQTY" Multiplicity="1" />
+					<End Type="ERPModel.SKUMASTER" Role="SKUMASTER" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="UOFQTY">
+							<PropertyRef Name="UTQ_KEY" />
+						</Principal>
+						<Dependent Role="SKUMASTER">
+							<PropertyRef Name="SKU_S_UTQ" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="SKUT2UTQ">
+					<End Type="ERPModel.UOFQTY" Role="UOFQTY" Multiplicity="1" />
+					<End Type="ERPModel.SKUMASTER" Role="SKUMASTER" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="UOFQTY">
+							<PropertyRef Name="UTQ_KEY" />
+						</Principal>
+						<Dependent Role="SKUMASTER">
+							<PropertyRef Name="SKU_T_UTQ" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<EntityType Name="ICCAT">
+					<Key>
+						<PropertyRef Name="ICCAT_KEY" />
+					</Key>
+					<Property Name="ICCAT_KEY" Type="Int32" Nullable="false" />
+					<Property Name="ICCAT_CODE" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+					<Property Name="ICCAT_NAME" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="ICCAT_ACCESS" Type="Int16" Nullable="false" />
+					<Property Name="ICCAT_UDF_1" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="ICCAT_UDF_2" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="ICCAT_UDF_3" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="ICCAT_UDF_4" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="ICCAT_UDF_5" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="ICCAT_UDF_6" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="ICCAT_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+					<NavigationProperty Name="SKUMASTERs" Relationship="ERPModel.SKU2ICCAT" FromRole="ICCAT" ToRole="SKUMASTER" />
+				</EntityType>
+				<EntityType Name="ICDEPT">
+					<Key>
+						<PropertyRef Name="ICDEPT_KEY" />
+					</Key>
+					<Property Name="ICDEPT_KEY" Type="Int32" Nullable="false" />
+					<Property Name="ICDEPT_CODE" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+					<Property Name="ICDEPT_THAIDESC" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="ICDEPT_ENGDESC" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="ICDEPT_ACCESS" Type="Int16" Nullable="false" />
+					<Property Name="ICDEPT_LEVEL" Type="Int32" />
+					<Property Name="ICDEPT_ABS_INDEX" Type="Int32" />
+					<Property Name="ICDEPT_PARENT" Type="Int32" />
+					<Property Name="ICDEPT_P_ABS_INDEX" Type="Int32" />
+					<Property Name="ICDEPT_FIRSTCHILD" Type="Int32" />
+					<Property Name="ICDEPT_UDF_1" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="ICDEPT_UDF_2" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="ICDEPT_UDF_3" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="ICDEPT_UDF_4" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="ICDEPT_UDF_5" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="ICDEPT_UDF_6" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="ICDEPT_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+					<NavigationProperty Name="SKUMASTERs" Relationship="ERPModel.SKU2ICDEPT" FromRole="ICDEPT" ToRole="SKUMASTER" />
+				</EntityType>
+				<Association Name="SKU2ICCAT">
+					<End Type="ERPModel.ICCAT" Role="ICCAT" Multiplicity="1" />
+					<End Type="ERPModel.SKUMASTER" Role="SKUMASTER" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="ICCAT">
+							<PropertyRef Name="ICCAT_KEY" />
+						</Principal>
+						<Dependent Role="SKUMASTER">
+							<PropertyRef Name="SKU_ICCAT" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="SKU2ICDEPT">
+					<End Type="ERPModel.ICDEPT" Role="ICDEPT" Multiplicity="1" />
+					<End Type="ERPModel.SKUMASTER" Role="SKUMASTER" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="ICDEPT">
+							<PropertyRef Name="ICDEPT_KEY" />
+						</Principal>
+						<Dependent Role="SKUMASTER">
+							<PropertyRef Name="SKU_ICDEPT" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<EntityType Name="APPLU">
+					<Key>
+						<PropertyRef Name="APPLU_KEY" />
+					</Key>
+					<Property Name="APPLU_KEY" Type="Int32" Nullable="false" />
+					<Property Name="APPLU_APPRB" Type="Int32" Nullable="false" />
+					<Property Name="APPLU_GOODS" Type="Int32" Nullable="false" />
+					<Property Name="APPLU_U_PRC" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="APPLU_U_DSC" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="APPLU_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+					<NavigationProperty Name="GOODSMASTER" Relationship="ERPModel.APPLU2GOODS" FromRole="APPLU" ToRole="GOODSMASTER" />
+				</EntityType>
+				<EntityType Name="GOODSMASTER">
+					<Key>
+						<PropertyRef Name="GOODS_KEY" />
+					</Key>
+					<Property Name="GOODS_KEY" Type="Int32" Nullable="false" />
+					<Property Name="GOODS_CODE" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
+					<Property Name="GOODS_BARTYPE" Type="Int16" Nullable="false" />
+					<Property Name="GOODS_SKU" Type="Int32" Nullable="false" />
+					<Property Name="GOODS_UTQ" Type="Int32" Nullable="false" />
+					<Property Name="GOODS_WEIGHT" Type="Decimal" Precision="19" Scale="4" />
+					<Property Name="GOODS_VOLUME" Type="Decimal" Precision="19" Scale="4" />
+					<Property Name="GOODS_ENABLE" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+					<Property Name="GOODS_P_ENABLE" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+					<Property Name="GOODS_MASTER" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+					<Property Name="GOODS_PRICE" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="GOODS_ALIAS" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="GOODS_E_ALIAS" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="GOODS_PRT_BAR" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+					<Property Name="GOODS_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+					<NavigationProperty Name="APPLUs" Relationship="ERPModel.APPLU2GOODS" FromRole="GOODSMASTER" ToRole="APPLU" />
+					<NavigationProperty Name="SKUMASTER" Relationship="ERPModel.GOODS2SKU" FromRole="GOODSMASTER" ToRole="SKUMASTER" />
+					<NavigationProperty Name="UOFQTY" Relationship="ERPModel.GOODS2UTQ" FromRole="GOODSMASTER" ToRole="UOFQTY" />
+					<NavigationProperty Name="SKUWARELOCATIONs" Relationship="ERPModel.SKUWL2GOODS" FromRole="GOODSMASTER"
+					                    ToRole="SKUWARELOCATION" />
+					<NavigationProperty Name="ARPLUs" Relationship="ERPModel.ARPLU2GOODS" FromRole="GOODSMASTER" ToRole="ARPLU" />
+				</EntityType>
+				<Association Name="APPLU2GOODS">
+					<End Type="ERPModel.GOODSMASTER" Role="GOODSMASTER" Multiplicity="1" />
+					<End Type="ERPModel.APPLU" Role="APPLU" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="GOODSMASTER">
+							<PropertyRef Name="GOODS_KEY" />
+						</Principal>
+						<Dependent Role="APPLU">
+							<PropertyRef Name="APPLU_GOODS" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="GOODS2SKU">
+					<End Type="ERPModel.SKUMASTER" Role="SKUMASTER" Multiplicity="1" />
+					<End Type="ERPModel.GOODSMASTER" Role="GOODSMASTER" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="SKUMASTER">
+							<PropertyRef Name="SKU_KEY" />
+						</Principal>
+						<Dependent Role="GOODSMASTER">
+							<PropertyRef Name="GOODS_SKU" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="GOODS2UTQ">
+					<End Type="ERPModel.UOFQTY" Role="UOFQTY" Multiplicity="1" />
+					<End Type="ERPModel.GOODSMASTER" Role="GOODSMASTER" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="UOFQTY">
+							<PropertyRef Name="UTQ_KEY" />
+						</Principal>
+						<Dependent Role="GOODSMASTER">
+							<PropertyRef Name="GOODS_UTQ" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="SKUWL2GOODS">
+					<End Type="ERPModel.GOODSMASTER" Role="GOODSMASTER" Multiplicity="1" />
+					<End Type="ERPModel.SKUWARELOCATION" Role="SKUWARELOCATION" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="GOODSMASTER">
+							<PropertyRef Name="GOODS_KEY" />
+						</Principal>
+						<Dependent Role="SKUWARELOCATION">
+							<PropertyRef Name="SKUWL_GOODS" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<EntityType Name="ARPLU">
+					<Key>
+						<PropertyRef Name="ARPLU_KEY" />
+					</Key>
+					<Property Name="ARPLU_KEY" Type="Int32" Nullable="false" />
+					<Property Name="ARPLU_ARPRB" Type="Int32" Nullable="false" />
+					<Property Name="ARPLU_GOODS" Type="Int32" Nullable="false" />
+					<Property Name="ARPLU_ARPRBCODE" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+					<Property Name="ARPLU_GOODSCODE" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+					<Property Name="ARPLU_U_PRC" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="ARPLU_U_DSC" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+					<Property Name="ARPLU_TAG" Type="Int32" Nullable="false" />
+					<Property Name="ARPLU_AUTO" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+					<Property Name="ARPLU_AUTO_GP" Type="Decimal" Precision="19" Scale="4" />
+					<Property Name="ARPLU_AUTO_ROUND" Type="Int32" />
+					<Property Name="ARPLU_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+					<NavigationProperty Name="ARPRICETAB" Relationship="ERPModel.ARPLU2ARPRB" FromRole="ARPLU" ToRole="ARPRICETAB" />
+					<NavigationProperty Name="GOODSMASTER" Relationship="ERPModel.ARPLU2GOODS" FromRole="ARPLU" ToRole="GOODSMASTER" />
+				</EntityType>
+				<Association Name="ARPLU2ARPRB">
+					<End Type="ERPModel.ARPRICETAB" Role="ARPRICETAB" Multiplicity="1" />
+					<End Type="ERPModel.ARPLU" Role="ARPLU" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="ARPRICETAB">
+							<PropertyRef Name="ARPRB_KEY" />
+						</Principal>
+						<Dependent Role="ARPLU">
+							<PropertyRef Name="ARPLU_ARPRB" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="ARPLU2GOODS">
+					<End Type="ERPModel.GOODSMASTER" Role="GOODSMASTER" Multiplicity="1" />
+					<End Type="ERPModel.ARPLU" Role="ARPLU" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="GOODSMASTER">
+							<PropertyRef Name="GOODS_KEY" />
+						</Principal>
+						<Dependent Role="ARPLU">
+							<PropertyRef Name="ARPLU_GOODS" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<EntityType Name="SKUMOVE">
+					<Key>
+						<PropertyRef Name="SKM_KEY" />
+					</Key>
+					<Property Name="SKM_KEY" Type="Int32" Nullable="false" />
+					<Property Name="SKM_SKU" Type="Int32" Nullable="false" />
+					<Property Name="SKM_DI" Type="Int32" Nullable="false" />
+					<Property Name="SKM_WL" Type="Int32" Nullable="false" />
+					<Property Name="SKM_REFER_DI" Type="Int32" />
+					<Property Name="SKM_LOT_NO" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+					<Property Name="SKM_SERIAL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+					<Property Name="SKM_QTY" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="SKM_COST" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="SKM_SELL" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="SKM_VAT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="SKM_B4_DISC" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="SKM_AF_GP" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="SKM_Q_FREE" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+					<Property Name="SKM_EXP_D" Type="DateTime" Precision="3" />
+					<Property Name="SKM_MAN_D" Type="DateTime" Precision="3" />
+					<Property Name="SKM_SHOW_ORDER" Type="Int32" />
+					<Property Name="SKM_AC" Type="Int32" Nullable="false" />
+					<Property Name="SKM_LASTUPD" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+					<NavigationProperty Name="DOCINFO" Relationship="ERPModel.SKM2DI" FromRole="SKUMOVE" ToRole="DOCINFO" />
+					<NavigationProperty Name="SKUMASTER" Relationship="ERPModel.SKM2SKU" FromRole="SKUMOVE" ToRole="SKUMASTER" />
+				</EntityType>
+				<Association Name="SKM2DI">
+					<End Type="ERPModel.DOCINFO" Role="DOCINFO" Multiplicity="1" />
+					<End Type="ERPModel.SKUMOVE" Role="SKUMOVE" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="DOCINFO">
+							<PropertyRef Name="DI_KEY" />
+						</Principal>
+						<Dependent Role="SKUMOVE">
+							<PropertyRef Name="SKM_DI" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="SKM2SKU">
+					<End Type="ERPModel.SKUMASTER" Role="SKUMASTER" Multiplicity="1" />
+					<End Type="ERPModel.SKUMOVE" Role="SKUMOVE" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="SKUMASTER">
+							<PropertyRef Name="SKU_KEY" />
+						</Principal>
+						<Dependent Role="SKUMOVE">
+							<PropertyRef Name="SKM_SKU" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+			</Schema>
+		</edmx:ConceptualModels>
+		<!-- C-S mapping content -->
+		<edmx:Mappings>
+			<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+				<EntityContainerMapping StorageEntityContainer="ERPModelStoreContainer" CdmEntityContainer="ERP">
+					<EntitySetMapping Name="ADDRBOOKs">
+						<EntityTypeMapping TypeName="ERPModel.ADDRBOOK">
+							<MappingFragment StoreEntitySet="ADDRBOOK">
+								<ScalarProperty Name="ADDB_KEY" ColumnName="ADDB_KEY" />
+								<ScalarProperty Name="ADDB_COMPANY" ColumnName="ADDB_COMPANY" />
+								<ScalarProperty Name="ADDB_BRANCH" ColumnName="ADDB_BRANCH" />
+								<ScalarProperty Name="ADDB_TAX_ID" ColumnName="ADDB_TAX_ID" />
+								<ScalarProperty Name="ADDB_ADDB_1" ColumnName="ADDB_ADDB_1" />
+								<ScalarProperty Name="ADDB_ADDB_2" ColumnName="ADDB_ADDB_2" />
+								<ScalarProperty Name="ADDB_ADDB_3" ColumnName="ADDB_ADDB_3" />
+								<ScalarProperty Name="ADDB_PROVINCE" ColumnName="ADDB_PROVINCE" />
+								<ScalarProperty Name="ADDB_POST" ColumnName="ADDB_POST" />
+								<ScalarProperty Name="ADDB_PHONE" ColumnName="ADDB_PHONE" />
+								<ScalarProperty Name="ADDB_FAX" ColumnName="ADDB_FAX" />
+								<ScalarProperty Name="ADDB_WEBSITE" ColumnName="ADDB_WEBSITE" />
+								<ScalarProperty Name="ADDB_BT" ColumnName="ADDB_BT" />
+								<ScalarProperty Name="ADDB_STA" ColumnName="ADDB_STA" />
+								<ScalarProperty Name="ADDB_REMARK" ColumnName="ADDB_REMARK" />
+								<ScalarProperty Name="ADDB_SEARCH" ColumnName="ADDB_SEARCH" />
+								<ScalarProperty Name="ADDB_EMAIL" ColumnName="ADDB_EMAIL" />
+								<ScalarProperty Name="ADDB_CONNECT" ColumnName="ADDB_CONNECT" />
+								<ScalarProperty Name="ADDB_GPS_LAT_S" ColumnName="ADDB_GPS_LAT_S" />
+								<ScalarProperty Name="ADDB_GPS_LONG_S" ColumnName="ADDB_GPS_LONG_S" />
+								<ScalarProperty Name="ADDB_LASTUPD" ColumnName="ADDB_LASTUPD" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="ARADDRESSes">
+						<EntityTypeMapping TypeName="ERPModel.ARADDRESS">
+							<MappingFragment StoreEntitySet="ARADDRESS">
+								<ScalarProperty Name="ARA_KEY" ColumnName="ARA_KEY" />
+								<ScalarProperty Name="ARA_AR" ColumnName="ARA_AR" />
+								<ScalarProperty Name="ARA_ADDB" ColumnName="ARA_ADDB" />
+								<ScalarProperty Name="ARA_DEFAULT" ColumnName="ARA_DEFAULT" />
+								<ScalarProperty Name="ARA_LASTUPD" ColumnName="ARA_LASTUPD" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="ARCATs">
+						<EntityTypeMapping TypeName="ERPModel.ARCAT">
+							<MappingFragment StoreEntitySet="ARCAT">
+								<ScalarProperty Name="ARCAT_KEY" ColumnName="ARCAT_KEY" />
+								<ScalarProperty Name="ARCAT_CODE" ColumnName="ARCAT_CODE" />
+								<ScalarProperty Name="ARCAT_NAME" ColumnName="ARCAT_NAME" />
+								<ScalarProperty Name="ARCAT_ACCESS" ColumnName="ARCAT_ACCESS" />
+								<ScalarProperty Name="ARCAT_UDF_1" ColumnName="ARCAT_UDF_1" />
+								<ScalarProperty Name="ARCAT_UDF_2" ColumnName="ARCAT_UDF_2" />
+								<ScalarProperty Name="ARCAT_UDF_3" ColumnName="ARCAT_UDF_3" />
+								<ScalarProperty Name="ARCAT_UDF_4" ColumnName="ARCAT_UDF_4" />
+								<ScalarProperty Name="ARCAT_UDF_5" ColumnName="ARCAT_UDF_5" />
+								<ScalarProperty Name="ARCAT_UDF_6" ColumnName="ARCAT_UDF_6" />
+								<ScalarProperty Name="ARCAT_LASTUPD" ColumnName="ARCAT_LASTUPD" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="ARFILEs">
+						<EntityTypeMapping TypeName="ERPModel.ARFILE">
+							<MappingFragment StoreEntitySet="ARFILE">
+								<ScalarProperty Name="AR_KEY" ColumnName="AR_KEY" />
+								<ScalarProperty Name="AR_CODE" ColumnName="AR_CODE" />
+								<ScalarProperty Name="AR_NAME" ColumnName="AR_NAME" />
+								<ScalarProperty Name="AR_ARCAT" ColumnName="AR_ARCAT" />
+								<ScalarProperty Name="AR_AC" ColumnName="AR_AC" />
+								<ScalarProperty Name="AR_ENABLE" ColumnName="AR_ENABLE" />
+								<ScalarProperty Name="AR_ACCESS" ColumnName="AR_ACCESS" />
+								<ScalarProperty Name="AR_SLMNCODE" ColumnName="AR_SLMNCODE" />
+								<ScalarProperty Name="AR_ARL" ColumnName="AR_ARL" />
+								<ScalarProperty Name="AR_ARTY" ColumnName="AR_ARTY" />
+								<ScalarProperty Name="AR_ARG" ColumnName="AR_ARG" />
+								<ScalarProperty Name="AR_ARR" ColumnName="AR_ARR" />
+								<ScalarProperty Name="AR_ARGL" ColumnName="AR_ARGL" />
+								<ScalarProperty Name="AR_DEPT" ColumnName="AR_DEPT" />
+								<ScalarProperty Name="AR_REMARK" ColumnName="AR_REMARK" />
+								<ScalarProperty Name="AR_UDF_1" ColumnName="AR_UDF_1" />
+								<ScalarProperty Name="AR_UDF_2" ColumnName="AR_UDF_2" />
+								<ScalarProperty Name="AR_UDF_3" ColumnName="AR_UDF_3" />
+								<ScalarProperty Name="AR_UDF_4" ColumnName="AR_UDF_4" />
+								<ScalarProperty Name="AR_UDF_5" ColumnName="AR_UDF_5" />
+								<ScalarProperty Name="AR_UDF_6" ColumnName="AR_UDF_6" />
+								<ScalarProperty Name="AR_MBCODE" ColumnName="AR_MBCODE" />
+								<ScalarProperty Name="AR_LASTUPD" ColumnName="AR_LASTUPD" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="DEPTTABs">
+						<EntityTypeMapping TypeName="ERPModel.DEPTTAB">
+							<MappingFragment StoreEntitySet="DEPTTAB">
+								<ScalarProperty Name="DEPT_KEY" ColumnName="DEPT_KEY" />
+								<ScalarProperty Name="DEPT_CODE" ColumnName="DEPT_CODE" />
+								<ScalarProperty Name="DEPT_THAIDESC" ColumnName="DEPT_THAIDESC" />
+								<ScalarProperty Name="DEPT_ENGDESC" ColumnName="DEPT_ENGDESC" />
+								<ScalarProperty Name="DEPT_DEFAULT" ColumnName="DEPT_DEFAULT" />
+								<ScalarProperty Name="DEPT_UDF_1" ColumnName="DEPT_UDF_1" />
+								<ScalarProperty Name="DEPT_UDF_2" ColumnName="DEPT_UDF_2" />
+								<ScalarProperty Name="DEPT_UDF_3" ColumnName="DEPT_UDF_3" />
+								<ScalarProperty Name="DEPT_UDF_4" ColumnName="DEPT_UDF_4" />
+								<ScalarProperty Name="DEPT_UDF_5" ColumnName="DEPT_UDF_5" />
+								<ScalarProperty Name="DEPT_UDF_6" ColumnName="DEPT_UDF_6" />
+								<ScalarProperty Name="DEPT_LASTUPD" ColumnName="DEPT_LASTUPD" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="SALESMen">
+						<EntityTypeMapping TypeName="ERPModel.SALESMAN">
+							<MappingFragment StoreEntitySet="SALESMAN">
+								<ScalarProperty Name="SLMN_KEY" ColumnName="SLMN_KEY" />
+								<ScalarProperty Name="SLMN_CODE" ColumnName="SLMN_CODE" />
+								<ScalarProperty Name="SLMN_NAME" ColumnName="SLMN_NAME" />
+								<ScalarProperty Name="SLMN_REMARK" ColumnName="SLMN_REMARK" />
+								<ScalarProperty Name="SLMN_SLCAT" ColumnName="SLMN_SLCAT" />
+								<ScalarProperty Name="SLMN_CMRH" ColumnName="SLMN_CMRH" />
+								<ScalarProperty Name="SLMN_AC" ColumnName="SLMN_AC" />
+								<ScalarProperty Name="SLMN_SLL" ColumnName="SLMN_SLL" />
+								<ScalarProperty Name="SLMN_SLU" ColumnName="SLMN_SLU" />
+								<ScalarProperty Name="SLMN_SLT" ColumnName="SLMN_SLT" />
+								<ScalarProperty Name="SLMN_SLR" ColumnName="SLMN_SLR" />
+								<ScalarProperty Name="SLMN_ENABLE" ColumnName="SLMN_ENABLE" />
+								<ScalarProperty Name="SLMN_UDF_1" ColumnName="SLMN_UDF_1" />
+								<ScalarProperty Name="SLMN_UDF_2" ColumnName="SLMN_UDF_2" />
+								<ScalarProperty Name="SLMN_UDF_3" ColumnName="SLMN_UDF_3" />
+								<ScalarProperty Name="SLMN_UDF_4" ColumnName="SLMN_UDF_4" />
+								<ScalarProperty Name="SLMN_UDF_5" ColumnName="SLMN_UDF_5" />
+								<ScalarProperty Name="SLMN_UDF_6" ColumnName="SLMN_UDF_6" />
+								<ScalarProperty Name="SLMN_LASTUPD" ColumnName="SLMN_LASTUPD" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="SKUBALANCEs">
+						<EntityTypeMapping TypeName="ERPModel.SKUBALANCE">
+							<MappingFragment StoreEntitySet="SKUBALANCE">
+								<ScalarProperty Name="SKB_KEY" ColumnName="SKB_KEY" />
+								<ScalarProperty Name="SKB_SKU" ColumnName="SKB_SKU" />
+								<ScalarProperty Name="SKB_DATE" ColumnName="SKB_DATE" />
+								<ScalarProperty Name="SKB_WL" ColumnName="SKB_WL" />
+								<ScalarProperty Name="SKB_FIFO" ColumnName="SKB_FIFO" />
+								<ScalarProperty Name="SKB_LOT_NO" ColumnName="SKB_LOT_NO" />
+								<ScalarProperty Name="SKB_SERIAL" ColumnName="SKB_SERIAL" />
+								<ScalarProperty Name="SKB_UTQ" ColumnName="SKB_UTQ" />
+								<ScalarProperty Name="SKB_UTQQTY" ColumnName="SKB_UTQQTY" />
+								<ScalarProperty Name="SKB_U_PRC" ColumnName="SKB_U_PRC" />
+								<ScalarProperty Name="SKB_QTY" ColumnName="SKB_QTY" />
+								<ScalarProperty Name="SKB_COST" ColumnName="SKB_COST" />
+								<ScalarProperty Name="SKB_EXP_D" ColumnName="SKB_EXP_D" />
+								<ScalarProperty Name="SKB_MAN_D" ColumnName="SKB_MAN_D" />
+								<ScalarProperty Name="SKB_DI" ColumnName="SKB_DI" />
+								<ScalarProperty Name="SKB_CREATOR" ColumnName="SKB_CREATOR" />
+								<ScalarProperty Name="SKB_LASTUPD" ColumnName="SKB_LASTUPD" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="SKUMASTERs">
+						<EntityTypeMapping TypeName="ERPModel.SKUMASTER">
+							<MappingFragment StoreEntitySet="SKUMASTER">
+								<ScalarProperty Name="SKU_KEY" ColumnName="SKU_KEY" />
+								<ScalarProperty Name="SKU_CODE" ColumnName="SKU_CODE" />
+								<ScalarProperty Name="SKU_NAME" ColumnName="SKU_NAME" />
+								<ScalarProperty Name="SKU_E_NAME" ColumnName="SKU_E_NAME" />
+								<ScalarProperty Name="SKU_BARCODE" ColumnName="SKU_BARCODE" />
+								<ScalarProperty Name="SKU_BRN" ColumnName="SKU_BRN" />
+								<ScalarProperty Name="SKU_ICCAT" ColumnName="SKU_ICCAT" />
+								<ScalarProperty Name="SKU_S_UTQ" ColumnName="SKU_S_UTQ" />
+								<ScalarProperty Name="SKU_T_UTQ" ColumnName="SKU_T_UTQ" />
+								<ScalarProperty Name="SKU_K_UTQ" ColumnName="SKU_K_UTQ" />
+								<ScalarProperty Name="SKU_VAT_TY" ColumnName="SKU_VAT_TY" />
+								<ScalarProperty Name="SKU_VAT" ColumnName="SKU_VAT" />
+								<ScalarProperty Name="SKU_COST_TY" ColumnName="SKU_COST_TY" />
+								<ScalarProperty Name="SKU_STD_COST" ColumnName="SKU_STD_COST" />
+								<ScalarProperty Name="SKU_STOCK" ColumnName="SKU_STOCK" />
+								<ScalarProperty Name="SKU_SKUALT" ColumnName="SKU_SKUALT" />
+								<ScalarProperty Name="SKU_WH_TY" ColumnName="SKU_WH_TY" />
+								<ScalarProperty Name="SKU_WH_RATE" ColumnName="SKU_WH_RATE" />
+								<ScalarProperty Name="SKU_MSG_1" ColumnName="SKU_MSG_1" />
+								<ScalarProperty Name="SKU_MSG_2" ColumnName="SKU_MSG_2" />
+								<ScalarProperty Name="SKU_MSG_3" ColumnName="SKU_MSG_3" />
+								<ScalarProperty Name="SKU_MIXCOLOR" ColumnName="SKU_MIXCOLOR" />
+								<ScalarProperty Name="SKU_ICCOLOR" ColumnName="SKU_ICCOLOR" />
+								<ScalarProperty Name="SKU_ICSIZE" ColumnName="SKU_ICSIZE" />
+								<ScalarProperty Name="SKU_ICDEPT" ColumnName="SKU_ICDEPT" />
+								<ScalarProperty Name="SKU_ICGL" ColumnName="SKU_ICGL" />
+								<ScalarProperty Name="SKU_ICPRT" ColumnName="SKU_ICPRT" />
+								<ScalarProperty Name="SKU_WL" ColumnName="SKU_WL" />
+								<ScalarProperty Name="SKU_ENABLE" ColumnName="SKU_ENABLE" />
+								<ScalarProperty Name="SKU_P_ENABLE" ColumnName="SKU_P_ENABLE" />
+								<ScalarProperty Name="SKU_MIN_QTY" ColumnName="SKU_MIN_QTY" />
+								<ScalarProperty Name="SKU_MAX_QTY" ColumnName="SKU_MAX_QTY" />
+								<ScalarProperty Name="SKU_MIN_ORDER" ColumnName="SKU_MIN_ORDER" />
+								<ScalarProperty Name="SKU_MAX_ORDER" ColumnName="SKU_MAX_ORDER" />
+								<ScalarProperty Name="SKU_LEAD_TIME" ColumnName="SKU_LEAD_TIME" />
+								<ScalarProperty Name="SKU_SATISFY" ColumnName="SKU_SATISFY" />
+								<ScalarProperty Name="SKU_SAFTY" ColumnName="SKU_SAFTY" />
+								<ScalarProperty Name="SKU_FREQUENCY" ColumnName="SKU_FREQUENCY" />
+								<ScalarProperty Name="SKU_ACCESS" ColumnName="SKU_ACCESS" />
+								<ScalarProperty Name="SKU_ABC" ColumnName="SKU_ABC" />
+								<ScalarProperty Name="SKU_EOQ_A" ColumnName="SKU_EOQ_A" />
+								<ScalarProperty Name="SKU_EOQ_P" ColumnName="SKU_EOQ_P" />
+								<ScalarProperty Name="SKU_EOQ_C" ColumnName="SKU_EOQ_C" />
+								<ScalarProperty Name="SKU_EOQ_NO" ColumnName="SKU_EOQ_NO" />
+								<ScalarProperty Name="SKU_SPEC" ColumnName="SKU_SPEC" />
+								<ScalarProperty Name="SKU_USAGE" ColumnName="SKU_USAGE" />
+								<ScalarProperty Name="SKU_REMARK" ColumnName="SKU_REMARK" />
+								<ScalarProperty Name="SKU_LAST_O" ColumnName="SKU_LAST_O" />
+								<ScalarProperty Name="SKU_LAST_R" ColumnName="SKU_LAST_R" />
+								<ScalarProperty Name="SKU_LAST_RCOST" ColumnName="SKU_LAST_RCOST" />
+								<ScalarProperty Name="SKU_LAST_RQTY" ColumnName="SKU_LAST_RQTY" />
+								<ScalarProperty Name="SKU_LAST_COMMIT" ColumnName="SKU_LAST_COMMIT" />
+								<ScalarProperty Name="SKU_SENSITIVITY" ColumnName="SKU_SENSITIVITY" />
+								<ScalarProperty Name="SKU_SENS_POS" ColumnName="SKU_SENS_POS" />
+								<ScalarProperty Name="SKU_LAST_UBCOST" ColumnName="SKU_LAST_UBCOST" />
+								<ScalarProperty Name="SKU_LAST_UCCOST" ColumnName="SKU_LAST_UCCOST" />
+								<ScalarProperty Name="SKU_ALERT" ColumnName="SKU_ALERT" />
+								<ScalarProperty Name="SKU_ALERT_MSG" ColumnName="SKU_ALERT_MSG" />
+								<ScalarProperty Name="SKU_PRICE" ColumnName="SKU_PRICE" />
+								<ScalarProperty Name="SKU_EQ_FACTOR" ColumnName="SKU_EQ_FACTOR" />
+								<ScalarProperty Name="SKU_EQ_NAME" ColumnName="SKU_EQ_NAME" />
+								<ScalarProperty Name="SKU_UDF_1" ColumnName="SKU_UDF_1" />
+								<ScalarProperty Name="SKU_UDF_2" ColumnName="SKU_UDF_2" />
+								<ScalarProperty Name="SKU_UDF_3" ColumnName="SKU_UDF_3" />
+								<ScalarProperty Name="SKU_UDF_4" ColumnName="SKU_UDF_4" />
+								<ScalarProperty Name="SKU_UDF_5" ColumnName="SKU_UDF_5" />
+								<ScalarProperty Name="SKU_UDF_6" ColumnName="SKU_UDF_6" />
+								<ScalarProperty Name="SKU_LASTUPD" ColumnName="SKU_LASTUPD" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="SKUWARELOCATIONs">
+						<EntityTypeMapping TypeName="ERPModel.SKUWARELOCATION">
+							<MappingFragment StoreEntitySet="SKUWARELOCATION">
+								<ScalarProperty Name="SKUWL_KEY" ColumnName="SKUWL_KEY" />
+								<ScalarProperty Name="SKUWL_SKU" ColumnName="SKUWL_SKU" />
+								<ScalarProperty Name="SKUWL_WL" ColumnName="SKUWL_WL" />
+								<ScalarProperty Name="SKUWL_SEQ" ColumnName="SKUWL_SEQ" />
+								<ScalarProperty Name="SKUWL_GOODS" ColumnName="SKUWL_GOODS" />
+								<ScalarProperty Name="SKUWL_USED_QTY" ColumnName="SKUWL_USED_QTY" />
+								<ScalarProperty Name="SKUWL_FREQUENCY" ColumnName="SKUWL_FREQUENCY" />
+								<ScalarProperty Name="SKUWL_MIN_QTY" ColumnName="SKUWL_MIN_QTY" />
+								<ScalarProperty Name="SKUWL_MAX_QTY" ColumnName="SKUWL_MAX_QTY" />
+								<ScalarProperty Name="SKUWL_DT" ColumnName="SKUWL_DT" />
+								<ScalarProperty Name="SKUWL_RPLN_FROM" ColumnName="SKUWL_RPLN_FROM" />
+								<ScalarProperty Name="SKUWL_RPLN_WL" ColumnName="SKUWL_RPLN_WL" />
+								<ScalarProperty Name="SKUWL_RPLN_WHEN" ColumnName="SKUWL_RPLN_WHEN" />
+								<ScalarProperty Name="SKUWL_RPLN_QTY" ColumnName="SKUWL_RPLN_QTY" />
+								<ScalarProperty Name="SKUWL_RPLN_ROUND" ColumnName="SKUWL_RPLN_ROUND" />
+								<ScalarProperty Name="SKUWL_TOPV_ABC" ColumnName="SKUWL_TOPV_ABC" />
+								<ScalarProperty Name="SKUWL_TOPQ_ABC" ColumnName="SKUWL_TOPQ_ABC" />
+								<ScalarProperty Name="SKUWL_UPRC_ABC" ColumnName="SKUWL_UPRC_ABC" />
+								<ScalarProperty Name="SKUWL_LASTUPD" ColumnName="SKUWL_LASTUPD" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="DOCINFOes">
+						<EntityTypeMapping TypeName="ERPModel.DOCINFO">
+							<MappingFragment StoreEntitySet="DOCINFO">
+								<ScalarProperty Name="DI_LASTUPD" ColumnName="DI_LASTUPD" />
+								<ScalarProperty Name="DI_REMARK" ColumnName="DI_REMARK" />
+								<ScalarProperty Name="DI_CREATOR_DI" ColumnName="DI_CREATOR_DI" />
+								<ScalarProperty Name="DI_AUTO" ColumnName="DI_AUTO" />
+								<ScalarProperty Name="DI_AMOUNT" ColumnName="DI_AMOUNT" />
+								<ScalarProperty Name="DI_ITEMS" ColumnName="DI_ITEMS" />
+								<ScalarProperty Name="DI_1ST_AMOUNT" ColumnName="DI_1ST_AMOUNT" />
+								<ScalarProperty Name="DI_1ST_ITEMS" ColumnName="DI_1ST_ITEMS" />
+								<ScalarProperty Name="DI_DFRS" ColumnName="DI_DFRS" />
+								<ScalarProperty Name="DI_APV_STATUS" ColumnName="DI_APV_STATUS" />
+								<ScalarProperty Name="DI_APV_LGNN" ColumnName="DI_APV_LGNN" />
+								<ScalarProperty Name="DI_APV_CPTN" ColumnName="DI_APV_CPTN" />
+								<ScalarProperty Name="DI_APV_BY" ColumnName="DI_APV_BY" />
+								<ScalarProperty Name="DI_APV_DATE" ColumnName="DI_APV_DATE" />
+								<ScalarProperty Name="DI_EXM_LGNN" ColumnName="DI_EXM_LGNN" />
+								<ScalarProperty Name="DI_EXM_CPTN" ColumnName="DI_EXM_CPTN" />
+								<ScalarProperty Name="DI_EXM_BY" ColumnName="DI_EXM_BY" />
+								<ScalarProperty Name="DI_EXM_DATE" ColumnName="DI_EXM_DATE" />
+								<ScalarProperty Name="DI_PRN_STATUS" ColumnName="DI_PRN_STATUS" />
+								<ScalarProperty Name="DI_PRN_LGNN" ColumnName="DI_PRN_LGNN" />
+								<ScalarProperty Name="DI_PRN_CPTN" ColumnName="DI_PRN_CPTN" />
+								<ScalarProperty Name="DI_PRN_BY" ColumnName="DI_PRN_BY" />
+								<ScalarProperty Name="DI_PRN_DATE" ColumnName="DI_PRN_DATE" />
+								<ScalarProperty Name="DI_PRN_TIME" ColumnName="DI_PRN_TIME" />
+								<ScalarProperty Name="DI_DEL_LGNN" ColumnName="DI_DEL_LGNN" />
+								<ScalarProperty Name="DI_DEL_CPTN" ColumnName="DI_DEL_CPTN" />
+								<ScalarProperty Name="DI_DEL_BY" ColumnName="DI_DEL_BY" />
+								<ScalarProperty Name="DI_DEL_DATE" ColumnName="DI_DEL_DATE" />
+								<ScalarProperty Name="DI_UPD_LGNN" ColumnName="DI_UPD_LGNN" />
+								<ScalarProperty Name="DI_UPD_CPTN" ColumnName="DI_UPD_CPTN" />
+								<ScalarProperty Name="DI_UPD_BY" ColumnName="DI_UPD_BY" />
+								<ScalarProperty Name="DI_UPD_DATE" ColumnName="DI_UPD_DATE" />
+								<ScalarProperty Name="DI_CRE_LGNN" ColumnName="DI_CRE_LGNN" />
+								<ScalarProperty Name="DI_CRE_CPTN" ColumnName="DI_CRE_CPTN" />
+								<ScalarProperty Name="DI_CRE_BY" ColumnName="DI_CRE_BY" />
+								<ScalarProperty Name="DI_CRE_DATE" ColumnName="DI_CRE_DATE" />
+								<ScalarProperty Name="DI_DATE" ColumnName="DI_DATE" />
+								<ScalarProperty Name="DI_REF" ColumnName="DI_REF" />
+								<ScalarProperty Name="DI_FLAG" ColumnName="DI_FLAG" />
+								<ScalarProperty Name="DI_EDIT_TIME" ColumnName="DI_EDIT_TIME" />
+								<ScalarProperty Name="DI_ACTIVE" ColumnName="DI_ACTIVE" />
+								<ScalarProperty Name="DI_REVISION" ColumnName="DI_REVISION" />
+								<ScalarProperty Name="DI_SUBS_DI" ColumnName="DI_SUBS_DI" />
+								<ScalarProperty Name="DI_DT" ColumnName="DI_DT" />
+								<ScalarProperty Name="DI_KEY" ColumnName="DI_KEY" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="DOCTYPEs">
+						<EntityTypeMapping TypeName="ERPModel.DOCTYPE">
+							<MappingFragment StoreEntitySet="DOCTYPE">
+								<ScalarProperty Name="DT_LASTUPD" ColumnName="DT_LASTUPD" />
+								<ScalarProperty Name="DT_BRANCH" ColumnName="DT_BRANCH" />
+								<ScalarProperty Name="DT_VAT_PREFIX" ColumnName="DT_VAT_PREFIX" />
+								<ScalarProperty Name="DT_REPRT_MSG" ColumnName="DT_REPRT_MSG" />
+								<ScalarProperty Name="DT_PRINT_CANCEL" ColumnName="DT_PRINT_CANCEL" />
+								<ScalarProperty Name="DT_REF_B4_PRINT" ColumnName="DT_REF_B4_PRINT" />
+								<ScalarProperty Name="DT_REPRT_POS" ColumnName="DT_REPRT_POS" />
+								<ScalarProperty Name="DT_CANCEL_POS" ColumnName="DT_CANCEL_POS" />
+								<ScalarProperty Name="DT_CHANGE_POS" ColumnName="DT_CHANGE_POS" />
+								<ScalarProperty Name="DT_EDIT_PRT_POS" ColumnName="DT_EDIT_PRT_POS" />
+								<ScalarProperty Name="DT_EDIT_AF_POS" ColumnName="DT_EDIT_AF_POS" />
+								<ScalarProperty Name="DT_APV_POS" ColumnName="DT_APV_POS" />
+								<ScalarProperty Name="DT_SELECT_PRT" ColumnName="DT_SELECT_PRT" />
+								<ScalarProperty Name="DT_NEED_APV" ColumnName="DT_NEED_APV" />
+								<ScalarProperty Name="DT_PREVIEW" ColumnName="DT_PREVIEW" />
+								<ScalarProperty Name="DT_ENABLE" ColumnName="DT_ENABLE" />
+								<ScalarProperty Name="DT_NEW_NEXT" ColumnName="DT_NEW_NEXT" />
+								<ScalarProperty Name="DT_NEW_SINCE" ColumnName="DT_NEW_SINCE" />
+								<ScalarProperty Name="DT_SHOW_NEXT" ColumnName="DT_SHOW_NEXT" />
+								<ScalarProperty Name="DT_SHOW_SINCE" ColumnName="DT_SHOW_SINCE" />
+								<ScalarProperty Name="DT_RPF_CODE" ColumnName="DT_RPF_CODE" />
+								<ScalarProperty Name="DT_DUPTYPE" ColumnName="DT_DUPTYPE" />
+								<ScalarProperty Name="DT_CANEDIT" ColumnName="DT_CANEDIT" />
+								<ScalarProperty Name="DT_ACCESS" ColumnName="DT_ACCESS" />
+								<ScalarProperty Name="DT_BOOKSIZE" ColumnName="DT_BOOKSIZE" />
+								<ScalarProperty Name="DT_DIGIT" ColumnName="DT_DIGIT" />
+								<ScalarProperty Name="DT_PREFIX" ColumnName="DT_PREFIX" />
+								<ScalarProperty Name="DT_RUNTYPE" ColumnName="DT_RUNTYPE" />
+								<ScalarProperty Name="DT_PROPERTIES" ColumnName="DT_PROPERTIES" />
+								<ScalarProperty Name="DT_ENGDESC" ColumnName="DT_ENGDESC" />
+								<ScalarProperty Name="DT_THAIDESC" ColumnName="DT_THAIDESC" />
+								<ScalarProperty Name="DT_DOCCODE" ColumnName="DT_DOCCODE" />
+								<ScalarProperty Name="DT_KEY" ColumnName="DT_KEY" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="TRANSTKDs">
+						<EntityTypeMapping TypeName="ERPModel.TRANSTKD">
+							<MappingFragment StoreEntitySet="TRANSTKD">
+								<ScalarProperty Name="TRD_LASTUPD" ColumnName="TRD_LASTUPD" />
+								<ScalarProperty Name="TRD_ASRT_U_DSC" ColumnName="TRD_ASRT_U_DSC" />
+								<ScalarProperty Name="TRD_ASRT_U_PRC" ColumnName="TRD_ASRT_U_PRC" />
+								<ScalarProperty Name="TRD_ASRT_FREE" ColumnName="TRD_ASRT_FREE" />
+								<ScalarProperty Name="TRD_ASRT_QTY" ColumnName="TRD_ASRT_QTY" />
+								<ScalarProperty Name="TRD_ICCOLOR" ColumnName="TRD_ICCOLOR" />
+								<ScalarProperty Name="TRD_ASRTH" ColumnName="TRD_ASRTH" />
+								<ScalarProperty Name="TRD_SKUALT" ColumnName="TRD_SKUALT" />
+								<ScalarProperty Name="TRD_CREATOR" ColumnName="TRD_CREATOR" />
+								<ScalarProperty Name="TRD_CNSN_B4" ColumnName="TRD_CNSN_B4" />
+								<ScalarProperty Name="TRD_CONSIGN" ColumnName="TRD_CONSIGN" />
+								<ScalarProperty Name="TRD_C_DSCV" ColumnName="TRD_C_DSCV" />
+								<ScalarProperty Name="TRD_C_DSC" ColumnName="TRD_C_DSC" />
+								<ScalarProperty Name="TRD_C_U_PRC" ColumnName="TRD_C_U_PRC" />
+								<ScalarProperty Name="TRD_ARCPGN_C" ColumnName="TRD_ARCPGN_C" />
+								<ScalarProperty Name="TRD_ARCPGN" ColumnName="TRD_ARCPGN" />
+								<ScalarProperty Name="TRD_CAMPAIGN" ColumnName="TRD_CAMPAIGN" />
+								<ScalarProperty Name="TRD_EQ_V" ColumnName="TRD_EQ_V" />
+								<ScalarProperty Name="TRD_EQ_FACTOR" ColumnName="TRD_EQ_FACTOR" />
+								<ScalarProperty Name="TRD_PRICE" ColumnName="TRD_PRICE" />
+								<ScalarProperty Name="TRD_B_PCNT" ColumnName="TRD_B_PCNT" />
+								<ScalarProperty Name="TRD_ADJ_MAMT" ColumnName="TRD_ADJ_MAMT" />
+								<ScalarProperty Name="TRD_ADJ_PAMT" ColumnName="TRD_ADJ_PAMT" />
+								<ScalarProperty Name="TRD_NX_Q_FREE" ColumnName="TRD_NX_Q_FREE" />
+								<ScalarProperty Name="TRD_NX_G_KEYIN" ColumnName="TRD_NX_G_KEYIN" />
+								<ScalarProperty Name="TRD_NX_DSC_KEYINV" ColumnName="TRD_NX_DSC_KEYINV" />
+								<ScalarProperty Name="TRD_NX_DSC_KEYIN" ColumnName="TRD_NX_DSC_KEYIN" />
+								<ScalarProperty Name="TRD_NX_QTY" ColumnName="TRD_NX_QTY" />
+								<ScalarProperty Name="TRD_AC_Q_FREE" ColumnName="TRD_AC_Q_FREE" />
+								<ScalarProperty Name="TRD_AC_G_KEYIN" ColumnName="TRD_AC_G_KEYIN" />
+								<ScalarProperty Name="TRD_AC_QTY" ColumnName="TRD_AC_QTY" />
+								<ScalarProperty Name="TRD_OR_Q_FREE" ColumnName="TRD_OR_Q_FREE" />
+								<ScalarProperty Name="TRD_OR_G_KEYIN" ColumnName="TRD_OR_G_KEYIN" />
+								<ScalarProperty Name="TRD_OR_DSC_KEYINV" ColumnName="TRD_OR_DSC_KEYINV" />
+								<ScalarProperty Name="TRD_OR_U_PRC" ColumnName="TRD_OR_U_PRC" />
+								<ScalarProperty Name="TRD_OR_QTY" ColumnName="TRD_OR_QTY" />
+								<ScalarProperty Name="TRD_REFER_TRD" ColumnName="TRD_REFER_TRD" />
+								<ScalarProperty Name="TRD_REFER_TRH" ColumnName="TRD_REFER_TRH" />
+								<ScalarProperty Name="TRD_REFER_DI" ColumnName="TRD_REFER_DI" />
+								<ScalarProperty Name="TRD_REFER_DATE" ColumnName="TRD_REFER_DATE" />
+								<ScalarProperty Name="TRD_REFER_REF" ColumnName="TRD_REFER_REF" />
+								<ScalarProperty Name="TRD_OPTION" ColumnName="TRD_OPTION" />
+								<ScalarProperty Name="TRD_UQ_FREE" ColumnName="TRD_UQ_FREE" />
+								<ScalarProperty Name="TRD_UQTY" ColumnName="TRD_UQTY" />
+								<ScalarProperty Name="TRD_AC" ColumnName="TRD_AC" />
+								<ScalarProperty Name="TRD_COMM_AMT" ColumnName="TRD_COMM_AMT" />
+								<ScalarProperty Name="TRD_COMM_RATE" ColumnName="TRD_COMM_RATE" />
+								<ScalarProperty Name="TRD_RTN_AMT" ColumnName="TRD_RTN_AMT" />
+								<ScalarProperty Name="TRD_RTN_UPRC" ColumnName="TRD_RTN_UPRC" />
+								<ScalarProperty Name="TRD_SH_REMARK" ColumnName="TRD_SH_REMARK" />
+								<ScalarProperty Name="TRD_SH_GAMT" ColumnName="TRD_SH_GAMT" />
+								<ScalarProperty Name="TRD_SH_GVAT" ColumnName="TRD_SH_GVAT" />
+								<ScalarProperty Name="TRD_SH_GSELL" ColumnName="TRD_SH_GSELL" />
+								<ScalarProperty Name="TRD_SH_UPRC" ColumnName="TRD_SH_UPRC" />
+								<ScalarProperty Name="TRD_SH_QTY" ColumnName="TRD_SH_QTY" />
+								<ScalarProperty Name="TRD_SH_NAME" ColumnName="TRD_SH_NAME" />
+								<ScalarProperty Name="TRD_SH_CODE" ColumnName="TRD_SH_CODE" />
+								<ScalarProperty Name="TRD_SH_AUTO" ColumnName="TRD_SH_AUTO" />
+								<ScalarProperty Name="TRD_TO_WL" ColumnName="TRD_TO_WL" />
+								<ScalarProperty Name="TRD_WL" ColumnName="TRD_WL" />
+								<ScalarProperty Name="TRD_MAN_D" ColumnName="TRD_MAN_D" />
+								<ScalarProperty Name="TRD_EXP_D" ColumnName="TRD_EXP_D" />
+								<ScalarProperty Name="TRD_SERIAL" ColumnName="TRD_SERIAL" />
+								<ScalarProperty Name="TRD_LOT_NO" ColumnName="TRD_LOT_NO" />
+								<ScalarProperty Name="TRD_WH_TAX" ColumnName="TRD_WH_TAX" />
+								<ScalarProperty Name="TRD_WH_RATE" ColumnName="TRD_WH_RATE" />
+								<ScalarProperty Name="TRD_WH_TY" ColumnName="TRD_WH_TY" />
+								<ScalarProperty Name="TRD_COST_TY" ColumnName="TRD_COST_TY" />
+								<ScalarProperty Name="TRD_WEIGHT" ColumnName="TRD_WEIGHT" />
+								<ScalarProperty Name="TRD_UTQNAME" ColumnName="TRD_UTQNAME" />
+								<ScalarProperty Name="TRD_UTQQTY" ColumnName="TRD_UTQQTY" />
+								<ScalarProperty Name="TRD_SKU" ColumnName="TRD_SKU" />
+								<ScalarProperty Name="TRD_B_UPRC" ColumnName="TRD_B_UPRC" />
+								<ScalarProperty Name="TRD_B_RELOCATE" ColumnName="TRD_B_RELOCATE" />
+								<ScalarProperty Name="TRD_B_GROUP" ColumnName="TRD_B_GROUP" />
+								<ScalarProperty Name="TRD_B_AMT" ColumnName="TRD_B_AMT" />
+								<ScalarProperty Name="TRD_B_VAT" ColumnName="TRD_B_VAT" />
+								<ScalarProperty Name="TRD_B_SELL" ColumnName="TRD_B_SELL" />
+								<ScalarProperty Name="TRD_N_AMT" ColumnName="TRD_N_AMT" />
+								<ScalarProperty Name="TRD_N_VAT" ColumnName="TRD_N_VAT" />
+								<ScalarProperty Name="TRD_N_SELL" ColumnName="TRD_N_SELL" />
+								<ScalarProperty Name="TRD_TDSC_KEYINV" ColumnName="TRD_TDSC_KEYINV" />
+								<ScalarProperty Name="TRD_G_AMT" ColumnName="TRD_G_AMT" />
+								<ScalarProperty Name="TRD_G_VAT" ColumnName="TRD_G_VAT" />
+								<ScalarProperty Name="TRD_G_SELL" ColumnName="TRD_G_SELL" />
+								<ScalarProperty Name="TRD_G_KEYIN" ColumnName="TRD_G_KEYIN" />
+								<ScalarProperty Name="TRD_DSC_KEYINV" ColumnName="TRD_DSC_KEYINV" />
+								<ScalarProperty Name="TRD_DSC_KEYIN" ColumnName="TRD_DSC_KEYIN" />
+								<ScalarProperty Name="TRD_U_VATIO" ColumnName="TRD_U_VATIO" />
+								<ScalarProperty Name="TRD_U_PRC" ColumnName="TRD_U_PRC" />
+								<ScalarProperty Name="TRD_K_U_PRC" ColumnName="TRD_K_U_PRC" />
+								<ScalarProperty Name="TRD_Q_FREE" ColumnName="TRD_Q_FREE" />
+								<ScalarProperty Name="TRD_QTY" ColumnName="TRD_QTY" />
+								<ScalarProperty Name="TRD_NM_U_DSC" ColumnName="TRD_NM_U_DSC" />
+								<ScalarProperty Name="TRD_NM_VATIO" ColumnName="TRD_NM_VATIO" />
+								<ScalarProperty Name="TRD_NM_PRC" ColumnName="TRD_NM_PRC" />
+								<ScalarProperty Name="TRD_VAT_R" ColumnName="TRD_VAT_R" />
+								<ScalarProperty Name="TRD_VAT" ColumnName="TRD_VAT" />
+								<ScalarProperty Name="TRD_VAT_TY" ColumnName="TRD_VAT_TY" />
+								<ScalarProperty Name="TRD_KEYIN" ColumnName="TRD_KEYIN" />
+								<ScalarProperty Name="TRD_GOODS" ColumnName="TRD_GOODS" />
+								<ScalarProperty Name="TRD_SEQ" ColumnName="TRD_SEQ" />
+								<ScalarProperty Name="TRD_TRH" ColumnName="TRD_TRH" />
+								<ScalarProperty Name="TRD_KEY" ColumnName="TRD_KEY" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="TRANSTKHs">
+						<EntityTypeMapping TypeName="ERPModel.TRANSTKH">
+							<MappingFragment StoreEntitySet="TRANSTKH">
+								<ScalarProperty Name="TRH_LASTUPD" ColumnName="TRH_LASTUPD" />
+								<ScalarProperty Name="TRH_TAP" ColumnName="TRH_TAP" />
+								<ScalarProperty Name="TRH_REFER_XTRA2" ColumnName="TRH_REFER_XTRA2" />
+								<ScalarProperty Name="TRH_REFER_XTRA1" ColumnName="TRH_REFER_XTRA1" />
+								<ScalarProperty Name="TRH_REFER_PERSON" ColumnName="TRH_REFER_PERSON" />
+								<ScalarProperty Name="TRH_REFER_IREF" ColumnName="TRH_REFER_IREF" />
+								<ScalarProperty Name="TRH_REFER_XREF" ColumnName="TRH_REFER_XREF" />
+								<ScalarProperty Name="TRH_OPTION" ColumnName="TRH_OPTION" />
+								<ScalarProperty Name="TRH_LAST_DATE" ColumnName="TRH_LAST_DATE" />
+								<ScalarProperty Name="TRH_CANCEL_DATE" ColumnName="TRH_CANCEL_DATE" />
+								<ScalarProperty Name="TRH_PRJ" ColumnName="TRH_PRJ" />
+								<ScalarProperty Name="TRH_VATIO" ColumnName="TRH_VATIO" />
+								<ScalarProperty Name="TRH_VAT_R" ColumnName="TRH_VAT_R" />
+								<ScalarProperty Name="TRH_VAT" ColumnName="TRH_VAT" />
+								<ScalarProperty Name="TRH_VAT_TY" ColumnName="TRH_VAT_TY" />
+								<ScalarProperty Name="TRH_SHIP_ADDB" ColumnName="TRH_SHIP_ADDB" />
+								<ScalarProperty Name="TRH_SHIP_DATE" ColumnName="TRH_SHIP_DATE" />
+								<ScalarProperty Name="TRH_SHIP_REMARK" ColumnName="TRH_SHIP_REMARK" />
+								<ScalarProperty Name="TRH_SB" ColumnName="TRH_SB" />
+								<ScalarProperty Name="TRH_REMARK" ColumnName="TRH_REMARK" />
+								<ScalarProperty Name="TRH_N_ITEMS" ColumnName="TRH_N_ITEMS" />
+								<ScalarProperty Name="TRH_N_QTY" ColumnName="TRH_N_QTY" />
+								<ScalarProperty Name="TRH_ARPRB" ColumnName="TRH_ARPRB" />
+								<ScalarProperty Name="TRH_PRMT" ColumnName="TRH_PRMT" />
+								<ScalarProperty Name="TRH_MKTP" ColumnName="TRH_MKTP" />
+								<ScalarProperty Name="TRH_BR" ColumnName="TRH_BR" />
+								<ScalarProperty Name="TRH_DEPT" ColumnName="TRH_DEPT" />
+								<ScalarProperty Name="TRH_FLAG" ColumnName="TRH_FLAG" />
+								<ScalarProperty Name="TRH_LSTATUS" ColumnName="TRH_LSTATUS" />
+								<ScalarProperty Name="TRH_PSTATUS" ColumnName="TRH_PSTATUS" />
+								<ScalarProperty Name="TRH_DI" ColumnName="TRH_DI" />
+								<ScalarProperty Name="TRH_KEY" ColumnName="TRH_KEY" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="PRJTABs">
+						<EntityTypeMapping TypeName="ERPModel.PRJTAB">
+							<MappingFragment StoreEntitySet="PRJTAB">
+								<ScalarProperty Name="PRJ_LASTUPD" ColumnName="PRJ_LASTUPD" />
+								<ScalarProperty Name="PRJ_UDF_6" ColumnName="PRJ_UDF_6" />
+								<ScalarProperty Name="PRJ_UDF_5" ColumnName="PRJ_UDF_5" />
+								<ScalarProperty Name="PRJ_UDF_4" ColumnName="PRJ_UDF_4" />
+								<ScalarProperty Name="PRJ_UDF_3" ColumnName="PRJ_UDF_3" />
+								<ScalarProperty Name="PRJ_UDF_2" ColumnName="PRJ_UDF_2" />
+								<ScalarProperty Name="PRJ_UDF_1" ColumnName="PRJ_UDF_1" />
+								<ScalarProperty Name="PRJ_REMARK" ColumnName="PRJ_REMARK" />
+								<ScalarProperty Name="PRJ_TO_DATE" ColumnName="PRJ_TO_DATE" />
+								<ScalarProperty Name="PRJ_FM_DATE" ColumnName="PRJ_FM_DATE" />
+								<ScalarProperty Name="PRJ_ENABLE" ColumnName="PRJ_ENABLE" />
+								<ScalarProperty Name="PRJ_NAME" ColumnName="PRJ_NAME" />
+								<ScalarProperty Name="PRJ_CODE" ColumnName="PRJ_CODE" />
+								<ScalarProperty Name="PRJ_KEY" ColumnName="PRJ_KEY" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="ARPRICETABs">
+						<EntityTypeMapping TypeName="ERPModel.ARPRICETAB">
+							<MappingFragment StoreEntitySet="ARPRICETAB">
+								<ScalarProperty Name="ARPRB_LASTUPD" ColumnName="ARPRB_LASTUPD" />
+								<ScalarProperty Name="ARPRB_DEFAULT" ColumnName="ARPRB_DEFAULT" />
+								<ScalarProperty Name="ARPRB_REMARK" ColumnName="ARPRB_REMARK" />
+								<ScalarProperty Name="ARPRB_ENABLE" ColumnName="ARPRB_ENABLE" />
+								<ScalarProperty Name="ARPRB_ALWAYS" ColumnName="ARPRB_ALWAYS" />
+								<ScalarProperty Name="ARPRB_VATIO" ColumnName="ARPRB_VATIO" />
+								<ScalarProperty Name="ARPRB_NAME" ColumnName="ARPRB_NAME" />
+								<ScalarProperty Name="ARPRB_CODE" ColumnName="ARPRB_CODE" />
+								<ScalarProperty Name="ARPRB_KEY" ColumnName="ARPRB_KEY" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="UOFQTies">
+						<EntityTypeMapping TypeName="ERPModel.UOFQTY">
+							<MappingFragment StoreEntitySet="UOFQTY">
+								<ScalarProperty Name="UTQ_LASTUPD" ColumnName="UTQ_LASTUPD" />
+								<ScalarProperty Name="UTQ_QTY" ColumnName="UTQ_QTY" />
+								<ScalarProperty Name="UTQ_NAME" ColumnName="UTQ_NAME" />
+								<ScalarProperty Name="UTQ_KEY" ColumnName="UTQ_KEY" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="ICCATs">
+						<EntityTypeMapping TypeName="ERPModel.ICCAT">
+							<MappingFragment StoreEntitySet="ICCAT">
+								<ScalarProperty Name="ICCAT_LASTUPD" ColumnName="ICCAT_LASTUPD" />
+								<ScalarProperty Name="ICCAT_UDF_6" ColumnName="ICCAT_UDF_6" />
+								<ScalarProperty Name="ICCAT_UDF_5" ColumnName="ICCAT_UDF_5" />
+								<ScalarProperty Name="ICCAT_UDF_4" ColumnName="ICCAT_UDF_4" />
+								<ScalarProperty Name="ICCAT_UDF_3" ColumnName="ICCAT_UDF_3" />
+								<ScalarProperty Name="ICCAT_UDF_2" ColumnName="ICCAT_UDF_2" />
+								<ScalarProperty Name="ICCAT_UDF_1" ColumnName="ICCAT_UDF_1" />
+								<ScalarProperty Name="ICCAT_ACCESS" ColumnName="ICCAT_ACCESS" />
+								<ScalarProperty Name="ICCAT_NAME" ColumnName="ICCAT_NAME" />
+								<ScalarProperty Name="ICCAT_CODE" ColumnName="ICCAT_CODE" />
+								<ScalarProperty Name="ICCAT_KEY" ColumnName="ICCAT_KEY" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="ICDEPTs">
+						<EntityTypeMapping TypeName="ERPModel.ICDEPT">
+							<MappingFragment StoreEntitySet="ICDEPT">
+								<ScalarProperty Name="ICDEPT_LASTUPD" ColumnName="ICDEPT_LASTUPD" />
+								<ScalarProperty Name="ICDEPT_UDF_6" ColumnName="ICDEPT_UDF_6" />
+								<ScalarProperty Name="ICDEPT_UDF_5" ColumnName="ICDEPT_UDF_5" />
+								<ScalarProperty Name="ICDEPT_UDF_4" ColumnName="ICDEPT_UDF_4" />
+								<ScalarProperty Name="ICDEPT_UDF_3" ColumnName="ICDEPT_UDF_3" />
+								<ScalarProperty Name="ICDEPT_UDF_2" ColumnName="ICDEPT_UDF_2" />
+								<ScalarProperty Name="ICDEPT_UDF_1" ColumnName="ICDEPT_UDF_1" />
+								<ScalarProperty Name="ICDEPT_FIRSTCHILD" ColumnName="ICDEPT_FIRSTCHILD" />
+								<ScalarProperty Name="ICDEPT_P_ABS_INDEX" ColumnName="ICDEPT_P_ABS_INDEX" />
+								<ScalarProperty Name="ICDEPT_PARENT" ColumnName="ICDEPT_PARENT" />
+								<ScalarProperty Name="ICDEPT_ABS_INDEX" ColumnName="ICDEPT_ABS_INDEX" />
+								<ScalarProperty Name="ICDEPT_LEVEL" ColumnName="ICDEPT_LEVEL" />
+								<ScalarProperty Name="ICDEPT_ACCESS" ColumnName="ICDEPT_ACCESS" />
+								<ScalarProperty Name="ICDEPT_ENGDESC" ColumnName="ICDEPT_ENGDESC" />
+								<ScalarProperty Name="ICDEPT_THAIDESC" ColumnName="ICDEPT_THAIDESC" />
+								<ScalarProperty Name="ICDEPT_CODE" ColumnName="ICDEPT_CODE" />
+								<ScalarProperty Name="ICDEPT_KEY" ColumnName="ICDEPT_KEY" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="APPLUs">
+						<EntityTypeMapping TypeName="ERPModel.APPLU">
+							<MappingFragment StoreEntitySet="APPLU">
+								<ScalarProperty Name="APPLU_LASTUPD" ColumnName="APPLU_LASTUPD" />
+								<ScalarProperty Name="APPLU_U_DSC" ColumnName="APPLU_U_DSC" />
+								<ScalarProperty Name="APPLU_U_PRC" ColumnName="APPLU_U_PRC" />
+								<ScalarProperty Name="APPLU_GOODS" ColumnName="APPLU_GOODS" />
+								<ScalarProperty Name="APPLU_APPRB" ColumnName="APPLU_APPRB" />
+								<ScalarProperty Name="APPLU_KEY" ColumnName="APPLU_KEY" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="GOODSMASTERs">
+						<EntityTypeMapping TypeName="ERPModel.GOODSMASTER">
+							<MappingFragment StoreEntitySet="GOODSMASTER">
+								<ScalarProperty Name="GOODS_LASTUPD" ColumnName="GOODS_LASTUPD" />
+								<ScalarProperty Name="GOODS_PRT_BAR" ColumnName="GOODS_PRT_BAR" />
+								<ScalarProperty Name="GOODS_E_ALIAS" ColumnName="GOODS_E_ALIAS" />
+								<ScalarProperty Name="GOODS_ALIAS" ColumnName="GOODS_ALIAS" />
+								<ScalarProperty Name="GOODS_PRICE" ColumnName="GOODS_PRICE" />
+								<ScalarProperty Name="GOODS_MASTER" ColumnName="GOODS_MASTER" />
+								<ScalarProperty Name="GOODS_P_ENABLE" ColumnName="GOODS_P_ENABLE" />
+								<ScalarProperty Name="GOODS_ENABLE" ColumnName="GOODS_ENABLE" />
+								<ScalarProperty Name="GOODS_VOLUME" ColumnName="GOODS_VOLUME" />
+								<ScalarProperty Name="GOODS_WEIGHT" ColumnName="GOODS_WEIGHT" />
+								<ScalarProperty Name="GOODS_UTQ" ColumnName="GOODS_UTQ" />
+								<ScalarProperty Name="GOODS_SKU" ColumnName="GOODS_SKU" />
+								<ScalarProperty Name="GOODS_BARTYPE" ColumnName="GOODS_BARTYPE" />
+								<ScalarProperty Name="GOODS_CODE" ColumnName="GOODS_CODE" />
+								<ScalarProperty Name="GOODS_KEY" ColumnName="GOODS_KEY" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="ARPLUs">
+						<EntityTypeMapping TypeName="ERPModel.ARPLU">
+							<MappingFragment StoreEntitySet="ARPLU">
+								<ScalarProperty Name="ARPLU_LASTUPD" ColumnName="ARPLU_LASTUPD" />
+								<ScalarProperty Name="ARPLU_AUTO_ROUND" ColumnName="ARPLU_AUTO_ROUND" />
+								<ScalarProperty Name="ARPLU_AUTO_GP" ColumnName="ARPLU_AUTO_GP" />
+								<ScalarProperty Name="ARPLU_AUTO" ColumnName="ARPLU_AUTO" />
+								<ScalarProperty Name="ARPLU_TAG" ColumnName="ARPLU_TAG" />
+								<ScalarProperty Name="ARPLU_U_DSC" ColumnName="ARPLU_U_DSC" />
+								<ScalarProperty Name="ARPLU_U_PRC" ColumnName="ARPLU_U_PRC" />
+								<ScalarProperty Name="ARPLU_GOODSCODE" ColumnName="ARPLU_GOODSCODE" />
+								<ScalarProperty Name="ARPLU_ARPRBCODE" ColumnName="ARPLU_ARPRBCODE" />
+								<ScalarProperty Name="ARPLU_GOODS" ColumnName="ARPLU_GOODS" />
+								<ScalarProperty Name="ARPLU_ARPRB" ColumnName="ARPLU_ARPRB" />
+								<ScalarProperty Name="ARPLU_KEY" ColumnName="ARPLU_KEY" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="SKUMOVEs">
+						<EntityTypeMapping TypeName="ERPModel.SKUMOVE">
+							<MappingFragment StoreEntitySet="SKUMOVE">
+								<ScalarProperty Name="SKM_LASTUPD" ColumnName="SKM_LASTUPD" />
+								<ScalarProperty Name="SKM_AC" ColumnName="SKM_AC" />
+								<ScalarProperty Name="SKM_SHOW_ORDER" ColumnName="SKM_SHOW_ORDER" />
+								<ScalarProperty Name="SKM_MAN_D" ColumnName="SKM_MAN_D" />
+								<ScalarProperty Name="SKM_EXP_D" ColumnName="SKM_EXP_D" />
+								<ScalarProperty Name="SKM_Q_FREE" ColumnName="SKM_Q_FREE" />
+								<ScalarProperty Name="SKM_AF_GP" ColumnName="SKM_AF_GP" />
+								<ScalarProperty Name="SKM_B4_DISC" ColumnName="SKM_B4_DISC" />
+								<ScalarProperty Name="SKM_VAT" ColumnName="SKM_VAT" />
+								<ScalarProperty Name="SKM_SELL" ColumnName="SKM_SELL" />
+								<ScalarProperty Name="SKM_COST" ColumnName="SKM_COST" />
+								<ScalarProperty Name="SKM_QTY" ColumnName="SKM_QTY" />
+								<ScalarProperty Name="SKM_SERIAL" ColumnName="SKM_SERIAL" />
+								<ScalarProperty Name="SKM_LOT_NO" ColumnName="SKM_LOT_NO" />
+								<ScalarProperty Name="SKM_REFER_DI" ColumnName="SKM_REFER_DI" />
+								<ScalarProperty Name="SKM_WL" ColumnName="SKM_WL" />
+								<ScalarProperty Name="SKM_DI" ColumnName="SKM_DI" />
+								<ScalarProperty Name="SKM_SKU" ColumnName="SKM_SKU" />
+								<ScalarProperty Name="SKM_KEY" ColumnName="SKM_KEY" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+				</EntityContainerMapping>
+			</Mapping>
+		</edmx:Mappings>
+	</edmx:Runtime>
+	<!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+	<Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+		<Connection>
+			<DesignerInfoPropertySet>
+				<DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+			</DesignerInfoPropertySet>
+		</Connection>
+		<Options>
+			<DesignerInfoPropertySet>
+				<DesignerProperty Name="ValidateOnBuild" Value="true" />
+				<DesignerProperty Name="EnablePluralization" Value="true" />
+				<DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+				<DesignerProperty Name="UseLegacyProvider" Value="false" />
+				<DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+			</DesignerInfoPropertySet>
+		</Options>
+		<!-- Diagram content (shape and connector positions) -->
+		<Diagrams></Diagrams>
+	</Designer>
+</edmx:Edmx>

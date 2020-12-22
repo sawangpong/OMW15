@@ -1,0 +1,819 @@
+﻿	//public async Task<DataTable> GetProductionSummaryForNormalTimeAsync(int y, int m, string connectionString)
+		//{
+		//	return await Task.Run(() =>
+		//	{
+		//		StringBuilder s = new StringBuilder();
+		//		s.AppendLine($" EXEC dbo.usp_summary_production_hours {y},{m}");
+		//		return new DataConnect(s.ToString(), connectionString).ToDataTable;
+		//	});
+		//}
+
+		//public async Task<DataTable> GetProductionSummaryForOTAsync(int y, int m, string connectionString)
+		//{
+		//	return await Task.Run(() =>
+		//	{
+		//		StringBuilder s = new StringBuilder();
+		//		s.AppendLine($" EXEC dbo.usp_summary_production_OT_hours {y},{m}");
+		//		return new DataConnect(s.ToString(), connectionString).ToDataTable;
+		//	});
+		//}
+
+			//public DataTable GetProductionActiveList(int status, string filter = "", int year = 0)
+		//{
+		//	var _result = new DataTable();
+
+		//	switch (status)
+		//	{
+		//		case (int)ProductionJobStatus.Active:
+
+		//			var pActive = (from p in _om.PRODUCTIONJOBS.AsEnumerable()
+		//								where p.STATUS == status && p.ERP_DI > 0
+		//								select new
+		//								{
+		//									p.STATUS,
+		//									StatusName = p.STATUS == (int)OMShareProduction.ProductionJobStatus.Active
+		//															? OMShareProduction.ProductionJobStatus.Active.ToString()
+		//															: (p.STATUS == (int)OMShareProduction.ProductionJobStatus.Closed
+		//															? OMShareProduction.ProductionJobStatus.Closed.ToString()
+		//															: "N/A"),
+		//									p.PDJOBID,
+		//									p.ERP_DI,
+		//									JobType = p.JOBTYPE == "0" ? ProductionJobType.Production.ToString() : ProductionJobType.Project.ToString(),
+		//									p.ERP_ORDER,
+		//									OpenDate = p.CREATEDATE.Value.ToShortDateString(),
+		//									StartDate = p.RELEASEDATE.Value.ToShortDateString(),
+		//									Due = p.DUEDATE.Value.ToShortDateString(),
+		//									p.ITEMNO,
+		//									p.ITEMNAME,
+		//									DrawingNo = String.IsNullOrEmpty(p.DRAWINGNO) ? " " : String.IsNullOrEmpty(p.DRAWINGREV) ? p.DRAWINGNO.Trim() : p.DRAWINGNO.Trim() + "-R"+p.DRAWINGREV.Trim()  ,
+		//									p.QORDER,
+		//									p.UNITORDER,
+		//									ActiveYear = p.RELEASEDATE.Value.Year
+		//								}).OrderBy(o => o.ERP_ORDER).AsParallel();
+
+		//			if (year > 0)
+		//			{
+		//				var pActiveRows = pActive.Where(x => x.ActiveYear == year);
+		//				if (!String.IsNullOrEmpty(filter))
+		//				{
+		//					_result = pActiveRows.Where(x => x.ERP_ORDER.Contains(filter)).ToDataTable();
+		//				}
+		//				else
+		//				{
+		//					_result = pActiveRows.ToDataTable();
+		//				}
+		//			}
+		//			else
+		//			{
+		//				if (!String.IsNullOrEmpty(filter))
+		//				{
+		//					_result = pActive.Where(x => x.ERP_ORDER.Contains(filter)).ToDataTable();
+		//				}
+		//				else
+		//				{
+		//					_result = pActive.ToDataTable();
+		//				}
+		//			}
+
+		//			break;
+
+		//		case (int)ProductionJobStatus.Closed:
+
+		//			var pClosed = (from p in _om.PRODUCTIONJOBS.AsEnumerable()
+		//								where p.STATUS == status && p.ERP_DI > 0
+		//								select new
+		//								{
+		//									p.STATUS,
+		//									StatusName = p.STATUS == (int)OMShareProduction.ProductionJobStatus.Active
+		//															? OMShareProduction.ProductionJobStatus.Active.ToString()
+		//															: (p.STATUS == (int)OMShareProduction.ProductionJobStatus.Closed
+		//															? OMShareProduction.ProductionJobStatus.Closed.ToString()
+		//															: "N/A"),
+		//									p.PDJOBID,
+		//									p.ERP_DI,
+		//									JobType = p.JOBTYPE == "0" ? ProductionJobType.Production.ToString() : ProductionJobType.Project.ToString(),
+		//									p.ERP_ORDER,
+		//									OpenDate = p.CREATEDATE.Value.ToShortDateString(),
+		//									StartDate = p.RELEASEDATE.Value.ToShortDateString(),
+		//									Due = p.DUEDATE.Value.ToShortDateString(),
+		//									p.ITEMNO,
+		//									p.ITEMNAME,
+		//									DrawingNo = p.DRAWINGNO.Trim() + "-R" + p.DRAWINGREV.Trim(),
+		//									p.QORDER,
+		//									p.UNITORDER,
+		//									ClosedYear = p.COMPLETEDATE.Value.Year
+		//								}).OrderBy(o => o.ERP_ORDER).AsParallel();
+		//			if (year > 0)
+		//			{
+		//				var pClosedRows = pClosed.Where(x => x.ClosedYear == year);
+		//				if (!String.IsNullOrEmpty(filter))
+		//				{
+		//					_result = pClosedRows.Where(x => x.ERP_ORDER.Contains(filter)).ToDataTable();
+		//				}
+		//				else
+		//				{
+		//					_result = pClosedRows.ToDataTable();
+		//				}
+		//			}
+		//			else
+		//			{
+		//				if (!String.IsNullOrEmpty(filter))
+		//				{
+		//					_result = pClosed.Where(x => x.ERP_ORDER.Contains(filter)).ToDataTable();
+		//				}
+		//				else
+		//				{
+		//					_result = pClosed.ToDataTable();
+		//				}
+		//			}
+		//			break;
+		//	}
+
+		//	return _result;
+
+		//} // end GetProductionTasks
+
+		//public async Task<DataTable> GetProductionTasks(int Status, string filter = "")
+		//{
+		//	var _result = new DataTable();
+		//	return await Task.Run(() =>
+		//	{
+		//		var pt = (from p in _om.PRODUCTIONJOBS.AsEnumerable()
+		//					 where p.STATUS == Status
+		//							  && p.ERP_DI > 0
+		//					 select new
+		//					 {
+		//						 p.STATUS,
+		//						 StatusName = p.STATUS == (int)OMShareProduction.ProductionJobStatus.Active
+		//												  ? OMShareProduction.ProductionJobStatus.Active.ToString()
+		//												  : (p.STATUS == (int)OMShareProduction.ProductionJobStatus.Closed
+		//												  ? OMShareProduction.ProductionJobStatus.Closed.ToString()
+		//												  : "N/A"),
+		//						 p.PDJOBID,
+		//						 p.ERP_DI,
+		//						 JobType = p.JOBTYPE == "0" ? ProductionJobType.Production.ToString() : ProductionJobType.Project.ToString(),
+		//						 p.ERP_ORDER,
+		//						 OpenDate = p.CREATEDATE.Value.ToShortDateString(),
+		//						 StartDate = p.RELEASEDATE.Value.ToShortDateString(),
+		//						 Due = p.DUEDATE.Value.ToShortDateString(),
+		//						 p.ITEMNO,
+		//						 p.ITEMNAME,
+		//						 DrawingNo = p.DRAWINGNO.Trim() + "-R" + p.DRAWINGREV.Trim(),
+		//						 p.QORDER,
+		//						 p.UNITORDER
+		//					 }).OrderBy(o => o.ERP_ORDER).AsParallel();
+
+		//		if (pt != null)
+		//		{
+		//			if (String.IsNullOrEmpty(filter))
+		//			{
+		//				_result = pt.ToDataTable();
+		//			}
+		//			else
+		//			{
+		//				_result = pt.Where(x => x.ERP_ORDER.Contains(filter)).ToDataTable();
+		//			}
+		//		}
+		//		return _result;
+		//	});
+
+		//} // end GetProductionTasks
+
+		//public async Task<DataTable> GetProductionJobsAsync(int Status, int jobYear, OMShareProduction.SearchType SearchWhat,string filter = "")
+		//{
+		//	var _result = new DataTable();
+		//	return await Task.Run(() =>
+		//	{
+		//		if (Status == (int)ProductionJobStatus.Active)
+		//		{
+		//			var pActive = (from p in _om.PRODUCTIONJOBS.AsEnumerable()
+		//								where p.STATUS == Status
+		//									 && p.JOBYEAR == jobYear
+		//									 && p.ERP_DI > 0
+		//								select new
+		//								{
+		//									p.STATUS,
+		//									StatusName = p.STATUS == (int)OMShareProduction.ProductionJobStatus.Active
+		//															 ? OMShareProduction.ProductionJobStatus.Active.ToString()
+		//															 : (p.STATUS == (int)OMShareProduction.ProductionJobStatus.Closed
+		//															 ? OMShareProduction.ProductionJobStatus.Closed.ToString()
+		//															 : "N/A"),
+		//									p.PDJOBID,
+		//									p.ERP_DI,
+		//									JobType = p.JOBTYPE == "0" ? ProductionJobType.Production.ToString() : ProductionJobType.Project.ToString(),
+		//									p.ERP_ORDER,
+		//									OpenDate = p.CREATEDATE.Value.ToShortDateString(),
+		//									StartDate = p.RELEASEDATE.Value.ToShortDateString(),
+		//									Due = p.DUEDATE.Value.ToShortDateString(),
+		//									CloseDate = p.COMPLETEDATE == null ? "" : p.COMPLETEDATE.Value.ToShortDateString(),
+		//									p.ITEMNO,
+		//									p.ITEMNAME,
+		//									DrawingNo = p.DRAWINGNO.Trim() + "-R" + p.DRAWINGREV.Trim(),
+		//									p.UNITORDER,
+		//									p.QORDER,
+		//									p.TOTAL_HOURS,
+		//									WorkHourUnit = p.TOTAL_HOURS / (p.QORDER == 0.00m ? 1.00m : p.QORDER)
+		//								}).OrderBy(o => o.ERP_ORDER).AsParallel();
+
+		//			if (pActive != null)
+		//			{
+		//				switch (SearchWhat)
+		//				{
+		//					case OMShareProduction.SearchType.ItemNumber:
+		//						_result = pActive.Where(x => x.ITEMNO.Contains(filter)).ToDataTable();
+		//						break;
+
+		//					case OMShareProduction.SearchType.TaskNumber:
+		//						_result = pActive.Where(x => x.ERP_ORDER.Contains(filter)).ToDataTable();
+		//						break;
+
+		//					case OMShareProduction.SearchType.None:
+		//						_result = pActive.ToDataTable();
+		//						break;
+		//				}
+		//			}
+		//		}
+		//		else if (Status == (int)ProductionJobStatus.Closed)
+		//		{
+		//			var pColse = (from p in _om.PRODUCTIONJOBS.AsEnumerable()
+		//							  where p.STATUS == Status
+		//									&& p.COMPLETEDATE.Value.Year == jobYear
+		//									&& p.ERP_DI > 0
+		//							  select new
+		//							  {
+		//								  p.STATUS,
+		//								  StatusName = p.STATUS == (int)OMShareProduction.ProductionJobStatus.Active
+		//															? OMShareProduction.ProductionJobStatus.Active.ToString()
+		//															: (p.STATUS == (int)OMShareProduction.ProductionJobStatus.Closed
+		//															? OMShareProduction.ProductionJobStatus.Closed.ToString()
+		//															: "N/A"),
+		//								  p.PDJOBID,
+		//								  p.ERP_DI,
+		//								  JobType = p.JOBTYPE == "0" ? ProductionJobType.Production.ToString() : ProductionJobType.Project.ToString(),
+		//								  p.ERP_ORDER,
+		//								  OpenDate = p.CREATEDATE.Value.ToShortDateString(),
+		//								  StartDate = p.RELEASEDATE.Value.ToShortDateString(),
+		//								  Due = p.DUEDATE.Value.ToShortDateString(),
+		//								  CloseDate = p.COMPLETEDATE == null ? "" : p.COMPLETEDATE.Value.ToShortDateString(),
+		//								  p.ITEMNO,
+		//								  p.ITEMNAME,
+		//								  DrawingNo = p.DRAWINGNO.Trim() + "-R" + p.DRAWINGREV.Trim(),
+		//								  p.UNITORDER,
+		//								  p.QORDER,
+		//								  p.TOTAL_HOURS,
+		//								  WorkHourUnit = p.TOTAL_HOURS / (p.QORDER == 0.00m ? 1.00m : p.QORDER)
+		//							  }).OrderBy(o => o.ERP_ORDER).AsParallel();
+
+		//			if (pColse != null)
+		//			{
+		//				switch (SearchWhat)
+		//				{
+		//					case OMShareProduction.SearchType.ItemNumber:
+		//						_result = pColse.Where(x => x.ITEMNO.Contains(filter)).ToDataTable();
+		//						break;
+
+		//					case OMShareProduction.SearchType.TaskNumber:
+		//						_result = pColse.Where(x => x.ERP_ORDER.Contains(filter)).ToDataTable();
+		//						break;
+
+		//					case OMShareProduction.SearchType.None:
+		//						_result = pColse.ToDataTable();
+		//						break;
+		//				}
+		//			}
+
+		//		}
+		//		return _result;
+
+		//	});
+
+		//} // end GetProductionTasks
+
+		//public async Task<DataTable> GetProductionMonthListByYearAsync(int ProductionYear, int DocumentPrefixId)
+		//{
+		//	return await Task.Run(() =>
+		//	{
+		//		var _result = new DataTable();
+		//		var DIMonth = (from di in _erp.DOCINFOes.AsEnumerable()
+		//							where di.DI_DT == DocumentPrefixId
+		//							&& di.DI_DATE.Year == ProductionYear
+		//							select new
+		//							{
+		//								Period = di.DI_DATE.Month,
+		//								PeriodName = di.DI_DATE.Month.GetMonthName()
+		//							}).Distinct().OrderByDescending(o => o.Period).AsParallel();
+		//		if (DIMonth != null)
+		//		{
+		//			_result = DIMonth.ToDataTable();
+		//		}
+
+		//		return _result;
+		//	});
+		//} // end GetProductionMonthListByYear
+
+		//public async Task<DataTable> GetProductionOrderListAsync(int PrefixId, string prefixStr, int ProductionYear, int ProductionPeriod)
+		//{
+		//	return await Task.Run(() =>
+		//	{
+		//		// make new query !!!!!
+		//		var _result = new DataTable();
+		//		var _tsk = _om.PRODUCTIONJOBS.AsEnumerable()
+		//					.Where(p => p.CREATEDATE.Value.Year == ProductionYear
+		//								&& p.CREATEDATE.Value.Month == ProductionPeriod
+		//								&& p.ERP_ORDER.StartsWith(prefixStr))
+		//					.Select(x => x.ERP_ORDER).ToList();
+
+		//		var pd = (from p in _erp.DOCINFOes
+		//					 orderby p.DI_REF
+		//					 where p.DI_REF.Substring(0, 1) != "*"
+		//						  && p.DI_DT == PrefixId
+		//						  && !_tsk.Contains(p.DI_REF)
+		//						  && p.DI_CRE_DATE.Year == ProductionYear
+		//						  && p.DI_CRE_DATE.Month == ProductionPeriod
+		//					 select new
+		//					 {
+		//						 p.DI_KEY,
+		//						 Status = p.DI_ACTIVE == (int)DocumentStatus.Cancel ? "Canceled" : "Active",
+		//						 p.DI_REF,
+		//						 Date = p.DI_CRE_DATE,
+		//						 SubDI = p.DI_SUBS_DI.Value,
+		//						 Revision = p.DI_REVISION.Value,
+		//						 p.DI_REMARK
+		//					 }).AsParallel();
+
+		//		if (pd != null)
+		//			_result = pd.ToDataTable();
+
+		//		return _result;
+		//	});
+		//} // end GetProductionOrderList
+
+			//public DataTable GetProductionReqestOrderList(string prefixDI, string[] rqCode, int yearRequest)
+		//{
+		//	List<string> _exitstJob = ExistProductionJobs(prefixDI).Select(x => x.ProductionJobNo).ToList();
+
+		//	return (_erp.DOCINFOes
+		//			.Where(x => x.DI_REF.Substring(0, 4) == prefixDI
+		//			&& x.DI_DATE.Year == yearRequest
+		//			&& !_exitstJob.Contains(x.DI_REF))
+		//			.Select(x => new
+		//			{
+		//				x.DI_KEY,
+		//				Status = x.DI_ACTIVE == 2 ? "CANCELED" : "ACTIVE",
+		//				Code = x.DI_REF.Substring(0, 4),
+		//				x.DI_REF,
+		//				Req_Date = x.DI_DATE,
+		//				Req_Period = x.DI_DATE.Month,
+		//				Req_Year = x.DI_DATE.Year,
+		//				Sub_DI = x.DI_SUBS_DI,
+		//				Revision = x.DI_REVISION,
+		//				Remark = x.DI_REMARK == null ? "" : x.DI_REMARK
+		//			}).OrderBy(o => o.DI_KEY).ToDataTable());
+		//}
+
+		//public async Task<DataTable> GetProductionReqestOrderListAsync(string prefixDI, string[] rqCode)
+		//{
+		//	return await Task.Run(() =>
+		//	{
+		//		List<string> _issues = IssueRQ(rqCode)
+		//						.Where(x => x.ReqNo.Substring(0, 4) == prefixDI)
+		//						.Select(x => x.ReqNo)
+		//						.ToList();
+
+		//		return (_erp.DOCINFOes
+		//				.Where(x => x.DI_REF.Substring(0, 4) == prefixDI
+		//				&& !_issues.Contains(x.DI_REF))
+		//				.Select(x => new
+		//				{
+		//					x.DI_KEY,
+		//					Status = x.DI_ACTIVE == 2 ? "CANCELED" : "ACTIVE",
+		//					Code = x.DI_REF.Substring(0, 4),
+		//					x.DI_REF,
+		//					Req_Date = x.DI_DATE,
+		//					Req_Period = x.DI_DATE.Month,
+		//					Req_Year = x.DI_DATE.Year,
+		//					Sub_DI = x.DI_SUBS_DI,
+		//					Revision = x.DI_REVISION,
+		//					Remark = x.DI_REMARK == null ? "" : x.DI_REMARK
+		//				}).OrderBy(o => o.DI_KEY).ToDataTable());
+		//	});
+		//}
+
+		//public List<ExitstProductionJob> ExistProductionJobs(string filterCode)
+		//{
+		//	return _om.PRODUCTIONJOBS
+		//			.Where(x => x.STATUS == (int)ProductionJobStatus.Closed && x.ERP_ORDER.Substring(0, 4) == filterCode)
+		//			.Select(x =>
+		//				new ExitstProductionJob { ProductionJobNo = x.ERP_ORDER })
+		//			.ToList();
+		//}
+
+		//public List<IssueMap> IssueRQ(string[] requireCode, int year = 0)
+		//{
+		//	//int i = 0;
+		//	var issue = (from di in _erp.DOCINFOes
+		//					 join trh in _erp.TRANSTKHs on di.DI_KEY equals trh.TRH_DI
+		//					 join trd in _erp.TRANSTKDs on trh.TRH_KEY equals trd.TRD_TRH
+		//					 where trd.TRD_REFER_REF != null
+		//					 && OMShareProduction.ProductionRequestCode.Contains(trd.TRD_REFER_REF.Substring(0, 4))
+		//					 select new
+		//					 {
+		//						 ReqNo = trd.TRD_REFER_REF,
+		//						 ReqId = trd.TRD_REFER_DI.Value,
+		//						 IssueNo = di.DI_REF,
+		//						 IssueId = di.DI_KEY,
+		//						 DocYear = di.DI_DATE.Year
+		//					 }).Distinct().OrderBy(o => o.ReqNo).ToList();
+
+		//	if (year == 0)
+		//	{
+		//		return issue.AsEnumerable().Select((r, i) => new IssueMap
+		//		{
+		//			Index = ++i,
+		//			ReqNo = r.ReqNo,
+		//			ReqId = r.ReqId,
+		//			IssueNo = r.IssueNo,
+		//			IssueId = r.IssueId
+		//		}).OrderBy(o => o.ReqNo).ToList();
+		//	}
+		//	else
+		//	{
+		//		return issue.AsEnumerable().Where(y => y.DocYear == year).Select((r, i) => new IssueMap
+		//		{
+		//			Index = ++i,
+		//			ReqNo = r.ReqNo,
+		//			ReqId = r.ReqId,
+		//			IssueNo = r.IssueNo,
+		//			IssueId = r.IssueId
+		//		}).OrderBy(o => o.ReqNo).ToList();
+		//	}
+		//}
+			//public bool ValidateProductionTimeRecord(string workerId, DateTime workDate)
+		//{
+		//	//DataTable _found = ActualTimeRecord(workDate, workerId);
+		//	//return (_found.Rows.Count > 0 ? true : false);
+
+		//	return ActualTimeRecord(workDate, workerId).Rows.Count > 0 ? true : false;
+		//}
+
+			//public async Task<DataTable> GetProductionHourByOrderAsync(string ProductionOrder)
+		//{
+		//	return await Task.Run(() =>
+		//	{
+		//		var _result = new DataTable();
+		//		var phItem = (from p in _om.PRODUCTIONJOBINFOes
+		//						  orderby p.DATETIME_START
+		//						  where p.ERP_ORDER == ProductionOrder
+		//						  select new
+		//						  {
+		//							  Id = p.PRDINFOID,
+		//							  p.WORKERID,
+		//							  p.WORKERNAME,
+		//							  p.PROCESSID,
+		//							  p.PROCESSNAME,
+		//							  p.TIME_CAT,
+		//							  starttime = p.DATETIME_START.Value,
+		//							  endtime = p.TOTAL_OT_HR == 0.00m ? p.DATETIME_END.Value : p.OT_END.Value,
+		//							  HourRate = p.REGULAR_HR_RATE,
+		//							  NORMAL = p.TOTAL_NORMAL_HR,
+		//							  OT = p.TOTAL_OT_HR,
+		//							  TOTAL = p.TOTAL_HRS,
+		//							  HOURCOST = p.TOTAL_COST,
+		//							  p.TOTALQTY,
+		//							  p.GOOD_QTY,
+		//							  p.BAD_QTY
+		//						  }).AsNoTracking();
+
+		//		if (phItem != null)
+		//			_result = phItem.ToDataTable();
+
+		//		return _result;
+		//	});
+		//} // end GetProductionHourByOrderAsync
+
+			//public int RemoveProductionHourItem(int ItemId)
+		//{
+		//	var _result = 0;
+		//	try
+		//	{
+		//		var hourItem = (from p in _om.PRODUCTIONJOBINFOes
+		//							 where p.PRDINFOID == ItemId
+		//							 select p).Single();
+		//		_om.PRODUCTIONJOBINFOes.Remove(hourItem);
+		//		_result = _om.SaveChanges();
+		//	}
+		//	catch (OptimisticConcurrencyException ex)
+		//	{
+		//		throw new Exception("Can't remove the record....", ex);
+		//	}
+
+		//	return _result;
+		//} // end RemoveProductionHourItem
+				//public async Task<DataTable> GetProductionItemListAsync(OMShareProduction.SearchSTDItem searchType = OMShareProduction.SearchSTDItem.None, string filterString = "")
+		//{
+		//	return await Task.Run(() =>
+		//	{
+		//		var _result = new DataTable();
+		//		var pItems = (from p in _om.PRODUCTIONSTDITEMS
+		//						  orderby p.ItemNo
+		//						  select new
+		//						  {
+		//							  status = p.islock ? "Disabled" : "Active",
+		//							  p.islock,
+		//							  p.ItemId,
+		//							  p.ItemNo,
+		//							  p.ItemName,
+		//							  p.DrawingNo,
+		//							  p.DrawingRev,
+		//							  p.SheetNo,
+		//							  p.Material,
+		//							  p.Unit,
+		//							  p.STDProductHours,
+		//							  p.MaterialCost
+		//						  }).AsParallel();
+
+		//		if (pItems != null)
+		//		{
+		//			switch (searchType)
+		//			{
+		//				case OMShareProduction.SearchSTDItem.None:
+		//					_result = pItems.ToDataTable();
+		//					break;
+
+		//				case OMShareProduction.SearchSTDItem.ItemNumber:
+		//					_result = pItems.Where(w => w.ItemNo.Contains(filterString)).ToDataTable();
+		//					break;
+
+		//				case OMShareProduction.SearchSTDItem.ItemDescription:
+		//					_result = pItems.Where(w => w.ItemName.Contains(filterString)).ToDataTable();
+		//					break;
+		//			}
+		//		}
+		//		return _result;
+		//	});
+
+		//} // end GetProductionItemListAsync
+
+				//public DataTable GetProductionItemList(OMShareProduction.SearchSTDItem searchType = OMShareProduction.SearchSTDItem.None, string filterString = "")
+		//{
+		//	var _result = new DataTable();
+		//	var pItems = (from p in _om.PRODUCTIONSTDITEMS
+		//					  orderby p.ItemNo
+		//					  select new
+		//					  {
+		//						  status = p.islock ? "Disabled" : "Active",
+		//						  p.islock,
+		//						  p.ItemId,
+		//						  p.ItemNo,
+		//						  p.ItemName,
+		//						  p.DrawingNo,
+		//						  p.DrawingRev,
+		//						  p.SheetNo,
+		//						  p.MatNo,
+		//						  p.Material,
+		//						  p.Unit,
+		//						  p.STDProductHours,
+		//						  p.MaterialCost,
+		//						  p.ProductionCost,
+		//						  p.ItemCost
+		//					  }).AsParallel();
+
+		//	if (pItems != null)
+		//	{
+		//		switch (searchType)
+		//		{
+		//			case OMShareProduction.SearchSTDItem.None:
+		//				_result = pItems.ToDataTable();
+		//				break;
+
+		//			case OMShareProduction.SearchSTDItem.ItemNumber:
+		//				_result = pItems.Where(w => w.ItemNo.Contains(filterString)).ToDataTable();
+		//				break;
+
+		//			case OMShareProduction.SearchSTDItem.ItemDescription:
+		//				_result = pItems.Where(w => w.ItemName.Contains(filterString)).ToDataTable();
+		//				break;
+		//		}
+		//	}
+		//	return _result;
+
+		//} // end GetProductionItemList
+
+		//public async Task<DataTable> GetProductionSummaryAsync(string itemFilter, string connectionString)
+		//{
+		//	return await Task.Run(() =>
+		//	{
+		//		StringBuilder s = new StringBuilder();
+		//		s.AppendLine(" SELECT ");
+		//		s.AppendLine(" Y,");
+		//		s.AppendLine(" M,");
+		//		s.AppendLine(" ITEMNO,");
+		//		s.AppendLine(" ITEMNAME,");
+		//		s.AppendLine(" HOURS,");
+		//		s.AppendLine(" HOUR_COST,");
+		//		s.AppendLine(" MAT_COST,");
+		//		s.AppendLine(" TOTAL_COST");
+		//		s.AppendLine(" FROM OM_PRODUCTION_SUMMARY_HOURS ph");
+		//		s.AppendLine($" WHERE ph.ITEMNO = '{itemFilter}'");
+		//		s.AppendLine(" ORDER BY ph.Y, Ph.M");
+		//		return new DataConnect(s.ToString(), connectionString).ToDataTable;
+		//	});
+		//}
+
+
+		//public async Task<DataTable> GetProductionAvgByYearAsync(string itemFilter, string connectionString)
+		//{
+		//	return await Task.Run(() =>
+		//	{
+		//		StringBuilder s = new StringBuilder();
+		//		s.AppendLine(" SELECT ");
+		//		s.AppendLine(" Y,");
+		//		s.AppendLine(" ITEMNO,");
+		//		s.AppendLine(" ITEMNAME,");
+		//		s.AppendLine(" HOURS,");
+		//		s.AppendLine(" HOUR_COST,");
+		//		s.AppendLine(" MAT_COST,");
+		//		s.AppendLine(" TOTAL_COST");
+		//		s.AppendLine(" FROM OM_PRODUCTION_AVGHOUR_BY_YEAR ph");
+		//		s.AppendLine($" WHERE ph.ITEMNO = '{itemFilter}'");
+		//		s.AppendLine(" ORDER BY ph.Y");
+		//		return new DataConnect(s.ToString(), connectionString).ToDataTable;
+		//	});
+		//}
+
+			//public async Task<DataTable> SummaryProductionNormalHours(int Fiscyear, int FiscPeriod)
+		//{
+		//	return await Task.Run(() =>
+		//	{
+		//		var _pt = (from p in _om.PRODUCTIONJOBINFOes
+		//					  orderby p.DATETIME_START
+		//					  where p.DATETIME_START.Value.Year == Fiscyear
+		//							&& p.DATETIME_START.Value.Month == FiscPeriod
+		//							&& p.TOTAL_NORMAL_HR > 0.00m
+		//					  group p by p.WORKERNAME
+		//			into pp
+		//					  select new
+		//					  {
+		//						  pp.FirstOrDefault().WORKERNAME,
+		//						  D1 = pp.Sum(x => x.DATETIME_START.Value.Day == 1 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D2 = pp.Sum(x => x.DATETIME_START.Value.Day == 2 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D3 = pp.Sum(x => x.DATETIME_START.Value.Day == 3 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D4 = pp.Sum(x => x.DATETIME_START.Value.Day == 4 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D5 = pp.Sum(x => x.DATETIME_START.Value.Day == 5 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D6 = pp.Sum(x => x.DATETIME_START.Value.Day == 6 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D7 = pp.Sum(x => x.DATETIME_START.Value.Day == 7 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D8 = pp.Sum(x => x.DATETIME_START.Value.Day == 8 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D9 = pp.Sum(x => x.DATETIME_START.Value.Day == 9 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D10 = pp.Sum(x => x.DATETIME_START.Value.Day == 10 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D11 = pp.Sum(x => x.DATETIME_START.Value.Day == 11 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D12 = pp.Sum(x => x.DATETIME_START.Value.Day == 12 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D13 = pp.Sum(x => x.DATETIME_START.Value.Day == 13 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D14 = pp.Sum(x => x.DATETIME_START.Value.Day == 14 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D15 = pp.Sum(x => x.DATETIME_START.Value.Day == 15 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D16 = pp.Sum(x => x.DATETIME_START.Value.Day == 16 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D17 = pp.Sum(x => x.DATETIME_START.Value.Day == 17 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D18 = pp.Sum(x => x.DATETIME_START.Value.Day == 18 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D19 = pp.Sum(x => x.DATETIME_START.Value.Day == 19 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D20 = pp.Sum(x => x.DATETIME_START.Value.Day == 20 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D21 = pp.Sum(x => x.DATETIME_START.Value.Day == 21 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D22 = pp.Sum(x => x.DATETIME_START.Value.Day == 22 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D23 = pp.Sum(x => x.DATETIME_START.Value.Day == 23 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D24 = pp.Sum(x => x.DATETIME_START.Value.Day == 24 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D25 = pp.Sum(x => x.DATETIME_START.Value.Day == 25 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D26 = pp.Sum(x => x.DATETIME_START.Value.Day == 26 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D27 = pp.Sum(x => x.DATETIME_START.Value.Day == 27 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D28 = pp.Sum(x => x.DATETIME_START.Value.Day == 28 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D29 = pp.Sum(x => x.DATETIME_START.Value.Day == 29 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D30 = pp.Sum(x => x.DATETIME_START.Value.Day == 30 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  D31 = pp.Sum(x => x.DATETIME_START.Value.Day == 31 ? x.TOTAL_NORMAL_HR : 0.00m),
+		//						  Total = pp.Sum(x => x.TOTAL_NORMAL_HR)
+		//					  }).AsParallel();
+
+		//		return _pt.ToDataTable();
+		//	});
+		//} // end SummaryProductionNormalHours
+
+		//public async Task<DataTable> SummaryProductionOverTimeHours(int Fiscyear, int FiscPeriod)
+		//{
+		//	return await Task.Run(() =>
+		//	{
+		//		var _pt = (from p in _om.PRODUCTIONJOBINFOes
+		//					  orderby p.OT_START
+		//					  where p.OT_START.Value.Year == Fiscyear
+		//							&& p.OT_START.Value.Month == FiscPeriod
+		//							&& p.TOTAL_OT_HR > 0.00m
+		//					  group p by p.WORKERNAME
+		//			into pp
+		//					  select new
+		//					  {
+		//						  pp.FirstOrDefault().WORKERNAME,
+		//						  D1 = pp.Sum(x => x.OT_START.Value.Day == 1 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D2 = pp.Sum(x => x.OT_START.Value.Day == 2 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D3 = pp.Sum(x => x.OT_START.Value.Day == 3 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D4 = pp.Sum(x => x.OT_START.Value.Day == 4 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D5 = pp.Sum(x => x.OT_START.Value.Day == 5 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D6 = pp.Sum(x => x.OT_START.Value.Day == 6 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D7 = pp.Sum(x => x.OT_START.Value.Day == 7 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D8 = pp.Sum(x => x.OT_START.Value.Day == 8 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D9 = pp.Sum(x => x.OT_START.Value.Day == 9 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D10 = pp.Sum(x => x.OT_START.Value.Day == 10 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D11 = pp.Sum(x => x.OT_START.Value.Day == 11 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D12 = pp.Sum(x => x.OT_START.Value.Day == 12 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D13 = pp.Sum(x => x.OT_START.Value.Day == 13 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D14 = pp.Sum(x => x.OT_START.Value.Day == 14 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D15 = pp.Sum(x => x.OT_START.Value.Day == 15 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D16 = pp.Sum(x => x.OT_START.Value.Day == 16 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D17 = pp.Sum(x => x.OT_START.Value.Day == 17 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D18 = pp.Sum(x => x.OT_START.Value.Day == 18 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D19 = pp.Sum(x => x.OT_START.Value.Day == 19 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D20 = pp.Sum(x => x.OT_START.Value.Day == 20 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D21 = pp.Sum(x => x.OT_START.Value.Day == 21 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D22 = pp.Sum(x => x.OT_START.Value.Day == 22 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D23 = pp.Sum(x => x.OT_START.Value.Day == 23 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D24 = pp.Sum(x => x.OT_START.Value.Day == 24 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D25 = pp.Sum(x => x.OT_START.Value.Day == 25 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D26 = pp.Sum(x => x.OT_START.Value.Day == 26 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D27 = pp.Sum(x => x.OT_START.Value.Day == 27 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D28 = pp.Sum(x => x.OT_START.Value.Day == 28 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D29 = pp.Sum(x => x.OT_START.Value.Day == 29 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D30 = pp.Sum(x => x.OT_START.Value.Day == 30 ? x.TOTAL_OT_HR : 0.00m),
+		//						  D31 = pp.Sum(x => x.OT_START.Value.Day == 31 ? x.TOTAL_OT_HR : 0.00m),
+		//						  Total = pp.Sum(x => x.TOTAL_OT_HR)
+		//					  }).AsParallel();
+
+		//		return _pt.ToDataTable();
+		//	});
+		//} // end SummaryProductionOverTimeHours
+
+
+		
+		//public decimal GetJobHours(string productionJobNo)
+		//{
+		//	var p = _om.PRODUCTIONJOBINFOes.Where(x => x.ERP_ORDER == productionJobNo).ToList();
+		//	decimal th = 0m;
+		//	if (p == null) return 0m;
+
+		//	foreach (var pp in p)
+		//	{
+		//		th += pp.TOTAL_NORMAL_HR + pp.TOTAL_OT_HR;
+		//	}
+		//	return th;
+		//}
+
+		//public decimal GetTotalJobHours(string jobno)
+		//{
+		//	var _record = _om.PRODUCTIONJOBINFOes.Where(x => x.ERP_ORDER == jobno).ToList();
+
+		//	if (_record == null || _record.Count == 0) return 0m;
+
+		//	return _om.PRODUCTIONJOBINFOes
+		//		.Where(x => x.ERP_ORDER == jobno)
+		//		.GroupBy(g => g.ERP_ORDER)
+		//		.Select(h => new
+		//		{
+		//			TotalWorkHours = h.Sum(x => x.TOTAL_NORMAL_HR + x.TOTAL_OT_HR)
+		//		}).Single().TotalWorkHours;
+		//}
+
+		//public decimal GetAverageHourCost(int year)
+		//{
+		//	var _record = _om.EMPSALs.Where(x => x.YEARSAL == year && x.WORKGROUP == "PRODUCTION").ToList();
+
+		//	if (_record == null || _record.Count == 0) return 0m;
+
+		//	return _om.EMPSALs
+		//		.Where(x => x.YEARSAL == year && x.WORKGROUP == "PRODUCTION")
+		//		.GroupBy(g => g.WORKGROUP)
+		//		.Select(hc => new
+		//		{
+		//			AvgHourCost = hc.Average(h => h.AVGHOURCOST)
+		//		}).Single().AvgHourCost;
+		//}
+
+		//public decimal GetAverageActualHourCost(int year)
+		//{
+		//	var _record = _om.EMPSALs.Where(x => x.YEARSAL == year && x.WORKGROUP == "PRODUCTION").ToList();
+
+		//	if (_record == null || _record.Count == 0) return 0m;
+
+		//	return _om.EMPSALs
+		//		.Where(x => x.YEARSAL == year && x.WORKGROUP == "PRODUCTION")
+		//		.GroupBy(g => g.WORKGROUP)
+		//		.Select(hc => new
+		//		{
+		//			ActualAvgHourCost = hc.Average(h => h.ACTUALAVGHOURCOST)
+		//		}).Single().ActualAvgHourCost;
+		//}
+
+
+
+
+
+
+
+
+
+
+
+
+

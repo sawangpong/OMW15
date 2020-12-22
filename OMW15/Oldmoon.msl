@@ -1,0 +1,1862 @@
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OLDMOONModelStoreContainer" CdmEntityContainer="OLDMOONEF">
+    <EntitySetMapping Name="ACCMAPS">
+      <EntityTypeMapping TypeName="OLDMOONModel.ACCMAP">
+        <MappingFragment StoreEntitySet="ACCMAPS">
+          <ScalarProperty Name="ACCMAPKEY" ColumnName="ACCMAPKEY" />
+          <ScalarProperty Name="SALETYPE" ColumnName="SALETYPE" />
+          <ScalarProperty Name="ISVATABLE" ColumnName="ISVATABLE" />
+          <ScalarProperty Name="MATERIALCAT" ColumnName="MATERIALCAT" />
+          <ScalarProperty Name="ACCOUNTID" ColumnName="ACCOUNTID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ACCOUNTSETs">
+      <EntityTypeMapping TypeName="OLDMOONModel.ACCOUNTSET">
+        <MappingFragment StoreEntitySet="ACCOUNTSET">
+          <ScalarProperty Name="ACCOUNTNO" ColumnName="ACCOUNTNO" />
+          <ScalarProperty Name="COSTCENTER" ColumnName="COSTCENTER" />
+          <ScalarProperty Name="ACCOUNTNAME" ColumnName="ACCOUNTNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="APPLOGS">
+      <EntityTypeMapping TypeName="OLDMOONModel.APPLOG">
+        <MappingFragment StoreEntitySet="APPLOGS">
+          <ScalarProperty Name="PID" ColumnName="PID" />
+          <ScalarProperty Name="APP_NAME" ColumnName="APP_NAME" />
+          <ScalarProperty Name="REFRECORDID" ColumnName="REFRECORDID" />
+          <ScalarProperty Name="MACHINE_NAME" ColumnName="MACHINE_NAME" />
+          <ScalarProperty Name="MODULE_NAME" ColumnName="MODULE_NAME" />
+          <ScalarProperty Name="METHOD_NAME" ColumnName="METHOD_NAME" />
+          <ScalarProperty Name="DOBYUSER" ColumnName="DOBYUSER" />
+          <ScalarProperty Name="LOG_DT" ColumnName="LOG_DT" />
+          <ScalarProperty Name="LOG_DETAILS" ColumnName="LOG_DETAILS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BANKS">
+      <EntityTypeMapping TypeName="OLDMOONModel.BANK">
+        <MappingFragment StoreEntitySet="BANKS">
+          <ScalarProperty Name="BANKID" ColumnName="BANKID" />
+          <ScalarProperty Name="INACTIVE" ColumnName="INACTIVE" />
+          <ScalarProperty Name="BANKCODE" ColumnName="BANKCODE" />
+          <ScalarProperty Name="BANKNAME" ColumnName="BANKNAME" />
+          <ScalarProperty Name="BANKTHNAME" ColumnName="BANKTHNAME" />
+          <ScalarProperty Name="ACCOUNTNAME" ColumnName="ACCOUNTNAME" />
+          <ScalarProperty Name="ACCOUNTNO" ColumnName="ACCOUNTNO" />
+          <ScalarProperty Name="ACCOUNTBRANCH" ColumnName="ACCOUNTBRANCH" />
+          <ScalarProperty Name="ACCOUNTTYPE" ColumnName="ACCOUNTTYPE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BANKTRANSLOGs">
+      <EntityTypeMapping TypeName="OLDMOONModel.BANKTRANSLOG">
+        <MappingFragment StoreEntitySet="BANKTRANSLOG">
+          <ScalarProperty Name="BLOGID" ColumnName="BLOGID" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="LOGDATE" ColumnName="LOGDATE" />
+          <ScalarProperty Name="REFDOC" ColumnName="REFDOC" />
+          <ScalarProperty Name="REFDOCDATE" ColumnName="REFDOCDATE" />
+          <ScalarProperty Name="ACCOUNTID" ColumnName="ACCOUNTID" />
+          <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+          <ScalarProperty Name="TRANSCODE" ColumnName="TRANSCODE" />
+          <ScalarProperty Name="TRANSAMOUNT" ColumnName="TRANSAMOUNT" />
+          <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="AUDITDATE" ColumnName="AUDITDATE" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BILLS">
+      <EntityTypeMapping TypeName="OLDMOONModel.BILL">
+        <MappingFragment StoreEntitySet="BILLS">
+          <ScalarProperty Name="ISCOMPLETE" ColumnName="ISCOMPLETE" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="ISCANCEL" ColumnName="ISCANCEL" />
+          <ScalarProperty Name="BILLCANCELDATE" ColumnName="BILLCANCELDATE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="PREFIXID" ColumnName="PREFIXID" />
+          <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+          <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+          <ScalarProperty Name="SALETYPE" ColumnName="SALETYPE" />
+          <ScalarProperty Name="BILLID" ColumnName="BILLID" />
+          <ScalarProperty Name="BILLNO" ColumnName="BILLNO" />
+          <ScalarProperty Name="BILLDATE" ColumnName="BILLDATE" />
+          <ScalarProperty Name="FISCYEAR" ColumnName="FISCYEAR" />
+          <ScalarProperty Name="FISCPERIOD" ColumnName="FISCPERIOD" />
+          <ScalarProperty Name="DUEDATE" ColumnName="DUEDATE" />
+          <ScalarProperty Name="COLLECTDATE" ColumnName="COLLECTDATE" />
+          <ScalarProperty Name="NUMOFDO" ColumnName="NUMOFDO" />
+          <ScalarProperty Name="TOTALVALUE" ColumnName="TOTALVALUE" />
+          <ScalarProperty Name="DISCOUNT" ColumnName="DISCOUNT" />
+          <ScalarProperty Name="NETVALUE" ColumnName="NETVALUE" />
+          <ScalarProperty Name="VATFACTOR" ColumnName="VATFACTOR" />
+          <ScalarProperty Name="TOTALVAT" ColumnName="TOTALVAT" />
+          <ScalarProperty Name="TOTALAMOUNT" ColumnName="TOTALAMOUNT" />
+          <ScalarProperty Name="TOTALTEXT" ColumnName="TOTALTEXT" />
+          <ScalarProperty Name="INVSEQ" ColumnName="INVSEQ" />
+          <ScalarProperty Name="INVOICENO" ColumnName="INVOICENO" />
+          <ScalarProperty Name="INVDATE" ColumnName="INVDATE" />
+          <ScalarProperty Name="TOTALPAYVALUE" ColumnName="TOTALPAYVALUE" />
+          <ScalarProperty Name="TOTALWHTAX" ColumnName="TOTALWHTAX" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BOOKINGHHs">
+      <EntityTypeMapping TypeName="OLDMOONModel.BOOKINGHH">
+        <MappingFragment StoreEntitySet="BOOKINGHH">
+          <ScalarProperty Name="BKHID" ColumnName="BKHID" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="ISCANCEL" ColumnName="ISCANCEL" />
+          <ScalarProperty Name="BKSTATUS" ColumnName="BKSTATUS" />
+          <ScalarProperty Name="ORDERSEQ" ColumnName="ORDERSEQ" />
+          <ScalarProperty Name="ORDERCODE" ColumnName="ORDERCODE" />
+          <ScalarProperty Name="ORDERNO" ColumnName="ORDERNO" />
+          <ScalarProperty Name="BKDATE" ColumnName="BKDATE" />
+          <ScalarProperty Name="CLOSEDATE" ColumnName="CLOSEDATE" />
+          <ScalarProperty Name="BKYEAR" ColumnName="BKYEAR" />
+          <ScalarProperty Name="BKPERIOD" ColumnName="BKPERIOD" />
+          <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+          <ScalarProperty Name="COUNTITEM" ColumnName="COUNTITEM" />
+          <ScalarProperty Name="BKTOTALCOST" ColumnName="BKTOTALCOST" />
+          <ScalarProperty Name="BKTOTALAMOUNT" ColumnName="BKTOTALAMOUNT" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BOOKINGLLs">
+      <EntityTypeMapping TypeName="OLDMOONModel.BOOKINGLL">
+        <MappingFragment StoreEntitySet="BOOKINGLL">
+          <ScalarProperty Name="BKLID" ColumnName="BKLID" />
+          <ScalarProperty Name="BKHID" ColumnName="BKHID" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="ORDERSEQ" ColumnName="ORDERSEQ" />
+          <ScalarProperty Name="ORDERCODE" ColumnName="ORDERCODE" />
+          <ScalarProperty Name="ORDERNO" ColumnName="ORDERNO" />
+          <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+          <ScalarProperty Name="ITEMNO" ColumnName="ITEMNO" />
+          <ScalarProperty Name="ITEMNAME" ColumnName="ITEMNAME" />
+          <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+          <ScalarProperty Name="BOOKEDQTY" ColumnName="BOOKEDQTY" />
+          <ScalarProperty Name="UNITCOST" ColumnName="UNITCOST" />
+          <ScalarProperty Name="UNITPRICE" ColumnName="UNITPRICE" />
+          <ScalarProperty Name="TOTALCOSTITEM" ColumnName="TOTALCOSTITEM" />
+          <ScalarProperty Name="TOTALSELLPRICEITEM" ColumnName="TOTALSELLPRICEITEM" />
+          <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONTACTS">
+      <EntityTypeMapping TypeName="OLDMOONModel.CONTACT">
+        <MappingFragment StoreEntitySet="CONTACTS">
+          <ScalarProperty Name="CONTACTID" ColumnName="CONTACTID" />
+          <ScalarProperty Name="CONTACTNAME" ColumnName="CONTACTNAME" />
+          <ScalarProperty Name="JOBTITLE" ColumnName="JOBTITLE" />
+          <ScalarProperty Name="COMPANY" ColumnName="COMPANY" />
+          <ScalarProperty Name="ADDR" ColumnName="ADDR" />
+          <ScalarProperty Name="CITY" ColumnName="CITY" />
+          <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+          <ScalarProperty Name="POSTAL" ColumnName="POSTAL" />
+          <ScalarProperty Name="TEL" ColumnName="TEL" />
+          <ScalarProperty Name="FAX" ColumnName="FAX" />
+          <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="WEBSITE" ColumnName="WEBSITE" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="LASTMODIFY" ColumnName="LASTMODIFY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COUNTRIES">
+      <EntityTypeMapping TypeName="OLDMOONModel.COUNTRy">
+        <MappingFragment StoreEntitySet="COUNTRIES">
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="COUNTRYNAME" ColumnName="COUNTRYNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CRCODEs">
+      <EntityTypeMapping TypeName="OLDMOONModel.CRCODE">
+        <MappingFragment StoreEntitySet="CRCODE">
+          <ScalarProperty Name="CREDITCODE" ColumnName="CREDITCODE" />
+          <ScalarProperty Name="CREDITCODENAME" ColumnName="CREDITCODENAME" />
+          <ScalarProperty Name="DURATION" ColumnName="DURATION" />
+          <ScalarProperty Name="ISCANCEL" ColumnName="ISCANCEL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CURRENCies">
+      <EntityTypeMapping TypeName="OLDMOONModel.CURRENCY">
+        <MappingFragment StoreEntitySet="CURRENCY">
+          <ScalarProperty Name="CURCODE" ColumnName="CURCODE" />
+          <ScalarProperty Name="CURDETAILS" ColumnName="CURDETAILS" />
+          <ScalarProperty Name="INACTIVE" ColumnName="INACTIVE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTMATRETURNs">
+      <EntityTypeMapping TypeName="OLDMOONModel.CUSTMATRETURN">
+        <MappingFragment StoreEntitySet="CUSTMATRETURN">
+          <ScalarProperty Name="RETSEQ" ColumnName="RETSEQ" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="SOSEQ" ColumnName="SOSEQ" />
+          <ScalarProperty Name="CUSTMATSEQ" ColumnName="CUSTMATSEQ" />
+          <ScalarProperty Name="GRVNO" ColumnName="GRVNO" />
+          <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+          <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+          <ScalarProperty Name="REFSONO" ColumnName="REFSONO" />
+          <ScalarProperty Name="REFMATDOC" ColumnName="REFMATDOC" />
+          <ScalarProperty Name="REFCUSTDOC" ColumnName="REFCUSTDOC" />
+          <ScalarProperty Name="FISCYEAR" ColumnName="FISCYEAR" />
+          <ScalarProperty Name="FISCPERIOD" ColumnName="FISCPERIOD" />
+          <ScalarProperty Name="RETURNDATE" ColumnName="RETURNDATE" />
+          <ScalarProperty Name="RETURNMATTYPE" ColumnName="RETURNMATTYPE" />
+          <ScalarProperty Name="RETURNWEIGHT" ColumnName="RETURNWEIGHT" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="AUDITDATE" ColumnName="AUDITDATE" />
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTMOLDS">
+      <EntityTypeMapping TypeName="OLDMOONModel.CUSTMOLD">
+        <MappingFragment StoreEntitySet="CUSTMOLDS">
+          <ScalarProperty Name="MOLDSEQ" ColumnName="MOLDSEQ" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+          <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+          <ScalarProperty Name="MOLDIMG" ColumnName="MOLDIMG" />
+          <ScalarProperty Name="ITEMPREFIX" ColumnName="ITEMPREFIX" />
+          <ScalarProperty Name="ITEMNO" ColumnName="ITEMNO" />
+          <ScalarProperty Name="ITEMNAME" ColumnName="ITEMNAME" />
+          <ScalarProperty Name="MOLDMATTYPE" ColumnName="MOLDMATTYPE" />
+          <ScalarProperty Name="MOLDQTY" ColumnName="MOLDQTY" />
+          <ScalarProperty Name="MOLDRECEIVER" ColumnName="MOLDRECEIVER" />
+          <ScalarProperty Name="MOLDRECEIVEDATE" ColumnName="MOLDRECEIVEDATE" />
+          <ScalarProperty Name="RETURNQTY" ColumnName="RETURNQTY" />
+          <ScalarProperty Name="MOLDRETURNDATE" ColumnName="MOLDRETURNDATE" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTOMERS1">
+      <EntityTypeMapping TypeName="OLDMOONModel.CUSTOMER1">
+        <MappingFragment StoreEntitySet="CUSTOMERS">
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="ISWARNING" ColumnName="ISWARNING" />
+          <ScalarProperty Name="CUSTTAXID" ColumnName="CUSTTAXID" />
+          <ScalarProperty Name="VATABLE" ColumnName="VATABLE" />
+          <ScalarProperty Name="VATRATE" ColumnName="VATRATE" />
+          <ScalarProperty Name="CUSTTYPE" ColumnName="CUSTTYPE" />
+          <ScalarProperty Name="ISHEADQUARTERS" ColumnName="ISHEADQUARTERS" />
+          <ScalarProperty Name="BRANCHNUMBER" ColumnName="BRANCHNUMBER" />
+          <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+          <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+          <ScalarProperty Name="CUSTNAME" ColumnName="CUSTNAME" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="DISTRICT" ColumnName="DISTRICT" />
+          <ScalarProperty Name="PROVINCE" ColumnName="PROVINCE" />
+          <ScalarProperty Name="POSTAL" ColumnName="POSTAL" />
+          <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+          <ScalarProperty Name="TEL" ColumnName="TEL" />
+          <ScalarProperty Name="FAX" ColumnName="FAX" />
+          <ScalarProperty Name="CUSTEMAIL" ColumnName="CUSTEMAIL" />
+          <ScalarProperty Name="CUSTWWW" ColumnName="CUSTWWW" />
+          <ScalarProperty Name="CONTACTPERSON" ColumnName="CONTACTPERSON" />
+          <ScalarProperty Name="CELLPHONE1" ColumnName="CELLPHONE1" />
+          <ScalarProperty Name="SALEPERSON" ColumnName="SALEPERSON" />
+          <ScalarProperty Name="MATERIALLIMIT" ColumnName="MATERIALLIMIT" />
+          <ScalarProperty Name="CREDITLIMIT" ColumnName="CREDITLIMIT" />
+          <ScalarProperty Name="CURRENCY" ColumnName="CURRENCY" />
+          <ScalarProperty Name="CREDITCODE" ColumnName="CREDITCODE" />
+          <ScalarProperty Name="DATEBILL" ColumnName="DATEBILL" />
+          <ScalarProperty Name="DATEPAY" ColumnName="DATEPAY" />
+          <ScalarProperty Name="BILLINGPOINT" ColumnName="BILLINGPOINT" />
+          <ScalarProperty Name="PAYMENTPOINT" ColumnName="PAYMENTPOINT" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="AUDITDATE" ColumnName="AUDITDATE" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTORDENTRies">
+      <EntityTypeMapping TypeName="OLDMOONModel.CUSTORDENTRY">
+        <MappingFragment StoreEntitySet="CUSTORDENTRY">
+          <ScalarProperty Name="ISCOMPLETE" ColumnName="ISCOMPLETE" />
+          <ScalarProperty Name="ORDSEQ" ColumnName="ORDSEQ" />
+          <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+          <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+          <ScalarProperty Name="CUSTORDER" ColumnName="CUSTORDER" />
+          <ScalarProperty Name="CUSTORDDATE" ColumnName="CUSTORDDATE" />
+          <ScalarProperty Name="ORDDELIVERYDATE" ColumnName="ORDDELIVERYDATE" />
+          <ScalarProperty Name="TOTALLINEORDER" ColumnName="TOTALLINEORDER" />
+          <ScalarProperty Name="TOTALLINECOMPLETE" ColumnName="TOTALLINECOMPLETE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTPRICEITEMPICs">
+      <EntityTypeMapping TypeName="OLDMOONModel.CUSTPRICEITEMPIC">
+        <MappingFragment StoreEntitySet="CUSTPRICEITEMPIC">
+          <ScalarProperty Name="ITEMPICID" ColumnName="ITEMPICID" />
+          <ScalarProperty Name="ITEMSEQ" ColumnName="ITEMSEQ" />
+          <ScalarProperty Name="ITEMPIC" ColumnName="ITEMPIC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTPRICELISTs">
+      <EntityTypeMapping TypeName="OLDMOONModel.CUSTPRICELIST">
+        <MappingFragment StoreEntitySet="CUSTPRICELIST">
+          <ScalarProperty Name="HASPICTURE" ColumnName="HASPICTURE" />
+          <ScalarProperty Name="PRICESEQ" ColumnName="PRICESEQ" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+          <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+          <ScalarProperty Name="PREFIX" ColumnName="PREFIX" />
+          <ScalarProperty Name="ITEMNO" ColumnName="ITEMNO" />
+          <ScalarProperty Name="ITEMNAME" ColumnName="ITEMNAME" />
+          <ScalarProperty Name="PRODUCTSTYLE" ColumnName="PRODUCTSTYLE" />
+          <ScalarProperty Name="MATERIAL" ColumnName="MATERIAL" />
+          <ScalarProperty Name="BLOCKID" ColumnName="BLOCKID" />
+          <ScalarProperty Name="WIDTH" ColumnName="WIDTH" />
+          <ScalarProperty Name="HEIGHT" ColumnName="HEIGHT" />
+          <ScalarProperty Name="THICK" ColumnName="THICK" />
+          <ScalarProperty Name="SIZE" ColumnName="SIZE" />
+          <ScalarProperty Name="WAXWEIGHT" ColumnName="WAXWEIGHT" />
+          <ScalarProperty Name="UNITWEIGHT" ColumnName="UNITWEIGHT" />
+          <ScalarProperty Name="UNITCOUNT" ColumnName="UNITCOUNT" />
+          <ScalarProperty Name="CASTINGPRICE" ColumnName="CASTINGPRICE" />
+          <ScalarProperty Name="UNITPRICE" ColumnName="UNITPRICE" />
+          <ScalarProperty Name="SCOREPRICE" ColumnName="SCOREPRICE" />
+          <ScalarProperty Name="PRICEEFFECTIVEDATE" ColumnName="PRICEEFFECTIVEDATE" />
+          <ScalarProperty Name="PRICEEXPIREDATE" ColumnName="PRICEEXPIREDATE" />
+          <ScalarProperty Name="HASBLOCK" ColumnName="HASBLOCK" />
+          <ScalarProperty Name="BLOCKLOC" ColumnName="BLOCKLOC" />
+          <ScalarProperty Name="DATEENTRY" ColumnName="DATEENTRY" />
+          <ScalarProperty Name="DATEMODIFY" ColumnName="DATEMODIFY" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTTASKs">
+      <EntityTypeMapping TypeName="OLDMOONModel.CUSTTASK">
+        <MappingFragment StoreEntitySet="CUSTTASK">
+          <ScalarProperty Name="CTSEQ" ColumnName="CTSEQ" />
+          <ScalarProperty Name="ISDBCUST" ColumnName="ISDBCUST" />
+          <ScalarProperty Name="ISTASKACTIVE" ColumnName="ISTASKACTIVE" />
+          <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+          <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+          <ScalarProperty Name="CUSTOMERNAME" ColumnName="CUSTOMERNAME" />
+          <ScalarProperty Name="ADDR1" ColumnName="ADDR1" />
+          <ScalarProperty Name="PROVINCE" ColumnName="PROVINCE" />
+          <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+          <ScalarProperty Name="ZIPCODE" ColumnName="ZIPCODE" />
+          <ScalarProperty Name="TEL" ColumnName="TEL" />
+          <ScalarProperty Name="FAX" ColumnName="FAX" />
+          <ScalarProperty Name="CONTACTNAME" ColumnName="CONTACTNAME" />
+          <ScalarProperty Name="MOBILENO" ColumnName="MOBILENO" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="WEBSITE" ColumnName="WEBSITE" />
+          <ScalarProperty Name="FACEBOOK" ColumnName="FACEBOOK" />
+          <ScalarProperty Name="SALENAME" ColumnName="SALENAME" />
+          <ScalarProperty Name="TASKONDATE" ColumnName="TASKONDATE" />
+          <ScalarProperty Name="TASKENDDATE" ColumnName="TASKENDDATE" />
+          <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+          <ScalarProperty Name="ACT_OFFER" ColumnName="ACT_OFFER" />
+          <ScalarProperty Name="ACT_MOREINFO" ColumnName="ACT_MOREINFO" />
+          <ScalarProperty Name="ACT_SERVICE" ColumnName="ACT_SERVICE" />
+          <ScalarProperty Name="ACT_CONTACT" ColumnName="ACT_CONTACT" />
+          <ScalarProperty Name="PRODUCT_CASTING" ColumnName="PRODUCT_CASTING" />
+          <ScalarProperty Name="PRODUCT_BURNNER" ColumnName="PRODUCT_BURNNER" />
+          <ScalarProperty Name="PRODUCT_INVESTMENTMIX" ColumnName="PRODUCT_INVESTMENTMIX" />
+          <ScalarProperty Name="PRODUCT_DIGITALWAX" ColumnName="PRODUCT_DIGITALWAX" />
+          <ScalarProperty Name="PRODUCT_VULCANIZER" ColumnName="PRODUCT_VULCANIZER" />
+          <ScalarProperty Name="PRODUCT_POLISHING" ColumnName="PRODUCT_POLISHING" />
+          <ScalarProperty Name="PRODUCT_OTHERS" ColumnName="PRODUCT_OTHERS" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTTASKIMGs">
+      <EntityTypeMapping TypeName="OLDMOONModel.CUSTTASKIMG">
+        <MappingFragment StoreEntitySet="CUSTTASKIMG">
+          <ScalarProperty Name="CTISEQ" ColumnName="CTISEQ" />
+          <ScalarProperty Name="CTSEQ" ColumnName="CTSEQ" />
+          <ScalarProperty Name="IMG" ColumnName="IMG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTTASKLINES">
+      <EntityTypeMapping TypeName="OLDMOONModel.CUSTTASKLINE">
+        <MappingFragment StoreEntitySet="CUSTTASKLINES">
+          <ScalarProperty Name="CTLSEQ" ColumnName="CTLSEQ" />
+          <ScalarProperty Name="CTSEQ" ColumnName="CTSEQ" />
+          <ScalarProperty Name="TASKNAME" ColumnName="TASKNAME" />
+          <ScalarProperty Name="TASKVALUE" ColumnName="TASKVALUE" />
+          <ScalarProperty Name="TASKNOTE" ColumnName="TASKNOTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATADICTs">
+      <EntityTypeMapping TypeName="OLDMOONModel.DATADICT">
+        <MappingFragment StoreEntitySet="DATADICT">
+          <ScalarProperty Name="ColKeyEn" ColumnName="ColKeyEn" />
+          <ScalarProperty Name="ColNameTh" ColumnName="ColNameTh" />
+          <ScalarProperty Name="ColNameEN" ColumnName="ColNameEN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DEPARTMENTs">
+      <EntityTypeMapping TypeName="OLDMOONModel.DEPARTMENT">
+        <MappingFragment StoreEntitySet="DEPARTMENT">
+          <ScalarProperty Name="DEPARTMENTID" ColumnName="DEPARTMENTID" />
+          <ScalarProperty Name="DEPARTMENTEN" ColumnName="DEPARTMENTEN" />
+          <ScalarProperty Name="DEPARTMENTTH" ColumnName="DEPARTMENTTH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DEPARTMENTS1">
+      <EntityTypeMapping TypeName="OLDMOONModel.DEPARTMENT1">
+        <MappingFragment StoreEntitySet="DEPARTMENTS">
+          <ScalarProperty Name="DEPTID" ColumnName="DEPTID" />
+          <ScalarProperty Name="DEPTNAME" ColumnName="DEPTNAME" />
+          <ScalarProperty Name="DEPTMGR" ColumnName="DEPTMGR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DISTRICTS">
+      <EntityTypeMapping TypeName="OLDMOONModel.DISTRICT">
+        <MappingFragment StoreEntitySet="DISTRICTS">
+          <ScalarProperty Name="DID" ColumnName="DID" />
+          <ScalarProperty Name="DISTNAME" ColumnName="DISTNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLOYEEs">
+      <EntityTypeMapping TypeName="OLDMOONModel.EMPLOYEE">
+        <MappingFragment StoreEntitySet="EMPLOYEE">
+          <ScalarProperty Name="EMPSEQ" ColumnName="EMPSEQ" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="ISRESIGN" ColumnName="ISRESIGN" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="EMPCODE" ColumnName="EMPCODE" />
+          <ScalarProperty Name="TITLENAME" ColumnName="TITLENAME" />
+          <ScalarProperty Name="EMPFIRSTNAME" ColumnName="EMPFIRSTNAME" />
+          <ScalarProperty Name="EMPLASTNAME" ColumnName="EMPLASTNAME" />
+          <ScalarProperty Name="NICKNAME" ColumnName="NICKNAME" />
+          <ScalarProperty Name="POSITIONID" ColumnName="POSITIONID" />
+          <ScalarProperty Name="DEPARTMENTID" ColumnName="DEPARTMENTID" />
+          <ScalarProperty Name="GROUPACCOUNT" ColumnName="GROUPACCOUNT" />
+          <ScalarProperty Name="COSTCENTER" ColumnName="COSTCENTER" />
+          <ScalarProperty Name="EMPLOYDATE" ColumnName="EMPLOYDATE" />
+          <ScalarProperty Name="RESIGNDATE" ColumnName="RESIGNDATE" />
+          <ScalarProperty Name="WORK_DAYS" ColumnName="WORK-DAYS" />
+          <ScalarProperty Name="IDCARDNUMBER" ColumnName="IDCARDNUMBER" />
+          <ScalarProperty Name="CARDADDRESS1" ColumnName="CARDADDRESS1" />
+          <ScalarProperty Name="CARDADDRESS2" ColumnName="CARDADDRESS2" />
+          <ScalarProperty Name="CARDPROVINCE" ColumnName="CARDPROVINCE" />
+          <ScalarProperty Name="CARDCOUNTRY" ColumnName="CARDCOUNTRY" />
+          <ScalarProperty Name="CARDZIPCODE" ColumnName="CARDZIPCODE" />
+          <ScalarProperty Name="CURRENTADDRESS1" ColumnName="CURRENTADDRESS1" />
+          <ScalarProperty Name="CURRENTADDRESS2" ColumnName="CURRENTADDRESS2" />
+          <ScalarProperty Name="CURRENTPROVINCE" ColumnName="CURRENTPROVINCE" />
+          <ScalarProperty Name="CURRENTCOUNTRY" ColumnName="CURRENTCOUNTRY" />
+          <ScalarProperty Name="CURRENTZIPCODE" ColumnName="CURRENTZIPCODE" />
+          <ScalarProperty Name="HOMEPHONE" ColumnName="HOMEPHONE" />
+          <ScalarProperty Name="CELLPHONE" ColumnName="CELLPHONE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="SEX" ColumnName="SEX" />
+          <ScalarProperty Name="BIRTHDATE" ColumnName="BIRTHDATE" />
+          <ScalarProperty Name="AGE" ColumnName="AGE" />
+          <ScalarProperty Name="EDUCATION" ColumnName="EDUCATION" />
+          <ScalarProperty Name="PROBATIONDAY" ColumnName="PROBATIONDAY" />
+          <ScalarProperty Name="ENDPROBATIONDATE" ColumnName="ENDPROBATIONDATE" />
+          <ScalarProperty Name="FAMILYSTATUS" ColumnName="FAMILYSTATUS" />
+          <ScalarProperty Name="NUMBEROFKID" ColumnName="NUMBEROFKID" />
+          <ScalarProperty Name="ACCOUNTNUMBER" ColumnName="ACCOUNTNUMBER" />
+          <ScalarProperty Name="BANKCODE" ColumnName="BANKCODE" />
+          <ScalarProperty Name="DAYRATE" ColumnName="DAYRATE" />
+          <ScalarProperty Name="MONTHRATE" ColumnName="MONTHRATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLOYPICs">
+      <EntityTypeMapping TypeName="OLDMOONModel.EMPLOYPIC">
+        <MappingFragment StoreEntitySet="EMPLOYPIC">
+          <ScalarProperty Name="EMPPICSEQ" ColumnName="EMPPICSEQ" />
+          <ScalarProperty Name="EMPCODE" ColumnName="EMPCODE" />
+          <ScalarProperty Name="EMPIMG" ColumnName="EMPIMG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPSALs">
+      <EntityTypeMapping TypeName="OLDMOONModel.EMPSAL">
+        <MappingFragment StoreEntitySet="EMPSAL">
+          <ScalarProperty Name="EMPSALSEQ" ColumnName="EMPSALSEQ" />
+          <ScalarProperty Name="YEARSAL" ColumnName="YEARSAL" />
+          <ScalarProperty Name="EMPCODE" ColumnName="EMPCODE" />
+          <ScalarProperty Name="EMPNAME" ColumnName="EMPNAME" />
+          <ScalarProperty Name="GROUPACCOUNT" ColumnName="GROUPACCOUNT" />
+          <ScalarProperty Name="COSTCENTER" ColumnName="COSTCENTER" />
+          <ScalarProperty Name="SALTYPE" ColumnName="SALTYPE" />
+          <ScalarProperty Name="HOURFACTOR" ColumnName="HOURFACTOR" />
+          <ScalarProperty Name="PSAL1" ColumnName="PSAL1" />
+          <ScalarProperty Name="PSAL2" ColumnName="PSAL2" />
+          <ScalarProperty Name="PSAL3" ColumnName="PSAL3" />
+          <ScalarProperty Name="PSAL4" ColumnName="PSAL4" />
+          <ScalarProperty Name="PSAL5" ColumnName="PSAL5" />
+          <ScalarProperty Name="PSAL6" ColumnName="PSAL6" />
+          <ScalarProperty Name="PSAL7" ColumnName="PSAL7" />
+          <ScalarProperty Name="PSAL8" ColumnName="PSAL8" />
+          <ScalarProperty Name="PSAL9" ColumnName="PSAL9" />
+          <ScalarProperty Name="PSAL10" ColumnName="PSAL10" />
+          <ScalarProperty Name="PSAL11" ColumnName="PSAL11" />
+          <ScalarProperty Name="PSAL12" ColumnName="PSAL12" />
+          <ScalarProperty Name="AVGSALQ1" ColumnName="AVGSALQ1" />
+          <ScalarProperty Name="AVGSALQ2" ColumnName="AVGSALQ2" />
+          <ScalarProperty Name="AVGSALQ3" ColumnName="AVGSALQ3" />
+          <ScalarProperty Name="AVGSALQ4" ColumnName="AVGSALQ4" />
+          <ScalarProperty Name="CHOURP1" ColumnName="CHOURP1" />
+          <ScalarProperty Name="CHOURP2" ColumnName="CHOURP2" />
+          <ScalarProperty Name="CHOURP3" ColumnName="CHOURP3" />
+          <ScalarProperty Name="CHOURP4" ColumnName="CHOURP4" />
+          <ScalarProperty Name="CHOURP5" ColumnName="CHOURP5" />
+          <ScalarProperty Name="CHOURP6" ColumnName="CHOURP6" />
+          <ScalarProperty Name="CHOURP7" ColumnName="CHOURP7" />
+          <ScalarProperty Name="CHOURP8" ColumnName="CHOURP8" />
+          <ScalarProperty Name="CHOURP9" ColumnName="CHOURP9" />
+          <ScalarProperty Name="CHOURP10" ColumnName="CHOURP10" />
+          <ScalarProperty Name="CHOURP11" ColumnName="CHOURP11" />
+          <ScalarProperty Name="CHOURP12" ColumnName="CHOURP12" />
+          <ScalarProperty Name="AVGCHOURQ1" ColumnName="AVGCHOURQ1" />
+          <ScalarProperty Name="AVGCHOURQ2" ColumnName="AVGCHOURQ2" />
+          <ScalarProperty Name="AVGCHOURQ3" ColumnName="AVGCHOURQ3" />
+          <ScalarProperty Name="AVGCHOURQ4" ColumnName="AVGCHOURQ4" />
+          <ScalarProperty Name="AVGYHOUR" ColumnName="AVGYHOUR" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPSTATUS">
+      <EntityTypeMapping TypeName="OLDMOONModel.EMPSTATU">
+        <MappingFragment StoreEntitySet="EMPSTATUS">
+          <ScalarProperty Name="STATUSID" ColumnName="STATUSID" />
+          <ScalarProperty Name="STATUSEN" ColumnName="STATUSEN" />
+          <ScalarProperty Name="STATUSTH" ColumnName="STATUSTH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ENGINEERs">
+      <EntityTypeMapping TypeName="OLDMOONModel.ENGINEER">
+        <MappingFragment StoreEntitySet="ENGINEER">
+          <ScalarProperty Name="engiseq" ColumnName="engiseq" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="empcode" ColumnName="empcode" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="curr" ColumnName="curr" />
+          <ScalarProperty Name="resigndate" ColumnName="resigndate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ERRORCATEGORies">
+      <EntityTypeMapping TypeName="OLDMOONModel.ERRORCATEGORY">
+        <MappingFragment StoreEntitySet="ERRORCATEGORY">
+          <ScalarProperty Name="errorcatid" ColumnName="errorcatid" />
+          <ScalarProperty Name="errorcode" ColumnName="errorcode" />
+          <ScalarProperty Name="errorcatname" ColumnName="errorcatname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ERRORLOGs">
+      <EntityTypeMapping TypeName="OLDMOONModel.ERRORLOG">
+        <MappingFragment StoreEntitySet="ERRORLOG">
+          <ScalarProperty Name="ERRORLINE" ColumnName="ERRORLINE" />
+          <ScalarProperty Name="ERRORDT" ColumnName="ERRORDT" />
+          <ScalarProperty Name="APPNAME" ColumnName="APPNAME" />
+          <ScalarProperty Name="APPVERSION" ColumnName="APPVERSION" />
+          <ScalarProperty Name="MODULE" ColumnName="MODULE" />
+          <ScalarProperty Name="METHODNAME" ColumnName="METHODNAME" />
+          <ScalarProperty Name="ERRORMSG" ColumnName="ERRORMSG" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="WORKSTATION" ColumnName="WORKSTATION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EXCHCURRs">
+      <EntityTypeMapping TypeName="OLDMOONModel.EXCHCURR">
+        <MappingFragment StoreEntitySet="EXCHCURR">
+          <ScalarProperty Name="LINEID" ColumnName="LINEID" />
+          <ScalarProperty Name="CURRENCY" ColumnName="CURRENCY" />
+          <ScalarProperty Name="EXCHANGERATE" ColumnName="EXCHANGERATE" />
+          <ScalarProperty Name="FISCYEAR" ColumnName="FISCYEAR" />
+          <ScalarProperty Name="FISCPERIOD" ColumnName="FISCPERIOD" />
+          <ScalarProperty Name="EFFECTIVEDT" ColumnName="EFFECTIVEDT" />
+          <ScalarProperty Name="EXPIREDT" ColumnName="EXPIREDT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FGSTOCKs">
+      <EntityTypeMapping TypeName="OLDMOONModel.FGSTOCK">
+        <MappingFragment StoreEntitySet="FGSTOCK">
+          <ScalarProperty Name="FGSEQ" ColumnName="FGSEQ" />
+          <ScalarProperty Name="ISCOMPLETION" ColumnName="ISCOMPLETION" />
+          <ScalarProperty Name="SOSEQ" ColumnName="SOSEQ" />
+          <ScalarProperty Name="SOLINESEQ" ColumnName="SOLINESEQ" />
+          <ScalarProperty Name="QCSEQ" ColumnName="QCSEQ" />
+          <ScalarProperty Name="APPCODE" ColumnName="APPCODE" />
+          <ScalarProperty Name="DOCNO" ColumnName="DOCNO" />
+          <ScalarProperty Name="DOCDATE" ColumnName="DOCDATE" />
+          <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+          <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+          <ScalarProperty Name="MATID" ColumnName="MATID" />
+          <ScalarProperty Name="PREFIX" ColumnName="PREFIX" />
+          <ScalarProperty Name="ITEMID" ColumnName="ITEMID" />
+          <ScalarProperty Name="ITEMNO" ColumnName="ITEMNO" />
+          <ScalarProperty Name="ITEMNAME" ColumnName="ITEMNAME" />
+          <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="UNITPRICE" ColumnName="UNITPRICE" />
+          <ScalarProperty Name="UNITWEIGHT" ColumnName="UNITWEIGHT" />
+          <ScalarProperty Name="TOTALLINEWT" ColumnName="TOTALLINEWT" />
+          <ScalarProperty Name="DELIVERYQTY" ColumnName="DELIVERYQTY" />
+          <ScalarProperty Name="REMAINFG" ColumnName="REMAINFG" />
+          <ScalarProperty Name="TOTALDELIVERYWT" ColumnName="TOTALDELIVERYWT" />
+          <ScalarProperty Name="REMAINWEIGHT" ColumnName="REMAINWEIGHT" />
+          <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GASALs">
+      <EntityTypeMapping TypeName="OLDMOONModel.GASAL">
+        <MappingFragment StoreEntitySet="GASAL">
+          <ScalarProperty Name="s_order" ColumnName="s_order" />
+          <ScalarProperty Name="nprice1" ColumnName="nprice1" />
+          <ScalarProperty Name="ordertypeid" ColumnName="ordertypeid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GASERs">
+      <EntityTypeMapping TypeName="OLDMOONModel.GASER">
+        <MappingFragment StoreEntitySet="GASER">
+          <ScalarProperty Name="s_order" ColumnName="s_order" />
+          <ScalarProperty Name="nprice2" ColumnName="nprice2" />
+          <ScalarProperty Name="ordertypeid" ColumnName="ordertypeid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INCMLINES">
+      <EntityTypeMapping TypeName="OLDMOONModel.INCMLINE">
+        <MappingFragment StoreEntitySet="INCMLINES">
+          <ScalarProperty Name="INCMSEQ" ColumnName="INCMSEQ" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="REFDOCSEQ" ColumnName="REFDOCSEQ" />
+          <ScalarProperty Name="DOCCODE" ColumnName="DOCCODE" />
+          <ScalarProperty Name="REFDOC" ColumnName="REFDOC" />
+          <ScalarProperty Name="DOCDATE" ColumnName="DOCDATE" />
+          <ScalarProperty Name="INCMDATE" ColumnName="INCMDATE" />
+          <ScalarProperty Name="TRANSCODE" ColumnName="TRANSCODE" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="INCMVALUES" ColumnName="INCMVALUES" />
+          <ScalarProperty Name="ACCMAPKEY" ColumnName="ACCMAPKEY" />
+          <ScalarProperty Name="ACCOUNTNO" ColumnName="ACCOUNTNO" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="AUDITDATE" ColumnName="AUDITDATE" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INVLINES">
+      <EntityTypeMapping TypeName="OLDMOONModel.INVLINE">
+        <MappingFragment StoreEntitySet="INVLINES">
+          <ScalarProperty Name="INVLINESEQ" ColumnName="INVLINESEQ" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="ISCANCEL" ColumnName="ISCANCEL" />
+          <ScalarProperty Name="SALETYPE" ColumnName="SALETYPE" />
+          <ScalarProperty Name="SOLINESEQ" ColumnName="SOLINESEQ" />
+          <ScalarProperty Name="SOSEQ" ColumnName="SOSEQ" />
+          <ScalarProperty Name="SALEORDERNO" ColumnName="SALEORDERNO" />
+          <ScalarProperty Name="INVSEQ" ColumnName="INVSEQ" />
+          <ScalarProperty Name="INVOICENO" ColumnName="INVOICENO" />
+          <ScalarProperty Name="SERVICECHARGEID" ColumnName="SERVICECHARGEID" />
+          <ScalarProperty Name="JOBNO" ColumnName="JOBNO" />
+          <ScalarProperty Name="PO" ColumnName="PO" />
+          <ScalarProperty Name="ITEMID" ColumnName="ITEMID" />
+          <ScalarProperty Name="PREFIX" ColumnName="PREFIX" />
+          <ScalarProperty Name="ITEMNO" ColumnName="ITEMNO" />
+          <ScalarProperty Name="ITEMNAME" ColumnName="ITEMNAME" />
+          <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+          <ScalarProperty Name="SALEQTY" ColumnName="SALEQTY" />
+          <ScalarProperty Name="UNITPRICE" ColumnName="UNITPRICE" />
+          <ScalarProperty Name="DISCOUNT" ColumnName="DISCOUNT" />
+          <ScalarProperty Name="NETPRICE" ColumnName="NETPRICE" />
+          <ScalarProperty Name="FINALPRICE" ColumnName="FINALPRICE" />
+          <ScalarProperty Name="VATRATE" ColumnName="VATRATE" />
+          <ScalarProperty Name="VATVALUE" ColumnName="VATVALUE" />
+          <ScalarProperty Name="LINETOTAL" ColumnName="LINETOTAL" />
+          <ScalarProperty Name="MATID" ColumnName="MATID" />
+          <ScalarProperty Name="TOTALWEIGHT" ColumnName="TOTALWEIGHT" />
+          <ScalarProperty Name="INVLINEREMARK" ColumnName="INVLINEREMARK" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INVOICES">
+      <EntityTypeMapping TypeName="OLDMOONModel.INVOICE">
+        <MappingFragment StoreEntitySet="INVOICES">
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="ISCANCEL" ColumnName="ISCANCEL" />
+          <ScalarProperty Name="CANCELDATE" ColumnName="CANCELDATE" />
+          <ScalarProperty Name="CANCELBY" ColumnName="CANCELBY" />
+          <ScalarProperty Name="VATABLE" ColumnName="VATABLE" />
+          <ScalarProperty Name="ISCHEQUE" ColumnName="ISCHEQUE" />
+          <ScalarProperty Name="SALETYPE" ColumnName="SALETYPE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+          <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+          <ScalarProperty Name="INVPREFIX" ColumnName="INVPREFIX" />
+          <ScalarProperty Name="REFCODE" ColumnName="REFCODE" />
+          <ScalarProperty Name="INVCOUNT" ColumnName="INVCOUNT" />
+          <ScalarProperty Name="INVOICEID" ColumnName="INVOICEID" />
+          <ScalarProperty Name="INVOICENO" ColumnName="INVOICENO" />
+          <ScalarProperty Name="INVDATE" ColumnName="INVDATE" />
+          <ScalarProperty Name="INVDESCRIPTION" ColumnName="INVDESCRIPTION" />
+          <ScalarProperty Name="FISCYEAR" ColumnName="FISCYEAR" />
+          <ScalarProperty Name="FISCPERIOD" ColumnName="FISCPERIOD" />
+          <ScalarProperty Name="INVVALUE" ColumnName="INVVALUE" />
+          <ScalarProperty Name="INVDISCOUNT" ColumnName="INVDISCOUNT" />
+          <ScalarProperty Name="INVNETVALUE" ColumnName="INVNETVALUE" />
+          <ScalarProperty Name="INVVATRATE" ColumnName="INVVATRATE" />
+          <ScalarProperty Name="INVVATVALUE" ColumnName="INVVATVALUE" />
+          <ScalarProperty Name="WHTAXRATE" ColumnName="WHTAXRATE" />
+          <ScalarProperty Name="INVWHTAX" ColumnName="INVWHTAX" />
+          <ScalarProperty Name="INVTOTALAMOUNT" ColumnName="INVTOTALAMOUNT" />
+          <ScalarProperty Name="INVTOTALAMOUNTTEXT" ColumnName="INVTOTALAMOUNTTEXT" />
+          <ScalarProperty Name="INVACTUALPAYMENT" ColumnName="INVACTUALPAYMENT" />
+          <ScalarProperty Name="INVACTUALPAYMENTTEXT" ColumnName="INVACTUALPAYMENTTEXT" />
+          <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+          <ScalarProperty Name="INVCANCELREASON" ColumnName="INVCANCELREASON" />
+          <ScalarProperty Name="PAYCODE" ColumnName="PAYCODE" />
+          <ScalarProperty Name="CHEQUENO" ColumnName="CHEQUENO" />
+          <ScalarProperty Name="PAYDATE" ColumnName="PAYDATE" />
+          <ScalarProperty Name="RECEIPTNO" ColumnName="RECEIPTNO" />
+          <ScalarProperty Name="COLLECTDATE" ColumnName="COLLECTDATE" />
+          <ScalarProperty Name="BANKID" ColumnName="BANKID" />
+          <ScalarProperty Name="BANKCODE" ColumnName="BANKCODE" />
+          <ScalarProperty Name="BILLID" ColumnName="BILLID" />
+          <ScalarProperty Name="BILLNO" ColumnName="BILLNO" />
+          <ScalarProperty Name="BILLDATE" ColumnName="BILLDATE" />
+          <ScalarProperty Name="DUEDATE" ColumnName="DUEDATE" />
+          <ScalarProperty Name="OVERDUEDAYS" ColumnName="OVERDUEDAYS" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ITEMCODEs">
+      <EntityTypeMapping TypeName="OLDMOONModel.ITEMCODE">
+        <MappingFragment StoreEntitySet="ITEMCODE">
+          <ScalarProperty Name="ITEMCODEID" ColumnName="ITEMCODEID" />
+          <ScalarProperty Name="ITEMCODE1" ColumnName="ITEMCODE" />
+          <ScalarProperty Name="ITEMCODENAME_EN" ColumnName="ITEMCODENAME_EN" />
+          <ScalarProperty Name="ITEMCODENAME_TH" ColumnName="ITEMCODENAME_TH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ITEMMASTERs">
+      <EntityTypeMapping TypeName="OLDMOONModel.ITEMMASTER">
+        <MappingFragment StoreEntitySet="ITEMMASTER">
+          <ScalarProperty Name="itemseq" ColumnName="itemseq" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+          <ScalarProperty Name="itemno" ColumnName="itemno" />
+          <ScalarProperty Name="itemname1" ColumnName="itemname1" />
+          <ScalarProperty Name="itemname2" ColumnName="itemname2" />
+          <ScalarProperty Name="itemtype" ColumnName="itemtype" />
+          <ScalarProperty Name="itemlevel" ColumnName="itemlevel" />
+          <ScalarProperty Name="stockgroup" ColumnName="stockgroup" />
+          <ScalarProperty Name="barcode" ColumnName="barcode" />
+          <ScalarProperty Name="stkcodes" ColumnName="stkcodes" />
+          <ScalarProperty Name="acccode" ColumnName="acccode" />
+          <ScalarProperty Name="isinv" ColumnName="isinv" />
+          <ScalarProperty Name="itemclass" ColumnName="itemclass" />
+          <ScalarProperty Name="negallow" ColumnName="negallow" />
+          <ScalarProperty Name="itemunit" ColumnName="itemunit" />
+          <ScalarProperty Name="cqucod" ColumnName="cqucod" />
+          <ScalarProperty Name="cfactor" ColumnName="cfactor" />
+          <ScalarProperty Name="stnpr" ColumnName="stnpr" />
+          <ScalarProperty Name="ispur" ColumnName="ispur" />
+          <ScalarProperty Name="purchaseunit" ColumnName="purchaseunit" />
+          <ScalarProperty Name="pfactor" ColumnName="pfactor" />
+          <ScalarProperty Name="lastpurchaseunit" ColumnName="lastpurchaseunit" />
+          <ScalarProperty Name="lpurfac" ColumnName="lpurfac" />
+          <ScalarProperty Name="lastpurchaseprice" ColumnName="lastpurchaseprice" />
+          <ScalarProperty Name="lastdiscount" ColumnName="lastdiscount" />
+          <ScalarProperty Name="lastpurchasedate" ColumnName="lastpurchasedate" />
+          <ScalarProperty Name="supcod" ColumnName="supcod" />
+          <ScalarProperty Name="issale" ColumnName="issale" />
+          <ScalarProperty Name="squcod" ColumnName="squcod" />
+          <ScalarProperty Name="sfactor" ColumnName="sfactor" />
+          <ScalarProperty Name="sellprice1" ColumnName="sellprice1" />
+          <ScalarProperty Name="sellprice2" ColumnName="sellprice2" />
+          <ScalarProperty Name="sellprice3" ColumnName="sellprice3" />
+          <ScalarProperty Name="sellprice4" ColumnName="sellprice4" />
+          <ScalarProperty Name="sellprice5" ColumnName="sellprice5" />
+          <ScalarProperty Name="tracksal" ColumnName="tracksal" />
+          <ScalarProperty Name="vatcode" ColumnName="vatcode" />
+          <ScalarProperty Name="iscom" ColumnName="iscom" />
+          <ScalarProperty Name="comrat" ColumnName="comrat" />
+          <ScalarProperty Name="lsellqu" ColumnName="lsellqu" />
+          <ScalarProperty Name="lsellfac" ColumnName="lsellfac" />
+          <ScalarProperty Name="lsellpr" ColumnName="lsellpr" />
+          <ScalarProperty Name="lsdisc" ColumnName="lsdisc" />
+          <ScalarProperty Name="lseldat" ColumnName="lseldat" />
+          <ScalarProperty Name="numelem" ColumnName="numelem" />
+          <ScalarProperty Name="totalbalance" ColumnName="totalbalance" />
+          <ScalarProperty Name="totalvalues" ColumnName="totalvalues" />
+          <ScalarProperty Name="totreo" ColumnName="totreo" />
+          <ScalarProperty Name="totres" ColumnName="totres" />
+          <ScalarProperty Name="openbalance" ColumnName="openbalance" />
+          <ScalarProperty Name="unitprice" ColumnName="unitprice" />
+          <ScalarProperty Name="openvalues" ColumnName="openvalues" />
+          <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+          <ScalarProperty Name="packing" ColumnName="packing" />
+          <ScalarProperty Name="mlotnum" ColumnName="mlotnum" />
+          <ScalarProperty Name="mrembal" ColumnName="mrembal" />
+          <ScalarProperty Name="mremval" ColumnName="mremval" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="dat1" ColumnName="dat1" />
+          <ScalarProperty Name="dat2" ColumnName="dat2" />
+          <ScalarProperty Name="num1" ColumnName="num1" />
+          <ScalarProperty Name="str1" ColumnName="str1" />
+          <ScalarProperty Name="str2" ColumnName="str2" />
+          <ScalarProperty Name="str3" ColumnName="str3" />
+          <ScalarProperty Name="str4" ColumnName="str4" />
+          <ScalarProperty Name="creby" ColumnName="creby" />
+          <ScalarProperty Name="credat" ColumnName="credat" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="chgdat" ColumnName="chgdat" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="inactdat" ColumnName="inactdat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ITEMMASTERIMGs">
+      <EntityTypeMapping TypeName="OLDMOONModel.ITEMMASTERIMG">
+        <MappingFragment StoreEntitySet="ITEMMASTERIMG">
+          <ScalarProperty Name="itemid" ColumnName="itemid" />
+          <ScalarProperty Name="itemno" ColumnName="itemno" />
+          <ScalarProperty Name="itempicture" ColumnName="itempicture" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ITEMSTYLEs">
+      <EntityTypeMapping TypeName="OLDMOONModel.ITEMSTYLE">
+        <MappingFragment StoreEntitySet="ITEMSTYLE">
+          <ScalarProperty Name="itemseq" ColumnName="itemseq" />
+          <ScalarProperty Name="keyvalue" ColumnName="keyvalue" />
+          <ScalarProperty Name="thkeyname" ColumnName="thkeyname" />
+          <ScalarProperty Name="enkeyname" ColumnName="enkeyname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JOBINFOS">
+      <EntityTypeMapping TypeName="OLDMOONModel.JOBINFO">
+        <MappingFragment StoreEntitySet="JOBINFOS">
+          <ScalarProperty Name="LINESEQ" ColumnName="LINESEQ" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="FGLINESEQ" ColumnName="FGLINESEQ" />
+          <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+          <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+          <ScalarProperty Name="JOBNO" ColumnName="JOBNO" />
+          <ScalarProperty Name="GROUPCODE" ColumnName="GROUPCODE" />
+          <ScalarProperty Name="MATERIALID" ColumnName="MATERIALID" />
+          <ScalarProperty Name="ITEMID" ColumnName="ITEMID" />
+          <ScalarProperty Name="ITEMPREFIX" ColumnName="ITEMPREFIX" />
+          <ScalarProperty Name="ITEMNO" ColumnName="ITEMNO" />
+          <ScalarProperty Name="FINISHDATE" ColumnName="FINISHDATE" />
+          <ScalarProperty Name="FISCYEAR" ColumnName="FISCYEAR" />
+          <ScalarProperty Name="FISCPERIOD" ColumnName="FISCPERIOD" />
+          <ScalarProperty Name="OPERATORID" ColumnName="OPERATORID" />
+          <ScalarProperty Name="OPERATORNAME" ColumnName="OPERATORNAME" />
+          <ScalarProperty Name="ACCEPTQTY" ColumnName="ACCEPTQTY" />
+          <ScalarProperty Name="REJECTQTY" ColumnName="REJECTQTY" />
+          <ScalarProperty Name="TOTALQTY" ColumnName="TOTALQTY" />
+          <ScalarProperty Name="TOTALWEIGHT" ColumnName="TOTALWEIGHT" />
+          <ScalarProperty Name="AVGWEIGHT" ColumnName="AVGWEIGHT" />
+          <ScalarProperty Name="GOODSCORE" ColumnName="GOODSCORE" />
+          <ScalarProperty Name="BADSCORE" ColumnName="BADSCORE" />
+          <ScalarProperty Name="ERRORID" ColumnName="ERRORID" />
+          <ScalarProperty Name="RECORDEDBY" ColumnName="RECORDEDBY" />
+          <ScalarProperty Name="RECORDDATE" ColumnName="RECORDDATE" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JOBORDERS">
+      <EntityTypeMapping TypeName="OLDMOONModel.JOBORDER">
+        <MappingFragment StoreEntitySet="JOBORDERS">
+          <ScalarProperty Name="JOBNO" ColumnName="JOBNO" />
+          <ScalarProperty Name="JOBDATE" ColumnName="JOBDATE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="ISREWORKS" ColumnName="ISREWORKS" />
+          <ScalarProperty Name="ISCANCEL" ColumnName="ISCANCEL" />
+          <ScalarProperty Name="ISPRINTED" ColumnName="ISPRINTED" />
+          <ScalarProperty Name="RELEASEDATE" ColumnName="RELEASEDATE" />
+          <ScalarProperty Name="STARTDATE" ColumnName="STARTDATE" />
+          <ScalarProperty Name="FINISHDATE" ColumnName="FINISHDATE" />
+          <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+          <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+          <ScalarProperty Name="MATERIALTYPE" ColumnName="MATERIALTYPE" />
+          <ScalarProperty Name="SI" ColumnName="SI" />
+          <ScalarProperty Name="CUSTPO" ColumnName="CUSTPO" />
+          <ScalarProperty Name="PODATE" ColumnName="PODATE" />
+          <ScalarProperty Name="DUEDATE" ColumnName="DUEDATE" />
+          <ScalarProperty Name="REMAINDAY" ColumnName="REMAINDAY" />
+          <ScalarProperty Name="ITEMID" ColumnName="ITEMID" />
+          <ScalarProperty Name="PREFIX" ColumnName="PREFIX" />
+          <ScalarProperty Name="ITEMNO" ColumnName="ITEMNO" />
+          <ScalarProperty Name="ITEMNAME" ColumnName="ITEMNAME" />
+          <ScalarProperty Name="ITEMSTYLE" ColumnName="ITEMSTYLE" />
+          <ScalarProperty Name="ORDERUNIT" ColumnName="ORDERUNIT" />
+          <ScalarProperty Name="ORDERQTY" ColumnName="ORDERQTY" />
+          <ScalarProperty Name="FINISHEDQTY" ColumnName="FINISHEDQTY" />
+          <ScalarProperty Name="BACKORDQTY" ColumnName="BACKORDQTY" />
+          <ScalarProperty Name="ACTUALPRODUCTIONQTY" ColumnName="ACTUALPRODUCTIONQTY" />
+          <ScalarProperty Name="CASTINGPRICE" ColumnName="CASTINGPRICE" />
+          <ScalarProperty Name="TOTALCASTINGPRICE" ColumnName="TOTALCASTINGPRICE" />
+          <ScalarProperty Name="UNITPRICE" ColumnName="UNITPRICE" />
+          <ScalarProperty Name="TOTALPRICE" ColumnName="TOTALPRICE" />
+          <ScalarProperty Name="UNITWEIGHT" ColumnName="UNITWEIGHT" />
+          <ScalarProperty Name="TOTALWEIGHT" ColumnName="TOTALWEIGHT" />
+          <ScalarProperty Name="WAXUNITWEIGHT" ColumnName="WAXUNITWEIGHT" />
+          <ScalarProperty Name="TOTALWAXWEIGHT" ColumnName="TOTALWAXWEIGHT" />
+          <ScalarProperty Name="MAKEBLOCK" ColumnName="MAKEBLOCK" />
+          <ScalarProperty Name="WAX" ColumnName="WAX" />
+          <ScalarProperty Name="CASTING" ColumnName="CASTING" />
+          <ScalarProperty Name="DELIVERYQTY" ColumnName="DELIVERYQTY" />
+          <ScalarProperty Name="DELIVERYDATE" ColumnName="DELIVERYDATE" />
+          <ScalarProperty Name="DOCNUM" ColumnName="DOCNUM" />
+          <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+          <ScalarProperty Name="WAXWORKER" ColumnName="WAXWORKER" />
+          <ScalarProperty Name="FINISHINGWORKER" ColumnName="FINISHINGWORKER" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="AUDITDATE" ColumnName="AUDITDATE" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JOBTITLES">
+      <EntityTypeMapping TypeName="OLDMOONModel.JOBTITLE">
+        <MappingFragment StoreEntitySet="JOBTITLES">
+          <ScalarProperty Name="JOBTITLEID" ColumnName="JOBTITLEID" />
+          <ScalarProperty Name="JOBTITLENAME" ColumnName="JOBTITLENAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MATERIALs">
+      <EntityTypeMapping TypeName="OLDMOONModel.MATERIAL">
+        <MappingFragment StoreEntitySet="MATERIAL">
+          <ScalarProperty Name="matseq" ColumnName="matseq" />
+          <ScalarProperty Name="matid" ColumnName="matid" />
+          <ScalarProperty Name="matcategory" ColumnName="matcategory" />
+          <ScalarProperty Name="thmatname" ColumnName="thmatname" />
+          <ScalarProperty Name="enmatname" ColumnName="enmatname" />
+          <ScalarProperty Name="usedtype" ColumnName="usedtype" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MATPRICES">
+      <EntityTypeMapping TypeName="OLDMOONModel.MATPRICE">
+        <MappingFragment StoreEntitySet="MATPRICES">
+          <ScalarProperty Name="SEQ" ColumnName="SEQ" />
+          <ScalarProperty Name="MATID" ColumnName="MATID" />
+          <ScalarProperty Name="PRICEDATE" ColumnName="PRICEDATE" />
+          <ScalarProperty Name="FISCYEAR" ColumnName="FISCYEAR" />
+          <ScalarProperty Name="FISCPERIOD" ColumnName="FISCPERIOD" />
+          <ScalarProperty Name="ORGPRICEUSD" ColumnName="ORGPRICEUSD" />
+          <ScalarProperty Name="EXCHANGERATE" ColumnName="EXCHANGERATE" />
+          <ScalarProperty Name="EXCHDATE" ColumnName="EXCHDATE" />
+          <ScalarProperty Name="COSTTHBGRAM" ColumnName="COSTTHBGRAM" />
+          <ScalarProperty Name="PRICETHBGRAM" ColumnName="PRICETHBGRAM" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="AUDITDATE" ColumnName="AUDITDATE" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MATRECEIVEs">
+      <EntityTypeMapping TypeName="OLDMOONModel.MATRECEIVE">
+        <MappingFragment StoreEntitySet="MATRECEIVE">
+          <ScalarProperty Name="GRVSEQ" ColumnName="GRVSEQ" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="ISCOMPLETE" ColumnName="ISCOMPLETE" />
+          <ScalarProperty Name="ISFORSALE" ColumnName="ISFORSALE" />
+          <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+          <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+          <ScalarProperty Name="MATTYPE" ColumnName="MATTYPE" />
+          <ScalarProperty Name="RECEIVEUNIT" ColumnName="RECEIVEUNIT" />
+          <ScalarProperty Name="SOSEQ" ColumnName="SOSEQ" />
+          <ScalarProperty Name="REFSONUMBER" ColumnName="REFSONUMBER" />
+          <ScalarProperty Name="CUSTDOCNO" ColumnName="CUSTDOCNO" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="RECEIVERNAME" ColumnName="RECEIVERNAME" />
+          <ScalarProperty Name="RECEIVEDATE" ColumnName="RECEIVEDATE" />
+          <ScalarProperty Name="RECEIVEWEIGHT" ColumnName="RECEIVEWEIGHT" />
+          <ScalarProperty Name="TOTALCLEARING" ColumnName="TOTALCLEARING" />
+          <ScalarProperty Name="BALANCEWEIGHT" ColumnName="BALANCEWEIGHT" />
+          <ScalarProperty Name="SENDERNAME" ColumnName="SENDERNAME" />
+          <ScalarProperty Name="SENDINGDATE" ColumnName="SENDINGDATE" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MATSTOCKs">
+      <EntityTypeMapping TypeName="OLDMOONModel.MATSTOCK">
+        <MappingFragment StoreEntitySet="MATSTOCK">
+          <ScalarProperty Name="SKLINE" ColumnName="SKLINE" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+          <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+          <ScalarProperty Name="REFORGISEQ" ColumnName="REFORGISEQ" />
+          <ScalarProperty Name="REFDOC" ColumnName="REFDOC" />
+          <ScalarProperty Name="SKDATE" ColumnName="SKDATE" />
+          <ScalarProperty Name="ITEMSEQ" ColumnName="ITEMSEQ" />
+          <ScalarProperty Name="APPTYPE" ColumnName="APPTYPE" />
+          <ScalarProperty Name="SKTYPE" ColumnName="SKTYPE" />
+          <ScalarProperty Name="MATTYPE" ColumnName="MATTYPE" />
+          <ScalarProperty Name="MATUNIT" ColumnName="MATUNIT" />
+          <ScalarProperty Name="MATWT" ColumnName="MATWT" />
+          <ScalarProperty Name="CONVFACTOR" ColumnName="CONVFACTOR" />
+          <ScalarProperty Name="CONVMATWT" ColumnName="CONVMATWT" />
+          <ScalarProperty Name="ACTIONBY" ColumnName="ACTIONBY" />
+          <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+          <ScalarProperty Name="WORKSTATION" ColumnName="WORKSTATION" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MIXes">
+      <EntityTypeMapping TypeName="OLDMOONModel.MIX">
+        <MappingFragment StoreEntitySet="MIX">
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+          <ScalarProperty Name="isexpire" ColumnName="isexpire" />
+          <ScalarProperty Name="isnewproduct" ColumnName="isnewproduct" />
+          <ScalarProperty Name="istransfer" ColumnName="istransfer" />
+          <ScalarProperty Name="transferdate" ColumnName="transferdate" />
+          <ScalarProperty Name="mix_id" ColumnName="mix_id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="s_no" ColumnName="s_no" />
+          <ScalarProperty Name="cus_na" ColumnName="cus_na" />
+          <ScalarProperty Name="custid" ColumnName="custid" />
+          <ScalarProperty Name="acccustcode" ColumnName="acccustcode" />
+          <ScalarProperty Name="qtysale" ColumnName="qtysale" />
+          <ScalarProperty Name="sale_date" ColumnName="sale_date" />
+          <ScalarProperty Name="yearsale" ColumnName="yearsale" />
+          <ScalarProperty Name="monthsale" ColumnName="monthsale" />
+          <ScalarProperty Name="warrantyterm" ColumnName="warrantyterm" />
+          <ScalarProperty Name="monthfactor" ColumnName="monthfactor" />
+          <ScalarProperty Name="exp" ColumnName="exp" />
+          <ScalarProperty Name="yearexpire" ColumnName="yearexpire" />
+          <ScalarProperty Name="monthexpire" ColumnName="monthexpire" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="audituser" ColumnName="audituser" />
+          <ScalarProperty Name="auditdt" ColumnName="auditdt" />
+          <ScalarProperty Name="modiuser" ColumnName="modiuser" />
+          <ScalarProperty Name="modidt" ColumnName="modidt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MSGDICTs">
+      <EntityTypeMapping TypeName="OLDMOONModel.MSGDICT">
+        <MappingFragment StoreEntitySet="MSGDICT">
+          <ScalarProperty Name="MEGID" ColumnName="MEGID" />
+          <ScalarProperty Name="MSG_KEY" ColumnName="MSG_KEY" />
+          <ScalarProperty Name="MSG_DETAILS" ColumnName="MSG_DETAILS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ORDERFIXEDs">
+      <EntityTypeMapping TypeName="OLDMOONModel.ORDERFIXED">
+        <MappingFragment StoreEntitySet="ORDERFIXED">
+          <ScalarProperty Name="lineid" ColumnName="lineid" />
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="ordercode" ColumnName="ordercode" />
+          <ScalarProperty Name="s_order" ColumnName="s_order" />
+          <ScalarProperty Name="datefixed" ColumnName="datefixed" />
+          <ScalarProperty Name="fixeddetail" ColumnName="fixeddetail" />
+          <ScalarProperty Name="engcode1" ColumnName="engcode1" />
+          <ScalarProperty Name="engineer1" ColumnName="engineer1" />
+          <ScalarProperty Name="engcode2" ColumnName="engcode2" />
+          <ScalarProperty Name="engineer2" ColumnName="engineer2" />
+          <ScalarProperty Name="engcode3" ColumnName="engcode3" />
+          <ScalarProperty Name="engineer3" ColumnName="engineer3" />
+          <ScalarProperty Name="engcode4" ColumnName="engcode4" />
+          <ScalarProperty Name="engineer4" ColumnName="engineer4" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ORDERMAINTENANCEs">
+      <EntityTypeMapping TypeName="OLDMOONModel.ORDERMAINTENANCE">
+        <MappingFragment StoreEntitySet="ORDERMAINTENANCE">
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="isPM" ColumnName="isPM" />
+          <ScalarProperty Name="pmmasterline" ColumnName="pmmasterline" />
+          <ScalarProperty Name="pmschline" ColumnName="pmschline" />
+          <ScalarProperty Name="pmAppointDate" ColumnName="pmAppointDate" />
+          <ScalarProperty Name="orderTypeid" ColumnName="orderTypeid" />
+          <ScalarProperty Name="actionpiority" ColumnName="actionpiority" />
+          <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="orderCode" ColumnName="orderCode" />
+          <ScalarProperty Name="s_order" ColumnName="s_order" />
+          <ScalarProperty Name="yearservice" ColumnName="yearservice" />
+          <ScalarProperty Name="ordercountno" ColumnName="ordercountno" />
+          <ScalarProperty Name="or_date" ColumnName="or_date" />
+          <ScalarProperty Name="custid" ColumnName="custid" />
+          <ScalarProperty Name="acccustcode" ColumnName="acccustcode" />
+          <ScalarProperty Name="cus_na" ColumnName="cus_na" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="s_no" ColumnName="s_no" />
+          <ScalarProperty Name="errorcode" ColumnName="errorcode" />
+          <ScalarProperty Name="error" ColumnName="error" />
+          <ScalarProperty Name="month" ColumnName="month" />
+          <ScalarProperty Name="period" ColumnName="period" />
+          <ScalarProperty Name="fiscyear" ColumnName="fiscyear" />
+          <ScalarProperty Name="year" ColumnName="year" />
+          <ScalarProperty Name="duedate" ColumnName="duedate" />
+          <ScalarProperty Name="finishdate" ColumnName="finishdate" />
+          <ScalarProperty Name="inWarrantyService" ColumnName="inWarrantyService" />
+          <ScalarProperty Name="servicecost" ColumnName="servicecost" />
+          <ScalarProperty Name="sparepartcost" ColumnName="sparepartcost" />
+          <ScalarProperty Name="audituser" ColumnName="audituser" />
+          <ScalarProperty Name="auditdt" ColumnName="auditdt" />
+          <ScalarProperty Name="modiuser" ColumnName="modiuser" />
+          <ScalarProperty Name="modidt" ColumnName="modidt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ORDERPIORITies">
+      <EntityTypeMapping TypeName="OLDMOONModel.ORDERPIORITY">
+        <MappingFragment StoreEntitySet="ORDERPIORITY">
+          <ScalarProperty Name="piorityid" ColumnName="piorityid" />
+          <ScalarProperty Name="piorityname" ColumnName="piorityname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ORDERSPAREPARTS">
+      <EntityTypeMapping TypeName="OLDMOONModel.ORDERSPAREPART">
+        <MappingFragment StoreEntitySet="ORDERSPAREPARTS">
+          <ScalarProperty Name="spLine" ColumnName="spLine" />
+          <ScalarProperty Name="issueno" ColumnName="issueno" />
+          <ScalarProperty Name="dateneed" ColumnName="dateneed" />
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="ordercode" ColumnName="ordercode" />
+          <ScalarProperty Name="s_order" ColumnName="s_order" />
+          <ScalarProperty Name="indatabase" ColumnName="indatabase" />
+          <ScalarProperty Name="itemno" ColumnName="itemno" />
+          <ScalarProperty Name="itemname" ColumnName="itemname" />
+          <ScalarProperty Name="uom" ColumnName="uom" />
+          <ScalarProperty Name="qtyneed" ColumnName="qtyneed" />
+          <ScalarProperty Name="ucost" ColumnName="ucost" />
+          <ScalarProperty Name="uprice" ColumnName="uprice" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="netuprice" ColumnName="netuprice" />
+          <ScalarProperty Name="totalprice" ColumnName="totalprice" />
+          <ScalarProperty Name="itemremark" ColumnName="itemremark" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+          <ScalarProperty Name="audituser" ColumnName="audituser" />
+          <ScalarProperty Name="auditdt" ColumnName="auditdt" />
+          <ScalarProperty Name="modiuser" ColumnName="modiuser" />
+          <ScalarProperty Name="modidt" ColumnName="modidt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ORDERTYPEs">
+      <EntityTypeMapping TypeName="OLDMOONModel.ORDERTYPE">
+        <MappingFragment StoreEntitySet="ORDERTYPE">
+          <ScalarProperty Name="ordertypeid" ColumnName="ordertypeid" />
+          <ScalarProperty Name="ordertypename" ColumnName="ordertypename" />
+          <ScalarProperty Name="ordertypecode" ColumnName="ordertypecode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OTNOPRs">
+      <EntityTypeMapping TypeName="OLDMOONModel.OTNOPR">
+        <MappingFragment StoreEntitySet="OTNOPR">
+          <ScalarProperty Name="s_order" ColumnName="s_order" />
+          <ScalarProperty Name="nprice3" ColumnName="nprice3" />
+          <ScalarProperty Name="dnp" ColumnName="dnp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OTYESPRs">
+      <EntityTypeMapping TypeName="OLDMOONModel.OTYESPR">
+        <MappingFragment StoreEntitySet="OTYESPR">
+          <ScalarProperty Name="s_order" ColumnName="s_order" />
+          <ScalarProperty Name="yprice3" ColumnName="yprice3" />
+          <ScalarProperty Name="dyp" ColumnName="dyp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERMISSIONs">
+      <EntityTypeMapping TypeName="OLDMOONModel.PERMISSION">
+        <MappingFragment StoreEntitySet="PERMISSION">
+          <ScalarProperty Name="P_id" ColumnName="P_id" />
+          <ScalarProperty Name="permission1" ColumnName="permission" />
+          <ScalarProperty Name="P_name" ColumnName="P_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PMCOUNTs">
+      <EntityTypeMapping TypeName="OLDMOONModel.PMCOUNT">
+        <MappingFragment StoreEntitySet="PMCOUNT">
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+          <ScalarProperty Name="isappointment" ColumnName="isappointment" />
+          <ScalarProperty Name="contractfinsh" ColumnName="contractfinsh" />
+          <ScalarProperty Name="contractno" ColumnName="contractno" />
+          <ScalarProperty Name="CONTRACTREF" ColumnName="CONTRACTREF" />
+          <ScalarProperty Name="contractstartdate" ColumnName="contractstartdate" />
+          <ScalarProperty Name="contractenddate" ColumnName="contractenddate" />
+          <ScalarProperty Name="contracttypeid" ColumnName="contracttypeid" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="custid" ColumnName="custid" />
+          <ScalarProperty Name="acccustcode" ColumnName="acccustcode" />
+          <ScalarProperty Name="custname" ColumnName="custname" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="s_no" ColumnName="s_no" />
+          <ScalarProperty Name="s_order" ColumnName="s_order" />
+          <ScalarProperty Name="lastpmdate" ColumnName="lastpmdate" />
+          <ScalarProperty Name="nextpmdate" ColumnName="nextpmdate" />
+          <ScalarProperty Name="totalcount" ColumnName="totalcount" />
+          <ScalarProperty Name="currentcount" ColumnName="currentcount" />
+          <ScalarProperty Name="nextcount" ColumnName="nextcount" />
+          <ScalarProperty Name="pmmonth" ColumnName="pmmonth" />
+          <ScalarProperty Name="payment" ColumnName="payment" />
+          <ScalarProperty Name="audituser" ColumnName="audituser" />
+          <ScalarProperty Name="modiuser" ColumnName="modiuser" />
+          <ScalarProperty Name="modidate" ColumnName="modidate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PMSCHEDULEs">
+      <EntityTypeMapping TypeName="OLDMOONModel.PMSCHEDULE">
+        <MappingFragment StoreEntitySet="PMSCHEDULE">
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+          <ScalarProperty Name="iscomplete" ColumnName="iscomplete" />
+          <ScalarProperty Name="PMRow" ColumnName="PMRow" />
+          <ScalarProperty Name="PMMasterLine" ColumnName="PMMasterLine" />
+          <ScalarProperty Name="PMNumber" ColumnName="PMNumber" />
+          <ScalarProperty Name="PMDate" ColumnName="PMDate" />
+          <ScalarProperty Name="ActualPMDate" ColumnName="ActualPMDate" />
+          <ScalarProperty Name="PMJobNo" ColumnName="PMJobNo" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="LASTMODIFY" ColumnName="LASTMODIFY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRDPROCESSes">
+      <EntityTypeMapping TypeName="OLDMOONModel.PRDPROCESS">
+        <MappingFragment StoreEntitySet="PRDPROCESS">
+          <ScalarProperty Name="PRDPROCESSID" ColumnName="PRDPROCESSID" />
+          <ScalarProperty Name="PROCESSNAME" ColumnName="PROCESSNAME" />
+          <ScalarProperty Name="STDHOUR" ColumnName="STDHOUR" />
+          <ScalarProperty Name="SCORE" ColumnName="SCORE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRICELISTs">
+      <EntityTypeMapping TypeName="OLDMOONModel.PRICELIST">
+        <MappingFragment StoreEntitySet="PRICELIST">
+          <ScalarProperty Name="prseq" ColumnName="prseq" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+          <ScalarProperty Name="isexpire" ColumnName="isexpire" />
+          <ScalarProperty Name="materialid" ColumnName="materialid" />
+          <ScalarProperty Name="pricegroup" ColumnName="pricegroup" />
+          <ScalarProperty Name="custcod" ColumnName="custcod" />
+          <ScalarProperty Name="itemno" ColumnName="itemno" />
+          <ScalarProperty Name="itemname" ColumnName="itemname" />
+          <ScalarProperty Name="style" ColumnName="style" />
+          <ScalarProperty Name="unitcount" ColumnName="unitcount" />
+          <ScalarProperty Name="stdunitprice" ColumnName="stdunitprice" />
+          <ScalarProperty Name="waxcastingprice" ColumnName="waxcastingprice" />
+          <ScalarProperty Name="masterwaxprice" ColumnName="masterwaxprice" />
+          <ScalarProperty Name="cutsizeprice" ColumnName="cutsizeprice" />
+          <ScalarProperty Name="itemscore" ColumnName="itemscore" />
+          <ScalarProperty Name="itemwaxweight" ColumnName="itemwaxweight" />
+          <ScalarProperty Name="itemweight" ColumnName="itemweight" />
+          <ScalarProperty Name="priceeffectdate" ColumnName="priceeffectdate" />
+          <ScalarProperty Name="priceexpiredate" ColumnName="priceexpiredate" />
+          <ScalarProperty Name="itemimg" ColumnName="itemimg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTGROUPS">
+      <EntityTypeMapping TypeName="OLDMOONModel.PRODUCTGROUP">
+        <MappingFragment StoreEntitySet="PRODUCTGROUPS">
+          <ScalarProperty Name="PRODUCTGROUPID" ColumnName="PRODUCTGROUPID" />
+          <ScalarProperty Name="PRODUCTGROUPNAME" ColumnName="PRODUCTGROUPNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTIONJOBINFOes">
+      <EntityTypeMapping TypeName="OLDMOONModel.PRODUCTIONJOBINFO">
+        <MappingFragment StoreEntitySet="PRODUCTIONJOBINFO">
+          <ScalarProperty Name="PRDINFOID" ColumnName="PRDINFOID" />
+          <ScalarProperty Name="PRODUCTIONJOBID" ColumnName="PRODUCTIONJOBID" />
+          <ScalarProperty Name="PROCESSID" ColumnName="PROCESSID" />
+          <ScalarProperty Name="PROCESSNAME" ColumnName="PROCESSNAME" />
+          <ScalarProperty Name="COSTCENTER" ColumnName="COSTCENTER" />
+          <ScalarProperty Name="WORKERID" ColumnName="WORKERID" />
+          <ScalarProperty Name="WORKERNAME" ColumnName="WORKERNAME" />
+          <ScalarProperty Name="DATETIME_START" ColumnName="DATETIME_START" />
+          <ScalarProperty Name="DATETIME_END" ColumnName="DATETIME_END" />
+          <ScalarProperty Name="WORKYEAR" ColumnName="WORKYEAR" />
+          <ScalarProperty Name="WORKPERIOD" ColumnName="WORKPERIOD" />
+          <ScalarProperty Name="TOTALQTY" ColumnName="TOTALQTY" />
+          <ScalarProperty Name="GOOD_QTY" ColumnName="GOOD_QTY" />
+          <ScalarProperty Name="BAD_QTY" ColumnName="BAD_QTY" />
+          <ScalarProperty Name="BREAK_HRS" ColumnName="BREAK_HRS" />
+          <ScalarProperty Name="TOTAL_HRS" ColumnName="TOTAL_HRS" />
+          <ScalarProperty Name="REGULAR_HR_RATE" ColumnName="REGULAR_HR_RATE" />
+          <ScalarProperty Name="NET85_HR_RATE" ColumnName="NET85_HR_RATE" />
+          <ScalarProperty Name="NET75_HR_RATE" ColumnName="NET75_HR_RATE" />
+          <ScalarProperty Name="AVG85_HR_RATE" ColumnName="AVG85_HR_RATE" />
+          <ScalarProperty Name="AVG75_HR_RATE" ColumnName="AVG75_HR_RATE" />
+          <ScalarProperty Name="TOTAL_COST" ColumnName="TOTAL_COST" />
+          <ScalarProperty Name="TOTAL_COST85" ColumnName="TOTAL_COST85" />
+          <ScalarProperty Name="TOAL_COST75" ColumnName="TOAL_COST75" />
+          <ScalarProperty Name="TOTAL_AVG_COST85" ColumnName="TOTAL_AVG_COST85" />
+          <ScalarProperty Name="TOTAL_AVG_COST75" ColumnName="TOTAL_AVG_COST75" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTIONJOBS">
+      <EntityTypeMapping TypeName="OLDMOONModel.PRODUCTIONJOB">
+        <MappingFragment StoreEntitySet="PRODUCTIONJOBS">
+          <ScalarProperty Name="PDJOBID" ColumnName="PDJOBID" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+          <ScalarProperty Name="CUSTOMERNAME" ColumnName="CUSTOMERNAME" />
+          <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+          <ScalarProperty Name="RELEASEDATE" ColumnName="RELEASEDATE" />
+          <ScalarProperty Name="DUEDATE" ColumnName="DUEDATE" />
+          <ScalarProperty Name="DAYREMAIN" ColumnName="DAYREMAIN" />
+          <ScalarProperty Name="ORGIORDER" ColumnName="ORGIORDER" />
+          <ScalarProperty Name="JOBTYPE" ColumnName="JOBTYPE" />
+          <ScalarProperty Name="ITEMNO" ColumnName="ITEMNO" />
+          <ScalarProperty Name="ITEMNAME" ColumnName="ITEMNAME" />
+          <ScalarProperty Name="ITEMNOTE" ColumnName="ITEMNOTE" />
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="UNITORDER" ColumnName="UNITORDER" />
+          <ScalarProperty Name="QORDER" ColumnName="QORDER" />
+          <ScalarProperty Name="SHIPQTY" ColumnName="SHIPQTY" />
+          <ScalarProperty Name="REMAINQTY" ColumnName="REMAINQTY" />
+          <ScalarProperty Name="REQUESTBY" ColumnName="REQUESTBY" />
+          <ScalarProperty Name="TOTAL_MAT_COST" ColumnName="TOTAL_MAT_COST" />
+          <ScalarProperty Name="TOTAL_HOURS" ColumnName="TOTAL_HOURS" />
+          <ScalarProperty Name="TOTAL_HOUR_COST" ColumnName="TOTAL_HOUR_COST" />
+          <ScalarProperty Name="TOTAL_PRODUCTION_COST" ColumnName="TOTAL_PRODUCTION_COST" />
+          <ScalarProperty Name="LABOUR_HR_COST" ColumnName="LABOUR_HR_COST" />
+          <ScalarProperty Name="PURPOST" ColumnName="PURPOST" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="LASTMODIFY" ColumnName="LASTMODIFY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTS">
+      <EntityTypeMapping TypeName="OLDMOONModel.PRODUCT">
+        <MappingFragment StoreEntitySet="PRODUCTS">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+          <ScalarProperty Name="productGroupID" ColumnName="productGroupID" />
+          <ScalarProperty Name="products" ColumnName="products" />
+          <ScalarProperty Name="hasAfterSaleService" ColumnName="hasAfterSaleService" />
+          <ScalarProperty Name="isOwnProduct" ColumnName="isOwnProduct" />
+          <ScalarProperty Name="isOffProduction" ColumnName="isOffProduction" />
+          <ScalarProperty Name="isSpecialProduct" ColumnName="isSpecialProduct" />
+          <ScalarProperty Name="isBuyForTread" ColumnName="isBuyForTread" />
+          <ScalarProperty Name="productpic" ColumnName="productpic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROVISOes">
+      <EntityTypeMapping TypeName="OLDMOONModel.PROVISO">
+        <MappingFragment StoreEntitySet="PROVISO">
+          <ScalarProperty Name="provisoID" ColumnName="provisoID" />
+          <ScalarProperty Name="provisoTYPE" ColumnName="provisoTYPE" />
+          <ScalarProperty Name="pmfactor" ColumnName="pmfactor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RPSTATUS">
+      <EntityTypeMapping TypeName="OLDMOONModel.RPSTATU">
+        <MappingFragment StoreEntitySet="RPSTATUS">
+          <ScalarProperty Name="statusid" ColumnName="statusid" />
+          <ScalarProperty Name="Sid" ColumnName="Sid" />
+          <ScalarProperty Name="Sname" ColumnName="Sname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RUBBERBASEs">
+      <EntityTypeMapping TypeName="OLDMOONModel.RUBBERBASE">
+        <MappingFragment StoreEntitySet="RUBBERBASE">
+          <ScalarProperty Name="BASEID" ColumnName="BASEID" />
+          <ScalarProperty Name="INACTIVE" ColumnName="INACTIVE" />
+          <ScalarProperty Name="BASENO" ColumnName="BASENO" />
+          <ScalarProperty Name="BASESIZE" ColumnName="BASESIZE" />
+          <ScalarProperty Name="WEIGHTGRAM" ColumnName="WEIGHTGRAM" />
+          <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SALEORDERS">
+      <EntityTypeMapping TypeName="OLDMOONModel.SALEORDER">
+        <MappingFragment StoreEntitySet="SALEORDERS">
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="ISCANCEL" ColumnName="ISCANCEL" />
+          <ScalarProperty Name="SOCANCELDATE" ColumnName="SOCANCELDATE" />
+          <ScalarProperty Name="ISCOMPLETE" ColumnName="ISCOMPLETE" />
+          <ScalarProperty Name="ISVAT" ColumnName="ISVAT" />
+          <ScalarProperty Name="SALETYPE" ColumnName="SALETYPE" />
+          <ScalarProperty Name="ISAUTONUMBER" ColumnName="ISAUTONUMBER" />
+          <ScalarProperty Name="SOLINECOUNT" ColumnName="SOLINECOUNT" />
+          <ScalarProperty Name="SALEMATID" ColumnName="SALEMATID" />
+          <ScalarProperty Name="SOSEQ" ColumnName="SOSEQ" />
+          <ScalarProperty Name="RUNNINGNO" ColumnName="RUNNINGNO" />
+          <ScalarProperty Name="SONO" ColumnName="SONO" />
+          <ScalarProperty Name="SODATE" ColumnName="SODATE" />
+          <ScalarProperty Name="ACTUALDELIVERDT" ColumnName="ACTUALDELIVERDT" />
+          <ScalarProperty Name="DUEDATE" ColumnName="DUEDATE" />
+          <ScalarProperty Name="SALEDETAILS" ColumnName="SALEDETAILS" />
+          <ScalarProperty Name="FISCYEAR" ColumnName="FISCYEAR" />
+          <ScalarProperty Name="FISCPERIOD" ColumnName="FISCPERIOD" />
+          <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+          <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+          <ScalarProperty Name="CREDITCODE" ColumnName="CREDITCODE" />
+          <ScalarProperty Name="CREDITTERM" ColumnName="CREDITTERM" />
+          <ScalarProperty Name="TOTALVALUE" ColumnName="TOTALVALUE" />
+          <ScalarProperty Name="DISCOUNT" ColumnName="DISCOUNT" />
+          <ScalarProperty Name="NETVALUE" ColumnName="NETVALUE" />
+          <ScalarProperty Name="VATPERCENT" ColumnName="VATPERCENT" />
+          <ScalarProperty Name="VATVALUE" ColumnName="VATVALUE" />
+          <ScalarProperty Name="TOTALAMOUNT" ColumnName="TOTALAMOUNT" />
+          <ScalarProperty Name="TOTALAMOUNTTEXT" ColumnName="TOTALAMOUNTTEXT" />
+          <ScalarProperty Name="BILLSEQ" ColumnName="BILLSEQ" />
+          <ScalarProperty Name="BILLNO" ColumnName="BILLNO" />
+          <ScalarProperty Name="BILLDATE" ColumnName="BILLDATE" />
+          <ScalarProperty Name="BILLDUEDATE" ColumnName="BILLDUEDATE" />
+          <ScalarProperty Name="INVSEQ" ColumnName="INVSEQ" />
+          <ScalarProperty Name="INVOICENO" ColumnName="INVOICENO" />
+          <ScalarProperty Name="INVOICEDATE" ColumnName="INVOICEDATE" />
+          <ScalarProperty Name="MATDOCNO" ColumnName="MATDOCNO" />
+          <ScalarProperty Name="DELIVERMAT" ColumnName="DELIVERMAT" />
+          <ScalarProperty Name="DELIVERWEIGHT" ColumnName="DELIVERWEIGHT" />
+          <ScalarProperty Name="RECEIVEWEIGHT" ColumnName="RECEIVEWEIGHT" />
+          <ScalarProperty Name="OUTSTANDWEIGHT" ColumnName="OUTSTANDWEIGHT" />
+          <ScalarProperty Name="SI" ColumnName="SI" />
+          <ScalarProperty Name="SIWEIGHT" ColumnName="SIWEIGHT" />
+          <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="AUDITTIME" ColumnName="AUDITTIME" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIFYTIME" ColumnName="MODIFYTIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SALETYPEs">
+      <EntityTypeMapping TypeName="OLDMOONModel.SALETYPE">
+        <MappingFragment StoreEntitySet="SALETYPE">
+          <ScalarProperty Name="SALETYPEID" ColumnName="SALETYPEID" />
+          <ScalarProperty Name="SALETYPEENNAME" ColumnName="SALETYPEENNAME" />
+          <ScalarProperty Name="SALETYPETHNAME" ColumnName="SALETYPETHNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SERCOSTs">
+      <EntityTypeMapping TypeName="OLDMOONModel.SERCOST">
+        <MappingFragment StoreEntitySet="SERCOST">
+          <ScalarProperty Name="s_order" ColumnName="s_order" />
+          <ScalarProperty Name="yprice1" ColumnName="yprice1" />
+          <ScalarProperty Name="ytal1" ColumnName="ytal1" />
+          <ScalarProperty Name="servicecost" ColumnName="servicecost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SOLINES">
+      <EntityTypeMapping TypeName="OLDMOONModel.SOLINE">
+        <MappingFragment StoreEntitySet="SOLINES">
+          <ScalarProperty Name="SOLINESEQ" ColumnName="SOLINESEQ" />
+          <ScalarProperty Name="ISCOMPLETE" ColumnName="ISCOMPLETE" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="SERVICECHARGEID" ColumnName="SERVICECHARGEID" />
+          <ScalarProperty Name="FGLINESEQ" ColumnName="FGLINESEQ" />
+          <ScalarProperty Name="SALETYPE" ColumnName="SALETYPE" />
+          <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+          <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+          <ScalarProperty Name="SOSEQ" ColumnName="SOSEQ" />
+          <ScalarProperty Name="SONO" ColumnName="SONO" />
+          <ScalarProperty Name="DELIVERDATE" ColumnName="DELIVERDATE" />
+          <ScalarProperty Name="JOBNO" ColumnName="JOBNO" />
+          <ScalarProperty Name="PO" ColumnName="PO" />
+          <ScalarProperty Name="ITEMID" ColumnName="ITEMID" />
+          <ScalarProperty Name="PREFIX" ColumnName="PREFIX" />
+          <ScalarProperty Name="ITEMNO" ColumnName="ITEMNO" />
+          <ScalarProperty Name="ITEMNAME" ColumnName="ITEMNAME" />
+          <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+          <ScalarProperty Name="DELIVEREDQTY" ColumnName="DELIVEREDQTY" />
+          <ScalarProperty Name="UNITPRICE" ColumnName="UNITPRICE" />
+          <ScalarProperty Name="DISCOUNTRATE" ColumnName="DISCOUNTRATE" />
+          <ScalarProperty Name="DISCOUNT" ColumnName="DISCOUNT" />
+          <ScalarProperty Name="NETTVALUE" ColumnName="NETTVALUE" />
+          <ScalarProperty Name="TOTALPRICE" ColumnName="TOTALPRICE" />
+          <ScalarProperty Name="VATRATE" ColumnName="VATRATE" />
+          <ScalarProperty Name="VATVALUE" ColumnName="VATVALUE" />
+          <ScalarProperty Name="LINEAMOUNT" ColumnName="LINEAMOUNT" />
+          <ScalarProperty Name="MATTYPE" ColumnName="MATTYPE" />
+          <ScalarProperty Name="TOTALWEIGHT" ColumnName="TOTALWEIGHT" />
+          <ScalarProperty Name="AVGWEIGHT" ColumnName="AVGWEIGHT" />
+          <ScalarProperty Name="AVGPRICEWEIGHT" ColumnName="AVGPRICEWEIGHT" />
+          <ScalarProperty Name="SOLINEREMARK" ColumnName="SOLINEREMARK" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUPCOSTs">
+      <EntityTypeMapping TypeName="OLDMOONModel.SUPCOST">
+        <MappingFragment StoreEntitySet="SUPCOST">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="s_order" ColumnName="s_order" />
+          <ScalarProperty Name="yprice2" ColumnName="yprice2" />
+          <ScalarProperty Name="dtool" ColumnName="dtool" />
+          <ScalarProperty Name="ytal2" ColumnName="ytal2" />
+          <ScalarProperty Name="sparepartcost" ColumnName="sparepartcost" />
+          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SYS_MENUS">
+      <EntityTypeMapping TypeName="OLDMOONModel.SYS_MENUS">
+        <MappingFragment StoreEntitySet="SYS_MENUS">
+          <ScalarProperty Name="CAT" ColumnName="CAT" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NAME_TH" ColumnName="NAME_TH" />
+          <ScalarProperty Name="NAME_EN" ColumnName="NAME_EN" />
+          <ScalarProperty Name="DISP_TH" ColumnName="DISP_TH" />
+          <ScalarProperty Name="DISP_EN" ColumnName="DISP_EN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SYSDATAs">
+      <EntityTypeMapping TypeName="OLDMOONModel.SYSDATA">
+        <MappingFragment StoreEntitySet="SYSDATA">
+          <ScalarProperty Name="LINESEQ" ColumnName="LINESEQ" />
+          <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+          <ScalarProperty Name="GROUPTITLE" ColumnName="GROUPTITLE" />
+          <ScalarProperty Name="ENKEYNAME" ColumnName="ENKEYNAME" />
+          <ScalarProperty Name="KEYVALUE" ColumnName="KEYVALUE" />
+          <ScalarProperty Name="THKEYNAME" ColumnName="THKEYNAME" />
+          <ScalarProperty Name="GROUPTITLEHEADER" ColumnName="GROUPTITLEHEADER" />
+          <ScalarProperty Name="CONVERTFACTOR" ColumnName="CONVERTFACTOR" />
+          <ScalarProperty Name="MATFACTOR" ColumnName="MATFACTOR" />
+          <ScalarProperty Name="SI" ColumnName="SI" />
+          <ScalarProperty Name="FURNACETEMP" ColumnName="FURNACETEMP" />
+          <ScalarProperty Name="CASTINGTEMP" ColumnName="CASTINGTEMP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERLOGs">
+      <EntityTypeMapping TypeName="OLDMOONModel.USERLOG">
+        <MappingFragment StoreEntitySet="USERLOG">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="WORKSTATION" ColumnName="WORKSTATION" />
+          <ScalarProperty Name="APPNAME" ColumnName="APPNAME" />
+          <ScalarProperty Name="APPVERSION" ColumnName="APPVERSION" />
+          <ScalarProperty Name="SERVERNAME" ColumnName="SERVERNAME" />
+          <ScalarProperty Name="DATABASENAME" ColumnName="DATABASENAME" />
+          <ScalarProperty Name="AUDITCLASS" ColumnName="AUDITCLASS" />
+          <ScalarProperty Name="LOGINDT" ColumnName="LOGINDT" />
+          <ScalarProperty Name="LOGOUTDT" ColumnName="LOGOUTDT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERPERMISSIONs">
+      <EntityTypeMapping TypeName="OLDMOONModel.USERPERMISSION">
+        <MappingFragment StoreEntitySet="USERPERMISSION">
+          <ScalarProperty Name="USERSEQ" ColumnName="USERSEQ" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="USERPWD" ColumnName="USERPWD" />
+          <ScalarProperty Name="PERMISSIONID" ColumnName="PERMISSIONID" />
+          <ScalarProperty Name="PERMISSIONCLASS" ColumnName="PERMISSIONCLASS" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WARRANTIES">
+      <EntityTypeMapping TypeName="OLDMOONModel.WARRANTy">
+        <MappingFragment StoreEntitySet="WARRANTIES">
+          <ScalarProperty Name="WARRANTYID" ColumnName="WARRANTYID" />
+          <ScalarProperty Name="WARRANTYNAME" ColumnName="WARRANTYNAME" />
+          <ScalarProperty Name="WARRANTYMONTHFACTOR" ColumnName="WARRANTYMONTHFACTOR" />
+          <ScalarProperty Name="RVMAX" ColumnName="RVMAX" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WAXTREEITEMS">
+      <EntityTypeMapping TypeName="OLDMOONModel.WAXTREEITEM">
+        <MappingFragment StoreEntitySet="WAXTREEITEMS">
+          <ScalarProperty Name="WAXTREEITEMID" ColumnName="WAXTREEITEMID" />
+          <ScalarProperty Name="WAXTREEID" ColumnName="WAXTREEID" />
+          <ScalarProperty Name="TREEDATE" ColumnName="TREEDATE" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+          <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+          <ScalarProperty Name="JOBNO" ColumnName="JOBNO" />
+          <ScalarProperty Name="ITEMNO" ColumnName="ITEMNO" />
+          <ScalarProperty Name="ITEMNAME" ColumnName="ITEMNAME" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WAXTREES">
+      <EntityTypeMapping TypeName="OLDMOONModel.WAXTREE">
+        <MappingFragment StoreEntitySet="WAXTREES">
+          <ScalarProperty Name="WAXTREEID" ColumnName="WAXTREEID" />
+          <ScalarProperty Name="BUILDDATE" ColumnName="BUILDDATE" />
+          <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+          <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+          <ScalarProperty Name="RUBBERBASENO" ColumnName="RUBBERBASENO" />
+          <ScalarProperty Name="BASEWEIGHT" ColumnName="BASEWEIGHT" />
+          <ScalarProperty Name="BASENWAXWG" ColumnName="BASENWAXWG" />
+          <ScalarProperty Name="ACTUALWAX" ColumnName="ACTUALWAX" />
+          <ScalarProperty Name="MATCASTING" ColumnName="MATCASTING" />
+          <ScalarProperty Name="MATFACTOR" ColumnName="MATFACTOR" />
+          <ScalarProperty Name="MATADDWEIGHT" ColumnName="MATADDWEIGHT" />
+          <ScalarProperty Name="MATWEIGHTBF" ColumnName="MATWEIGHTBF" />
+          <ScalarProperty Name="ACTUALMATWEIGHT" ColumnName="ACTUALMATWEIGHT" />
+          <ScalarProperty Name="MATWEIGHTAF" ColumnName="MATWEIGHTAF" />
+          <ScalarProperty Name="MATWEIGHTLOSS" ColumnName="MATWEIGHTLOSS" />
+          <ScalarProperty Name="ALLOYTYPE" ColumnName="ALLOYTYPE" />
+          <ScalarProperty Name="ALLOYWEIGHT" ColumnName="ALLOYWEIGHT" />
+          <ScalarProperty Name="SILVER100" ColumnName="SILVER100" />
+          <ScalarProperty Name="SILVER95" ColumnName="SILVER95" />
+          <ScalarProperty Name="SILVER94" ColumnName="SILVER94" />
+          <ScalarProperty Name="GOLD100" ColumnName="GOLD100" />
+          <ScalarProperty Name="OTHERMAT" ColumnName="OTHERMAT" />
+          <ScalarProperty Name="OTHERMATWEIGHT" ColumnName="OTHERMATWEIGHT" />
+          <ScalarProperty Name="WEIGHTWITHCONTAINER" ColumnName="WEIGHTWITHCONTAINER" />
+          <ScalarProperty Name="TOTALCOUNTWAX" ColumnName="TOTALCOUNTWAX" />
+          <ScalarProperty Name="FURNACETEMP" ColumnName="FURNACETEMP" />
+          <ScalarProperty Name="CASTINGTEMP" ColumnName="CASTINGTEMP" />
+          <ScalarProperty Name="ACTUALTEMP" ColumnName="ACTUALTEMP" />
+          <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+          <ScalarProperty Name="TREEIMG" ColumnName="TREEIMG" />
+          <ScalarProperty Name="CASTINGBY" ColumnName="CASTINGBY" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BANKBOOKS">
+      <EntityTypeMapping TypeName="OLDMOONModel.BANKBOOK">
+        <MappingFragment StoreEntitySet="BANKBOOKS">
+          <ScalarProperty Name="BBSEQ" ColumnName="BBSEQ" />
+          <ScalarProperty Name="BANKCODE" ColumnName="BANKCODE" />
+          <ScalarProperty Name="ACCOUNTTYPE" ColumnName="ACCOUNTTYPE" />
+          <ScalarProperty Name="ACCOUNTNO" ColumnName="ACCOUNTNO" />
+          <ScalarProperty Name="BRANCH" ColumnName="BRANCH" />
+          <ScalarProperty Name="ACCOUNTNAME" ColumnName="ACCOUNTNAME" />
+          <ScalarProperty Name="ACCOUNTDESC" ColumnName="ACCOUNTDESC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BILLLINES">
+      <EntityTypeMapping TypeName="OLDMOONModel.BILLLINE">
+        <MappingFragment StoreEntitySet="BILLLINES">
+          <ScalarProperty Name="BILLLINGSEQ" ColumnName="BILLLINGSEQ" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="SALETYPE" ColumnName="SALETYPE" />
+          <ScalarProperty Name="BILLID" ColumnName="BILLID" />
+          <ScalarProperty Name="SOSEQ" ColumnName="SOSEQ" />
+          <ScalarProperty Name="SONO" ColumnName="SONO" />
+          <ScalarProperty Name="SODATE" ColumnName="SODATE" />
+          <ScalarProperty Name="TOTALVALUE" ColumnName="TOTALVALUE" />
+          <ScalarProperty Name="DISCOUNT" ColumnName="DISCOUNT" />
+          <ScalarProperty Name="NETVALUE" ColumnName="NETVALUE" />
+          <ScalarProperty Name="TOTALVAT" ColumnName="TOTALVAT" />
+          <ScalarProperty Name="TOTALAMOUNT" ColumnName="TOTALAMOUNT" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BOMs">
+      <EntityTypeMapping TypeName="OLDMOONModel.BOM">
+        <MappingFragment StoreEntitySet="BOM">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Line" ColumnName="Line" />
+          <ScalarProperty Name="MODELID" ColumnName="MODELID" />
+          <ScalarProperty Name="MODEL" ColumnName="MODEL" />
+          <ScalarProperty Name="CLASS" ColumnName="CLASS" />
+          <ScalarProperty Name="SOURCE" ColumnName="SOURCE" />
+          <ScalarProperty Name="PARENTNO" ColumnName="PARENTNO" />
+          <ScalarProperty Name="ITEMNO" ColumnName="ITEMNO" />
+          <ScalarProperty Name="ITEMNAME" ColumnName="ITEMNAME" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+          <ScalarProperty Name="UNIT_COST_THB" ColumnName="UNIT_COST_THB" />
+          <ScalarProperty Name="TOTAL_COST_THB" ColumnName="TOTAL_COST_THB" />
+          <ScalarProperty Name="LABOUR_COST" ColumnName="LABOUR_COST" />
+          <ScalarProperty Name="PRODUCTION_COST_THB" ColumnName="PRODUCTION_COST_THB" />
+          <ScalarProperty Name="TOTAL_PRODUCTION_COST_THB" ColumnName="TOTAL_PRODUCTION_COST_THB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MATERIALS1">
+      <EntityTypeMapping TypeName="OLDMOONModel.MATERIAL1">
+        <MappingFragment StoreEntitySet="MATERIALS">
+          <ScalarProperty Name="MATID" ColumnName="MATID" />
+          <ScalarProperty Name="COMPATMATID" ColumnName="COMPATMATID" />
+          <ScalarProperty Name="MATNAME" ColumnName="MATNAME" />
+          <ScalarProperty Name="CONVFACTOR" ColumnName="CONVFACTOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RECEIPTS">
+      <EntityTypeMapping TypeName="OLDMOONModel.RECEIPT">
+        <MappingFragment StoreEntitySet="RECEIPTS">
+          <ScalarProperty Name="REPTID" ColumnName="REPTID" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="ISCANCEL" ColumnName="ISCANCEL" />
+          <ScalarProperty Name="RECPCANCELDATE" ColumnName="RECPCANCELDATE" />
+          <ScalarProperty Name="RECPCANCELBY" ColumnName="RECPCANCELBY" />
+          <ScalarProperty Name="INVSEQ" ColumnName="INVSEQ" />
+          <ScalarProperty Name="REFINVOICENO" ColumnName="REFINVOICENO" />
+          <ScalarProperty Name="REPTPREFIX" ColumnName="REPTPREFIX" />
+          <ScalarProperty Name="REPTCODE" ColumnName="REPTCODE" />
+          <ScalarProperty Name="REPTCOUNT" ColumnName="REPTCOUNT" />
+          <ScalarProperty Name="RECEIPTNO" ColumnName="RECEIPTNO" />
+          <ScalarProperty Name="RECEIPTDATE" ColumnName="RECEIPTDATE" />
+          <ScalarProperty Name="REPTVALUE" ColumnName="REPTVALUE" />
+          <ScalarProperty Name="REPTVALUETEXT" ColumnName="REPTVALUETEXT" />
+          <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+          <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+          <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+          <ScalarProperty Name="CANCELREASON" ColumnName="CANCELREASON" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SALE_PERSON_PROFILE">
+      <EntityTypeMapping TypeName="OLDMOONModel.SALE_PERSON_PROFILE">
+        <MappingFragment StoreEntitySet="SALE_PERSON_PROFILE">
+          <ScalarProperty Name="SALEID" ColumnName="SALEID" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="SALE_PERSON" ColumnName="SALE_PERSON" />
+          <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+          <ScalarProperty Name="EMAIL1" ColumnName="EMAIL1" />
+          <ScalarProperty Name="EMAIL2" ColumnName="EMAIL2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TR_ERROR">
+      <EntityTypeMapping TypeName="OLDMOONModel.TR_ERROR">
+        <MappingFragment StoreEntitySet="TR_ERROR">
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="s_order" ColumnName="s_order" />
+          <ScalarProperty Name="error" ColumnName="error" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TREEMATITEMS">
+      <EntityTypeMapping TypeName="OLDMOONModel.TREEMATITEM">
+        <MappingFragment StoreEntitySet="TREEMATITEMS">
+          <ScalarProperty Name="TREEMATITEMSEQ" ColumnName="TREEMATITEMSEQ" />
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="WAXTREEID" ColumnName="WAXTREEID" />
+          <ScalarProperty Name="MATTYPEID" ColumnName="MATTYPEID" />
+          <ScalarProperty Name="MATITEMWEIGHT" ColumnName="MATITEMWEIGHT" />
+          <ScalarProperty Name="MATITEMPERCENT" ColumnName="MATITEMPERCENT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UNITCOUNTs">
+      <EntityTypeMapping TypeName="OLDMOONModel.UNITCOUNT">
+        <MappingFragment StoreEntitySet="UNITCOUNT">
+          <ScalarProperty Name="unitseq" ColumnName="unitseq" />
+          <ScalarProperty Name="unittexten" ColumnName="unittexten" />
+          <ScalarProperty Name="unittextth" ColumnName="unittextth" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOGINs">
+      <EntityTypeMapping TypeName="OLDMOONModel.LOGIN">
+        <MappingFragment StoreEntitySet="LOGIN">
+          <ScalarProperty Name="islock" ColumnName="islock" />
+          <ScalarProperty Name="auditclass" ColumnName="auditclass" />
+          <ScalarProperty Name="permissionid" ColumnName="permissionid" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="uname" ColumnName="uname" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ERROR_LIST">
+      <EntityTypeMapping TypeName="OLDMOONModel.ERROR_LIST">
+        <MappingFragment StoreEntitySet="ERROR_LIST">
+          <ScalarProperty Name="ERR_MSG" ColumnName="ERR_MSG" />
+          <ScalarProperty Name="ERR_CODE" ColumnName="ERR_CODE" />
+          <ScalarProperty Name="ERR_GROUP" ColumnName="ERR_GROUP" />
+          <ScalarProperty Name="ERRSEQ" ColumnName="ERRSEQ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

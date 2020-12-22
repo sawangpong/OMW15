@@ -1,0 +1,105 @@
+<html>
+<head>
+
+    <meta content="text/html"; charset="UTF-8">
+
+    <style type='text/css'>
+    body {
+        font: 0.7em Vernada, Geneva, Arial, Helvetica, sans-serif;
+    }
+    
+    .datatable {
+        font: 0.8em Vernada, Geneva, Arial, Helvetica, sans-serif;
+        border: 1px solid #D6DDE6;
+        border-collapse: collapse;
+        width: 100%
+    }
+
+    .datatableTop {
+        font: 1.0em Vernada, Geneva, Arial, Helvetica, sans-serif;
+        border: 0px solid #D6DDE6;
+        border-collapse: collapse;
+        width: 100%
+    }
+    
+    .datatable td {
+        border: 1px solid #D6DDE6;
+        text-align: left;
+        padding: 0.2em;
+    }
+    
+    .datatable tr {
+        border: 1px solid #D6DDE6;
+        text-align: left;
+        padding: 0.2em;
+    }
+
+    .datatable th {
+        border: 2px solid #D6DDE6;
+        background-color: #FFBCDD;
+        font:1.4em Vernada, Geneva, Arial, Helvetica, sans-serif;	
+        font-weight: bold;
+        text-align: left;
+        padding: 0.2em;
+    }
+    
+    .datatable caption {
+        font: bold 80% Vernada, Geneva, Arial, Helvetica, sans-serif;
+        background-color: #B0C4DE;
+        color: #33517A;
+        padding: 0.4em 0 0.3em 0;
+        border: 1px solid #789AC6;
+    }
+    
+    .datatable tr:hover, .datatable tr.hilite {
+        background-color: #DFE7F2;
+        color: #000000;
+    }
+    
+    div.subcom {
+        background-color: lavender;
+        border: 1px solid black;
+        padding: 5px
+    }
+
+    div.material {
+        font-size: 1.2em Vernada, Geneva, Arial, Helvetica, sans-serif;	   
+        border: 0px solid black;
+       padding: 1px
+       margin: 5px 5px ;
+       background-color: white ;
+    }
+
+    div.children {
+        margin: 0px;
+    }
+
+    div.root {
+            font-size: 1.2em Vernada, Geneva, Arial, Helvetica, sans-serif;	
+            background-color : #DDCCAA;
+    }
+
+    textarea{
+        font-size: 1.0em;
+        font-family: AngsanaUPC Vernada, Geneva, Arial, Helvetica, sans-serif;	
+    }
+    </style>
+</head>
+
+
+<body>
+<script type="text/javascript">
+    var rows = document.getElementByTagName('tr');
+    for (var i=0; i < rows.lenght; i++)
+    {
+        rows[i].onmouseover = function() {
+            this.classname += ' Hilight';
+        }
+        rows[i].onmouseout = function() {
+            this.classname = this.classname.replace('Hilight','');
+        }
+    }
+</script>
+    $(CONTENT)
+</body>
+</html>

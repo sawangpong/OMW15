@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b3119376b7144828bc0f73890f16b279" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="ServiceModel.ENGINEER" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceModel.ORDERPIORITY" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceModel.ORDERTYPE" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceModel.PRODUCTGROUP" Width="1.5" PointX="9.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceModel.PROVISO" Width="1.5" PointX="11.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceModel.ERRORCATEGORY" Width="1.5" PointX="5.75" PointY="11.75" />
+        <EntityTypeShape EntityType="ServiceModel.WARRANTy" Width="1.5" PointX="11.75" PointY="8.75" />
+        <EntityTypeShape EntityType="ServiceModel.CUSTOMER" Width="1.5" PointX="11.75" PointY="11.75" />
+        <EntityTypeShape EntityType="ServiceModel.MIX" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ServiceModel.PMCONTRACT" Width="1.5" PointX="5.75" PointY="1" />
+        <EntityTypeShape EntityType="ServiceModel.PMMC" Width="1.5" PointX="8" PointY="1.25" />
+        <AssociationConnector Association="ServiceModel.FK_PMMC_PMCONTRACT1" />
+        <EntityTypeShape EntityType="ServiceModel.ORDERFIXED" Width="1.5" PointX="3" PointY="7.5" />
+        <EntityTypeShape EntityType="ServiceModel.PRODUCT" Width="1.5" PointX="8.375" PointY="11.75" />
+        <EntityTypeShape EntityType="ServiceModel.ORDERMAINTENANCE" Width="1.5" PointX="0.75" PointY="3.125" />
+        <EntityTypeShape EntityType="ServiceModel.ORDERSPAREPART" Width="1.5" PointX="3" PointY="0.875" />
+        <AssociationConnector Association="ServiceModel.FK_ORDERFIXED_ORDERMAINTENANCE" />
+        <AssociationConnector Association="ServiceModel.FK_ORDERSPAREPARTS_ORDERMAINTENANCE" />
+        <EntityTypeShape EntityType="ServiceModel.PMSCHEDULE" Width="1.5" PointX="10.25" PointY="1.25" />
+        <AssociationConnector Association="ServiceModel.FK_PMSCHEDULE_PMMC" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

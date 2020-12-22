@@ -1,0 +1,1169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+	<!-- EF Runtime content -->
+	<edmx:Runtime>
+		<!-- SSDL content -->
+		<edmx:StorageModels>
+		<Schema Namespace="ServiceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CUSTOMERS">
+          <Key>
+            <PropertyRef Name="CUSTCODE" />
+          </Key>
+          <Property Name="ISDELETE" Type="bit" Nullable="false" />
+          <Property Name="ISWARNING" Type="bit" Nullable="false" />
+          <Property Name="CUSTTAXID" Type="nvarchar" MaxLength="30" />
+          <Property Name="VATABLE" Type="bit" Nullable="false" />
+          <Property Name="VATRATE" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="CUSTGROUPKEY" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="ISHEADQUARTERS" Type="bit" />
+          <Property Name="BRANCHNUMBER" Type="int" />
+          <Property Name="CUSTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CUSTCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CUSTNAME" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ADDRESS" Type="nvarchar" MaxLength="1000" />
+          <Property Name="DISTRICT" Type="nvarchar" MaxLength="50" />
+          <Property Name="PROVINCE" Type="nvarchar" MaxLength="50" />
+          <Property Name="POSTAL" Type="nvarchar" MaxLength="10" />
+          <Property Name="COUNTRY" Type="nvarchar" MaxLength="50" />
+          <Property Name="TEL" Type="nvarchar" MaxLength="200" />
+          <Property Name="FAX" Type="nvarchar" MaxLength="200" />
+          <Property Name="CUSTEMAIL" Type="nvarchar" MaxLength="255" />
+          <Property Name="CUSTWWW" Type="nvarchar" MaxLength="255" />
+          <Property Name="CONTACTPERSON" Type="nvarchar" MaxLength="150" />
+          <Property Name="CELLPHONE1" Type="nvarchar" MaxLength="50" />
+          <Property Name="SALEPERSON" Type="nvarchar" MaxLength="50" />
+          <Property Name="MATERIALLIMIT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CREDITLIMIT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CURRENCY" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="CREDITCODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="DATEBILL" Type="int" Nullable="false" />
+          <Property Name="DATEPAY" Type="int" Nullable="false" />
+          <Property Name="BILLINGPOINT" Type="nvarchar" MaxLength="500" />
+          <Property Name="PAYMENTPOINT" Type="nvarchar" MaxLength="500" />
+          <Property Name="CUSTREMARK" Type="nvarchar" MaxLength="1024" />
+          <Property Name="AUDITUSER" Type="nvarchar" MaxLength="50" />
+          <Property Name="AUDITDATE" Type="datetime" />
+          <Property Name="MODIUSER" Type="nvarchar" MaxLength="50" />
+          <Property Name="MODIDATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ENGINEER">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="engiseq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="id" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="empcode" Type="nvarchar" MaxLength="10" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastname" Type="nvarchar" MaxLength="50" />
+          <Property Name="curr" Type="nvarchar" MaxLength="10" />
+          <Property Name="resigndate" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ERRORCATEGORY">
+          <Key>
+            <PropertyRef Name="errorcode" />
+          </Key>
+          <Property Name="errorcatid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="errorcode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="errorcatname" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MIX">
+          <Key>
+            <PropertyRef Name="mix_id" />
+            <PropertyRef Name="type" />
+            <PropertyRef Name="s_no" />
+          </Key>
+          <Property Name="productid" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="isdelete" Type="bit" Nullable="false" />
+          <Property Name="isexpire" Type="bit" Nullable="false" />
+          <Property Name="isnewproduct" Type="bit" Nullable="false" />
+          <Property Name="istransfer" Type="bit" Nullable="false" />
+          <Property Name="transferdate" Type="datetime" />
+          <Property Name="mix_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="s_no" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cus_na" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="custid" Type="int" Nullable="false" />
+          <Property Name="acccustcode" Type="nvarchar" MaxLength="15" />
+          <Property Name="qtysale" Type="int" Nullable="false" />
+          <Property Name="sale_date" Type="datetime" />
+          <Property Name="yearsale" Type="int" Nullable="false" />
+          <Property Name="monthsale" Type="int" Nullable="false" />
+          <Property Name="warrantyterm" Type="int" Nullable="false" />
+          <Property Name="monthfactor" Type="int" Nullable="false" />
+          <Property Name="exp" Type="datetime" />
+          <Property Name="yearexpire" Type="int" Nullable="false" />
+          <Property Name="monthexpire" Type="int" Nullable="false" />
+          <Property Name="remark" Type="nvarchar" MaxLength="150" />
+          <Property Name="audituser" Type="nvarchar" MaxLength="50" />
+          <Property Name="auditdt" Type="datetime" />
+          <Property Name="modiuser" Type="nvarchar" MaxLength="50" />
+          <Property Name="modidt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ORDERFIXED">
+          <Key>
+            <PropertyRef Name="lineid" />
+          </Key>
+          <Property Name="lineid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="orderid" Type="int" Nullable="false" />
+          <Property Name="ordercode" Type="nvarchar" MaxLength="3" />
+          <Property Name="s_order" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="datefixed" Type="datetime" Nullable="false" />
+          <Property Name="fixeddetail" Type="ntext" />
+          <Property Name="engcode1" Type="nvarchar" MaxLength="10" />
+          <Property Name="engineer1" Type="nvarchar" MaxLength="30" />
+          <Property Name="engcode2" Type="nvarchar" MaxLength="10" />
+          <Property Name="engineer2" Type="nvarchar" MaxLength="30" />
+          <Property Name="engcode3" Type="nvarchar" MaxLength="10" />
+          <Property Name="engineer3" Type="nvarchar" MaxLength="30" />
+          <Property Name="engcode4" Type="nvarchar" MaxLength="10" />
+          <Property Name="engineer4" Type="nvarchar" MaxLength="30" />
+          <Property Name="isdelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ORDERMAINTENANCE">
+          <Key>
+            <PropertyRef Name="orderid" />
+          </Key>
+          <Property Name="isdelete" Type="bit" Nullable="false" />
+          <Property Name="status" Type="int" />
+          <Property Name="isPM" Type="bit" Nullable="false" />
+          <Property Name="pmmasterline" Type="int" Nullable="false" />
+          <Property Name="pmschline" Type="int" Nullable="false" />
+          <Property Name="pmAppointDate" Type="datetime" />
+          <Property Name="orderTypeid" Type="int" Nullable="false" />
+          <Property Name="actionpiority" Type="int" Nullable="false" />
+          <Property Name="orderdate" Type="datetime" />
+          <Property Name="orderid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="orderCode" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="s_order" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="yearservice" Type="int" Nullable="false" />
+          <Property Name="ordercountno" Type="int" Nullable="false" />
+          <Property Name="or_date" Type="nvarchar" MaxLength="10" />
+          <Property Name="custid" Type="int" Nullable="false" />
+          <Property Name="acccustcode" Type="nvarchar" MaxLength="10" />
+          <Property Name="cus_na" Type="nvarchar" MaxLength="100" />
+          <Property Name="productid" Type="nvarchar" MaxLength="10" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" />
+          <Property Name="s_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="errorcode" Type="nvarchar" MaxLength="10" />
+          <Property Name="error" Type="nvarchar" MaxLength="4000" />
+          <Property Name="month" Type="nvarchar" MaxLength="2" />
+          <Property Name="period" Type="int" Nullable="false" />
+          <Property Name="fiscyear" Type="int" Nullable="false" />
+          <Property Name="year" Type="datetime" />
+          <Property Name="duedate" Type="int" Nullable="false" />
+          <Property Name="finishdate" Type="datetime" />
+          <Property Name="inWarrantyService" Type="bit" Nullable="false" />
+          <Property Name="servicecost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="sparepartcost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="othercost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="isnocharge" Type="bit" Nullable="false" />
+          <Property Name="nochargedetail" Type="varchar" MaxLength="150" />
+          <Property Name="otherdetails" Type="varchar" MaxLength="500" />
+          <Property Name="invoiceno" Type="varchar" MaxLength="30" />
+          <Property Name="audituser" Type="nvarchar" MaxLength="50" />
+          <Property Name="auditdt" Type="datetime" />
+          <Property Name="modiuser" Type="nvarchar" MaxLength="50" />
+          <Property Name="modidt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ORDERPIORITY">
+          <Key>
+            <PropertyRef Name="piorityid" />
+          </Key>
+          <Property Name="piorityid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="piorityname" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ORDERSPAREPARTS">
+          <Key>
+            <PropertyRef Name="spLine" />
+          </Key>
+          <Property Name="spLine" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="issueno" Type="nvarchar" MaxLength="20" />
+          <Property Name="dateneed" Type="datetime" Nullable="false" />
+          <Property Name="orderid" Type="int" Nullable="false" />
+          <Property Name="ordercode" Type="nvarchar" MaxLength="3" />
+          <Property Name="s_order" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="indatabase" Type="bit" Nullable="false" />
+          <Property Name="itemno" Type="nvarchar" MaxLength="30" />
+          <Property Name="itemname" Type="nvarchar" MaxLength="80" />
+          <Property Name="uom" Type="nvarchar" MaxLength="10" />
+          <Property Name="qtyneed" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ucost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="uprice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="discount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="netuprice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="totalprice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="itemremark" Type="nvarchar" MaxLength="1000" />
+          <Property Name="isdelete" Type="bit" Nullable="false" />
+          <Property Name="audituser" Type="nvarchar" MaxLength="30" />
+          <Property Name="auditdt" Type="datetime" />
+          <Property Name="modiuser" Type="nvarchar" MaxLength="30" />
+          <Property Name="modidt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ORDERTYPE">
+          <Key>
+            <PropertyRef Name="ordertypename" />
+          </Key>
+          <Property Name="ordertypeid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ordertypename" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ordertypecode" Type="nvarchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="PMCONTRACT">
+          <Key>
+            <PropertyRef Name="PM_CONTRACT_KEY" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PM_STATUS" Type="int" Nullable="false" />
+          <Property Name="PMY" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="RUNNUM" Type="int" Nullable="false" />
+          <Property Name="PM_CONTRACT_KEY" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PM_CONTRACT_DATE" Type="smalldatetime" Nullable="false" />
+          <Property Name="PM_CUSTCODE" Type="varchar" MaxLength="10" />
+          <Property Name="PM_CUSTOMER" Type="varchar" MaxLength="100" />
+          <Property Name="PM_START" Type="smalldatetime" Nullable="false" />
+          <Property Name="PM_END" Type="smalldatetime" Nullable="false" />
+          <Property Name="AUDIUSER" Type="varchar" MaxLength="50" />
+          <Property Name="MODIUSER" Type="varchar" MaxLength="50" />
+          <Property Name="MODIDATE" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="PMMC">
+          <Key>
+            <PropertyRef Name="PM_MC" />
+          </Key>
+          <Property Name="PM_MC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CONTRACT_KEY" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PM_MC_MODEL" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="PM_MC_SN" Type="varchar" MaxLength="20" />
+          <Property Name="PM_TYPE_KEY" Type="int" Nullable="false" />
+          <Property Name="PM_MAX" Type="int" Nullable="false" />
+          <Property Name="AUDITUSER" Type="varchar" MaxLength="50" />
+          <Property Name="MODIUSER" Type="varchar" MaxLength="50" />
+          <Property Name="MODIDATE" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PMSCHEDULE">
+          <Key>
+            <PropertyRef Name="sch_id" />
+          </Key>
+          <Property Name="isdelete" Type="bit" Nullable="false" />
+          <Property Name="iscomplete" Type="bit" Nullable="false" />
+          <Property Name="sch_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MC_Key" Type="int" Nullable="false" />
+          <Property Name="PM_series" Type="int" Nullable="false" />
+          <Property Name="PMDate" Type="datetime" />
+          <Property Name="ActualPMDate" Type="datetime" />
+          <Property Name="PMJobNo" Type="nvarchar" MaxLength="10" />
+          <Property Name="AUDITUSER" Type="nvarchar" MaxLength="35" />
+          <Property Name="LASTMODIFY" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PRODUCTGROUPS">
+          <Key>
+            <PropertyRef Name="PRODUCTGROUPID" />
+          </Key>
+          <Property Name="PRODUCTGROUPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRODUCTGROUPNAME" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCTS">
+          <Key>
+            <PropertyRef Name="type" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="isdelete" Type="bit" Nullable="false" />
+          <Property Name="productGroupID" Type="int" />
+          <Property Name="products" Type="nvarchar" MaxLength="150" />
+          <Property Name="hasAfterSaleService" Type="bit" Nullable="false" />
+          <Property Name="isOwnProduct" Type="bit" Nullable="false" />
+          <Property Name="isOffProduction" Type="bit" Nullable="false" />
+          <Property Name="isSpecialProduct" Type="bit" Nullable="false" />
+          <Property Name="isBuyForTread" Type="bit" Nullable="false" />
+          <Property Name="productpic" Type="image" />
+        </EntityType>
+        <EntityType Name="PROVISO">
+          <Key>
+            <PropertyRef Name="provisoTYPE" />
+          </Key>
+          <Property Name="provisoID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="provisoTYPE" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="pmfactor" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WARRANTIES">
+          <Key>
+            <PropertyRef Name="WARRANTYNAME" />
+          </Key>
+          <Property Name="WARRANTYID" Type="int" Nullable="false" />
+          <Property Name="WARRANTYNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WARRANTYMONTHFACTOR" Type="int" Nullable="false" />
+          <Property Name="RVMAX" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ORDERFIXED_ORDERMAINTENANCE">
+          <End Role="ORDERMAINTENANCE" Type="Self.ORDERMAINTENANCE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ORDERFIXED" Type="Self.ORDERFIXED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDERMAINTENANCE">
+              <PropertyRef Name="orderid" />
+            </Principal>
+            <Dependent Role="ORDERFIXED">
+              <PropertyRef Name="orderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDERSPAREPARTS_ORDERMAINTENANCE">
+          <End Role="ORDERMAINTENANCE" Type="Self.ORDERMAINTENANCE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ORDERSPAREPARTS" Type="Self.ORDERSPAREPARTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDERMAINTENANCE">
+              <PropertyRef Name="orderid" />
+            </Principal>
+            <Dependent Role="ORDERSPAREPARTS">
+              <PropertyRef Name="orderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PMMC_PMCONTRACT">
+          <End Role="PMCONTRACT" Type="Self.PMCONTRACT" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PMMC" Type="Self.PMMC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PMCONTRACT">
+              <PropertyRef Name="PM_CONTRACT_KEY" />
+            </Principal>
+            <Dependent Role="PMMC">
+              <PropertyRef Name="CONTRACT_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PMSCHEDULE_PMMC">
+          <End Role="PMMC" Type="Self.PMMC" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PMSCHEDULE" Type="Self.PMSCHEDULE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PMMC">
+              <PropertyRef Name="PM_MC" />
+            </Principal>
+            <Dependent Role="PMSCHEDULE">
+              <PropertyRef Name="MC_Key" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="usp_GetServiceJobList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="selectedYear" Type="int" Mode="In" />
+          <Parameter Name="jobcode" Type="varchar" Mode="In" />
+          <Parameter Name="orderstatus" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ServiceModelStoreContainer">
+          <EntitySet Name="CUSTOMERS" EntityType="Self.CUSTOMERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ENGINEER" EntityType="Self.ENGINEER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ERRORCATEGORY" EntityType="Self.ERRORCATEGORY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MIX" EntityType="Self.MIX" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDERFIXED" EntityType="Self.ORDERFIXED" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDERMAINTENANCE" EntityType="Self.ORDERMAINTENANCE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDERPIORITY" EntityType="Self.ORDERPIORITY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDERSPAREPARTS" EntityType="Self.ORDERSPAREPARTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDERTYPE" EntityType="Self.ORDERTYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PMCONTRACT" EntityType="Self.PMCONTRACT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PMMC" EntityType="Self.PMMC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PMSCHEDULE" EntityType="Self.PMSCHEDULE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTGROUPS" EntityType="Self.PRODUCTGROUPS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTS" EntityType="Self.PRODUCTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROVISO" EntityType="Self.PROVISO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WARRANTIES" EntityType="Self.WARRANTIES" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ORDERFIXED_ORDERMAINTENANCE" Association="Self.FK_ORDERFIXED_ORDERMAINTENANCE">
+            <End Role="ORDERMAINTENANCE" EntitySet="ORDERMAINTENANCE" />
+            <End Role="ORDERFIXED" EntitySet="ORDERFIXED" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDERSPAREPARTS_ORDERMAINTENANCE" Association="Self.FK_ORDERSPAREPARTS_ORDERMAINTENANCE">
+            <End Role="ORDERMAINTENANCE" EntitySet="ORDERMAINTENANCE" />
+            <End Role="ORDERSPAREPARTS" EntitySet="ORDERSPAREPARTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PMMC_PMCONTRACT" Association="Self.FK_PMMC_PMCONTRACT">
+            <End Role="PMCONTRACT" EntitySet="PMCONTRACT" />
+            <End Role="PMMC" EntitySet="PMMC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PMSCHEDULE_PMMC" Association="Self.FK_PMSCHEDULE_PMMC">
+            <End Role="PMMC" EntitySet="PMMC" />
+            <End Role="PMSCHEDULE" EntitySet="PMSCHEDULE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+		<!-- CSDL content -->
+		<edmx:ConceptualModels>
+			<Schema Namespace="ServiceModel" Alias="Self" annotation:UseStrongSpatialTypes="false"
+			        xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation"
+			        xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation"
+			        xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+				<EntityType Name="ENGINEER">
+					<Key>
+						<PropertyRef Name="id" />
+					</Key>
+					<Property Name="engiseq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="Status" Type="Int32" Nullable="false" />
+					<Property Name="id" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+					<Property Name="empcode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+					<Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+					<Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="curr" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+					<Property Name="resigndate" Type="Int32" Nullable="false" />
+				</EntityType>
+				<EntityType Name="ORDERPIORITY">
+					<Key>
+						<PropertyRef Name="piorityid" />
+					</Key>
+					<Property Name="piorityid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="piorityname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+				</EntityType>
+				<EntityType Name="ORDERTYPE">
+					<Key>
+						<PropertyRef Name="ordertypename" />
+					</Key>
+					<Property Name="ordertypeid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="ordertypename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+					<Property Name="ordertypecode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+				</EntityType>
+				<EntityType Name="PRODUCTGROUP">
+					<Key>
+						<PropertyRef Name="PRODUCTGROUPID" />
+					</Key>
+					<Property Name="PRODUCTGROUPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="PRODUCTGROUPNAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true"
+					          Nullable="false" />
+				</EntityType>
+				<EntityType Name="PROVISO">
+					<Key>
+						<PropertyRef Name="provisoTYPE" />
+					</Key>
+					<Property Name="provisoID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="provisoTYPE" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+					<Property Name="pmfactor" Type="Int32" Nullable="false" />
+				</EntityType>
+				<EntityContainer Name="SERVICEEF" annotation:LazyLoadingEnabled="true">
+					<EntitySet Name="ENGINEERs" EntityType="Self.ENGINEER" />
+					<EntitySet Name="ORDERPIORITies" EntityType="Self.ORDERPIORITY" />
+					<EntitySet Name="ORDERTYPEs" EntityType="Self.ORDERTYPE" />
+					<EntitySet Name="PRODUCTGROUPS" EntityType="Self.PRODUCTGROUP" />
+					<EntitySet Name="PROVISOes" EntityType="Self.PROVISO" />
+					<EntitySet Name="ERRORCATEGORies" EntityType="ServiceModel.ERRORCATEGORY" />
+					<FunctionImport Name="usp_GetServiceJobList" ReturnType="Collection(ServiceModel.usp_GetServiceJobList_Result)">
+            <Parameter Name="selectedYear" Mode="In" Type="Int32" />
+            <Parameter Name="jobcode" Mode="In" Type="String" />
+            <Parameter Name="orderstatus" Mode="In" Type="String" />
+          </FunctionImport>
+					<EntitySet Name="WARRANTIES" EntityType="ServiceModel.WARRANTy" />
+					<EntitySet Name="CUSTOMERS" EntityType="ServiceModel.CUSTOMER" />
+					<EntitySet Name="MIXes" EntityType="ServiceModel.MIX" />
+          <EntitySet Name="PMCONTRACTs" EntityType="ServiceModel.PMCONTRACT" />
+          <EntitySet Name="PMMCs" EntityType="ServiceModel.PMMC" />
+          <AssociationSet Name="FK_PMMC_PMCONTRACT1" Association="ServiceModel.FK_PMMC_PMCONTRACT1">
+            <End Role="PMCONTRACT" EntitySet="PMCONTRACTs" />
+            <End Role="PMMC" EntitySet="PMMCs" />
+          </AssociationSet>
+          <EntitySet Name="ORDERFIXEDs" EntityType="ServiceModel.ORDERFIXED" />
+          <EntitySet Name="PRODUCTS" EntityType="ServiceModel.PRODUCT" />
+          <EntitySet Name="ORDERMAINTENANCEs" EntityType="ServiceModel.ORDERMAINTENANCE" />
+          <EntitySet Name="ORDERSPAREPARTS" EntityType="ServiceModel.ORDERSPAREPART" />
+          <AssociationSet Name="FK_ORDERFIXED_ORDERMAINTENANCE" Association="ServiceModel.FK_ORDERFIXED_ORDERMAINTENANCE">
+            <End Role="ORDERMAINTENANCE" EntitySet="ORDERMAINTENANCEs" />
+            <End Role="ORDERFIXED" EntitySet="ORDERFIXEDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDERSPAREPARTS_ORDERMAINTENANCE" Association="ServiceModel.FK_ORDERSPAREPARTS_ORDERMAINTENANCE">
+            <End Role="ORDERMAINTENANCE" EntitySet="ORDERMAINTENANCEs" />
+            <End Role="ORDERSPAREPART" EntitySet="ORDERSPAREPARTS" />
+          </AssociationSet>
+          <EntitySet Name="PMSCHEDULEs" EntityType="ServiceModel.PMSCHEDULE" />
+          <AssociationSet Name="FK_PMSCHEDULE_PMMC" Association="ServiceModel.FK_PMSCHEDULE_PMMC">
+            <End Role="PMMC" EntitySet="PMMCs" />
+            <End Role="PMSCHEDULE" EntitySet="PMSCHEDULEs" />
+          </AssociationSet>
+          </EntityContainer>
+				<EntityType Name="ERRORCATEGORY">
+					<Key>
+						<PropertyRef Name="errorcode" />
+					</Key>
+					<Property Name="errorcatid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="errorcode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+					<Property Name="errorcatname" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+				</EntityType>
+				<ComplexType Name="usp_GetServiceJobList_Result">
+					<Property Type="Int32" Name="orderid" Nullable="false" />
+					<Property Type="String" Name="orderCode" Nullable="false" MaxLength="3" />
+					<Property Type="String" Name="ORDERNO" Nullable="false" MaxLength="15" />
+					<Property Type="String" Name="jobno" Nullable="false" MaxLength="22" />
+					<Property Type="Int32" Name="OPENYEAR" Nullable="false" />
+					<Property Type="String" Name="status" Nullable="false" MaxLength="6" />
+					<Property Type="String" Name="orderdate" Nullable="true" MaxLength="10" />
+					<Property Type="String" Name="duedate" Nullable="true" MaxLength="10" />
+					<Property Type="String" Name="finish" Nullable="false" MaxLength="10" />
+					<Property Type="Int32" Name="COMPLETEYEAR" Nullable="true" />
+					<Property Type="String" Name="CUSTOMERCODE" Nullable="true" MaxLength="10" />
+					<Property Type="String" Name="CUSTOMER" Nullable="true" MaxLength="100" />
+					<Property Type="String" Name="MODEL" Nullable="true" MaxLength="30" />
+					<Property Type="String" Name="SERIAL" Nullable="true" MaxLength="30" />
+					<Property Type="String" Name="errorcode" Nullable="true" MaxLength="10" />
+					<Property Type="String" Name="error" Nullable="true" MaxLength="4000" />
+				</ComplexType>
+				<EntityType Name="WARRANTy">
+					<Key>
+						<PropertyRef Name="WARRANTYNAME" />
+					</Key>
+					<Property Name="WARRANTYID" Type="Int32" Nullable="false" />
+					<Property Name="WARRANTYNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="WARRANTYMONTHFACTOR" Type="Int32" Nullable="false" />
+					<Property Name="RVMAX" Type="Int32" Nullable="false" />
+				</EntityType>
+				<EntityType Name="CUSTOMER">
+					<Key>
+						<PropertyRef Name="CUSTCODE" />
+					</Key>
+					<Property Name="ISDELETE" Type="Boolean" Nullable="false" />
+					<Property Name="ISWARNING" Type="Boolean" Nullable="false" />
+					<Property Name="CUSTTAXID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+					<Property Name="VATABLE" Type="Boolean" Nullable="false" />
+					<Property Name="VATRATE" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+					<Property Name="CUSTGROUPKEY" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+					<Property Name="ISHEADQUARTERS" Type="Boolean" />
+					<Property Name="BRANCHNUMBER" Type="Int32" />
+					<Property Name="CUSTID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="CUSTCODE" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+					<Property Name="CUSTNAME" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+					<Property Name="ADDRESS" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+					<Property Name="DISTRICT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="PROVINCE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="POSTAL" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+					<Property Name="COUNTRY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="TEL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+					<Property Name="FAX" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+					<Property Name="CUSTEMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+					<Property Name="CUSTWWW" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+					<Property Name="CONTACTPERSON" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+					<Property Name="CELLPHONE1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="SALEPERSON" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="MATERIALLIMIT" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="CREDITLIMIT" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+					<Property Name="CURRENCY" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+					<Property Name="CREDITCODE" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+					<Property Name="DATEBILL" Type="Int32" Nullable="false" />
+					<Property Name="DATEPAY" Type="Int32" Nullable="false" />
+					<Property Name="BILLINGPOINT" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+					<Property Name="PAYMENTPOINT" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+					<Property Name="AUDITUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="AUDITDATE" Type="DateTime" Precision="3" />
+					<Property Name="MODIUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="MODIDATE" Type="DateTime" Nullable="false" Precision="3" />
+					<Property Name="CUSTREMARK" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+				</EntityType>
+				<EntityType Name="MIX">
+					<Key>
+						<PropertyRef Name="mix_id" />
+						<PropertyRef Name="type" />
+						<PropertyRef Name="s_no" />
+					</Key>
+					<Property Name="productid" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+					<Property Name="isdelete" Type="Boolean" Nullable="false" />
+					<Property Name="isexpire" Type="Boolean" Nullable="false" />
+					<Property Name="isnewproduct" Type="Boolean" Nullable="false" />
+					<Property Name="istransfer" Type="Boolean" Nullable="false" />
+					<Property Name="transferdate" Type="DateTime" Precision="3" />
+					<Property Name="mix_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="s_no" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="cus_na" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+					<Property Name="custid" Type="Int32" Nullable="false" />
+					<Property Name="acccustcode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+					<Property Name="qtysale" Type="Int32" Nullable="false" />
+					<Property Name="sale_date" Type="DateTime" Precision="3" />
+					<Property Name="yearsale" Type="Int32" Nullable="false" />
+					<Property Name="monthsale" Type="Int32" Nullable="false" />
+					<Property Name="warrantyterm" Type="Int32" Nullable="false" />
+					<Property Name="monthfactor" Type="Int32" Nullable="false" />
+					<Property Name="exp" Type="DateTime" Precision="3" />
+					<Property Name="yearexpire" Type="Int32" Nullable="false" />
+					<Property Name="monthexpire" Type="Int32" Nullable="false" />
+					<Property Name="remark" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+					<Property Name="audituser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="auditdt" Type="DateTime" Precision="3" />
+					<Property Name="modiuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Name="modidt" Type="DateTime" Precision="3" />
+				</EntityType>
+        <EntityType Name="PMCONTRACT">
+          <Key>
+            <PropertyRef Name="PM_CONTRACT_KEY" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PM_STATUS" Type="Int32" Nullable="false" />
+          <Property Name="PMY" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="RUNNUM" Type="Int32" Nullable="false" />
+          <Property Name="PM_CONTRACT_KEY" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PM_CONTRACT_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PM_CUSTCODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PM_CUSTOMER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PM_START" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PM_END" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AUDIUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MODIUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MODIDATE" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="PMMCs" Relationship="ServiceModel.FK_PMMC_PMCONTRACT1" FromRole="PMCONTRACT" ToRole="PMMC" />
+        </EntityType>
+        <EntityType Name="PMMC">
+          <Key>
+            <PropertyRef Name="PM_MC" />
+          </Key>
+          <Property Name="PM_MC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CONTRACT_KEY" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PM_MC_MODEL" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PM_MC_SN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PM_TYPE_KEY" Type="Int32" Nullable="false" />
+          <Property Name="PM_MAX" Type="Int32" Nullable="false" />
+          <Property Name="AUDITUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MODIUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MODIDATE" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="PMCONTRACT" Relationship="ServiceModel.FK_PMMC_PMCONTRACT1" FromRole="PMMC" ToRole="PMCONTRACT" />
+          <NavigationProperty Name="PMSCHEDULEs" Relationship="ServiceModel.FK_PMSCHEDULE_PMMC" FromRole="PMMC" ToRole="PMSCHEDULE" />
+        </EntityType>
+        <Association Name="FK_PMMC_PMCONTRACT1">
+          <End Type="ServiceModel.PMCONTRACT" Role="PMCONTRACT" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ServiceModel.PMMC" Role="PMMC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PMCONTRACT">
+              <PropertyRef Name="PM_CONTRACT_KEY" />
+            </Principal>
+            <Dependent Role="PMMC">
+              <PropertyRef Name="CONTRACT_KEY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ORDERFIXED">
+          <Key>
+            <PropertyRef Name="lineid" />
+          </Key>
+          <Property Name="lineid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orderid" Type="Int32" Nullable="false" />
+          <Property Name="ordercode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="s_order" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="datefixed" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fixeddetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="engcode1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="engineer1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="engcode2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="engineer2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="engcode3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="engineer3" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="engcode4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="engineer4" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="isdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ORDERMAINTENANCE" Relationship="ServiceModel.FK_ORDERFIXED_ORDERMAINTENANCE" FromRole="ORDERFIXED" ToRole="ORDERMAINTENANCE" />
+        </EntityType>
+        <EntityType Name="PRODUCT">
+          <Key>
+            <PropertyRef Name="type" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isdelete" Type="Boolean" Nullable="false" />
+          <Property Name="productGroupID" Type="Int32" />
+          <Property Name="products" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="hasAfterSaleService" Type="Boolean" Nullable="false" />
+          <Property Name="isOwnProduct" Type="Boolean" Nullable="false" />
+          <Property Name="isOffProduction" Type="Boolean" Nullable="false" />
+          <Property Name="isSpecialProduct" Type="Boolean" Nullable="false" />
+          <Property Name="isBuyForTread" Type="Boolean" Nullable="false" />
+          <Property Name="productpic" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ORDERMAINTENANCE">
+          <Key>
+            <PropertyRef Name="orderid" />
+          </Key>
+          <Property Name="isdelete" Type="Boolean" Nullable="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="isPM" Type="Boolean" Nullable="false" />
+          <Property Name="pmmasterline" Type="Int32" Nullable="false" />
+          <Property Name="pmschline" Type="Int32" Nullable="false" />
+          <Property Name="pmAppointDate" Type="DateTime" Precision="3" />
+          <Property Name="orderTypeid" Type="Int32" Nullable="false" />
+          <Property Name="actionpiority" Type="Int32" Nullable="false" />
+          <Property Name="orderdate" Type="DateTime" Precision="3" />
+          <Property Name="orderid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orderCode" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="s_order" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="yearservice" Type="Int32" Nullable="false" />
+          <Property Name="ordercountno" Type="Int32" Nullable="false" />
+          <Property Name="or_date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="custid" Type="Int32" Nullable="false" />
+          <Property Name="acccustcode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="cus_na" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="productid" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="s_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="errorcode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="error" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="month" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="period" Type="Int32" Nullable="false" />
+          <Property Name="fiscyear" Type="Int32" Nullable="false" />
+          <Property Name="year" Type="DateTime" Precision="3" />
+          <Property Name="duedate" Type="Int32" Nullable="false" />
+          <Property Name="finishdate" Type="DateTime" Precision="3" />
+          <Property Name="inWarrantyService" Type="Boolean" Nullable="false" />
+          <Property Name="servicecost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="sparepartcost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="othercost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="otherdetails" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="invoiceno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="audituser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="auditdt" Type="DateTime" Precision="3" />
+          <Property Name="modiuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="modidt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ORDERFIXEDs" Relationship="ServiceModel.FK_ORDERFIXED_ORDERMAINTENANCE" FromRole="ORDERMAINTENANCE" ToRole="ORDERFIXED" />
+          <NavigationProperty Name="ORDERSPAREPARTS" Relationship="ServiceModel.FK_ORDERSPAREPARTS_ORDERMAINTENANCE" FromRole="ORDERMAINTENANCE" ToRole="ORDERSPAREPART" />
+          <Property Name="isnocharge" Type="Boolean" Nullable="false" />
+          <Property Name="nochargedetail" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ORDERSPAREPART">
+          <Key>
+            <PropertyRef Name="spLine" />
+          </Key>
+          <Property Name="spLine" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="issueno" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="dateneed" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="orderid" Type="Int32" Nullable="false" />
+          <Property Name="ordercode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="s_order" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="indatabase" Type="Boolean" Nullable="false" />
+          <Property Name="itemno" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="itemname" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="uom" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="qtyneed" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ucost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="uprice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="discount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="netuprice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="totalprice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="itemremark" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="isdelete" Type="Boolean" Nullable="false" />
+          <Property Name="audituser" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="auditdt" Type="DateTime" Precision="3" />
+          <Property Name="modiuser" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="modidt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ORDERMAINTENANCE" Relationship="ServiceModel.FK_ORDERSPAREPARTS_ORDERMAINTENANCE" FromRole="ORDERSPAREPART" ToRole="ORDERMAINTENANCE" />
+        </EntityType>
+        <Association Name="FK_ORDERFIXED_ORDERMAINTENANCE">
+          <End Type="ServiceModel.ORDERMAINTENANCE" Role="ORDERMAINTENANCE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ServiceModel.ORDERFIXED" Role="ORDERFIXED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDERMAINTENANCE">
+              <PropertyRef Name="orderid" />
+            </Principal>
+            <Dependent Role="ORDERFIXED">
+              <PropertyRef Name="orderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDERSPAREPARTS_ORDERMAINTENANCE">
+          <End Type="ServiceModel.ORDERMAINTENANCE" Role="ORDERMAINTENANCE" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ServiceModel.ORDERSPAREPART" Role="ORDERSPAREPART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDERMAINTENANCE">
+              <PropertyRef Name="orderid" />
+            </Principal>
+            <Dependent Role="ORDERSPAREPART">
+              <PropertyRef Name="orderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PMSCHEDULE">
+          <Key>
+            <PropertyRef Name="sch_id" />
+          </Key>
+          <Property Name="isdelete" Type="Boolean" Nullable="false" />
+          <Property Name="iscomplete" Type="Boolean" Nullable="false" />
+          <Property Name="sch_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MC_Key" Type="Int32" Nullable="false" />
+          <Property Name="PM_series" Type="Int32" Nullable="false" />
+          <Property Name="PMDate" Type="DateTime" Precision="3" />
+          <Property Name="ActualPMDate" Type="DateTime" Precision="3" />
+          <Property Name="PMJobNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AUDITUSER" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Name="LASTMODIFY" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PMMC" Relationship="ServiceModel.FK_PMSCHEDULE_PMMC" FromRole="PMSCHEDULE" ToRole="PMMC" />
+        </EntityType>
+        <Association Name="FK_PMSCHEDULE_PMMC">
+          <End Type="ServiceModel.PMMC" Role="PMMC" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ServiceModel.PMSCHEDULE" Role="PMSCHEDULE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PMMC">
+              <PropertyRef Name="PM_MC" />
+            </Principal>
+            <Dependent Role="PMSCHEDULE">
+              <PropertyRef Name="MC_Key" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+		</edmx:ConceptualModels>
+		<!-- C-S mapping content -->
+		<edmx:Mappings>
+			<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+				<EntityContainerMapping StorageEntityContainer="ServiceModelStoreContainer" CdmEntityContainer="SERVICEEF">
+					<EntitySetMapping Name="ENGINEERs">
+						<EntityTypeMapping TypeName="ServiceModel.ENGINEER">
+							<MappingFragment StoreEntitySet="ENGINEER">
+								<ScalarProperty Name="engiseq" ColumnName="engiseq" />
+								<ScalarProperty Name="Status" ColumnName="Status" />
+								<ScalarProperty Name="id" ColumnName="id" />
+								<ScalarProperty Name="empcode" ColumnName="empcode" />
+								<ScalarProperty Name="name" ColumnName="name" />
+								<ScalarProperty Name="lastname" ColumnName="lastname" />
+								<ScalarProperty Name="curr" ColumnName="curr" />
+								<ScalarProperty Name="resigndate" ColumnName="resigndate" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="ORDERPIORITies">
+						<EntityTypeMapping TypeName="ServiceModel.ORDERPIORITY">
+							<MappingFragment StoreEntitySet="ORDERPIORITY">
+								<ScalarProperty Name="piorityid" ColumnName="piorityid" />
+								<ScalarProperty Name="piorityname" ColumnName="piorityname" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="ORDERTYPEs">
+						<EntityTypeMapping TypeName="ServiceModel.ORDERTYPE">
+							<MappingFragment StoreEntitySet="ORDERTYPE">
+								<ScalarProperty Name="ordertypeid" ColumnName="ordertypeid" />
+								<ScalarProperty Name="ordertypename" ColumnName="ordertypename" />
+								<ScalarProperty Name="ordertypecode" ColumnName="ordertypecode" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="PRODUCTGROUPS">
+						<EntityTypeMapping TypeName="ServiceModel.PRODUCTGROUP">
+							<MappingFragment StoreEntitySet="PRODUCTGROUPS">
+								<ScalarProperty Name="PRODUCTGROUPID" ColumnName="PRODUCTGROUPID" />
+								<ScalarProperty Name="PRODUCTGROUPNAME" ColumnName="PRODUCTGROUPNAME" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="PROVISOes">
+						<EntityTypeMapping TypeName="ServiceModel.PROVISO">
+							<MappingFragment StoreEntitySet="PROVISO">
+								<ScalarProperty Name="provisoID" ColumnName="provisoID" />
+								<ScalarProperty Name="provisoTYPE" ColumnName="provisoTYPE" />
+								<ScalarProperty Name="pmfactor" ColumnName="pmfactor" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="ERRORCATEGORies">
+						<EntityTypeMapping TypeName="ServiceModel.ERRORCATEGORY">
+							<MappingFragment StoreEntitySet="ERRORCATEGORY">
+								<ScalarProperty Name="errorcatname" ColumnName="errorcatname" />
+								<ScalarProperty Name="errorcode" ColumnName="errorcode" />
+								<ScalarProperty Name="errorcatid" ColumnName="errorcatid" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<FunctionImportMapping FunctionImportName="usp_GetServiceJobList"
+					                       FunctionName="ServiceModel.Store.usp_GetServiceJobList">
+						<ResultMapping>
+							<ComplexTypeMapping TypeName="ServiceModel.usp_GetServiceJobList_Result">
+								<ScalarProperty Name="orderid" ColumnName="orderid" />
+								<ScalarProperty Name="orderCode" ColumnName="orderCode" />
+								<ScalarProperty Name="ORDERNO" ColumnName="ORDERNO" />
+								<ScalarProperty Name="jobno" ColumnName="jobno" />
+								<ScalarProperty Name="OPENYEAR" ColumnName="OPENYEAR" />
+								<ScalarProperty Name="status" ColumnName="status" />
+								<ScalarProperty Name="orderdate" ColumnName="orderdate" />
+								<ScalarProperty Name="duedate" ColumnName="duedate" />
+								<ScalarProperty Name="finish" ColumnName="finish" />
+								<ScalarProperty Name="COMPLETEYEAR" ColumnName="COMPLETEYEAR" />
+								<ScalarProperty Name="CUSTOMERCODE" ColumnName="CUSTOMERCODE" />
+								<ScalarProperty Name="CUSTOMER" ColumnName="CUSTOMER" />
+								<ScalarProperty Name="MODEL" ColumnName="MODEL" />
+								<ScalarProperty Name="SERIAL" ColumnName="SERIAL" />
+								<ScalarProperty Name="errorcode" ColumnName="errorcode" />
+								<ScalarProperty Name="error" ColumnName="error" />
+							</ComplexTypeMapping>
+						</ResultMapping>
+					</FunctionImportMapping>
+					<EntitySetMapping Name="WARRANTIES">
+						<EntityTypeMapping TypeName="ServiceModel.WARRANTy">
+							<MappingFragment StoreEntitySet="WARRANTIES">
+								<ScalarProperty Name="RVMAX" ColumnName="RVMAX" />
+								<ScalarProperty Name="WARRANTYMONTHFACTOR" ColumnName="WARRANTYMONTHFACTOR" />
+								<ScalarProperty Name="WARRANTYNAME" ColumnName="WARRANTYNAME" />
+								<ScalarProperty Name="WARRANTYID" ColumnName="WARRANTYID" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="CUSTOMERS">
+						<EntityTypeMapping TypeName="ServiceModel.CUSTOMER">
+							<MappingFragment StoreEntitySet="CUSTOMERS">
+								<ScalarProperty Name="CUSTREMARK" ColumnName="CUSTREMARK" />
+								<ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+								<ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+								<ScalarProperty Name="AUDITDATE" ColumnName="AUDITDATE" />
+								<ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+								<ScalarProperty Name="PAYMENTPOINT" ColumnName="PAYMENTPOINT" />
+								<ScalarProperty Name="BILLINGPOINT" ColumnName="BILLINGPOINT" />
+								<ScalarProperty Name="DATEPAY" ColumnName="DATEPAY" />
+								<ScalarProperty Name="DATEBILL" ColumnName="DATEBILL" />
+								<ScalarProperty Name="CREDITCODE" ColumnName="CREDITCODE" />
+								<ScalarProperty Name="CURRENCY" ColumnName="CURRENCY" />
+								<ScalarProperty Name="CREDITLIMIT" ColumnName="CREDITLIMIT" />
+								<ScalarProperty Name="MATERIALLIMIT" ColumnName="MATERIALLIMIT" />
+								<ScalarProperty Name="SALEPERSON" ColumnName="SALEPERSON" />
+								<ScalarProperty Name="CELLPHONE1" ColumnName="CELLPHONE1" />
+								<ScalarProperty Name="CONTACTPERSON" ColumnName="CONTACTPERSON" />
+								<ScalarProperty Name="CUSTWWW" ColumnName="CUSTWWW" />
+								<ScalarProperty Name="CUSTEMAIL" ColumnName="CUSTEMAIL" />
+								<ScalarProperty Name="FAX" ColumnName="FAX" />
+								<ScalarProperty Name="TEL" ColumnName="TEL" />
+								<ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+								<ScalarProperty Name="POSTAL" ColumnName="POSTAL" />
+								<ScalarProperty Name="PROVINCE" ColumnName="PROVINCE" />
+								<ScalarProperty Name="DISTRICT" ColumnName="DISTRICT" />
+								<ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+								<ScalarProperty Name="CUSTNAME" ColumnName="CUSTNAME" />
+								<ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+								<ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+								<ScalarProperty Name="BRANCHNUMBER" ColumnName="BRANCHNUMBER" />
+								<ScalarProperty Name="ISHEADQUARTERS" ColumnName="ISHEADQUARTERS" />
+								<ScalarProperty Name="CUSTGROUPKEY" ColumnName="CUSTGROUPKEY" />
+								<ScalarProperty Name="VATRATE" ColumnName="VATRATE" />
+								<ScalarProperty Name="VATABLE" ColumnName="VATABLE" />
+								<ScalarProperty Name="CUSTTAXID" ColumnName="CUSTTAXID" />
+								<ScalarProperty Name="ISWARNING" ColumnName="ISWARNING" />
+								<ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="MIXes">
+						<EntityTypeMapping TypeName="ServiceModel.MIX">
+							<MappingFragment StoreEntitySet="MIX">
+								<ScalarProperty Name="modidt" ColumnName="modidt" />
+								<ScalarProperty Name="modiuser" ColumnName="modiuser" />
+								<ScalarProperty Name="auditdt" ColumnName="auditdt" />
+								<ScalarProperty Name="audituser" ColumnName="audituser" />
+								<ScalarProperty Name="remark" ColumnName="remark" />
+								<ScalarProperty Name="monthexpire" ColumnName="monthexpire" />
+								<ScalarProperty Name="yearexpire" ColumnName="yearexpire" />
+								<ScalarProperty Name="exp" ColumnName="exp" />
+								<ScalarProperty Name="monthfactor" ColumnName="monthfactor" />
+								<ScalarProperty Name="warrantyterm" ColumnName="warrantyterm" />
+								<ScalarProperty Name="monthsale" ColumnName="monthsale" />
+								<ScalarProperty Name="yearsale" ColumnName="yearsale" />
+								<ScalarProperty Name="sale_date" ColumnName="sale_date" />
+								<ScalarProperty Name="qtysale" ColumnName="qtysale" />
+								<ScalarProperty Name="acccustcode" ColumnName="acccustcode" />
+								<ScalarProperty Name="custid" ColumnName="custid" />
+								<ScalarProperty Name="cus_na" ColumnName="cus_na" />
+								<ScalarProperty Name="s_no" ColumnName="s_no" />
+								<ScalarProperty Name="type" ColumnName="type" />
+								<ScalarProperty Name="mix_id" ColumnName="mix_id" />
+								<ScalarProperty Name="transferdate" ColumnName="transferdate" />
+								<ScalarProperty Name="istransfer" ColumnName="istransfer" />
+								<ScalarProperty Name="isnewproduct" ColumnName="isnewproduct" />
+								<ScalarProperty Name="isexpire" ColumnName="isexpire" />
+								<ScalarProperty Name="isdelete" ColumnName="isdelete" />
+								<ScalarProperty Name="productid" ColumnName="productid" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+          <EntitySetMapping Name="PMCONTRACTs">
+            <EntityTypeMapping TypeName="ServiceModel.PMCONTRACT">
+              <MappingFragment StoreEntitySet="PMCONTRACT">
+                <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+                <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+                <ScalarProperty Name="AUDIUSER" ColumnName="AUDIUSER" />
+                <ScalarProperty Name="PM_END" ColumnName="PM_END" />
+                <ScalarProperty Name="PM_START" ColumnName="PM_START" />
+                <ScalarProperty Name="PM_CUSTOMER" ColumnName="PM_CUSTOMER" />
+                <ScalarProperty Name="PM_CUSTCODE" ColumnName="PM_CUSTCODE" />
+                <ScalarProperty Name="PM_CONTRACT_DATE" ColumnName="PM_CONTRACT_DATE" />
+                <ScalarProperty Name="PM_CONTRACT_KEY" ColumnName="PM_CONTRACT_KEY" />
+                <ScalarProperty Name="RUNNUM" ColumnName="RUNNUM" />
+                <ScalarProperty Name="PMY" ColumnName="PMY" />
+                <ScalarProperty Name="PM_STATUS" ColumnName="PM_STATUS" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PMMCs">
+            <EntityTypeMapping TypeName="ServiceModel.PMMC">
+              <MappingFragment StoreEntitySet="PMMC">
+                <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+                <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+                <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+                <ScalarProperty Name="PM_MAX" ColumnName="PM_MAX" />
+                <ScalarProperty Name="PM_TYPE_KEY" ColumnName="PM_TYPE_KEY" />
+                <ScalarProperty Name="PM_MC_SN" ColumnName="PM_MC_SN" />
+                <ScalarProperty Name="PM_MC_MODEL" ColumnName="PM_MC_MODEL" />
+                <ScalarProperty Name="CONTRACT_KEY" ColumnName="CONTRACT_KEY" />
+                <ScalarProperty Name="PM_MC" ColumnName="PM_MC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDERFIXEDs">
+            <EntityTypeMapping TypeName="ServiceModel.ORDERFIXED">
+              <MappingFragment StoreEntitySet="ORDERFIXED">
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+                <ScalarProperty Name="engineer4" ColumnName="engineer4" />
+                <ScalarProperty Name="engcode4" ColumnName="engcode4" />
+                <ScalarProperty Name="engineer3" ColumnName="engineer3" />
+                <ScalarProperty Name="engcode3" ColumnName="engcode3" />
+                <ScalarProperty Name="engineer2" ColumnName="engineer2" />
+                <ScalarProperty Name="engcode2" ColumnName="engcode2" />
+                <ScalarProperty Name="engineer1" ColumnName="engineer1" />
+                <ScalarProperty Name="engcode1" ColumnName="engcode1" />
+                <ScalarProperty Name="fixeddetail" ColumnName="fixeddetail" />
+                <ScalarProperty Name="datefixed" ColumnName="datefixed" />
+                <ScalarProperty Name="s_order" ColumnName="s_order" />
+                <ScalarProperty Name="ordercode" ColumnName="ordercode" />
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+                <ScalarProperty Name="lineid" ColumnName="lineid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTS">
+            <EntityTypeMapping TypeName="ServiceModel.PRODUCT">
+              <MappingFragment StoreEntitySet="PRODUCTS">
+                <ScalarProperty Name="productpic" ColumnName="productpic" />
+                <ScalarProperty Name="isBuyForTread" ColumnName="isBuyForTread" />
+                <ScalarProperty Name="isSpecialProduct" ColumnName="isSpecialProduct" />
+                <ScalarProperty Name="isOffProduction" ColumnName="isOffProduction" />
+                <ScalarProperty Name="isOwnProduct" ColumnName="isOwnProduct" />
+                <ScalarProperty Name="hasAfterSaleService" ColumnName="hasAfterSaleService" />
+                <ScalarProperty Name="products" ColumnName="products" />
+                <ScalarProperty Name="productGroupID" ColumnName="productGroupID" />
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDERMAINTENANCEs">
+            <EntityTypeMapping TypeName="ServiceModel.ORDERMAINTENANCE">
+              <MappingFragment StoreEntitySet="ORDERMAINTENANCE">
+                <ScalarProperty Name="nochargedetail" ColumnName="nochargedetail" />
+                <ScalarProperty Name="isnocharge" ColumnName="isnocharge" />
+                <ScalarProperty Name="modidt" ColumnName="modidt" />
+                <ScalarProperty Name="modiuser" ColumnName="modiuser" />
+                <ScalarProperty Name="auditdt" ColumnName="auditdt" />
+                <ScalarProperty Name="audituser" ColumnName="audituser" />
+                <ScalarProperty Name="invoiceno" ColumnName="invoiceno" />
+                <ScalarProperty Name="otherdetails" ColumnName="otherdetails" />
+                <ScalarProperty Name="othercost" ColumnName="othercost" />
+                <ScalarProperty Name="sparepartcost" ColumnName="sparepartcost" />
+                <ScalarProperty Name="servicecost" ColumnName="servicecost" />
+                <ScalarProperty Name="inWarrantyService" ColumnName="inWarrantyService" />
+                <ScalarProperty Name="finishdate" ColumnName="finishdate" />
+                <ScalarProperty Name="duedate" ColumnName="duedate" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="fiscyear" ColumnName="fiscyear" />
+                <ScalarProperty Name="period" ColumnName="period" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="error" ColumnName="error" />
+                <ScalarProperty Name="errorcode" ColumnName="errorcode" />
+                <ScalarProperty Name="s_no" ColumnName="s_no" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="cus_na" ColumnName="cus_na" />
+                <ScalarProperty Name="acccustcode" ColumnName="acccustcode" />
+                <ScalarProperty Name="custid" ColumnName="custid" />
+                <ScalarProperty Name="or_date" ColumnName="or_date" />
+                <ScalarProperty Name="ordercountno" ColumnName="ordercountno" />
+                <ScalarProperty Name="yearservice" ColumnName="yearservice" />
+                <ScalarProperty Name="s_order" ColumnName="s_order" />
+                <ScalarProperty Name="orderCode" ColumnName="orderCode" />
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+                <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+                <ScalarProperty Name="actionpiority" ColumnName="actionpiority" />
+                <ScalarProperty Name="orderTypeid" ColumnName="orderTypeid" />
+                <ScalarProperty Name="pmAppointDate" ColumnName="pmAppointDate" />
+                <ScalarProperty Name="pmschline" ColumnName="pmschline" />
+                <ScalarProperty Name="pmmasterline" ColumnName="pmmasterline" />
+                <ScalarProperty Name="isPM" ColumnName="isPM" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDERSPAREPARTS">
+            <EntityTypeMapping TypeName="ServiceModel.ORDERSPAREPART">
+              <MappingFragment StoreEntitySet="ORDERSPAREPARTS">
+                <ScalarProperty Name="modidt" ColumnName="modidt" />
+                <ScalarProperty Name="modiuser" ColumnName="modiuser" />
+                <ScalarProperty Name="auditdt" ColumnName="auditdt" />
+                <ScalarProperty Name="audituser" ColumnName="audituser" />
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+                <ScalarProperty Name="itemremark" ColumnName="itemremark" />
+                <ScalarProperty Name="totalprice" ColumnName="totalprice" />
+                <ScalarProperty Name="netuprice" ColumnName="netuprice" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="uprice" ColumnName="uprice" />
+                <ScalarProperty Name="ucost" ColumnName="ucost" />
+                <ScalarProperty Name="qtyneed" ColumnName="qtyneed" />
+                <ScalarProperty Name="uom" ColumnName="uom" />
+                <ScalarProperty Name="itemname" ColumnName="itemname" />
+                <ScalarProperty Name="itemno" ColumnName="itemno" />
+                <ScalarProperty Name="indatabase" ColumnName="indatabase" />
+                <ScalarProperty Name="s_order" ColumnName="s_order" />
+                <ScalarProperty Name="ordercode" ColumnName="ordercode" />
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+                <ScalarProperty Name="dateneed" ColumnName="dateneed" />
+                <ScalarProperty Name="issueno" ColumnName="issueno" />
+                <ScalarProperty Name="spLine" ColumnName="spLine" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PMSCHEDULEs">
+            <EntityTypeMapping TypeName="ServiceModel.PMSCHEDULE">
+              <MappingFragment StoreEntitySet="PMSCHEDULE">
+                <ScalarProperty Name="LASTMODIFY" ColumnName="LASTMODIFY" />
+                <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+                <ScalarProperty Name="PMJobNo" ColumnName="PMJobNo" />
+                <ScalarProperty Name="ActualPMDate" ColumnName="ActualPMDate" />
+                <ScalarProperty Name="PMDate" ColumnName="PMDate" />
+                <ScalarProperty Name="PM_series" ColumnName="PM_series" />
+                <ScalarProperty Name="MC_Key" ColumnName="MC_Key" />
+                <ScalarProperty Name="sch_id" ColumnName="sch_id" />
+                <ScalarProperty Name="iscomplete" ColumnName="iscomplete" />
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+				</EntityContainerMapping>
+			</Mapping>
+		</edmx:Mappings>
+	</edmx:Runtime>
+	<!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+	<Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+		<Connection>
+			<DesignerInfoPropertySet>
+				<DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+			</DesignerInfoPropertySet>
+		</Connection>
+		<Options>
+			<DesignerInfoPropertySet>
+				<DesignerProperty Name="ValidateOnBuild" Value="true" />
+				<DesignerProperty Name="EnablePluralization" Value="true" />
+				<DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+				<DesignerProperty Name="UseLegacyProvider" Value="false" />
+				<DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+			</DesignerInfoPropertySet>
+		</Options>
+		<!-- Diagram content (shape and connector positions) -->
+		<Diagrams></Diagrams>
+	</Designer>
+</edmx:Edmx>
