@@ -29,9 +29,9 @@
 		private void InitializeComponent()
 		{
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WHMonitor));
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WHMonitor));
 			this.pnlTop = new System.Windows.Forms.Panel();
 			this.label1 = new System.Windows.Forms.Label();
 			this.panel2 = new System.Windows.Forms.Panel();
@@ -44,9 +44,6 @@
 			this.pnlSearch = new System.Windows.Forms.Panel();
 			this.label2 = new System.Windows.Forms.Label();
 			this.lbCatCode = new System.Windows.Forms.Label();
-			this.cbxSearchType = new System.Windows.Forms.ComboBox();
-			this.txtFilter = new System.Windows.Forms.TextBox();
-			this.btnSearch = new OMControls.OMFlatButton();
 			this.splitter2 = new System.Windows.Forms.Splitter();
 			this.pnlRightTop = new System.Windows.Forms.Panel();
 			this.dgv = new System.Windows.Forms.DataGridView();
@@ -54,6 +51,9 @@
 			this.pnlLeft = new System.Windows.Forms.Panel();
 			this.pic1 = new System.Windows.Forms.PictureBox();
 			this.pnlHolder = new System.Windows.Forms.Panel();
+			this.cbxSearchType = new System.Windows.Forms.ComboBox();
+			this.txtFilter = new System.Windows.Forms.TextBox();
+			this.btnSearch = new OMControls.OMFlatButton();
 			this.pnlTop.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.pnlRightBottom.SuspendLayout();
@@ -110,9 +110,9 @@
 			this.pnlRightBottom.Controls.Add(this.panel1);
 			this.pnlRightBottom.Controls.Add(this.pnlSearch);
 			this.pnlRightBottom.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pnlRightBottom.Location = new System.Drawing.Point(138, 208);
+			this.pnlRightBottom.Location = new System.Drawing.Point(138, 159);
 			this.pnlRightBottom.Name = "pnlRightBottom";
-			this.pnlRightBottom.Size = new System.Drawing.Size(788, 280);
+			this.pnlRightBottom.Size = new System.Drawing.Size(788, 329);
 			this.pnlRightBottom.TabIndex = 5;
 			// 
 			// dgvOnHand
@@ -132,9 +132,10 @@
 			this.dgvOnHand.GridColor = System.Drawing.Color.White;
 			this.dgvOnHand.Location = new System.Drawing.Point(0, 30);
 			this.dgvOnHand.Name = "dgvOnHand";
-			this.dgvOnHand.Size = new System.Drawing.Size(788, 223);
+			this.dgvOnHand.Size = new System.Drawing.Size(788, 272);
 			this.dgvOnHand.TabIndex = 7;
 			this.dgvOnHand.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOnHand_CellEnter);
+			this.dgvOnHand.DoubleClick += new System.EventHandler(this.dgvOnHand_DoubleClick);
 			// 
 			// panel1
 			// 
@@ -143,7 +144,7 @@
 			this.panel1.Controls.Add(this.lbItemId);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.panel1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.panel1.Location = new System.Drawing.Point(0, 253);
+			this.panel1.Location = new System.Drawing.Point(0, 302);
 			this.panel1.Name = "panel1";
 			this.panel1.Padding = new System.Windows.Forms.Padding(1);
 			this.panel1.Size = new System.Drawing.Size(788, 27);
@@ -178,11 +179,11 @@
 			// 
 			// pnlSearch
 			// 
+			this.pnlSearch.Controls.Add(this.btnSearch);
+			this.pnlSearch.Controls.Add(this.txtFilter);
+			this.pnlSearch.Controls.Add(this.cbxSearchType);
 			this.pnlSearch.Controls.Add(this.label2);
 			this.pnlSearch.Controls.Add(this.lbCatCode);
-			this.pnlSearch.Controls.Add(this.cbxSearchType);
-			this.pnlSearch.Controls.Add(this.txtFilter);
-			this.pnlSearch.Controls.Add(this.btnSearch);
 			this.pnlSearch.Dock = System.Windows.Forms.DockStyle.Top;
 			this.pnlSearch.Location = new System.Drawing.Point(0, 0);
 			this.pnlSearch.Name = "pnlSearch";
@@ -192,9 +193,9 @@
 			// 
 			// label2
 			// 
-			this.label2.Dock = System.Windows.Forms.DockStyle.Right;
+			this.label2.Dock = System.Windows.Forms.DockStyle.Left;
 			this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label2.Location = new System.Drawing.Point(337, 2);
+			this.label2.Location = new System.Drawing.Point(159, 2);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(75, 26);
 			this.label2.TabIndex = 4;
@@ -211,47 +212,10 @@
 			this.lbCatCode.TabIndex = 3;
 			this.lbCatCode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// cbxSearchType
-			// 
-			this.cbxSearchType.Dock = System.Windows.Forms.DockStyle.Right;
-			this.cbxSearchType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbxSearchType.FormattingEnabled = true;
-			this.cbxSearchType.Location = new System.Drawing.Point(412, 2);
-			this.cbxSearchType.Name = "cbxSearchType";
-			this.cbxSearchType.Size = new System.Drawing.Size(115, 25);
-			this.cbxSearchType.TabIndex = 2;
-			this.cbxSearchType.SelectedIndexChanged += new System.EventHandler(this.cbxSearchType_SelectedIndexChanged);
-			// 
-			// txtFilter
-			// 
-			this.txtFilter.Dock = System.Windows.Forms.DockStyle.Right;
-			this.txtFilter.Location = new System.Drawing.Point(527, 2);
-			this.txtFilter.MaxLength = 50;
-			this.txtFilter.Name = "txtFilter";
-			this.txtFilter.Size = new System.Drawing.Size(233, 25);
-			this.txtFilter.TabIndex = 1;
-			this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
-			this.txtFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilter_KeyPress);
-			// 
-			// btnSearch
-			// 
-			this.btnSearch.Dock = System.Windows.Forms.DockStyle.Right;
-			this.btnSearch.FlatAppearance.BorderSize = 0;
-			this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
-			this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-			this.btnSearch.Location = new System.Drawing.Point(760, 2);
-			this.btnSearch.Name = "btnSearch";
-			this.btnSearch.Size = new System.Drawing.Size(26, 26);
-			this.btnSearch.TabIndex = 0;
-			this.btnSearch.UseVisualStyleBackColor = true;
-			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-			// 
 			// splitter2
 			// 
 			this.splitter2.Dock = System.Windows.Forms.DockStyle.Top;
-			this.splitter2.Location = new System.Drawing.Point(138, 202);
+			this.splitter2.Location = new System.Drawing.Point(138, 153);
 			this.splitter2.Name = "splitter2";
 			this.splitter2.Size = new System.Drawing.Size(788, 6);
 			this.splitter2.TabIndex = 4;
@@ -263,7 +227,7 @@
 			this.pnlRightTop.Dock = System.Windows.Forms.DockStyle.Top;
 			this.pnlRightTop.Location = new System.Drawing.Point(138, 2);
 			this.pnlRightTop.Name = "pnlRightTop";
-			this.pnlRightTop.Size = new System.Drawing.Size(788, 200);
+			this.pnlRightTop.Size = new System.Drawing.Size(788, 151);
 			this.pnlRightTop.TabIndex = 3;
 			// 
 			// dgv
@@ -290,7 +254,7 @@
 			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
 			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 			this.dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-			this.dgv.Size = new System.Drawing.Size(788, 200);
+			this.dgv.Size = new System.Drawing.Size(788, 151);
 			this.dgv.TabIndex = 6;
 			this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEnter);
 			this.dgv.DoubleClick += new System.EventHandler(this.dgv_DoubleClick);
@@ -335,6 +299,45 @@
 			this.pnlHolder.Size = new System.Drawing.Size(120, 195);
 			this.pnlHolder.TabIndex = 0;
 			// 
+			// cbxSearchType
+			// 
+			this.cbxSearchType.Dock = System.Windows.Forms.DockStyle.Left;
+			this.cbxSearchType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbxSearchType.FormattingEnabled = true;
+			this.cbxSearchType.Location = new System.Drawing.Point(234, 2);
+			this.cbxSearchType.Name = "cbxSearchType";
+			this.cbxSearchType.Size = new System.Drawing.Size(115, 25);
+			this.cbxSearchType.TabIndex = 5;
+			this.cbxSearchType.Visible = false;
+			this.cbxSearchType.SelectedIndexChanged += new System.EventHandler(this.cbxSearchType_SelectedIndexChanged);
+			// 
+			// txtFilter
+			// 
+			this.txtFilter.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+			this.txtFilter.Dock = System.Windows.Forms.DockStyle.Left;
+			this.txtFilter.Location = new System.Drawing.Point(349, 2);
+			this.txtFilter.MaxLength = 50;
+			this.txtFilter.Name = "txtFilter";
+			this.txtFilter.Size = new System.Drawing.Size(233, 25);
+			this.txtFilter.TabIndex = 6;
+			this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
+			this.txtFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilter_KeyPress);
+			// 
+			// btnSearch
+			// 
+			this.btnSearch.Dock = System.Windows.Forms.DockStyle.Left;
+			this.btnSearch.FlatAppearance.BorderSize = 0;
+			this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
+			this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
+			this.btnSearch.Location = new System.Drawing.Point(582, 2);
+			this.btnSearch.Name = "btnSearch";
+			this.btnSearch.Size = new System.Drawing.Size(26, 26);
+			this.btnSearch.TabIndex = 7;
+			this.btnSearch.UseVisualStyleBackColor = true;
+			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+			// 
 			// WHMonitor
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -371,9 +374,6 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Panel pnlRightBottom;
 		private System.Windows.Forms.Panel pnlSearch;
-		private System.Windows.Forms.ComboBox cbxSearchType;
-		private System.Windows.Forms.TextBox txtFilter;
-		private OMControls.OMFlatButton btnSearch;
 		private System.Windows.Forms.Splitter splitter2;
 		private System.Windows.Forms.Panel pnlRightTop;
 		private System.Windows.Forms.DataGridView dgv;
@@ -386,5 +386,8 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Panel pnlHolder;
 		private System.Windows.Forms.PictureBox pic1;
+		private OMControls.OMFlatButton btnSearch;
+		private System.Windows.Forms.TextBox txtFilter;
+		private System.Windows.Forms.ComboBox cbxSearchType;
 	}
 }

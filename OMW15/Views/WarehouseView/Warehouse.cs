@@ -126,6 +126,7 @@ namespace OMW15.Views.WarehouseView
 		public Warehouse()
 		{
 			InitializeComponent();
+
 			setupWarehouseMenus();
 		}
 

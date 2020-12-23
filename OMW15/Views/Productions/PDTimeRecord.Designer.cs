@@ -58,6 +58,7 @@
 			this.splitter1 = new System.Windows.Forms.Splitter();
 			this.pnlList = new System.Windows.Forms.Panel();
 			this.pnlChart = new System.Windows.Forms.Panel();
+			this.chkShowTimeRecord = new System.Windows.Forms.CheckBox();
 			this.workerTimeRecord1 = new OMW15.Views.Productions.ProductionUserControl.WorkerTimeRecord();
 			this.pnlHeader.SuspendLayout();
 			this.pnlDetail.SuspendLayout();
@@ -88,9 +89,9 @@
 			// 
 			this.lbWorkMonth.Dock = System.Windows.Forms.DockStyle.Left;
 			this.lbWorkMonth.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbWorkMonth.Location = new System.Drawing.Point(334, 4);
+			this.lbWorkMonth.Location = new System.Drawing.Point(278, 4);
 			this.lbWorkMonth.Name = "lbWorkMonth";
-			this.lbWorkMonth.Size = new System.Drawing.Size(96, 40);
+			this.lbWorkMonth.Size = new System.Drawing.Size(40, 40);
 			this.lbWorkMonth.TabIndex = 9;
 			this.lbWorkMonth.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			// 
@@ -100,7 +101,7 @@
 			this.lbWorkYear.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbWorkYear.Location = new System.Drawing.Point(238, 4);
 			this.lbWorkYear.Name = "lbWorkYear";
-			this.lbWorkYear.Size = new System.Drawing.Size(96, 40);
+			this.lbWorkYear.Size = new System.Drawing.Size(40, 40);
 			this.lbWorkYear.TabIndex = 8;
 			this.lbWorkYear.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			// 
@@ -303,6 +304,7 @@
 			// 
 			// panel1
 			// 
+			this.panel1.Controls.Add(this.chkShowTimeRecord);
 			this.panel1.Controls.Add(this.btnClose);
 			this.panel1.Controls.Add(this.btnFindData);
 			this.panel1.Controls.Add(this.cbxMonth);
@@ -473,6 +475,23 @@
 			this.pnlChart.Size = new System.Drawing.Size(1125, 236);
 			this.pnlChart.TabIndex = 0;
 			// 
+			// chkShowTimeRecord
+			// 
+			this.chkShowTimeRecord.AutoSize = true;
+			this.chkShowTimeRecord.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.chkShowTimeRecord.Checked = true;
+			this.chkShowTimeRecord.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.chkShowTimeRecord.Dock = System.Windows.Forms.DockStyle.Left;
+			this.chkShowTimeRecord.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.chkShowTimeRecord.Location = new System.Drawing.Point(798, 3);
+			this.chkShowTimeRecord.Name = "chkShowTimeRecord";
+			this.chkShowTimeRecord.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+			this.chkShowTimeRecord.Size = new System.Drawing.Size(129, 30);
+			this.chkShowTimeRecord.TabIndex = 13;
+			this.chkShowTimeRecord.Text = "แสดง chart ";
+			this.chkShowTimeRecord.UseVisualStyleBackColor = true;
+			this.chkShowTimeRecord.CheckedChanged += new System.EventHandler(this.chkShowTimeRecord_CheckedChanged);
+			// 
 			// workerTimeRecord1
 			// 
 			this.workerTimeRecord1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -510,6 +529,7 @@
 			this.panel6.ResumeLayout(false);
 			this.panel2.ResumeLayout(false);
 			this.panel1.ResumeLayout(false);
+			this.panel1.PerformLayout();
 			this.pnlList.ResumeLayout(false);
 			this.pnlChart.ResumeLayout(false);
 			this.ResumeLayout(false);
@@ -548,5 +568,6 @@
 		private ProductionUserControl.WorkerTimeRecord workerTimeRecord1;
 		private System.Windows.Forms.Label lbWorkMonth;
 		private System.Windows.Forms.Label lbWorkYear;
+		private System.Windows.Forms.CheckBox chkShowTimeRecord;
 	}
 }

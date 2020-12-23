@@ -93,6 +93,7 @@ namespace OMW15.Views.Productions.ProductionUserControl
 			string totalTimeSeries = "Total";
 
 			chart1.Series.Clear();
+			chart1.SuspendLayout();
 
 			//chart1.ChartAreas.SuspendUpdates();
 			chart1.Titles[0].Text = $"Time record in {workMonth}/{workYear}";
@@ -159,6 +160,7 @@ namespace OMW15.Views.Productions.ProductionUserControl
 				chart1.Series[totalTimeSeries].Points.AddXY(dr[0].ToString(), Convert.ToDouble(dr[3]));
 			}
 
+			chart1.ResumeLayout();
 			chart1.Update();
 
 		}

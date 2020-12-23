@@ -25,9 +25,10 @@ namespace OMW15.Views.WarehouseView
 		#endregion
 
 		#region class field member
-		private string _selectedCategoryCode;
-		private int _selectedItemId;
-		private int _selectedSearchIndex;
+		private string _selectedCategoryCode = "";
+		private string _selectedItemNo = "";
+		private int _selectedItemId = 0;
+		private int _selectedSearchIndex = 0;
 
 		#endregion
 
@@ -38,13 +39,13 @@ namespace OMW15.Views.WarehouseView
 		public WHMonitor()
 		{
 			InitializeComponent();
+			CenterToParent();
+			OMUtils.SettingDataGridView(ref dgv);
+			OMUtils.SettingDataGridView(ref dgvOnHand);
 		}
 
 		private void WHMonitor_Load(object sender, EventArgs e)
 		{
-			CenterToParent();
-			OMUtils.SettingDataGridView(ref dgv);
-			OMUtils.SettingDataGridView(ref dgvOnHand);
 
 			// establish search type list
 			getSearchType();
@@ -85,9 +86,11 @@ namespace OMW15.Views.WarehouseView
 
 		private void dgvOnHand_CellEnter(object sender, DataGridViewCellEventArgs e)
 		{
-			_selectedItemId = Convert.ToInt32(dgvOnHand["ID", e.RowIndex].Value);
-			this.getItemMasterImage(dgvOnHand["ITEMNO", e.RowIndex].Value.ToString());
-			lbId.Text = $"Item Id :: {_selectedItemId}";
+			//_selectedItemId = Convert.ToInt32(dgvOnHand["ID", e.RowIndex].Value);
+
+			_selectedItemNo = dgvOnHand["ITEMNO", e.RowIndex].Value.ToString();
+			this.getItemMasterImage(_selectedItemNo);
+			//lbId.Text = $"Item Id :: {_selectedItemId}";
 
 			updateStatusMonitor();
 		}
@@ -100,7 +103,7 @@ namespace OMW15.Views.WarehouseView
 
 		private void dgvOnHand_DoubleClick(object sender, EventArgs e)
 		{
-			var _scd = new WHStockCard(_selectedItemId);
+			var _scd = new WHStockCard(_selectedItemNo);
 			_scd.StartPosition = FormStartPosition.CenterScreen;
 			_scd.MdiParent = ParentForm;
 			_scd.Show();
@@ -132,15 +135,16 @@ namespace OMW15.Views.WarehouseView
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
 			var _searchPhase = "";
+			_searchPhase = $"ITEMNO LIKE '%{txtFilter.Text}%' OR ITEMNAME LIKE '%{txtFilter.Text}%' ";
 
-			if (_selectedSearchIndex == 0)
-			{
-				_searchPhase = $"ITEMNO LIKE '%{txtFilter.Text}%'";
-			}
-			else
-			{
-				_searchPhase = $"ITEMNAME LIKE '%{txtFilter.Text}%'";
-			}
+			//if (_selectedSearchIndex == 0)
+			//{
+			//	_searchPhase = $"ITEMNO LIKE '%{txtFilter.Text}%' OR ITEMNAME LIKE '%{txtFilter.Text}%' ";
+			//}
+			//else
+			//{
+			//	_searchPhase = $"ITEMNAME LIKE '%{txtFilter.Text}%'";
+			//}
 
 			(dgvOnHand.DataSource as DataTable).DefaultView.RowFilter = _searchPhase;
 
@@ -197,6 +201,8 @@ namespace OMW15.Views.WarehouseView
 			dgv.Columns["D"].HeaderText = $"D < {omglobal._classC}";
 			dgv.Columns["TOTAL"].HeaderText = "รวมทั้งสิ้น";
 
+			dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
 			dgv.ResumeLayout();
 
 		} // end GetStockSummaryByClass
@@ -216,18 +222,19 @@ namespace OMW15.Views.WarehouseView
 			dgvOnHand.DataSource = Source;
 			dgvOnHand.Columns["ON_HAND"].DefaultCellStyle.Font = new Font(dgvOnHand.DefaultCellStyle.Font, FontStyle.Bold);
 
-			dgvOnHand.Columns["ID"].Visible = false;
+			dgvOnHand.Columns["CAT_KEY"].Visible = false;
+
 			dgvOnHand.Columns["LOCATION"].HeaderText = "คลังวัสดุ";
 			dgvOnHand.Columns["ITEMNO"].HeaderText = "รหัสสินค้า";
 			dgvOnHand.Columns["ITEMNAME"].HeaderText = "รายละเอียด";
 			dgvOnHand.Columns["UNIT"].HeaderText = "หน่วยนับ";
 			dgvOnHand.Columns["UNIT_COST"].HeaderText = "ต้นทุนต่อหน่วย";
-			dgvOnHand.Columns["UNIT_PRICE"].HeaderText = "ราคาขายหน่วย";
+			//dgvOnHand.Columns["UNIT_PRICE"].HeaderText = "ราคาขายหน่วย";
 			dgvOnHand.Columns["ON_HAND"].HeaderText = "จำนวนคงคลัง";
 			dgvOnHand.Columns["MIN_QTY"].HeaderText = "จำนวนต่ำสุด";
-			dgvOnHand.Columns["MIN_ORDER"].HeaderText = "จำนวนสั่งต่ำสุด";
+			//dgvOnHand.Columns["MIN_ORDER"].HeaderText = "จำนวนสั่งต่ำสุด";
 			dgvOnHand.Columns["MAX_QTY"].HeaderText = "จำนวนสูงสุด";
-			dgvOnHand.Columns["MAX_ORDER"].HeaderText = "จำนวนสั่งสูงสุด";
+			//dgvOnHand.Columns["MAX_ORDER"].HeaderText = "จำนวนสั่งสูงสุด";
 
 			foreach (DataGridViewColumn dgc in dgvOnHand.Columns)
 			{
@@ -253,7 +260,7 @@ namespace OMW15.Views.WarehouseView
 
 		private void updateStatusMonitor()
 		{
-			lbItemId.Text = $"Item Id :: {_selectedItemId}";
+			//lbItemId.Text = $"Item Id :: {_selectedItemId}";
 			lbOnHandRowCount.Text = $"found :: {dgvOnHand.Rows.Count} รายการ";
 
 		} // end UpdateStatusMonitor

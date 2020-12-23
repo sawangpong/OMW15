@@ -290,30 +290,31 @@ namespace OMW15.Models.WarehouseModel
 			return await Task.Run(() =>
 			{
 				StringBuilder s = new StringBuilder();
-				s.AppendLine(" SELECT ");
-				s.AppendLine(" ID,");
-				s.AppendLine(" CLASS,");
-				s.AppendLine(" 'LOCATION' = WL_CODE,");
-				s.AppendLine(" ITEMNO,");
-				s.AppendLine(" ITEMNAME,");
-				s.AppendLine(" UNIT,");
-				s.AppendLine(" UNIT_COST,");
-				s.AppendLine(" UNIT_PRICE,");
-				s.AppendLine(" ON_HAND,");
-				s.AppendLine(" MIN_QTY,");
-				s.AppendLine(" MIN_ORDER,");
-				s.AppendLine(" MAX_QTY,");
-				s.AppendLine(" MAX_ORDER");
-				s.AppendLine(" FROM OM_ERP_WH_STOCK_ITEM_INFO itm");
-				s.AppendLine($" WHERE itm.CAT_CODE = '{categoryCode}'");
-				s.AppendLine(" ORDER BY ITEMNO ");
+				//s.AppendLine(" SELECT ");
+				//s.AppendLine(" ID,");
+				//s.AppendLine(" CLASS,");
+				//s.AppendLine(" 'LOCATION' = WL_CODE,");
+				//s.AppendLine(" ITEMNO,");
+				//s.AppendLine(" ITEMNAME,");
+				//s.AppendLine(" UNIT,");
+				//s.AppendLine(" UNIT_COST,");
+				//s.AppendLine(" UNIT_PRICE,");
+				//s.AppendLine(" ON_HAND,");
+				//s.AppendLine(" MIN_QTY,");
+				//s.AppendLine(" MIN_ORDER,");
+				//s.AppendLine(" MAX_QTY,");
+				//s.AppendLine(" MAX_ORDER");
+				//s.AppendLine(" FROM OM_ERP_WH_STOCK_ITEM_INFO itm");
+				//s.AppendLine($" WHERE itm.CAT_CODE = '{categoryCode}'");
+				//s.AppendLine(" ORDER BY ITEMNO ");
 
+				s.AppendLine($"EXEC dbo.usp_OM_ERP_WAREHOUSE_STOCK_ONHAND '{categoryCode}'");
 				return new DataConnect(s.ToString(), connectionString).ToDataTable;
 			});
 
 		} // end GetStockOnhandByCategoryGroup
 
-		public async Task<DataTable> getStockOnhandMovingInfoByItemId(int ItemId)
+		public async Task<DataTable> getStockOnhandMovingInfoByItemId(string itemNo)
 		{
 			return await Task.Run(() =>
 			{
@@ -321,7 +322,7 @@ namespace OMW15.Models.WarehouseModel
 							  join skm in _erp.SKUMOVEs on sku.SKU_KEY equals skm.SKM_SKU
 							  join di in _erp.DOCINFOes on skm.SKM_DI equals di.DI_KEY
 							  join u in _erp.UOFQTies on sku.SKU_S_UTQ equals u.UTQ_KEY
-							  where skm.SKM_SKU == ItemId
+							  where sku.SKU_CODE == itemNo
 							  select new
 							  {
 								  ID = sku.SKU_KEY,

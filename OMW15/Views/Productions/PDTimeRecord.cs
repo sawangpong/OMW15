@@ -34,16 +34,17 @@ namespace OMW15.Views.Productions
 		private string selectedWorkerName = "";
 		private string selectedRequestNo = "";
 		private int selectedWorkYear = DateTime.Today.Year;
+		private int _previousSelectedWorkYear = 0;
 		private int selectedWorkMonth = DateTime.Today.Month;
 		private int selectedTimeRecordId = 0;
 
 		private bool _loadingYearData = false;
 		private bool _loadingMonthData = false;
+		private bool _firstView = false;
 
 		private DataTable _dtworkProperties;
 
 		#endregion
-
 
 
 		#region class helper
@@ -66,17 +67,22 @@ namespace OMW15.Views.Productions
 
 		private void GetWorkYear(string workerCode)
 		{
-			_dtworkProperties = new ProductionDAL().GetYearForTimeRecord(workerCode);
+			if (_loadingYearData)
+			{
+				_dtworkProperties = new ProductionDAL().GetYearForTimeRecord(workerCode);
 
-			var _dt = (from yr in _dtworkProperties.AsEnumerable()
-						  select new
-						  {
-							  jobyear = yr.Field<int>("JOBYEAR")
-						  }).Distinct().ToDataTable();
+				var _dt = (from yr in _dtworkProperties.AsEnumerable()
+							  select new
+							  {
+								  jobyear = yr.Field<int>("JOBYEAR")
+							  }).Distinct().ToDataTable();
 
-			cbxYear.DataSource = _dt;
-			cbxYear.DisplayMember = "JOBYEAR";
-			cbxYear.ValueMember = "JOBYEAR";
+				cbxYear.DataSource = _dt;
+				cbxYear.DisplayMember = "JOBYEAR";
+				cbxYear.ValueMember = "JOBYEAR";
+
+				_loadingYearData = false;
+			}
 		}
 
 
@@ -100,24 +106,27 @@ namespace OMW15.Views.Productions
 			UpdateUI();
 		}
 
-
-
 		private void GetWorkMonth(string workerCode, int jobYear)
 		{
-			var _dtm = (from mm in _dtworkProperties.AsEnumerable()
-							where mm.Field<int>("JOBYEAR") == jobYear
-							select new
-							{
-								jobmonth = mm.Field<int>("JOBMONTH"),
-								jobmonthname = Convert.ToInt32(mm.Field<int>("JOBMONTH")).GetThaiMonthName()
-							}).Distinct().OrderByDescending(o => o.jobmonth).ToDataTable();
-
-			if (_dtm != null)
+			if (_loadingMonthData)
 			{
-				cbxMonth.DataSource = _dtm;
-				cbxMonth.DisplayMember = "JOBMONTHNAME";
-				cbxMonth.ValueMember = "JOBMONTH";
-				cbxMonth.SelectedIndex = 0;
+				var _dtm = (from mm in _dtworkProperties.AsEnumerable()
+								where mm.Field<int>("JOBYEAR") == jobYear
+								select new
+								{
+									jobmonth = mm.Field<int>("JOBMONTH"),
+									jobmonthname = Convert.ToInt32(mm.Field<int>("JOBMONTH")).GetThaiMonthName()
+								}).Distinct().OrderByDescending(o => o.jobmonth).ToDataTable();
+
+				if (_dtm != null)
+				{
+					cbxMonth.DataSource = _dtm;
+					cbxMonth.DisplayMember = "JOBMONTHNAME";
+					cbxMonth.ValueMember = "JOBMONTH";
+					cbxMonth.SelectedIndex = 0;
+				}
+
+				_loadingMonthData = false;
 			}
 		}
 
@@ -129,6 +138,21 @@ namespace OMW15.Views.Productions
 			dgv.SuspendLayout();
 			dgv.DataSource = new ProductionDAL().GetProductionTimeItemByWorker(workerCode, workYear, workMonth);
 
+			if (_firstView)
+			{
+				FormattingDataGrid();
+			}
+
+			dgv.ResumeLayout();
+
+			// display record found
+			lbRecordCount.Text = $"found : {dgv.Rows.Count} row(s)";
+
+			UpdateUI();
+		}
+
+		private void FormattingDataGrid()
+		{
 			// hide columns
 			dgv.Columns["RECORDID"].Visible = false;
 			dgv.Columns["PROCESSID"].Visible = false;
@@ -147,7 +171,7 @@ namespace OMW15.Views.Productions
 			dgv.Columns["TOTALQTY"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 			dgv.Columns["TOTALTIME"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-			//// fotmat headerText
+			// fotmat headerText
 			dgv.Columns["WORKDATE"].HeaderText = "วันที";
 			dgv.Columns["PRODUCTIONJOB"].HeaderText = "เลขที่ใบสั่งผลิต";
 			dgv.Columns["PROCESSNAME"].HeaderText = "ขั้นตอนการผลิต";
@@ -164,12 +188,7 @@ namespace OMW15.Views.Productions
 			dgv.Columns["GOODQTY"].HeaderText = "ชิ้นงานดี";
 			dgv.Columns["BADQTY"].HeaderText = "ชิ้นงานเสีย";
 
-			dgv.ResumeLayout();
-
-			// display record found
-			lbRecordCount.Text = $"found : {dgv.Rows.Count} row(s)";
-
-			UpdateUI();
+			_firstView = false;
 		}
 
 		private void TimeRecordInfo(int recordId, string requestNo, string workerCode, string workerName, string itemNo, string itemName)
@@ -214,6 +233,9 @@ namespace OMW15.Views.Productions
 			selectedWorkerName = "";
 			lbCode.Text = "";
 
+			_firstView = true;
+			chkShowTimeRecord.Checked = false;
+
 			this.GetWorker();
 		}
 
@@ -233,13 +255,16 @@ namespace OMW15.Views.Productions
 				if (e == null)
 					return;
 
-				//if (!_loadingYearData)
-				//{
 				selectedWorkYear = Convert.ToInt32(cbxYear.SelectedValue);
 				lbWorkYear.Text = $"{selectedWorkYear}";
-				//_loadingMonthData = true;
-				GetWorkMonth(selectedWorkerCode, selectedWorkYear);
-				//}
+
+				if (selectedWorkYear != _previousSelectedWorkYear)
+				{
+					_loadingMonthData = true;
+					GetWorkMonth(selectedWorkerCode, selectedWorkYear);
+					_previousSelectedWorkYear = selectedWorkYear;
+				}
+
 			}
 			catch
 			{
@@ -257,11 +282,8 @@ namespace OMW15.Views.Productions
 				if (e == null)
 					return;
 
-				//if (!_loadingMonthData)
-				//{
 				selectedWorkMonth = Convert.ToInt32(cbxMonth.SelectedValue);
 				lbWorkMonth.Text = $"{selectedWorkMonth}";
-				//}
 			}
 			catch
 			{
@@ -277,7 +299,10 @@ namespace OMW15.Views.Productions
 			GetTimeRecords(selectedWorkerCode, selectedWorkYear, selectedWorkMonth);
 
 			// Data for Graph
-			workerTimeRecord1.GetTimeRecordData(selectedWorkerCode, selectedWorkYear, selectedWorkMonth);
+			if (chkShowTimeRecord.Checked)
+			{
+				workerTimeRecord1.GetTimeRecordData(selectedWorkerCode, selectedWorkYear, selectedWorkMonth);
+			}
 		}
 
 		private void dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
@@ -335,6 +360,7 @@ namespace OMW15.Views.Productions
 				selectedWorkerCode = cbxWorker.SelectedValue.ToString();
 				selectedWorkerName = cbxWorker.Text;
 
+				_previousSelectedWorkYear = 0;
 				_loadingYearData = true;
 				GetWorkYear(selectedWorkerCode);
 			}
@@ -351,6 +377,15 @@ namespace OMW15.Views.Productions
 			UpdateUI();
 		}
 
+		private void chkShowTimeRecord_CheckedChanged(object sender, EventArgs e)
+		{
+			pnlList.Visible = chkShowTimeRecord.Checked;
+			pnlDetail.Dock = pnlList.Visible == true ? DockStyle.Top :  DockStyle.Fill;
 
+			if (chkShowTimeRecord.Checked)
+			{
+				workerTimeRecord1.GetTimeRecordData(selectedWorkerCode, selectedWorkYear, selectedWorkMonth);
+			}
+		}
 	}
 }

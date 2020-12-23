@@ -1,12 +1,12 @@
-﻿using System;
+﻿using OMControls;
+using OMW15.Controllers.ToolController;
+using OMW15.Controllers.WarehouseContoller;
+using OMW15.Models.WarehouseModel;
+using System;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using OMControls;
-using OMW15.Controllers.ToolController;
-using OMW15.Controllers.WarehouseContoller;
-using OMW15.Models.WarehouseModel;
 
 namespace OMW15.Views.WarehouseView
 {
@@ -14,17 +14,17 @@ namespace OMW15.Views.WarehouseView
 	{
 		#region class field
 
-		private readonly int _itemId;
+		private readonly string _itemNo;
 
 		#endregion
 
 		// CONSTRUCTOR 
-		public WHStockCard(int ItemNo = 0)
+		public WHStockCard(string ItemNo = "")
 		{
 			InitializeComponent();
 			OMUtils.SettingDataGridView(ref dgv);
 
-			_itemId = ItemNo;
+			_itemNo = ItemNo;
 		}
 
 		private void btnClose_Click(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace OMW15.Views.WarehouseView
 
 		private void btnReload_Click(object sender, EventArgs e)
 		{
-			GetStockMoveInfo(_itemId);
+			GetStockMoveInfo(_itemNo);
 		}
 
 		#region class property
@@ -50,14 +50,14 @@ namespace OMW15.Views.WarehouseView
 
 		private void UpdateUI()
 		{
-			txtItemNo.ReadOnly = _itemId == 0;
+			txtItemNo.ReadOnly = String.IsNullOrEmpty(_itemNo);
 			btnItemNoSearch.Enabled = !txtItemNo.ReadOnly;
 		} // end UpdateUI
 
-		private async void GetStockMoveInfo(int ItemId)
+		private async void GetStockMoveInfo(string itemNo)
 		{
 			var _stock = new WHDDAL();
-			var _dt = await _stock.getStockOnhandMovingInfoByItemId(ItemId);
+			var _dt = await _stock.getStockOnhandMovingInfoByItemId(itemNo);
 
 			// calculated Stock-Onhand for each giving itemId
 			CalculateStockOnhand(_dt);

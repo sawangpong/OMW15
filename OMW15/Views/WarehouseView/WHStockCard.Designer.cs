@@ -191,9 +191,19 @@
 			// 
 			// txtOnHand
 			// 
+			this.txtOnHand.AllowControl = true;
+			this.txtOnHand.AllowDecimal = true;
+			this.txtOnHand.AllowMultipleDecimals = true;
+			this.txtOnHand.AllowNegation = true;
 			this.txtOnHand.BackColor = System.Drawing.Color.DeepSkyBlue;
+			this.txtOnHand.DecimalValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
 			this.txtOnHand.Dock = System.Windows.Forms.DockStyle.Left;
 			this.txtOnHand.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtOnHand.IntegerValue = 0;
 			this.txtOnHand.Location = new System.Drawing.Point(265, 1);
 			this.txtOnHand.MaxLength = 15;
 			this.txtOnHand.Name = "txtOnHand";
