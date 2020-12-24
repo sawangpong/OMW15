@@ -32,11 +32,11 @@ namespace OMW15.Models.ServiceModel
 
 		} // end existMachine
 
-		public int deleteMachine(int machineId, string model, string serialno)
+		public int deleteMachine(int machineId, string model, string serialno, string customerCode)
 		{
 			int result = 0;
 
-			bool isDoService = _om.ORDERMAINTENANCEs.Any(x => x.type == model && x.s_no == serialno);
+			bool isDoService = _om.ORDERMAINTENANCEs.Any(x => x.type == model && x.s_no == serialno && x.acccustcode == customerCode);
 
 			if (isDoService == false)
 			{

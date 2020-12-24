@@ -152,7 +152,7 @@ namespace OMW15.Views.ServiceView
             // delete record
             if (MessageBox.Show("ต้องการลบรายการที่เลือกใช่หรือไม่?", "Delete Machine Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if (new Models.ServiceModel.MachineDAL().deleteMachine(_mcId, _machineModel, _selectedSN) > 0)
+                if (new Models.ServiceModel.MachineDAL().deleteMachine(_mcId, _machineModel, _selectedSN, _selectedCustCode) > 0)
                 {
                     MessageBox.Show("Delete record successfully...");
                 }

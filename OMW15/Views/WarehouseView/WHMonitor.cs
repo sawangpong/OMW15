@@ -30,6 +30,8 @@ namespace OMW15.Views.WarehouseView
 		private int _selectedItemId = 0;
 		private int _selectedSearchIndex = 0;
 
+		private DataTable dt = new DataTable();
+
 		#endregion
 
 		#region class property
@@ -53,6 +55,11 @@ namespace OMW15.Views.WarehouseView
 			// loading Stock summary (separate by class A,B,C,D
 			getStockSummaryByClassAsync();
 
+			// show on-hand stock be category
+			//getStockOnhandByCategoryAsync(_selectedCategoryCode);
+			getStockOnhandByCategoryAsync();
+
+			// update UI
 			updateUI();
 		}
 
@@ -146,7 +153,11 @@ namespace OMW15.Views.WarehouseView
 			//	_searchPhase = $"ITEMNAME LIKE '%{txtFilter.Text}%'";
 			//}
 
-			(dgvOnHand.DataSource as DataTable).DefaultView.RowFilter = _searchPhase;
+			//(dgvOnHand.DataSource as DataTable).DefaultView.RowFilter = _searchPhase;
+
+			dt.DefaultView.RowFilter = _searchPhase;
+
+			displayStockOnHand(dt);
 
 			updateStatusMonitor();
 		}
@@ -155,7 +166,7 @@ namespace OMW15.Views.WarehouseView
 
 		private void updateUI()
 		{
-			pnlSearch.Enabled = (dgvOnHand.Rows.Count > 0);
+			//pnlSearch.Enabled = (dgvOnHand.Rows.Count > 0);
 
 			btnSearch.Enabled = (!string.IsNullOrEmpty(txtFilter.Text));
 
@@ -207,12 +218,12 @@ namespace OMW15.Views.WarehouseView
 
 		} // end GetStockSummaryByClass
 
-		private async void getStockOnhandByCategoryAsync(string categoryCode)
+		private async void getStockOnhandByCategoryAsync(string categoryCode = "")
 		{
 			var _wh = new WHDDAL();
-			var dt = await _wh.getStockOnhandByCategoryGroupAsync(categoryCode, omglobal.SysConnectionString);
 
-			displayStockOnHand(dt);
+			dt = await _wh.getStockOnhandByCategoryGroupAsync(categoryCode, omglobal.SysConnectionString);
+
 
 		} // end ShowStockOnhand
 
@@ -223,6 +234,7 @@ namespace OMW15.Views.WarehouseView
 			dgvOnHand.Columns["ON_HAND"].DefaultCellStyle.Font = new Font(dgvOnHand.DefaultCellStyle.Font, FontStyle.Bold);
 
 			dgvOnHand.Columns["CAT_KEY"].Visible = false;
+			dgvOnHand.Columns["CAT_CODE"].Visible = false;
 
 			dgvOnHand.Columns["LOCATION"].HeaderText = "คลังวัสดุ";
 			dgvOnHand.Columns["ITEMNO"].HeaderText = "รหัสสินค้า";
@@ -243,6 +255,9 @@ namespace OMW15.Views.WarehouseView
 					dgc.DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
 				}
 			}
+
+
+			dgvOnHand.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
 			dgvOnHand.ResumeLayout();
 			updateUI();
@@ -273,9 +288,6 @@ namespace OMW15.Views.WarehouseView
 			{
 				// clear search textbox
 				this.txtFilter.Text = "";
-
-				// show on-hand stock be category
-				getStockOnhandByCategoryAsync(_selectedCategoryCode);
 			}
 		}
 

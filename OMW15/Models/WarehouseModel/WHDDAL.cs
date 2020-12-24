@@ -290,24 +290,6 @@ namespace OMW15.Models.WarehouseModel
 			return await Task.Run(() =>
 			{
 				StringBuilder s = new StringBuilder();
-				//s.AppendLine(" SELECT ");
-				//s.AppendLine(" ID,");
-				//s.AppendLine(" CLASS,");
-				//s.AppendLine(" 'LOCATION' = WL_CODE,");
-				//s.AppendLine(" ITEMNO,");
-				//s.AppendLine(" ITEMNAME,");
-				//s.AppendLine(" UNIT,");
-				//s.AppendLine(" UNIT_COST,");
-				//s.AppendLine(" UNIT_PRICE,");
-				//s.AppendLine(" ON_HAND,");
-				//s.AppendLine(" MIN_QTY,");
-				//s.AppendLine(" MIN_ORDER,");
-				//s.AppendLine(" MAX_QTY,");
-				//s.AppendLine(" MAX_ORDER");
-				//s.AppendLine(" FROM OM_ERP_WH_STOCK_ITEM_INFO itm");
-				//s.AppendLine($" WHERE itm.CAT_CODE = '{categoryCode}'");
-				//s.AppendLine(" ORDER BY ITEMNO ");
-
 				s.AppendLine($"EXEC dbo.usp_OM_ERP_WAREHOUSE_STOCK_ONHAND '{categoryCode}'");
 				return new DataConnect(s.ToString(), connectionString).ToDataTable;
 			});

@@ -29,9 +29,9 @@
 		private void InitializeComponent()
 		{
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WHMonitor));
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WHMonitor));
 			this.pnlTop = new System.Windows.Forms.Panel();
 			this.label1 = new System.Windows.Forms.Label();
 			this.panel2 = new System.Windows.Forms.Panel();
@@ -42,6 +42,9 @@
 			this.lbOnHandRowCount = new System.Windows.Forms.Label();
 			this.lbItemId = new System.Windows.Forms.Label();
 			this.pnlSearch = new System.Windows.Forms.Panel();
+			this.btnSearch = new OMControls.OMFlatButton();
+			this.txtFilter = new System.Windows.Forms.TextBox();
+			this.cbxSearchType = new System.Windows.Forms.ComboBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.lbCatCode = new System.Windows.Forms.Label();
 			this.splitter2 = new System.Windows.Forms.Splitter();
@@ -51,9 +54,6 @@
 			this.pnlLeft = new System.Windows.Forms.Panel();
 			this.pic1 = new System.Windows.Forms.PictureBox();
 			this.pnlHolder = new System.Windows.Forms.Panel();
-			this.cbxSearchType = new System.Windows.Forms.ComboBox();
-			this.txtFilter = new System.Windows.Forms.TextBox();
-			this.btnSearch = new OMControls.OMFlatButton();
 			this.pnlTop.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.pnlRightBottom.SuspendLayout();
@@ -191,6 +191,45 @@
 			this.pnlSearch.Size = new System.Drawing.Size(788, 30);
 			this.pnlSearch.TabIndex = 0;
 			// 
+			// btnSearch
+			// 
+			this.btnSearch.Dock = System.Windows.Forms.DockStyle.Left;
+			this.btnSearch.FlatAppearance.BorderSize = 0;
+			this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
+			this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
+			this.btnSearch.Location = new System.Drawing.Point(582, 2);
+			this.btnSearch.Name = "btnSearch";
+			this.btnSearch.Size = new System.Drawing.Size(26, 26);
+			this.btnSearch.TabIndex = 7;
+			this.btnSearch.UseVisualStyleBackColor = true;
+			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+			// 
+			// txtFilter
+			// 
+			this.txtFilter.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+			this.txtFilter.Dock = System.Windows.Forms.DockStyle.Left;
+			this.txtFilter.Location = new System.Drawing.Point(349, 2);
+			this.txtFilter.MaxLength = 50;
+			this.txtFilter.Name = "txtFilter";
+			this.txtFilter.Size = new System.Drawing.Size(233, 25);
+			this.txtFilter.TabIndex = 6;
+			this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
+			this.txtFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilter_KeyPress);
+			// 
+			// cbxSearchType
+			// 
+			this.cbxSearchType.Dock = System.Windows.Forms.DockStyle.Left;
+			this.cbxSearchType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbxSearchType.FormattingEnabled = true;
+			this.cbxSearchType.Location = new System.Drawing.Point(234, 2);
+			this.cbxSearchType.Name = "cbxSearchType";
+			this.cbxSearchType.Size = new System.Drawing.Size(115, 25);
+			this.cbxSearchType.TabIndex = 5;
+			this.cbxSearchType.Visible = false;
+			this.cbxSearchType.SelectedIndexChanged += new System.EventHandler(this.cbxSearchType_SelectedIndexChanged);
+			// 
 			// label2
 			// 
 			this.label2.Dock = System.Windows.Forms.DockStyle.Left;
@@ -211,6 +250,7 @@
 			this.lbCatCode.Size = new System.Drawing.Size(157, 26);
 			this.lbCatCode.TabIndex = 3;
 			this.lbCatCode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.lbCatCode.Visible = false;
 			// 
 			// splitter2
 			// 
@@ -298,45 +338,6 @@
 			this.pnlHolder.Name = "pnlHolder";
 			this.pnlHolder.Size = new System.Drawing.Size(120, 195);
 			this.pnlHolder.TabIndex = 0;
-			// 
-			// cbxSearchType
-			// 
-			this.cbxSearchType.Dock = System.Windows.Forms.DockStyle.Left;
-			this.cbxSearchType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbxSearchType.FormattingEnabled = true;
-			this.cbxSearchType.Location = new System.Drawing.Point(234, 2);
-			this.cbxSearchType.Name = "cbxSearchType";
-			this.cbxSearchType.Size = new System.Drawing.Size(115, 25);
-			this.cbxSearchType.TabIndex = 5;
-			this.cbxSearchType.Visible = false;
-			this.cbxSearchType.SelectedIndexChanged += new System.EventHandler(this.cbxSearchType_SelectedIndexChanged);
-			// 
-			// txtFilter
-			// 
-			this.txtFilter.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-			this.txtFilter.Dock = System.Windows.Forms.DockStyle.Left;
-			this.txtFilter.Location = new System.Drawing.Point(349, 2);
-			this.txtFilter.MaxLength = 50;
-			this.txtFilter.Name = "txtFilter";
-			this.txtFilter.Size = new System.Drawing.Size(233, 25);
-			this.txtFilter.TabIndex = 6;
-			this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
-			this.txtFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilter_KeyPress);
-			// 
-			// btnSearch
-			// 
-			this.btnSearch.Dock = System.Windows.Forms.DockStyle.Left;
-			this.btnSearch.FlatAppearance.BorderSize = 0;
-			this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
-			this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-			this.btnSearch.Location = new System.Drawing.Point(582, 2);
-			this.btnSearch.Name = "btnSearch";
-			this.btnSearch.Size = new System.Drawing.Size(26, 26);
-			this.btnSearch.TabIndex = 7;
-			this.btnSearch.UseVisualStyleBackColor = true;
-			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
 			// 
 			// WHMonitor
 			// 

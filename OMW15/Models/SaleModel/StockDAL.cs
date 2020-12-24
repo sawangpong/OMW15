@@ -32,7 +32,7 @@ namespace OMW15.Models.SaleModel
 			return await Task.Run(() =>
 			{
 				var _result = new DataTable();
- 				var pr = (from g in _erp.GOODSMASTERs
+				var pr = (from g in _erp.GOODSMASTERs
 						  join p in _erp.ARPLUs on g.GOODS_KEY equals p.ARPLU_GOODS
 						  orderby g.GOODS_SKU
 						  where p.ARPLU_ARPRB == 1
@@ -76,7 +76,7 @@ namespace OMW15.Models.SaleModel
 							_result = _items.ToDataTable();
 						break;
 				}
- 				return _result;
+				return _result;
 			});
   
 		} // end GetMasterItemsAsync
@@ -87,14 +87,14 @@ namespace OMW15.Models.SaleModel
 			var _result = new DataTable();
 
 			var cat = (from sku in _erp.SKUMASTERs
-					   join iccat in _erp.ICCATs
-					   on sku.SKU_ICCAT equals iccat.ICCAT_KEY
-					   where _cats.Contains(sku.SKU_ICCAT)
-					   select new
-					   {
-						   key = sku.SKU_ICCAT,
-						   name = iccat.ICCAT_NAME
-					   }).Distinct();
+						join iccat in _erp.ICCATs
+						on sku.SKU_ICCAT equals iccat.ICCAT_KEY
+						where _cats.Contains(sku.SKU_ICCAT)
+						select new
+						{
+							key = sku.SKU_ICCAT,
+							name = iccat.ICCAT_NAME
+						}).Distinct();
 
 			if (cat != null)
 				_result = cat.ToDataTable();
