@@ -1,20 +1,19 @@
-﻿using System;
+﻿using OMW15.Controllers.ToolController;
+using OMW15.Models.ToolModel;
+using OMW15.Shared;
+using System;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Core;
 using System.Linq;
 using System.Transactions;
-using OMControls;
-using OMW15.Controllers.ToolController;
-using OMW15.Shared;
 
 namespace OMW15.Models.SaleModel
 {
 	public class SaleDAL
 	{
-		private readonly OLDMOONEF1 _om;
-
 		#region constructor
+		private readonly OLDMOONEF1 _om;
 
 		public SaleDAL()
 		{
@@ -58,11 +57,11 @@ namespace OMW15.Models.SaleModel
 		{
 			var _result = new DataTable();
 			var _det = (from _pi in _om.PI_INVOICE
-				orderby _pi.PI_COUNTRY
-				select new
-				{
-					_pi.PI_COUNTRY
-				}).AsNoTracking().Distinct();
+							orderby _pi.PI_COUNTRY
+							select new
+							{
+								_pi.PI_COUNTRY
+							}).AsNoTracking().Distinct();
 
 			if (_det != null)
 				_result = _det.ToDataTable();
@@ -74,11 +73,11 @@ namespace OMW15.Models.SaleModel
 		{
 			var _result = new DataTable();
 			var _pay = (from _pi in _om.PI_INVOICE
-				orderby _pi.PI_PAYMENT_TERM
-				select new
-				{
-					_pi.PI_PAYMENT_TERM
-				}).AsNoTracking().Distinct();
+							orderby _pi.PI_PAYMENT_TERM
+							select new
+							{
+								_pi.PI_PAYMENT_TERM
+							}).AsNoTracking().Distinct();
 
 			if (_pay != null)
 				_result = _pay.ToDataTable();
@@ -90,11 +89,11 @@ namespace OMW15.Models.SaleModel
 		{
 			var _result = new DataTable();
 			var _deti = (from _pi in _om.PI_INVOICE
-				orderby _pi.PI_DELIVERY_TIME
-				select new
-				{
-					_pi.PI_DELIVERY_TIME
-				}).AsNoTracking().Distinct();
+							 orderby _pi.PI_DELIVERY_TIME
+							 select new
+							 {
+								 _pi.PI_DELIVERY_TIME
+							 }).AsNoTracking().Distinct();
 
 			if (_deti != null)
 				_result = _deti.ToDataTable();
@@ -106,11 +105,11 @@ namespace OMW15.Models.SaleModel
 		{
 			var _result = new DataTable();
 			var _det = (from _pi in _om.PI_INVOICE
-				orderby _pi.PI_DELIVERY_TERM
-				select new
-				{
-					_pi.PI_DELIVERY_TERM
-				}).AsNoTracking().Distinct();
+							orderby _pi.PI_DELIVERY_TERM
+							select new
+							{
+								_pi.PI_DELIVERY_TERM
+							}).AsNoTracking().Distinct();
 
 			if (_det != null)
 				_result = _det.ToDataTable();
@@ -123,10 +122,10 @@ namespace OMW15.Models.SaleModel
 			var _result = new DataTable();
 
 			var _piyr = (from pi in _om.PI_INVOICE
-				select new
-				{
-					pi.PI_YEAR
-				}).AsNoTracking().Distinct().OrderByDescending(x => x.PI_YEAR);
+							 select new
+							 {
+								 pi.PI_YEAR
+							 }).AsNoTracking().Distinct().OrderByDescending(x => x.PI_YEAR);
 
 			if (_piyr != null)
 				_result = _piyr.ToDataTable();
@@ -139,22 +138,22 @@ namespace OMW15.Models.SaleModel
 			var _result = new DataTable();
 
 			var _pis = (from pi in _om.PI_INVOICE
-				orderby pi.PINO
-				where pi.PI_YEAR == PIYear
-				select new
-				{
-					pi.PIID,
-					PI_Number = pi.PINO,
-					pi.PI_DATE,
-					Customer = pi.PI_CUSTNAME,
-					Country = pi.PI_COUNTRY,
-					Delivery_Term = pi.PI_DELIVERY_TERM,
-					Delivery_Time = pi.PI_DELIVERY_TIME,
-					Total_Values = pi.PI_LINE_TOTAL,
-					Packing = pi.PI_PACKING,
-					Delivery = pi.PI_DELIVERY,
-					Total_Amount = pi.PI_TOTAL_VALUES
-				}).AsNoTracking();
+							orderby pi.PINO
+							where pi.PI_YEAR == PIYear
+							select new
+							{
+								pi.PIID,
+								PI_Number = pi.PINO,
+								pi.PI_DATE,
+								Customer = pi.PI_CUSTNAME,
+								Country = pi.PI_COUNTRY,
+								Delivery_Term = pi.PI_DELIVERY_TERM,
+								Delivery_Time = pi.PI_DELIVERY_TIME,
+								Total_Values = pi.PI_LINE_TOTAL,
+								Packing = pi.PI_PACKING,
+								Delivery = pi.PI_DELIVERY,
+								Total_Amount = pi.PI_TOTAL_VALUES
+							}).AsNoTracking();
 
 			if (_pis != null)
 				_result = _pis.ToDataTable();
@@ -174,11 +173,11 @@ namespace OMW15.Models.SaleModel
 			var _result = 0;
 
 			var _pi = (from p in _om.PI_INVOICE
-				where p.PI_YEAR == PIYear
-				select new
-				{
-					p.PI_COUNT
-				}).ToList();
+						  where p.PI_YEAR == PIYear
+						  select new
+						  {
+							  p.PI_COUNT
+						  }).ToList();
 
 			if (_pi.Count > 0)
 				_result = _pi.Max(x => x.PI_COUNT);
@@ -277,19 +276,19 @@ namespace OMW15.Models.SaleModel
 		{
 			var _result = new DataTable();
 			var _pil = from pl in _om.PI_ITEMS
-				where pl.PI_ID == PIHeaderId
-				select new
-				{
-					pl.PI_ID,
-					pl.PI_ITEM,
-					ItemNo = pl.PI_ITEMNO,
-					Description = pl.PI_ITEMNAME,
-					Unit = pl.PI_ITEM_UNIT,
-					Qty = pl.PI_ITEM_QTY,
-					UnitPrice = pl.PI_ITEM_PRICE,
-					Amount = pl.PI_ITEM_AMOUNT,
-					Remark = pl.PI_ITEM_REMARK
-				};
+						  where pl.PI_ID == PIHeaderId
+						  select new
+						  {
+							  pl.PI_ID,
+							  pl.PI_ITEM,
+							  ItemNo = pl.PI_ITEMNO,
+							  Description = pl.PI_ITEMNAME,
+							  Unit = pl.PI_ITEM_UNIT,
+							  Qty = pl.PI_ITEM_QTY,
+							  UnitPrice = pl.PI_ITEM_PRICE,
+							  Amount = pl.PI_ITEM_AMOUNT,
+							  Remark = pl.PI_ITEM_REMARK
+						  };
 
 
 			if (_pil != null)
@@ -304,18 +303,18 @@ namespace OMW15.Models.SaleModel
 			var _result = new DataTable();
 
 			var _bank = (from b in _om.BANKS
-				orderby b.BANKNAME
-				select new
-				{
-					b.BANKID,
-					Name = b.BANKNAME + " " + b.ACCOUNTBRANCH + " " + b.ACCOUNTTYPE,
-					b.BANKNAME,
-					b.ACCOUNTBRANCH,
-					b.ACCOUNTTYPE,
-					b.ACCOUNTNAME,
-					b.ACCOUNTNO,
-					b.SWIFTCODE
-				}).AsNoTracking();
+							 orderby b.BANKNAME
+							 select new
+							 {
+								 b.BANKID,
+								 Name = b.BANKNAME + " " + b.ACCOUNTBRANCH + " " + b.ACCOUNTTYPE,
+								 b.BANKNAME,
+								 b.ACCOUNTBRANCH,
+								 b.ACCOUNTTYPE,
+								 b.ACCOUNTNAME,
+								 b.ACCOUNTNO,
+								 b.SWIFTCODE
+							 }).AsNoTracking();
 
 			if (_bank != null)
 				_result = _bank.ToDataTable();
@@ -410,6 +409,20 @@ namespace OMW15.Models.SaleModel
 			return _om.BANKINFOes.FirstOrDefault(x => x.BK_ID == BankId);
 		} // end GetBankInfo
 
+
+
+		public DataTable GetYearSaleByGroup(int groupNo)
+		{
+			return new DataConnect($"EXEC dbo.usp_OM_ERP_SALE_YEARSALE {groupNo}", omglobal.SysConnectionString).ToDataTable;
+		}
+
+
+		public DataTable GetSaleSummaryByGroup(int groupNo, int yearSale)
+		{
+			return new DataConnect($"EXEC dbo.usp_OM_ERP_SALE_SALEBYCAT {groupNo}, {yearSale}", omglobal.SysConnectionString).ToDataTable;
+
+		}
+
 		#endregion
 
 		#region Sale Contact
@@ -419,23 +432,23 @@ namespace OMW15.Models.SaleModel
 			var _result = new DataTable();
 
 			var _scl = (from scon in _om.SALE_CONTACTS
-				orderby scon.CONTACT_NAME
-				select new
-				{
-					ID = scon.CONTACT_ID,
-					NAME = scon.CONTACT_NAME,
-					scon.CUSTID,
-					scon.CUSTCODE,
-					scon.COMPANY,
-					scon.ADDRESS,
-					scon.COUNTRY,
-					scon.POSTAL,
-					PERSON = scon.CONTACT_PERSON,
-					scon.MOBILE,
-					scon.TEL,
-					scon.FAX,
-					scon.EMAIL
-				}).AsParallel();
+							orderby scon.CONTACT_NAME
+							select new
+							{
+								ID = scon.CONTACT_ID,
+								NAME = scon.CONTACT_NAME,
+								scon.CUSTID,
+								scon.CUSTCODE,
+								scon.COMPANY,
+								scon.ADDRESS,
+								scon.COUNTRY,
+								scon.POSTAL,
+								PERSON = scon.CONTACT_PERSON,
+								scon.MOBILE,
+								scon.TEL,
+								scon.FAX,
+								scon.EMAIL
+							}).AsParallel();
 
 			if (SearchType == OMShareSaleEnum.SaleContactFilterType.AllSaleContact)
 			{
@@ -463,17 +476,17 @@ namespace OMW15.Models.SaleModel
 			var _result = new DataTable();
 
 			var _scl = (from scon in _om.SALE_CONTACTS
-				orderby scon.CONTACT_NAME
-				select new
-				{
-					ID = scon.CONTACT_ID,
-					NAME = scon.CONTACT_NAME,
-					scon.COMPANY,
-					scon.COUNTRY,
-					PERSON = scon.CONTACT_PERSON,
-					scon.MOBILE,
-					scon.EMAIL
-				}).AsNoTracking().AsParallel();
+							orderby scon.CONTACT_NAME
+							select new
+							{
+								ID = scon.CONTACT_ID,
+								NAME = scon.CONTACT_NAME,
+								scon.COMPANY,
+								scon.COUNTRY,
+								PERSON = scon.CONTACT_PERSON,
+								scon.MOBILE,
+								scon.EMAIL
+							}).AsNoTracking().AsParallel();
 
 			if (_scl != null)
 				_result = _scl.ToDataTable();
@@ -509,11 +522,11 @@ namespace OMW15.Models.SaleModel
 		{
 			var _result = new DataTable();
 			var scc = (from sc in _om.SALE_CONTACTS
-				orderby sc.COUNTRY
-				select new
-				{
-					sc.COUNTRY
-				}).AsNoTracking().Distinct().AsParallel();
+						  orderby sc.COUNTRY
+						  select new
+						  {
+							  sc.COUNTRY
+						  }).AsNoTracking().Distinct().AsParallel();
 
 			if (scc != null)
 				_result = scc.ToDataTable();

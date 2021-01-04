@@ -155,5 +155,13 @@ namespace OMW15.Views.Sales
 			saleMachine.StartPosition = FormStartPosition.CenterScreen;
 			saleMachine.Show();
 		}
+
+		private void mnuSaleSummary_Click(object sender, EventArgs e)
+		{
+			var saleSummary = SaleSummary.GetInstance;
+			saleSummary.MdiParent = this;
+			saleSummary.StartPosition = FormStartPosition.CenterScreen;
+			saleSummary.Show();
+		}
 	}
 }

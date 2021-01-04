@@ -1339,6 +1339,12 @@
     <Compile Include="Views\Sales\SaleProformaList.Designer.cs">
       <DependentUpon>SaleProformaList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Sales\SaleSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\SaleSummary.Designer.cs">
+      <DependentUpon>SaleSummary.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Sales\SaleWorks.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2339,6 +2345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales\SaleProformaList.resx">
       <DependentUpon>SaleProformaList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\SaleSummary.resx">
+      <DependentUpon>SaleSummary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales\SaleWorks.resx">
       <DependentUpon>SaleWorks.cs</DependentUpon>

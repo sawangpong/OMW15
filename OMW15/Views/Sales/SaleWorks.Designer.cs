@@ -63,6 +63,8 @@
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsMCRecord = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+			this.mnuSaleReport = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuSaleSummary = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnu.SuspendLayout();
 			this.ts.SuspendLayout();
 			this.SuspendLayout();
@@ -73,6 +75,7 @@
 			this.mnu.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.mnu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuSales,
+            this.mnuSaleReport,
             this.mnuSetting,
             this.mnuWindows,
             this.mnuClose});
@@ -353,6 +356,21 @@
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
 			this.toolStripSeparator5.Size = new System.Drawing.Size(6, 45);
 			// 
+			// mnuSaleReport
+			// 
+			this.mnuSaleReport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuSaleSummary});
+			this.mnuSaleReport.Name = "mnuSaleReport";
+			this.mnuSaleReport.Size = new System.Drawing.Size(58, 31);
+			this.mnuSaleReport.Text = "รายงาน";
+			// 
+			// mnuSaleSummary
+			// 
+			this.mnuSaleSummary.Name = "mnuSaleSummary";
+			this.mnuSaleSummary.Size = new System.Drawing.Size(180, 22);
+			this.mnuSaleSummary.Text = "สรุปยอดขาย";
+			this.mnuSaleSummary.Click += new System.EventHandler(this.mnuSaleSummary_Click);
+			// 
 			// SaleWorks
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -415,5 +433,7 @@
         private System.Windows.Forms.ToolStripButton tsMCRecord;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
 		private System.Windows.Forms.ToolStripMenuItem mnuSaleMachines;
+		private System.Windows.Forms.ToolStripMenuItem mnuSaleReport;
+		private System.Windows.Forms.ToolStripMenuItem mnuSaleSummary;
 	}
 }
