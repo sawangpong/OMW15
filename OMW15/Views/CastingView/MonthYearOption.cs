@@ -152,5 +152,10 @@ namespace OMW15.Views.CastingView
 		} // end GetMonthList
 
 		#endregion
+
+		private void btnShow_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

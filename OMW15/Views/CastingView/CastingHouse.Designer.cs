@@ -54,6 +54,7 @@
 			this.mnuCastingMonthReportByCustomerMat = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuCastingMonthReportByCustomer = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMonthlyReportByDocument = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuCastingMonthlyByMat = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMonthlySaleMaterialReport = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuMaterialCard = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,7 +93,8 @@
 			this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbtnDailyCasting = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
-			this.mnuCastingMonthlyByMat = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
+			this.mnuMonthlyWorks = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnu.SuspendLayout();
 			this.ts.SuspendLayout();
 			this.SuspendLayout();
@@ -270,6 +272,8 @@
             this.mnuCastingMonthlyByMat,
             this.mnuMonthlySaleMaterialReport,
             this.toolStripMenuItem6,
+            this.mnuMonthlyWorks,
+            this.toolStripMenuItem8,
             this.mnuMaterialCard});
 			this.mnuReports.Name = "mnuReports";
 			this.mnuReports.Size = new System.Drawing.Size(58, 31);
@@ -298,6 +302,14 @@
 			this.mnuMonthlyReportByDocument.Tag = "BY_DOCUMENT";
 			this.mnuMonthlyReportByDocument.Text = "รายงานสรุปประจำเดือน - ตามเลขที่เอกสาร";
 			this.mnuMonthlyReportByDocument.Click += new System.EventHandler(this.mnuCastingMonthReport_Click);
+			// 
+			// mnuCastingMonthlyByMat
+			// 
+			this.mnuCastingMonthlyByMat.Name = "mnuCastingMonthlyByMat";
+			this.mnuCastingMonthlyByMat.Size = new System.Drawing.Size(299, 22);
+			this.mnuCastingMonthlyByMat.Tag = "BY_MAT";
+			this.mnuCastingMonthlyByMat.Text = "รายงานสรุปประจำเดือน - ตามกลุ่มวัสดุ";
+			this.mnuCastingMonthlyByMat.Click += new System.EventHandler(this.mnuCastingMonthReport_Click);
 			// 
 			// mnuMonthlySaleMaterialReport
 			// 
@@ -636,13 +648,18 @@
 			this.toolStripSeparator11.Name = "toolStripSeparator11";
 			this.toolStripSeparator11.Size = new System.Drawing.Size(6, 46);
 			// 
-			// mnuCastingMonthlyByMat
+			// toolStripMenuItem8
 			// 
-			this.mnuCastingMonthlyByMat.Name = "mnuCastingMonthlyByMat";
-			this.mnuCastingMonthlyByMat.Size = new System.Drawing.Size(299, 22);
-			this.mnuCastingMonthlyByMat.Tag = "BY_MAT";
-			this.mnuCastingMonthlyByMat.Text = "รายงานสรุปประจำเดือน - ตามกลุ่มวัสดุ";
-			this.mnuCastingMonthlyByMat.Click += new System.EventHandler(this.mnuCastingMonthReport_Click);
+			this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+			this.toolStripMenuItem8.Size = new System.Drawing.Size(296, 6);
+			// 
+			// mnuMonthlyWorks
+			// 
+			this.mnuMonthlyWorks.Name = "mnuMonthlyWorks";
+			this.mnuMonthlyWorks.Size = new System.Drawing.Size(299, 22);
+			this.mnuMonthlyWorks.Tag = "WORK_SCORE";
+			this.mnuMonthlyWorks.Text = "รายงานการสรุปการทำงาน";
+			this.mnuMonthlyWorks.Click += new System.EventHandler(this.mnuCastingMonthReport_Click);
 			// 
 			// CastingHouse
 			// 
@@ -732,5 +749,7 @@
 		private System.Windows.Forms.ToolStripButton tsbtnDailyCasting;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
 		private System.Windows.Forms.ToolStripMenuItem mnuCastingMonthlyByMat;
+		private System.Windows.Forms.ToolStripMenuItem mnuMonthlyWorks;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
 	}
 }

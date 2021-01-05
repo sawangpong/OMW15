@@ -75,6 +75,7 @@ namespace OMW15.Models.EmployeeModel
 			s.AppendLine(" FROM EMPLOYEE e");
 			s.AppendLine(" LEFT JOIN SYSDATA s ON e.STATUS = s.KEYVALUE AND s.GROUPTITLE = 'EMPLOYSTATUS'");
 			s.AppendLine(" INNER JOIN ERP.dbo.DEPTTAB d ON e.DEPARTMENTID = d.DEPT_KEY");
+			s.AppendLine(" WHERE e.ISDELETE = 0");
 			s.AppendLine(" ORDER BY d.DEPT_THAIDESC, e.STATUS");
 
 			var _result = new DataConnect(s.ToString(), omglobal.SysConnectionString).ToDataTable;

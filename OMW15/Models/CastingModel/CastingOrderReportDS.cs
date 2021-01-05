@@ -1,4 +1,5 @@
 ﻿using OMControls;
+using OMW15.Models.ToolModel;
 using OMW15.Shared;
 using System;
 using System.Collections.Generic;
@@ -581,6 +582,16 @@ namespace OMW15.Models.CastingModel
 				return _source.ToDataTable();
 			});
 		} // end GetAsyncCastingSaleMaterialReportDataSource
+
+		public async Task<DataTable> GetCastingWorkSummaryAsync(int YearReport)
+		{
+			return await Task.Run(() =>
+			{
+				return new DataConnect($"EXEC dbo.usp_OM_CASTING_WORK_SCORE {YearReport}", omglobal.SysConnectionString).ToDataTable;
+			});
+		}
+
+
 
 		#endregion
 	}

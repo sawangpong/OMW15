@@ -69,6 +69,7 @@
 			this.btnShow.TabIndex = 1;
 			this.btnShow.Text = "&Show";
 			this.btnShow.UseVisualStyleBackColor = true;
+			this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
 			// 
 			// btnCancel
 			// 

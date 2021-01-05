@@ -9,7 +9,7 @@ namespace OMW15.Views.Sales
 	{
 		#region Singleton
 
-		public static SaleWorks _instance;
+		private static SaleWorks _instance;
 		public static SaleWorks GetInstance
 		{
 			get
@@ -20,7 +20,6 @@ namespace OMW15.Views.Sales
 				}
 				return _instance;
 			}
-
 		}
 
 		#endregion
@@ -159,6 +158,7 @@ namespace OMW15.Views.Sales
 		private void mnuSaleSummary_Click(object sender, EventArgs e)
 		{
 			var saleSummary = SaleSummary.GetInstance;
+			saleSummary.Title = mnuSaleSummary.Text;
 			saleSummary.MdiParent = this;
 			saleSummary.StartPosition = FormStartPosition.CenterScreen;
 			saleSummary.Show();

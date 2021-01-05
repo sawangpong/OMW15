@@ -29,7 +29,8 @@
 		CastingSaleMaterialReport,
 		CastingMonthlyReportByMaterial,
 		SIReport,
-		MaterialCard
+		MaterialCard,
+		WorkSummary
 	}
 
 	//public enum ControlActionEnum

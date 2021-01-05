@@ -44,6 +44,8 @@
 			this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuMachineRecords = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuSaleMachines = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuSaleReport = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuSaleSummary = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuSetting = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuProductList = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuWindows = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,8 +65,6 @@
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsMCRecord = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-			this.mnuSaleReport = new System.Windows.Forms.ToolStripMenuItem();
-			this.mnuSaleSummary = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnu.SuspendLayout();
 			this.ts.SuspendLayout();
 			this.SuspendLayout();
@@ -186,6 +186,21 @@
 			this.mnuSaleMachines.Size = new System.Drawing.Size(258, 22);
 			this.mnuSaleMachines.Text = "สรุปยอดขายเครื่องจักร";
 			this.mnuSaleMachines.Click += new System.EventHandler(this.mnuSaleMachines_Click);
+			// 
+			// mnuSaleReport
+			// 
+			this.mnuSaleReport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuSaleSummary});
+			this.mnuSaleReport.Name = "mnuSaleReport";
+			this.mnuSaleReport.Size = new System.Drawing.Size(58, 31);
+			this.mnuSaleReport.Text = "รายงาน";
+			// 
+			// mnuSaleSummary
+			// 
+			this.mnuSaleSummary.Name = "mnuSaleSummary";
+			this.mnuSaleSummary.Size = new System.Drawing.Size(180, 22);
+			this.mnuSaleSummary.Text = "สรุปยอดขายตามกลุ่ม";
+			this.mnuSaleSummary.Click += new System.EventHandler(this.mnuSaleSummary_Click);
 			// 
 			// mnuSetting
 			// 
@@ -355,21 +370,6 @@
 			// 
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
 			this.toolStripSeparator5.Size = new System.Drawing.Size(6, 45);
-			// 
-			// mnuSaleReport
-			// 
-			this.mnuSaleReport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuSaleSummary});
-			this.mnuSaleReport.Name = "mnuSaleReport";
-			this.mnuSaleReport.Size = new System.Drawing.Size(58, 31);
-			this.mnuSaleReport.Text = "รายงาน";
-			// 
-			// mnuSaleSummary
-			// 
-			this.mnuSaleSummary.Name = "mnuSaleSummary";
-			this.mnuSaleSummary.Size = new System.Drawing.Size(180, 22);
-			this.mnuSaleSummary.Text = "สรุปยอดขาย";
-			this.mnuSaleSummary.Click += new System.EventHandler(this.mnuSaleSummary_Click);
 			// 
 			// SaleWorks
 			// 

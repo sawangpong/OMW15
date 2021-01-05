@@ -24,7 +24,7 @@ namespace OMW15.Models.CastingModel
 
 		private DataTable getCastingWorkerDataById()
 		{
-			return _om.EMPLOYEEs.Where(d => d.DEPARTMENTID == 102 || d.DEPARTMENTID == 110).Select(x => new
+			return _om.EMPLOYEEs.Where(d => d.DEPARTMENTID == 102 || d.DEPARTMENTID == 110 && d.ISDELETE == false).Select(x => new
 			{
 				Id = x.EMPSEQ,
 				Name = x.EMPFIRSTNAME.Trim() + " " + x.EMPLASTNAME.Trim()
@@ -35,7 +35,7 @@ namespace OMW15.Models.CastingModel
 
 		private DataTable getCastingWorkerDataById(int status)
 		{
-			return _om.EMPLOYEEs.Where(d => (d.DEPARTMENTID == 102 || d.DEPARTMENTID == 110 ) 
+			return _om.EMPLOYEEs.Where(d => (d.DEPARTMENTID == 102 || d.DEPARTMENTID == 110 && d.ISDELETE == false ) 
 					&& _empActiveGroup.Contains(d.STATUS)).Select(x => new
 			{
 				Id = x.EMPSEQ,

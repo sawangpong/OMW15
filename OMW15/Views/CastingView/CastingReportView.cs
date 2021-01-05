@@ -1,13 +1,13 @@
-﻿using System;
-using System.ComponentModel;
-using System.Data;
-using System.Linq;
-using System.Windows.Forms;
-using CrystalDecisions.CrystalReports.Engine;
+﻿using CrystalDecisions.CrystalReports.Engine;
 using OMW15.Models.CastingModel;
 using OMW15.Models.ToolModel;
 using OMW15.Shared;
 using OMW15.Views.CastingReports;
+using System;
+using System.ComponentModel;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace OMW15.Views.CastingView
 {
@@ -58,7 +58,8 @@ namespace OMW15.Views.CastingView
 				case PrintDocumentType.CastingMonthlyReportByCustomerAndMaterial:
 				case PrintDocumentType.CastingMonthlyReportByCustomerGroup:
 				case PrintDocumentType.CastingMonthlyReportByDocNo:
-				case PrintDocumentType.CastingMonthlyReportByMaterial:	
+				case PrintDocumentType.CastingMonthlyReportByMaterial:
+				case PrintDocumentType.WorkSummary:
 					GetCastingMonthlyRecords(PrintWhat, _year, _month);
 					break;
 
@@ -82,7 +83,7 @@ namespace OMW15.Views.CastingView
 			// find the print button
 			// and bound the event for keep print log to database
 			foreach (var ts in crv.Controls.OfType<ToolStrip>())
-			foreach (var tsb in ts.Items.OfType<ToolStripButton>()) tsb.Click += PrintButton_Click;
+				foreach (var tsb in ts.Items.OfType<ToolStripButton>()) tsb.Click += PrintButton_Click;
 		}
 
 		private void PrintButton_Click(object sender, EventArgs e)
@@ -210,7 +211,7 @@ namespace OMW15.Views.CastingView
 
 		private void PrintJobQC()
 		{
-			var _status = (int) OMShareJobEnums.JobStatusEnumEN.Active;
+			var _status = (int)OMShareJobEnums.JobStatusEnumEN.Active;
 			var dt = new CastingOrderReportDS().GetActiveQCJob(_status, JobNumbers);
 			ReportDocument rpt = new JobQCReport();
 			rpt.SetDataSource(dt);
@@ -325,6 +326,15 @@ namespace OMW15.Views.CastingView
 					rptByMat.SetParameterValue(0, string.Format("Printed by {0}", omglobal.UserInfo));
 					rptByMat.SetParameterValue(1, string.Format("{0} \\ {1}", Year, Month));
 					crv.ReportSource = rptByMat;
+					break;
+
+				case PrintDocumentType.WorkSummary:
+
+					_dt = await _dal.GetCastingWorkSummaryAsync(Year);
+					var rpt = new WorkSummary();
+					rpt.SetDataSource(_dt);
+					rpt.SetParameterValue(0, $"{Year}");
+					crv.ReportSource = rpt;
 					break;
 			}
 		} // end GetCastingMonthlyRecords

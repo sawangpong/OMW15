@@ -275,6 +275,9 @@ namespace OMW15.Views.CastingView
 				case "BY_MAT":
 					reportType = PrintDocumentType.CastingMonthlyReportByMaterial;
 					break;
+				case "WORK_SCORE":
+					reportType = PrintDocumentType.WorkSummary;
+					break;
 
 			}
 

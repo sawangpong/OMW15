@@ -380,6 +380,7 @@
     <Compile Include="Models\CastingModel\CastingSaleOrderDataSource.cs" />
     <Compile Include="Models\CastingModel\CastingSaleOrderReportItem.cs" />
     <Compile Include="Models\CastingModel\CastingWorkerDAL.cs" />
+    <Compile Include="Models\CastingModel\CastingWorkSummary.cs" />
     <Compile Include="Models\CastingModel\JobHistories.cs" />
     <Compile Include="Models\CastingModel\MaterialBalance.cs" />
     <Compile Include="Models\CastingModel\MaterialCardDataItems.cs" />
@@ -757,6 +758,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>WaxTreeReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\CastingReports\WorkSummary.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkSummary.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Views\CastingView\AvailbleCastingSaleOrderList.cs">
@@ -2047,6 +2054,10 @@
     <EmbeddedResource Include="Views\CastingReports\WaxTreeReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>WaxTreeReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingReports\WorkSummary.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>WorkSummary.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CastingView\AvailbleCastingSaleOrderList.resx">
       <DependentUpon>AvailbleCastingSaleOrderList.cs</DependentUpon>
