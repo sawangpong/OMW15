@@ -2,7 +2,6 @@
 using OMW15.Models.SaleModel;
 using System;
 using System.Data;
-using System.Text;
 using System.Windows.Forms;
 
 namespace OMW15.Views.Sales
@@ -37,7 +36,6 @@ namespace OMW15.Views.Sales
 
 		#region class field
 
-		private int _saleGroup = (int)SaleGroups.ALL;
 		private int _saleYear = DateTime.Today.Year;
 
 		#endregion
@@ -51,10 +49,9 @@ namespace OMW15.Views.Sales
 
 		private void UpdateUI()
 		{
-			tsslbGroup.Text = _saleGroup.ToString();
 			tsslbYearSale.Text = _saleYear.ToString();
 
-			btnLoadData.Enabled = (_saleGroup >= 0 && _saleYear > 0);
+			btnLoadData.Enabled = (_saleYear > 0);
 		}
 
 		private void GetSaleGroups()
@@ -64,29 +61,30 @@ namespace OMW15.Views.Sales
 			cbxSaleGroup.ValueMember = "KEY";
 		}
 
-		private void GetYearSaleBySaleGroup(int saleGroup)
+		private void GetYearSaleBySaleGroup() //int saleGroup)
 		{
-			cbxSaleYear.DataSource = new SaleDAL().GetYearSaleByGroup(saleGroup);
+			cbxSaleYear.DataSource = new SaleDAL().GetYearSaleByGroup();
 			cbxSaleYear.DisplayMember = "YR";
 			cbxSaleYear.ValueMember = "YR";
 		}
 
-		private void GetSaleSummary(int saleGroup, int saleYear)
+		private void GetSaleSummary(int saleYear)
 		{
-			DataTable _dt = new SaleDAL().GetSaleSummaryByGroup(saleGroup, saleYear);
+			DataTable _dt = new SaleDAL().GetSaleSummaryByGroup(saleYear);
 
-			if (_dt.Rows.Count == 0) 
+			if (_dt.Rows.Count == 0)
 			{
-				MessageBox.Show($"No data found","Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show($"No data found", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 
+			/*
 
 			// add summary row
 			DataRow _dr = _dt.NewRow();
 			//StringBuilder s = new StringBuilder();
 			foreach (DataColumn dc in _dt.Columns)
 			{
-				if (dc.ColumnName == "CATEGORY" || dc.ColumnName == "TYPE")
+				if (dc.ColumnName == "CATEGORY" || dc.ColumnName == "TYPE" || dc.ColumnName == "CODE")
 				{
 					_dr[dc.ColumnName] = "";
 				}
@@ -115,37 +113,33 @@ namespace OMW15.Views.Sales
 			_dt.Rows.Add(_dr);
 
 			// finish add summary row
+			*/
 
 			// binding data to datagridview
 
 			dgv.SuspendLayout();
 			dgv.DataSource = _dt;
 
-			dgv.Columns["TYPE"].Visible = false;
-			dgv.Columns["CUSTOMER"].Frozen = true;
+			//dgv.Columns["TYPE"].Visible = false;
+			//dgv.Columns["CUSTOMER"].Frozen = true;
 
-			// format datagridview cell -> only numeric cell
+			/*&& _dc.ColumnName != "CUSTOMER"
+		&& _dc.ColumnName != "TYPE")
+		*/      // format datagridview cell -> only numeric cell
 			foreach (DataColumn _dc in _dt.Columns)
 			{
-				if(_dc.ColumnName != "CATEGORY" 
-					&& _dc.ColumnName != "CUSTOMER"
-					&& _dc.ColumnName != "TYPE")
-				{
+				if (_dc.ColumnName != "CATEGORY")
+ 				{
 					dgv.Columns[_dc.ColumnName].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-					dgv.Columns[_dc.ColumnName].DefaultCellStyle.Format = "N2";
+					dgv.Columns[_dc.ColumnName].DefaultCellStyle.Format = "N0";
 				}
 			}
 
- 			dgv.ResumeLayout();
+			dgv.ResumeLayout();
 			tsslbRows.Text = $"found : {dgv.Rows.Count} record{ (dgv.Rows.Count <= 1 ? string.Empty : "s")}";
 			UpdateUI();
 		}
 
-		//private void AddSummaryRow(DataTable dt)
-		//{
-
-		
-		//}
 
 		#endregion
 
@@ -155,31 +149,32 @@ namespace OMW15.Views.Sales
 			InitializeComponent();
 
 			OMControls.OMUtils.SettingDataGridView(ref dgv);
+			OMControls.OMUtils.SettingDataGridView(ref dgvByGroup);
 
-			GetSaleGroups();
+			//GetSaleGroups();
 		}
 
 		private void SaleSummary_Load(object sender, EventArgs e)
 		{
 			lbTitle.Text = this.Title;
-			cbxSaleGroup.SelectedIndex = 0;
-			_saleGroup = Convert.ToInt32(cbxSaleGroup.SelectedValue.ToString());
-			GetYearSaleBySaleGroup(_saleGroup);
+			//cbxSaleGroup.SelectedIndex = 0;
+			//_saleGroup = Convert.ToInt32(cbxSaleGroup.SelectedValue.ToString());
+			GetYearSaleBySaleGroup();
 
 		}
 
-		private void cbxSaleGroup_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			_saleGroup = Convert.ToInt32(cbxSaleGroup.SelectedValue.ToString());
+		//private void cbxSaleGroup_SelectedIndexChanged(object sender, EventArgs e)
+		//{
+		//	_saleGroup = Convert.ToInt32(cbxSaleGroup.SelectedValue.ToString());
 
-			_saleYear = 0;
-			GetYearSaleBySaleGroup(_saleGroup);
-			UpdateUI();
-		}
+		//	_saleYear = 0;
+		//	GetYearSaleBySaleGroup(_saleGroup);
+		//	UpdateUI();
+		//}
 
 		private void btnLoadData_Click(object sender, EventArgs e)
 		{
-			GetSaleSummary(_saleGroup, _saleYear);
+			GetSaleSummary(_saleYear);
 		}
 
 		private void cbxSaleYear_SelectedValueChanged(object sender, EventArgs e)

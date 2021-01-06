@@ -411,15 +411,15 @@ namespace OMW15.Models.SaleModel
 
 
 
-		public DataTable GetYearSaleByGroup(int groupNo)
+		public DataTable GetYearSaleByGroup() //int groupNo)
 		{
-			return new DataConnect($"EXEC dbo.usp_OM_ERP_SALE_YEARSALE {groupNo}", omglobal.SysConnectionString).ToDataTable;
+			return new DataConnect($"EXEC dbo.usp_OM_ERP_SALE_YEARSALE ", omglobal.SysConnectionString).ToDataTable;
 		}
 
 
-		public DataTable GetSaleSummaryByGroup(int groupNo, int yearSale)
+		public DataTable GetSaleSummaryByGroup(int yearSale)
 		{
-			return new DataConnect($"EXEC dbo.usp_OM_ERP_SALE_SALEBYCAT {groupNo}, {yearSale}", omglobal.SysConnectionString).ToDataTable;
+			return new DataConnect($"EXEC dbo.usp_OM_ERP_SALE_SALEBYCAT {yearSale}", omglobal.SysConnectionString).ToDataTable;
 
 		}
 
