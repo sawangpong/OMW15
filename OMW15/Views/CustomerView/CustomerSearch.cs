@@ -12,8 +12,6 @@ namespace OMW15.Views.CustomerView
 		private void CustomerSearch_Load(object sender, EventArgs e)
 		{
 			// format DataGridView
-			CenterToParent();
-			OMUtils.SettingDataGridView(ref dgv);
 			rdoSearchByName.Checked = true;
 			UpdateUI();
 		}
@@ -118,7 +116,7 @@ namespace OMW15.Views.CustomerView
 		{
 			var _dal = new CustomerDAL();
 			//var dt = await _dal.GetCustomerListAsync(Option, Key);
-			var dt = await _dal.GetMasterCustomerAsync(omglobal.SysConnectionString, Key, Option);
+			var dt = await _dal.GetMasterCustomerAsync(omglobal.SysConnectionString, Key); //, Option);
 			_rowCount = dt.Rows.Count;
 
 			dgv.SuspendLayout();
@@ -143,21 +141,37 @@ namespace OMW15.Views.CustomerView
 		public CustomerSearch()
 		{
 			InitializeComponent();
+
+			CenterToParent();
+			OMUtils.SettingDataGridView(ref dgv);
+
 		}
 
 
 		public CustomerSearch(string Filter, OMShareCustomerEnums.CustomerSearchOptions SearchOption)
 		{
-			CenterToParent();
 			InitializeComponent();
 
 			_filterText = string.IsNullOrEmpty(Filter) ? string.Empty : Filter;
 
 			searchBox1.TextFilter = _filterText;
 			_option = SearchOption;
+
+			CenterToParent();
+			OMUtils.SettingDataGridView(ref dgv);
+
 		}
 
 		#endregion
 
+		private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+
+		private void searchBox1_Load(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

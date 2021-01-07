@@ -289,8 +289,7 @@ namespace OMW15.Views.CustomerView
 		{
 			string _filter = GetCustomerFilter("กำหนดชื่อลูกค้าที่ต้องการค้นหา");
 			getMasterCustomerAsync(_filter, _action = MasterCustomerAction.None);
-
-
+ 
 		}
 
 		private void tsbtnEditCustomer_Click(object sender, EventArgs e)
@@ -556,7 +555,7 @@ namespace OMW15.Views.CustomerView
 		private async void getMasterCustomerAsync(string filter, OMShareCustomerEnums.MasterCustomerAction mode)
 		{
 			var _c = new CustomerDAL();
-			var _dt = await _c.GetMasterCustomerAsync(omglobal.SysConnectionString, filter, CustomerSearchOptions.SearchByCustomerName);
+			var _dt = await _c.GetMasterCustomerAsync(omglobal.SysConnectionString, filter);//, CustomerSearchOptions.SearchByCustomerName);
 
 			_rowCount = _dt.Rows.Count;
 

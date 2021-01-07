@@ -171,10 +171,10 @@ namespace OMW15.Views.Sales
 
 		private void mnuSaleHistory_Click(object sender, EventArgs e)
 		{
-			//
-			//
-			//
-			//
+			var saleHist = SaleHistory.GetInstance;
+			saleHist.MdiParent = this;
+			saleHist.StartPosition = FormStartPosition.CenterScreen;
+			saleHist.Show();
 
 		}
 	}

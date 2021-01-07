@@ -194,17 +194,11 @@ namespace OMW15.Models.CustomerModel
 
 		//} // end GetMasterCustomer
 
-		public async Task<DataTable> GetMasterCustomerAsync(string connectionString, string filter = "''", OMShareCustomerEnums.CustomerSearchOptions SearchOption = OMShareCustomerEnums.CustomerSearchOptions.SearchNone)
+		public async Task<DataTable> GetMasterCustomerAsync(string connectionString, string filter = "") //, OMShareCustomerEnums.CustomerSearchOptions SearchOption = OMShareCustomerEnums.CustomerSearchOptions.SearchNone)
 		{
 			return await Task.Run(() =>
 			{
-				StringBuilder s = new StringBuilder();
-				int _searchOption = (int)SearchOption;
-				//string _filter = string.IsNullOrEmpty(filter) ? "''" : filter;
-				s.AppendLine($" EXEC dbo.usp_OM_ERP_CUSTOMERS ");
-				s.AppendLine($" @FilterText = '{filter}',");
-				s.AppendLine($" @SearchType = {_searchOption}");
-				return new DataConnect(s.ToString(), connectionString).ToDataTable;
+				return new DataConnect($" EXEC dbo.usp_OM_ERP_CUSTOMERS '{filter}' ", connectionString).ToDataTable;
 			});
 		}
 

@@ -41,23 +41,23 @@
 			this.panel3 = new System.Windows.Forms.Panel();
 			this.pnlBody = new System.Windows.Forms.Panel();
 			this.pnlSales = new System.Windows.Forms.Panel();
+			this.dgvSellCat = new System.Windows.Forms.DataGridView();
+			this.panel4 = new System.Windows.Forms.Panel();
+			this.lbSaleCategory = new System.Windows.Forms.Label();
 			this.splitter1 = new System.Windows.Forms.Splitter();
 			this.dgv = new System.Windows.Forms.DataGridView();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.tsslbYearSale = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tsslbRows = new System.Windows.Forms.ToolStripStatusLabel();
-			this.panel4 = new System.Windows.Forms.Panel();
-			this.lbSaleCategory = new System.Windows.Forms.Label();
-			this.dgvSellCat = new System.Windows.Forms.DataGridView();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.panel3.SuspendLayout();
 			this.pnlBody.SuspendLayout();
 			this.pnlSales.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvSellCat)).BeginInit();
+			this.panel4.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
 			this.statusStrip1.SuspendLayout();
-			this.panel4.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dgvSellCat)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -208,6 +208,41 @@
 			this.pnlSales.Size = new System.Drawing.Size(950, 189);
 			this.pnlSales.TabIndex = 3;
 			// 
+			// dgvSellCat
+			// 
+			this.dgvSellCat.AllowUserToAddRows = false;
+			this.dgvSellCat.AllowUserToDeleteRows = false;
+			this.dgvSellCat.BackgroundColor = System.Drawing.Color.White;
+			this.dgvSellCat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvSellCat.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dgvSellCat.Location = new System.Drawing.Point(2, 38);
+			this.dgvSellCat.Name = "dgvSellCat";
+			this.dgvSellCat.ReadOnly = true;
+			this.dgvSellCat.Size = new System.Drawing.Size(946, 149);
+			this.dgvSellCat.TabIndex = 5;
+			// 
+			// panel4
+			// 
+			this.panel4.BackColor = System.Drawing.SystemColors.AppWorkspace;
+			this.panel4.Controls.Add(this.lbSaleCategory);
+			this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel4.Location = new System.Drawing.Point(2, 2);
+			this.panel4.Name = "panel4";
+			this.panel4.Padding = new System.Windows.Forms.Padding(1);
+			this.panel4.Size = new System.Drawing.Size(946, 36);
+			this.panel4.TabIndex = 4;
+			// 
+			// lbSaleCategory
+			// 
+			this.lbSaleCategory.Dock = System.Windows.Forms.DockStyle.Left;
+			this.lbSaleCategory.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbSaleCategory.ForeColor = System.Drawing.Color.White;
+			this.lbSaleCategory.Location = new System.Drawing.Point(1, 1);
+			this.lbSaleCategory.Name = "lbSaleCategory";
+			this.lbSaleCategory.Size = new System.Drawing.Size(375, 34);
+			this.lbSaleCategory.TabIndex = 4;
+			this.lbSaleCategory.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+			// 
 			// splitter1
 			// 
 			this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -252,41 +287,6 @@
 			this.tsslbRows.Name = "tsslbRows";
 			this.tsslbRows.Size = new System.Drawing.Size(0, 17);
 			// 
-			// panel4
-			// 
-			this.panel4.BackColor = System.Drawing.SystemColors.AppWorkspace;
-			this.panel4.Controls.Add(this.lbSaleCategory);
-			this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel4.Location = new System.Drawing.Point(2, 2);
-			this.panel4.Name = "panel4";
-			this.panel4.Padding = new System.Windows.Forms.Padding(1);
-			this.panel4.Size = new System.Drawing.Size(946, 36);
-			this.panel4.TabIndex = 4;
-			// 
-			// lbSaleCategory
-			// 
-			this.lbSaleCategory.Dock = System.Windows.Forms.DockStyle.Left;
-			this.lbSaleCategory.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbSaleCategory.ForeColor = System.Drawing.Color.White;
-			this.lbSaleCategory.Location = new System.Drawing.Point(1, 1);
-			this.lbSaleCategory.Name = "lbSaleCategory";
-			this.lbSaleCategory.Size = new System.Drawing.Size(375, 34);
-			this.lbSaleCategory.TabIndex = 4;
-			this.lbSaleCategory.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-			// 
-			// dgvSellCat
-			// 
-			this.dgvSellCat.AllowUserToAddRows = false;
-			this.dgvSellCat.AllowUserToDeleteRows = false;
-			this.dgvSellCat.BackgroundColor = System.Drawing.Color.White;
-			this.dgvSellCat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgvSellCat.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dgvSellCat.Location = new System.Drawing.Point(2, 38);
-			this.dgvSellCat.Name = "dgvSellCat";
-			this.dgvSellCat.ReadOnly = true;
-			this.dgvSellCat.Size = new System.Drawing.Size(946, 149);
-			this.dgvSellCat.TabIndex = 5;
-			// 
 			// SaleSummary
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -306,11 +306,11 @@
 			this.panel3.PerformLayout();
 			this.pnlBody.ResumeLayout(false);
 			this.pnlSales.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dgvSellCat)).EndInit();
+			this.panel4.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
 			this.statusStrip1.ResumeLayout(false);
 			this.statusStrip1.PerformLayout();
-			this.panel4.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dgvSellCat)).EndInit();
 			this.ResumeLayout(false);
 
 		}

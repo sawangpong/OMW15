@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.dgv = new System.Windows.Forms.DataGridView();
 			this.pnlCommandTop = new System.Windows.Forms.Panel();
@@ -64,14 +64,14 @@
 			// dgv
 			// 
 			this.dgv.BackgroundColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgv.Location = new System.Drawing.Point(2, 32);
@@ -80,6 +80,7 @@
 			this.dgv.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.dgv.Size = new System.Drawing.Size(787, 287);
 			this.dgv.TabIndex = 3;
+			this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
 			this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEnter);
 			this.dgv.DoubleClick += new System.EventHandler(this.dgv_DoubleClick);
 			// 
@@ -99,16 +100,17 @@
 			// 
 			// searchBox1
 			// 
-			this.searchBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.searchBox1.Dock = System.Windows.Forms.DockStyle.Left;
 			this.searchBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.searchBox1.Location = new System.Drawing.Point(281, 1);
 			this.searchBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.searchBox1.Name = "searchBox1";
 			this.searchBox1.Padding = new System.Windows.Forms.Padding(1);
-			this.searchBox1.Size = new System.Drawing.Size(422, 28);
+			this.searchBox1.Size = new System.Drawing.Size(353, 28);
 			this.searchBox1.TabIndex = 4;
 			this.searchBox1.TextFilter = null;
 			this.searchBox1.OnSendingFiler += new OMControls.Controls.SendingFilter(this.searchBox1_OnSendingFiler);
+			this.searchBox1.Load += new System.EventHandler(this.searchBox1_Load);
 			// 
 			// rdoSearchByCode
 			// 
@@ -122,6 +124,7 @@
 			this.rdoSearchByCode.Tag = "BY_CODE";
 			this.rdoSearchByCode.Text = "รหัสลูกค้า";
 			this.rdoSearchByCode.UseVisualStyleBackColor = true;
+			this.rdoSearchByCode.Visible = false;
 			this.rdoSearchByCode.CheckedChanged += new System.EventHandler(this.rdoSearch_CheckedChanged);
 			// 
 			// rdoSearchByName
@@ -136,6 +139,7 @@
 			this.rdoSearchByName.Tag = "BY_NAME";
 			this.rdoSearchByName.Text = "รายชื่อ";
 			this.rdoSearchByName.UseVisualStyleBackColor = true;
+			this.rdoSearchByName.Visible = false;
 			this.rdoSearchByName.CheckedChanged += new System.EventHandler(this.rdoSearch_CheckedChanged);
 			// 
 			// label1

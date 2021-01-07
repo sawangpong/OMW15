@@ -66,7 +66,7 @@ namespace OMW15.Views.Sales
 			cbxSaleGroup.ValueMember = "KEY";
 		}
 
-		private void GetYearSaleBySaleGroup() //int saleGroup)
+		private void GetYearSale() //int saleGroup)
 		{
 			cbxSaleYear.DataSource = new SaleDAL().GetYearSaleByGroup();
 			cbxSaleYear.DisplayMember = "YR";
@@ -82,44 +82,45 @@ namespace OMW15.Views.Sales
 			{
 				MessageBox.Show($"No data found", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
-
+	
+			#region SummaryRow
 			/*
-
-			// add summary row
-			DataRow _dr = _dt.NewRow();
-			//StringBuilder s = new StringBuilder();
-			foreach (DataColumn dc in _dt.Columns)
-			{
-				if (dc.ColumnName == "CATEGORY" || dc.ColumnName == "TYPE" || dc.ColumnName == "CODE")
+				// add summary row
+				DataRow _dr = _dt.NewRow();
+				//StringBuilder s = new StringBuilder();
+				foreach (DataColumn dc in _dt.Columns)
 				{
-					_dr[dc.ColumnName] = "";
-				}
-				else if (dc.ColumnName == "CUSTOMER")
-				{
-					_dr[dc.ColumnName] = "TOTAL";
-				}
-				else
-				{
-					decimal _value = 0m;
-			
-					foreach (DataRow dr in _dt.Rows)
+					if (dc.ColumnName == "CATEGORY" || dc.ColumnName == "TYPE" || dc.ColumnName == "CODE")
 					{
-						_value += Convert.ToDecimal(dr[dc.ColumnName].ToString());
+						_dr[dc.ColumnName] = "";
 					}
-					// debug
-					// s.AppendLine($"{dc.ColumnName} : {_value:N2} ");
-					// MessageBox.Show(s.ToString(),"Debug");
-					// end debug
+					else if (dc.ColumnName == "CUSTOMER")
+					{
+						_dr[dc.ColumnName] = "TOTAL";
+					}
+					else
+					{
+						decimal _value = 0m;
 
-					_dr[dc.ColumnName] = _value;
+						foreach (DataRow dr in _dt.Rows)
+						{
+							_value += Convert.ToDecimal(dr[dc.ColumnName].ToString());
+						}
+						// debug
+						// s.AppendLine($"{dc.ColumnName} : {_value:N2} ");
+						// MessageBox.Show(s.ToString(),"Debug");
+						// end debug
+
+						_dr[dc.ColumnName] = _value;
+					}
 				}
-			}
 
-			// add summary row to datatable
-			_dt.Rows.Add(_dr);
+				// add summary row to datatable
+				_dt.Rows.Add(_dr);
 
-			// finish add summary row
-			*/
+				// finish add summary row
+				*/
+			#endregion
 
 			// binding data to datagridview
 
@@ -127,36 +128,32 @@ namespace OMW15.Views.Sales
 			dgv.DataSource = _dt;
 
 			// format datagridview cell -> only numeric cell
-			if (!_columnsHadFormated)
+			foreach (DataColumn _dc in _dt.Columns)
 			{
-				foreach (DataColumn _dc in _dt.Columns)
+				if (_dc.ColumnName != "CATEGORY")
 				{
-					if (_dc.ColumnName != "CATEGORY")
-					{
-						dgv.Columns[_dc.ColumnName].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-						dgv.Columns[_dc.ColumnName].DefaultCellStyle.Format = "N0";
-					}
+					dgv.Columns[_dc.ColumnName].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+					dgv.Columns[_dc.ColumnName].DefaultCellStyle.Format = "N0";
 				}
-				_columnsHadFormated = true;
 			}
+
+			_loadDataCompleted = true;
 
 			dgv.Columns["CATEGORY"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 			dgv.ResumeLayout();
 			tsslbRows.Text = $"found : {dgv.Rows.Count} record{ (dgv.Rows.Count <= 1 ? string.Empty : "s")}";
 			UpdateUI();
-
-			_loadDataCompleted = true;
 		}
 
-		private void GetSummarySellByCategory(int yearSale, string saleCategory)
+		private void GetSummarySellDataStructure(string saleCategory, int yearSale)
 		{
-			dgvSellCat.SuspendLayout();
-
 			DataTable _dt = new SaleDAL().GetSaleSummaryByCategory(saleCategory, yearSale);
-			dgvSellCat.DataSource = _dt;
-
 			// format datagridview cell -> only numeric cell
-			foreach (DataColumn _dc in _dt.Columns)
+
+			DataTable _dtEmty = _dt.Clone();
+
+			dgvSellCat.DataSource = _dtEmty;
+			foreach (DataColumn _dc in _dtEmty.Columns)
 			{
 				if (_dc.ColumnName != "CODE" && _dc.ColumnName != "CUSTOMER")
 				{
@@ -164,6 +161,47 @@ namespace OMW15.Views.Sales
 					dgvSellCat.Columns[_dc.ColumnName].DefaultCellStyle.Format = "N0";
 				}
 			}
+			_columnsHadFormated = true;
+		}
+
+		private void GetSummarySellByCategory(string saleCategory, int yearSale)
+		{
+			DataTable _dt = new SaleDAL().GetSaleSummaryByCategory(saleCategory, yearSale);
+
+			dgvSellCat.SuspendLayout();
+
+			// formating data columns
+			if (_columnsHadFormated == false)
+			{
+				DataTable _dtEmty = _dt.Clone();
+				dgvSellCat.DataSource = _dtEmty;
+				foreach (DataColumn _dc in _dtEmty.Columns)
+				{
+					if (_dc.ColumnName != "CODE" && _dc.ColumnName != "CUSTOMER")
+					{
+						dgvSellCat.Columns[_dc.ColumnName].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+						dgvSellCat.Columns[_dc.ColumnName].DefaultCellStyle.Format = "N0";
+					}
+				}
+				_columnsHadFormated = true;
+			}
+
+			// map data to datagridview
+			dgvSellCat.DataSource = _dt;
+
+			// format datagridview cell -> only numeric cell
+			//if (_columnsHadFormated == false)
+			//{
+			//	foreach (DataColumn _dc in _dt.Columns)
+			//	{
+			//		if (_dc.ColumnName != "CODE" && _dc.ColumnName != "CUSTOMER")
+			//		{
+			//			dgvSellCat.Columns[_dc.ColumnName].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+			//			dgvSellCat.Columns[_dc.ColumnName].DefaultCellStyle.Format = "N0";
+			//		}
+			//	}
+			//	_columnsHadFormated = true;
+			//}
 
 			dgvSellCat.Columns["CUSTOMER"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 			dgvSellCat.ResumeLayout();
@@ -183,18 +221,26 @@ namespace OMW15.Views.Sales
 			OMControls.OMUtils.SettingDataGridView(ref dgvSellCat);
 
 			_loadDataCompleted = false;
+			_columnsHadFormated = false;
 		}
 
 		private void SaleSummary_Load(object sender, EventArgs e)
 		{
 			lbTitle.Text = this.Title;
-			GetYearSaleBySaleGroup();
+
+			// create structure datable
+			// GetSummarySellDataStructure("30", DateTime.Today.Year);
+
+			GetYearSale();
 		}
 
 		private void btnLoadData_Click(object sender, EventArgs e)
 		{
 			dgvSellCat.DataSource = null;
+			_columnsHadFormated = false;
 			lbSaleCategory.Text = string.Empty;
+	
+			_loadDataCompleted = false;
 			GetSaleSummary(_saleYear);
 		}
 
@@ -226,12 +272,13 @@ namespace OMW15.Views.Sales
 				{
 					_selectedCategory = dgv["CATEGORY", e.RowIndex].Value.ToString().Substring(3);
 					lbSaleCategory.Text = _selectedCategory;
-					GetSummarySellByCategory(_saleYear, _selectedSaleCategory);
+					GetSummarySellByCategory(_selectedSaleCategory, _saleYear);
 				}
 				else
 				{
 					_selectedCategory = string.Empty;
 					dgvSellCat.DataSource = null;
+					_columnsHadFormated = false;
 					lbSaleCategory.Text = _selectedCategory;
 				}
 			}
