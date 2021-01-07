@@ -65,6 +65,9 @@
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsMCRecord = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+			this.mnuSaleHistory = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnu.SuspendLayout();
 			this.ts.SuspendLayout();
 			this.SuspendLayout();
@@ -190,7 +193,8 @@
 			// mnuSaleReport
 			// 
 			this.mnuSaleReport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuSaleSummary});
+            this.mnuSaleSummary,
+            this.mnuSaleHistory});
 			this.mnuSaleReport.Name = "mnuSaleReport";
 			this.mnuSaleReport.Size = new System.Drawing.Size(58, 31);
 			this.mnuSaleReport.Text = "รายงาน";
@@ -281,7 +285,9 @@
             this.tsbtnPriceList,
             this.toolStripSeparator4,
             this.tsMCRecord,
-            this.toolStripSeparator5});
+            this.toolStripSeparator5,
+            this.toolStripButton1,
+            this.toolStripSeparator6});
 			this.ts.Location = new System.Drawing.Point(1, 36);
 			this.ts.Name = "ts";
 			this.ts.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -295,7 +301,7 @@
 			this.tsbtnSaleContact.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnSaleContact.Image")));
 			this.tsbtnSaleContact.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.tsbtnSaleContact.Name = "tsbtnSaleContact";
-			this.tsbtnSaleContact.Size = new System.Drawing.Size(80, 39);
+			this.tsbtnSaleContact.Size = new System.Drawing.Size(85, 39);
 			this.tsbtnSaleContact.Text = "Sale Contact";
 			this.tsbtnSaleContact.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			this.tsbtnSaleContact.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -312,7 +318,7 @@
 			this.tsbtnQT.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnQT.Image")));
 			this.tsbtnQT.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.tsbtnQT.Name = "tsbtnQT";
-			this.tsbtnQT.Size = new System.Drawing.Size(80, 39);
+			this.tsbtnQT.Size = new System.Drawing.Size(85, 39);
 			this.tsbtnQT.Text = "ใบเสนอราคา";
 			this.tsbtnQT.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			this.tsbtnQT.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -361,7 +367,7 @@
 			this.tsMCRecord.Image = ((System.Drawing.Image)(resources.GetObject("tsMCRecord.Image")));
 			this.tsMCRecord.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.tsMCRecord.Name = "tsMCRecord";
-			this.tsMCRecord.Size = new System.Drawing.Size(90, 42);
+			this.tsMCRecord.Size = new System.Drawing.Size(85, 42);
 			this.tsMCRecord.Text = "M/C Record";
 			this.tsMCRecord.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
 			this.tsMCRecord.Click += new System.EventHandler(this.tsMCRecord_Click);
@@ -370,6 +376,29 @@
 			// 
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
 			this.toolStripSeparator5.Size = new System.Drawing.Size(6, 45);
+			// 
+			// mnuSaleHistory
+			// 
+			this.mnuSaleHistory.Name = "mnuSaleHistory";
+			this.mnuSaleHistory.Size = new System.Drawing.Size(180, 22);
+			this.mnuSaleHistory.Text = "ประวัติการขาย";
+			this.mnuSaleHistory.Click += new System.EventHandler(this.mnuSaleHistory_Click);
+			// 
+			// toolStripButton1
+			// 
+			this.toolStripButton1.AutoSize = false;
+			this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+			this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton1.Name = "toolStripButton1";
+			this.toolStripButton1.Size = new System.Drawing.Size(85, 42);
+			this.toolStripButton1.Text = "ประวัติการขาย";
+			this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+			this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+			// 
+			// toolStripSeparator6
+			// 
+			this.toolStripSeparator6.Name = "toolStripSeparator6";
+			this.toolStripSeparator6.Size = new System.Drawing.Size(6, 45);
 			// 
 			// SaleWorks
 			// 
@@ -435,5 +464,8 @@
 		private System.Windows.Forms.ToolStripMenuItem mnuSaleMachines;
 		private System.Windows.Forms.ToolStripMenuItem mnuSaleReport;
 		private System.Windows.Forms.ToolStripMenuItem mnuSaleSummary;
+		private System.Windows.Forms.ToolStripMenuItem mnuSaleHistory;
+		private System.Windows.Forms.ToolStripButton toolStripButton1;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
 	}
 }

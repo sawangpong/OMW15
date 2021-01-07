@@ -163,5 +163,19 @@ namespace OMW15.Views.Sales
 			saleSummary.StartPosition = FormStartPosition.CenterScreen;
 			saleSummary.Show();
 		}
+
+		private void toolStripButton1_Click(object sender, EventArgs e)
+		{
+			mnuSaleHistory.PerformClick();
+		}
+
+		private void mnuSaleHistory_Click(object sender, EventArgs e)
+		{
+			//
+			//
+			//
+			//
+
+		}
 	}
 }
