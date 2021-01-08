@@ -24,25 +24,25 @@ namespace OMW15.Models.CastingModel
 			var _result = new DataTable();
 
 			var _ml = (from m in _om.SYSDATAs
-					   join f in
-					   (from fg in _om.FGSTOCKs
-						orderby fg.MATID
-						where fg.ISCOMPLETION == false
-					   && fg.CUSTCODE == customerCode
-						select new
-						{
-							fg.MATID
-						}).Distinct()
-					   on m.KEYVALUE equals f.MATID.ToString()
-					   where m.GROUPTITLE == "MATERIAL"
-					   select new
-					   {
-						   MaterialId = f.MATID,
-						   Material = m.THKEYNAME,
-						   Category = m.CATEGORY,
-						   m.SI,
-						   Factor = m.CONVERTFACTOR
-					   }).OrderBy(x => x.Material);
+						  join f in
+						  (from fg in _om.FGSTOCKs
+							orderby fg.MATID
+							where fg.ISCOMPLETION == false
+						 && fg.CUSTCODE == customerCode
+							select new
+							{
+								fg.MATID
+							}).Distinct()
+						  on m.KEYVALUE equals f.MATID.ToString()
+						  where m.GROUPTITLE == "MATERIAL"
+						  select new
+						  {
+							  MaterialId = f.MATID,
+							  Material = m.THKEYNAME,
+							  Category = m.CATEGORY,
+							  m.SI,
+							  Factor = m.CONVERTFACTOR
+						  }).OrderBy(x => x.Material);
 
 			if (_ml != null)
 				_result = _ml.ToDataTable();
@@ -55,16 +55,16 @@ namespace OMW15.Models.CastingModel
 			var _result = new DataTable();
 
 			var _ml = from m in _om.SYSDATAs
-					  orderby m.THKEYNAME
-					  where m.GROUPTITLE == "MATERIAL" && m.CATEGORY == materialCategory
-					  select new
-					  {
-						  MaterialId = m.KEYVALUE,
-						  Material = m.THKEYNAME,
-						  Category = m.CATEGORY,
-						  m.SI,
-						  Factor = m.CONVERTFACTOR
-					  };
+						 orderby m.THKEYNAME
+						 where m.GROUPTITLE == "MATERIAL" && m.CATEGORY == materialCategory
+						 select new
+						 {
+							 MaterialId = m.KEYVALUE,
+							 Material = m.THKEYNAME,
+							 Category = m.CATEGORY,
+							 m.SI,
+							 Factor = m.CONVERTFACTOR
+						 };
 
 			if (_ml != null)
 				_result = _ml.ToDataTable();
@@ -83,12 +83,12 @@ namespace OMW15.Models.CastingModel
 		{
 			DataTable _result;
 			var mats = (from m in _om.MATSALEs
-						orderby m.MATNAME
-						select new
-						{
-							m.MATID,
-							m.MATNAME
-						}).AsParallel();
+							orderby m.MATNAME
+							select new
+							{
+								m.MATID,
+								m.MATNAME
+							}).AsParallel();
 
 			_result = mats.ToDataTable();
 
@@ -99,10 +99,10 @@ namespace OMW15.Models.CastingModel
 		{
 			DataTable result = new DataTable();
 			var matYearSale = (from y in _om.MATPRICES
-							   select new
-							   {
-								   FiscYear = y.FISCYEAR.Value
-							   }).Distinct().OrderByDescending(o => o.FiscYear).AsParallel();
+									 select new
+									 {
+										 FiscYear = y.FISCYEAR.Value
+									 }).Distinct().OrderByDescending(o => o.FiscYear).AsParallel();
 			result = matYearSale.ToDataTable();
 			return result;
 		} // end GetMaterialYearSale
@@ -111,15 +111,15 @@ namespace OMW15.Models.CastingModel
 		{
 			var _result = new DataTable();
 			var mp = from m in _om.MATPRICES.AsEnumerable()
-					 where m.FISCYEAR == yearSale
-						   && m.MATID == materialId
-					 orderby m.PRICEDATE descending
-					 select new
-					 {
-						 m.SEQ,
-						 PriceDate = m.PRICEDATE.Value.Num2Date(),
-						 PriceTHGram = m.PRICETHBGRAM.Value
-					 };
+						where m.FISCYEAR == yearSale
+							  && m.MATID == materialId
+						orderby m.PRICEDATE descending
+						select new
+						{
+							m.SEQ,
+							PriceDate = m.PRICEDATE.Value.Num2Date(),
+							PriceTHGram = m.PRICETHBGRAM.Value
+						};
 			if (mp != null)
 			{
 				_result = mp.ToDataTable();
@@ -133,16 +133,16 @@ namespace OMW15.Models.CastingModel
 			var _result = new DataTable();
 
 			var mp = (from m in _om.MATPRICES.AsEnumerable()
-					  where m.FISCYEAR == yearSale
-							&& m.FISCPERIOD == monthSale
-							&& m.MATID == materialId
-					  group m by m.EXCHDATE
+						 where m.FISCYEAR == yearSale
+							  && m.FISCPERIOD == monthSale
+							  && m.MATID == materialId
+						 group m by m.EXCHDATE
 				into md
-					  select new
-					  {
-						  PriceDate = md.Key.Value.Num2Date(),
-						  PriceTHGram = md.Max(x => x.PRICETHBGRAM.Value)
-					  }).OrderByDescending(x => x.PriceDate).AsParallel();
+						 select new
+						 {
+							 PriceDate = md.Key.Value.Num2Date(),
+							 PriceTHGram = md.Max(x => x.PRICETHBGRAM.Value)
+						 }).OrderByDescending(x => x.PriceDate).AsParallel();
 
 			if (mp != null)
 				_result = mp.ToDataTable();
@@ -157,16 +157,16 @@ namespace OMW15.Models.CastingModel
 		{
 			var _result = new DataTable();
 			var _mavg = (from mp in _om.MATPRICES.AsEnumerable()
-						 where mp.FISCYEAR == YearSale
-							   && mp.MATID == MaterialId
-						 group mp by mp.FISCPERIOD
+							 where mp.FISCYEAR == YearSale
+									&& mp.MATID == MaterialId
+							 group mp by mp.FISCPERIOD
 				into mpavg
-						 orderby mpavg.Key
-						 select new
-						 {
-							 Month = DateAndTime.MonthName((int)mpavg.Key, false),
-							 YAVG = mpavg.Average(ii => ii.PRICETHBGRAM.Value)
-						 }).AsParallel();
+							 orderby mpavg.Key
+							 select new
+							 {
+								 Month = DateAndTime.MonthName((int)mpavg.Key, false),
+								 YAVG = mpavg.Average(ii => ii.PRICETHBGRAM.Value)
+							 }).AsParallel();
 
 			if (_mavg != null)
 				_result = _mavg.ToDataTable();
@@ -179,14 +179,14 @@ namespace OMW15.Models.CastingModel
 		{
 			Decimal result = 0.00m;
 			var priceAvg = (from mp in _om.MATPRICES
-							where mp.FISCYEAR == yearSale
-								  && mp.MATID == materialId
-							group mp by mp.MATID
+								 where mp.FISCYEAR == yearSale
+										&& mp.MATID == materialId
+								 group mp by mp.MATID
 				into mpavg
-							select new
-							{
-								YAVG = mpavg.Average(ii => ii.PRICETHBGRAM.Value)
-							}).FirstOrDefault();
+								 select new
+								 {
+									 YAVG = mpavg.Average(ii => ii.PRICETHBGRAM.Value)
+								 }).FirstOrDefault();
 
 			if (priceAvg != null)
 			{
@@ -206,15 +206,15 @@ namespace OMW15.Models.CastingModel
 		{
 			var _result = new DataTable();
 			var _exhr = from ex in _om.EXCHCURRs.AsEnumerable()
-						where ex.CURRENCY == Currency
-							  && ex.FISCYEAR == FiscYear
-							  && ex.FISCPERIOD == FiscPeriod
-						orderby ex.EFFECTIVEDT descending
-						select new
-						{
-							EFFECTDATE = ex.EFFECTIVEDT.Num2Date(),
-							ex.EXCHANGERATE
-						};
+							where ex.CURRENCY == Currency
+								  && ex.FISCYEAR == FiscYear
+								  && ex.FISCPERIOD == FiscPeriod
+							orderby ex.EFFECTIVEDT descending
+							select new
+							{
+								EFFECTDATE = ex.EFFECTIVEDT.Num2Date(),
+								ex.EXCHANGERATE
+							};
 
 			if (_exhr != null)
 				_result = _exhr.ToDataTable();
@@ -269,7 +269,7 @@ namespace OMW15.Models.CastingModel
 
 		public DataTable GetMaterialCategory()
 		{
-			return _om.SYSDATAs.Where(x => x.GROUPTITLE == "MATERIAL").Select(x => new
+			return _om.SYSDATAs.Where(x => x.GROUPTITLE == "MATERIAL" && x.CATEGORY != "").Select(x => new
 			{
 				x.CATEGORY
 			}).Distinct().OrderBy(o => o.CATEGORY).ToDataTable();
@@ -281,19 +281,21 @@ namespace OMW15.Models.CastingModel
 			var _result = new DataTable();
 
 			var mat = (from m in _om.SYSDATAs
-					   where m.CATEGORY == MaterialCategory
-							 && m.GROUPTITLE == "MATERIAL"
-					   select new
-					   {
-						   m.LINESEQ,
-						   m.KEYVALUE,
-						   m.THKEYNAME,
-						   MaterialName = m.ENKEYNAME + "  (" + m.THKEYNAME + ")",
-						   m.CONVERTFACTOR,
-						   m.MATFACTOR,
-						   m.FURNACETEMP,
-						   m.CASTINGTEMP
-					   }).OrderBy(o => o.THKEYNAME).AsParallel();
+						  where m.CATEGORY == MaterialCategory
+								&& m.GROUPTITLE == "MATERIAL"
+								&& m.CATEGORY != ""
+						  select new
+						  {
+							  m.Inused,
+							  m.LINESEQ,
+							  m.KEYVALUE,
+							  m.THKEYNAME,
+							  MaterialName = m.ENKEYNAME + "  (" + m.THKEYNAME + ")",
+							  m.CONVERTFACTOR,
+							  m.MATFACTOR,
+							  m.FURNACETEMP,
+							  m.CASTINGTEMP
+						  }).OrderBy(o => o.THKEYNAME).AsParallel();
 
 			if (mat != null)
 				_result = mat.ToDataTable();
@@ -311,13 +313,13 @@ namespace OMW15.Models.CastingModel
 		public void GetMaterialInfoByMaterialId(int MaterialId, ref decimal SIPercent, ref decimal MatFactor)
 		{
 			var mat = (from m in _om.SYSDATAs
-					   where m.GROUPTITLE == "MATERIAL"
-							 && m.KEYVALUE == MaterialId.ToString()
-					   select new
-					   {
-						   m.CONVERTFACTOR,
-						   m.SI
-					   }).AsParallel().FirstOrDefault();
+						  where m.GROUPTITLE == "MATERIAL"
+								&& m.KEYVALUE == MaterialId.ToString()
+						  select new
+						  {
+							  m.CONVERTFACTOR,
+							  m.SI
+						  }).AsParallel().FirstOrDefault();
 
 			MatFactor = mat.CONVERTFACTOR;
 			SIPercent = mat.SI;
@@ -345,9 +347,10 @@ namespace OMW15.Models.CastingModel
 			try
 			{
 				var mi = _om.SYSDATAs.FirstOrDefault(x => x.LINESEQ == RecordId);
+				mi.Inused = MaterialInfo.Inused;
 				mi.CASTINGTEMP = MaterialInfo.CASTINGTEMP;
 				mi.CONVERTFACTOR = MaterialInfo.CONVERTFACTOR;
-				mi.ENKEYNAME = MaterialInfo.ENKEYNAME;
+				//mi.ENKEYNAME = MaterialInfo.ENKEYNAME;
 				mi.FURNACETEMP = MaterialInfo.FURNACETEMP;
 				mi.MATFACTOR = MaterialInfo.MATFACTOR;
 				mi.THKEYNAME = MaterialInfo.THKEYNAME;
@@ -367,14 +370,14 @@ namespace OMW15.Models.CastingModel
 			try
 			{
 				var mat = (from m in _om.SYSDATAs
-						   where m.GROUPTITLE == GroupName
-						   select new
-						   {
-							   m.KEYVALUE
-						   }).AsEnumerable().Select(x => new
-						   {
-							   Index = Convert.ToInt32(x.KEYVALUE)
-						   }).Max(id => id.Index);
+							  where m.GROUPTITLE == GroupName
+							  select new
+							  {
+								  m.KEYVALUE
+							  }).AsEnumerable().Select(x => new
+							  {
+								  Index = Convert.ToInt32(x.KEYVALUE)
+							  }).Max(id => id.Index);
 				_result = Convert.ToInt32(mat);
 			}
 			catch

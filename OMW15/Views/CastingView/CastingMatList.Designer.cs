@@ -72,7 +72,7 @@
 			this.ts.Location = new System.Drawing.Point(0, 0);
 			this.ts.Name = "ts";
 			this.ts.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-			this.ts.Size = new System.Drawing.Size(565, 36);
+			this.ts.Size = new System.Drawing.Size(632, 36);
 			this.ts.TabIndex = 0;
 			// 
 			// tsbtnClose
@@ -104,7 +104,7 @@
 			this.tscbxMatCategory.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
 			this.tscbxMatCategory.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.tscbxMatCategory.Name = "tscbxMatCategory";
-			this.tscbxMatCategory.Size = new System.Drawing.Size(118, 25);
+			this.tscbxMatCategory.Size = new System.Drawing.Size(140, 25);
 			this.tscbxMatCategory.SelectedIndexChanged += new System.EventHandler(this.tscbxMatCategory_SelectedIndexChanged);
 			// 
 			// toolStripSeparator2
@@ -163,7 +163,7 @@
 			this.panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.panel1.Name = "panel1";
 			this.panel1.Padding = new System.Windows.Forms.Padding(2);
-			this.panel1.Size = new System.Drawing.Size(565, 327);
+			this.panel1.Size = new System.Drawing.Size(632, 327);
 			this.panel1.TabIndex = 1;
 			// 
 			// dgv
@@ -175,7 +175,7 @@
 			this.dgv.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.dgv.Name = "dgv";
 			this.dgv.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.dgv.Size = new System.Drawing.Size(561, 283);
+			this.dgv.Size = new System.Drawing.Size(628, 283);
 			this.dgv.TabIndex = 1;
 			this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEnter);
 			this.dgv.DoubleClick += new System.EventHandler(this.dgv_DoubleClick);
@@ -190,14 +190,14 @@
 			this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.panel2.Name = "panel2";
 			this.panel2.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-			this.panel2.Size = new System.Drawing.Size(561, 40);
+			this.panel2.Size = new System.Drawing.Size(628, 40);
 			this.panel2.TabIndex = 0;
 			// 
 			// btnClose
 			// 
 			this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
-			this.btnClose.Location = new System.Drawing.Point(449, 3);
+			this.btnClose.Location = new System.Drawing.Point(516, 3);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(110, 34);
 			this.btnClose.TabIndex = 2;
@@ -208,7 +208,7 @@
 			// 
 			this.btnSelect.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.btnSelect.Dock = System.Windows.Forms.DockStyle.Left;
-			this.btnSelect.Location = new System.Drawing.Point(109, 3);
+			this.btnSelect.Location = new System.Drawing.Point(135, 3);
 			this.btnSelect.Name = "btnSelect";
 			this.btnSelect.Size = new System.Drawing.Size(110, 34);
 			this.btnSelect.TabIndex = 1;
@@ -218,10 +218,11 @@
 			// lbCAT
 			// 
 			this.lbCAT.Dock = System.Windows.Forms.DockStyle.Left;
+			this.lbCAT.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbCAT.Location = new System.Drawing.Point(2, 3);
 			this.lbCAT.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.lbCAT.Name = "lbCAT";
-			this.lbCAT.Size = new System.Drawing.Size(107, 34);
+			this.lbCAT.Size = new System.Drawing.Size(133, 34);
 			this.lbCAT.TabIndex = 0;
 			this.lbCAT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
@@ -229,7 +230,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(565, 363);
+			this.ClientSize = new System.Drawing.Size(632, 363);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.ts);
 			this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

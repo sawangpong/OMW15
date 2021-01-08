@@ -1,4 +1,5 @@
-﻿using OMW15.Views.CustomerView;
+﻿using OMW15.Models.SaleModel;
+using OMW15.Views.CustomerView;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,6 +29,10 @@ namespace OMW15.Views.Sales
 
 		#region class field
 
+		private string _selectedCustomerCode = string.Empty;
+		private bool _columnsHadFormated = false;
+		private DataTable _histDt;
+
 		#endregion
 
 		#region class property
@@ -40,8 +45,49 @@ namespace OMW15.Views.Sales
 
 		}
 
+		private void GetHistory(string customerCode)
+		{
+			_histDt = new SaleDAL().GetSaleHistoryByCustomer(customerCode);
+
+			// formatting data columns
+			if(!_columnsHadFormated)
+			{
+				DataTable _cloneDt = _histDt.Clone();
+				dgv.DataSource = _cloneDt;
+				foreach (DataColumn _dc in _cloneDt.Columns)
+				{
+					if(_dc.DataType == typeof(System.Decimal))
+						{
+						dgv.Columns[_dc.ColumnName].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+						dgv.Columns[_dc.ColumnName].DefaultCellStyle.Format = "N2";
+					}
+				}
+
+				_columnsHadFormated = true;
+			}
+ 
+			dgv.SuspendLayout();
+
+			dgv.DataSource = _histDt;
+			dgv.Columns["CUSTCODE"].Visible = false;
+			dgv.Columns["CUSTOMERNAME"].Visible = false;
+
+			dgv.ResumeLayout();
+
+			sstlbRowFound.Text = $"found : {dgv.Rows.Count}";
+
+		}
 
 
+		private void searchItems(string filter)
+		{
+			string _filterText = $"ITEMNO LIKE '%{filter}%' OR ITEMNAME LIKE '%{filter}%'";
+
+		 	DataTable _gridTable = (DataTable)dgv.DataSource;
+			_gridTable.DefaultView.RowFilter = _filterText;
+
+			sstlbRowFound.Text = $"found : {dgv.Rows.Count}";
+		}
 
 		#endregion
 
@@ -72,7 +118,8 @@ namespace OMW15.Views.Sales
 			{
 				if(cust.ShowDialog() == DialogResult.OK)
 				{
-					lbCustCode.Text = cust.ERPCustomerCode;
+					_selectedCustomerCode = cust.ERPCustomerCode;
+					lbCustCode.Text = _selectedCustomerCode;
 					txtCustomerFilter.Text = cust.CustomerName;
 				}
 			}
@@ -84,6 +131,24 @@ namespace OMW15.Views.Sales
 			{
 				btnCustomerSearch.PerformClick();
 			}
+		}
+
+		private void btnLoadData_Click(object sender, EventArgs e)
+		{
+			GetHistory(_selectedCustomerCode);
+		}
+
+		private void txtItemSearch_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if(e.KeyChar == (char)Keys.Enter)
+			{
+				btnSearchItem.PerformClick();
+			}
+		}
+
+		private void btnSearchItem_Click(object sender, EventArgs e)
+		{
+			searchItems(txtItemSearch.Text);
 		}
 	}
 }

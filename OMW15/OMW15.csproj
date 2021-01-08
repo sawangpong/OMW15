@@ -513,9 +513,6 @@
     <Compile Include="OM_ERP_WH_ISSUE_ITEMS.cs">
       <DependentUpon>Oldmoon.tt</DependentUpon>
     </Compile>
-    <Compile Include="OM_ERP_WH_ITEM_CLASS.cs">
-      <DependentUpon>Oldmoon.tt</DependentUpon>
-    </Compile>
     <Compile Include="OM_ERP_WH_STOCK_ITEM_INFO.cs">
       <DependentUpon>Oldmoon.tt</DependentUpon>
     </Compile>
@@ -2790,22 +2787,22 @@
   <ItemGroup>
     <PublishFile Include="GAFExtension">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="stdole">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

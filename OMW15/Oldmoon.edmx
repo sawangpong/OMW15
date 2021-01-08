@@ -1451,6 +1451,7 @@
           </Key>
           <Property Name="LINESEQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CATEGORY" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Inused" Type="bit" Nullable="false" />
           <Property Name="GROUPTITLE" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ENKEYNAME" Type="nvarchar" MaxLength="70" Nullable="false" />
           <Property Name="KEYVALUE" Type="nvarchar" MaxLength="30" Nullable="false" />
@@ -2389,40 +2390,6 @@ warning 6002: The table/view 'OLDMOON.dbo.OM_ERP_WH_ISSUE_ITEMS' does not have a
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'OLDMOON.dbo.OM_ERP_WH_ITEM_CLASS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="OM_ERP_WH_ITEM_CLASS">
-          <Key>
-            <PropertyRef Name="ICCAT_KEY" />
-            <PropertyRef Name="ICCAT_CODE" />
-            <PropertyRef Name="CAT_NAME" />
-            <PropertyRef Name="ITEM_CLASS" />
-            <PropertyRef Name="WL_CODE" />
-            <PropertyRef Name="ITEMNO" />
-            <PropertyRef Name="ITEMNAME" />
-            <PropertyRef Name="UNIT" />
-            <PropertyRef Name="STD_COST" />
-            <PropertyRef Name="SKU_MIN_QTY" />
-            <PropertyRef Name="SKU_MAX_ORDER" />
-            <PropertyRef Name="SKB_WL" />
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="ON_HAND" />
-            <PropertyRef Name="SKB_COST" />
-          </Key>
-          <Property Name="ICCAT_KEY" Type="int" Nullable="false" />
-          <Property Name="ICCAT_CODE" Type="varchar" MaxLength="12" Nullable="false" />
-          <Property Name="CAT_NAME" Type="varchar" MaxLength="75" Nullable="false" />
-          <Property Name="ITEM_CLASS" Type="varchar" MaxLength="1" Nullable="false" />
-          <Property Name="SKB_WL" Type="int" Nullable="false" />
-          <Property Name="WL_CODE" Type="varchar" MaxLength="16" Nullable="false" />
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="ITEMNO" Type="varchar" MaxLength="24" Nullable="false" />
-          <Property Name="ITEMNAME" Type="varchar" MaxLength="60" Nullable="false" />
-          <Property Name="UNIT" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="STD_COST" Type="money" Nullable="false" />
-          <Property Name="ON_HAND" Type="money" Nullable="false" />
-          <Property Name="SKB_COST" Type="money" Nullable="false" />
-          <Property Name="SKU_MIN_QTY" Type="money" Nullable="false" />
-          <Property Name="SKU_MAX_ORDER" Type="money" Nullable="false" />
-        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'OLDMOON.dbo.OM_ERP_WH_STOCK_ITEM_INFO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="OM_ERP_WH_STOCK_ITEM_INFO">
@@ -3548,25 +3515,6 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
     [OM_ERP_WH_ISSUE_ITEMS].[SHIPTOTALVAT] AS [SHIPTOTALVAT], 
     [OM_ERP_WH_ISSUE_ITEMS].[SHIPGRANDTOTAL] AS [SHIPGRANDTOTAL]
     FROM [dbo].[OM_ERP_WH_ISSUE_ITEMS] AS [OM_ERP_WH_ISSUE_ITEMS]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="OM_ERP_WH_ITEM_CLASS" EntityType="Self.OM_ERP_WH_ITEM_CLASS" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [OM_ERP_WH_ITEM_CLASS].[ICCAT_KEY] AS [ICCAT_KEY], 
-    [OM_ERP_WH_ITEM_CLASS].[ICCAT_CODE] AS [ICCAT_CODE], 
-    [OM_ERP_WH_ITEM_CLASS].[CAT_NAME] AS [CAT_NAME], 
-    [OM_ERP_WH_ITEM_CLASS].[ITEM_CLASS] AS [ITEM_CLASS], 
-    [OM_ERP_WH_ITEM_CLASS].[SKB_WL] AS [SKB_WL], 
-    [OM_ERP_WH_ITEM_CLASS].[WL_CODE] AS [WL_CODE], 
-    [OM_ERP_WH_ITEM_CLASS].[ID] AS [ID], 
-    [OM_ERP_WH_ITEM_CLASS].[ITEMNO] AS [ITEMNO], 
-    [OM_ERP_WH_ITEM_CLASS].[ITEMNAME] AS [ITEMNAME], 
-    [OM_ERP_WH_ITEM_CLASS].[UNIT] AS [UNIT], 
-    [OM_ERP_WH_ITEM_CLASS].[STD_COST] AS [STD_COST], 
-    [OM_ERP_WH_ITEM_CLASS].[ON_HAND] AS [ON_HAND], 
-    [OM_ERP_WH_ITEM_CLASS].[SKB_COST] AS [SKB_COST], 
-    [OM_ERP_WH_ITEM_CLASS].[SKU_MIN_QTY] AS [SKU_MIN_QTY], 
-    [OM_ERP_WH_ITEM_CLASS].[SKU_MAX_ORDER] AS [SKU_MAX_ORDER]
-    FROM [dbo].[OM_ERP_WH_ITEM_CLASS] AS [OM_ERP_WH_ITEM_CLASS]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="OM_ERP_WH_STOCK_ITEM_INFO" EntityType="Self.OM_ERP_WH_STOCK_ITEM_INFO" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -5143,25 +5091,6 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <Property Name="MODIUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MODIDATE" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="SYSDATA">
-          <Key>
-            <PropertyRef Name="GROUPTITLE" />
-            <PropertyRef Name="ENKEYNAME" />
-            <PropertyRef Name="KEYVALUE" />
-          </Key>
-          <Property Name="LINESEQ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CATEGORY" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="GROUPTITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ENKEYNAME" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="KEYVALUE" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="THKEYNAME" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="GROUPTITLEHEADER" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
-          <Property Name="CONVERTFACTOR" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="MATFACTOR" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="SI" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="FURNACETEMP" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="CASTINGTEMP" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-        </EntityType>
         <EntityType Name="USERLOG">
           <Key>
             <PropertyRef Name="USERID" />
@@ -5441,7 +5370,6 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <EntitySet Name="SALE_PERSON_PROFILE" EntityType="Self.SALE_PERSON_PROFILE" />
           <EntitySet Name="SALEORDERS" EntityType="Self.SALEORDER" />
           <EntitySet Name="SOLINES" EntityType="Self.SOLINE" />
-          <EntitySet Name="SYSDATAs" EntityType="Self.SYSDATA" />
           <EntitySet Name="USERLOGs" EntityType="Self.USERLOG" />
           <EntitySet Name="WARRANTIES" EntityType="Self.WARRANTy" />
           <EntitySet Name="WAXTREES" EntityType="Self.WAXTREE" />
@@ -5520,7 +5448,6 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <EntitySet Name="OM_ERP_STOCK_MOVE" EntityType="Oldmoon.OM_ERP_STOCK_MOVE" />
           <EntitySet Name="OM_ERP_TRH_TRD" EntityType="Oldmoon.OM_ERP_TRH_TRD" />
           <EntitySet Name="OM_ERP_WH_ISSUE_ITEMS" EntityType="Oldmoon.OM_ERP_WH_ISSUE_ITEMS" />
-          <EntitySet Name="OM_ERP_WH_ITEM_CLASS" EntityType="Oldmoon.OM_ERP_WH_ITEM_CLASS" />
           <EntitySet Name="OM_ERP_WH_STOCK_ITEM_INFO" EntityType="Oldmoon.OM_ERP_WH_STOCK_ITEM_INFO" />
           <EntitySet Name="OM_FS_VALIDTIME_RECORDS" EntityType="Oldmoon.OM_FS_VALIDTIME_RECORDS" />
           <EntitySet Name="OM_JOB_ITEM_R" EntityType="Oldmoon.OM_JOB_ITEM_R" />
@@ -5546,6 +5473,7 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <EntitySet Name="PRODUCTIONJOBINFOes" EntityType="Oldmoon.PRODUCTIONJOBINFO" />
           <EntitySet Name="OM_ERP_PRODUCTION_TRANSFER_REQUEST" EntityType="Oldmoon.OM_ERP_PRODUCTION_TRANSFER_REQUEST" />
           <EntitySet Name="OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST" EntityType="Oldmoon.OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST" />
+          <EntitySet Name="SYSDATAs" EntityType="Oldmoon.SYSDATA" />
         </EntityContainer>
         <ComplexType Name="usp_GetServiceJobList_Result">
           <Property Type="Int32" Name="orderid" Nullable="false" />
@@ -6325,40 +6253,6 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <Property Name="SHIPTOTALVAT" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="SHIPGRANDTOTAL" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
         </EntityType>
-        <EntityType Name="OM_ERP_WH_ITEM_CLASS">
-          <Key>
-            <PropertyRef Name="ICCAT_KEY" />
-            <PropertyRef Name="ICCAT_CODE" />
-            <PropertyRef Name="CAT_NAME" />
-            <PropertyRef Name="ITEM_CLASS" />
-            <PropertyRef Name="SKB_WL" />
-            <PropertyRef Name="WL_CODE" />
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="ITEMNO" />
-            <PropertyRef Name="ITEMNAME" />
-            <PropertyRef Name="UNIT" />
-            <PropertyRef Name="STD_COST" />
-            <PropertyRef Name="ON_HAND" />
-            <PropertyRef Name="SKB_COST" />
-            <PropertyRef Name="SKU_MIN_QTY" />
-            <PropertyRef Name="SKU_MAX_ORDER" />
-          </Key>
-          <Property Name="ICCAT_KEY" Type="Int32" Nullable="false" />
-          <Property Name="ICCAT_CODE" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
-          <Property Name="CAT_NAME" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
-          <Property Name="ITEM_CLASS" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="SKB_WL" Type="Int32" Nullable="false" />
-          <Property Name="WL_CODE" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="ITEMNO" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
-          <Property Name="ITEMNAME" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="UNIT" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="STD_COST" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="ON_HAND" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="SKB_COST" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="SKU_MIN_QTY" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="SKU_MAX_ORDER" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-        </EntityType>
         <EntityType Name="OM_ERP_WH_STOCK_ITEM_INFO">
           <Key>
             <PropertyRef Name="CAT_KEY" />
@@ -6854,6 +6748,26 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <Property Name="QTY" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="UNIT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="REMARK" Type="String" Nullable="false" MaxLength="7000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SYSDATA">
+          <Key>
+            <PropertyRef Name="GROUPTITLE" />
+            <PropertyRef Name="ENKEYNAME" />
+            <PropertyRef Name="KEYVALUE" />
+          </Key>
+          <Property Name="LINESEQ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Inused" Type="Boolean" Nullable="false" />
+          <Property Name="GROUPTITLE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ENKEYNAME" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="KEYVALUE" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="THKEYNAME" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="GROUPTITLEHEADER" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="CONVERTFACTOR" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="MATFACTOR" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="SI" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="FURNACETEMP" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="CASTINGTEMP" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -8203,24 +8117,6 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SYSDATAs">
-            <EntityTypeMapping TypeName="Oldmoon.SYSDATA">
-              <MappingFragment StoreEntitySet="SYSDATA">
-                <ScalarProperty Name="LINESEQ" ColumnName="LINESEQ" />
-                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
-                <ScalarProperty Name="GROUPTITLE" ColumnName="GROUPTITLE" />
-                <ScalarProperty Name="ENKEYNAME" ColumnName="ENKEYNAME" />
-                <ScalarProperty Name="KEYVALUE" ColumnName="KEYVALUE" />
-                <ScalarProperty Name="THKEYNAME" ColumnName="THKEYNAME" />
-                <ScalarProperty Name="GROUPTITLEHEADER" ColumnName="GROUPTITLEHEADER" />
-                <ScalarProperty Name="CONVERTFACTOR" ColumnName="CONVERTFACTOR" />
-                <ScalarProperty Name="MATFACTOR" ColumnName="MATFACTOR" />
-                <ScalarProperty Name="SI" ColumnName="SI" />
-                <ScalarProperty Name="FURNACETEMP" ColumnName="FURNACETEMP" />
-                <ScalarProperty Name="CASTINGTEMP" ColumnName="CASTINGTEMP" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="USERLOGs">
             <EntityTypeMapping TypeName="Oldmoon.USERLOG">
               <MappingFragment StoreEntitySet="USERLOG">
@@ -8942,27 +8838,6 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="OM_ERP_WH_ITEM_CLASS">
-            <EntityTypeMapping TypeName="Oldmoon.OM_ERP_WH_ITEM_CLASS">
-              <MappingFragment StoreEntitySet="OM_ERP_WH_ITEM_CLASS">
-                <ScalarProperty Name="SKU_MAX_ORDER" ColumnName="SKU_MAX_ORDER" />
-                <ScalarProperty Name="SKU_MIN_QTY" ColumnName="SKU_MIN_QTY" />
-                <ScalarProperty Name="SKB_COST" ColumnName="SKB_COST" />
-                <ScalarProperty Name="ON_HAND" ColumnName="ON_HAND" />
-                <ScalarProperty Name="STD_COST" ColumnName="STD_COST" />
-                <ScalarProperty Name="UNIT" ColumnName="UNIT" />
-                <ScalarProperty Name="ITEMNAME" ColumnName="ITEMNAME" />
-                <ScalarProperty Name="ITEMNO" ColumnName="ITEMNO" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="WL_CODE" ColumnName="WL_CODE" />
-                <ScalarProperty Name="SKB_WL" ColumnName="SKB_WL" />
-                <ScalarProperty Name="ITEM_CLASS" ColumnName="ITEM_CLASS" />
-                <ScalarProperty Name="CAT_NAME" ColumnName="CAT_NAME" />
-                <ScalarProperty Name="ICCAT_CODE" ColumnName="ICCAT_CODE" />
-                <ScalarProperty Name="ICCAT_KEY" ColumnName="ICCAT_KEY" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="OM_ERP_WH_STOCK_ITEM_INFO">
             <EntityTypeMapping TypeName="Oldmoon.OM_ERP_WH_STOCK_ITEM_INFO">
               <MappingFragment StoreEntitySet="OM_ERP_WH_STOCK_ITEM_INFO">
@@ -9415,6 +9290,25 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
                 <ScalarProperty Name="DI_ACTIVE" ColumnName="DI_ACTIVE" />
                 <ScalarProperty Name="DI_KEY" ColumnName="DI_KEY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYSDATAs">
+            <EntityTypeMapping TypeName="Oldmoon.SYSDATA">
+              <MappingFragment StoreEntitySet="SYSDATA">
+                <ScalarProperty Name="CASTINGTEMP" ColumnName="CASTINGTEMP" />
+                <ScalarProperty Name="FURNACETEMP" ColumnName="FURNACETEMP" />
+                <ScalarProperty Name="SI" ColumnName="SI" />
+                <ScalarProperty Name="MATFACTOR" ColumnName="MATFACTOR" />
+                <ScalarProperty Name="CONVERTFACTOR" ColumnName="CONVERTFACTOR" />
+                <ScalarProperty Name="GROUPTITLEHEADER" ColumnName="GROUPTITLEHEADER" />
+                <ScalarProperty Name="THKEYNAME" ColumnName="THKEYNAME" />
+                <ScalarProperty Name="KEYVALUE" ColumnName="KEYVALUE" />
+                <ScalarProperty Name="ENKEYNAME" ColumnName="ENKEYNAME" />
+                <ScalarProperty Name="GROUPTITLE" ColumnName="GROUPTITLE" />
+                <ScalarProperty Name="Inused" ColumnName="Inused" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="LINESEQ" ColumnName="LINESEQ" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

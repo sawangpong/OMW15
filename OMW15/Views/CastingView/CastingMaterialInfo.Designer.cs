@@ -56,6 +56,7 @@
 			this.txtEnKeyName = new System.Windows.Forms.TextBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.panel4 = new System.Windows.Forms.Panel();
+			this.chkInused = new System.Windows.Forms.CheckBox();
 			this.txtCategory = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.panel3 = new System.Windows.Forms.Panel();
@@ -87,14 +88,14 @@
 			this.panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.panel1.Name = "panel1";
 			this.panel1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-			this.panel1.Size = new System.Drawing.Size(400, 47);
+			this.panel1.Size = new System.Drawing.Size(459, 47);
 			this.panel1.TabIndex = 0;
 			// 
 			// btnSave
 			// 
 			this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
-			this.btnSave.Location = new System.Drawing.Point(171, 4);
+			this.btnSave.Location = new System.Drawing.Point(230, 4);
 			this.btnSave.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(113, 39);
@@ -107,7 +108,7 @@
 			// 
 			this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
-			this.btnClose.Location = new System.Drawing.Point(284, 4);
+			this.btnClose.Location = new System.Drawing.Point(343, 4);
 			this.btnClose.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(113, 39);
@@ -132,7 +133,7 @@
 			this.grp.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.grp.Name = "grp";
 			this.grp.Padding = new System.Windows.Forms.Padding(5, 7, 5, 7);
-			this.grp.Size = new System.Drawing.Size(400, 321);
+			this.grp.Size = new System.Drawing.Size(459, 321);
 			this.grp.TabIndex = 1;
 			this.grp.TabStop = false;
 			this.grp.Text = "รายละเอียดวัสดุ";
@@ -146,7 +147,7 @@
 			this.panel11.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.panel11.Name = "panel11";
 			this.panel11.Padding = new System.Windows.Forms.Padding(1);
-			this.panel11.Size = new System.Drawing.Size(390, 28);
+			this.panel11.Size = new System.Drawing.Size(449, 28);
 			this.panel11.TabIndex = 9;
 			// 
 			// txtCastingTemp
@@ -156,10 +157,10 @@
 			this.txtCastingTemp.AllowMultipleDecimals = true;
 			this.txtCastingTemp.AllowNegation = true;
 			this.txtCastingTemp.DecimalValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
+				0,
+				0,
+				0,
+				131072});
 			this.txtCastingTemp.Dock = System.Windows.Forms.DockStyle.Left;
 			this.txtCastingTemp.IntegerValue = 0;
 			this.txtCastingTemp.Location = new System.Drawing.Point(136, 1);
@@ -190,7 +191,7 @@
 			this.panel10.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.panel10.Name = "panel10";
 			this.panel10.Padding = new System.Windows.Forms.Padding(1);
-			this.panel10.Size = new System.Drawing.Size(390, 28);
+			this.panel10.Size = new System.Drawing.Size(449, 28);
 			this.panel10.TabIndex = 8;
 			// 
 			// txtFurnaceTemp
@@ -200,10 +201,10 @@
 			this.txtFurnaceTemp.AllowMultipleDecimals = true;
 			this.txtFurnaceTemp.AllowNegation = true;
 			this.txtFurnaceTemp.DecimalValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
+				0,
+				0,
+				0,
+				131072});
 			this.txtFurnaceTemp.Dock = System.Windows.Forms.DockStyle.Left;
 			this.txtFurnaceTemp.IntegerValue = 0;
 			this.txtFurnaceTemp.Location = new System.Drawing.Point(136, 1);
@@ -234,7 +235,7 @@
 			this.panel9.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.panel9.Name = "panel9";
 			this.panel9.Padding = new System.Windows.Forms.Padding(1);
-			this.panel9.Size = new System.Drawing.Size(390, 28);
+			this.panel9.Size = new System.Drawing.Size(449, 28);
 			this.panel9.TabIndex = 7;
 			// 
 			// txtMatFactor
@@ -244,10 +245,10 @@
 			this.txtMatFactor.AllowMultipleDecimals = true;
 			this.txtMatFactor.AllowNegation = true;
 			this.txtMatFactor.DecimalValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
+				0,
+				0,
+				0,
+				131072});
 			this.txtMatFactor.Dock = System.Windows.Forms.DockStyle.Left;
 			this.txtMatFactor.IntegerValue = 0;
 			this.txtMatFactor.Location = new System.Drawing.Point(136, 1);
@@ -266,7 +267,7 @@
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(135, 26);
 			this.label8.TabIndex = 1;
-			this.label8.Text = "ตัวคูณวัสดุ";
+			this.label8.Text = "ตัวคูณวัสดุ (น.น. เทียน)";
 			this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// panel8
@@ -280,7 +281,7 @@
 			this.panel8.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.panel8.Name = "panel8";
 			this.panel8.Padding = new System.Windows.Forms.Padding(1);
-			this.panel8.Size = new System.Drawing.Size(390, 28);
+			this.panel8.Size = new System.Drawing.Size(449, 28);
 			this.panel8.TabIndex = 6;
 			// 
 			// ntxtSI
@@ -290,10 +291,10 @@
 			this.ntxtSI.AllowMultipleDecimals = true;
 			this.ntxtSI.AllowNegation = true;
 			this.ntxtSI.DecimalValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
+				0,
+				0,
+				0,
+				131072});
 			this.ntxtSI.Dock = System.Windows.Forms.DockStyle.Left;
 			this.ntxtSI.IntegerValue = 0;
 			this.ntxtSI.Location = new System.Drawing.Point(292, 1);
@@ -322,10 +323,10 @@
 			this.txtConvertFactor.AllowMultipleDecimals = true;
 			this.txtConvertFactor.AllowNegation = true;
 			this.txtConvertFactor.DecimalValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
+				0,
+				0,
+				0,
+				131072});
 			this.txtConvertFactor.Dock = System.Windows.Forms.DockStyle.Left;
 			this.txtConvertFactor.IntegerValue = 0;
 			this.txtConvertFactor.Location = new System.Drawing.Point(136, 1);
@@ -344,7 +345,7 @@
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(135, 26);
 			this.label7.TabIndex = 1;
-			this.label7.Text = "ตัวคูณ";
+			this.label7.Text = "ตัวคูณ (โลหะ)";
 			this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// panel7
@@ -356,7 +357,7 @@
 			this.panel7.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.panel7.Name = "panel7";
 			this.panel7.Padding = new System.Windows.Forms.Padding(1);
-			this.panel7.Size = new System.Drawing.Size(390, 28);
+			this.panel7.Size = new System.Drawing.Size(449, 28);
 			this.panel7.TabIndex = 5;
 			// 
 			// txtKeyValue
@@ -379,7 +380,7 @@
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(135, 26);
 			this.label6.TabIndex = 1;
-			this.label6.Text = "Index";
+			this.label6.Text = "KEY-ID";
 			this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// panel6
@@ -391,7 +392,7 @@
 			this.panel6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.panel6.Name = "panel6";
 			this.panel6.Padding = new System.Windows.Forms.Padding(1);
-			this.panel6.Size = new System.Drawing.Size(390, 28);
+			this.panel6.Size = new System.Drawing.Size(449, 28);
 			this.panel6.TabIndex = 4;
 			// 
 			// txtThKeyName
@@ -402,8 +403,9 @@
 			this.txtThKeyName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.txtThKeyName.MaxLength = 25;
 			this.txtThKeyName.Name = "txtThKeyName";
-			this.txtThKeyName.Size = new System.Drawing.Size(156, 25);
+			this.txtThKeyName.Size = new System.Drawing.Size(181, 25);
 			this.txtThKeyName.TabIndex = 2;
+			this.txtThKeyName.TextChanged += new System.EventHandler(this.txt_TextChanged);
 			// 
 			// label5
 			// 
@@ -425,7 +427,7 @@
 			this.panel5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.panel5.Name = "panel5";
 			this.panel5.Padding = new System.Windows.Forms.Padding(1);
-			this.panel5.Size = new System.Drawing.Size(390, 28);
+			this.panel5.Size = new System.Drawing.Size(449, 28);
 			this.panel5.TabIndex = 3;
 			// 
 			// txtEnKeyName
@@ -436,8 +438,9 @@
 			this.txtEnKeyName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.txtEnKeyName.MaxLength = 25;
 			this.txtEnKeyName.Name = "txtEnKeyName";
-			this.txtEnKeyName.Size = new System.Drawing.Size(156, 25);
+			this.txtEnKeyName.Size = new System.Drawing.Size(181, 25);
 			this.txtEnKeyName.TabIndex = 2;
+			this.txtEnKeyName.TextChanged += new System.EventHandler(this.txt_TextChanged);
 			// 
 			// label4
 			// 
@@ -452,6 +455,7 @@
 			// 
 			// panel4
 			// 
+			this.panel4.Controls.Add(this.chkInused);
 			this.panel4.Controls.Add(this.txtCategory);
 			this.panel4.Controls.Add(this.label3);
 			this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -459,18 +463,29 @@
 			this.panel4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.panel4.Name = "panel4";
 			this.panel4.Padding = new System.Windows.Forms.Padding(1);
-			this.panel4.Size = new System.Drawing.Size(390, 28);
+			this.panel4.Size = new System.Drawing.Size(449, 28);
 			this.panel4.TabIndex = 2;
+			// 
+			// chkInused
+			// 
+			this.chkInused.Dock = System.Windows.Forms.DockStyle.Right;
+			this.chkInused.Location = new System.Drawing.Point(338, 1);
+			this.chkInused.Name = "chkInused";
+			this.chkInused.Size = new System.Drawing.Size(110, 26);
+			this.chkInused.TabIndex = 3;
+			this.chkInused.Text = "ใช้งาน";
+			this.chkInused.UseVisualStyleBackColor = true;
 			// 
 			// txtCategory
 			// 
 			this.txtCategory.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.txtCategory.Dock = System.Windows.Forms.DockStyle.Left;
+			this.txtCategory.Enabled = false;
 			this.txtCategory.Location = new System.Drawing.Point(136, 1);
 			this.txtCategory.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.txtCategory.MaxLength = 25;
 			this.txtCategory.Name = "txtCategory";
-			this.txtCategory.Size = new System.Drawing.Size(156, 25);
+			this.txtCategory.Size = new System.Drawing.Size(181, 25);
 			this.txtCategory.TabIndex = 2;
 			// 
 			// label3
@@ -493,18 +508,19 @@
 			this.panel3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.panel3.Name = "panel3";
 			this.panel3.Padding = new System.Windows.Forms.Padding(1);
-			this.panel3.Size = new System.Drawing.Size(390, 28);
+			this.panel3.Size = new System.Drawing.Size(449, 28);
 			this.panel3.TabIndex = 1;
 			// 
 			// txtGroupTitleHeader
 			// 
 			this.txtGroupTitleHeader.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.txtGroupTitleHeader.Dock = System.Windows.Forms.DockStyle.Left;
+			this.txtGroupTitleHeader.Enabled = false;
 			this.txtGroupTitleHeader.Location = new System.Drawing.Point(136, 1);
 			this.txtGroupTitleHeader.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.txtGroupTitleHeader.MaxLength = 50;
 			this.txtGroupTitleHeader.Name = "txtGroupTitleHeader";
-			this.txtGroupTitleHeader.Size = new System.Drawing.Size(211, 25);
+			this.txtGroupTitleHeader.Size = new System.Drawing.Size(181, 25);
 			this.txtGroupTitleHeader.TabIndex = 2;
 			// 
 			// label2
@@ -527,18 +543,19 @@
 			this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.panel2.Name = "panel2";
 			this.panel2.Padding = new System.Windows.Forms.Padding(1);
-			this.panel2.Size = new System.Drawing.Size(390, 28);
+			this.panel2.Size = new System.Drawing.Size(449, 28);
 			this.panel2.TabIndex = 0;
 			// 
 			// txtGroupTitle
 			// 
 			this.txtGroupTitle.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.txtGroupTitle.Dock = System.Windows.Forms.DockStyle.Left;
+			this.txtGroupTitle.Enabled = false;
 			this.txtGroupTitle.Location = new System.Drawing.Point(136, 1);
 			this.txtGroupTitle.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.txtGroupTitle.MaxLength = 25;
 			this.txtGroupTitle.Name = "txtGroupTitle";
-			this.txtGroupTitle.Size = new System.Drawing.Size(156, 25);
+			this.txtGroupTitle.Size = new System.Drawing.Size(181, 25);
 			this.txtGroupTitle.TabIndex = 1;
 			// 
 			// label1
@@ -556,7 +573,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(432, 392);
+			this.ClientSize = new System.Drawing.Size(491, 392);
 			this.Controls.Add(this.grp);
 			this.Controls.Add(this.panel1);
 			this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -630,5 +647,6 @@
 		private System.Windows.Forms.TextBox txtGroupTitle;
 		private OMControls.Controls.NumericTextBox ntxtSI;
 		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.CheckBox chkInused;
 	}
 }

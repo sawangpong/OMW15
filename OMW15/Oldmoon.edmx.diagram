@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e98303f9befe4d5ebc1c5ac3f5ab6e6f" Name="Diagram1" ZoomLevel="101">
+      <Diagram DiagramId="e98303f9befe4d5ebc1c5ac3f5ab6e6f" Name="Diagram1" ZoomLevel="93" ShowGrid="true">
         <EntityTypeShape EntityType="Oldmoon.BANKINFO" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Oldmoon.BANK" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Oldmoon.BILLLINE" Width="1.5" PointX="12.75" PointY="8.75" IsExpanded="true" />
@@ -68,7 +68,6 @@
         <EntityTypeShape EntityType="Oldmoon.SALE_PERSON_PROFILE" Width="1.5" PointX="9.75" PointY="27.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Oldmoon.SALEORDER" Width="1.5" PointX="3" PointY="29.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Oldmoon.SOLINE" Width="1.5" PointX="15.75" PointY="27.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Oldmoon.SYSDATA" Width="1.5" PointX="28.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Oldmoon.USERLOG" Width="1.5" PointX="28.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Oldmoon.WARRANTy" Width="1.5" PointX="28.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Oldmoon.WAXTREE" Width="1.5" PointX="28.75" PointY="12.75" IsExpanded="true" />
@@ -112,7 +111,6 @@
         <EntityTypeShape EntityType="Oldmoon.OM_ERP_STOCK_MOVE" Width="1.5" PointX="35.375" PointY="5.75" />
         <EntityTypeShape EntityType="Oldmoon.OM_ERP_TRH_TRD" Width="1.5" PointX="35.375" PointY="10.75" />
         <EntityTypeShape EntityType="Oldmoon.OM_ERP_WH_ISSUE_ITEMS" Width="1.5" PointX="35.375" PointY="18.75" />
-        <EntityTypeShape EntityType="Oldmoon.OM_ERP_WH_ITEM_CLASS" Width="1.5" PointX="18.375" PointY="35.75" />
         <EntityTypeShape EntityType="Oldmoon.OM_ERP_WH_STOCK_ITEM_INFO" Width="1.5" PointX="35.375" PointY="24.75" />
         <EntityTypeShape EntityType="Oldmoon.OM_FS_VALIDTIME_RECORDS" Width="1.5" PointX="35.375" PointY="30.75" />
         <EntityTypeShape EntityType="Oldmoon.OM_JOB_ITEM_R" Width="1.5" PointX="35.375" PointY="35.75" />
@@ -132,6 +130,7 @@
         <EntityTypeShape EntityType="Oldmoon.PRODUCTIONJOBINFO" Width="1.5" PointX="37.375" PointY="29.75" />
         <EntityTypeShape EntityType="Oldmoon.OM_ERP_PRODUCTION_TRANSFER_REQUEST" Width="1.5" PointX="18.375" PointY="27.75" />
         <EntityTypeShape EntityType="Oldmoon.OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST" Width="2.875" PointX="7.375" PointY="38.75" />
+        <EntityTypeShape EntityType="Oldmoon.SYSDATA" Width="1.5" PointX="33.375" PointY="38.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

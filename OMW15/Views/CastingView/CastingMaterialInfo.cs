@@ -59,11 +59,15 @@ namespace OMW15.Views.CastingView
 			txtGroupTitleHeader.Enabled = txtGroupTitle.Enabled;
 			txtCategory.Enabled = txtGroupTitle.Enabled;
 			txtKeyValue.Enabled = _mode == ActionMode.Add;
+
+			btnSave.Enabled = (!string.IsNullOrEmpty(txtEnKeyName.Text) && !string.IsNullOrEmpty(txtThKeyName.Text));
+
 		} // end UpdateUI
 
 		private void SetNewMaterialInfoUI()
 		{
 			var _newMaterialIndex = new MaterialDAL().GetMaxIndexForMaterial("MATERIAL");
+			chkInused.Checked = true;
 			txtCategory.Text = Category;
 			txtGroupTitle.Text = "MATERIAL";
 			txtGroupTitleHeader.Text = "MATERIALS";
@@ -74,6 +78,9 @@ namespace OMW15.Views.CastingView
 			txtMatFactor.Text = $"{0:N4}";
 			txtFurnaceTemp.Text = $"{550:N0}";
 			txtCastingTemp.Text = $"{1050:N0}";
+
+			UpdateUI();
+
 		} // end SetNewMaterialInfoUI
 
 		private void GetMaterialInfo(int MaterialRecordId)
@@ -81,6 +88,7 @@ namespace OMW15.Views.CastingView
 			// get information
 			var m = new MaterialDAL().GetMaterialInfo(MaterialRecordId);
 
+			chkInused.Checked = m.Inused;
 			txtCastingTemp.Text = m.CASTINGTEMP.ToString();
 			txtCategory.Text = m.CATEGORY;
 			txtConvertFactor.Text = m.CONVERTFACTOR.ToString();
@@ -101,13 +109,14 @@ namespace OMW15.Views.CastingView
 			var _result = 0;
 
 			var mi = new SYSDATA();
+			mi.Inused = chkInused.Checked;
 			mi.CASTINGTEMP = Convert.ToDecimal(txtCastingTemp.Text);
 			mi.CATEGORY = Category;
 			mi.CONVERTFACTOR = Convert.ToDecimal(txtConvertFactor.Text);
-			mi.ENKEYNAME = txtEnKeyName.Text;
+			mi.ENKEYNAME = txtEnKeyName.Text.ToUpper();
 			mi.FURNACETEMP = Convert.ToDecimal(txtFurnaceTemp.Text);
-			mi.GROUPTITLE = txtGroupTitle.Text;
-			mi.GROUPTITLEHEADER = txtGroupTitleHeader.Text;
+			mi.GROUPTITLE = txtGroupTitle.Text.ToUpper();
+			mi.GROUPTITLEHEADER = txtGroupTitleHeader.Text.ToUpper();
 			mi.MATFACTOR = Convert.ToDecimal(txtMatFactor.Text);
 			mi.SI = Convert.ToDecimal(ntxtSI.Text);
 			mi.THKEYNAME = txtThKeyName.Text;
@@ -130,5 +139,10 @@ namespace OMW15.Views.CastingView
 		} // end
 
 		#endregion
+
+		private void txt_TextChanged(object sender, EventArgs e)
+		{
+			UpdateUI();
+		}
 	}
 }

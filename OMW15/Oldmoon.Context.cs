@@ -90,7 +90,6 @@ namespace OMW15
         public virtual DbSet<SALE_PERSON_PROFILE> SALE_PERSON_PROFILE { get; set; }
         public virtual DbSet<SALEORDER> SALEORDERS { get; set; }
         public virtual DbSet<SOLINE> SOLINES { get; set; }
-        public virtual DbSet<SYSDATA> SYSDATAs { get; set; }
         public virtual DbSet<USERLOG> USERLOGs { get; set; }
         public virtual DbSet<WARRANTy> WARRANTIES { get; set; }
         public virtual DbSet<WAXTREE> WAXTREES { get; set; }
@@ -124,7 +123,6 @@ namespace OMW15
         public virtual DbSet<OM_ERP_STOCK_MOVE> OM_ERP_STOCK_MOVE { get; set; }
         public virtual DbSet<OM_ERP_TRH_TRD> OM_ERP_TRH_TRD { get; set; }
         public virtual DbSet<OM_ERP_WH_ISSUE_ITEMS> OM_ERP_WH_ISSUE_ITEMS { get; set; }
-        public virtual DbSet<OM_ERP_WH_ITEM_CLASS> OM_ERP_WH_ITEM_CLASS { get; set; }
         public virtual DbSet<OM_ERP_WH_STOCK_ITEM_INFO> OM_ERP_WH_STOCK_ITEM_INFO { get; set; }
         public virtual DbSet<OM_FS_VALIDTIME_RECORDS> OM_FS_VALIDTIME_RECORDS { get; set; }
         public virtual DbSet<OM_JOB_ITEM_R> OM_JOB_ITEM_R { get; set; }
@@ -144,6 +142,7 @@ namespace OMW15
         public virtual DbSet<PRODUCTIONJOBINFO> PRODUCTIONJOBINFOes { get; set; }
         public virtual DbSet<OM_ERP_PRODUCTION_TRANSFER_REQUEST> OM_ERP_PRODUCTION_TRANSFER_REQUEST { get; set; }
         public virtual DbSet<OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST> OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST { get; set; }
+        public virtual DbSet<SYSDATA> SYSDATAs { get; set; }
     
         public virtual ObjectResult<usp_GetServiceJobList_Result> usp_GetServiceJobList(Nullable<int> selectedYear, string jobcode, string orderstatus)
         {

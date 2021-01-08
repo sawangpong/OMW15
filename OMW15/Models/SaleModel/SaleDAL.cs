@@ -428,6 +428,12 @@ namespace OMW15.Models.SaleModel
 			return new DataConnect($"EXEC dbo.usp_OM_ERP_SALE_YEARSALE_SUMMARY_BY_CAT '{category}',{yearSale}", omglobal.SysConnectionString).ToDataTable;
 		}
 
+
+		public DataTable GetSaleHistoryByCustomer(string customerCode)
+		{
+			return new DataConnect($"EXEC dbo.usp_OM_ERP_SALE_HISTORY '{customerCode}'", omglobal.SysConnectionString).ToDataTable;
+		}
+
 		#endregion
 
 		#region Sale Contact

@@ -8,16 +8,32 @@ namespace OMW15.Views.CastingView
 {
 	public partial class CastingMatList : Form
 	{
+
+		//#region Singelton
+		//private static CastingMatList _instance;
+		//public static CastingMatList GetInstance
+		//{
+		//	get
+		//	{
+	//			if (_instance == null || _instance.IsDisposed)
+		//		{
+		//			_instance = new CastingMatList();
+		//		}
+		//		return _instance;
+		//	}
+		//}
+		//#endregion
+
 		public CastingMatList(ActionMode Mode = ActionMode.Recording)
 		{
 			InitializeComponent();
+			CenterToParent();
+			OMUtils.SettingDataGridView(ref dgv);
 			_mode = Mode;
 		}
 
 		private void CastingMatList_Load(object sender, EventArgs e)
 		{
-			CenterToParent();
-			OMUtils.SettingDataGridView(ref dgv);
 			GetMaterialCategory();
 			UpdateUI();
 		}
@@ -48,6 +64,7 @@ namespace OMW15.Views.CastingView
 		private void dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
 		{
 			// get material record id
+
 			_selectedMatRecordId = Convert.ToInt32(dgv["LINESEQ", e.RowIndex].Value);
 			FlaskTemp = Convert.ToDecimal(dgv["FURNACETEMP", e.RowIndex].Value);
 			CastingTemp = Convert.ToDecimal(dgv["CASTINGTEMP", e.RowIndex].Value);
@@ -55,7 +72,7 @@ namespace OMW15.Views.CastingView
 			ConvertFactor = Convert.ToDecimal(dgv["CONVERTFACTOR", e.RowIndex].Value);
 			MatName = dgv["THKEYNAME", e.RowIndex].Value.ToString();
 			MatId = Convert.ToInt32(dgv["KEYVALUE", e.RowIndex].Value);
-			lbCAT.Text = $"line index :: {_selectedMatRecordId}";
+			lbCAT.Text = $"line index :: {_selectedMatRecordId}  KEY-ID :: {MatId}";
 
 			// call update UI
 			UpdateUI();
@@ -127,6 +144,9 @@ namespace OMW15.Views.CastingView
 			tscbxMatCategory.ComboBox.DataSource = _dt;
 			tscbxMatCategory.ComboBox.DisplayMember = "CATEGORY";
 			tscbxMatCategory.ComboBox.ValueMember = "CATEGORY";
+
+			tscbxMatCategory.ComboBox.SelectedIndex = 0;
+
 		} // end GetMaterialCategory
 
 		private void GetMaterialListByCategory(string Category)
@@ -140,11 +160,18 @@ namespace OMW15.Views.CastingView
 			// formatting DataGridView
 			dgv.Columns["LINESEQ"].Visible = false;
 			dgv.Columns["THKEYNAME"].Visible = false;
+
+			dgv.Columns["INUSED"].HeaderText = "ใช้งาน";
+			//dgv.Columns["INUSED"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+			dgv.Columns["INUSED"].Width = 80;
+
+			dgv.Columns["KEYVALUE"].Visible = false;
 			dgv.Columns["KEYVALUE"].HeaderText = "KEY";
-			dgv.Columns["MATERIALNAME"].HeaderText = "Material Name";
-			dgv.Columns["MATFACTOR"].HeaderText = "Factor";
-			dgv.Columns["FURNACETEMP"].HeaderText = "Furnace (C)";
-			dgv.Columns["CASTINGTEMP"].HeaderText = "Casting (C)";
+			dgv.Columns["CONVERTFACTOR"].HeaderText = "ตัวคูณ โลหะ";
+			dgv.Columns["MATERIALNAME"].HeaderText = "ชื่อวัสดุ";
+			dgv.Columns["MATFACTOR"].HeaderText = "ตัวคูณ น.น. เทียน";
+			dgv.Columns["FURNACETEMP"].HeaderText = "อุณหภูมิเตา (C)";
+			dgv.Columns["CASTINGTEMP"].HeaderText = "อุณหภูมิหล่อ (C)";
 
 			dgv.Columns["KEYVALUE"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 			dgv.Columns["MATERIALNAME"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;

@@ -16,6 +16,7 @@ namespace OMW15
     {
         public int LINESEQ { get; set; }
         public string CATEGORY { get; set; }
+        public bool Inused { get; set; }
         public string GROUPTITLE { get; set; }
         public string ENKEYNAME { get; set; }
         public string KEYVALUE { get; set; }
