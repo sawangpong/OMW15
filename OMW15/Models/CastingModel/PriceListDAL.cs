@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OMW15.Models.ToolModel;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity.Core;
@@ -13,22 +14,16 @@ namespace OMW15.Models.CastingModel
 {
 	public class IMat
 	{
-		public int MatId
-		{
-			get; set;
-		}
+		public int MatId { get; set; }
 
-		public string MatName
-		{
-			get; set;
-		}
+		public string MatName { get; set; }
 	}
 
 	public class PriceListDAL
 	{
-		private readonly OLDMOONEF1 _om;
 
 		#region constructor and destructor
+		private readonly OLDMOONEF1 _om;
 
 		public PriceListDAL()
 		{
@@ -36,22 +31,21 @@ namespace OMW15.Models.CastingModel
 		}
 
 		#endregion
+		public static string CreateImageFilePath(string ItemNo) => string.Format("{0}\\{1}{2}", omglobal.IMAGE_LOCATION_PATH, ItemNo, omglobal.IMAGE_EXTENSION);
 
-		public int GetCustomerId(string CustomerCode)
-		{
-			return _om.CUSTOMERS.Single(x => x.CUSTCODE == CustomerCode).CUSTID;
-		}
+		public string GetProductStyle(int StyleId) => _om.SYSDATAs.Single(x => x.GROUPTITLE == "PRODUCTSTYLE" && x.KEYVALUE == StyleId.ToString()).THKEYNAME;
 
-		public string GetItemCodeText(string Code)
-		{
-			return _om.ITEMCODEs.Single(x => x.ITEMCODE1 == Code).ITEMCODENAME_TH;
-		} // end GetItemCodeText
+		public int GetCustomerId(string CustomerCode) => _om.CUSTOMERS.Single(x => x.CUSTCODE == CustomerCode).CUSTID;
 
-		public string GetCustomerName(string CustomerCode)
-		{
-			return _om.CUSTOMERS.Single(x => x.CUSTCODE == CustomerCode).CUSTNAME;
-		} // end GetCustomerName
+		public string GetItemCodeText(string Code) => _om.ITEMCODEs.Single(x => x.ITEMCODE1 == Code).ITEMCODENAME_TH;
 
+		public string GetCustomerName(string CustomerCode) => _om.CUSTOMERS.Single(x => x.CUSTCODE == CustomerCode).CUSTNAME;
+
+		public Image GetItemImageFromItemId(int itemId) => GetPriceListItemPicture(_om.CUSTPRICELISTs.FirstOrDefault(x => x.PRICESEQ == itemId).IMAGE_LOCATION);
+
+		public CUSTPRICELIST GetCustomerPriceListItemInfo(int ItemId) => _om.CUSTPRICELISTs.Single(x => x.PRICESEQ == ItemId);
+
+		public DataTable GetPriceTableById(int itemId) => new DataConnect($"EXEC dbo.usp_OM_CASTING_PRICELIST_TABLE {itemId}", omglobal.SysConnectionString).ToDataTable ;
 
 		public Image GetPriceListItemPictureByItemId(int itemId)
 		{
@@ -63,10 +57,6 @@ namespace OMW15.Models.CastingModel
 			return _result;
 		} // end GetPriceListItemPictureByItemId
 
-		public static string CreateImageFilePath(string ItemNo)
-		{
-			return string.Format("{0}\\{1}{2}", omglobal.IMAGE_LOCATION_PATH, ItemNo, omglobal.IMAGE_EXTENSION);
-		} // end CreateImageFilePath
 
 		public Image GetItemPicture(int itemId)
 		{
@@ -107,24 +97,17 @@ namespace OMW15.Models.CastingModel
 			}
 		} // end GetPriceListItemPicture
 
-
-		public CUSTPRICELIST GetCustomerPriceListItemInfo(int ItemId)
-		{
-			return _om.CUSTPRICELISTs.Single(x => x.PRICESEQ == ItemId);
-
-		} // end GetCustomerPriceListItemInfo
-
 		public IList<IMat> GetMaterialListFromCustomerPriceList(string customerCode)
 		{
 			var m = (from cp in _om.CUSTPRICELISTs
-					 join sy in _om.SYSDATAs on cp.MATERIAL.ToString() equals sy.KEYVALUE
-					 where sy.GROUPTITLE == "MATERIAL"
-						   && cp.CUSTCODE == customerCode
-					 select new IMat
-					 {
-						 MatId = cp.MATERIAL,
-						 MatName = sy.THKEYNAME
-					 }).Distinct().OrderBy(o => o.MatName).AsParallel();
+						join sy in _om.SYSDATAs on cp.MATERIAL.ToString() equals sy.KEYVALUE
+						where sy.GROUPTITLE == "MATERIAL"
+							  && cp.CUSTCODE == customerCode
+						select new IMat
+						{
+							MatId = cp.MATERIAL,
+							MatName = sy.THKEYNAME
+						}).Distinct().OrderBy(o => o.MatName).AsParallel();
 
 			return m.ToList();
 
@@ -138,36 +121,36 @@ namespace OMW15.Models.CastingModel
 
 				// retrieve Price List
 				var _priceLists = (from p in _om.CUSTPRICELISTs
-								   join cd in _om.ITEMCODEs on p.PREFIX equals cd.ITEMCODE1
-								   join m in _om.SYSDATAs.AsEnumerable() on p.MATERIAL.ToString() equals m.KEYVALUE
-								   join s in _om.SYSDATAs.AsEnumerable() on p.PRODUCTSTYLE.ToString() equals s.KEYVALUE
-								   where p.ISDELETE == false
-										 && p.CUSTCODE.Trim() == customerCode
-										 && m.GROUPTITLE == "MATERIAL"
-										 && s.GROUPTITLE == "PRODUCTSTYLE"
-								   orderby p.ITEMNO, p.PREFIX
-								   select new
-								   {
-									   Id = p.PRICESEQ,
-									   CustomerCode = p.CUSTCODE,
-									   ItemType = cd.ITEMCODENAME_TH,
-									   ItemCode = p.PREFIX,
-									   ItemNo = p.ITEMNO,
-									   ItemName = p.ITEMNAME,
-									   MaterialId = p.MATERIAL,
-									   Material = m.THKEYNAME,
-									   StyleId = p.PRODUCTSTYLE,
-									   Style = s.THKEYNAME,
-									   Unit = p.UNITCOUNT,
-									   CastingPrice = p.CASTINGPRICE,
-									   UnitPrice = p.UNITPRICE,
-									   Score = p.SCOREPRICE,
-									   Weight = p.UNITWEIGHT,
-									   HasImage = p.HASPICTURE,
-									   ImageLocation = p.IMAGE_LOCATION,
-									   FlaskTemp = p.FLASK_TEMP,
-									   CastTemp = p.CAST_TEMP
-								   }).AsParallel();
+										 join cd in _om.ITEMCODEs on p.PREFIX equals cd.ITEMCODE1
+										 join m in _om.SYSDATAs.AsEnumerable() on p.MATERIAL.ToString() equals m.KEYVALUE
+										 join s in _om.SYSDATAs.AsEnumerable() on p.PRODUCTSTYLE.ToString() equals s.KEYVALUE
+										 where p.ISDELETE == false
+											  && p.CUSTCODE.Trim() == customerCode
+											  && m.GROUPTITLE == "MATERIAL"
+											  && s.GROUPTITLE == "PRODUCTSTYLE"
+										 orderby p.ITEMNO, p.PREFIX
+										 select new
+										 {
+											 Id = p.PRICESEQ,
+											 CustomerCode = p.CUSTCODE,
+											 ItemType = cd.ITEMCODENAME_TH,
+											 ItemCode = p.PREFIX,
+											 ItemNo = p.ITEMNO,
+											 ItemName = p.ITEMNAME,
+											 MaterialId = p.MATERIAL,
+											 Material = m.THKEYNAME,
+											 StyleId = p.PRODUCTSTYLE,
+											 Style = s.THKEYNAME,
+											 Unit = p.UNITCOUNT,
+											 CastingPrice = p.CASTINGPRICE,
+											 UnitPrice = p.UNITPRICE,
+											 Score = p.SCOREPRICE,
+											 Weight = p.UNITWEIGHT,
+											 HasImage = p.HASPICTURE,
+											 ImageLocation = p.IMAGE_LOCATION,
+											 FlaskTemp = p.FLASK_TEMP,
+											 CastTemp = p.CAST_TEMP
+										 }).AsParallel();
 
 				if (matId > 0)
 					_result = _priceLists.Where(x => x.MaterialId == matId).AsParallel().ToDataTable();
@@ -178,17 +161,13 @@ namespace OMW15.Models.CastingModel
 			});
 		} // end GetPriceListByCustomerAsync
 
-		public string GetProductStyle(int StyleId)
-		{
-			return _om.SYSDATAs.Single(x => x.GROUPTITLE == "PRODUCTSTYLE" && x.KEYVALUE == StyleId.ToString()).THKEYNAME;
-		} // end GetProductStyle
 
 		public int SaveImageLocation(int Id, string ImageLocation)
 		{
 			var _result = 0;
 			var cp = (from p in _om.CUSTPRICELISTs
-					  where p.PRICESEQ == Id
-					  select p).FirstOrDefault();
+						 where p.PRICESEQ == Id
+						 select p).FirstOrDefault();
 
 			try
 			{
@@ -282,9 +261,29 @@ namespace OMW15.Models.CastingModel
 		} // end SaveImageToFile
 
 
-		public Image GetItemImageFromItemId(int itemId)
+
+		#region CastingPrices
+		public CUSTPRICETAB GetCastingPriceItem(int id) => _om.CUSTPRICETABs.Find(id);
+
+		public int UpdateCustPriceTable(CUSTPRICETAB cpt)
 		{
-			return GetPriceListItemPicture(_om.CUSTPRICELISTs.FirstOrDefault(x => x.PRICESEQ == itemId).IMAGE_LOCATION);
+			if(cpt.ID == 0)
+			{
+				_om.CUSTPRICETABs.Add(cpt);
+			}
+			else
+			{
+				CUSTPRICETAB _cpt = GetCastingPriceItem(cpt.ID);
+				_cpt.ISMATINCLUDE = cpt.ISMATINCLUDE;
+				_cpt.MATERIAL = cpt.MATERIAL;
+				_cpt.PRICEUNITNAME = cpt.PRICEUNITNAME;
+				_cpt.PRICE_YEAR = cpt.PRICE_YEAR;
+				_cpt.UNITPRICE = cpt.UNITPRICE;
+			}
+
+			return _om.SaveChanges();
 		}
+		#endregion
+
 	}
 }

@@ -260,6 +260,9 @@
     <Compile Include="CUSTPRICELIST.cs">
       <DependentUpon>Oldmoon.tt</DependentUpon>
     </Compile>
+    <Compile Include="CUSTPRICETAB.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
     <Compile Include="CUSTTASK.cs">
       <DependentUpon>Oldmoon.tt</DependentUpon>
     </Compile>
@@ -810,6 +813,12 @@
     </Compile>
     <Compile Include="Views\CastingView\CastingOrderCustomers.Designer.cs">
       <DependentUpon>CastingOrderCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingPriceItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingPriceItem.Designer.cs">
+      <DependentUpon>CastingPriceItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\CastingView\CastingWorker.cs">
       <SubType>Form</SubType>
@@ -2086,6 +2095,9 @@
     <EmbeddedResource Include="Views\CastingView\CastingOrderCustomers.resx">
       <DependentUpon>CastingOrderCustomers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingPriceItem.resx">
+      <DependentUpon>CastingPriceItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\CastingView\CastingWorker.resx">
       <DependentUpon>CastingWorker.cs</DependentUpon>
     </EmbeddedResource>
@@ -2787,22 +2799,22 @@
   <ItemGroup>
     <PublishFile Include="GAFExtension">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="stdole">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

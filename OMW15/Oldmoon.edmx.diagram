@@ -131,6 +131,7 @@
         <EntityTypeShape EntityType="Oldmoon.OM_ERP_PRODUCTION_TRANSFER_REQUEST" Width="1.5" PointX="18.375" PointY="27.75" />
         <EntityTypeShape EntityType="Oldmoon.OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST" Width="2.875" PointX="7.375" PointY="38.75" />
         <EntityTypeShape EntityType="Oldmoon.SYSDATA" Width="1.5" PointX="33.375" PointY="38.75" />
+        <EntityTypeShape EntityType="Oldmoon.CUSTPRICETAB" Width="1.5" PointX="18.375" PointY="31.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

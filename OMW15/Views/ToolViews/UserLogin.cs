@@ -149,7 +149,12 @@ namespace OMW15.Views.ToolViews
 			GetCurrentConfigFromShareParameter();
 
 			// get user name from default environment
-			txtUserName.Text = ""; // Environment.UserName;
+			// production programm
+			//txtUserName.Text = ""; 
+
+			// testing programm - auto input username
+			 txtUserName.Text = Environment.UserName;
+			
 			txtPassword.Text = string.Empty;
 			lbProductInfo.Text = $"Product : {omglobal.AssemblyInformation}";
 		}

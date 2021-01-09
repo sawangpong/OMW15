@@ -208,7 +208,7 @@
 			// 
 			this.btnSelect.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.btnSelect.Dock = System.Windows.Forms.DockStyle.Left;
-			this.btnSelect.Location = new System.Drawing.Point(135, 3);
+			this.btnSelect.Location = new System.Drawing.Point(152, 3);
 			this.btnSelect.Name = "btnSelect";
 			this.btnSelect.Size = new System.Drawing.Size(110, 34);
 			this.btnSelect.TabIndex = 1;
@@ -222,9 +222,9 @@
 			this.lbCAT.Location = new System.Drawing.Point(2, 3);
 			this.lbCAT.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.lbCAT.Name = "lbCAT";
-			this.lbCAT.Size = new System.Drawing.Size(133, 34);
+			this.lbCAT.Size = new System.Drawing.Size(150, 34);
 			this.lbCAT.TabIndex = 0;
-			this.lbCAT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.lbCAT.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			// 
 			// CastingMatList
 			// 
@@ -234,7 +234,7 @@
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.ts);
 			this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
 			this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.Name = "CastingMatList";
 			this.Text = "CASTING MATERIAL";

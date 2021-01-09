@@ -265,6 +265,18 @@
           <Property Name="MODIUSER" Type="nvarchar" MaxLength="50" />
           <Property Name="DATEMODIFY" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="CUSTPRICETAB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CPT_CP" Type="int" Nullable="false" />
+          <Property Name="PRICE_YEAR" Type="int" Nullable="false" />
+          <Property Name="MATERIAL" Type="int" Nullable="false" />
+          <Property Name="PRICEUNITNAME" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ISMATINCLUDE" Type="bit" Nullable="false" />
+          <Property Name="UNITPRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
         <EntityType Name="CUSTTASK">
           <Key>
             <PropertyRef Name="CTSEQ" />
@@ -2389,8 +2401,6 @@ warning 6002: The table/view 'OLDMOON.dbo.OM_ERP_WH_ISSUE_ITEMS' does not have a
           <Property Name="SHIPGRANDTOTAL" Type="money" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'OLDMOON.dbo.OM_ERP_WH_ITEM_CLASS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'OLDMOON.dbo.OM_ERP_WH_STOCK_ITEM_INFO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="OM_ERP_WH_STOCK_ITEM_INFO">
           <Key>
@@ -2868,6 +2878,7 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <EntitySet Name="CUSTOMERS" EntityType="Self.CUSTOMERS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CUSTPRICEITEMPIC" EntityType="Self.CUSTPRICEITEMPIC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CUSTPRICELIST" EntityType="Self.CUSTPRICELIST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CUSTPRICETAB" EntityType="Self.CUSTPRICETAB" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CUSTTASK" EntityType="Self.CUSTTASK" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CUSTTASKIMG" EntityType="Self.CUSTTASKIMG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CUSTTASKLINES" EntityType="Self.CUSTTASKLINES" Schema="dbo" store:Type="Tables" />
@@ -5474,6 +5485,7 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <EntitySet Name="OM_ERP_PRODUCTION_TRANSFER_REQUEST" EntityType="Oldmoon.OM_ERP_PRODUCTION_TRANSFER_REQUEST" />
           <EntitySet Name="OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST" EntityType="Oldmoon.OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST" />
           <EntitySet Name="SYSDATAs" EntityType="Oldmoon.SYSDATA" />
+          <EntitySet Name="CUSTPRICETABs" EntityType="Oldmoon.CUSTPRICETAB" />
         </EntityContainer>
         <ComplexType Name="usp_GetServiceJobList_Result">
           <Property Type="Int32" Name="orderid" Nullable="false" />
@@ -6768,6 +6780,18 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <Property Name="SI" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="FURNACETEMP" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="CASTINGTEMP" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="CUSTPRICETAB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CPT_CP" Type="Int32" Nullable="false" />
+          <Property Name="PRICE_YEAR" Type="Int32" Nullable="false" />
+          <Property Name="MATERIAL" Type="Int32" Nullable="false" />
+          <Property Name="PRICEUNITNAME" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ISMATINCLUDE" Type="Boolean" Nullable="false" />
+          <Property Name="UNITPRICE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -9309,6 +9333,19 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
                 <ScalarProperty Name="Inused" ColumnName="Inused" />
                 <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
                 <ScalarProperty Name="LINESEQ" ColumnName="LINESEQ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUSTPRICETABs">
+            <EntityTypeMapping TypeName="Oldmoon.CUSTPRICETAB">
+              <MappingFragment StoreEntitySet="CUSTPRICETAB">
+                <ScalarProperty Name="UNITPRICE" ColumnName="UNITPRICE" />
+                <ScalarProperty Name="ISMATINCLUDE" ColumnName="ISMATINCLUDE" />
+                <ScalarProperty Name="PRICEUNITNAME" ColumnName="PRICEUNITNAME" />
+                <ScalarProperty Name="MATERIAL" ColumnName="MATERIAL" />
+                <ScalarProperty Name="PRICE_YEAR" ColumnName="PRICE_YEAR" />
+                <ScalarProperty Name="CPT_CP" ColumnName="CPT_CP" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

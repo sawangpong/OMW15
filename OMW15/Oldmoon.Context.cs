@@ -143,6 +143,7 @@ namespace OMW15
         public virtual DbSet<OM_ERP_PRODUCTION_TRANSFER_REQUEST> OM_ERP_PRODUCTION_TRANSFER_REQUEST { get; set; }
         public virtual DbSet<OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST> OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST { get; set; }
         public virtual DbSet<SYSDATA> SYSDATAs { get; set; }
+        public virtual DbSet<CUSTPRICETAB> CUSTPRICETABs { get; set; }
     
         public virtual ObjectResult<usp_GetServiceJobList_Result> usp_GetServiceJobList(Nullable<int> selectedYear, string jobcode, string orderstatus)
         {

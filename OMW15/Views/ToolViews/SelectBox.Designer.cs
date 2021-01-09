@@ -48,18 +48,18 @@
 			this.panel1.Controls.Add(this.btnCancel);
 			this.panel1.Controls.Add(this.btnSelect);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel1.Location = new System.Drawing.Point(4, 304);
+			this.panel1.Location = new System.Drawing.Point(0, 309);
 			this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.panel1.Name = "panel1";
 			this.panel1.Padding = new System.Windows.Forms.Padding(7, 8, 7, 8);
-			this.panel1.Size = new System.Drawing.Size(345, 50);
+			this.panel1.Size = new System.Drawing.Size(353, 50);
 			this.panel1.TabIndex = 1;
 			// 
 			// btnCancel
 			// 
 			this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.btnCancel.Dock = System.Windows.Forms.DockStyle.Right;
-			this.btnCancel.Location = new System.Drawing.Point(210, 8);
+			this.btnCancel.Location = new System.Drawing.Point(218, 8);
 			this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(128, 34);
@@ -85,11 +85,11 @@
 			this.panel2.Controls.Add(this.panel3);
 			this.panel2.Controls.Add(this.lbSelected);
 			this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel2.Location = new System.Drawing.Point(4, 5);
+			this.panel2.Location = new System.Drawing.Point(0, 0);
 			this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.panel2.Name = "panel2";
-			this.panel2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-			this.panel2.Size = new System.Drawing.Size(345, 64);
+			this.panel2.Padding = new System.Windows.Forms.Padding(2);
+			this.panel2.Size = new System.Drawing.Size(353, 64);
 			this.panel2.TabIndex = 3;
 			// 
 			// panel3
@@ -101,7 +101,7 @@
 			this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.panel3.Name = "panel3";
 			this.panel3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.panel3.Size = new System.Drawing.Size(341, 31);
+			this.panel3.Size = new System.Drawing.Size(349, 31);
 			this.panel3.TabIndex = 4;
 			// 
 			// btnSearch
@@ -141,7 +141,7 @@
 			this.lbSelected.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbSelected.Location = new System.Drawing.Point(2, 36);
 			this.lbSelected.Name = "lbSelected";
-			this.lbSelected.Size = new System.Drawing.Size(341, 26);
+			this.lbSelected.Size = new System.Drawing.Size(349, 26);
 			this.lbSelected.TabIndex = 3;
 			this.lbSelected.Text = "-----";
 			this.lbSelected.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -152,10 +152,10 @@
 			this.lst.FormattingEnabled = true;
 			this.lst.IntegralHeight = false;
 			this.lst.ItemHeight = 17;
-			this.lst.Location = new System.Drawing.Point(4, 69);
+			this.lst.Location = new System.Drawing.Point(0, 64);
 			this.lst.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.lst.Name = "lst";
-			this.lst.Size = new System.Drawing.Size(345, 235);
+			this.lst.Size = new System.Drawing.Size(353, 245);
 			this.lst.TabIndex = 4;
 			this.lst.SelectedIndexChanged += new System.EventHandler(this.lst_SelectedIndexChanged);
 			this.lst.DoubleClick += new System.EventHandler(this.lst_DoubleClick);
@@ -173,7 +173,6 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.Name = "SelectBox";
-			this.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.Text = "SELECT ?";
 			this.Load += new System.EventHandler(this.SelectBox_Load);
 			this.panel1.ResumeLayout(false);

@@ -72,7 +72,7 @@ namespace OMW15.Views.CastingView
 			ConvertFactor = Convert.ToDecimal(dgv["CONVERTFACTOR", e.RowIndex].Value);
 			MatName = dgv["THKEYNAME", e.RowIndex].Value.ToString();
 			MatId = Convert.ToInt32(dgv["KEYVALUE", e.RowIndex].Value);
-			lbCAT.Text = $"line index :: {_selectedMatRecordId}  KEY-ID :: {MatId}";
+			lbCAT.Text = $"Index :: [{_selectedMatRecordId}]  KEY-ID :: [{MatId}]";
 
 			// call update UI
 			UpdateUI();
@@ -176,14 +176,18 @@ namespace OMW15.Views.CastingView
 			dgv.Columns["KEYVALUE"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 			dgv.Columns["MATERIALNAME"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
+			dgv.Columns["INUSED"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomCenter;
+			dgv.Columns["CONVERTFACTOR"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
 			dgv.Columns["MATFACTOR"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
 			dgv.Columns["FURNACETEMP"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
 			dgv.Columns["CASTINGTEMP"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
 
+			dgv.Columns["CONVERTFACTOR"].DefaultCellStyle.Format = "N4";
 			dgv.Columns["MATFACTOR"].DefaultCellStyle.Format = "N4";
 			dgv.Columns["FURNACETEMP"].DefaultCellStyle.Format = "N0";
 			dgv.Columns["CASTINGTEMP"].DefaultCellStyle.Format = "N0";
 
+			dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 			dgv.ResumeLayout();
 
 			UpdateUI();

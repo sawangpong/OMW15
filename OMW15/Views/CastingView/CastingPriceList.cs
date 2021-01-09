@@ -73,8 +73,11 @@ namespace OMW15.Views.CastingView
 				// display item-picture
 				lbFileName.Text = _selectedImageFilePath;
 
-				if (!string.IsNullOrEmpty(_selectedImageFilePath))
+				if (string.IsNullOrEmpty(_selectedImageFilePath))
 				{
+					pic.Image = null;
+				}
+				else {
 					GetItemPicture(_selectedImageFilePath);
 				}
 			}

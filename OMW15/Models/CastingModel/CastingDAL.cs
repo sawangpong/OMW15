@@ -18,21 +18,21 @@ namespace OMW15.Models.CastingModel
 
 		#region class method
 
-		public DataTable GetMaterialSI()
-		{
-			DataTable _result = null;
-			var _matsi = from m in _om.SYSDATAs.AsParallel()
-						 where m.GROUPTITLE == "MATERIAL"
-						 orderby m.KEYVALUE
-						 select new
-						 {
-							 Key = m.KEYVALUE,
-							 Value = m.SI
-						 };
-			_result = _matsi.ToDataTable();
+		//public DataTable GetMaterialSI()
+		//{
+		//	DataTable _result = null;
+		//	var _matsi = from m in _om.SYSDATAs.AsParallel()
+		//					 where m.GROUPTITLE == "MATERIAL"
+		//					 orderby m.KEYVALUE
+		//					 select new
+		//					 {
+		//						 Key = m.KEYVALUE,
+		//						 Value = m.SI
+		//					 };
+		//	_result = _matsi.ToDataTable();
 
-			return _result;
-		} // end GetMaterialSI
+		//	return _result;
+		//} // end GetMaterialSI
 
 		public decimal GetMaterialSI(string MaterialCode)
 		{
@@ -47,25 +47,40 @@ namespace OMW15.Models.CastingModel
 		public DataTable GetMaterialData(string Category)
 		{
 			if (string.IsNullOrEmpty(Category))
-				return _om.SYSDATAs.Where(x => x.GROUPTITLE == "MATERIAL" && x.CATEGORY != Category).ToList().Select(c => new
-				{
-					Key = c.KEYVALUE,
-					Value = c.THKEYNAME
-				}).ToDataTable();
-			return _om.SYSDATAs.Where(x => x.GROUPTITLE == "MATERIAL" && x.CATEGORY == Category).ToList().Select(c => new
-			{
-				Key = c.KEYVALUE,
-				Value = c.THKEYNAME
-			}).ToDataTable();
+				return _om.SYSDATAs
+						.Where(x => x.GROUPTITLE == "MATERIAL"
+									&& x.CATEGORY != Category
+									&& x.Inused == true)
+						.Select(c => new
+						{
+							Key = c.KEYVALUE,
+							Value = c.THKEYNAME
+						}).ToDataTable();
+
+
+			return _om.SYSDATAs
+					.Where(x => x.GROUPTITLE == "MATERIAL" 
+								&& x.CATEGORY == Category
+								&& x.Inused == true)
+					.Select(c => new
+					{
+						Key = c.KEYVALUE,
+						Value = c.THKEYNAME
+					}).ToDataTable();
 		} // end GetMaterialData
 
 		public DataTable GetMaterialData()
 		{
-			return _om.SYSDATAs.Where(x => x.GROUPTITLE == "MATERIAL").Select(c => new
-			{
-				Key = c.KEYVALUE,
-				Value = c.THKEYNAME
-			}).ToDataTable();
+			return _om.SYSDATAs
+				.Where(
+						x => x.GROUPTITLE == "MATERIAL"
+						&& x.Inused == true
+						&& x.CATEGORY != "")
+				.Select(c => new
+				{
+					Key = c.KEYVALUE,
+					Value = c.THKEYNAME
+				}).ToDataTable();
 		} // end GetMaterialData
 
 		public string GetMaterialName(int MaterialId)

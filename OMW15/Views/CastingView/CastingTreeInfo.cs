@@ -559,17 +559,11 @@ namespace OMW15.Views.CastingView
             {
                 case "P95":
                     sil95Rate = nud.Value / 100.0m;
-                    //if(flagFocus == "SIL95")
-                    //{
-                    //}
-                    break;
+                     break;
 
                 case "P94":
                     sil94Rate = nud.Value / 100.0m;
-                    //if(flagFocus == "SIL94")
-                    //{
-                    //}
-                    break;
+                     break;
             }
 
             CalActualMetalWeight();
