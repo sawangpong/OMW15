@@ -153,6 +153,7 @@
 			// 
 			// pnlMain
 			// 
+			this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.pnlMain.Controls.Add(this.pnlPriceList);
 			this.pnlMain.Controls.Add(this.panel2);
 			this.pnlMain.Controls.Add(this.pnlJobInfo);
@@ -174,7 +175,7 @@
 			this.pnlPriceList.Margin = new System.Windows.Forms.Padding(4);
 			this.pnlPriceList.Name = "pnlPriceList";
 			this.pnlPriceList.Padding = new System.Windows.Forms.Padding(4);
-			this.pnlPriceList.Size = new System.Drawing.Size(781, 308);
+			this.pnlPriceList.Size = new System.Drawing.Size(779, 306);
 			this.pnlPriceList.TabIndex = 4;
 			// 
 			// dgv
@@ -208,7 +209,7 @@
 			dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle4;
 			this.dgv.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.dgv.Size = new System.Drawing.Size(773, 272);
+			this.dgv.Size = new System.Drawing.Size(771, 270);
 			this.dgv.TabIndex = 4;
 			this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEnter);
 			this.dgv.SelectionChanged += new System.EventHandler(this.dgv_SelectionChanged);
@@ -221,21 +222,20 @@
 			this.panel3.Controls.Add(this.lbRowFound);
 			this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.panel3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.panel3.Location = new System.Drawing.Point(4, 276);
+			this.panel3.Location = new System.Drawing.Point(4, 274);
 			this.panel3.Margin = new System.Windows.Forms.Padding(4);
 			this.panel3.Name = "panel3";
 			this.panel3.Padding = new System.Windows.Forms.Padding(4);
-			this.panel3.Size = new System.Drawing.Size(773, 28);
+			this.panel3.Size = new System.Drawing.Size(771, 28);
 			this.panel3.TabIndex = 2;
 			// 
 			// lbFileName
 			// 
-			this.lbFileName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lbFileName.Dock = System.Windows.Forms.DockStyle.Top;
 			this.lbFileName.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbFileName.Location = new System.Drawing.Point(130, 4);
 			this.lbFileName.Name = "lbFileName";
-			this.lbFileName.Size = new System.Drawing.Size(551, 23);
+			this.lbFileName.Size = new System.Drawing.Size(549, 23);
 			this.lbFileName.TabIndex = 6;
 			this.lbFileName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
@@ -243,7 +243,7 @@
 			// 
 			this.lbItemId.Dock = System.Windows.Forms.DockStyle.Right;
 			this.lbItemId.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbItemId.Location = new System.Drawing.Point(681, 4);
+			this.lbItemId.Location = new System.Drawing.Point(679, 4);
 			this.lbItemId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lbItemId.Name = "lbItemId";
 			this.lbItemId.Size = new System.Drawing.Size(88, 20);
@@ -267,11 +267,11 @@
 			// 
 			this.panel2.Controls.Add(this.pic);
 			this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-			this.panel2.Location = new System.Drawing.Point(785, 38);
+			this.panel2.Location = new System.Drawing.Point(783, 38);
 			this.panel2.Margin = new System.Windows.Forms.Padding(4);
 			this.panel2.Name = "panel2";
 			this.panel2.Padding = new System.Windows.Forms.Padding(10, 12, 10, 12);
-			this.panel2.Size = new System.Drawing.Size(176, 308);
+			this.panel2.Size = new System.Drawing.Size(176, 306);
 			this.panel2.TabIndex = 2;
 			// 
 			// pic
@@ -293,11 +293,11 @@
 			this.pnlJobInfo.Controls.Add(this.pnlJobs);
 			this.pnlJobInfo.Controls.Add(this.pnlHeader);
 			this.pnlJobInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.pnlJobInfo.Location = new System.Drawing.Point(4, 346);
+			this.pnlJobInfo.Location = new System.Drawing.Point(4, 344);
 			this.pnlJobInfo.Margin = new System.Windows.Forms.Padding(4);
 			this.pnlJobInfo.Name = "pnlJobInfo";
 			this.pnlJobInfo.Padding = new System.Windows.Forms.Padding(4);
-			this.pnlJobInfo.Size = new System.Drawing.Size(957, 151);
+			this.pnlJobInfo.Size = new System.Drawing.Size(955, 151);
 			this.pnlJobInfo.TabIndex = 1;
 			// 
 			// pnlJobs
@@ -306,7 +306,7 @@
 			this.pnlJobs.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pnlJobs.Location = new System.Drawing.Point(4, 38);
 			this.pnlJobs.Name = "pnlJobs";
-			this.pnlJobs.Size = new System.Drawing.Size(947, 107);
+			this.pnlJobs.Size = new System.Drawing.Size(945, 107);
 			this.pnlJobs.TabIndex = 1;
 			// 
 			// dgvJobs
@@ -316,7 +316,7 @@
 			this.dgvJobs.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgvJobs.Location = new System.Drawing.Point(0, 0);
 			this.dgvJobs.Name = "dgvJobs";
-			this.dgvJobs.Size = new System.Drawing.Size(947, 107);
+			this.dgvJobs.Size = new System.Drawing.Size(945, 107);
 			this.dgvJobs.TabIndex = 0;
 			// 
 			// pnlHeader
@@ -331,7 +331,7 @@
 			this.pnlHeader.Location = new System.Drawing.Point(4, 4);
 			this.pnlHeader.Name = "pnlHeader";
 			this.pnlHeader.Padding = new System.Windows.Forms.Padding(1);
-			this.pnlHeader.Size = new System.Drawing.Size(947, 34);
+			this.pnlHeader.Size = new System.Drawing.Size(945, 34);
 			this.pnlHeader.TabIndex = 0;
 			// 
 			// btnOpenJob
@@ -391,7 +391,7 @@
 			this.pnlTop.Location = new System.Drawing.Point(4, 5);
 			this.pnlTop.Margin = new System.Windows.Forms.Padding(4);
 			this.pnlTop.Name = "pnlTop";
-			this.pnlTop.Size = new System.Drawing.Size(957, 33);
+			this.pnlTop.Size = new System.Drawing.Size(955, 33);
 			this.pnlTop.TabIndex = 0;
 			// 
 			// panel4
@@ -410,7 +410,7 @@
 			this.panel4.Margin = new System.Windows.Forms.Padding(4);
 			this.panel4.Name = "panel4";
 			this.panel4.Padding = new System.Windows.Forms.Padding(10, 2, 20, 2);
-			this.panel4.Size = new System.Drawing.Size(957, 30);
+			this.panel4.Size = new System.Drawing.Size(955, 30);
 			this.panel4.TabIndex = 1;
 			// 
 			// cbxFindItem

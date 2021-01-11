@@ -283,6 +283,9 @@ namespace OMW15.Views.CastingView
 			dgv.Columns["IMAGELOCATION"].Visible = false;
 			dgv.Columns["FLASKTEMP"].Visible = false;
 			dgv.Columns["CASTTEMP"].Visible = false;
+			dgv.Columns["CASTINGPRICE"].Visible = false;
+			dgv.Columns["UNITPRICE"].Visible = false;
+			dgv.Columns["SCORE"].Visible = false;
 
 			// formatting DataGridView
 			// format alignment
@@ -304,9 +307,9 @@ namespace OMW15.Views.CastingView
 			dgv.Columns["STYLE"].HeaderText = "แบบ";
 			dgv.Columns["UNIT"].HeaderText = "หน่วยนับ";
 
-			dgv.Columns["CASTINGPRICE"].HeaderText = "ค่าแรงหล่อ (THB)";
-			dgv.Columns["UNITPRICE"].HeaderText = "ค่าหล่อรวมวัสดุ (THB)";
-			dgv.Columns["SCORE"].HeaderText = "คะแนน";
+			//dgv.Columns["CASTINGPRICE"].HeaderText = "ค่าแรงหล่อ (THB)";
+			//dgv.Columns["UNITPRICE"].HeaderText = "ค่าหล่อรวมวัสดุ (THB)";
+			//dgv.Columns["SCORE"].HeaderText = "คะแนน";
 			dgv.Columns["WEIGHT"].HeaderText = "น้ำหนัก (กรัม)";
 			dgv.Columns["FLASKTEMP"].HeaderText = "อุณหภูมิเบ้า";
 			dgv.Columns["CASTTEMP"].HeaderText = "อุณหภูมิหล่อ";

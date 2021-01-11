@@ -34,6 +34,7 @@ namespace OMW15
         public string ITEMNAME { get; set; }
         public string UNIT { get; set; }
         public decimal DELIVEREDQTY { get; set; }
+        public bool ISMATINCLUDE { get; set; }
         public decimal UNITPRICE { get; set; }
         public decimal UNITDISCOUNT { get; set; }
         public decimal NETTUNITVALUE { get; set; }

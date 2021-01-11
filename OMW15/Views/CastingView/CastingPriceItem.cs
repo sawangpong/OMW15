@@ -1,4 +1,5 @@
-﻿using OMW15.Models.CastingModel;
+﻿using OMW15.Controllers.ToolController;
+using OMW15.Models.CastingModel;
 using OMW15.Shared;
 using System;
 using System.Collections.Generic;
@@ -34,14 +35,18 @@ namespace OMW15.Views.CastingView
 
 		private void GetCastingPriceItem(int id)
 		{
-			_cpt = new PriceListDAL().GetCastingPriceItem(id);
-
 			if(_mode == ActionMode.Add)
 			{
+				_cpt = new CUSTPRICETAB();
 				_cpt.CPT_CP = _itemId;
 				_cpt.MATERIAL = _matId;
 				_cpt.PRICE_YEAR = _priceYear;
 				_cpt.PRICEUNITNAME = _unitName;
+			}
+			else
+			{
+				_cpt = new PriceListDAL().GetCastingPriceItem(id);
+
 			}
 
 			chkIsMatInclude.Checked = _cpt.ISMATINCLUDE;
@@ -52,8 +57,6 @@ namespace OMW15.Views.CastingView
 		}
 
 		#endregion
-
-
 
 		public CastingPriceItem(int id, int itemId, int matId, int priceYear, string unitName = "", string materialName = "")
 		{
@@ -84,9 +87,18 @@ namespace OMW15.Views.CastingView
 			_cpt.CPT_CP = _itemId;
 
 			int _result = new PriceListDAL().UpdateCustPriceTable(_cpt);
+ 
+		}
 
+		private void btnUnitName_Click(object sender, EventArgs e)
+		{
+			string _value = string.Empty;
+			string _code = string.Empty;
+			int _id = 0;
 
-
+			ToolGetData.GetData(SelectTypeOption.UnitCount, ref _value, ref _code, ref _id);
+			txtUnitName.Text = _value;
+			UpdateUI();
 		}
 	}
 }

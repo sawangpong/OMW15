@@ -89,7 +89,6 @@ namespace OMW15
         public virtual DbSet<SALE_CONTACTS> SALE_CONTACTS { get; set; }
         public virtual DbSet<SALE_PERSON_PROFILE> SALE_PERSON_PROFILE { get; set; }
         public virtual DbSet<SALEORDER> SALEORDERS { get; set; }
-        public virtual DbSet<SOLINE> SOLINES { get; set; }
         public virtual DbSet<USERLOG> USERLOGs { get; set; }
         public virtual DbSet<WARRANTy> WARRANTIES { get; set; }
         public virtual DbSet<WAXTREE> WAXTREES { get; set; }
@@ -144,6 +143,7 @@ namespace OMW15
         public virtual DbSet<OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST> OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST { get; set; }
         public virtual DbSet<SYSDATA> SYSDATAs { get; set; }
         public virtual DbSet<CUSTPRICETAB> CUSTPRICETABs { get; set; }
+        public virtual DbSet<SOLINE> SOLINES { get; set; }
     
         public virtual ObjectResult<usp_GetServiceJobList_Result> usp_GetServiceJobList(Nullable<int> selectedYear, string jobcode, string orderstatus)
         {

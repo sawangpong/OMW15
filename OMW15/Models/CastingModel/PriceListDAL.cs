@@ -31,7 +31,7 @@ namespace OMW15.Models.CastingModel
 		}
 
 		#endregion
-		public static string CreateImageFilePath(string ItemNo) => string.Format("{0}\\{1}{2}", omglobal.IMAGE_LOCATION_PATH, ItemNo, omglobal.IMAGE_EXTENSION);
+		public static string CreateImageFilePath(string ItemNo) => $"{omglobal.IMAGE_LOCATION_PATH}\\{ItemNo}{omglobal.IMAGE_EXTENSION}";
 
 		public string GetProductStyle(int StyleId) => _om.SYSDATAs.Single(x => x.GROUPTITLE == "PRODUCTSTYLE" && x.KEYVALUE == StyleId.ToString()).THKEYNAME;
 
@@ -45,7 +45,9 @@ namespace OMW15.Models.CastingModel
 
 		public CUSTPRICELIST GetCustomerPriceListItemInfo(int ItemId) => _om.CUSTPRICELISTs.Single(x => x.PRICESEQ == ItemId);
 
-		public DataTable GetPriceTableById(int itemId) => new DataConnect($"EXEC dbo.usp_OM_CASTING_PRICELIST_TABLE {itemId}", omglobal.SysConnectionString).ToDataTable ;
+		public DataTable GetPriceTableById(int itemId, int matId) => new DataConnect($"EXEC dbo.usp_OM_CASTING_PRICELIST_TABLE {itemId},{matId}", omglobal.SysConnectionString).ToDataTable;
+
+		public DataTable GetPriceTableById(int itemId, int matId, int yearSale, string unitName) => new DataConnect($"EXEC dbo.usp_OM_CASTING_PRICELIST_TABLE {itemId},{matId},{yearSale},'{unitName}'", omglobal.SysConnectionString).ToDataTable;
 
 		public Image GetPriceListItemPictureByItemId(int itemId)
 		{
@@ -267,7 +269,7 @@ namespace OMW15.Models.CastingModel
 
 		public int UpdateCustPriceTable(CUSTPRICETAB cpt)
 		{
-			if(cpt.ID == 0)
+			if (cpt.ID == 0)
 			{
 				_om.CUSTPRICETABs.Add(cpt);
 			}
@@ -283,6 +285,14 @@ namespace OMW15.Models.CastingModel
 
 			return _om.SaveChanges();
 		}
+
+		public int DeleteCustingPriceTableItem(int id)
+		{
+			_om.CUSTPRICETABs.Remove(GetCastingPriceItem(id));
+			return _om.SaveChanges();
+		}
+
+
 		#endregion
 
 	}

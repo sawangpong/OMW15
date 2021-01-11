@@ -1438,6 +1438,7 @@
           <Property Name="ITEMNAME" Type="nvarchar" MaxLength="100" />
           <Property Name="UNIT" Type="nvarchar" MaxLength="10" />
           <Property Name="DELIVEREDQTY" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ISMATINCLUDE" Type="bit" Nullable="false" />
           <Property Name="UNITPRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="UNITDISCOUNT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="NETTUNITVALUE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
@@ -5061,47 +5062,6 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <Property Name="MODIFYTIME" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_SALEORDERS_CUST" FromRole="SALEORDERS" ToRole="CUSTOMERS" />
         </EntityType>
-        <EntityType Name="SOLINE">
-          <Key>
-            <PropertyRef Name="SOLINESEQ" />
-          </Key>
-          <Property Name="SOLINESEQ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ISCOMPLETE" Type="Boolean" Nullable="false" />
-          <Property Name="ISDELETE" Type="Boolean" Nullable="false" />
-          <Property Name="SO_GUID" Type="Guid" />
-          <Property Name="REFSOKEY" Type="Int32" Nullable="false" />
-          <Property Name="FGLINESEQ" Type="Int32" Nullable="false" />
-          <Property Name="SALETYPE" Type="Int32" Nullable="false" />
-          <Property Name="CUSTID" Type="Int32" Nullable="false" />
-          <Property Name="CUSTCODE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SOSEQ" Type="Int32" Nullable="false" />
-          <Property Name="SONO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DELIVERDATE" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="JOBNO" Type="Int32" Nullable="false" />
-          <Property Name="PO" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
-          <Property Name="ITEMID" Type="Int32" Nullable="false" />
-          <Property Name="PREFIX" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Name="ITEMNO" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
-          <Property Name="ITEMNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="UNIT" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="DELIVEREDQTY" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="UNITPRICE" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="UNITDISCOUNT" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="NETTUNITVALUE" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="TOTALVALUE" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="VATFACTOR" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="VATVALUE" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="LINEAMOUNT" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="MATTYPE" Type="Int32" Nullable="false" />
-          <Property Name="TOTALWEIGHT" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="AVGUNITWEIGHT" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="AVGPRICEUNITWEIGHT" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="SOLINEREMARK" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
-          <Property Name="AUDITUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="AUDITDATE" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="MODIUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MODIDATE" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="USERLOG">
           <Key>
             <PropertyRef Name="USERID" />
@@ -5380,7 +5340,6 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <EntitySet Name="SALE_CONTACTS" EntityType="Self.SALE_CONTACTS" />
           <EntitySet Name="SALE_PERSON_PROFILE" EntityType="Self.SALE_PERSON_PROFILE" />
           <EntitySet Name="SALEORDERS" EntityType="Self.SALEORDER" />
-          <EntitySet Name="SOLINES" EntityType="Self.SOLINE" />
           <EntitySet Name="USERLOGs" EntityType="Self.USERLOG" />
           <EntitySet Name="WARRANTIES" EntityType="Self.WARRANTy" />
           <EntitySet Name="WAXTREES" EntityType="Self.WAXTREE" />
@@ -5486,6 +5445,7 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <EntitySet Name="OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST" EntityType="Oldmoon.OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST" />
           <EntitySet Name="SYSDATAs" EntityType="Oldmoon.SYSDATA" />
           <EntitySet Name="CUSTPRICETABs" EntityType="Oldmoon.CUSTPRICETAB" />
+          <EntitySet Name="SOLINES" EntityType="Oldmoon.SOLINE" />
         </EntityContainer>
         <ComplexType Name="usp_GetServiceJobList_Result">
           <Property Type="Int32" Name="orderid" Nullable="false" />
@@ -6793,6 +6753,48 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <Property Name="ISMATINCLUDE" Type="Boolean" Nullable="false" />
           <Property Name="UNITPRICE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
         </EntityType>
+        <EntityType Name="SOLINE">
+          <Key>
+            <PropertyRef Name="SOLINESEQ" />
+          </Key>
+          <Property Name="SOLINESEQ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ISCOMPLETE" Type="Boolean" Nullable="false" />
+          <Property Name="ISDELETE" Type="Boolean" Nullable="false" />
+          <Property Name="SO_GUID" Type="Guid" />
+          <Property Name="REFSOKEY" Type="Int32" Nullable="false" />
+          <Property Name="FGLINESEQ" Type="Int32" Nullable="false" />
+          <Property Name="SALETYPE" Type="Int32" Nullable="false" />
+          <Property Name="CUSTID" Type="Int32" Nullable="false" />
+          <Property Name="CUSTCODE" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SOSEQ" Type="Int32" Nullable="false" />
+          <Property Name="SONO" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="DELIVERDATE" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="JOBNO" Type="Int32" Nullable="false" />
+          <Property Name="PO" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Name="ITEMID" Type="Int32" Nullable="false" />
+          <Property Name="PREFIX" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="ITEMNO" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Name="ITEMNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UNIT" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DELIVEREDQTY" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ISMATINCLUDE" Type="Boolean" Nullable="false" />
+          <Property Name="UNITPRICE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="UNITDISCOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="NETTUNITVALUE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TOTALVALUE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="VATFACTOR" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="VATVALUE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="LINEAMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="MATTYPE" Type="Int32" Nullable="false" />
+          <Property Name="TOTALWEIGHT" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="AVGUNITWEIGHT" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="AVGPRICEUNITWEIGHT" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="SOLINEREMARK" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="AUDITUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AUDITDATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MODIUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MODIDATE" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -8099,48 +8101,6 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SOLINES">
-            <EntityTypeMapping TypeName="Oldmoon.SOLINE">
-              <MappingFragment StoreEntitySet="SOLINES">
-                <ScalarProperty Name="SOLINESEQ" ColumnName="SOLINESEQ" />
-                <ScalarProperty Name="ISCOMPLETE" ColumnName="ISCOMPLETE" />
-                <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
-                <ScalarProperty Name="SO_GUID" ColumnName="SO_GUID" />
-                <ScalarProperty Name="REFSOKEY" ColumnName="REFSOKEY" />
-                <ScalarProperty Name="FGLINESEQ" ColumnName="FGLINESEQ" />
-                <ScalarProperty Name="SALETYPE" ColumnName="SALETYPE" />
-                <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
-                <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
-                <ScalarProperty Name="SOSEQ" ColumnName="SOSEQ" />
-                <ScalarProperty Name="SONO" ColumnName="SONO" />
-                <ScalarProperty Name="DELIVERDATE" ColumnName="DELIVERDATE" />
-                <ScalarProperty Name="JOBNO" ColumnName="JOBNO" />
-                <ScalarProperty Name="PO" ColumnName="PO" />
-                <ScalarProperty Name="ITEMID" ColumnName="ITEMID" />
-                <ScalarProperty Name="PREFIX" ColumnName="PREFIX" />
-                <ScalarProperty Name="ITEMNO" ColumnName="ITEMNO" />
-                <ScalarProperty Name="ITEMNAME" ColumnName="ITEMNAME" />
-                <ScalarProperty Name="UNIT" ColumnName="UNIT" />
-                <ScalarProperty Name="DELIVEREDQTY" ColumnName="DELIVEREDQTY" />
-                <ScalarProperty Name="UNITPRICE" ColumnName="UNITPRICE" />
-                <ScalarProperty Name="UNITDISCOUNT" ColumnName="UNITDISCOUNT" />
-                <ScalarProperty Name="NETTUNITVALUE" ColumnName="NETTUNITVALUE" />
-                <ScalarProperty Name="TOTALVALUE" ColumnName="TOTALVALUE" />
-                <ScalarProperty Name="VATFACTOR" ColumnName="VATFACTOR" />
-                <ScalarProperty Name="VATVALUE" ColumnName="VATVALUE" />
-                <ScalarProperty Name="LINEAMOUNT" ColumnName="LINEAMOUNT" />
-                <ScalarProperty Name="MATTYPE" ColumnName="MATTYPE" />
-                <ScalarProperty Name="TOTALWEIGHT" ColumnName="TOTALWEIGHT" />
-                <ScalarProperty Name="AVGUNITWEIGHT" ColumnName="AVGUNITWEIGHT" />
-                <ScalarProperty Name="AVGPRICEUNITWEIGHT" ColumnName="AVGPRICEUNITWEIGHT" />
-                <ScalarProperty Name="SOLINEREMARK" ColumnName="SOLINEREMARK" />
-                <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
-                <ScalarProperty Name="AUDITDATE" ColumnName="AUDITDATE" />
-                <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
-                <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="USERLOGs">
             <EntityTypeMapping TypeName="Oldmoon.USERLOG">
               <MappingFragment StoreEntitySet="USERLOG">
@@ -9346,6 +9306,49 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
                 <ScalarProperty Name="PRICE_YEAR" ColumnName="PRICE_YEAR" />
                 <ScalarProperty Name="CPT_CP" ColumnName="CPT_CP" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SOLINES">
+            <EntityTypeMapping TypeName="Oldmoon.SOLINE">
+              <MappingFragment StoreEntitySet="SOLINES">
+                <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+                <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+                <ScalarProperty Name="AUDITDATE" ColumnName="AUDITDATE" />
+                <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+                <ScalarProperty Name="SOLINEREMARK" ColumnName="SOLINEREMARK" />
+                <ScalarProperty Name="AVGPRICEUNITWEIGHT" ColumnName="AVGPRICEUNITWEIGHT" />
+                <ScalarProperty Name="AVGUNITWEIGHT" ColumnName="AVGUNITWEIGHT" />
+                <ScalarProperty Name="TOTALWEIGHT" ColumnName="TOTALWEIGHT" />
+                <ScalarProperty Name="MATTYPE" ColumnName="MATTYPE" />
+                <ScalarProperty Name="LINEAMOUNT" ColumnName="LINEAMOUNT" />
+                <ScalarProperty Name="VATVALUE" ColumnName="VATVALUE" />
+                <ScalarProperty Name="VATFACTOR" ColumnName="VATFACTOR" />
+                <ScalarProperty Name="TOTALVALUE" ColumnName="TOTALVALUE" />
+                <ScalarProperty Name="NETTUNITVALUE" ColumnName="NETTUNITVALUE" />
+                <ScalarProperty Name="UNITDISCOUNT" ColumnName="UNITDISCOUNT" />
+                <ScalarProperty Name="UNITPRICE" ColumnName="UNITPRICE" />
+                <ScalarProperty Name="ISMATINCLUDE" ColumnName="ISMATINCLUDE" />
+                <ScalarProperty Name="DELIVEREDQTY" ColumnName="DELIVEREDQTY" />
+                <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+                <ScalarProperty Name="ITEMNAME" ColumnName="ITEMNAME" />
+                <ScalarProperty Name="ITEMNO" ColumnName="ITEMNO" />
+                <ScalarProperty Name="PREFIX" ColumnName="PREFIX" />
+                <ScalarProperty Name="ITEMID" ColumnName="ITEMID" />
+                <ScalarProperty Name="PO" ColumnName="PO" />
+                <ScalarProperty Name="JOBNO" ColumnName="JOBNO" />
+                <ScalarProperty Name="DELIVERDATE" ColumnName="DELIVERDATE" />
+                <ScalarProperty Name="SONO" ColumnName="SONO" />
+                <ScalarProperty Name="SOSEQ" ColumnName="SOSEQ" />
+                <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+                <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+                <ScalarProperty Name="SALETYPE" ColumnName="SALETYPE" />
+                <ScalarProperty Name="FGLINESEQ" ColumnName="FGLINESEQ" />
+                <ScalarProperty Name="REFSOKEY" ColumnName="REFSOKEY" />
+                <ScalarProperty Name="SO_GUID" ColumnName="SO_GUID" />
+                <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+                <ScalarProperty Name="ISCOMPLETE" ColumnName="ISCOMPLETE" />
+                <ScalarProperty Name="SOLINESEQ" ColumnName="SOLINESEQ" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

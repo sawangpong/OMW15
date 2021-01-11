@@ -106,7 +106,7 @@
 			this.tsbtnRefresh = new System.Windows.Forms.ToolStripButton();
 			this.toolStripButton5 = new System.Windows.Forms.ToolStripSeparator();
 			this.panel14 = new System.Windows.Forms.Panel();
-			this.label18 = new System.Windows.Forms.Label();
+			this.lbPriceListTitle = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			this.pnlHeader.SuspendLayout();
 			this.pnlImage.SuspendLayout();
@@ -756,14 +756,16 @@
 			// 
 			// lbMatId
 			// 
-			this.lbMatId.Dock = System.Windows.Forms.DockStyle.Left;
-			this.lbMatId.Location = new System.Drawing.Point(496, 1);
+			this.lbMatId.Dock = System.Windows.Forms.DockStyle.Right;
+			this.lbMatId.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbMatId.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+			this.lbMatId.Location = new System.Drawing.Point(502, 1);
 			this.lbMatId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lbMatId.Name = "lbMatId";
 			this.lbMatId.Size = new System.Drawing.Size(28, 26);
 			this.lbMatId.TabIndex = 8;
 			this.lbMatId.Text = "0";
-			this.lbMatId.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.lbMatId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// cbxMaterial
 			// 
@@ -1007,6 +1009,7 @@
 			this.dgvPrice.Size = new System.Drawing.Size(527, 237);
 			this.dgvPrice.TabIndex = 3;
 			this.dgvPrice.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrice_CellEnter);
+			this.dgvPrice.DoubleClick += new System.EventHandler(this.dgvPrice_DoubleClick);
 			// 
 			// toolStrip1
 			// 
@@ -1034,6 +1037,7 @@
 			this.tsbtnAdd.Name = "tsbtnAdd";
 			this.tsbtnAdd.Size = new System.Drawing.Size(23, 22);
 			this.tsbtnAdd.Text = "Add";
+			this.tsbtnAdd.Click += new System.EventHandler(this.tsbtnAdd_Click);
 			// 
 			// toolStripSeparator1
 			// 
@@ -1063,11 +1067,13 @@
 			this.tsbtnDelete.Name = "tsbtnDelete";
 			this.tsbtnDelete.Size = new System.Drawing.Size(23, 22);
 			this.tsbtnDelete.Text = "Delete";
+			this.tsbtnDelete.Visible = false;
 			// 
 			// toolStripSeparator3
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
 			this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+			this.toolStripSeparator3.Visible = false;
 			// 
 			// tsbtnRefresh
 			// 
@@ -1085,7 +1091,7 @@
 			// 
 			// panel14
 			// 
-			this.panel14.Controls.Add(this.label18);
+			this.panel14.Controls.Add(this.lbPriceListTitle);
 			this.panel14.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panel14.Location = new System.Drawing.Point(2, 2);
 			this.panel14.Name = "panel14";
@@ -1093,16 +1099,16 @@
 			this.panel14.Size = new System.Drawing.Size(527, 43);
 			this.panel14.TabIndex = 0;
 			// 
-			// label18
+			// lbPriceListTitle
 			// 
-			this.label18.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label18.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label18.Location = new System.Drawing.Point(2, 2);
-			this.label18.Name = "label18";
-			this.label18.Size = new System.Drawing.Size(200, 39);
-			this.label18.TabIndex = 0;
-			this.label18.Text = "ราคาค่าหล่อชิ้นงาน";
-			this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.lbPriceListTitle.Dock = System.Windows.Forms.DockStyle.Left;
+			this.lbPriceListTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbPriceListTitle.Location = new System.Drawing.Point(2, 2);
+			this.lbPriceListTitle.Name = "lbPriceListTitle";
+			this.lbPriceListTitle.Size = new System.Drawing.Size(427, 39);
+			this.lbPriceListTitle.TabIndex = 0;
+			this.lbPriceListTitle.Text = "ราคาค่าหล่อชิ้นงาน";
+			this.lbPriceListTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// CastingPriceListItemInfo
 			// 
@@ -1230,7 +1236,7 @@
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.Panel panel13;
 		private System.Windows.Forms.Panel panel14;
-		private System.Windows.Forms.Label label18;
+		private System.Windows.Forms.Label lbPriceListTitle;
 		private System.Windows.Forms.DataGridView dgvPrice;
 		private System.Windows.Forms.ToolStrip toolStrip1;
 		private System.Windows.Forms.ToolStripButton tsbtnAdd;

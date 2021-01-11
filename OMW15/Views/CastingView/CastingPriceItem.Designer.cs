@@ -33,30 +33,30 @@
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.btnSave = new System.Windows.Forms.Button();
 			this.pnlTop = new System.Windows.Forms.Panel();
-			this.lbTitle = new System.Windows.Forms.Label();
 			this.lbMode = new System.Windows.Forms.Label();
+			this.lbTitle = new System.Windows.Forms.Label();
 			this.pnlBody = new System.Windows.Forms.Panel();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.panel3 = new System.Windows.Forms.Panel();
-			this.panel4 = new System.Windows.Forms.Panel();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.txtPriceYear = new System.Windows.Forms.TextBox();
-			this.chkIsMatInclude = new System.Windows.Forms.CheckBox();
-			this.panel6 = new System.Windows.Forms.Panel();
-			this.label4 = new System.Windows.Forms.Label();
 			this.panel5 = new System.Windows.Forms.Panel();
 			this.txtUnitPrice = new OMControls.Controls.NumericTextBox();
 			this.label3 = new System.Windows.Forms.Label();
-			this.txtUnitName = new System.Windows.Forms.TextBox();
+			this.panel6 = new System.Windows.Forms.Panel();
 			this.btnUnitName = new OMControls.OMFlatButton();
+			this.txtUnitName = new System.Windows.Forms.TextBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.panel4 = new System.Windows.Forms.Panel();
+			this.chkIsMatInclude = new System.Windows.Forms.CheckBox();
+			this.label2 = new System.Windows.Forms.Label();
+			this.panel3 = new System.Windows.Forms.Panel();
+			this.txtPriceYear = new System.Windows.Forms.TextBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.panel2 = new System.Windows.Forms.Panel();
 			this.panel1.SuspendLayout();
 			this.pnlTop.SuspendLayout();
 			this.pnlBody.SuspendLayout();
-			this.panel3.SuspendLayout();
-			this.panel4.SuspendLayout();
-			this.panel6.SuspendLayout();
 			this.panel5.SuspendLayout();
+			this.panel6.SuspendLayout();
+			this.panel4.SuspendLayout();
+			this.panel3.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -105,18 +105,6 @@
 			this.pnlTop.Size = new System.Drawing.Size(286, 40);
 			this.pnlTop.TabIndex = 1;
 			// 
-			// lbTitle
-			// 
-			this.lbTitle.Dock = System.Windows.Forms.DockStyle.Left;
-			this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbTitle.ForeColor = System.Drawing.Color.White;
-			this.lbTitle.Location = new System.Drawing.Point(0, 0);
-			this.lbTitle.Name = "lbTitle";
-			this.lbTitle.Size = new System.Drawing.Size(156, 40);
-			this.lbTitle.TabIndex = 0;
-			this.lbTitle.Text = "ราคาค่าหล่อชิ้นงาน";
-			this.lbTitle.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-			// 
 			// lbMode
 			// 
 			this.lbMode.Dock = System.Windows.Forms.DockStyle.Right;
@@ -128,6 +116,18 @@
 			this.lbMode.TabIndex = 1;
 			this.lbMode.Text = "x";
 			this.lbMode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// lbTitle
+			// 
+			this.lbTitle.Dock = System.Windows.Forms.DockStyle.Left;
+			this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbTitle.ForeColor = System.Drawing.Color.White;
+			this.lbTitle.Location = new System.Drawing.Point(0, 0);
+			this.lbTitle.Name = "lbTitle";
+			this.lbTitle.Size = new System.Drawing.Size(156, 40);
+			this.lbTitle.TabIndex = 0;
+			this.lbTitle.Text = "ราคาค่าหล่อชิ้นงาน";
+			this.lbTitle.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			// 
 			// pnlBody
 			// 
@@ -142,98 +142,6 @@
 			this.pnlBody.Padding = new System.Windows.Forms.Padding(2);
 			this.pnlBody.Size = new System.Drawing.Size(286, 139);
 			this.pnlBody.TabIndex = 2;
-			// 
-			// panel2
-			// 
-			this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel2.Location = new System.Drawing.Point(2, 2);
-			this.panel2.Name = "panel2";
-			this.panel2.Padding = new System.Windows.Forms.Padding(2);
-			this.panel2.Size = new System.Drawing.Size(282, 11);
-			this.panel2.TabIndex = 0;
-			// 
-			// panel3
-			// 
-			this.panel3.Controls.Add(this.txtPriceYear);
-			this.panel3.Controls.Add(this.label1);
-			this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel3.Location = new System.Drawing.Point(2, 13);
-			this.panel3.Name = "panel3";
-			this.panel3.Padding = new System.Windows.Forms.Padding(2);
-			this.panel3.Size = new System.Drawing.Size(282, 30);
-			this.panel3.TabIndex = 1;
-			// 
-			// panel4
-			// 
-			this.panel4.Controls.Add(this.chkIsMatInclude);
-			this.panel4.Controls.Add(this.label2);
-			this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel4.Location = new System.Drawing.Point(2, 43);
-			this.panel4.Name = "panel4";
-			this.panel4.Padding = new System.Windows.Forms.Padding(2);
-			this.panel4.Size = new System.Drawing.Size(282, 30);
-			this.panel4.TabIndex = 2;
-			// 
-			// label1
-			// 
-			this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label1.Location = new System.Drawing.Point(2, 2);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(98, 26);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "ปี :";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// label2
-			// 
-			this.label2.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label2.Location = new System.Drawing.Point(2, 2);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(98, 26);
-			this.label2.TabIndex = 1;
-			this.label2.Text = "รวมวัสดุ :";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// txtPriceYear
-			// 
-			this.txtPriceYear.Dock = System.Windows.Forms.DockStyle.Left;
-			this.txtPriceYear.Location = new System.Drawing.Point(100, 2);
-			this.txtPriceYear.MaxLength = 4;
-			this.txtPriceYear.Name = "txtPriceYear";
-			this.txtPriceYear.Size = new System.Drawing.Size(69, 25);
-			this.txtPriceYear.TabIndex = 1;
-			// 
-			// chkIsMatInclude
-			// 
-			this.chkIsMatInclude.AutoSize = true;
-			this.chkIsMatInclude.Dock = System.Windows.Forms.DockStyle.Left;
-			this.chkIsMatInclude.Location = new System.Drawing.Point(100, 2);
-			this.chkIsMatInclude.Name = "chkIsMatInclude";
-			this.chkIsMatInclude.Size = new System.Drawing.Size(15, 26);
-			this.chkIsMatInclude.TabIndex = 3;
-			this.chkIsMatInclude.UseVisualStyleBackColor = true;
-			// 
-			// panel6
-			// 
-			this.panel6.Controls.Add(this.btnUnitName);
-			this.panel6.Controls.Add(this.txtUnitName);
-			this.panel6.Controls.Add(this.label4);
-			this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel6.Location = new System.Drawing.Point(2, 73);
-			this.panel6.Name = "panel6";
-			this.panel6.Padding = new System.Windows.Forms.Padding(2);
-			this.panel6.Size = new System.Drawing.Size(282, 30);
-			this.panel6.TabIndex = 4;
-			// 
-			// label4
-			// 
-			this.label4.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label4.Location = new System.Drawing.Point(2, 2);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(98, 26);
-			this.label4.TabIndex = 1;
-			this.label4.Text = "หน่วย :";
-			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// panel5
 			// 
@@ -264,6 +172,7 @@
 			this.txtUnitPrice.Name = "txtUnitPrice";
 			this.txtUnitPrice.Size = new System.Drawing.Size(90, 25);
 			this.txtUnitPrice.TabIndex = 5;
+			this.txtUnitPrice.Text = "0";
 			// 
 			// label3
 			// 
@@ -275,14 +184,17 @@
 			this.label3.Text = "ราคา (บาท) :";
 			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
-			// txtUnitName
+			// panel6
 			// 
-			this.txtUnitName.Dock = System.Windows.Forms.DockStyle.Left;
-			this.txtUnitName.Location = new System.Drawing.Point(100, 2);
-			this.txtUnitName.MaxLength = 10;
-			this.txtUnitName.Name = "txtUnitName";
-			this.txtUnitName.Size = new System.Drawing.Size(90, 25);
-			this.txtUnitName.TabIndex = 2;
+			this.panel6.Controls.Add(this.btnUnitName);
+			this.panel6.Controls.Add(this.txtUnitName);
+			this.panel6.Controls.Add(this.label4);
+			this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel6.Location = new System.Drawing.Point(2, 73);
+			this.panel6.Name = "panel6";
+			this.panel6.Padding = new System.Windows.Forms.Padding(2);
+			this.panel6.Size = new System.Drawing.Size(282, 30);
+			this.panel6.TabIndex = 4;
 			// 
 			// btnUnitName
 			// 
@@ -297,6 +209,96 @@
 			this.btnUnitName.Size = new System.Drawing.Size(26, 26);
 			this.btnUnitName.TabIndex = 3;
 			this.btnUnitName.UseVisualStyleBackColor = true;
+			this.btnUnitName.Click += new System.EventHandler(this.btnUnitName_Click);
+			// 
+			// txtUnitName
+			// 
+			this.txtUnitName.Dock = System.Windows.Forms.DockStyle.Left;
+			this.txtUnitName.Location = new System.Drawing.Point(100, 2);
+			this.txtUnitName.MaxLength = 10;
+			this.txtUnitName.Name = "txtUnitName";
+			this.txtUnitName.Size = new System.Drawing.Size(90, 25);
+			this.txtUnitName.TabIndex = 2;
+			// 
+			// label4
+			// 
+			this.label4.Dock = System.Windows.Forms.DockStyle.Left;
+			this.label4.Location = new System.Drawing.Point(2, 2);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(98, 26);
+			this.label4.TabIndex = 1;
+			this.label4.Text = "หน่วย :";
+			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// panel4
+			// 
+			this.panel4.Controls.Add(this.chkIsMatInclude);
+			this.panel4.Controls.Add(this.label2);
+			this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel4.Location = new System.Drawing.Point(2, 43);
+			this.panel4.Name = "panel4";
+			this.panel4.Padding = new System.Windows.Forms.Padding(2);
+			this.panel4.Size = new System.Drawing.Size(282, 30);
+			this.panel4.TabIndex = 2;
+			// 
+			// chkIsMatInclude
+			// 
+			this.chkIsMatInclude.AutoSize = true;
+			this.chkIsMatInclude.Dock = System.Windows.Forms.DockStyle.Left;
+			this.chkIsMatInclude.Location = new System.Drawing.Point(100, 2);
+			this.chkIsMatInclude.Name = "chkIsMatInclude";
+			this.chkIsMatInclude.Size = new System.Drawing.Size(15, 26);
+			this.chkIsMatInclude.TabIndex = 3;
+			this.chkIsMatInclude.UseVisualStyleBackColor = true;
+			// 
+			// label2
+			// 
+			this.label2.Dock = System.Windows.Forms.DockStyle.Left;
+			this.label2.Location = new System.Drawing.Point(2, 2);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(98, 26);
+			this.label2.TabIndex = 1;
+			this.label2.Text = "รวมวัสดุ :";
+			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// panel3
+			// 
+			this.panel3.Controls.Add(this.txtPriceYear);
+			this.panel3.Controls.Add(this.label1);
+			this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel3.Location = new System.Drawing.Point(2, 13);
+			this.panel3.Name = "panel3";
+			this.panel3.Padding = new System.Windows.Forms.Padding(2);
+			this.panel3.Size = new System.Drawing.Size(282, 30);
+			this.panel3.TabIndex = 1;
+			// 
+			// txtPriceYear
+			// 
+			this.txtPriceYear.Dock = System.Windows.Forms.DockStyle.Left;
+			this.txtPriceYear.Location = new System.Drawing.Point(100, 2);
+			this.txtPriceYear.MaxLength = 4;
+			this.txtPriceYear.Name = "txtPriceYear";
+			this.txtPriceYear.Size = new System.Drawing.Size(69, 25);
+			this.txtPriceYear.TabIndex = 1;
+			// 
+			// label1
+			// 
+			this.label1.Dock = System.Windows.Forms.DockStyle.Left;
+			this.label1.Location = new System.Drawing.Point(2, 2);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(98, 26);
+			this.label1.TabIndex = 0;
+			this.label1.Text = "ปี :";
+			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// panel2
+			// 
+			this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel2.Location = new System.Drawing.Point(2, 2);
+			this.panel2.Name = "panel2";
+			this.panel2.Padding = new System.Windows.Forms.Padding(2);
+			this.panel2.Size = new System.Drawing.Size(282, 11);
+			this.panel2.TabIndex = 0;
 			// 
 			// CastingPriceItem
 			// 
@@ -316,14 +318,14 @@
 			this.panel1.ResumeLayout(false);
 			this.pnlTop.ResumeLayout(false);
 			this.pnlBody.ResumeLayout(false);
-			this.panel3.ResumeLayout(false);
-			this.panel3.PerformLayout();
-			this.panel4.ResumeLayout(false);
-			this.panel4.PerformLayout();
-			this.panel6.ResumeLayout(false);
-			this.panel6.PerformLayout();
 			this.panel5.ResumeLayout(false);
 			this.panel5.PerformLayout();
+			this.panel6.ResumeLayout(false);
+			this.panel6.PerformLayout();
+			this.panel4.ResumeLayout(false);
+			this.panel4.PerformLayout();
+			this.panel3.ResumeLayout(false);
+			this.panel3.PerformLayout();
 			this.ResumeLayout(false);
 
 		}

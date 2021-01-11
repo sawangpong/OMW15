@@ -1173,6 +1173,7 @@ namespace OMW15.Models.CastingModel
 						sl.TOTALVALUE = SOLineItem.TOTALVALUE;
 						sl.TOTALWEIGHT = SOLineItem.TOTALWEIGHT;
 						sl.UNITDISCOUNT = SOLineItem.UNITDISCOUNT;
+						sl.ISMATINCLUDE = SOLineItem.ISMATINCLUDE;
 						sl.UNITPRICE = SOLineItem.UNITPRICE;
 						sl.VATVALUE = SOLineItem.VATVALUE;
 						sl.SOLINEREMARK = SOLineItem.SOLINEREMARK;

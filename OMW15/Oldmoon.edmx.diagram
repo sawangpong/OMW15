@@ -67,7 +67,6 @@
         <EntityTypeShape EntityType="Oldmoon.SALE_CONTACTS" Width="1.5" PointX="7.75" PointY="27.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Oldmoon.SALE_PERSON_PROFILE" Width="1.5" PointX="9.75" PointY="27.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Oldmoon.SALEORDER" Width="1.5" PointX="3" PointY="29.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Oldmoon.SOLINE" Width="1.5" PointX="15.75" PointY="27.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Oldmoon.USERLOG" Width="1.5" PointX="28.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Oldmoon.WARRANTy" Width="1.5" PointX="28.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Oldmoon.WAXTREE" Width="1.5" PointX="28.75" PointY="12.75" IsExpanded="true" />
@@ -132,6 +131,7 @@
         <EntityTypeShape EntityType="Oldmoon.OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST" Width="2.875" PointX="7.375" PointY="38.75" />
         <EntityTypeShape EntityType="Oldmoon.SYSDATA" Width="1.5" PointX="33.375" PointY="38.75" />
         <EntityTypeShape EntityType="Oldmoon.CUSTPRICETAB" Width="1.5" PointX="18.375" PointY="31.75" />
+        <EntityTypeShape EntityType="Oldmoon.SOLINE" Width="1.5" PointX="17.375" PointY="35.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

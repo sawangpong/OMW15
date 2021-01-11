@@ -144,15 +144,15 @@ namespace OMW15.Views.CastingView
 				pic.Image = null;
 			}
 
-			GetPriceTable(ItemId);
+			GetPriceTable(ItemId, _selectedMaterialId);
 
 
 			UpdateUI();
 		} // end GetPriceItemInfo
 
-		private void GetPriceTable(int itemId)
+		private void GetPriceTable(int itemId, int matId)
 		{
-			_dtPrice = new PriceListDAL().GetPriceTableById(itemId);
+			_dtPrice = new PriceListDAL().GetPriceTableById(itemId,matId);
 
 			dgvPrice.SuspendLayout();
 			dgvPrice.DataSource = _dtPrice;
@@ -167,6 +167,8 @@ namespace OMW15.Views.CastingView
 			dgvPrice.Columns["UNITPRICE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 			dgvPrice.Columns["ISMATINCLUDE"].HeaderText = "ราคารวมวัสดุ";
 
+			dgvPrice.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
 			dgvPrice.ResumeLayout();
 
 		}
@@ -178,7 +180,7 @@ namespace OMW15.Views.CastingView
 
 				if(_cpt.ShowDialog(this) == DialogResult.OK)
 				{
-					GetPriceTable(itemId);
+					GetPriceTable(itemId,matId);
 				}
 			}
 		}
@@ -466,6 +468,9 @@ namespace OMW15.Views.CastingView
 		{
 			_selectedMaterialId = Convert.ToInt32(cbxMaterial.SelectedValue);
 			lbMatId.Text = _selectedMaterialId.ToString();
+
+			lbPriceListTitle.Text = $"ราคาค่าหล่อชิ้นงาน {cbxMaterial.Text}";
+
 		}
 
 		private void btnEndDate_ButtonClick(object sender, EventArgs e)
@@ -601,6 +606,18 @@ namespace OMW15.Views.CastingView
 		private void tsbtnEdit_Click(object sender, EventArgs e)
 		{
 			AddEditPricItem(_selectPriceItem,this.ItemId, _selectedMaterialId, Convert.ToDateTime(txtStartDate.Text).Year,txtUnitCount.Text,cbxMaterial.Text);
+		}
+
+		private void dgvPrice_DoubleClick(object sender, EventArgs e)
+		{
+			tsbtnEdit.PerformClick();
+		}
+
+		private void tsbtnAdd_Click(object sender, EventArgs e)
+		{
+			_selectPriceItem = 0;
+			AddEditPricItem(_selectPriceItem, this.ItemId, _selectedMaterialId, Convert.ToDateTime(txtStartDate.Text).Year, txtUnitCount.Text, cbxMaterial.Text);
+
 		}
 	}
 }
