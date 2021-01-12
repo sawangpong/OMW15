@@ -13,6 +13,22 @@ namespace OMW15.Views.Productions
 {
 	public partial class ProductionJobList : Form
 	{
+		#region Singleton
+		private static ProductionJobList _instance;
+		public static ProductionJobList GetInstance
+		{
+			get
+			{
+				if(_instance == null || _instance.IsDisposed)
+				{
+					_instance = new ProductionJobList();
+				}
+				return _instance;
+			}
+		}
+		#endregion
+
+
 		#region class field member
 
 		private ContextMenu _ctmTask;

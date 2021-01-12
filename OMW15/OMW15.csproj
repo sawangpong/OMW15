@@ -676,10 +676,10 @@
     <Compile Include="Views\BankView\BankList.Designer.cs">
       <DependentUpon>BankList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\CastingPriceItemList.cs">
+    <Compile Include="Views\CastingView\CastingPriceItemList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\CastingPriceItemList.Designer.cs">
+    <Compile Include="Views\CastingView\CastingPriceItemList.Designer.cs">
       <DependentUpon>CastingPriceItemList.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\CastingReports\BillingSO.cs">
@@ -2017,7 +2017,7 @@
     <EmbeddedResource Include="Views\BankView\BankList.resx">
       <DependentUpon>BankList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CastingPriceItemList.resx">
+    <EmbeddedResource Include="Views\CastingView\CastingPriceItemList.resx">
       <DependentUpon>CastingPriceItemList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CastingReports\BillingSO.rpt">

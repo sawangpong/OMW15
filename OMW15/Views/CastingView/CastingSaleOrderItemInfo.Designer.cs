@@ -62,6 +62,7 @@
 			this.txtTotalValue = new OMControls.Controls.NumericTextBox();
 			this.label12 = new System.Windows.Forms.Label();
 			this.panel11 = new System.Windows.Forms.Panel();
+			this.chkIsMatInclude = new System.Windows.Forms.CheckBox();
 			this.btnUnitPrice = new OMControls.OMFlatButton();
 			this.txtUnitPrice = new OMControls.Controls.NumericTextBox();
 			this.label7 = new System.Windows.Forms.Label();
@@ -71,6 +72,7 @@
 			this.txtDeliveryQty = new OMControls.Controls.NumericTextBox();
 			this.label8 = new System.Windows.Forms.Label();
 			this.panel9 = new System.Windows.Forms.Panel();
+			this.lbMatInfo = new System.Windows.Forms.Label();
 			this.btnUnit = new OMControls.OMFlatButton();
 			this.txtUnit = new System.Windows.Forms.TextBox();
 			this.label6 = new System.Windows.Forms.Label();
@@ -92,8 +94,6 @@
 			this.lbItemMode = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.lbJobNo = new System.Windows.Forms.Label();
-			this.lbMatInfo = new System.Windows.Forms.Label();
-			this.chkIsMatInclude = new System.Windows.Forms.CheckBox();
 			this.panel1.SuspendLayout();
 			this.panel20.SuspendLayout();
 			this.panel21.SuspendLayout();
@@ -155,6 +155,7 @@
 			// 
 			this.lbRefSEQ.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.lbRefSEQ.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbRefSEQ.ForeColor = System.Drawing.Color.White;
 			this.lbRefSEQ.Location = new System.Drawing.Point(0, 0);
 			this.lbRefSEQ.Name = "lbRefSEQ";
 			this.lbRefSEQ.Size = new System.Drawing.Size(183, 21);
@@ -544,6 +545,19 @@
 			this.panel11.Size = new System.Drawing.Size(512, 28);
 			this.panel11.TabIndex = 6;
 			// 
+			// chkIsMatInclude
+			// 
+			this.chkIsMatInclude.AutoSize = true;
+			this.chkIsMatInclude.Dock = System.Windows.Forms.DockStyle.Left;
+			this.chkIsMatInclude.Enabled = false;
+			this.chkIsMatInclude.Location = new System.Drawing.Point(250, 1);
+			this.chkIsMatInclude.Name = "chkIsMatInclude";
+			this.chkIsMatInclude.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+			this.chkIsMatInclude.Size = new System.Drawing.Size(121, 26);
+			this.chkIsMatInclude.TabIndex = 15;
+			this.chkIsMatInclude.Text = "ราคารวมวัสดุ";
+			this.chkIsMatInclude.UseVisualStyleBackColor = true;
+			// 
 			// btnUnitPrice
 			// 
 			this.btnUnitPrice.Dock = System.Windows.Forms.DockStyle.Left;
@@ -666,6 +680,18 @@
 			this.panel9.Padding = new System.Windows.Forms.Padding(1);
 			this.panel9.Size = new System.Drawing.Size(512, 28);
 			this.panel9.TabIndex = 4;
+			// 
+			// lbMatInfo
+			// 
+			this.lbMatInfo.Dock = System.Windows.Forms.DockStyle.Right;
+			this.lbMatInfo.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbMatInfo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+			this.lbMatInfo.Location = new System.Drawing.Point(283, 1);
+			this.lbMatInfo.Name = "lbMatInfo";
+			this.lbMatInfo.Size = new System.Drawing.Size(228, 26);
+			this.lbMatInfo.TabIndex = 15;
+			this.lbMatInfo.Text = "0";
+			this.lbMatInfo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// btnUnit
 			// 
@@ -906,30 +932,6 @@
 			this.lbJobNo.Size = new System.Drawing.Size(88, 26);
 			this.lbJobNo.TabIndex = 0;
 			this.lbJobNo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// lbMatInfo
-			// 
-			this.lbMatInfo.Dock = System.Windows.Forms.DockStyle.Right;
-			this.lbMatInfo.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbMatInfo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.lbMatInfo.Location = new System.Drawing.Point(283, 1);
-			this.lbMatInfo.Name = "lbMatInfo";
-			this.lbMatInfo.Size = new System.Drawing.Size(228, 26);
-			this.lbMatInfo.TabIndex = 15;
-			this.lbMatInfo.Text = "0";
-			this.lbMatInfo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// chkIsMatInclude
-			// 
-			this.chkIsMatInclude.AutoSize = true;
-			this.chkIsMatInclude.Dock = System.Windows.Forms.DockStyle.Left;
-			this.chkIsMatInclude.Location = new System.Drawing.Point(250, 1);
-			this.chkIsMatInclude.Name = "chkIsMatInclude";
-			this.chkIsMatInclude.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-			this.chkIsMatInclude.Size = new System.Drawing.Size(121, 26);
-			this.chkIsMatInclude.TabIndex = 15;
-			this.chkIsMatInclude.Text = "ราคารวมวัสดุ";
-			this.chkIsMatInclude.UseVisualStyleBackColor = true;
 			// 
 			// CastingSaleOrderItemInfo
 			// 

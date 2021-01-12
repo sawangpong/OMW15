@@ -18,6 +18,13 @@ namespace OMW15.Views.CastingView
 		public CastingOrderBilling(string CustomerCode = "", string CustomerName = "", int BillingNo = 0)
 		{
 			InitializeComponent();
+
+			CenterToParent();
+			OMUtils.SettingDataGridView(ref dgvSO);
+			OMUtils.SettingDataGridView(ref dgvBL);
+
+			dgvSO.MultiSelect = true;
+
 			_customerCode = CustomerCode;
 			_customerName = CustomerName;
 			_billId = BillingNo;
@@ -32,23 +39,12 @@ namespace OMW15.Views.CastingView
 
 		private void CastingOrderBilling_Load(object sender, EventArgs e)
 		{
-			CenterToParent();
-			OMUtils.SettingDataGridView(ref dgvSO);
-			OMUtils.SettingDataGridView(ref dgvBL);
-
-			dgvSO.MultiSelect = true;
 			if (_customerCode != "") GetBillingHeaderInfo(_billId, _customerCode);
 		}
 
-		private void btnClose_Click(object sender, EventArgs e)
-		{
-			Close();
-		}
+		private void btnClose_Click(object sender, EventArgs e) => Close();
 
-		private void dgvSO_SelectionChanged(object sender, EventArgs e)
-		{
-			UpdateUI();
-		}
+		private void dgvSO_SelectionChanged(object sender, EventArgs e) => UpdateUI();
 
 		private void btnAddToBilling_Click(object sender, EventArgs e)
 		{
@@ -77,7 +73,10 @@ namespace OMW15.Views.CastingView
 			foreach (DataGridViewColumn dgc in dgvBL.Columns)
 			{
 				dgc.Visible = false;
-				if (dgc.ValueType == typeof(decimal)) dgc.DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
+				if (dgc.ValueType == typeof(decimal))
+				{
+					dgc.DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
+				}
 			}
 			dgvBL.ResumeLayout();
 
@@ -85,7 +84,10 @@ namespace OMW15.Views.CastingView
 			FormattingBLGrid();
 
 			// remove selected items from dgvSO
-			foreach (DataGridViewRow dgr in dgvSO.SelectedRows) dgvSO.Rows.RemoveAt(dgr.Index);
+			foreach (DataGridViewRow dgr in dgvSO.SelectedRows)
+			{
+				dgvSO.Rows.RemoveAt(dgr.Index);
+			}
 
 			// cal remain summary
 			GetSOSummary();
@@ -111,15 +113,9 @@ namespace OMW15.Views.CastingView
 			UpdateUI();
 		}
 
-		private void btnLoadData_Click(object sender, EventArgs e)
-		{
-			GetAvailableSOForBilling(lbCustomerCode.Text, _billId);
-		}
+		private void btnLoadData_Click(object sender, EventArgs e) => GetAvailableSOForBilling(lbCustomerCode.Text, _billId);
 
-		private void dgvBL_SelectionChanged(object sender, EventArgs e)
-		{
-			UpdateUI();
-		}
+		private void dgvBL_SelectionChanged(object sender, EventArgs e) => UpdateUI();
 
 		private void rdo_CheckedChanged(object sender, EventArgs e)
 		{
@@ -138,11 +134,7 @@ namespace OMW15.Views.CastingView
 			GetAvailableSOForBilling(_customerCode, _billId);
 		}
 
-		private void btnSave_Click(object sender, EventArgs e)
-		{
-			//
-			UpdateBillHeaderInfo(_billId);
-		}
+		private void btnSave_Click(object sender, EventArgs e) => UpdateBillHeaderInfo(_billId);
 
 		private void dtpDueDate_ValueChanged(object sender, EventArgs e)
 		{
@@ -362,7 +354,10 @@ namespace OMW15.Views.CastingView
 			foreach (DataGridViewColumn dgc in dgvBL.Columns)
 			{
 				// setting format
-				if (dgc.ValueType == typeof(decimal)) dgc.DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
+				if (dgc.ValueType == typeof(decimal))
+				{
+					dgc.DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
+				}
 				// hide column
 				dgc.Visible = false;
 			}
@@ -441,12 +436,13 @@ namespace OMW15.Views.CastingView
 			}
 
 			// display
-			lbTotal.Text = string.Format("{0:N2}", _totalValues);
-			lbDiscount.Text = string.Format("{0:N2}", _discount);
-			lbNetValue.Text = string.Format("{0:N2}", _netValues);
-			lbVATValue.Text = string.Format("{0:N2}", _vatValues);
-			lbTotalAmount.Text = string.Format("{0:N2}", _totalAmount);
-			lbSOTitle.Text = string.Format("ใบส่งของ : {0} รายการ", _dt.Rows.Count);
+			lbTotal.Text = $"{_totalValues:N2}";
+			lbDiscount.Text = $"{_discount:N2}";
+			lbNetValue.Text = $"{_netValues:N2}";
+			lbVATValue.Text = $"{_vatValues:N2}";
+			lbTotalAmount.Text = $"{_totalAmount:N2}";
+			lbSOTitle.Text = $"ใบส่งของ : {_dt.Rows.Count} รายการ";
+
 		} // end GetSummary
 
 		private void GetBLSummary()
@@ -469,12 +465,12 @@ namespace OMW15.Views.CastingView
 					_blTotalAmount = _dt.AsEnumerable().Sum(x => x.Field<decimal>("TOTALAMOUNT"));
 				}
 			}
-			lbBillingTitle.Text = string.Format("ใบส่งของที่เลือกวางบิล : {0} รายการ", dgvBL.Rows.Count);
-			lbBLValues.Text = string.Format("{0:N2}", _blNetValue);
-			lbBLDiscount.Text = string.Format("{0:N2}", _blDiscount);
-			lbBLNetValue.Text = string.Format("{0:N2}", _blNetValue);
-			lbBLVAT.Text = string.Format("{0:N2}", _blVAT);
-			lbBLTotalAmount.Text = string.Format("{0:N2}", _blTotalAmount);
+			lbBillingTitle.Text = $"ใบส่งของที่เลือกวางบิล : {dgvBL.Rows.Count} รายการ";
+			lbBLValues.Text = $"{ _blTotalValue:N2}";
+			lbBLDiscount.Text = $"{_blDiscount:N2}";
+			lbBLNetValue.Text = $"{_blNetValue:N2}";
+			lbBLVAT.Text = $"{_blVAT:N2}";
+			lbBLTotalAmount.Text = $"{_blTotalAmount:N2}";
 
 
 			UpdateUI();

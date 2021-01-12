@@ -19,7 +19,7 @@ namespace OMW15.Models.CastingModel
 	{
 		#region constructor and destructor
 		private readonly OLDMOONEF1 _om;
- 		public JobDAL()
+		public JobDAL()
 		{
 			_om = new OLDMOONEF1();
 		}

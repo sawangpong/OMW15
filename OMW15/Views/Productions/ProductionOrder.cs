@@ -133,7 +133,7 @@ namespace OMW15.Views.Productions
 						_job.TOTAL_PRODUCTION_COST = 0m;
 						_job.UNITORDER = _di.Unit;
 
-  						// get more item property
+						// get more item property
 						if (_jobType == ProductionJobType.Production)
 						{
 							DataTable _itemProperty = GetItemProperties(_di.PartNo);
@@ -369,7 +369,7 @@ namespace OMW15.Views.Productions
 				}
 
 				StepAlert(_totalStep);
- 			}
+			}
  
 			// Require permission to display some serect infomation
 
@@ -654,10 +654,14 @@ namespace OMW15.Views.Productions
 
 		private void GetItemInformation(string itemFilter)
 		{
-			using (var _p = new STDParts(ActionMode.Selection, itemFilter))
+			//using (STDParts _p = STDParts(ActionMode.Selection, itemFilter))
+			using (STDParts _p = new STDParts())
 			{
+ 				_p.ViewMode = ActionMode.Selection;
+				_p.Filter = itemFilter;
 				_p.ItemNo = itemFilter;
 				_p.StartPosition = FormStartPosition.CenterParent;
+
 				if (_p.ShowDialog(this) == DialogResult.OK)
 				{
 					string _itemno = _p.ItemNo;

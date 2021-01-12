@@ -10,109 +10,6 @@ namespace OMW15.Views.CastingView
 {
 	public partial class CastingSaleOrderItemInfo : Form
 	{
-		// CONSTRUCTOR
-		public CastingSaleOrderItemInfo(int SOLineItemId, ActionMode SOHeaderMode)
-		{
-			InitializeComponent();
-			SOLineId = SOLineItemId;
-			_headerMode = SOHeaderMode;
-			_itemMode = SOLineId == 0 ? ActionMode.Add : ActionMode.Edit;
-			lbItemMode.Text = _itemMode.ToString().Substring(0, 1);
-			lbHeaderMode.Text = _headerMode.ToString();
-		}
-
-		private void CastingSaleOrderItemInfo_Load(object sender, EventArgs e)
-		{
-			CenterToParent();
-
-			lbSaleOrderNumber.Text = SaleOrderNumber;
-			lbRefSEQ.Text = SaleOrderId.ToString();
-			lbSOLineSEQ.Text = SOLineId.ToString();
-
-			lbMatInfo.Text = $"{this.MaterialId} {this.MaterialName}";
-
-
-			GetSOLineItemDetail(SOLineId);
-		}
-
-		private void btnUnit_Click(object sender, EventArgs e)
-		{
-			GetFieldOption(SelectTypeOption.UnitCount);
-			txtUnit.Text = _value;
-			UpdateUI();
-		}
-
-		private void txt_TextChanged(object sender, EventArgs e)
-		{
-			CalWeightAvg();
-		}
-
-		private void btnSave_Click(object sender, EventArgs e)
-		{
-			UpdateSOLineItem(SOLineId);
-
-			if (_notFoundCastingPriceItem)
-			{
-				if(MessageBox.Show("ต้องการปรับปรุงข้อมูลราคาลงฐานข้อมูลหรือไม่?","Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-				{
-					CUSTPRICETAB _cpt = new CUSTPRICETAB();
-					_cpt.ID = 0;
-					_cpt.CPT_CP = _itemId;
-					_cpt.PRICE_YEAR = this.OrderDate.Year;
-					_cpt.MATERIAL = this.MaterialId;
-					_cpt.PRICEUNITNAME = this.txtUnit.Text;
-					_cpt.UNITPRICE = Convert.ToDecimal(txtUnitPrice.Text);
-					_cpt.ISMATINCLUDE = chkIsMatInclude.Checked;
-
-					int result = new PriceListDAL().UpdateCustPriceTable(_cpt);
-				}
-			}
-
-		}
-
-		private void btnItemNo_Click(object sender, EventArgs e)
-		{
-			using (var _ml = new MaterialList(CustomerCode, MaterialCategory))
-			{
-				_ml.StartPosition = FormStartPosition.CenterScreen;
-				if (_ml.ShowDialog(this) == DialogResult.OK)
-				{
-					MaterialId = _ml.MaterialId;
-					lbMaterialId.Text = MaterialId.ToString();
-					MaterialName = _ml.MaterialName;
-					lbItemNo.Text = MaterialName;
-					txtItemName.Text = _ml.MaterialName;
-				}
-			} // end 
-
-			UpdateUI();
-		}
-
-		private void btnUnitPrice_Click(object sender, EventArgs e)
-		{
-			if (SaleType == OMShareCastingEnums.SaleTypeEnum.ขายวัสดุ
-					&& !string.IsNullOrEmpty(lbItemNo.Text))
-			{
-				GetMaterialPriceList(lbItemNo.Text);
-			}
-			else
-			{
-				using (var cpt = new CastingPriceItemList(_itemId,this.MaterialId,this.OrderDate.Year, txtUnit.Text))
-				{
-					if (cpt.ShowDialog(this) == DialogResult.OK)
-					{
-						txtUnitPrice.Text = $"{cpt.ItemPrice:N2}";
-						chkIsMatInclude.Checked = cpt.IsMatInclude;
-						_notFoundCastingPriceItem = false;
-					}
-					else
-					{
-						_notFoundCastingPriceItem = true;
-					}
-				}
-			}
-		}
-
 		#region class field member
 
 		private SOLINE _sl;
@@ -197,19 +94,22 @@ namespace OMW15.Views.CastingView
 				_sl.SALETYPE = (int)SaleType;
 				_sl.ITEMID = MaterialId;
 				_sl.PREFIX = "";
-				_sl.DELIVEREDQTY = SaleType == OMShareCastingEnums.SaleTypeEnum.ขายวัสดุ ? TotalWeight : 0.00m;
-				_sl.TOTALWEIGHT = SaleType == OMShareCastingEnums.SaleTypeEnum.ขายวัสดุ ? TotalWeight : 0.00m;
-				_sl.VATFACTOR = 0.00m; //this.VATFactor;
+				_sl.DELIVEREDQTY = (SaleType == OMShareCastingEnums.SaleTypeEnum.ขายวัสดุ ? TotalWeight : 0.00m);
+				_sl.TOTALWEIGHT = _sl.DELIVEREDQTY;
+				_sl.VATFACTOR = 0.00m;
 			}
 			else
 			{
 				_sl = new CastingSaleOrderDAL().GetSOLineItemInfo(Id);
 				if (_sl.FGLINESEQ > 0)
-					lbFGStockQvailableQty.Text = string.Format("{0:N2}",
-						_sl.DELIVEREDQTY + new CastingSaleOrderDAL().GetAvailableQtyFGStock(_sl.FGLINESEQ));
+				{
+					lbFGStockQvailableQty.Text = $"{(_sl.DELIVEREDQTY + new CastingSaleOrderDAL().GetAvailableQtyFGStock(_sl.FGLINESEQ)):N2}";
+				}
 
 				if (string.IsNullOrEmpty(MaterialCategory))
+				{
 					MaterialCategory = new MaterialDAL().GetMaterialCategoryForSell(MaterialId);
+				}
 
 				_itemId = _sl.ITEMID;
 			}
@@ -227,21 +127,19 @@ namespace OMW15.Views.CastingView
 			lbMaterialId.Text = _sl.MATTYPE.ToString();
 			txtItemName.Text = _sl.ITEMNAME;
 			txtUnit.Text = _sl.UNIT;
-			txtDeliveryQty.Text = string.Format("{0:N2}", _sl.DELIVEREDQTY);
+			txtDeliveryQty.Text = $"{_sl.DELIVEREDQTY:N2}";
 			chkIsMatInclude.Checked = _sl.ISMATINCLUDE;
-			txtUnitPrice.Text = string.Format("{0:N2}", _sl.UNITPRICE);
-			txtTotalValue.Text = string.Format("{0:N2}", _sl.TOTALVALUE);
-			txtTotalAmount.Text = string.Format("{0:N2}", _sl.LINEAMOUNT);
+			txtUnitPrice.Text = $"{_sl.UNITPRICE:N2}";
+			txtTotalValue.Text = $"{_sl.TOTALVALUE:N2}";
+			txtTotalAmount.Text = $"{_sl.LINEAMOUNT:N2}";
 
 			cbxMaterial.SelectedValue = _sl.MATTYPE;
-			txtTotalWeight.Text = string.Format("{0:N2}", _sl.TOTALWEIGHT);
-			txtAVGUnitWT.Text = string.Format("{0:N2}", _sl.AVGUNITWEIGHT);
-			txtAVGPriceWT.Text = string.Format("{0:N2}", _sl.AVGPRICEUNITWEIGHT);
+			txtTotalWeight.Text = $"{_sl.TOTALWEIGHT:N2}";
+			txtAVGUnitWT.Text = $"{_sl.AVGUNITWEIGHT:N2}";
+			txtAVGPriceWT.Text = $"{_sl.AVGPRICEUNITWEIGHT:N2}";
 			txtRemark.Text = _sl.SOLINEREMARK;
 
-			pic.Image = _sl.SALETYPE == (int)OMShareCastingEnums.SaleTypeEnum.ขายวัสดุ
-				? null
-				: GetPictureForItemSelected(_itemId);
+			pic.Image = _sl.SALETYPE == (int)OMShareCastingEnums.SaleTypeEnum.ขายวัสดุ ? null : GetPictureForItemSelected(_itemId);
 			UpdateUI();
 		} // end GetSOLineItemDetail
 
@@ -265,21 +163,19 @@ namespace OMW15.Views.CastingView
 		{
 			var _qty = Information.IsNumeric(txtDeliveryQty.Text) ? Convert.ToDecimal(txtDeliveryQty.Text) : 0.00m;
 			var _unitPrice = Information.IsNumeric(txtUnitPrice.Text) ? Convert.ToDecimal(txtUnitPrice.Text) : 0.00m;
-			var _totalValue = _unitPrice * _qty;
+			var _totalValue = (_unitPrice * _qty);
 			var _totalAmount = _totalValue;
 			var _totalWT = SaleType == OMShareCastingEnums.SaleTypeEnum.ขายวัสดุ
 				? _qty
 				: Information.IsNumeric(txtTotalWeight.Text) ? Convert.ToDecimal(txtTotalWeight.Text) : 0.00m;
-			var _unitWeight = _totalWT / (_qty == 0.00m ? 1 : _qty);
-			var _avgPriceWeight = _unitPrice / (_unitWeight == 0.00m ? 1.00m : _unitWeight);
+			var _unitWeight = (_totalWT / (_qty == 0.00m ? 1 : _qty));
+			var _avgPriceWeight = (_unitPrice / (_unitWeight == 0.00m ? 1.00m : _unitWeight));
 
-			txtTotalValue.Text = string.Format("{0:N2}", _totalValue);
-			txtTotalAmount.Text = string.Format("{0:N2}", _totalAmount);
-			txtAVGUnitWT.Text = string.Format("{0:N2}", _unitWeight);
-			txtAVGPriceWT.Text = string.Format("{0:N2}", _avgPriceWeight);
-			txtTotalWeight.Text = SaleType == OMShareCastingEnums.SaleTypeEnum.ขายวัสดุ
-				? string.Format("{0:N2}", _totalWT)
-				: txtTotalWeight.Text;
+			txtTotalValue.Text = $"{_totalValue:N2}";
+			txtTotalAmount.Text = $"{_totalAmount:N2}";
+			txtAVGUnitWT.Text = $"{_unitWeight:N2}";
+			txtAVGPriceWT.Text = $"{_avgPriceWeight:N2}";
+			txtTotalWeight.Text = (SaleType == OMShareCastingEnums.SaleTypeEnum.ขายวัสดุ ? $"{_totalWT:N2}" : txtTotalWeight.Text);
 		} // end CalWeightAvg
 
 		private void UpdateSOLineItem(int SOLineId)
@@ -345,15 +241,107 @@ namespace OMW15.Views.CastingView
 
 		#endregion
 
-		//private void btnPriceItem_Click(object sender, EventArgs e)
-		//{
-		//	using(var cpt =new CastingPriceItemList(_itemId, txtUnit.Text))
-		//	{
-		//		 if(cpt.ShowDialog(this) == DialogResult.OK)
-		//		{
-		//			txtUnitPrice.Text = $"{cpt.ItemPrice:N2}";
-		//		}
-		//	}
-		//}
+
+		// CONSTRUCTOR
+		public CastingSaleOrderItemInfo(int SOLineItemId, ActionMode SOHeaderMode)
+		{
+			InitializeComponent();
+			SOLineId = SOLineItemId;
+			_headerMode = SOHeaderMode;
+			_itemMode = SOLineId == 0 ? ActionMode.Add : ActionMode.Edit;
+			lbItemMode.Text = _itemMode.ToString().Substring(0, 1);
+			lbHeaderMode.Text = _headerMode.ToString();
+		}
+
+		private void CastingSaleOrderItemInfo_Load(object sender, EventArgs e)
+		{
+			CenterToParent();
+
+			lbSaleOrderNumber.Text = SaleOrderNumber;
+			lbRefSEQ.Text = SaleOrderId.ToString();
+			lbSOLineSEQ.Text = SOLineId.ToString();
+
+			lbMatInfo.Text = $"{this.MaterialId} {this.MaterialName}";
+
+			GetSOLineItemDetail(SOLineId);
+		}
+
+		private void btnUnit_Click(object sender, EventArgs e)
+		{
+			GetFieldOption(SelectTypeOption.UnitCount);
+			txtUnit.Text = _value;
+			UpdateUI();
+		}
+
+		private void txt_TextChanged(object sender, EventArgs e)
+		{
+			CalWeightAvg();
+		}
+
+		private void btnSave_Click(object sender, EventArgs e)
+		{
+			UpdateSOLineItem(SOLineId);
+
+			if (_notFoundCastingPriceItem)
+			{
+				if (MessageBox.Show("ต้องการปรับปรุงข้อมูลราคาลงฐานข้อมูลหรือไม่?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+				{
+					CUSTPRICETAB _cpt = new CUSTPRICETAB();
+					_cpt.ID = 0;
+					_cpt.CPT_CP = _itemId;
+					_cpt.PRICE_YEAR = this.OrderDate.Year;
+					_cpt.MATERIAL = this.MaterialId;
+					_cpt.PRICEUNITNAME = this.txtUnit.Text;
+					_cpt.UNITPRICE = Convert.ToDecimal(txtUnitPrice.Text);
+					_cpt.ISMATINCLUDE = chkIsMatInclude.Checked;
+
+					int result = new PriceListDAL().UpdateCustPriceTable(_cpt);
+				}
+			}
+
+		}
+
+		private void btnItemNo_Click(object sender, EventArgs e)
+		{
+			using (var _ml = new MaterialList(CustomerCode, MaterialCategory))
+			{
+				_ml.StartPosition = FormStartPosition.CenterScreen;
+				if (_ml.ShowDialog(this) == DialogResult.OK)
+				{
+					MaterialId = _ml.MaterialId;
+					lbMaterialId.Text = MaterialId.ToString();
+					MaterialName = _ml.MaterialName;
+					lbItemNo.Text = MaterialName;
+					txtItemName.Text = _ml.MaterialName;
+				}
+			} // end 
+
+			UpdateUI();
+		}
+
+		private void btnUnitPrice_Click(object sender, EventArgs e)
+		{
+			if (SaleType == OMShareCastingEnums.SaleTypeEnum.ขายวัสดุ
+					&& !string.IsNullOrEmpty(lbItemNo.Text))
+			{
+				GetMaterialPriceList(lbItemNo.Text);
+			}
+			else
+			{
+				using (var cpt = new CastingPriceItemList(_itemId, this.MaterialId, this.OrderDate.Year, txtUnit.Text, this.MaterialName))
+				{
+					if (cpt.ShowDialog(this) == DialogResult.OK)
+					{
+						txtUnitPrice.Text = $"{cpt.ItemPrice:N2}";
+						chkIsMatInclude.Checked = cpt.IsMatInclude;
+						_notFoundCastingPriceItem = false;
+					}
+					else
+					{
+						_notFoundCastingPriceItem = true;
+					}
+				}
+			}
+		}
 	}
 }

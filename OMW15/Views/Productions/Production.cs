@@ -45,7 +45,7 @@ namespace OMW15.Views.Productions
 
 		private void GetProductionTaskList()
 		{
-			var _task = new ProductionJobList();
+			ProductionJobList _task = ProductionJobList.GetInstance;
 			_task.WindowState = FormWindowState.Maximized;
 			_task.MdiParent = this;
 			_task.Show();
@@ -76,7 +76,7 @@ namespace OMW15.Views.Productions
 
 		private void mnuStandardItems_Click(object sender, EventArgs e)
 		{
-			var _stdItems = new STDParts();
+			STDParts _stdItems = STDParts.GetInstance;
 			_stdItems.StartPosition = FormStartPosition.CenterParent;
 			_stdItems.MdiParent = this;
 			_stdItems.Show();

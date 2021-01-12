@@ -1,4 +1,4 @@
-﻿namespace OMW15.Views
+﻿namespace OMW15.Views.CastingView
 {
 	partial class CastingPriceItemList
 	{
@@ -29,40 +29,32 @@
 		private void InitializeComponent()
 		{
 			this.pnlTop = new System.Windows.Forms.Panel();
-			this.lbTitle = new System.Windows.Forms.Label();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.btnSelect = new System.Windows.Forms.Button();
 			this.btnClose = new System.Windows.Forms.Button();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.dgv = new System.Windows.Forms.DataGridView();
+			this.panel3 = new System.Windows.Forms.Panel();
+			this.lbMaterial = new System.Windows.Forms.Label();
+			this.lbTitle = new System.Windows.Forms.Label();
 			this.pnlTop.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+			this.panel3.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// pnlTop
 			// 
 			this.pnlTop.BackColor = System.Drawing.SystemColors.ControlDarkDark;
 			this.pnlTop.Controls.Add(this.lbTitle);
+			this.pnlTop.Controls.Add(this.panel3);
 			this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
 			this.pnlTop.Location = new System.Drawing.Point(0, 0);
 			this.pnlTop.Name = "pnlTop";
 			this.pnlTop.Padding = new System.Windows.Forms.Padding(2);
 			this.pnlTop.Size = new System.Drawing.Size(537, 50);
 			this.pnlTop.TabIndex = 0;
-			// 
-			// lbTitle
-			// 
-			this.lbTitle.Dock = System.Windows.Forms.DockStyle.Left;
-			this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbTitle.ForeColor = System.Drawing.Color.White;
-			this.lbTitle.Location = new System.Drawing.Point(2, 2);
-			this.lbTitle.Name = "lbTitle";
-			this.lbTitle.Size = new System.Drawing.Size(207, 46);
-			this.lbTitle.TabIndex = 0;
-			this.lbTitle.Text = "Price list";
-			this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// panel1
 			// 
@@ -120,6 +112,38 @@
 			this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEnter);
 			this.dgv.DoubleClick += new System.EventHandler(this.dgv_DoubleClick);
 			// 
+			// panel3
+			// 
+			this.panel3.Controls.Add(this.lbMaterial);
+			this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.panel3.Location = new System.Drawing.Point(2, 28);
+			this.panel3.Name = "panel3";
+			this.panel3.Size = new System.Drawing.Size(533, 20);
+			this.panel3.TabIndex = 1;
+			// 
+			// lbMaterial
+			// 
+			this.lbMaterial.Dock = System.Windows.Forms.DockStyle.Right;
+			this.lbMaterial.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbMaterial.ForeColor = System.Drawing.Color.White;
+			this.lbMaterial.Location = new System.Drawing.Point(424, 0);
+			this.lbMaterial.Name = "lbMaterial";
+			this.lbMaterial.Size = new System.Drawing.Size(109, 20);
+			this.lbMaterial.TabIndex = 0;
+			this.lbMaterial.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			// 
+			// lbTitle
+			// 
+			this.lbTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbTitle.ForeColor = System.Drawing.Color.White;
+			this.lbTitle.Location = new System.Drawing.Point(2, 2);
+			this.lbTitle.Name = "lbTitle";
+			this.lbTitle.Size = new System.Drawing.Size(533, 26);
+			this.lbTitle.TabIndex = 2;
+			this.lbTitle.Text = "Price list";
+			this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
 			// CastingPriceItemList
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -139,6 +163,7 @@
 			this.panel1.ResumeLayout(false);
 			this.panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+			this.panel3.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -146,11 +171,13 @@
 		#endregion
 
 		private System.Windows.Forms.Panel pnlTop;
-		private System.Windows.Forms.Label lbTitle;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Button btnSelect;
 		private System.Windows.Forms.Button btnClose;
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.DataGridView dgv;
+		private System.Windows.Forms.Panel panel3;
+		private System.Windows.Forms.Label lbMaterial;
+		private System.Windows.Forms.Label lbTitle;
 	}
 }

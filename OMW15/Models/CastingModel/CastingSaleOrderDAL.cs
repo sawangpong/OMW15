@@ -591,6 +591,7 @@ namespace OMW15.Models.CastingModel
 								s.ITEMNO,
 								s.ITEMNAME,
 								s.UNIT,
+								s.ISMATINCLUDE,
 								QTY = s.DELIVEREDQTY,
 								s.UNITPRICE,
 								TOTALVALUE = s.DELIVEREDQTY * s.UNITPRICE,

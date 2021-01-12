@@ -102,8 +102,11 @@ namespace OMW15.Views.Productions
 
 		private void GetItemInformation(string itemFilter)
 		{
-			using (var _p = new STDParts(ActionMode.Selection, itemFilter))
+			//using (var _p = new STDParts(ActionMode.Selection, itemFilter))
+			using (STDParts _p = new STDParts())
 			{
+				_p.ViewMode = ActionMode.Selection;
+				_p.Filter = itemFilter;
 				_p.StartPosition = FormStartPosition.CenterParent;
 				if (_p.ShowDialog(this) == DialogResult.OK)
 				{
@@ -131,8 +134,7 @@ namespace OMW15.Views.Productions
 				MessageBox.Show("Update failed..", "Update failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
-
-
+ 
 		#endregion
 
 		public SupInfo(string erpOrder, int outsourceItemId)

@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OMW15.Views
+namespace OMW15.Views.CastingView
 {
 	public partial class CastingPriceItemList : Form
 	{
@@ -19,7 +19,7 @@ namespace OMW15.Views
 		private int _matId = 0;
 		private int _yearSale = DateTime.Today.Year;
 		private string _unitName = string.Empty;
-
+		private string _matName = string.Empty;
 		private int _selectdPriceListItem = 0;
 		#endregion
 
@@ -65,14 +65,16 @@ namespace OMW15.Views
 		}
 		#endregion
 
-		public CastingPriceItemList(int itemId,int matId,int yearSale, string unitName)
+		public CastingPriceItemList(int itemId,int matId,int yearSale, string unitName,string matName = "")
 		{
 			InitializeComponent();
 			_itemId = itemId;
 			_matId = matId;
 			_yearSale = yearSale;
 			_unitName = unitName;
+			_matName = matName;
 
+			lbMaterial.Text = _matName;
 			this.CenterToScreen();
 			OMControls.OMUtils.SettingDataGridView(ref dgv);
 		}

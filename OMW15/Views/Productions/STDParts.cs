@@ -4,7 +4,6 @@ using OMW15.Models.ProductionModel;
 using OMW15.Models.WarehouseModel;
 using OMW15.Shared;
 using System;
-using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -12,6 +11,22 @@ namespace OMW15.Views.Productions
 {
 	public partial class STDParts : Form
 	{
+		#region Singleton
+		private static STDParts _instance;
+		public static STDParts GetInstance
+		{
+			get {
+				if(_instance == null || _instance.IsDisposed)
+				{
+					_instance = new STDParts();
+				}
+				return _instance;
+			}
+		}
+ 
+		#endregion
+
+
 		#region class field member
 
 		private readonly ActionMode _viewMode = ActionMode.Recording;
@@ -45,6 +60,10 @@ namespace OMW15.Views.Productions
 		public Image ItemImage { get; set; }
 
 		public int TotalStep { get; set; }
+
+		public string Filter { get; set; }
+
+		public ActionMode ViewMode { get; set; } = ActionMode.Recording;
 
 		#endregion
 
@@ -117,7 +136,7 @@ namespace OMW15.Views.Productions
 
 			_rowCount = dt.Rows.Count;
 			dgv.DataSource = dt;
-  
+
 			dgv.Columns["ISLOCK"].Visible = false;
 			dgv.Columns["ITEMID"].Visible = false;
 			dgv.Columns["STDPRODUCTHOURS"].HeaderText = "STD Hours";
@@ -147,9 +166,9 @@ namespace OMW15.Views.Productions
 
 		} // end GetSTDParts
 
-		private void GetSTDPartInfo(int itemId,string itemNo)
+		private void GetSTDPartInfo(int itemId, string itemNo)
 		{
-			using (var pInfo = new STDPartItem(itemId,itemNo, pic1.Image))
+			using (var pInfo = new STDPartItem(itemId, itemNo, pic1.Image))
 			{
 				pInfo.StartPosition = FormStartPosition.CenterParent;
 				if (pInfo.ShowDialog(this) == DialogResult.OK)
@@ -162,9 +181,13 @@ namespace OMW15.Views.Productions
 
 		#endregion
 
+
 		#region Constructor
 
-		public STDParts(ActionMode ViewMode = ActionMode.Recording, string filter = "")
+
+
+		//public STDParts(ActionMode ViewMode = ActionMode.Recording, string filter = "")
+		public STDParts()
 		{
 			InitializeComponent();
 			OMUtils.SettingDataGridView(ref dgv);
@@ -172,7 +195,7 @@ namespace OMW15.Views.Productions
 
 			FormatGrid();
 
-			this.ItemNo = filter;
+			//this.ItemNo = filter;
 
 			_viewMode = ViewMode;
 			FormBorderStyle = _viewMode == ActionMode.Recording ? FormBorderStyle.Sizable : FormBorderStyle.SizableToolWindow;
@@ -188,9 +211,10 @@ namespace OMW15.Views.Productions
 			CenterToParent();
 
 			IsEmptyResult = true;
+			this.ItemNo = this.Filter;
 
 			// load data - if the filter item is not null or empty
-			if(!String.IsNullOrEmpty(this.ItemNo)) GetSTDParts(this.ItemNo);
+			if (!String.IsNullOrEmpty(this.ItemNo)) GetSTDParts(this.ItemNo);
 
 
 		}
@@ -214,7 +238,7 @@ namespace OMW15.Views.Productions
 			this.SheetNo = dgv["SHEETNO", e.RowIndex].Value.ToString();
 			this.StandardHour = Convert.ToDecimal(dgv["STDPRODUCTHOURS", e.RowIndex].Value);
 			this.StandardMaterialCost = Convert.ToDecimal(dgv["MATERIALCOST", e.RowIndex].Value);
-			this.TotalStep = Convert.ToInt32(dgv["TOTAL_STEP",e.RowIndex].Value);
+			this.TotalStep = Convert.ToInt32(dgv["TOTAL_STEP", e.RowIndex].Value);
 
 			// display itemImage
 			this.ItemImage = new WHDDAL().getItemMasterImage(ItemNo);
@@ -236,8 +260,8 @@ namespace OMW15.Views.Productions
 			pic1.Image = null;
 			_selectedItemId = 0;
 			_selectedItemNo = "";
-			
-			GetSTDPartInfo(_selectedItemId,_selectedItemNo);
+
+			GetSTDPartInfo(_selectedItemId, _selectedItemNo);
 		}
 
 		private void dgv_DoubleClick(object sender, EventArgs e)
@@ -262,7 +286,7 @@ namespace OMW15.Views.Productions
 
 		private void tsbtnEdit_Click(object sender, EventArgs e)
 		{
-			GetSTDPartInfo(_selectedItemId,_selectedItemNo);
+			GetSTDPartInfo(_selectedItemId, _selectedItemNo);
 		}
 
 		private void tsbtnLock_Click(object sender, EventArgs e)

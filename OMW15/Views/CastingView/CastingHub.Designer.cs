@@ -1273,7 +1273,7 @@
 			// tsmnuAddBlock
 			// 
 			this.tsmnuAddBlock.Name = "tsmnuAddBlock";
-			this.tsmnuAddBlock.Size = new System.Drawing.Size(180, 24);
+			this.tsmnuAddBlock.Size = new System.Drawing.Size(134, 24);
 			this.tsmnuAddBlock.Tag = "BLOCK";
 			this.tsmnuAddBlock.Text = "ทำก้อน";
 			this.tsmnuAddBlock.Click += new System.EventHandler(this.tsmnuAdd_Click);
@@ -1281,12 +1281,12 @@
 			// toolStripMenuItem2
 			// 
 			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-			this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+			this.toolStripMenuItem2.Size = new System.Drawing.Size(131, 6);
 			// 
 			// tsmnuAddPrintResin
 			// 
 			this.tsmnuAddPrintResin.Name = "tsmnuAddPrintResin";
-			this.tsmnuAddPrintResin.Size = new System.Drawing.Size(180, 24);
+			this.tsmnuAddPrintResin.Size = new System.Drawing.Size(134, 24);
 			this.tsmnuAddPrintResin.Tag = "RESIN";
 			this.tsmnuAddPrintResin.Text = "พิมพ์เรซิ่น";
 			this.tsmnuAddPrintResin.Click += new System.EventHandler(this.tsmnuAdd_Click);
@@ -1294,12 +1294,12 @@
 			// ขToolStripMenuItem
 			// 
 			this.ขToolStripMenuItem.Name = "ขToolStripMenuItem";
-			this.ขToolStripMenuItem.Size = new System.Drawing.Size(177, 6);
+			this.ขToolStripMenuItem.Size = new System.Drawing.Size(131, 6);
 			// 
 			// tsmnuAddInjection
 			// 
 			this.tsmnuAddInjection.Name = "tsmnuAddInjection";
-			this.tsmnuAddInjection.Size = new System.Drawing.Size(180, 24);
+			this.tsmnuAddInjection.Size = new System.Drawing.Size(134, 24);
 			this.tsmnuAddInjection.Tag = "WAX";
 			this.tsmnuAddInjection.Text = "ฉีดเทียน";
 			this.tsmnuAddInjection.Click += new System.EventHandler(this.tsmnuAdd_Click);
@@ -1307,7 +1307,7 @@
 			// tsmnuAddFinishing
 			// 
 			this.tsmnuAddFinishing.Name = "tsmnuAddFinishing";
-			this.tsmnuAddFinishing.Size = new System.Drawing.Size(180, 24);
+			this.tsmnuAddFinishing.Size = new System.Drawing.Size(134, 24);
 			this.tsmnuAddFinishing.Tag = "FINISHING";
 			this.tsmnuAddFinishing.Text = "แต่งเทียน";
 			this.tsmnuAddFinishing.Click += new System.EventHandler(this.tsmnuAdd_Click);
@@ -1315,7 +1315,7 @@
 			// tsmnuAddTree
 			// 
 			this.tsmnuAddTree.Name = "tsmnuAddTree";
-			this.tsmnuAddTree.Size = new System.Drawing.Size(180, 24);
+			this.tsmnuAddTree.Size = new System.Drawing.Size(134, 24);
 			this.tsmnuAddTree.Tag = "TREE";
 			this.tsmnuAddTree.Text = "ติดต้น";
 			this.tsmnuAddTree.Click += new System.EventHandler(this.tsmnuAdd_Click);
@@ -1323,12 +1323,12 @@
 			// toolStripMenuItem1
 			// 
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(131, 6);
 			// 
 			// tsmnuAddFG
 			// 
 			this.tsmnuAddFG.Name = "tsmnuAddFG";
-			this.tsmnuAddFG.Size = new System.Drawing.Size(180, 24);
+			this.tsmnuAddFG.Size = new System.Drawing.Size(134, 24);
 			this.tsmnuAddFG.Tag = "FG";
 			this.tsmnuAddFG.Text = "งานหล่อ";
 			this.tsmnuAddFG.Click += new System.EventHandler(this.tsmnuAdd_Click);
