@@ -766,6 +766,7 @@
 			this.lbMatId.TabIndex = 8;
 			this.lbMatId.Text = "0";
 			this.lbMatId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.lbMatId.Visible = false;
 			// 
 			// cbxMaterial
 			// 
@@ -777,6 +778,7 @@
 			this.cbxMaterial.Name = "cbxMaterial";
 			this.cbxMaterial.Size = new System.Drawing.Size(136, 25);
 			this.cbxMaterial.TabIndex = 7;
+			this.cbxMaterial.Visible = false;
 			this.cbxMaterial.SelectionChangeCommitted += new System.EventHandler(this.cbxMaterial_SelectionChangeCommitted);
 			this.cbxMaterial.SelectedValueChanged += new System.EventHandler(this.cbxMaterial_SelectedValueChanged);
 			// 
@@ -790,6 +792,7 @@
 			this.label4.TabIndex = 6;
 			this.label4.Text = "วัสดุ :";
 			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.label4.Visible = false;
 			// 
 			// cbxProductStyle
 			// 
@@ -1067,13 +1070,12 @@
 			this.tsbtnDelete.Name = "tsbtnDelete";
 			this.tsbtnDelete.Size = new System.Drawing.Size(23, 22);
 			this.tsbtnDelete.Text = "Delete";
-			this.tsbtnDelete.Visible = false;
+			this.tsbtnDelete.Click += new System.EventHandler(this.tsbtnDelete_Click);
 			// 
 			// toolStripSeparator3
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
 			this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-			this.toolStripSeparator3.Visible = false;
 			// 
 			// tsbtnRefresh
 			// 
@@ -1083,6 +1085,7 @@
 			this.tsbtnRefresh.Name = "tsbtnRefresh";
 			this.tsbtnRefresh.Size = new System.Drawing.Size(23, 22);
 			this.tsbtnRefresh.Text = "Refresh";
+			this.tsbtnRefresh.Click += new System.EventHandler(this.tsbtnRefresh_Click);
 			// 
 			// toolStripButton5
 			// 

@@ -62,10 +62,9 @@
 			this.txtTotalValue = new OMControls.Controls.NumericTextBox();
 			this.label12 = new System.Windows.Forms.Label();
 			this.panel11 = new System.Windows.Forms.Panel();
-			this.chkIsMatInclude = new System.Windows.Forms.CheckBox();
 			this.btnUnitPrice = new OMControls.OMFlatButton();
 			this.txtUnitPrice = new OMControls.Controls.NumericTextBox();
-			this.label7 = new System.Windows.Forms.Label();
+			this.chkIsMatInclude = new System.Windows.Forms.CheckBox();
 			this.panel10 = new System.Windows.Forms.Panel();
 			this.lbFGOnHand = new System.Windows.Forms.Label();
 			this.lbFGStockQvailableQty = new System.Windows.Forms.Label();
@@ -94,6 +93,9 @@
 			this.lbItemMode = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.lbJobNo = new System.Windows.Forms.Label();
+			this.lbPriceItemId = new System.Windows.Forms.Label();
+			this.lbItemId = new System.Windows.Forms.Label();
+			this.lbCPTID = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			this.panel20.SuspendLayout();
 			this.panel21.SuspendLayout();
@@ -534,29 +536,15 @@
 			// 
 			// panel11
 			// 
-			this.panel11.Controls.Add(this.chkIsMatInclude);
 			this.panel11.Controls.Add(this.btnUnitPrice);
 			this.panel11.Controls.Add(this.txtUnitPrice);
-			this.panel11.Controls.Add(this.label7);
+			this.panel11.Controls.Add(this.chkIsMatInclude);
 			this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panel11.Location = new System.Drawing.Point(3, 171);
 			this.panel11.Name = "panel11";
 			this.panel11.Padding = new System.Windows.Forms.Padding(1);
 			this.panel11.Size = new System.Drawing.Size(512, 28);
 			this.panel11.TabIndex = 6;
-			// 
-			// chkIsMatInclude
-			// 
-			this.chkIsMatInclude.AutoSize = true;
-			this.chkIsMatInclude.Dock = System.Windows.Forms.DockStyle.Left;
-			this.chkIsMatInclude.Enabled = false;
-			this.chkIsMatInclude.Location = new System.Drawing.Point(250, 1);
-			this.chkIsMatInclude.Name = "chkIsMatInclude";
-			this.chkIsMatInclude.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-			this.chkIsMatInclude.Size = new System.Drawing.Size(121, 26);
-			this.chkIsMatInclude.TabIndex = 15;
-			this.chkIsMatInclude.Text = "ราคารวมวัสดุ";
-			this.chkIsMatInclude.UseVisualStyleBackColor = true;
 			// 
 			// btnUnitPrice
 			// 
@@ -569,7 +557,7 @@
 			this.btnUnitPrice.Location = new System.Drawing.Point(224, 1);
 			this.btnUnitPrice.Name = "btnUnitPrice";
 			this.btnUnitPrice.Size = new System.Drawing.Size(26, 26);
-			this.btnUnitPrice.TabIndex = 14;
+			this.btnUnitPrice.TabIndex = 18;
 			this.btnUnitPrice.UseVisualStyleBackColor = true;
 			this.btnUnitPrice.Click += new System.EventHandler(this.btnUnitPrice_Click);
 			// 
@@ -590,19 +578,21 @@
 			this.txtUnitPrice.MaxLength = 15;
 			this.txtUnitPrice.Name = "txtUnitPrice";
 			this.txtUnitPrice.Size = new System.Drawing.Size(107, 25);
-			this.txtUnitPrice.TabIndex = 7;
+			this.txtUnitPrice.TabIndex = 17;
 			this.txtUnitPrice.Text = "0.00";
 			this.txtUnitPrice.TextChanged += new System.EventHandler(this.txt_TextChanged);
 			// 
-			// label7
+			// chkIsMatInclude
 			// 
-			this.label7.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label7.Location = new System.Drawing.Point(1, 1);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(116, 26);
-			this.label7.TabIndex = 6;
-			this.label7.Text = "ราคา / หน่วย ";
-			this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.chkIsMatInclude.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.chkIsMatInclude.Dock = System.Windows.Forms.DockStyle.Left;
+			this.chkIsMatInclude.Location = new System.Drawing.Point(1, 1);
+			this.chkIsMatInclude.Name = "chkIsMatInclude";
+			this.chkIsMatInclude.Padding = new System.Windows.Forms.Padding(1, 1, 10, 1);
+			this.chkIsMatInclude.Size = new System.Drawing.Size(116, 26);
+			this.chkIsMatInclude.TabIndex = 15;
+			this.chkIsMatInclude.Text = "ราคารวมวัสดุ";
+			this.chkIsMatInclude.UseVisualStyleBackColor = true;
 			// 
 			// panel10
 			// 
@@ -763,6 +753,7 @@
 			// 
 			// panel7
 			// 
+			this.panel7.Controls.Add(this.lbCPTID);
 			this.panel7.Controls.Add(this.lbMaterialId);
 			this.panel7.Controls.Add(this.btnItemNo);
 			this.panel7.Controls.Add(this.lbItemNo);
@@ -780,9 +771,9 @@
 			this.lbMaterialId.Dock = System.Windows.Forms.DockStyle.Right;
 			this.lbMaterialId.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbMaterialId.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.lbMaterialId.Location = new System.Drawing.Point(463, 1);
+			this.lbMaterialId.Location = new System.Drawing.Point(423, 1);
 			this.lbMaterialId.Name = "lbMaterialId";
-			this.lbMaterialId.Size = new System.Drawing.Size(48, 26);
+			this.lbMaterialId.Size = new System.Drawing.Size(88, 26);
 			this.lbMaterialId.TabIndex = 15;
 			this.lbMaterialId.Text = "0";
 			this.lbMaterialId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -835,6 +826,8 @@
 			// 
 			// panel6
 			// 
+			this.panel6.Controls.Add(this.lbItemId);
+			this.panel6.Controls.Add(this.lbPriceItemId);
 			this.panel6.Controls.Add(this.lbSOLineSEQ);
 			this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panel6.Location = new System.Drawing.Point(3, 31);
@@ -933,6 +926,42 @@
 			this.lbJobNo.TabIndex = 0;
 			this.lbJobNo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
+			// lbPriceItemId
+			// 
+			this.lbPriceItemId.Dock = System.Windows.Forms.DockStyle.Right;
+			this.lbPriceItemId.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbPriceItemId.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+			this.lbPriceItemId.Location = new System.Drawing.Point(423, 1);
+			this.lbPriceItemId.Name = "lbPriceItemId";
+			this.lbPriceItemId.Size = new System.Drawing.Size(88, 26);
+			this.lbPriceItemId.TabIndex = 15;
+			this.lbPriceItemId.Text = "0";
+			this.lbPriceItemId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// lbItemId
+			// 
+			this.lbItemId.Dock = System.Windows.Forms.DockStyle.Right;
+			this.lbItemId.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbItemId.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+			this.lbItemId.Location = new System.Drawing.Point(335, 1);
+			this.lbItemId.Name = "lbItemId";
+			this.lbItemId.Size = new System.Drawing.Size(88, 26);
+			this.lbItemId.TabIndex = 16;
+			this.lbItemId.Text = "0";
+			this.lbItemId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// lbCPTID
+			// 
+			this.lbCPTID.Dock = System.Windows.Forms.DockStyle.Right;
+			this.lbCPTID.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbCPTID.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+			this.lbCPTID.Location = new System.Drawing.Point(335, 1);
+			this.lbCPTID.Name = "lbCPTID";
+			this.lbCPTID.Size = new System.Drawing.Size(88, 26);
+			this.lbCPTID.TabIndex = 17;
+			this.lbCPTID.Text = "0";
+			this.lbCPTID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
 			// CastingSaleOrderItemInfo
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1020,8 +1049,6 @@
 		private System.Windows.Forms.Label label13;
 		private OMControls.Controls.NumericTextBox txtTotalValue;
 		private System.Windows.Forms.Label label12;
-		private OMControls.Controls.NumericTextBox txtUnitPrice;
-		private System.Windows.Forms.Label label7;
 		private OMControls.Controls.NumericTextBox txtDeliveryQty;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.ComboBox cbxMaterial;
@@ -1041,7 +1068,6 @@
 		private System.Windows.Forms.Label lbSaleOrderNumber;
 		private System.Windows.Forms.Label lbFGOnHand;
 		private System.Windows.Forms.Label lbFGStockQvailableQty;
-		private OMControls.OMFlatButton btnUnitPrice;
 		private System.Windows.Forms.Label lbRefSEQ;
 		private System.Windows.Forms.TextBox txtRemark;
 		private System.Windows.Forms.Label label18;
@@ -1049,5 +1075,10 @@
 		private System.Windows.Forms.Label lbMaterialId;
 		private System.Windows.Forms.Label lbMatInfo;
 		private System.Windows.Forms.CheckBox chkIsMatInclude;
+		private OMControls.OMFlatButton btnUnitPrice;
+		private OMControls.Controls.NumericTextBox txtUnitPrice;
+		private System.Windows.Forms.Label lbPriceItemId;
+		private System.Windows.Forms.Label lbItemId;
+		private System.Windows.Forms.Label lbCPTID;
 	}
 }

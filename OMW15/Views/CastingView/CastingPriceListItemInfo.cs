@@ -107,11 +107,6 @@ namespace OMW15.Views.CastingView
 				_pl = new PriceListDAL().GetCustomerPriceListItemInfo(ItemId);
 			}
 
-			//using (var _oldmoon = new OLDMOONEF1())
-			//{
-			//var pl = _oldmoon.CUSTPRICELISTs.Single(x => x.PRICESEQ == ItemId);
-			//var pl = new PriceListDAL().GetCustomerPriceListItemInfo(ItemId);
-
 			// more - code here
 			_imageLocation = _pl.IMAGE_LOCATION;
 
@@ -144,28 +139,33 @@ namespace OMW15.Views.CastingView
 				pic.Image = null;
 			}
 
-			GetPriceTable(ItemId, _selectedMaterialId);
+			//GetPriceTable(ItemId, _selectedMaterialId);
+			GetPriceTable(ItemId);
 
 
 			UpdateUI();
 		} // end GetPriceItemInfo
 
-		private void GetPriceTable(int itemId, int matId)
+		//private void GetPriceTable(int itemId, int matId)
+		private void GetPriceTable(int itemId)
 		{
-			_dtPrice = new PriceListDAL().GetPriceTableById(itemId,matId);
+			//_dtPrice = new PriceListDAL().GetPriceTableById(itemId,matId);
+			_dtPrice = new PriceListDAL().GetPriceTableById(itemId);
 
 			dgvPrice.SuspendLayout();
 			dgvPrice.DataSource = _dtPrice;
 			dgvPrice.Columns["ID"].Visible = false;
 			dgvPrice.Columns["CPT_CP"].Visible = false;
 			dgvPrice.Columns["MATERIAL"].Visible = false;
+			dgvPrice.Columns["ISMATINCLUDE"].Visible = false;
 
 			dgvPrice.Columns["PRICE_YEAR"].HeaderText = "ปี";
 			dgvPrice.Columns["MATERIAL_NAME"].HeaderText = "วัสดุ";
 			dgvPrice.Columns["PRICEUNITNAME"].HeaderText = "หน่วยนับ";
-			dgvPrice.Columns["UNITPRICE"].HeaderText = "ราคา/หน่วย";
+			dgvPrice.Columns["UNITPRICE"].HeaderText = "ราคาหล่อ/หน่วย";
 			dgvPrice.Columns["UNITPRICE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-			dgvPrice.Columns["ISMATINCLUDE"].HeaderText = "ราคารวมวัสดุ";
+			dgvPrice.Columns["UNITPRICE_WITHMAT"].HeaderText = "ราคารวมวัสดุ/หน่วย";
+			dgvPrice.Columns["UNITPRICE_WITHMAT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
 			dgvPrice.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -180,7 +180,8 @@ namespace OMW15.Views.CastingView
 
 				if(_cpt.ShowDialog(this) == DialogResult.OK)
 				{
-					GetPriceTable(itemId,matId);
+					//GetPriceTable(itemId,matId);
+					GetPriceTable(itemId);
 				}
 			}
 		}
@@ -404,16 +405,6 @@ namespace OMW15.Views.CastingView
 			lbItemId.Text = $"{ItemId}";
 			// load item info
 			GetPriceItemInfo(ItemId);
-
-			//switch (_mode)
-			//{
-			//	case ActionMode.Add:
-			//		_isModifyImage = true;
-			//		SetNewItemInfo();
-			//		break;
-			//	case ActionMode.Edit:
-			//		break;
-			//}
 		}
 
 		private void btnLoadPicture_Click(object sender, EventArgs e)
@@ -617,6 +608,22 @@ namespace OMW15.Views.CastingView
 		{
 			_selectPriceItem = 0;
 			AddEditPricItem(_selectPriceItem, this.ItemId, _selectedMaterialId, Convert.ToDateTime(txtStartDate.Text).Year, txtUnitCount.Text, cbxMaterial.Text);
+
+		}
+
+		private void tsbtnDelete_Click(object sender, EventArgs e)
+		{
+			if(MessageBox.Show("ต้องการลบราคางานหล่อราการนี้ใช่หรือไม่","Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+			{
+				int _result = new PriceListDAL().DeleteCustingPriceTableItem(_selectPriceItem);
+
+				tsbtnRefresh.PerformClick();
+			}
+		}
+
+		private void tsbtnRefresh_Click(object sender, EventArgs e)
+		{
+			GetPriceTable(ItemId);
 
 		}
 	}

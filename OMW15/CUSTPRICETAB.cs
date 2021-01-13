@@ -21,5 +21,6 @@ namespace OMW15
         public string PRICEUNITNAME { get; set; }
         public bool ISMATINCLUDE { get; set; }
         public decimal UNITPRICE { get; set; }
+        public decimal UNITPRICE_WITHMAT { get; set; }
     }
 }

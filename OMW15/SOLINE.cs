@@ -28,6 +28,7 @@ namespace OMW15
         public decimal DELIVERDATE { get; set; }
         public int JOBNO { get; set; }
         public string PO { get; set; }
+        public int SL_CPT { get; set; }
         public int ITEMID { get; set; }
         public string PREFIX { get; set; }
         public string ITEMNO { get; set; }

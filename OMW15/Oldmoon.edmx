@@ -276,6 +276,7 @@
           <Property Name="PRICEUNITNAME" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="ISMATINCLUDE" Type="bit" Nullable="false" />
           <Property Name="UNITPRICE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="UNITPRICE_WITHMAT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="CUSTTASK">
           <Key>
@@ -1432,6 +1433,7 @@
           <Property Name="DELIVERDATE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="JOBNO" Type="int" Nullable="false" />
           <Property Name="PO" Type="nvarchar" MaxLength="35" />
+          <Property Name="SL_CPT" Type="int" Nullable="false" />
           <Property Name="ITEMID" Type="int" Nullable="false" />
           <Property Name="PREFIX" Type="nvarchar" MaxLength="1" />
           <Property Name="ITEMNO" Type="nvarchar" MaxLength="35" />
@@ -6752,6 +6754,7 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <Property Name="PRICEUNITNAME" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="ISMATINCLUDE" Type="Boolean" Nullable="false" />
           <Property Name="UNITPRICE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="UNITPRICE_WITHMAT" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="SOLINE">
           <Key>
@@ -6771,6 +6774,7 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <Property Name="DELIVERDATE" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="JOBNO" Type="Int32" Nullable="false" />
           <Property Name="PO" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Name="SL_CPT" Type="Int32" Nullable="false" />
           <Property Name="ITEMID" Type="Int32" Nullable="false" />
           <Property Name="PREFIX" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
           <Property Name="ITEMNO" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
@@ -9299,6 +9303,7 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <EntitySetMapping Name="CUSTPRICETABs">
             <EntityTypeMapping TypeName="Oldmoon.CUSTPRICETAB">
               <MappingFragment StoreEntitySet="CUSTPRICETAB">
+                <ScalarProperty Name="UNITPRICE_WITHMAT" ColumnName="UNITPRICE_WITHMAT" />
                 <ScalarProperty Name="UNITPRICE" ColumnName="UNITPRICE" />
                 <ScalarProperty Name="ISMATINCLUDE" ColumnName="ISMATINCLUDE" />
                 <ScalarProperty Name="PRICEUNITNAME" ColumnName="PRICEUNITNAME" />
@@ -9335,6 +9340,7 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
                 <ScalarProperty Name="ITEMNO" ColumnName="ITEMNO" />
                 <ScalarProperty Name="PREFIX" ColumnName="PREFIX" />
                 <ScalarProperty Name="ITEMID" ColumnName="ITEMID" />
+                <ScalarProperty Name="SL_CPT" ColumnName="SL_CPT" />
                 <ScalarProperty Name="PO" ColumnName="PO" />
                 <ScalarProperty Name="JOBNO" ColumnName="JOBNO" />
                 <ScalarProperty Name="DELIVERDATE" ColumnName="DELIVERDATE" />

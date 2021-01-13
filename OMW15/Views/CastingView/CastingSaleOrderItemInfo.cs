@@ -27,6 +27,8 @@ namespace OMW15.Views.CastingView
 		private int _id;
 
 		private bool _notFoundCastingPriceItem = false;
+		private int _selectPriceTableRowId = 0;
+	
 
 		#endregion
 
@@ -57,6 +59,8 @@ namespace OMW15.Views.CastingView
 		public decimal VATFactor { get; set; }
 
 		public decimal TotalWeight { get; set; }
+
+		public int  PriceListItemId { get; set; }
 
 		#endregion
 
@@ -97,6 +101,7 @@ namespace OMW15.Views.CastingView
 				_sl.DELIVEREDQTY = (SaleType == OMShareCastingEnums.SaleTypeEnum.ขายวัสดุ ? TotalWeight : 0.00m);
 				_sl.TOTALWEIGHT = _sl.DELIVEREDQTY;
 				_sl.VATFACTOR = 0.00m;
+				_sl.ISMATINCLUDE = false;
 			}
 			else
 			{
@@ -111,7 +116,9 @@ namespace OMW15.Views.CastingView
 					MaterialCategory = new MaterialDAL().GetMaterialCategoryForSell(MaterialId);
 				}
 
+				_selectPriceTableRowId = _sl.SL_CPT;
 				_itemId = _sl.ITEMID;
+				lbItemId.Text = $"{_itemId}";
 			}
 
 			GetMaterial(_sl != null ? _sl.CUSTCODE : CustomerCode);
@@ -125,6 +132,9 @@ namespace OMW15.Views.CastingView
 			lbPrefix.Text = _sl.PREFIX;
 			lbItemNo.Text = _sl.ITEMNO;
 			lbMaterialId.Text = _sl.MATTYPE.ToString();
+
+			lbCPTID.Text = $"{_sl.SL_CPT}";
+
 			txtItemName.Text = _sl.ITEMNAME;
 			txtUnit.Text = _sl.UNIT;
 			txtDeliveryQty.Text = $"{_sl.DELIVEREDQTY:N2}";
@@ -221,6 +231,7 @@ namespace OMW15.Views.CastingView
 			_sl.AVGUNITWEIGHT = Convert.ToDecimal(txtAVGUnitWT.Text);
 			_sl.AVGPRICEUNITWEIGHT = Convert.ToDecimal(txtAVGPriceWT.Text);
 			_sl.SOLINEREMARK = txtRemark.Text;
+			_sl.SL_CPT = _selectPriceTableRowId;
 
 			if (new CastingSaleOrderDAL().UpdateSOLineItem(_sl, _itemMode) > 0)
 			{
@@ -260,7 +271,7 @@ namespace OMW15.Views.CastingView
 			lbSaleOrderNumber.Text = SaleOrderNumber;
 			lbRefSEQ.Text = SaleOrderId.ToString();
 			lbSOLineSEQ.Text = SOLineId.ToString();
-
+			lbPriceItemId.Text = $"{this.PriceListItemId }";
 			lbMatInfo.Text = $"{this.MaterialId} {this.MaterialName}";
 
 			GetSOLineItemDetail(SOLineId);
@@ -282,22 +293,36 @@ namespace OMW15.Views.CastingView
 		{
 			UpdateSOLineItem(SOLineId);
 
-			if (_notFoundCastingPriceItem)
-			{
-				if (MessageBox.Show("ต้องการปรับปรุงข้อมูลราคาลงฐานข้อมูลหรือไม่?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-				{
-					CUSTPRICETAB _cpt = new CUSTPRICETAB();
-					_cpt.ID = 0;
-					_cpt.CPT_CP = _itemId;
-					_cpt.PRICE_YEAR = this.OrderDate.Year;
-					_cpt.MATERIAL = this.MaterialId;
-					_cpt.PRICEUNITNAME = this.txtUnit.Text;
-					_cpt.UNITPRICE = Convert.ToDecimal(txtUnitPrice.Text);
-					_cpt.ISMATINCLUDE = chkIsMatInclude.Checked;
+			#region Update PriceList Table
+			CUSTPRICETAB _cpt = new CUSTPRICETAB();
+			_cpt.ID = _selectPriceTableRowId;
+			_cpt.CPT_CP = _itemId;
+			_cpt.PRICE_YEAR = this.OrderDate.Year;
+			_cpt.MATERIAL = this.MaterialId;
+			_cpt.PRICEUNITNAME = this.txtUnit.Text;
+			_cpt.ISMATINCLUDE = chkIsMatInclude.Checked;
 
-					int result = new PriceListDAL().UpdateCustPriceTable(_cpt);
-				}
+			if (chkIsMatInclude.Checked == true)
+			{
+				_cpt.UNITPRICE = _castingPrice;
+				_cpt.UNITPRICE_WITHMAT = Convert.ToDecimal(txtUnitPrice.Text);
 			}
+			else
+			{
+				_cpt.UNITPRICE = Convert.ToDecimal(txtUnitPrice.Text);
+				_cpt.UNITPRICE_WITHMAT = _castingPriceWithMat;
+			}
+
+			int result = new PriceListDAL().UpdateCustPriceTable(_cpt);
+
+			//if (_notFoundCastingPriceItem)
+			//{
+			//	if (MessageBox.Show("ต้องการปรับปรุงข้อมูลราคาลงฐานข้อมูลหรือไม่?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+			//	{
+			//		_cpt.ID = 0;
+			//	}
+			//}
+			#endregion
 
 		}
 
@@ -319,6 +344,10 @@ namespace OMW15.Views.CastingView
 			UpdateUI();
 		}
 
+
+		private decimal _castingPrice = 0m;
+		private decimal _castingPriceWithMat = 0m;
+
 		private void btnUnitPrice_Click(object sender, EventArgs e)
 		{
 			if (SaleType == OMShareCastingEnums.SaleTypeEnum.ขายวัสดุ
@@ -328,16 +357,24 @@ namespace OMW15.Views.CastingView
 			}
 			else
 			{
-				using (var cpt = new CastingPriceItemList(_itemId, this.MaterialId, this.OrderDate.Year, txtUnit.Text, this.MaterialName))
+	//			using (var cpt = new CastingPriceItemList(_itemId, this.MaterialId, this.OrderDate.Year, txtUnit.Text, this.MaterialName))
+				using (var cpt = new CastingPriceItemList(_itemId, this.MaterialId,this.MaterialName,this.txtUnit.Text))
 				{
 					if (cpt.ShowDialog(this) == DialogResult.OK)
 					{
-						txtUnitPrice.Text = $"{cpt.ItemPrice:N2}";
-						chkIsMatInclude.Checked = cpt.IsMatInclude;
+						_selectPriceTableRowId = cpt.ItemPriceRowId;
+						lbCPTID.Text = $"{_selectPriceTableRowId}";
+
+						_castingPrice = cpt.ItemPrice;
+						_castingPriceWithMat = cpt.ItemPriceWithMat;
+
+
+						txtUnitPrice.Text = $"{(chkIsMatInclude.Checked ? _castingPriceWithMat : _castingPrice):N2}";
 						_notFoundCastingPriceItem = false;
 					}
 					else
 					{
+						_selectPriceTableRowId = 0;
 						_notFoundCastingPriceItem = true;
 					}
 				}

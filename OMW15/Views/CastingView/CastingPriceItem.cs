@@ -2,13 +2,6 @@
 using OMW15.Models.CastingModel;
 using OMW15.Shared;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OMW15.Views.CastingView
@@ -35,13 +28,16 @@ namespace OMW15.Views.CastingView
 
 		private void GetCastingPriceItem(int id)
 		{
-			if(_mode == ActionMode.Add)
+			if (_mode == ActionMode.Add)
 			{
 				_cpt = new CUSTPRICETAB();
 				_cpt.CPT_CP = _itemId;
 				_cpt.MATERIAL = _matId;
 				_cpt.PRICE_YEAR = _priceYear;
 				_cpt.PRICEUNITNAME = _unitName;
+				_cpt.UNITPRICE = 0m;
+				_cpt.UNITPRICE_WITHMAT = 0m;
+				_cpt.ISMATINCLUDE = false;
 			}
 			else
 			{
@@ -49,12 +45,20 @@ namespace OMW15.Views.CastingView
 
 			}
 
-			chkIsMatInclude.Checked = _cpt.ISMATINCLUDE;
+			//chkIsMatInclude.Checked = _cpt.ISMATINCLUDE;
 			txtUnitPrice.Text = $"{_cpt.UNITPRICE:N2}";
+			txtUnitPriceWithMat.Text = $"{_cpt.UNITPRICE_WITHMAT:N2}";
 			txtUnitName.Text = _cpt.PRICEUNITNAME;
 			txtPriceYear.Text = _cpt.PRICE_YEAR.ToString();
-
 		}
+
+		private void GetMaterial()
+		{
+			cbxMaterial.DataSource = new CastingDAL().GetMaterialData();
+			cbxMaterial.DisplayMember = "VALUE";
+			cbxMaterial.ValueMember = "KEY";
+		} // end GetMaterial
+
 
 		#endregion
 
@@ -70,24 +74,29 @@ namespace OMW15.Views.CastingView
 
 			_mode = _id == 0 ? ActionMode.Add : ActionMode.Edit;
 			lbMode.Text = _mode.ToString();
+
+			GetMaterial();
 		}
 
 		private void CastingPriceItem_Load(object sender, EventArgs e)
 		{
 			GetCastingPriceItem(_id);
+
+			cbxMaterial.SelectedValue = _matId;
 		}
 
 		private void btnSave_Click(object sender, EventArgs e)
 		{
-			_cpt.ISMATINCLUDE = chkIsMatInclude.Checked;
+			_cpt.ISMATINCLUDE = false;
 			_cpt.MATERIAL = _matId;
 			_cpt.UNITPRICE = Convert.ToDecimal(txtUnitPrice.Text);
+			_cpt.UNITPRICE_WITHMAT = Convert.ToDecimal(txtUnitPriceWithMat.Text);
 			_cpt.PRICEUNITNAME = txtUnitName.Text;
 			_cpt.PRICE_YEAR = Convert.ToInt32(txtPriceYear.Text);
 			_cpt.CPT_CP = _itemId;
 
 			int _result = new PriceListDAL().UpdateCustPriceTable(_cpt);
- 
+
 		}
 
 		private void btnUnitName_Click(object sender, EventArgs e)
@@ -99,6 +108,19 @@ namespace OMW15.Views.CastingView
 			ToolGetData.GetData(SelectTypeOption.UnitCount, ref _value, ref _code, ref _id);
 			txtUnitName.Text = _value;
 			UpdateUI();
+		}
+
+		private void cbxMaterial_SelectedValueChanged(object sender, EventArgs e)
+		{
+			try
+			{
+				_matId = Convert.ToInt32(cbxMaterial.SelectedValue.ToString());
+			}
+			catch
+			{
+
+			}
+
 		}
 	}
 }

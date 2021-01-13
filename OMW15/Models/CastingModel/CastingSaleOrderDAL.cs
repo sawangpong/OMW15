@@ -1164,6 +1164,7 @@ namespace OMW15.Models.CastingModel
 						sl.AVGPRICEUNITWEIGHT = SOLineItem.AVGPRICEUNITWEIGHT;
 						sl.AVGUNITWEIGHT = SOLineItem.AVGUNITWEIGHT;
 						sl.MATTYPE = SOLineItem.MATTYPE;
+						sl.SL_CPT = SOLineItem.SL_CPT;
 						sl.ITEMID = SOLineItem.ITEMID;
 						sl.ITEMNAME = SOLineItem.ITEMNAME;
 						sl.UNIT = SOLineItem.UNIT;

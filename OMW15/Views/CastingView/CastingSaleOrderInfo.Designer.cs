@@ -140,6 +140,7 @@
 			this.tsSepDelete = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbtnRefresh = new System.Windows.Forms.ToolStripButton();
 			this.tsSepRefresh = new System.Windows.Forms.ToolStripSeparator();
+			this.lbItemId = new System.Windows.Forms.Label();
 			this.pnlTop.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.pnlHeaderInfo.SuspendLayout();
@@ -1365,6 +1366,7 @@
 			// panel20
 			// 
 			this.panel20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.panel20.Controls.Add(this.lbItemId);
 			this.panel20.Controls.Add(this.lbJob);
 			this.panel20.Controls.Add(this.lbFGSEQ);
 			this.panel20.Controls.Add(this.lbSOLineIndex);
@@ -1521,6 +1523,15 @@
 			// 
 			this.tsSepRefresh.Name = "tsSepRefresh";
 			this.tsSepRefresh.Size = new System.Drawing.Size(6, 35);
+			// 
+			// lbItemId
+			// 
+			this.lbItemId.Dock = System.Windows.Forms.DockStyle.Left;
+			this.lbItemId.Location = new System.Drawing.Point(482, 2);
+			this.lbItemId.Name = "lbItemId";
+			this.lbItemId.Size = new System.Drawing.Size(129, 22);
+			this.lbItemId.TabIndex = 4;
+			this.lbItemId.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			// 
 			// CastingSaleOrderInfo
 			// 
@@ -1697,5 +1708,6 @@
 		private System.Windows.Forms.ComboBox cbxCalVATMethod;
 		private System.Windows.Forms.Label lbVATMethod;
 		private System.Windows.Forms.Label lbJob;
+		private System.Windows.Forms.Label lbItemId;
 	}
 }

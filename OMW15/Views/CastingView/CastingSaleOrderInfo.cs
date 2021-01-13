@@ -259,11 +259,13 @@ namespace OMW15.Views.CastingView
 		{
 			_selectedSOLineSEQ = Convert.ToInt32(dgv["SOLINESEQ", e.RowIndex].Value);
 			_selectedFGLineSEQ = Convert.ToInt32(dgv["FGLINESEQ", e.RowIndex].Value);
+			_selectedItemId = Convert.ToInt32(dgv["ITEMID", e.RowIndex].Value);
 
 			// display
 			lbJob.Text = $"Job : {dgv["JOBNO", e.RowIndex].Value.ToString()}";
 			lbSOLineIndex.Text = $"Line Index : {_selectedSOLineSEQ}";
 			lbFGSEQ.Text = $"FG Index : {_selectedFGLineSEQ}";
+			lbItemId.Text = $"item id:{_selectedItemId}";
 		}
 
 		private void tsbtnRefresh_Click(object sender, EventArgs e)
@@ -330,6 +332,7 @@ namespace OMW15.Views.CastingView
 
 			using (var _soline = new CastingSaleOrderItemInfo(_selectedSOLineSEQ, _soHeaderMode))
 			{
+				_soline.PriceListItemId = _selectedItemId;
 				_soline.VATFactor = _customerVATFactor;
 				_soline.VATRate = cbxVAT.Text;
 				_soline.StartPosition = FormStartPosition.CenterParent;
@@ -412,6 +415,7 @@ namespace OMW15.Views.CastingView
 		private Guid _soGuid;
 		private int _selectedSOLineSEQ;
 		private int _selectedFGLineSEQ;
+		private int _selectedItemId = 0;
 		private string _materialCategory = string.Empty;
 		private string _refMasterSaleOrderForSellingMaterial = string.Empty;
 

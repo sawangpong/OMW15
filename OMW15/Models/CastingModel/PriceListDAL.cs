@@ -45,9 +45,11 @@ namespace OMW15.Models.CastingModel
 
 		public CUSTPRICELIST GetCustomerPriceListItemInfo(int ItemId) => _om.CUSTPRICELISTs.Single(x => x.PRICESEQ == ItemId);
 
+		public DataTable GetPriceTableById(int itemId) => new DataConnect($"EXEC dbo.usp_OM_CASTING_PRICELIST_TABLE {itemId}", omglobal.SysConnectionString).ToDataTable;
+
 		public DataTable GetPriceTableById(int itemId, int matId) => new DataConnect($"EXEC dbo.usp_OM_CASTING_PRICELIST_TABLE {itemId},{matId}", omglobal.SysConnectionString).ToDataTable;
 
-		public DataTable GetPriceTableById(int itemId, int matId, int yearSale, string unitName) => new DataConnect($"EXEC dbo.usp_OM_CASTING_PRICELIST_TABLE {itemId},{matId},{yearSale},'{unitName}'", omglobal.SysConnectionString).ToDataTable;
+		public DataTable GetPriceTableById(int itemId, int matId, string unitName, int yearSale) => new DataConnect($"EXEC dbo.usp_OM_CASTING_PRICELIST_TABLE {itemId},{matId},{yearSale},'{unitName}'", omglobal.SysConnectionString).ToDataTable;
 
 		public Image GetPriceListItemPictureByItemId(int itemId)
 		{
@@ -281,6 +283,7 @@ namespace OMW15.Models.CastingModel
 				_cpt.PRICEUNITNAME = cpt.PRICEUNITNAME;
 				_cpt.PRICE_YEAR = cpt.PRICE_YEAR;
 				_cpt.UNITPRICE = cpt.UNITPRICE;
+				_cpt.UNITPRICE_WITHMAT = cpt.UNITPRICE_WITHMAT;
 			}
 
 			return _om.SaveChanges();
