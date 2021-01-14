@@ -51,6 +51,10 @@ namespace OMW15.Models.CastingModel
 
 		public DataTable GetPriceTableById(int itemId, int matId, string unitName, int yearSale) => new DataConnect($"EXEC dbo.usp_OM_CASTING_PRICELIST_TABLE {itemId},{matId},{yearSale},'{unitName}'", omglobal.SysConnectionString).ToDataTable;
 
+		public DataTable GetWorkTypeByCustomer(string customerCode) => new DataConnect($"EXEC dbo.usp_OM_CASTING_WORKTYPE_BY_CUST '{customerCode}'", omglobal.SysConnectionString).ToDataTable;
+
+
+
 		public Image GetPriceListItemPictureByItemId(int itemId)
 		{
 			// first find the image part from price list
@@ -117,51 +121,52 @@ namespace OMW15.Models.CastingModel
 
 		} // end GetMaterialListByCustomerPriceList
 
-		public async Task<DataTable> GetPriceListByCustomerAsync(string customerCode, int matId = 0)
+		public async Task<DataTable> GetPriceListByCustomerAsync(string customerCode, string workType)
 		{
 			return await Task.Run(() =>
 			{
-				var _result = new DataTable();
+				return new DataConnect($"EXEC dbo.usp_OM_CASTING_PRICELIST_BY_CUST '{customerCode}','{workType}'", omglobal.SysConnectionString).ToDataTable;
+				//var _result = new DataTable();
 
 				// retrieve Price List
-				var _priceLists = (from p in _om.CUSTPRICELISTs
-										 join cd in _om.ITEMCODEs on p.PREFIX equals cd.ITEMCODE1
-										 join m in _om.SYSDATAs.AsEnumerable() on p.MATERIAL.ToString() equals m.KEYVALUE
-										 join s in _om.SYSDATAs.AsEnumerable() on p.PRODUCTSTYLE.ToString() equals s.KEYVALUE
-										 where p.ISDELETE == false
-											  && p.CUSTCODE.Trim() == customerCode
-											  && m.GROUPTITLE == "MATERIAL"
-											  && s.GROUPTITLE == "PRODUCTSTYLE"
-										 orderby p.ITEMNO, p.PREFIX
-										 select new
-										 {
-											 Id = p.PRICESEQ,
-											 CustomerCode = p.CUSTCODE,
-											 ItemType = cd.ITEMCODENAME_TH,
-											 ItemCode = p.PREFIX,
-											 ItemNo = p.ITEMNO,
-											 ItemName = p.ITEMNAME,
-											 MaterialId = p.MATERIAL,
-											 Material = m.THKEYNAME,
-											 StyleId = p.PRODUCTSTYLE,
-											 Style = s.THKEYNAME,
-											 Unit = p.UNITCOUNT,
-											 CastingPrice = p.CASTINGPRICE,
-											 UnitPrice = p.UNITPRICE,
-											 Score = p.SCOREPRICE,
-											 Weight = p.UNITWEIGHT,
-											 HasImage = p.HASPICTURE,
-											 ImageLocation = p.IMAGE_LOCATION,
-											 FlaskTemp = p.FLASK_TEMP,
-											 CastTemp = p.CAST_TEMP
-										 }).AsParallel();
+				//var _priceLists = (from p in _om.CUSTPRICELISTs
+				//						 join cd in _om.ITEMCODEs on p.PREFIX equals cd.ITEMCODE1
+				//						 join m in _om.SYSDATAs.AsEnumerable() on p.MATERIAL.ToString() equals m.KEYVALUE
+				//						 join s in _om.SYSDATAs.AsEnumerable() on p.PRODUCTSTYLE.ToString() equals s.KEYVALUE
+				//						 where p.ISDELETE == false
+				//							  && p.CUSTCODE.Trim() == customerCode
+				//							  && m.GROUPTITLE == "MATERIAL"
+				//							  && s.GROUPTITLE == "PRODUCTSTYLE"
+				//						 orderby p.ITEMNO, p.PREFIX
+				//						 select new
+				//						 {
+				//							 Id = p.PRICESEQ,
+				//							 CustomerCode = p.CUSTCODE,
+				//							 ItemType = cd.ITEMCODENAME_TH,
+				//							 ItemCode = p.PREFIX,
+				//							 ItemNo = p.ITEMNO,
+				//							 ItemName = p.ITEMNAME,
+				//							 MaterialId = p.MATERIAL,
+				//							 Material = m.THKEYNAME,
+				//							 StyleId = p.PRODUCTSTYLE,
+				//							 Style = s.THKEYNAME,
+				//							 Unit = p.UNITCOUNT,
+				//							 CastingPrice = p.CASTINGPRICE,
+				//							 UnitPrice = p.UNITPRICE,
+				//							 Score = p.SCOREPRICE,
+				//							 Weight = p.UNITWEIGHT,
+				//							 HasImage = p.HASPICTURE,
+				//							 ImageLocation = p.IMAGE_LOCATION,
+				//							 FlaskTemp = p.FLASK_TEMP,
+				//							 CastTemp = p.CAST_TEMP
+				//						 }).AsParallel();
 
-				if (matId > 0)
-					_result = _priceLists.Where(x => x.MaterialId == matId).AsParallel().ToDataTable();
-				else
-					_result = _priceLists.ToDataTable();
+				//if (matId > 0)
+				//	_result = _priceLists.Where(x => x.MaterialId == matId).AsParallel().ToDataTable();
+				//else
+				//	_result = _priceLists.ToDataTable();
 
-				return _result;
+				//return _result;
 			});
 		} // end GetPriceListByCustomerAsync
 

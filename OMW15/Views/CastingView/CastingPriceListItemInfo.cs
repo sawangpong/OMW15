@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using OMControls;
+﻿using OMControls;
 using OMW15.Controllers.ToolController;
 using OMW15.Models.CastingModel;
 using OMW15.Models.ToolModel;
@@ -39,6 +38,8 @@ namespace OMW15.Views.CastingView
 
 		public int ItemId { get; set; }
 
+		public int MaterialId { get; set; }
+
 		public Image ItemImage { get; set; }
 
 		#endregion
@@ -76,35 +77,21 @@ namespace OMW15.Views.CastingView
 
 		} // end UpdateUI
 
-		//private void SetNewItemInfo()
-		//{
-		//	txtStartDate.Text = DateTime.Today.ToShortDateString();
-		//	cbxProductStyle.SelectedValue = "1";
-		//	cbxMaterial.SelectedValue = "1";
-		//	txtCastingPrice.Text = "0.00";
-		//	txtUnitPrice.Text = "0.00";
-		//	txtWaxWeight.Text = "0.00";
-		//	txtUnitWeight.Text = "0.00";
-		//	txtScore.Text = "1.00";
-		//	txtCastTemp.Text = "0";
-		//	txtFalskTemp.Text = "0";
-
-		//	UpdateUI();
-		//} // end SetNewItemInfo
-
-		private void GetPriceItemInfo(int ItemId)
+		private void GetPriceItemInfo(int itemId)
 		{
 			var _imageLocation = string.Empty;
-			if (ItemId == 0)
+			if (itemId == 0)
 			{
 				_isModifyImage = true;
 				_pl = new CUSTPRICELIST();
 				_pl.PRICEEFFECTIVEDATE = DateTime.Today.Date2Num();
 				_pl.PRICEEXPIREDATE = DateTime.Today.AddMonths(6).Date2Num();
+				txtItemType.Text = ""; // new PriceListDAL().GetItemCodeText(_pl.PREFIX);
 			}
 			else
 			{
-				_pl = new PriceListDAL().GetCustomerPriceListItemInfo(ItemId);
+				_pl = new PriceListDAL().GetCustomerPriceListItemInfo(itemId);
+				txtItemType.Text = new PriceListDAL().GetItemCodeText(_pl.PREFIX);
 			}
 
 			// more - code here
@@ -114,7 +101,6 @@ namespace OMW15.Views.CastingView
 			_selectedMaterialId = _pl.MATERIAL;
 			lbImagePath.Text = _imageLocation;
 			lbItemCode.Text = _pl.PREFIX;
-			txtItemType.Text = new PriceListDAL().GetItemCodeText(_pl.PREFIX);
 			txtItemNo.Text = _pl.ITEMNO;
 			txtItemName.Text = _pl.ITEMNAME;
 			cbxMaterial.SelectedValue = _selectedMaterialId;
@@ -140,17 +126,16 @@ namespace OMW15.Views.CastingView
 			}
 
 			//GetPriceTable(ItemId, _selectedMaterialId);
-			GetPriceTable(ItemId);
-
-
+			GetPriceTable(itemId);
+  
 			UpdateUI();
 		} // end GetPriceItemInfo
 
 		//private void GetPriceTable(int itemId, int matId)
-		private void GetPriceTable(int itemId)
+		private void GetPriceTable(int itemId,int matId = 0)
 		{
 			//_dtPrice = new PriceListDAL().GetPriceTableById(itemId,matId);
-			_dtPrice = new PriceListDAL().GetPriceTableById(itemId);
+			_dtPrice = new PriceListDAL().GetPriceTableById(itemId,matId);
 
 			dgvPrice.SuspendLayout();
 			dgvPrice.DataSource = _dtPrice;
@@ -175,13 +160,20 @@ namespace OMW15.Views.CastingView
 
 		private void AddEditPricItem(int id, int itemId, int matId, int priceYear, string unitName = "", string materialName = "")
 		{
-			using(CastingPriceItem _cpt = new CastingPriceItem(id, itemId, matId, priceYear, unitName, materialName)){
+			using (CastingPriceItem _cpt = new CastingPriceItem(id, itemId, matId, priceYear, unitName, materialName))
+			{
 				_cpt.StartPosition = FormStartPosition.CenterScreen;
 
-				if(_cpt.ShowDialog(this) == DialogResult.OK)
+				if (_cpt.ShowDialog(this) == DialogResult.OK)
 				{
-					//GetPriceTable(itemId,matId);
-					GetPriceTable(itemId);
+					if (matId == 0)
+					{
+						GetPriceTable(itemId);
+					}
+					else
+					{
+						GetPriceTable(itemId, matId);
+					}
 				}
 			}
 		}
@@ -225,16 +217,16 @@ namespace OMW15.Views.CastingView
 				_cp.ITEMNO = txtItemNo.Text.ToUpper();
 				_cp.ITEMNAME = txtItemName.Text.ToUpper();
 				_cp.HASPICTURE = pic.Image != null ? true : false;
-				_cp.MATERIAL = Convert.ToInt32(lbMatId.Text);
-				_cp.FLASK_TEMP = txtFalskTemp.Text;
-				_cp.CAST_TEMP = txtCastTemp.Text;
+				_cp.MATERIAL = 0; //Convert.ToInt32(lbMatId.Text);
+				_cp.FLASK_TEMP = String.IsNullOrEmpty(txtFalskTemp.Text) ? "0" : txtFalskTemp.Text;
+				_cp.CAST_TEMP = String.IsNullOrEmpty(txtCastTemp.Text) ? "0" : txtCastTemp.Text;
 				_cp.PRICEEFFECTIVEDATE = txtStartDate.Text.Date2Num();
 				_cp.PRICEEXPIREDATE = txtEndDate.Text.Date2Num();
 				_cp.PRODUCTSTYLE = Convert.ToInt32(cbxProductStyle.SelectedValue);
 				_cp.SCOREPRICE = Convert.ToDecimal(txtScore.Text);
 				_cp.UNITCOUNT = txtUnitCount.Text;
 				_cp.CASTINGPRICE = Convert.ToDecimal(txtCastingPrice.Text);
-				_cp.UNITPRICE = Convert.ToDecimal(txtUnitPrice.Text);
+				_cp.UNITPRICE = 0m;// Convert.ToDecimal(txtUnitPrice.Text);
 				_cp.UNITWEIGHT = Convert.ToDecimal(txtUnitWeight.Text);
 				_cp.WAXWEIGHT = Convert.ToDecimal(txtWaxWeight.Text);
 				_cp.AUDITUSER = omglobal.UserInfo;
@@ -295,7 +287,6 @@ namespace OMW15.Views.CastingView
 				var pl = (from p in _oldmoon.CUSTPRICELISTs
 							 where p.PRICESEQ == ItemId
 							 select p).Single();
-
 				try
 				{
 					pl.PREFIX = lbItemCode.Text;
@@ -398,13 +389,18 @@ namespace OMW15.Views.CastingView
 			GetProductStyle();
 
 			// set mode
-			_mode = ItemId == 0 ? ActionMode.Add : ActionMode.Edit;
+			_mode = (this.ItemId == 0 ? ActionMode.Add : ActionMode.Edit);
+			pnlPriceItems.Visible = (_mode == ActionMode.Edit);
+			tppItemPrice.Text = (_mode == ActionMode.Edit ? "Price list" : "");
 
 			// display-mode
 			lbMode.Text = _mode.ToString().ToUpper();
-			lbItemId.Text = $"{ItemId}";
+			lbItemId.Text = $"id:{this.ItemId}";
+			tslbItemId.Text = $"id:{this.ItemId}";
+			lbMatId.Text = $"{this.MaterialId}";
+
 			// load item info
-			GetPriceItemInfo(ItemId);
+			GetPriceItemInfo(this.ItemId);
 		}
 
 		private void btnLoadPicture_Click(object sender, EventArgs e)
@@ -443,26 +439,26 @@ namespace OMW15.Views.CastingView
 			txtItemNo.Text = CreateAutoNumber(CustomerCode, CustomerId);
 		}
 
-		private void cbxMaterial_SelectedValueChanged(object sender, EventArgs e)
-		{
-			try
-			{
-				lbMatId.Text = cbxMaterial.SelectedValue.ToString();
-			}
-			catch
-			{
-				lbMatId.Text = "";
-			}
-		}
+		//private void cbxMaterial_SelectedValueChanged(object sender, EventArgs e)
+		//{
+		//	try
+		//	{
+		//		lbMatId.Text = cbxMaterial.SelectedValue.ToString();
+		//	}
+		//	catch
+		//	{
+		//		lbMatId.Text = "";
+		//	}
+		//}
 
-		private void cbxMaterial_SelectionChangeCommitted(object sender, EventArgs e)
-		{
-			_selectedMaterialId = Convert.ToInt32(cbxMaterial.SelectedValue);
-			lbMatId.Text = _selectedMaterialId.ToString();
+		//private void cbxMaterial_SelectionChangeCommitted(object sender, EventArgs e)
+		//{
+		//	_selectedMaterialId = Convert.ToInt32(cbxMaterial.SelectedValue);
+		//	lbMatId.Text = _selectedMaterialId.ToString();
 
-			lbPriceListTitle.Text = $"ราคาค่าหล่อชิ้นงาน {cbxMaterial.Text}";
+		//	lbPriceListTitle.Text = $"ราคาค่าหล่อชิ้นงาน {cbxMaterial.Text}";
 
-		}
+		//}
 
 		private void btnEndDate_ButtonClick(object sender, EventArgs e)
 		{
@@ -534,30 +530,30 @@ namespace OMW15.Views.CastingView
 		//		}
 		//}
 
-		private void txtScore_Validated(object sender, EventArgs e)
-		{
-			if (Information.IsNumeric(txtScore.Text))
-			{
-				if (Convert.ToDecimal(txtScore.Text) < 0.00m || Convert.ToDecimal(txtScore.Text) > 5.00m)
-				{
-					MessageBox.Show("ไม่สามารถใส่ค่าที่น้อยกว่าศูนย์ (0) หรือ มากกว่าห้า (5)ได้", "Error", MessageBoxButtons.OK,
-						MessageBoxIcon.Error);
-					txtScore.Focus();
-				}
-			}
-		}
+		//private void txtScore_Validated(object sender, EventArgs e)
+		//{
+		//	if (Information.IsNumeric(txtScore.Text))
+		//	{
+		//		if (Convert.ToDecimal(txtScore.Text) < 0.00m || Convert.ToDecimal(txtScore.Text) > 5.00m)
+		//		{
+		//			MessageBox.Show("ไม่สามารถใส่ค่าที่น้อยกว่าศูนย์ (0) หรือ มากกว่าห้า (5)ได้", "Error", MessageBoxButtons.OK,
+		//				MessageBoxIcon.Error);
+		//			txtScore.Focus();
+		//		}
+		//	}
+		//}
 
-		private void txtScore_KeyPress(object sender, KeyPressEventArgs e)
-		{
-			if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Tab)
-				if (Information.IsNumeric(txtScore.Text))
-					if (Convert.ToDecimal(txtScore.Text) < 0.00m || Convert.ToDecimal(txtScore.Text) > 5.00m)
-					{
-						MessageBox.Show("ไม่สามารถใส่ค่าที่น้อยกว่าศูนย์ (0) หรือ มากกว่าห้า (5)ได้", "Error", MessageBoxButtons.OK,
-							MessageBoxIcon.Error);
-						txtScore.Focus();
-					}
-		}
+		//private void txtScore_KeyPress(object sender, KeyPressEventArgs e)
+		//{
+		//	if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Tab)
+		//		if (Information.IsNumeric(txtScore.Text))
+		//			if (Convert.ToDecimal(txtScore.Text) < 0.00m || Convert.ToDecimal(txtScore.Text) > 5.00m)
+		//			{
+		//				MessageBox.Show("ไม่สามารถใส่ค่าที่น้อยกว่าศูนย์ (0) หรือ มากกว่าห้า (5)ได้", "Error", MessageBoxButtons.OK,
+		//					MessageBoxIcon.Error);
+		//				txtScore.Focus();
+		//			}
+		//}
 
 		private void lbItemCode_TextChanged(object sender, EventArgs e)
 		{
@@ -591,12 +587,13 @@ namespace OMW15.Views.CastingView
 		private void dgvPrice_CellEnter(object sender, DataGridViewCellEventArgs e)
 		{
 			_selectPriceItem = Convert.ToInt32(dgvPrice["ID", e.RowIndex].Value.ToString());
+			_selectedMaterialId = Convert.ToInt32(dgvPrice["MATERIAL", e.RowIndex].Value);
 			UpdatePriceToolBar();
 		}
 
 		private void tsbtnEdit_Click(object sender, EventArgs e)
 		{
-			AddEditPricItem(_selectPriceItem,this.ItemId, _selectedMaterialId, Convert.ToDateTime(txtStartDate.Text).Year,txtUnitCount.Text,cbxMaterial.Text);
+			AddEditPricItem(_selectPriceItem, this.ItemId, _selectedMaterialId, Convert.ToDateTime(txtStartDate.Text).Year, txtUnitCount.Text, cbxMaterial.Text);
 		}
 
 		private void dgvPrice_DoubleClick(object sender, EventArgs e)
@@ -613,7 +610,7 @@ namespace OMW15.Views.CastingView
 
 		private void tsbtnDelete_Click(object sender, EventArgs e)
 		{
-			if(MessageBox.Show("ต้องการลบราคางานหล่อราการนี้ใช่หรือไม่","Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+			if (MessageBox.Show("ต้องการลบราคางานหล่อราการนี้ใช่หรือไม่", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 			{
 				int _result = new PriceListDAL().DeleteCustingPriceTableItem(_selectPriceItem);
 
@@ -624,7 +621,6 @@ namespace OMW15.Views.CastingView
 		private void tsbtnRefresh_Click(object sender, EventArgs e)
 		{
 			GetPriceTable(ItemId);
-
 		}
 	}
 }

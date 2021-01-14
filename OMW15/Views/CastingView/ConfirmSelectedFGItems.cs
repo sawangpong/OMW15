@@ -10,30 +10,6 @@ namespace OMW15.Views.CastingView
 {
 	public partial class ConfirmSelectedFGItems : Form
 	{
-		// CONSTRUCTOR
-		public ConfirmSelectedFGItems(ActionMode SOHeaderMode, DataTable Source)
-		{
-			InitializeComponent();
-			pnlHeader.BackColor = omglobal.OM_RED_COLOR;
-			_dtSource = Source;
-			_soHeaderMode = SOHeaderMode;
-		}
-
-		private void ConfirmSelectedFGItems_Load(object sender, EventArgs e)
-		{
-			CenterToParent();
-			OMUtils.SettingDataGridView(ref dgv);
-			lbSOId.Text = $"ref:{this.SOGuid} - {SONumber}";
-			lbCustomer.Text = $"Customer : {CustomerId} - [{CustomerCode}] {CustomerName}";
-			lbVATFactor.Text = $"rate : {VATFactor:N2}";
-			GetSelectedFGList(_dtSource);
-		}
-
-		private void btnConfirmFG_Click(object sender, EventArgs e)
-		{
-			InsertSOLines();
-		}
-
 		#region class field Member
 
 		private ActionMode _soHeaderMode = ActionMode.None;
@@ -79,7 +55,7 @@ namespace OMW15.Views.CastingView
 		{
 			if (
 			(TotalInsertItems +=
-				new CastingSaleOrderDAL().InsertCastingSaleOrderItem(ref dgv, RefSOId,this.SOGuid, SONumber, (int)SaleType, VATFactor,
+				new CastingSaleOrderDAL().InsertCastingSaleOrderItem(ref dgv, RefSOId, this.SOGuid, SONumber, (int)SaleType, VATFactor,
 					ActualDeliveryDate)) > 0)
 			{
 			}
@@ -96,14 +72,14 @@ namespace OMW15.Views.CastingView
 			dgv.Columns["MATID"].Visible = false;
 			dgv.Columns["TOTALDELIVERYWT"].Visible = false;
 			dgv.Columns["TOTALLINEWT"].Visible = false;
-			dgv.Columns["MATERIAL"].Visible = false;
+			//dgv.Columns["UNITPRICE"].Visible = false;
 
 			dgv.Columns["PREFIX"].HeaderText = "ประเภท";
 			dgv.Columns["DOCDATE"].HeaderText = "วันที่";
 			dgv.Columns["ITEMNO"].HeaderText = "รหัสสินค้า";
 			dgv.Columns["ITEMNAME"].HeaderText = "รายละเอียด";
 			dgv.Columns["UNIT"].HeaderText = "หน่วยนับ";
-			dgv.Columns["UNITPRICE"].HeaderText = "ราคาต่อหน่วย";
+			dgv.Columns["MATERIAL"].HeaderText = "ราคาต่อหน่วย";
 			dgv.Columns["QTY"].HeaderText = "จำนวน";
 			dgv.Columns["UNITWEIGHT"].HeaderText = "น.น. ต่อหน่วย";
 			dgv.Columns["WEIGHT"].HeaderText = "น.น. รวม (กรัม)";
@@ -118,5 +94,30 @@ namespace OMW15.Views.CastingView
 		} // end GetSelectedFGList
 
 		#endregion
+
+		// CONSTRUCTOR
+		public ConfirmSelectedFGItems(ActionMode SOHeaderMode, DataTable Source)
+		{
+			InitializeComponent();
+			pnlHeader.BackColor = omglobal.OM_RED_COLOR;
+			_dtSource = Source;
+			_soHeaderMode = SOHeaderMode;
+		}
+
+		private void ConfirmSelectedFGItems_Load(object sender, EventArgs e)
+		{
+			CenterToParent();
+			OMUtils.SettingDataGridView(ref dgv);
+			lbSOId.Text = $"ref:{this.SOGuid} - {SONumber}";
+			lbCustomer.Text = $"Customer : {CustomerId} - [{CustomerCode}] {CustomerName}";
+			lbVATFactor.Text = $"rate : {VATFactor:N2}";
+			GetSelectedFGList(_dtSource);
+		}
+
+		private void btnConfirmFG_Click(object sender, EventArgs e)
+		{
+			InsertSOLines();
+		}
+
 	}
 }

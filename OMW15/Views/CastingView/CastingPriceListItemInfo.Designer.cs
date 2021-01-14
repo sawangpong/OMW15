@@ -94,7 +94,7 @@
 			this.txtItemType = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.tppItemPrice = new System.Windows.Forms.TabPage();
-			this.panel13 = new System.Windows.Forms.Panel();
+			this.pnlPriceItems = new System.Windows.Forms.Panel();
 			this.dgvPrice = new System.Windows.Forms.DataGridView();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.tsbtnAdd = new System.Windows.Forms.ToolStripButton();
@@ -105,6 +105,7 @@
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbtnRefresh = new System.Windows.Forms.ToolStripButton();
 			this.toolStripButton5 = new System.Windows.Forms.ToolStripSeparator();
+			this.tslbItemId = new System.Windows.Forms.ToolStripLabel();
 			this.panel14 = new System.Windows.Forms.Panel();
 			this.lbPriceListTitle = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
@@ -125,7 +126,7 @@
 			this.panel10.SuspendLayout();
 			this.panel3.SuspendLayout();
 			this.tppItemPrice.SuspendLayout();
-			this.panel13.SuspendLayout();
+			this.pnlPriceItems.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvPrice)).BeginInit();
 			this.toolStrip1.SuspendLayout();
 			this.panel14.SuspendLayout();
@@ -284,10 +285,12 @@
 			this.tabControl1.Controls.Add(this.tppItemPrice);
 			this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tabControl1.ItemSize = new System.Drawing.Size(100, 35);
 			this.tabControl1.Location = new System.Drawing.Point(4, 60);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
 			this.tabControl1.Size = new System.Drawing.Size(545, 352);
+			this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
 			this.tabControl1.TabIndex = 21;
 			// 
 			// tppItemDetail
@@ -303,10 +306,10 @@
 			this.tppItemDetail.Controls.Add(this.panel4);
 			this.tppItemDetail.Controls.Add(this.panel10);
 			this.tppItemDetail.Controls.Add(this.panel3);
-			this.tppItemDetail.Location = new System.Drawing.Point(4, 26);
+			this.tppItemDetail.Location = new System.Drawing.Point(4, 39);
 			this.tppItemDetail.Name = "tppItemDetail";
 			this.tppItemDetail.Padding = new System.Windows.Forms.Padding(3, 10, 3, 3);
-			this.tppItemDetail.Size = new System.Drawing.Size(537, 322);
+			this.tppItemDetail.Size = new System.Drawing.Size(537, 309);
 			this.tppItemDetail.TabIndex = 1;
 			this.tppItemDetail.Text = "Item details";
 			// 
@@ -568,8 +571,6 @@
 			this.txtScore.Size = new System.Drawing.Size(112, 25);
 			this.txtScore.TabIndex = 3;
 			this.txtScore.Text = "0.00";
-			this.txtScore.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtScore_KeyPress);
-			this.txtScore.Validated += new System.EventHandler(this.txtScore_Validated);
 			// 
 			// label11
 			// 
@@ -759,10 +760,10 @@
 			this.lbMatId.Dock = System.Windows.Forms.DockStyle.Right;
 			this.lbMatId.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbMatId.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.lbMatId.Location = new System.Drawing.Point(502, 1);
+			this.lbMatId.Location = new System.Drawing.Point(490, 1);
 			this.lbMatId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lbMatId.Name = "lbMatId";
-			this.lbMatId.Size = new System.Drawing.Size(28, 26);
+			this.lbMatId.Size = new System.Drawing.Size(40, 26);
 			this.lbMatId.TabIndex = 8;
 			this.lbMatId.Text = "0";
 			this.lbMatId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -773,22 +774,20 @@
 			this.cbxMaterial.Dock = System.Windows.Forms.DockStyle.Left;
 			this.cbxMaterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbxMaterial.FormattingEnabled = true;
-			this.cbxMaterial.Location = new System.Drawing.Point(360, 1);
+			this.cbxMaterial.Location = new System.Drawing.Point(297, 1);
 			this.cbxMaterial.Margin = new System.Windows.Forms.Padding(4);
 			this.cbxMaterial.Name = "cbxMaterial";
-			this.cbxMaterial.Size = new System.Drawing.Size(136, 25);
+			this.cbxMaterial.Size = new System.Drawing.Size(130, 25);
 			this.cbxMaterial.TabIndex = 7;
 			this.cbxMaterial.Visible = false;
-			this.cbxMaterial.SelectionChangeCommitted += new System.EventHandler(this.cbxMaterial_SelectionChangeCommitted);
-			this.cbxMaterial.SelectedValueChanged += new System.EventHandler(this.cbxMaterial_SelectedValueChanged);
 			// 
 			// label4
 			// 
 			this.label4.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label4.Location = new System.Drawing.Point(270, 1);
+			this.label4.Location = new System.Drawing.Point(215, 1);
 			this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(90, 26);
+			this.label4.Size = new System.Drawing.Size(82, 26);
 			this.label4.TabIndex = 6;
 			this.label4.Text = "วัสดุ :";
 			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -802,7 +801,7 @@
 			this.cbxProductStyle.Location = new System.Drawing.Point(103, 1);
 			this.cbxProductStyle.Margin = new System.Windows.Forms.Padding(4);
 			this.cbxProductStyle.Name = "cbxProductStyle";
-			this.cbxProductStyle.Size = new System.Drawing.Size(167, 25);
+			this.cbxProductStyle.Size = new System.Drawing.Size(112, 25);
 			this.cbxProductStyle.TabIndex = 5;
 			// 
 			// label5
@@ -982,25 +981,25 @@
 			// tppItemPrice
 			// 
 			this.tppItemPrice.BackColor = System.Drawing.SystemColors.ButtonFace;
-			this.tppItemPrice.Controls.Add(this.panel13);
-			this.tppItemPrice.Location = new System.Drawing.Point(4, 26);
+			this.tppItemPrice.Controls.Add(this.pnlPriceItems);
+			this.tppItemPrice.Location = new System.Drawing.Point(4, 39);
 			this.tppItemPrice.Name = "tppItemPrice";
 			this.tppItemPrice.Padding = new System.Windows.Forms.Padding(3, 10, 3, 3);
-			this.tppItemPrice.Size = new System.Drawing.Size(537, 322);
+			this.tppItemPrice.Size = new System.Drawing.Size(537, 309);
 			this.tppItemPrice.TabIndex = 0;
-			this.tppItemPrice.Text = "Item prices";
+			this.tppItemPrice.Text = "Price list";
 			// 
-			// panel13
+			// pnlPriceItems
 			// 
-			this.panel13.Controls.Add(this.dgvPrice);
-			this.panel13.Controls.Add(this.toolStrip1);
-			this.panel13.Controls.Add(this.panel14);
-			this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel13.Location = new System.Drawing.Point(3, 10);
-			this.panel13.Name = "panel13";
-			this.panel13.Padding = new System.Windows.Forms.Padding(2);
-			this.panel13.Size = new System.Drawing.Size(531, 309);
-			this.panel13.TabIndex = 0;
+			this.pnlPriceItems.Controls.Add(this.dgvPrice);
+			this.pnlPriceItems.Controls.Add(this.toolStrip1);
+			this.pnlPriceItems.Controls.Add(this.panel14);
+			this.pnlPriceItems.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pnlPriceItems.Location = new System.Drawing.Point(3, 10);
+			this.pnlPriceItems.Name = "pnlPriceItems";
+			this.pnlPriceItems.Padding = new System.Windows.Forms.Padding(2);
+			this.pnlPriceItems.Size = new System.Drawing.Size(531, 296);
+			this.pnlPriceItems.TabIndex = 0;
 			// 
 			// dgvPrice
 			// 
@@ -1009,7 +1008,7 @@
 			this.dgvPrice.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgvPrice.Location = new System.Drawing.Point(2, 70);
 			this.dgvPrice.Name = "dgvPrice";
-			this.dgvPrice.Size = new System.Drawing.Size(527, 237);
+			this.dgvPrice.Size = new System.Drawing.Size(527, 224);
 			this.dgvPrice.TabIndex = 3;
 			this.dgvPrice.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrice_CellEnter);
 			this.dgvPrice.DoubleClick += new System.EventHandler(this.dgvPrice_DoubleClick);
@@ -1025,7 +1024,8 @@
             this.tsbtnDelete,
             this.toolStripSeparator3,
             this.tsbtnRefresh,
-            this.toolStripButton5});
+            this.toolStripButton5,
+            this.tslbItemId});
 			this.toolStrip1.Location = new System.Drawing.Point(2, 45);
 			this.toolStrip1.Name = "toolStrip1";
 			this.toolStrip1.Size = new System.Drawing.Size(527, 25);
@@ -1091,6 +1091,15 @@
 			// 
 			this.toolStripButton5.Name = "toolStripButton5";
 			this.toolStripButton5.Size = new System.Drawing.Size(6, 25);
+			// 
+			// tslbItemId
+			// 
+			this.tslbItemId.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+			this.tslbItemId.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tslbItemId.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+			this.tslbItemId.Name = "tslbItemId";
+			this.tslbItemId.Size = new System.Drawing.Size(13, 22);
+			this.tslbItemId.Text = "0";
 			// 
 			// panel14
 			// 
@@ -1160,8 +1169,8 @@
 			this.panel3.ResumeLayout(false);
 			this.panel3.PerformLayout();
 			this.tppItemPrice.ResumeLayout(false);
-			this.panel13.ResumeLayout(false);
-			this.panel13.PerformLayout();
+			this.pnlPriceItems.ResumeLayout(false);
+			this.pnlPriceItems.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvPrice)).EndInit();
 			this.toolStrip1.ResumeLayout(false);
 			this.toolStrip1.PerformLayout();
@@ -1237,7 +1246,7 @@
 		private System.Windows.Forms.Label label8;
 		private OMControls.Controls.NumericTextBox txtCastingPrice;
 		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.Panel panel13;
+		private System.Windows.Forms.Panel pnlPriceItems;
 		private System.Windows.Forms.Panel panel14;
 		private System.Windows.Forms.Label lbPriceListTitle;
 		private System.Windows.Forms.DataGridView dgvPrice;
@@ -1250,5 +1259,6 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 		private System.Windows.Forms.ToolStripButton tsbtnRefresh;
 		private System.Windows.Forms.ToolStripSeparator toolStripButton5;
+		private System.Windows.Forms.ToolStripLabel tslbItemId;
 	}
 }

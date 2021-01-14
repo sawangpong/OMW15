@@ -125,6 +125,7 @@
 			this.pnlSCLines = new System.Windows.Forms.Panel();
 			this.dgv = new System.Windows.Forms.DataGridView();
 			this.panel20 = new System.Windows.Forms.Panel();
+			this.lbItemId = new System.Windows.Forms.Label();
 			this.lbJob = new System.Windows.Forms.Label();
 			this.lbFGSEQ = new System.Windows.Forms.Label();
 			this.lbSOLineIndex = new System.Windows.Forms.Label();
@@ -140,7 +141,6 @@
 			this.tsSepDelete = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbtnRefresh = new System.Windows.Forms.ToolStripButton();
 			this.tsSepRefresh = new System.Windows.Forms.ToolStripSeparator();
-			this.lbItemId = new System.Windows.Forms.Label();
 			this.pnlTop.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.pnlHeaderInfo.SuspendLayout();
@@ -1380,6 +1380,15 @@
 			this.panel20.Size = new System.Drawing.Size(1100, 28);
 			this.panel20.TabIndex = 1;
 			// 
+			// lbItemId
+			// 
+			this.lbItemId.Dock = System.Windows.Forms.DockStyle.Left;
+			this.lbItemId.Location = new System.Drawing.Point(482, 2);
+			this.lbItemId.Name = "lbItemId";
+			this.lbItemId.Size = new System.Drawing.Size(129, 22);
+			this.lbItemId.TabIndex = 4;
+			this.lbItemId.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+			// 
 			// lbJob
 			// 
 			this.lbJob.Dock = System.Windows.Forms.DockStyle.Left;
@@ -1523,15 +1532,6 @@
 			// 
 			this.tsSepRefresh.Name = "tsSepRefresh";
 			this.tsSepRefresh.Size = new System.Drawing.Size(6, 35);
-			// 
-			// lbItemId
-			// 
-			this.lbItemId.Dock = System.Windows.Forms.DockStyle.Left;
-			this.lbItemId.Location = new System.Drawing.Point(482, 2);
-			this.lbItemId.Name = "lbItemId";
-			this.lbItemId.Size = new System.Drawing.Size(129, 22);
-			this.lbItemId.TabIndex = 4;
-			this.lbItemId.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			// 
 			// CastingSaleOrderInfo
 			// 

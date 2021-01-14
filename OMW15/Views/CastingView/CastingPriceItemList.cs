@@ -1,12 +1,6 @@
 ﻿using OMW15.Models.CastingModel;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OMW15.Views.CastingView
@@ -28,8 +22,8 @@ namespace OMW15.Views.CastingView
 		public decimal ItemPrice { get; set; }
 		public decimal ItemPriceWithMat { get; set; }
 		public int ItemPriceRowId { get; set; }
-													  //public bool IsMatInclude { get; set; }
 
+		//public bool IsMatInclude { get; set; }
 
 		#endregion
 
@@ -42,10 +36,10 @@ namespace OMW15.Views.CastingView
 		}
 
 
-		private void GetPriceTable(int itemId,int matId, int yearSale,string unitName)
+		private void GetPriceTable(int itemId, int matId, int yearSale, string unitName)
 		{
 			//DataTable _dtPrice = new PriceListDAL().GetPriceTableById(itemId, matId, yearSale, unitName);
-			DataTable _dtPrice = new PriceListDAL().GetPriceTableById(itemId, matId,  unitName, yearSale);
+			DataTable _dtPrice = new PriceListDAL().GetPriceTableById(itemId, matId, unitName, yearSale);
 
 			dgv.SuspendLayout();
 			dgv.DataSource = _dtPrice;
@@ -82,7 +76,7 @@ namespace OMW15.Views.CastingView
 			_unitName = unitName;
 			_matName = matName;
 
-			lbMaterial.Text = _matName;
+			lbMaterial.Text = $"{_matId} {_matName}";
 			lbItemId.Text = $"{_itemId}";
 			this.CenterToScreen();
 			OMControls.OMUtils.SettingDataGridView(ref dgv);
@@ -90,12 +84,12 @@ namespace OMW15.Views.CastingView
 
 		private void dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
 		{
-			_selectdPriceListItem = Convert.ToInt32(dgv["ID",e.RowIndex].Value.ToString());
+			_selectdPriceListItem = Convert.ToInt32(dgv["ID", e.RowIndex].Value.ToString());
 
 
 
 			this.ItemPriceRowId = _selectdPriceListItem;
-			this.ItemPrice = Convert.ToDecimal(dgv["UNITPRICE",e.RowIndex].Value.ToString());
+			this.ItemPrice = Convert.ToDecimal(dgv["UNITPRICE", e.RowIndex].Value.ToString());
 			this.ItemPriceWithMat = Convert.ToDecimal(dgv["UNITPRICE_WITHMAT", e.RowIndex].Value.ToString());
 			//this.IsMatInclude = Convert.ToBoolean(dgv["ISMATINCLUDE", e.RowIndex].Value);
 
@@ -105,7 +99,7 @@ namespace OMW15.Views.CastingView
 		private void CastingPriceItemList_Load(object sender, EventArgs e)
 		{
 			_selectdPriceListItem = 0;
-			GetPriceTable(_itemId,_matId,_yearSale,_unitName);
+			GetPriceTable(_itemId, _matId, _yearSale, _unitName);
 		}
 
 		private void dgv_DoubleClick(object sender, EventArgs e)

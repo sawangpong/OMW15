@@ -79,12 +79,15 @@
 			this.txtItemName = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.panel7 = new System.Windows.Forms.Panel();
+			this.lbCPTID = new System.Windows.Forms.Label();
 			this.lbMaterialId = new System.Windows.Forms.Label();
 			this.btnItemNo = new OMControls.OMFlatButton();
 			this.lbItemNo = new System.Windows.Forms.Label();
 			this.lbPrefix = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.panel6 = new System.Windows.Forms.Panel();
+			this.lbItemId = new System.Windows.Forms.Label();
+			this.lbPriceItemId = new System.Windows.Forms.Label();
 			this.lbSOLineSEQ = new System.Windows.Forms.Label();
 			this.panel5 = new System.Windows.Forms.Panel();
 			this.label4 = new System.Windows.Forms.Label();
@@ -93,9 +96,6 @@
 			this.lbItemMode = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.lbJobNo = new System.Windows.Forms.Label();
-			this.lbPriceItemId = new System.Windows.Forms.Label();
-			this.lbItemId = new System.Windows.Forms.Label();
-			this.lbCPTID = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			this.panel20.SuspendLayout();
 			this.panel21.SuspendLayout();
@@ -766,6 +766,18 @@
 			this.panel7.Size = new System.Drawing.Size(512, 28);
 			this.panel7.TabIndex = 2;
 			// 
+			// lbCPTID
+			// 
+			this.lbCPTID.Dock = System.Windows.Forms.DockStyle.Right;
+			this.lbCPTID.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbCPTID.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+			this.lbCPTID.Location = new System.Drawing.Point(335, 1);
+			this.lbCPTID.Name = "lbCPTID";
+			this.lbCPTID.Size = new System.Drawing.Size(88, 26);
+			this.lbCPTID.TabIndex = 17;
+			this.lbCPTID.Text = "0";
+			this.lbCPTID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
 			// lbMaterialId
 			// 
 			this.lbMaterialId.Dock = System.Windows.Forms.DockStyle.Right;
@@ -835,6 +847,30 @@
 			this.panel6.Padding = new System.Windows.Forms.Padding(1);
 			this.panel6.Size = new System.Drawing.Size(512, 28);
 			this.panel6.TabIndex = 1;
+			// 
+			// lbItemId
+			// 
+			this.lbItemId.Dock = System.Windows.Forms.DockStyle.Right;
+			this.lbItemId.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbItemId.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+			this.lbItemId.Location = new System.Drawing.Point(335, 1);
+			this.lbItemId.Name = "lbItemId";
+			this.lbItemId.Size = new System.Drawing.Size(88, 26);
+			this.lbItemId.TabIndex = 16;
+			this.lbItemId.Text = "0";
+			this.lbItemId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// lbPriceItemId
+			// 
+			this.lbPriceItemId.Dock = System.Windows.Forms.DockStyle.Right;
+			this.lbPriceItemId.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbPriceItemId.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+			this.lbPriceItemId.Location = new System.Drawing.Point(423, 1);
+			this.lbPriceItemId.Name = "lbPriceItemId";
+			this.lbPriceItemId.Size = new System.Drawing.Size(88, 26);
+			this.lbPriceItemId.TabIndex = 15;
+			this.lbPriceItemId.Text = "0";
+			this.lbPriceItemId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// lbSOLineSEQ
 			// 
@@ -925,42 +961,6 @@
 			this.lbJobNo.Size = new System.Drawing.Size(88, 26);
 			this.lbJobNo.TabIndex = 0;
 			this.lbJobNo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// lbPriceItemId
-			// 
-			this.lbPriceItemId.Dock = System.Windows.Forms.DockStyle.Right;
-			this.lbPriceItemId.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbPriceItemId.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.lbPriceItemId.Location = new System.Drawing.Point(423, 1);
-			this.lbPriceItemId.Name = "lbPriceItemId";
-			this.lbPriceItemId.Size = new System.Drawing.Size(88, 26);
-			this.lbPriceItemId.TabIndex = 15;
-			this.lbPriceItemId.Text = "0";
-			this.lbPriceItemId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// lbItemId
-			// 
-			this.lbItemId.Dock = System.Windows.Forms.DockStyle.Right;
-			this.lbItemId.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbItemId.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.lbItemId.Location = new System.Drawing.Point(335, 1);
-			this.lbItemId.Name = "lbItemId";
-			this.lbItemId.Size = new System.Drawing.Size(88, 26);
-			this.lbItemId.TabIndex = 16;
-			this.lbItemId.Text = "0";
-			this.lbItemId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// lbCPTID
-			// 
-			this.lbCPTID.Dock = System.Windows.Forms.DockStyle.Right;
-			this.lbCPTID.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbCPTID.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.lbCPTID.Location = new System.Drawing.Point(335, 1);
-			this.lbCPTID.Name = "lbCPTID";
-			this.lbCPTID.Size = new System.Drawing.Size(88, 26);
-			this.lbCPTID.TabIndex = 17;
-			this.lbCPTID.Text = "0";
-			this.lbCPTID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// CastingSaleOrderItemInfo
 			// 

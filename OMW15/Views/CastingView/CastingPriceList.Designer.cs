@@ -64,7 +64,7 @@
 			this.btnNew = new System.Windows.Forms.Button();
 			this.label3 = new System.Windows.Forms.Label();
 			this.btnRefresh = new System.Windows.Forms.Button();
-			this.cbxMaterials = new System.Windows.Forms.ComboBox();
+			this.cbxWorkType = new System.Windows.Forms.ComboBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.ts.SuspendLayout();
 			this.pnlMain.SuspendLayout();
@@ -402,7 +402,7 @@
 			this.panel4.Controls.Add(this.btnNew);
 			this.panel4.Controls.Add(this.label3);
 			this.panel4.Controls.Add(this.btnRefresh);
-			this.panel4.Controls.Add(this.cbxMaterials);
+			this.panel4.Controls.Add(this.cbxWorkType);
 			this.panel4.Controls.Add(this.label2);
 			this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panel4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -418,7 +418,7 @@
 			this.cbxFindItem.Dock = System.Windows.Forms.DockStyle.Left;
 			this.cbxFindItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbxFindItem.FormattingEnabled = true;
-			this.cbxFindItem.Location = new System.Drawing.Point(609, 2);
+			this.cbxFindItem.Location = new System.Drawing.Point(601, 2);
 			this.cbxFindItem.Name = "cbxFindItem";
 			this.cbxFindItem.Size = new System.Drawing.Size(172, 25);
 			this.cbxFindItem.TabIndex = 26;
@@ -427,7 +427,7 @@
 			// lbHolder1
 			// 
 			this.lbHolder1.Dock = System.Windows.Forms.DockStyle.Left;
-			this.lbHolder1.Location = new System.Drawing.Point(534, 2);
+			this.lbHolder1.Location = new System.Drawing.Point(526, 2);
 			this.lbHolder1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lbHolder1.Name = "lbHolder1";
 			this.lbHolder1.Size = new System.Drawing.Size(75, 26);
@@ -440,7 +440,7 @@
 			this.btnEdit.Dock = System.Windows.Forms.DockStyle.Left;
 			this.btnEdit.Image = global::OMW15.Properties.Resources.Edit;
 			this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnEdit.Location = new System.Drawing.Point(440, 2);
+			this.btnEdit.Location = new System.Drawing.Point(432, 2);
 			this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
 			this.btnEdit.Name = "btnEdit";
 			this.btnEdit.Size = new System.Drawing.Size(94, 26);
@@ -454,7 +454,7 @@
 			this.btnNew.Dock = System.Windows.Forms.DockStyle.Left;
 			this.btnNew.Image = global::OMW15.Properties.Resources.Add;
 			this.btnNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnNew.Location = new System.Drawing.Point(338, 2);
+			this.btnNew.Location = new System.Drawing.Point(330, 2);
 			this.btnNew.Margin = new System.Windows.Forms.Padding(4);
 			this.btnNew.Name = "btnNew";
 			this.btnNew.Size = new System.Drawing.Size(102, 26);
@@ -466,7 +466,7 @@
 			// label3
 			// 
 			this.label3.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label3.Location = new System.Drawing.Point(316, 2);
+			this.label3.Location = new System.Drawing.Point(308, 2);
 			this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(22, 26);
@@ -478,25 +478,27 @@
 			this.btnRefresh.Dock = System.Windows.Forms.DockStyle.Left;
 			this.btnRefresh.Image = global::OMW15.Properties.Resources.REFRESH;
 			this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnRefresh.Location = new System.Drawing.Point(214, 2);
+			this.btnRefresh.Location = new System.Drawing.Point(222, 2);
 			this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
 			this.btnRefresh.Name = "btnRefresh";
-			this.btnRefresh.Size = new System.Drawing.Size(102, 26);
+			this.btnRefresh.Size = new System.Drawing.Size(86, 26);
 			this.btnRefresh.TabIndex = 16;
 			this.btnRefresh.Text = "&Refresh";
+			this.btnRefresh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.btnRefresh.UseVisualStyleBackColor = true;
 			this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
 			// 
-			// cbxMaterials
+			// cbxWorkType
 			// 
-			this.cbxMaterials.Dock = System.Windows.Forms.DockStyle.Left;
-			this.cbxMaterials.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbxMaterials.FormattingEnabled = true;
-			this.cbxMaterials.Location = new System.Drawing.Point(52, 2);
-			this.cbxMaterials.Name = "cbxMaterials";
-			this.cbxMaterials.Size = new System.Drawing.Size(162, 25);
-			this.cbxMaterials.TabIndex = 15;
-			this.cbxMaterials.SelectionChangeCommitted += new System.EventHandler(this.cbxMaterials_SelectionChangeCommitted);
+			this.cbxWorkType.Dock = System.Windows.Forms.DockStyle.Left;
+			this.cbxWorkType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbxWorkType.FormattingEnabled = true;
+			this.cbxWorkType.Location = new System.Drawing.Point(83, 2);
+			this.cbxWorkType.Name = "cbxWorkType";
+			this.cbxWorkType.Size = new System.Drawing.Size(139, 25);
+			this.cbxWorkType.TabIndex = 15;
+			this.cbxWorkType.SelectedIndexChanged += new System.EventHandler(this.cbxWorkType_SelectedIndexChanged);
+			this.cbxWorkType.SelectedValueChanged += new System.EventHandler(this.cbxWorkType_SelectedValueChanged);
 			// 
 			// label2
 			// 
@@ -504,9 +506,9 @@
 			this.label2.Location = new System.Drawing.Point(10, 2);
 			this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(42, 26);
+			this.label2.Size = new System.Drawing.Size(73, 26);
 			this.label2.TabIndex = 14;
-			this.label2.Text = "วัสดุ :";
+			this.label2.Text = "ประเภทงาน :";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// CastingPriceList
@@ -566,7 +568,7 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button btnJobHistory;
 		private System.Windows.Forms.Button btnRefresh;
-		private System.Windows.Forms.ComboBox cbxMaterials;
+		private System.Windows.Forms.ComboBox cbxWorkType;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.ComboBox cbxFindItem;
 		private System.Windows.Forms.Label lbHolder1;

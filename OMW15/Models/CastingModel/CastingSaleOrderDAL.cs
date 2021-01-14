@@ -726,7 +726,7 @@ namespace OMW15.Models.CastingModel
 				sl.ITEMNAME = dgr.Cells["ITEMNAME"].Value.ToString();
 				sl.UNIT = dgr.Cells["UNIT"].Value.ToString();
 				sl.DELIVEREDQTY = Convert.ToDecimal(dgr.Cells["QTY"].Value);
-				sl.UNITPRICE = Convert.ToDecimal(dgr.Cells["UNITPRICE"].Value);
+				sl.UNITPRICE = 0.00m; //Convert.ToDecimal(dgr.Cells["UNITPRICE"].Value);
 				sl.UNITDISCOUNT = 0.00m;
 				sl.NETTUNITVALUE = sl.UNITPRICE - sl.UNITDISCOUNT;
 				sl.TOTALVALUE = sl.DELIVEREDQTY * sl.NETTUNITVALUE;

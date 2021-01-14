@@ -46,6 +46,7 @@ namespace OMW15.Views.CastingView
 			}
 
 			//chkIsMatInclude.Checked = _cpt.ISMATINCLUDE;
+			cbxMaterial.SelectedValue = _cpt.MATERIAL;
 			txtUnitPrice.Text = $"{_cpt.UNITPRICE:N2}";
 			txtUnitPriceWithMat.Text = $"{_cpt.UNITPRICE_WITHMAT:N2}";
 			txtUnitName.Text = _cpt.PRICEUNITNAME;
@@ -82,7 +83,6 @@ namespace OMW15.Views.CastingView
 		{
 			GetCastingPriceItem(_id);
 
-			cbxMaterial.SelectedValue = _matId;
 		}
 
 		private void btnSave_Click(object sender, EventArgs e)

@@ -14,15 +14,15 @@ namespace OMW15.Views.CastingView
 		public CastingFGItems()
 		{
 			InitializeComponent();
-		}
-
-		private void CastingFGItems_Load(object sender, EventArgs e)
-		{
 			// force this form to show to the center of the parent call
 			CenterToParent();
 
 			OMUtils.SettingDataGridView(ref dgv);
 			dgv.MultiSelect = true;
+		}
+
+		private void CastingFGItems_Load(object sender, EventArgs e)
+		{
 
 			// display sending parameter
 			lbMaterial.Text = $"Mat ({MaterialId}) {MaterialName}";
@@ -90,21 +90,21 @@ namespace OMW15.Views.CastingView
 			lbSelectedItemCount.Text = $"selected item(s) : {dgv.SelectedRows.Count}";
 			var _totalQty = 0.00m;
 			var _totalWeight = 0.00m;
-			var _totalPrice = 0.00m;
+			//var _totalPrice = 0.00m;
 
 			foreach (DataGridViewRow dgr in dgv.SelectedRows)
 			{
 				var _qty = Convert.ToDecimal(dgr.Cells["QTY"].Value);
-				var _unitPrice = Convert.ToDecimal(dgr.Cells["UNITPRICE"].Value);
+				//var _unitPrice = Convert.ToDecimal(dgr.Cells["UNITPRICE"].Value);
 				var _weight = Convert.ToDecimal(dgr.Cells["WEIGHT"].Value);
 				_totalQty += _qty;
 				_totalWeight += _weight;
-				_totalPrice += _qty * _unitPrice;
+				//_totalPrice += _qty * _unitPrice;
 			}
 
 			lbQtySelected.Text = $"selected Qty. : {_totalQty:N2}";
 			lbWeightSeleted.Text = $"total weight : {_totalWeight:N2} (g)";
-			lbTotalPrice.Text = $"total price : {_totalPrice:N2} (THB)";
+			//lbTotalPrice.Text = $"total price : {_totalPrice:N2} (THB)";
 		}
 
 		private void btnSelect_Click(object sender, EventArgs e)
@@ -224,13 +224,14 @@ namespace OMW15.Views.CastingView
 			dgv.Columns["CUSTCODE"].Visible = false;
 			dgv.Columns["TOTALLINEWT"].Visible = false;
 			dgv.Columns["TOTALDELIVERYWT"].Visible = false;
-
+			//dgv.Columns["UNITPRICE"].Visible = false;
+			
 			dgv.Columns["JOBNO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 			dgv.Columns["PREFIX"].HeaderText = "ประเภท";
 			dgv.Columns["ITEMNO"].HeaderText = "รหัสสินค้า";
 			dgv.Columns["ITEMNAME"].HeaderText = "รายละเอียด";
 			dgv.Columns["UNIT"].HeaderText = "หน่วยนับ";
-			dgv.Columns["UNITPRICE"].HeaderText = "ราคาต่อหน่วย";
+			//dgv.Columns["UNITPRICE"].HeaderText = "ราคาต่อหน่วย";
 			dgv.Columns["QTY"].HeaderText = "จำนวน";
 			dgv.Columns["UNITWEIGHT"].HeaderText = "น.น. ต่อหน่วย";
 			dgv.Columns["WEIGHT"].HeaderText = "น.น. รวม (กรัม)";

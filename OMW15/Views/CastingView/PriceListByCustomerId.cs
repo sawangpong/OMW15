@@ -168,14 +168,14 @@ namespace OMW15.Views.CastingView
 		} // end UpdateUI
 
 
-		private async Task<DataTable> GetPriceListItemData(string CustomerCode)
-		{
-			return await Task.Run(() =>
-			{
-				var dal = new PriceListDAL();
-				return dal.GetPriceListByCustomerAsync(CustomerCode, 0);
-			});
-		} // end GetPriceListItemData
+		//private async Task<DataTable> GetPriceListItemData(string CustomerCode)
+		//{
+		//	return await Task.Run(() =>
+		//	{
+		//		var dal = new PriceListDAL();
+		//		return dal.GetPriceListByCustomerAsync(CustomerCode, 0);
+		//	});
+		//} // end GetPriceListItemData
 
 
 		private async void GetData(string CustomerCode)
@@ -184,28 +184,28 @@ namespace OMW15.Views.CastingView
 			dgv.SuspendLayout();
 
 			// binding data
-			var dt = await GetPriceListItemData(CustomerCode);
-			_rowCount = dt.Rows.Count;
-			dgv.DataSource = dt;
+			//var dt = await GetPriceListItemData(CustomerCode);
+			//_rowCount = dt.Rows.Count;
+			//dgv.DataSource = dt;
 
-			// formatting DataGridView
-			dgv.Columns["ID"].Visible = false;
-			dgv.Columns["CUSTOMERCODE"].Visible = false;
-			dgv.Columns["MATERIALID"].Visible = false;
-			dgv.Columns["STYLEID"].Visible = false;
-			dgv.Columns["SCORE"].Visible = false;
-			dgv.Columns["HASIMAGE"].Visible = false;
-			dgv.Columns["WEIGHT"].Visible = false;
+			//// formatting DataGridView
+			//dgv.Columns["ID"].Visible = false;
+			//dgv.Columns["CUSTOMERCODE"].Visible = false;
+			//dgv.Columns["MATERIALID"].Visible = false;
+			//dgv.Columns["STYLEID"].Visible = false;
+			//dgv.Columns["SCORE"].Visible = false;
+			//dgv.Columns["HASIMAGE"].Visible = false;
+			//dgv.Columns["WEIGHT"].Visible = false;
 
-			dgv.Columns["UNIT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-			dgv.Columns["MATERIAL"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-			dgv.Columns["STYLE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+			//dgv.Columns["UNIT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+			//dgv.Columns["MATERIAL"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+			//dgv.Columns["STYLE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-			dgv.Columns["CASTINGPRICE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-			dgv.Columns["CASTINGPRICE"].DefaultCellStyle.Format = "N2";
+			//dgv.Columns["CASTINGPRICE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+			//dgv.Columns["CASTINGPRICE"].DefaultCellStyle.Format = "N2";
 
-			dgv.Columns["UNITPRICE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-			dgv.Columns["UNITPRICE"].DefaultCellStyle.Format = "N2";
+			//dgv.Columns["UNITPRICE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+			//dgv.Columns["UNITPRICE"].DefaultCellStyle.Format = "N2";
 
 
 			//

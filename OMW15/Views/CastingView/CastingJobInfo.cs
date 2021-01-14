@@ -100,8 +100,7 @@ namespace OMW15.Views.CastingView
 
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
-			var
-				_btn = sender as OMFlatButton;
+			var _btn = sender as OMFlatButton;
 			var _tag = _btn.Tag.ToString();
 			var _fieldName = FieldNeed.None;
 			var _option = SelectTypeOption.None;
@@ -139,8 +138,9 @@ namespace OMW15.Views.CastingView
 					break;
 			}
 
-			if (_tag == "ITEM") GetItemPriceInfo(_customerCode);
-			else GetFieldOption(_fieldName, _option);
+			//if (_tag == "ITEM") GetItemPriceInfo(_customerCode);
+			//else 
+			GetFieldOption(_fieldName, _option);
 		}
 
 		#endregion
