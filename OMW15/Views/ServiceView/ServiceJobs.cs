@@ -1,28 +1,189 @@
-﻿using System;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
-using OMControls;
+﻿using OMControls;
 using OMW15.Models.ServiceModel;
 using OMW15.Shared;
 using OMW15.Views.ServiceReports;
+using System;
+using System.Data;
 using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
 
 namespace OMW15.Views.ServiceView
 {
 	public partial class ServiceJobs : Form
 	{
+		#region Singelton
+		private static ServiceJobs _instance;
+		public static ServiceJobs GetInstance
+		{
+			get
+			{
+				if (_instance == null || _instance.IsDisposed)
+				{
+					_instance = new ServiceJobs();
+				}
+				return _instance;
+			}
+
+		}
+		#endregion
+
+		#region class field members
+
+		private int _rowCount;
+		private int _selectedJobId;
+		private int _selectedJobYear = DateTime.Today.Year;
+		private string _selectedSeviceJobCat = "SV";
+		private string _selectedJobCodeFromOrderList = string.Empty;
+		private OMShareServiceEnums.OrderStatusEnum _selectedJobstatus = OMShareServiceEnums.OrderStatusEnum.ACTIVE;
+
+		#endregion
+
+		#region class property
+
+		#endregion
+
+		#region class helper methods
+
+		private void UpdateUI()
+		{
+			// count records
+			lbCount.Text = string.Format("found : {0}", dgv.Rows.Count);
+
+			tsbtnAdd.Enabled = !string.IsNullOrEmpty(_selectedSeviceJobCat);
+			tsbtnEdit.Enabled = _selectedJobId > 0;
+			tsbtnDelete.Enabled = tsbtnEdit.Enabled;
+			tsbtnPrint.Enabled = tsbtnEdit.Enabled;
+			tsbtnFind.Enabled = dgv.Rows.Count > 0;
+
+		} // end UpdateUI
+
+		private void GetJobStatusList()
+		{
+			//cbxJobStatus.DataSource = OMDataUtils.GetValueList<OMShareServiceEnums.OrderStatusEnum>();
+			cbxJobStatus.DataSource = EnumWithName<OMShareServiceEnums.OrderStatusEnum>.ParseEnum();
+			cbxJobStatus.DisplayMember = "Name";
+			cbxJobStatus.ValueMember = "Value"; 
+			cbxJobStatus.SelectedValue = (int)_selectedJobstatus;
+
+			UpdateUI();
+		} // end GetJobStatusList
+
+		private void GetYearList(OMShareServiceEnums.OrderStatusEnum jobStatus)
+		{
+			cbxJobYear.DataSource = new ServiceJobDAL().GetServiceYearList(jobStatus);
+			cbxJobYear.DisplayMember = "Y";
+			cbxJobYear.ValueMember = "Y";
+			cbxJobYear.SelectedValue = (lbSelectYear.Text.IsNumeric() ? Convert.ToInt32(lbSelectYear.Text) : _selectedJobYear);
+
+			UpdateUI();
+
+		} // end GetYearList
+
+
+		private void GetJobCATBySelectedYear(int SelectedYear, OMShareServiceEnums.OrderStatusEnum jobStatus)
+		{
+			cbxJobCat.DataSource = new ServiceJobDAL().GetJobCodeList(SelectedYear, jobStatus);
+			cbxJobCat.DisplayMember = "VALUE";
+			cbxJobCat.ValueMember = "CODE";
+			cbxJobCat.SelectedValue = _selectedSeviceJobCat;
+
+			UpdateUI();
+		} // end GetJobCodeBySelectedYear
+
+
+		private void GetJobList(int YearSelect, string JobCode, OMShareServiceEnums.OrderStatusEnum Status)
+		{
+			var dt = new ServiceJobDAL().GetServiceJobList(YearSelect, JobCode, Status);
+			_rowCount = dt.Rows.Count;
+
+			dgv.DataSource = dt;
+
+			dgv.SuspendLayout();
+			dgv.Columns["YEAR"].Visible = false;
+			dgv.Columns["JOBSTATUS"].Visible = false;
+			dgv.Columns["STATUSNAME"].HeaderText = "STATUS";
+			dgv.Columns["ORDERID"].Visible = false;
+			dgv.Columns["ORDERCODE"].Visible = false;
+			dgv.Columns["ORDERNO"].Visible = false;
+			dgv.Columns["ERRORCODE"].Visible = false;
+			dgv.Columns["ERROR"].Visible = false;
+			dgv.Columns["ACTIONPIORITY"].Visible = false;
+			dgv.Columns["FINISH"].Visible = !(Status == OMShareServiceEnums.OrderStatusEnum.ACTIVE);
+			dgv.Columns["CUSTOMER"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+			dgv.ResumeLayout();
+
+			dgv.Columns["SERVICECOST"].HeaderText = "Service Charge";
+			dgv.Columns["SERVICECOST"].DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.NumericCellStyle();
+			dgv.Columns["SPAREPARTCOST"].HeaderText = "Spare part";
+			dgv.Columns["SPAREPARTCOST"].DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.NumericCellStyle();
+			dgv.Columns["OTHERCOST"].HeaderText = "Other Charge";
+			dgv.Columns["OTHERCOST"].DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.NumericCellStyle();
+
+			lbCount.Text = $"found : {_rowCount}";
+
+			UpdateUI();
+		} // end GetJobList
+
+
+		private void ShowError(string Error)
+		{
+			txtError.Text = Error;
+		} // end ShowError
+
+
+		private void GetJobOrderInfo(int JobId, string OrderCode = "")
+		{
+			using (var _srvInfo = new ServiceJobInfo(JobId, OrderCode))
+			{
+				_srvInfo.StartPosition = FormStartPosition.CenterScreen;
+				_srvInfo.ShowDialog(this);
+			}
+
+			// refresh year list
+			GetYearList(_selectedJobstatus);
+
+			// refresh UI
+			tsbtnRefresh.PerformClick();
+
+		} // end GetJobOrderInfo
+
+		private string GetFilter()
+		{
+			var _result = string.Empty;
+			using (var _search = new JobSearch())
+			{
+				if (_search.ShowDialog() == DialogResult.OK)
+					_result = _search.FilterResult;
+				else
+					_result = string.Empty;
+			}
+			return _result;
+		} // end GetFilter
+
+		#endregion
+
+
 		public ServiceJobs()
 		{
 			InitializeComponent();
+
+			// setting datagridView
+			OMUtils.SettingDataGridView(ref dgv);
+			OMUtils.SettingDataGridView(ref dgvByOrderCode);
+			OMUtils.SettingDataGridView(ref dgvByModel);
+
+			// display summary active orders
+			this.GetActiveServiceOrderSummaryByOrderCode();
+			this.GetActiveServiceOrderSummaryByModel();
+
+
+
 		}
 
-		private async void getActiveServiceOrderSummaryByOrderCode()
+		private void GetActiveServiceOrderSummaryByOrderCode()
 		{
-			var _dal = new ServiceJobDAL();
-			var _dt = await _dal.getSummaryActiveServiceOrderByOrderCodeAsync();
-			//_dt.DefaultView.Sort = "Qty";
-
+			var _dt = new ServiceJobDAL().GetSummaryActiveServiceOrderByOrderCode();
 			this.dgvByOrderCode.SuspendLayout();
 			this.dgvByOrderCode.Font = new Font(this.dgvByOrderCode.Font, FontStyle.Bold);
 			this.dgvByOrderCode.DataSource = _dt;
@@ -35,11 +196,9 @@ namespace OMW15.Views.ServiceView
 
 		}
 
-		private async void getActiveServiceOrderSummaryByModel()
+		private void GetActiveServiceOrderSummaryByModel()
 		{
-			var _dal = new ServiceJobDAL();
-			var _dt = await _dal.getSummaryActiveServiceOrderByModelAsync();
-			//_dt.DefaultView.Sort = "Qty";
+			var _dt = new ServiceJobDAL().GetSummaryActiveServiceOrderByModel();
 
 			this.dgvByModel.SuspendLayout();
 			this.dgvByModel.Font = new Font(this.dgvByModel.Font, FontStyle.Bold);
@@ -55,15 +214,6 @@ namespace OMW15.Views.ServiceView
 
 		private void ServiceJobs_Load(object sender, EventArgs e)
 		{
-			// setting datagridView
-			OMUtils.SettingDataGridView(ref dgv);
-			OMUtils.SettingDataGridView(ref dgvByOrderCode);
-			OMUtils.SettingDataGridView(ref dgvByModel);
-
-			// display summary active orders
-			this.getActiveServiceOrderSummaryByOrderCode();
-			this.getActiveServiceOrderSummaryByModel();
-
 			// call jobstatus
 			GetJobStatusList();
 
@@ -227,144 +377,6 @@ namespace OMW15.Views.ServiceView
 			}
 		}
 
-		#region class field members
 
-		private int _rowCount;
-		private int _selectedJobId;
-		private int _selectedJobYear = DateTime.Today.Year;
-		private string _selectedSeviceJobCat = "SV";
-		private string _selectedJobCodeFromOrderList = string.Empty;
-		private OMShareServiceEnums.OrderStatusEnum _selectedJobstatus = OMShareServiceEnums.OrderStatusEnum.ACTIVE;
-
-		#endregion
-
-		#region class property
-
-		#endregion
-
-		#region class helper methods
-
-		private void UpdateUI()
-		{
-			// count records
-			lbCount.Text = string.Format("found : {0}", dgv.Rows.Count);
-
-			tsbtnAdd.Enabled = !string.IsNullOrEmpty(_selectedSeviceJobCat);
-			tsbtnEdit.Enabled = _selectedJobId > 0;
-			tsbtnDelete.Enabled = tsbtnEdit.Enabled;
-			tsbtnPrint.Enabled = tsbtnEdit.Enabled;
-			tsbtnFind.Enabled = dgv.Rows.Count > 0;
-
-		} // end UpdateUI
-
-		private void GetJobStatusList()
-		{
-			cbxJobStatus.DataSource = OMDataUtils.GetValueList<OMShareServiceEnums.OrderStatusEnum>();
-			cbxJobStatus.DisplayMember = "Value";
-			cbxJobStatus.ValueMember = "Key";
-			cbxJobStatus.SelectedValue = (int)_selectedJobstatus;
-
-			UpdateUI();
-		} // end GetJobStatusList
-
-		private void GetYearList(OMShareServiceEnums.OrderStatusEnum jobStatus)
-		{
-			cbxJobYear.DataSource = new ServiceJobDAL().GetServiceYearList(jobStatus);
-			cbxJobYear.DisplayMember = "Y";
-			cbxJobYear.ValueMember = "Y";
-			cbxJobYear.SelectedValue = (lbSelectYear.Text.IsNumeric() ? Convert.ToInt32(lbSelectYear.Text) : _selectedJobYear);
-
-			UpdateUI();
-
-		} // end GetYearList
-
-
-		private void GetJobCATBySelectedYear(int SelectedYear, OMShareServiceEnums.OrderStatusEnum jobStatus)
-		{
-			cbxJobCat.DataSource = new ServiceJobDAL().GetJobCodeList(SelectedYear, jobStatus);
-			cbxJobCat.DisplayMember = "VALUE";
-			cbxJobCat.ValueMember = "CODE";
-			cbxJobCat.SelectedValue = _selectedSeviceJobCat;
-
-			UpdateUI();
-		} // end GetJobCodeBySelectedYear
-
-
-		private void GetJobList(int YearSelect, string JobCode, OMShareServiceEnums.OrderStatusEnum Status)
-		{
-			var dt = new ServiceJobDAL().GetServiceJobList(YearSelect, JobCode, Status);
-			_rowCount = dt.Rows.Count;
-
-			dgv.DataSource = dt;
-
-			dgv.SuspendLayout();
-			dgv.Columns["YEAR"].Visible = false;
-			dgv.Columns["JOBSTATUS"].Visible = false;
-			dgv.Columns["STATUSNAME"].HeaderText = "Status";
-			dgv.Columns["ORDERID"].Visible = false;
-			dgv.Columns["ORDERCODE"].Visible = false;
-			dgv.Columns["ORDERNO"].Visible = false;
-			dgv.Columns["ERRORCODE"].Visible = false;
-			dgv.Columns["ERROR"].Visible = false;
-			dgv.Columns["ACTIONPIORITY"].Visible = false;
-			dgv.Columns["FINISH"].Visible = !(Status == OMShareServiceEnums.OrderStatusEnum.ACTIVE);
-			dgv.Columns["CUSTOMER"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-			dgv.ResumeLayout();
-
-			dgv.Columns["SERVICECOST"].HeaderText = "Service Charge";
-			dgv.Columns["SERVICECOST"].DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.NumericCellStyle();
-			dgv.Columns["SPAREPARTCOST"].HeaderText = "Spare part";
-			dgv.Columns["SPAREPARTCOST"].DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.NumericCellStyle();
-			dgv.Columns["OTHERCOST"].HeaderText = "Other Charge";
-			dgv.Columns["OTHERCOST"].DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.NumericCellStyle();
-
-			lbCount.Text = $"found : {_rowCount}";
-
-			UpdateUI();
-		} // end GetJobList
-
-
-		private void ShowError(string Error)
-		{
-			txtError.Text = Error;
-		} // end ShowError
-
-
-		private void GetJobOrderInfo(int JobId, string OrderCode = "")
-		{
-			using (var _srvInfo = new ServiceJobInfo(JobId, OrderCode))
-			{
-				_srvInfo.StartPosition = FormStartPosition.CenterScreen;
-				_srvInfo.ShowDialog(this);
-			}
-
-			// refresh year list
-			GetYearList(_selectedJobstatus);
-
-			// refresh UI
-			tsbtnRefresh.PerformClick();
-
-		} // end GetJobOrderInfo
-
-		private string GetFilter()
-		{
-			var _result = string.Empty;
-			using (var _search = new JobSearch())
-			{
-				if (_search.ShowDialog() == DialogResult.OK)
-					_result = _search.FilterResult;
-				else
-					_result = string.Empty;
-			}
-			return _result;
-		} // end GetFilter
-
-		#endregion
-
-
-		private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
-		{
-
-		}
 	}
 }

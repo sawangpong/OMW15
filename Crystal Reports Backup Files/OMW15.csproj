@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -13,7 +14,8 @@
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>c2c1b64f</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <PublishUrl>\\om-srv-app\SmartWork17\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
@@ -26,19 +28,19 @@
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>\\om-srv-app\SmartWork17\</UpdateUrl>
     <SupportUrl>\\om-srv-app\SmartWork17\</SupportUrl>
-    <ProductName>SmartWorks17 %28LAN%29 - 20190715</ProductName>
+    <ProductName>SmartWorks17 %28LAN%29 - 2021-01-14</ProductName>
     <PublisherName>OMW2017</PublisherName>
-    <SuiteName>Old Moon Suit</SuiteName>
+    <SuiteName>Old Moon Suite</SuiteName>
     <MinimumRequiredVersion>4.0.0.0</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>23</ApplicationRevision>
-    <ApplicationVersion>4.1.1.%2a</ApplicationVersion>
+    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationVersion>4.3.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <BootstrapperComponentsUrl>\\om-srv-app\SmartWork17\</BootstrapperComponentsUrl>
+    <BootstrapperComponentsUrl>\\om-srv-app\SmartWork17\dotnetfx461</BootstrapperComponentsUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -71,10 +73,10 @@
     <StartupObject>OMW15.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>925A0612418806DE2FFD3A8FFEABC2333BCDD5AE</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>83EA0B5307A4F5AB6531BFD1E74C89D24ABA69CD</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>OMW15_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>OMW15_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -109,67 +111,42 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.CrystalReports.Engine">
-      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
-    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Enterprise.Viewing.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="CrystalDecisions.ReportAppServer.ClientDoc">
-      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.ReportAppServer.ClientDoc.dll</HintPath>
+    <Reference Include="CrystalDecisions.ReportAppServer.ClientDoc, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="CrystalDecisions.ReportAppServer.CommonControls">
-      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.ReportAppServer.CommonControls.dll</HintPath>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonControls, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="CrystalDecisions.ReportAppServer.CommonObjectModel">
-      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.ReportAppServer.CommonObjectModel.dll</HintPath>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonObjectModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="CrystalDecisions.ReportAppServer.Controllers">
-      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.ReportAppServer.Controllers.dll</HintPath>
+    <Reference Include="CrystalDecisions.ReportAppServer.Controllers, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="CrystalDecisions.ReportSource">
-      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.ReportSource.dll</HintPath>
-    </Reference>
-    <Reference Include="CrystalDecisions.Shared">
-      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.Shared.dll</HintPath>
-    </Reference>
-    <Reference Include="CrystalDecisions.Windows.Forms">
-      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.Windows.Forms.dll</HintPath>
-    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="ExcelDataReader, Version=3.3.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
-      <HintPath>..\packages\ExcelDataReader.3.3.0\lib\net45\ExcelDataReader.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="ExcelDataReader, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.3.6.0\lib\net45\ExcelDataReader.dll</HintPath>
     </Reference>
     <Reference Include="GAFExtension">
       <HintPath>.\GAFExtension.dll</HintPath>
     </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.3.1.9, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.3.1\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="OMControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
@@ -281,6 +258,9 @@
     <Compile Include="CUSTPRICELIST.cs">
       <DependentUpon>Oldmoon.tt</DependentUpon>
     </Compile>
+    <Compile Include="CUSTPRICETAB.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
     <Compile Include="CUSTTASK.cs">
       <DependentUpon>Oldmoon.tt</DependentUpon>
     </Compile>
@@ -354,6 +334,9 @@
     <Compile Include="LOGIN.cs">
       <DependentUpon>Oldmoon.tt</DependentUpon>
     </Compile>
+    <Compile Include="Maintenace1.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
     <Compile Include="MATERIAL.cs">
       <DependentUpon>Oldmoon.tt</DependentUpon>
     </Compile>
@@ -372,26 +355,45 @@
     <Compile Include="MCBOM.cs">
       <DependentUpon>Oldmoon.tt</DependentUpon>
     </Compile>
+    <Compile Include="MemberTimeRecord.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
     <Compile Include="MIX.cs">
       <DependentUpon>Oldmoon.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model.Extend\ValidProductionTime.cs" />
+    <Compile Include="ModelDataExtend\EMPLOYEE.cs" />
+    <Compile Include="ModelDataExtend\EmployeeDisplayRecord.cs" />
+    <Compile Include="ModelDataExtend\EMPSAL.Extend.cs" />
+    <Compile Include="ModelDataExtend\IssueRequestHeader.cs" />
+    <Compile Include="ModelDataExtend\ProductionHourReport.cs" />
+    <Compile Include="ModelDataExtend\ProductionJobDataDS.cs" />
+    <Compile Include="ModelDataExtend\ProductionJobHeaderDS.cs" />
+    <Compile Include="ModelDataExtend\ProductionJobInfoDS.cs" />
+    <Compile Include="ModelDataExtend\ProductionOutsourceDS.cs" />
+    <Compile Include="ModelDataExtend\ProductionWorkMonth.cs" />
     <Compile Include="Models\CastingModel\BillInfoReportDAL.cs" />
     <Compile Include="Models\CastingModel\BillingDAL.cs" />
-    <Compile Include="Models\CastingModel\CastingJobList.cs" />
+    <Compile Include="ModelDataExtend\CastingJobList.cs" />
     <Compile Include="Models\CastingModel\CastingPerformanceDAL.cs" />
     <Compile Include="Models\CastingModel\CastingReportFields.cs" />
     <Compile Include="Models\CastingModel\CastingSaleOrderDAL.cs" />
     <Compile Include="Models\CastingModel\CastingSaleOrderDataSource.cs" />
     <Compile Include="Models\CastingModel\CastingSaleOrderReportItem.cs" />
     <Compile Include="Models\CastingModel\CastingWorkerDAL.cs" />
+    <Compile Include="Models\CastingModel\CastingWorkSummary.cs" />
     <Compile Include="Models\CastingModel\JobHistories.cs" />
     <Compile Include="Models\CastingModel\MaterialBalance.cs" />
     <Compile Include="Models\CastingModel\MaterialCardDataItems.cs" />
     <Compile Include="Models\CastingModel\ReturnMaterialDAL.cs" />
     <Compile Include="Models\CastingModel\WaxTreeReportDAL.cs" />
+    <Compile Include="Models\Oldmoon.Context.Extend.cs" />
     <Compile Include="Models\ProductionModel\BOMDal.cs" />
+    <Compile Include="Models\ProductionModel\IssueItem.cs" />
     <Compile Include="Models\ProductionModel\ItemProcessInfo.cs" />
     <Compile Include="Models\ProductionModel\ProductionDAL.cs" />
+    <Compile Include="Models\ProductionModel\ProductionStatDAL.cs" />
+    <Compile Include="Models\ProductionModel\SupplierDAL.cs" />
     <Compile Include="Models\SaleModel\ERPPriceDAL.cs" />
     <Compile Include="Models\SaleModel\SalemanDAL.cs" />
     <Compile Include="Models\SaleModel\SalePIDataItem.cs" />
@@ -407,6 +409,147 @@
     <Compile Include="Models\ToolModel\PrintLog.cs" />
     <Compile Include="Models\WarehouseModel\FOCIssueDAL.cs" />
     <Compile Include="Models\WarehouseModel\FOCItems.cs" />
+    <Compile Include="Oldmoon.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Oldmoon.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Oldmoon.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Oldmoon.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Oldmoon.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="OM_CASTING_AGING.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_CASTING_BILLING.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_CASTING_COMU_LABOUR.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_CASTING_COMU_SELL_MAT.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_CASTING_DELIVERY_MAT_SUMMARY.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_CASTING_GRV_INFO.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_CASTING_GRV_SUMMARY.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_CASTING_INV_COLLECTED.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_CASTING_ITEMPRICE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_CASTING_JOB.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_CASTING_LABOUR.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_CASTING_PENDING_BILL.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_CASTING_SALES.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_CASTING_SELL_MAT.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_CASTING_SO.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_CASTING_SUMMARY.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_CASTING_SUM_AGING.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_DELIVERY_CASTING_ITEM_R.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_ERP_CUSTOMER.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_ERP_DOCINFO.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_ERP_PRODUCTION_DOCYEAR.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_ERP_PRODUCTION_ISSUE_REQ.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_ERP_PRODUCTION_PROJECT.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_ERP_PRODUCTION_REQLIST.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_ERP_PRODUCTION_TRANSFER_REQUEST.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_ERP_SKU_BALANCE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_ERP_STOCK_MOVE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_ERP_TRH_TRD.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_ERP_WH_ISSUE_ITEMS.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_ERP_WH_STOCK_ITEM_INFO.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_FS_VALIDTIME_RECORDS.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_JOB_ITEM_R.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_PRODUCTION_MISS_REPORT.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_PRODUCTION_WORKINGTIMES.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_SALE_MC_RECORD.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_SRV_MACHINE_SERVICE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_SRV_SERVICE_INCOME.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_SRV_SPAREPART_INCOME.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_SUM_DEL_CASTING_R.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_VALID_TIME_RECORDS.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OM_VSERVICEJOBLIST.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
     <Compile Include="ORDERFIXED.cs">
       <DependentUpon>Oldmoon.tt</DependentUpon>
     </Compile>
@@ -464,6 +607,9 @@
     <Compile Include="PRODUCTIONSTDITEM.cs">
       <DependentUpon>Oldmoon.tt</DependentUpon>
     </Compile>
+    <Compile Include="PRODUCTION_OUTSOURCE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -501,6 +647,9 @@
     <Compile Include="SYSDATA.cs">
       <DependentUpon>Oldmoon.tt</DependentUpon>
     </Compile>
+    <Compile Include="TVIEW_JOBORDERS.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
     <Compile Include="UOFQTY.cs">
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
@@ -510,7 +659,7 @@
     <Compile Include="usp_GetServiceJobList_Result.cs">
       <DependentUpon>Oldmoon.tt</DependentUpon>
     </Compile>
-    <Compile Include="usp_SCSummaryWithVAT_Result.cs">
+    <Compile Include="usp_ValidTimeRecord_Result.cs">
       <DependentUpon>Oldmoon.tt</DependentUpon>
     </Compile>
     <Compile Include="Views\BankView\BankInfo.cs">
@@ -525,6 +674,12 @@
     <Compile Include="Views\BankView\BankList.Designer.cs">
       <DependentUpon>BankList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\CastingView\CastingPriceItemList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingPriceItemList.Designer.cs">
+      <DependentUpon>CastingPriceItemList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\CastingReports\BillingSO.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -536,6 +691,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CastingMonthReportByCustGroup.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\CastingReports\CastingMonthReportByMaterial.cs">
+      <DependentUpon>CastingMonthReportByMaterial.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\CastingReports\CastingMonthReportByCustomer.cs">
       <AutoGen>True</AutoGen>
@@ -603,17 +764,23 @@
       <DependentUpon>WaxTreeReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Views\CastingReports\WorkSummary.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkSummary.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Views\CastingView\AvailbleCastingSaleOrderList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\CastingView\AvailbleCastingSaleOrderList.Designer.cs">
       <DependentUpon>AvailbleCastingSaleOrderList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\CastingView\Casting.cs">
+    <Compile Include="Views\CastingView\CastingHouse.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\CastingView\Casting.Designer.cs">
-      <DependentUpon>Casting.cs</DependentUpon>
+    <Compile Include="Views\CastingView\CastingHouse.Designer.cs">
+      <DependentUpon>CastingHouse.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\CastingView\CastingFGItems.cs">
       <SubType>Form</SubType>
@@ -650,6 +817,12 @@
     </Compile>
     <Compile Include="Views\CastingView\CastingOrderCustomers.Designer.cs">
       <DependentUpon>CastingOrderCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingPriceItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CastingView\CastingPriceItem.Designer.cs">
+      <DependentUpon>CastingPriceItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\CastingView\CastingWorker.cs">
       <SubType>Form</SubType>
@@ -807,6 +980,42 @@
     <Compile Include="Views\CustomerView\CustomerGroups.Designer.cs">
       <DependentUpon>CustomerGroups.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\EmployeeView\ActiveEmps.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EmployeeView\ActiveEmps.Designer.cs">
+      <DependentUpon>ActiveEmps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeView\EmpList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EmployeeView\EmpList.Designer.cs">
+      <DependentUpon>EmpList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeView\EmpSala.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EmployeeView\EmpSala.Designer.cs">
+      <DependentUpon>EmpSala.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeView\EmpSalInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EmployeeView\EmpSalInfo.Designer.cs">
+      <DependentUpon>EmpSalInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeView\Hourcost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EmployeeView\Hourcost.Designer.cs">
+      <DependentUpon>Hourcost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeView\WorktimeManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EmployeeView\WorktimeManager.Designer.cs">
+      <DependentUpon>WorktimeManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Productions\ActiveProductionJobs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -885,11 +1094,77 @@
     <Compile Include="Views\Productions\ProductionProcessInfo.Designer.cs">
       <DependentUpon>ProductionProcessInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Productions\ProductionReports\ProductionJob2.cs">
+      <DependentUpon>ProductionJob2.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionReports\ProductionJob.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductionJob.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionReports\ProductionJob211.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductionJob21.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionReports\ProductionJob3.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductionJob3.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionReports\ProductionJobProcess.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductionJobProcess.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionReports\ProductionProcessHours.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductionProcessHours.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionReports\ProductionReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionReports\ProductionReport.Designer.cs">
+      <DependentUpon>ProductionReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionReports\ProductionReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionReports\ProductionReportViewer.Designer.cs">
+      <DependentUpon>ProductionReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionReports\ProductionSub.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductionSub.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionReports\WorkByMonth.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkByMonth.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Views\Productions\ProductionUserControl\WorkerTimeRecord.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Views\Productions\ProductionUserControl\WorkerTimeRecord.Designer.cs">
       <DependentUpon>WorkerTimeRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\Receive2WH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\Receive2WH.Designer.cs">
+      <DependentUpon>Receive2WH.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Productions\REQISU.cs">
       <SubType>Form</SubType>
@@ -914,6 +1189,24 @@
     </Compile>
     <Compile Include="Views\Productions\STDParts.Designer.cs">
       <DependentUpon>STDParts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\SupInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\SupInfo.Designer.cs">
+      <DependentUpon>SupInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\SupplierList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\SupplierList.Designer.cs">
+      <DependentUpon>SupplierList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\WorkerStat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\WorkerStat.Designer.cs">
+      <DependentUpon>WorkerStat.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Productions\WorkProcess.cs">
       <SubType>Form</SubType>
@@ -1033,6 +1326,18 @@
     <Compile Include="Views\Sales\SaleContactSearch.Designer.cs">
       <DependentUpon>SaleContactSearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Sales\SaleHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\SaleHistory.Designer.cs">
+      <DependentUpon>SaleHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\SaleMachine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\SaleMachine.Designer.cs">
+      <DependentUpon>SaleMachine.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Sales\SaleMan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1056,6 +1361,12 @@
     </Compile>
     <Compile Include="Views\Sales\SaleProformaList.Designer.cs">
       <DependentUpon>SaleProformaList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sales\SaleSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sales\SaleSummary.Designer.cs">
+      <DependentUpon>SaleSummary.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Sales\SaleWorks.cs">
       <SubType>Form</SubType>
@@ -1141,11 +1452,11 @@
     <Compile Include="Views\ServiceView\ServiceJobs.Designer.cs">
       <DependentUpon>ServiceJobs.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ServiceView\SeviceWorks.cs">
+    <Compile Include="Views\ServiceView\ServiceWorks.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\ServiceView\SeviceWorks.Designer.cs">
-      <DependentUpon>SeviceWorks.cs</DependentUpon>
+    <Compile Include="Views\ServiceView\ServiceWorks.Designer.cs">
+      <DependentUpon>ServiceWorks.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ServiceView\SrvStat.cs">
       <SubType>Form</SubType>
@@ -1173,7 +1484,7 @@
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CastingModel\CastingJobDataSource.cs" />
-    <Compile Include="Models\CastingModel\CastingJobOrderDataItem.cs" />
+    <Compile Include="ModelDataExtend\CastingJobOrderDataItem.cs" />
     <Compile Include="Models\CastingModel\CastingOrderReportDataItem.cs" />
     <Compile Include="Models\CastingModel\CastingOrderReportDS.cs" />
     <Compile Include="Models\CastingModel\CastingTreeController.cs" />
@@ -1400,21 +1711,6 @@
       <DependentUpon>SelectProvince.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\ServiceModel\MachineDAL.cs" />
-    <Compile Include="Oldmoon.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Oldmoon.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Oldmoon.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Oldmoon.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Oldmoon.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Oldmoon.edmx</DependentUpon>
-    </Compile>
     <Compile Include="omglobal.cs" />
     <Compile Include="OW15.cs">
       <SubType>Form</SubType>
@@ -1538,6 +1834,12 @@
       <DependentUpon>AppUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\ToolModel\DataConnect.cs" />
+    <Compile Include="Views\ToolViews\Datadic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolViews\Datadic.Designer.cs">
+      <DependentUpon>Datadic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ToolViews\LoadAlert.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1713,6 +2015,9 @@
     <EmbeddedResource Include="Views\BankView\BankList.resx">
       <DependentUpon>BankList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingPriceItemList.resx">
+      <DependentUpon>CastingPriceItemList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\CastingReports\BillingSO.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>BillingSO.cs</LastGenOutput>
@@ -1720,6 +2025,10 @@
     <EmbeddedResource Include="Views\CastingReports\CastingMonthReportByCustGroup.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CastingMonthReportByCustGroup.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingReports\CastingMonthReportByMaterial.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CastingMonthReportByMaterial.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CastingReports\CastingMonthReportByCustomer.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1765,11 +2074,15 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>WaxTreeReport.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingReports\WorkSummary.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>WorkSummary.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\CastingView\AvailbleCastingSaleOrderList.resx">
       <DependentUpon>AvailbleCastingSaleOrderList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CastingView\Casting.resx">
-      <DependentUpon>Casting.cs</DependentUpon>
+    <EmbeddedResource Include="Views\CastingView\CastingHouse.resx">
+      <DependentUpon>CastingHouse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CastingView\CastingFGItems.resx">
       <DependentUpon>CastingFGItems.cs</DependentUpon>
@@ -1788,6 +2101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CastingView\CastingOrderCustomers.resx">
       <DependentUpon>CastingOrderCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CastingView\CastingPriceItem.resx">
+      <DependentUpon>CastingPriceItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CastingView\CastingWorker.resx">
       <DependentUpon>CastingWorker.cs</DependentUpon>
@@ -1867,6 +2183,24 @@
     <EmbeddedResource Include="Views\CustomerView\CustomerGroups.resx">
       <DependentUpon>CustomerGroups.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\EmployeeView\ActiveEmps.resx">
+      <DependentUpon>ActiveEmps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EmployeeView\EmpList.resx">
+      <DependentUpon>EmpList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EmployeeView\EmpSala.resx">
+      <DependentUpon>EmpSala.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EmployeeView\EmpSalInfo.resx">
+      <DependentUpon>EmpSalInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EmployeeView\Hourcost.resx">
+      <DependentUpon>Hourcost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EmployeeView\WorktimeManager.resx">
+      <DependentUpon>WorktimeManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Productions\ActiveProductionJobs.resx">
       <DependentUpon>ActiveProductionJobs.cs</DependentUpon>
     </EmbeddedResource>
@@ -1906,8 +2240,49 @@
     <EmbeddedResource Include="Views\Productions\ProductionProcessInfo.resx">
       <DependentUpon>ProductionProcessInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionReports\ProductionJob2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProductionJob2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionReports\ProductionJob.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProductionJob.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionReports\ProductionJob21.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProductionJob211.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionReports\ProductionJob3.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProductionJob3.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionReports\ProductionJobProcess.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProductionJobProcess.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionReports\ProductionProcessHours.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProductionProcessHours.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionReports\ProductionReport.resx">
+      <DependentUpon>ProductionReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionReports\ProductionReportViewer.resx">
+      <DependentUpon>ProductionReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionReports\ProductionSub.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProductionSub.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionReports\WorkByMonth.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>WorkByMonth.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Productions\ProductionUserControl\WorkerTimeRecord.resx">
       <DependentUpon>WorkerTimeRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\Receive2WH.resx">
+      <DependentUpon>Receive2WH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Productions\REQISU.resx">
       <DependentUpon>REQISU.cs</DependentUpon>
@@ -1920,6 +2295,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Productions\STDParts.resx">
       <DependentUpon>STDParts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\SupInfo.resx">
+      <DependentUpon>SupInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\SupplierList.resx">
+      <DependentUpon>SupplierList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\WorkerStat.resx">
+      <DependentUpon>WorkerStat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Productions\WorkProcess.resx">
       <DependentUpon>WorkProcess.cs</DependentUpon>
@@ -1980,6 +2364,12 @@
     <EmbeddedResource Include="Views\Sales\SaleContactSearch.resx">
       <DependentUpon>SaleContactSearch.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\SaleHistory.resx">
+      <DependentUpon>SaleHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\SaleMachine.resx">
+      <DependentUpon>SaleMachine.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales\SaleMan.resx">
       <DependentUpon>SaleMan.cs</DependentUpon>
     </EmbeddedResource>
@@ -1991,6 +2381,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales\SaleProformaList.resx">
       <DependentUpon>SaleProformaList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sales\SaleSummary.resx">
+      <DependentUpon>SaleSummary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sales\SaleWorks.resx">
       <DependentUpon>SaleWorks.cs</DependentUpon>
@@ -2036,8 +2429,8 @@
     <EmbeddedResource Include="Views\ServiceView\ServiceJobs.resx">
       <DependentUpon>ServiceJobs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ServiceView\SeviceWorks.resx">
-      <DependentUpon>SeviceWorks.cs</DependentUpon>
+    <EmbeddedResource Include="Views\ServiceView\ServiceWorks.resx">
+      <DependentUpon>ServiceWorks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ServiceView\SrvStat.resx">
       <DependentUpon>SrvStat.cs</DependentUpon>
@@ -2196,6 +2589,9 @@
     <EmbeddedResource Include="Views\ToolViews\AppUpdate.resx">
       <DependentUpon>AppUpdate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolViews\Datadic.resx">
+      <DependentUpon>Datadic.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ToolViews\LoadAlert.resx">
       <DependentUpon>LoadAlert.cs</DependentUpon>
     </EmbeddedResource>
@@ -2269,10 +2665,6 @@
     <EmbeddedResource Include="Views\WarehouseView\WHStockCard.resx">
       <DependentUpon>WHStockCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="Oldmoon.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Oldmoon.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <EntityDeploy Include="ERP.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ERP.Designer.cs</LastGenOutput>
@@ -2290,21 +2682,14 @@
     <None Include="ERP.edmx.diagram">
       <DependentUpon>ERP.edmx</DependentUpon>
     </None>
-    <None Include="OMW15_2_TemporaryKey.pfx" />
-    <None Include="Oldmoon.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Oldmoon.edmx</DependentUpon>
-      <LastGenOutput>Oldmoon.Context.cs</LastGenOutput>
-    </None>
+    <EntityDeploy Include="Oldmoon.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Oldmoon.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="Oldmoon.edmx.diagram">
       <DependentUpon>Oldmoon.edmx</DependentUpon>
     </None>
-    <None Include="Oldmoon.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Oldmoon.edmx</DependentUpon>
-      <LastGenOutput>Oldmoon.cs</LastGenOutput>
-    </None>
-    <None Include="OMW15_TemporaryKey.pfx" />
+    <None Include="OMW15_1_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\OMW15.Casting.CastingController.JobOrderDataItem.datasource" />
     <None Include="Properties\Settings.settings">
@@ -2534,7 +2919,29 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Oldmoon.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Oldmoon.edmx</DependentUpon>
+      <LastGenOutput>Oldmoon.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Oldmoon.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Oldmoon.edmx</DependentUpon>
+      <LastGenOutput>Oldmoon.cs</LastGenOutput>
+    </Content>
+    <Content Include="UNUSED_CODE\ProductionDAL_UnusedCode.txt" />
+    <None Include="Resources\logo-1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

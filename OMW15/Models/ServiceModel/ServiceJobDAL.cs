@@ -1,11 +1,10 @@
-﻿using OMW15.Shared;
+﻿using OMW15.Models.ToolModel;
+using OMW15.Shared;
 using System;
 using System.Data;
 using System.Data.Entity.Core;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
 
 namespace OMW15.Models.ServiceModel
 {
@@ -24,105 +23,42 @@ namespace OMW15.Models.ServiceModel
 
 		#endregion
 
-		public string GetOrderType(string OrderTypeCode)
-		{
-			return _om.ORDERTYPEs.SingleOrDefault(x => x.ordertypecode == OrderTypeCode).ordertypename;
+		public string GetOrderType(string OrderTypeCode) =>
+			_om.ORDERTYPEs.SingleOrDefault(x => x.ordertypecode == OrderTypeCode).ordertypename;
 
-		} // end GetOrderType
+		public DataTable GetServiceYearList(OMShareServiceEnums.OrderStatusEnum status) =>
+			new DataConnect($"EXEC dbo.usp_OM_SERVICE_YEAR_BY_STATUS @status={(int)status}", omglobal.SysConnectionString).ToDataTable;
 
-		public DataTable GetServiceYearList(OMShareServiceEnums.OrderStatusEnum status)
-		{
 
-			return _om.ORDERMAINTENANCEs.Where(x => x.isdelete == false && x.status.Value == (int)status).Select(x => new
-			{
-				Y = x.fiscyear
-			}).Distinct().OrderByDescending(o => o.Y).AsParallel().ToDataTable();
-
-		} // end GetServiceYearList
-
-		public DataTable GetOrderCodeList()
-		{
-			return _om.ORDERTYPEs.Select(x => new
-			{
-				Code = x.ordertypecode,
-				CodeName = x.ordertypecode + "-" + x.ordertypename
-			}).OrderBy(o => o.CodeName).AsParallel().ToDataTable();
-		} // end GetOrderCodeList
+		public DataTable GetOrderCodeList() => _om.ORDERTYPEs
+																.Select(x => new
+																{
+																	Code = x.ordertypecode,
+																	CodeName = x.ordertypecode + "-" + x.ordertypename
+																}).OrderBy(o => o.CodeName).AsParallel().ToDataTable();
 
 		public DataTable GetJobCodeList(int YearService)
 		{
 			var _ordTypes = (from ordCode in _om.ORDERTYPEs
-							 join jobCode in _om.ORDERMAINTENANCEs on ordCode.ordertypecode equals jobCode.orderCode
-							 where jobCode.fiscyear == YearService
-							 select new
-							 {
-								 Code = jobCode.orderCode,
-								 CodeName = ordCode.ordertypename,
-								 Value = jobCode.orderCode + " - " + ordCode.ordertypename
-							 }).Distinct().OrderBy(x => x.Code).AsParallel();
+								  join jobCode in _om.ORDERMAINTENANCEs on ordCode.ordertypecode equals jobCode.orderCode
+								  where jobCode.fiscyear == YearService
+								  select new
+								  {
+									  Code = jobCode.orderCode,
+									  CodeName = ordCode.ordertypename,
+									  Value = jobCode.orderCode + " - " + ordCode.ordertypename
+								  }).Distinct().OrderBy(x => x.Code).AsParallel();
 			return _ordTypes.ToDataTable();
 
 		} // end GetJobCodeList
 
-		public DataTable GetJobCodeList(int YearService, OMShareServiceEnums.OrderStatusEnum jobStatus)
-		{
-			var _ordTypes = (from ordCode in _om.ORDERTYPEs
-							 join jobCode in _om.ORDERMAINTENANCEs on ordCode.ordertypecode equals jobCode.orderCode
-							 where jobCode.fiscyear == YearService
-							 && jobCode.status == (int)jobStatus
-							 select new
-							 {
-								 Code = jobCode.orderCode,
-								 CodeName = ordCode.ordertypename,
-								 Value = jobCode.orderCode + " - " + ordCode.ordertypename
-							 }).Distinct().OrderBy(x => x.Code).AsParallel();
-			return _ordTypes.ToDataTable();
+		public DataTable GetJobCodeList(int YearService, OMShareServiceEnums.OrderStatusEnum jobStatus) =>
+				new DataConnect($"EXECUTE dbo.usp_OM_SERVICE_JOBCODE_BY_YEAR @status={(int)jobStatus},@year={YearService}", omglobal.SysConnectionString).ToDataTable;
 
-		} // end GetJobCodeList
 
-		public DataTable GetServiceJobList(int SelectedYear, string JobCode, OMShareServiceEnums.OrderStatusEnum Status)
-		{
-			var _result = new DataTable();
-			var _job = (from j in _om.ORDERMAINTENANCEs.Where(job => job.fiscyear == SelectedYear && job.isdelete == false).AsEnumerable()
-						join p in _om.ORDERPIORITies on j.actionpiority equals p.piorityid
-						orderby j.s_order
-						select new
-						{
-							j.orderid,
-							j.orderCode,
-							orderno = j.s_order,
-							year = j.fiscyear,
-							JobStatus = j.status.Value,
-							statusname =
-							j.status.Value == (int)OMShareServiceEnums.OrderStatusEnum.ACTIVE
-								? OMShareServiceEnums.OrderStatusEnum.ACTIVE.ToString()
-								: OMShareServiceEnums.OrderStatusEnum.CLOSED.ToString(),
-							j.actionpiority,
-							piority = p.piorityname,
-							jobno = j.orderCode + "-" + j.s_order,
-							Jobdate = j.orderdate.Value,
-							due = j.duedate.Num2Date(),
-							finish = j.finishdate.HasValue ? j.finishdate.Value : DateTime.Today,
-							customercode = j.acccustcode,
-							customer = j.cus_na,
-							model = j.type,
-							serial = j.s_no,
-							j.errorcode,
-							j.error,
-							j.servicecost,
-							j.sparepartcost,
-							j.othercost
-						}).AsParallel();
+		public DataTable GetServiceJobList(int SelectedYear, string JobCode, OMShareServiceEnums.OrderStatusEnum Status) =>
+				new DataConnect($"EXEC dbo.usp_OM_SERVICE_JOB_BY_STATUS @year={SelectedYear},@jobprefix={JobCode},@status={(int)Status}", omglobal.SysConnectionString).ToDataTable;
 
-			if (_job != null)
-				if (Status == OMShareServiceEnums.OrderStatusEnum.ALL)
-					_result = _job.ToDataTable();
-				else
-					_result = _job.Where(x => x.JobStatus == (int)Status && x.orderCode == JobCode).ToDataTable();
-
-			return _result;
-
-		} // end GetServiceJobList
 
 		public string GetJobFixed(int JobId)
 		{
@@ -130,16 +66,16 @@ namespace OMW15.Models.ServiceModel
 
 			var _fixs = new StringBuilder();
 			var _fix = (from f in _om.ORDERFIXEDs
-						where f.ORDERMAINTENANCE.orderid == JobId
-						select new
-						{
-							f.datefixed,
-							f.fixeddetail,
-							f.engineer1,
-							f.engineer2,
-							f.engineer3,
-							f.engineer4
-						}).AsParallel().ToList();
+							where f.ORDERMAINTENANCE.orderid == JobId
+							select new
+							{
+								f.datefixed,
+								f.fixeddetail,
+								f.engineer1,
+								f.engineer2,
+								f.engineer3,
+								f.engineer4
+							}).AsParallel().ToList();
 
 			if (_fix != null)
 				if (_fix.Count > 0)
@@ -147,31 +83,15 @@ namespace OMW15.Models.ServiceModel
 					_fixs = new StringBuilder();
 					foreach (var ff in _fix)
 					{
-						_fixs.AppendFormat("วันที่ซ่อม {0}", ff.datefixed.ToShortDateString());
-						_fixs.AppendLine();
-						_fixs.Append("รายระเอียดการซ่อม");
-						_fixs.AppendLine();
-						_fixs.AppendFormat("{0}", ff.fixeddetail);
-						_fixs.AppendLine();
-						_fixs.AppendFormat("ช่าง :{0}", ff.engineer1);
-						if (!string.IsNullOrEmpty(ff.engineer2))
-						{
-							_fixs.AppendLine();
-							_fixs.AppendFormat("ช่าง :{0}", ff.engineer2);
-						}
-						if (!string.IsNullOrEmpty(ff.engineer3))
-						{
-							_fixs.AppendLine();
-							_fixs.AppendFormat("ช่าง :{0}", ff.engineer3);
-						}
-
-						if (!string.IsNullOrEmpty(ff.engineer4))
-						{
-							_fixs.AppendLine();
-							_fixs.AppendFormat("ช่าง :{0}", ff.engineer4);
-						}
-						_fixs.AppendLine();
-						_fixs.Append("+++++++++++++++++");
+						_fixs.AppendLine($"วันที่ซ่อม {ff.datefixed.ToShortDateString()}");
+						_fixs.AppendLine("รายระเอียดการซ่อม");
+						_fixs.AppendLine($"---------------------------");
+						_fixs.AppendLine($"{ff.fixeddetail}");
+						_fixs.AppendLine($"ช่าง :{ff.engineer1}");
+						if (!string.IsNullOrEmpty(ff.engineer2)) _fixs.AppendLine($"ช่าง :{ff.engineer2}");
+						if (!string.IsNullOrEmpty(ff.engineer3)) _fixs.AppendLine($"ช่าง :{ff.engineer3}");
+						if (!string.IsNullOrEmpty(ff.engineer4)) _fixs.AppendLine($"ช่าง :{ff.engineer4}");
+						_fixs.AppendLine($"+++++++++++++++++");
 						_fixs.AppendLine();
 					}
 					_result = _fixs.ToString();
@@ -208,21 +128,16 @@ namespace OMW15.Models.ServiceModel
 
 		} // end GetOrderListByMachine
 
-		public DataTable GetErrorList()
-		{
-			return _om.ERRORCATEGORies.Select(x => new
-			{
-				x.errorcatid,
-				x.errorcode,
-				x.errorcatname
-			}).OrderBy(o => o.errorcode).AsParallel().ToDataTable();
+		public DataTable GetErrorList() => _om.ERRORCATEGORies
+														.Select(x => new
+														{
+															x.errorcatid,
+															x.errorcode,
+															x.errorcatname
+														}).OrderBy(o => o.errorcode).AsParallel().ToDataTable();
 
-		} // end GetErrorList
 
-		public ERRORCATEGORY GetErrorItem(int ErrorCatId)
-		{
-			return _om.ERRORCATEGORies.Single(x => x.errorcatid == ErrorCatId);
-		} // end GetErrorItem
+		public ERRORCATEGORY GetErrorItem(int ErrorCatId) => _om.ERRORCATEGORies.Single(x => x.errorcatid == ErrorCatId);
 
 		public int AddEditErrorCategory(ERRORCATEGORY Err, ActionMode Mode)
 		{
@@ -238,7 +153,7 @@ namespace OMW15.Models.ServiceModel
 
 					case ActionMode.Edit:
 						var er = (from error in _om.ERRORCATEGORies
-								  select error).Where(x => x.errorcatid == Err.errorcatid).Single();
+									 select error).Where(x => x.errorcatid == Err.errorcatid).Single();
 						er.errorcatid = Err.errorcatid;
 						er.errorcatname = Err.errorcatname;
 						er.errorcode = Err.errorcode;
@@ -260,15 +175,15 @@ namespace OMW15.Models.ServiceModel
 		{
 			var _result = new DataTable();
 			var engs = (from eng in _om.ENGINEERs
-						orderby eng.curr
-						select new
-						{
-							eng.engiseq,
-							eng.id,
-							engineer = eng.name + " " + eng.lastname,
-							statusid = eng.Status,
-							status = eng.curr
-						}).AsParallel();
+							orderby eng.curr
+							select new
+							{
+								eng.engiseq,
+								eng.id,
+								engineer = eng.name + " " + eng.lastname,
+								statusid = eng.Status,
+								status = eng.curr
+							}).AsParallel();
 
 			if (engs.Count() > 0)
 				switch (EngineerStatus)
@@ -287,10 +202,7 @@ namespace OMW15.Models.ServiceModel
 
 		} // end GetSeviceEngineerList
 
-		public ENGINEER GetEngineer(int EngineerSEQ)
-		{
-			return _om.ENGINEERs.Single(x => x.engiseq == EngineerSEQ);
-		} // end GetEngineer
+		public ENGINEER GetEngineer(int EngineerSEQ) => _om.ENGINEERs.Single(x => x.engiseq == EngineerSEQ);
 
 		public int UpdateEngineerInfo(ActionMode Mode, ENGINEER source)
 		{
@@ -365,13 +277,13 @@ namespace OMW15.Models.ServiceModel
 					try
 					{
 						var tr = (from di in _erp.DOCINFOes
-								  join trh in _erp.TRANSTKHs on di.DI_KEY equals trh.TRH_DI
-								  where di.DI_REF == item.issueno
-								  select new
-								  {
-									  di.DI_REF,
-									  trh.TRH_KEY
-								  }).ToList();
+									 join trh in _erp.TRANSTKHs on di.DI_KEY equals trh.TRH_DI
+									 where di.DI_REF == item.issueno
+									 select new
+									 {
+										 di.DI_REF,
+										 trh.TRH_KEY
+									 }).ToList();
 
 						if (tr.Count == 0 || tr == null)
 						{
@@ -436,9 +348,8 @@ namespace OMW15.Models.ServiceModel
 			}
 			catch (OptimisticConcurrencyException ex)
 			{
-				_result = 0;
-				throw new Exception(string.Format("{0} Order Fixed Info failed !!!!", Mode == ActionMode.Add ? "Add" : "Update"),
-					ex);
+				string _status = Mode == ActionMode.Add ? "Add" : "Update";
+				throw new Exception($"{_status} Order Fixed Info failed !!!!\n\n\n", ex);
 			}
 
 			return _result;
@@ -468,10 +379,7 @@ namespace OMW15.Models.ServiceModel
 
 		} // end GetJobOrderFixedItems
 
-		public ORDERFIXED GetOrderFixItem(int LineId)
-		{
-			return _om.ORDERFIXEDs.Single(x => x.lineid == LineId);
-		} // end  GetOrderFixItem
+		public ORDERFIXED GetOrderFixItem(int LineId) => _om.ORDERFIXEDs.Single(x => x.lineid == LineId);
 
 		public int UpdateOrderInfo(ORDERMAINTENANCE Order, ActionMode Mode)
 		{
@@ -528,12 +436,12 @@ namespace OMW15.Models.ServiceModel
 		public DataTable GetJobPiorityList()
 		{
 			var _p = (from rp in _om.ORDERPIORITies
-					  orderby rp.piorityname
-					  select new
-					  {
-						  Value = rp.piorityid,
-						  Key = rp.piorityname
-					  }).AsParallel();
+						 orderby rp.piorityname
+						 select new
+						 {
+							 Value = rp.piorityid,
+							 Key = rp.piorityname
+						 }).AsParallel();
 
 			return _p.ToDataTable();
 
@@ -543,11 +451,11 @@ namespace OMW15.Models.ServiceModel
 		public DataTable GetJobErrorList()
 		{
 			var _err = (from err in _om.ERRORCATEGORies
-						select new
-						{
-							Value = err.errorcode,
-							Key = err.errorcatname
-						}).AsParallel();
+							select new
+							{
+								Value = err.errorcode,
+								Key = err.errorcatname
+							}).AsParallel();
 
 			return _err.ToDataTable();
 		} // end GetJobErrorList
@@ -588,8 +496,6 @@ namespace OMW15.Models.ServiceModel
 
 		public string CreateServiceOrderNumber(string OrderCode, DateTime orderDate)
 		{
-			//int _lastorder = 0;
-			string _orderNumber = string.Empty;
 			int _currentYear = Convert.ToInt32(orderDate.GetThaiYearFormat());
 
 			// find the last order of given order code
@@ -597,8 +503,7 @@ namespace OMW15.Models.ServiceModel
 								.Where(x => x.orderCode == OrderCode && x.yearservice == _currentYear)
 								.Max(m => m.ordercountno);
 
-			_orderNumber = $"{_currentYear}-{(lastorder + 1):000#}";
-			return _orderNumber;
+			return $"{_currentYear}-{(lastorder + 1):000#}";
 
 		} // end 
 
@@ -629,53 +534,43 @@ namespace OMW15.Models.ServiceModel
 		public int DeleteOrderRepairItem(int LineId, int OrderId)
 		{
 			var _result = 0;
-			using (var _scope = new TransactionScope())
-			{
-				try
-				{
-					_om.ORDERFIXEDs.Remove(_om.ORDERFIXEDs.Single(x => x.lineid == LineId && x.ORDERMAINTENANCE.orderid == OrderId));
-					_result = _om.SaveChanges();
-					_scope.Complete();
-				}
-				catch (OptimisticConcurrencyException ex)
-				{
-					throw new Exception("ไม่สามารถลบรายการที่เลือกได้", ex);
-				}
-			}
-
+			_om.ORDERFIXEDs.Remove(_om.ORDERFIXEDs.Single(x => x.lineid == LineId && x.ORDERMAINTENANCE.orderid == OrderId));
+			_result = _om.SaveChanges();
 			return _result;
 		} // end DeleteOrderRepairItem
 
-		public async Task<DataTable> getSummaryActiveServiceOrderByOrderCodeAsync()
+		public DataTable GetSummaryActiveServiceOrderByOrderCode()
 		{
-			return await Task.Run(() =>
-			{
-				return _om.ORDERMAINTENANCEs
-				.Where(s => s.status == (int)Shared.OMShareServiceEnums.OrderStatusEnum.ACTIVE
-							&& s.orderCode != ""
-							&& s.isdelete == false
-				).GroupBy(g => g.orderCode).Select(ord => new
-				{
-					Code = ord.Key,
-					Qty = ord.Count()
-				}).OrderBy(o => o.Code).AsParallel().ToDataTable();
-			});
+			return new DataConnect($"EXEC dbo.usp_OM_SERVICE_COUNT_ACTIVE_ORDER", omglobal.SysConnectionString).ToDataTable;
+			//return await Task.Run(() =>
+			//{
+			//return _om.ORDERMAINTENANCEs
+			//.Where(s => s.status == (int)Shared.OMShareServiceEnums.OrderStatusEnum.ACTIVE
+			//			&& s.orderCode != ""
+			//			&& s.isdelete == false
+			//).GroupBy(g => g.orderCode).Select(ord => new
+			//{
+			//	Code = ord.Key,
+			//	Qty = ord.Count()
+			//}).OrderBy(o => o.Code).AsParallel().ToDataTable();
+			//});
 		}
 
-		public async Task<DataTable> getSummaryActiveServiceOrderByModelAsync()
+		public DataTable GetSummaryActiveServiceOrderByModel()
 		{
-			return await Task.Run(() =>
-			{
-				return _om.ORDERMAINTENANCEs
-				.Where(s => s.status == (int)Shared.OMShareServiceEnums.OrderStatusEnum.ACTIVE
-							&& s.orderCode != ""
-							&& s.isdelete == false
-				).GroupBy(g => g.type).Select(ord => new
-				{
-					Model = ord.Key,
-					Qty = ord.Count()
-				}).OrderBy(o => o.Model).AsParallel().ToDataTable();
-			});
+			return new DataConnect($"EXEC dbo.usp_OM_SERVICE_COUNT_ORDER_MODEL", omglobal.SysConnectionString).ToDataTable;
+			//return await Task.Run(() =>
+			//{
+			//return _om.ORDERMAINTENANCEs
+			//.Where(s => s.status == (int)Shared.OMShareServiceEnums.OrderStatusEnum.ACTIVE
+			//			&& s.orderCode != ""
+			//			&& s.isdelete == false
+			//).GroupBy(g => g.type).Select(ord => new
+			//{
+			//	Model = ord.Key,
+			//	Qty = ord.Count()
+			//}).OrderBy(o => o.Model).AsParallel().ToDataTable();
+			//});
 		}
 
 		#endregion

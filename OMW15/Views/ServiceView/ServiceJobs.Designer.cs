@@ -30,7 +30,6 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServiceJobs));
 			this.pnlHeader = new System.Windows.Forms.Panel();
-			this.btnLoadData = new OMControls.OMFlatButton();
 			this.cbxJobCat = new System.Windows.Forms.ComboBox();
 			this.lbJobCAT = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
@@ -74,6 +73,7 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.dgvByOrderCode = new System.Windows.Forms.DataGridView();
 			this.label1 = new System.Windows.Forms.Label();
+			this.btnLoadData = new OMControls.OMFlatButton();
 			this.pnlHeader.SuspendLayout();
 			this.pnlStatus.SuspendLayout();
 			this.pnlBody.SuspendLayout();
@@ -106,21 +106,6 @@
 			this.pnlHeader.Padding = new System.Windows.Forms.Padding(6);
 			this.pnlHeader.Size = new System.Drawing.Size(941, 38);
 			this.pnlHeader.TabIndex = 0;
-			// 
-			// btnLoadData
-			// 
-			this.btnLoadData.Dock = System.Windows.Forms.DockStyle.Left;
-			this.btnLoadData.FlatAppearance.BorderSize = 0;
-			this.btnLoadData.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
-			this.btnLoadData.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.btnLoadData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnLoadData.Image = ((System.Drawing.Image)(resources.GetObject("btnLoadData.Image")));
-			this.btnLoadData.Location = new System.Drawing.Point(729, 6);
-			this.btnLoadData.Name = "btnLoadData";
-			this.btnLoadData.Size = new System.Drawing.Size(26, 26);
-			this.btnLoadData.TabIndex = 10;
-			this.btnLoadData.UseVisualStyleBackColor = true;
-			this.btnLoadData.Click += new System.EventHandler(this.btnLoadData_Click);
 			// 
 			// cbxJobCat
 			// 
@@ -285,7 +270,6 @@
 			this.dgv.Name = "dgv";
 			this.dgv.Size = new System.Drawing.Size(729, 263);
 			this.dgv.TabIndex = 17;
-			this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
 			this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEnter);
 			this.dgv.DoubleClick += new System.EventHandler(this.dgv_DoubleClick);
 			// 
@@ -307,6 +291,7 @@
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.panel1.Location = new System.Drawing.Point(2, 318);
 			this.panel1.Name = "panel1";
+			this.panel1.Padding = new System.Windows.Forms.Padding(2);
 			this.panel1.Size = new System.Drawing.Size(729, 195);
 			this.panel1.TabIndex = 15;
 			// 
@@ -315,33 +300,33 @@
 			this.txtFixed.BackColor = System.Drawing.Color.White;
 			this.txtFixed.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.txtFixed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtFixed.Location = new System.Drawing.Point(333, 34);
+			this.txtFixed.Location = new System.Drawing.Point(335, 36);
 			this.txtFixed.Multiline = true;
 			this.txtFixed.Name = "txtFixed";
 			this.txtFixed.ReadOnly = true;
 			this.txtFixed.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.txtFixed.Size = new System.Drawing.Size(396, 161);
+			this.txtFixed.Size = new System.Drawing.Size(392, 157);
 			this.txtFixed.TabIndex = 10;
 			// 
 			// lbFixed
 			// 
-			this.lbFixed.BackColor = System.Drawing.Color.ForestGreen;
+			this.lbFixed.BackColor = System.Drawing.Color.Navy;
 			this.lbFixed.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lbFixed.Dock = System.Windows.Forms.DockStyle.Top;
 			this.lbFixed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbFixed.ForeColor = System.Drawing.Color.White;
-			this.lbFixed.Location = new System.Drawing.Point(333, 0);
+			this.lbFixed.Location = new System.Drawing.Point(335, 2);
 			this.lbFixed.Name = "lbFixed";
-			this.lbFixed.Size = new System.Drawing.Size(396, 34);
+			this.lbFixed.Size = new System.Drawing.Size(392, 34);
 			this.lbFixed.TabIndex = 9;
 			this.lbFixed.Text = "การแก้ไข";
 			this.lbFixed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// splitter3
 			// 
-			this.splitter3.Location = new System.Drawing.Point(327, 0);
+			this.splitter3.Location = new System.Drawing.Point(329, 2);
 			this.splitter3.Name = "splitter3";
-			this.splitter3.Size = new System.Drawing.Size(6, 195);
+			this.splitter3.Size = new System.Drawing.Size(6, 191);
 			this.splitter3.TabIndex = 1;
 			this.splitter3.TabStop = false;
 			// 
@@ -350,10 +335,10 @@
 			this.panel2.Controls.Add(this.txtError);
 			this.panel2.Controls.Add(this.lbError);
 			this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-			this.panel2.Location = new System.Drawing.Point(0, 0);
+			this.panel2.Location = new System.Drawing.Point(2, 2);
 			this.panel2.Name = "panel2";
 			this.panel2.Padding = new System.Windows.Forms.Padding(2);
-			this.panel2.Size = new System.Drawing.Size(327, 195);
+			this.panel2.Size = new System.Drawing.Size(327, 191);
 			this.panel2.TabIndex = 0;
 			// 
 			// txtError
@@ -366,7 +351,7 @@
 			this.txtError.Name = "txtError";
 			this.txtError.ReadOnly = true;
 			this.txtError.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.txtError.Size = new System.Drawing.Size(323, 157);
+			this.txtError.Size = new System.Drawing.Size(323, 153);
 			this.txtError.TabIndex = 8;
 			// 
 			// lbError
@@ -583,6 +568,21 @@
 			this.label1.TabIndex = 8;
 			this.label1.Text = "สรุปงาน (Active) by รหัส";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// btnLoadData
+			// 
+			this.btnLoadData.Dock = System.Windows.Forms.DockStyle.Left;
+			this.btnLoadData.FlatAppearance.BorderSize = 0;
+			this.btnLoadData.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
+			this.btnLoadData.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.btnLoadData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnLoadData.Image = ((System.Drawing.Image)(resources.GetObject("btnLoadData.Image")));
+			this.btnLoadData.Location = new System.Drawing.Point(729, 6);
+			this.btnLoadData.Name = "btnLoadData";
+			this.btnLoadData.Size = new System.Drawing.Size(26, 26);
+			this.btnLoadData.TabIndex = 10;
+			this.btnLoadData.UseVisualStyleBackColor = true;
+			this.btnLoadData.Click += new System.EventHandler(this.btnLoadData_Click);
 			// 
 			// ServiceJobs
 			// 

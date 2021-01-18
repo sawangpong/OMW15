@@ -147,10 +147,11 @@
 			// txtCustomerFilter
 			// 
 			this.txtCustomerFilter.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.txtCustomerFilter.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtCustomerFilter.Location = new System.Drawing.Point(86, 3);
 			this.txtCustomerFilter.MaxLength = 50;
 			this.txtCustomerFilter.Name = "txtCustomerFilter";
-			this.txtCustomerFilter.Size = new System.Drawing.Size(209, 25);
+			this.txtCustomerFilter.Size = new System.Drawing.Size(209, 27);
 			this.txtCustomerFilter.TabIndex = 2;
 			this.txtCustomerFilter.TextChanged += new System.EventHandler(this.txtCustomerFilter_TextChanged);
 			this.txtCustomerFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress);
@@ -184,10 +185,11 @@
 			// 
 			this.txtSNFilter.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.txtSNFilter.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.txtSNFilter.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtSNFilter.Location = new System.Drawing.Point(87, 3);
 			this.txtSNFilter.MaxLength = 25;
 			this.txtSNFilter.Name = "txtSNFilter";
-			this.txtSNFilter.Size = new System.Drawing.Size(132, 25);
+			this.txtSNFilter.Size = new System.Drawing.Size(132, 27);
 			this.txtSNFilter.TabIndex = 2;
 			this.txtSNFilter.TextChanged += new System.EventHandler(this.txtSNFilter_TextChanged);
 			this.txtSNFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress);
@@ -221,10 +223,11 @@
 			// 
 			this.cbxModel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.cbxModel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbxModel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cbxModel.FormattingEnabled = true;
 			this.cbxModel.Location = new System.Drawing.Point(121, 3);
 			this.cbxModel.Name = "cbxModel";
-			this.cbxModel.Size = new System.Drawing.Size(179, 25);
+			this.cbxModel.Size = new System.Drawing.Size(179, 28);
 			this.cbxModel.TabIndex = 2;
 			this.cbxModel.SelectionChangeCommitted += new System.EventHandler(this.cbxModel_SelectionChangeCommitted);
 			// 

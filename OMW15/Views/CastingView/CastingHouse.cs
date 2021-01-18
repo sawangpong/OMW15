@@ -180,7 +180,7 @@ namespace OMW15.Views.CastingView
 
 		private void mnuMaterialSum_Click(object sender, EventArgs e)
 		{
-			var _matSum = new CastingMaterialSummary();
+			var _matSum = CastingMaterialSummary.GetInstance;
 			_matSum.WindowState = FormWindowState.Maximized;
 			_matSum.MdiParent = this;
 			_matSum.Show();
@@ -217,7 +217,7 @@ namespace OMW15.Views.CastingView
 
 		private void mnuSCSummary_Click(object sender, EventArgs e)
 		{
-			var _scSum = new SCOrderSummary();
+			var _scSum = SCOrderSummary.GetInstance;
 			_scSum.StartPosition = FormStartPosition.CenterParent;
 			_scSum.MdiParent = this;
 			_scSum.Show();

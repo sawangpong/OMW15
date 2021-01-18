@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SCOrderSummary));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.panel4 = new System.Windows.Forms.Panel();
 			this.ts = new System.Windows.Forms.ToolStrip();
@@ -173,18 +173,19 @@
             this.mnuSaleMatCommu,
             this.toolStripMenuItem3,
             this.mnuBillCollections});
+			this.tsmnu.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.tsmnu.ForeColor = System.Drawing.Color.Black;
 			this.tsmnu.Image = ((System.Drawing.Image)(resources.GetObject("tsmnu.Image")));
 			this.tsmnu.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.tsmnu.Name = "tsmnu";
-			this.tsmnu.Size = new System.Drawing.Size(112, 28);
+			this.tsmnu.Size = new System.Drawing.Size(124, 28);
 			this.tsmnu.Text = "ประเภทรายงาน :: ";
 			this.tsmnu.Visible = false;
 			// 
 			// mnuLabour
 			// 
 			this.mnuLabour.Name = "mnuLabour";
-			this.mnuLabour.Size = new System.Drawing.Size(241, 22);
+			this.mnuLabour.Size = new System.Drawing.Size(275, 24);
 			this.mnuLabour.Tag = "LABOUR";
 			this.mnuLabour.Text = "ค่าแรงหล่อ";
 			this.mnuLabour.Click += new System.EventHandler(this.mnu_Click);
@@ -192,7 +193,7 @@
 			// mnuMaterial
 			// 
 			this.mnuMaterial.Name = "mnuMaterial";
-			this.mnuMaterial.Size = new System.Drawing.Size(241, 22);
+			this.mnuMaterial.Size = new System.Drawing.Size(275, 24);
 			this.mnuMaterial.Tag = "MATERIAL";
 			this.mnuMaterial.Text = "ค่าวัสดุ";
 			this.mnuMaterial.Click += new System.EventHandler(this.mnu_Click);
@@ -200,12 +201,12 @@
 			// toolStripMenuItem2
 			// 
 			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-			this.toolStripMenuItem2.Size = new System.Drawing.Size(238, 6);
+			this.toolStripMenuItem2.Size = new System.Drawing.Size(272, 6);
 			// 
 			// mnuARAging
 			// 
 			this.mnuARAging.Name = "mnuARAging";
-			this.mnuARAging.Size = new System.Drawing.Size(241, 22);
+			this.mnuARAging.Size = new System.Drawing.Size(275, 24);
 			this.mnuARAging.Tag = "AR_AGING";
 			this.mnuARAging.Text = "รายการค้างชำระ";
 			this.mnuARAging.Click += new System.EventHandler(this.mnu_Click);
@@ -213,12 +214,12 @@
 			// toolStripMenuItem1
 			// 
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(238, 6);
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(272, 6);
 			// 
 			// mnuCastingCommuSale
 			// 
 			this.mnuCastingCommuSale.Name = "mnuCastingCommuSale";
-			this.mnuCastingCommuSale.Size = new System.Drawing.Size(241, 22);
+			this.mnuCastingCommuSale.Size = new System.Drawing.Size(275, 24);
 			this.mnuCastingCommuSale.Tag = "LABOUR_COMM";
 			this.mnuCastingCommuSale.Text = "รายได้ค่าหล่อสะสมแยกตามลูกค้า";
 			this.mnuCastingCommuSale.Click += new System.EventHandler(this.mnu_Click);
@@ -226,7 +227,7 @@
 			// mnuSaleMatCommu
 			// 
 			this.mnuSaleMatCommu.Name = "mnuSaleMatCommu";
-			this.mnuSaleMatCommu.Size = new System.Drawing.Size(241, 22);
+			this.mnuSaleMatCommu.Size = new System.Drawing.Size(275, 24);
 			this.mnuSaleMatCommu.Tag = "MATERIAL_COMM";
 			this.mnuSaleMatCommu.Text = "รายได้ค่าวัสดุสะสมแยกตามลูกค้า";
 			this.mnuSaleMatCommu.Click += new System.EventHandler(this.mnu_Click);
@@ -234,12 +235,12 @@
 			// toolStripMenuItem3
 			// 
 			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-			this.toolStripMenuItem3.Size = new System.Drawing.Size(238, 6);
+			this.toolStripMenuItem3.Size = new System.Drawing.Size(272, 6);
 			// 
 			// mnuBillCollections
 			// 
 			this.mnuBillCollections.Name = "mnuBillCollections";
-			this.mnuBillCollections.Size = new System.Drawing.Size(241, 22);
+			this.mnuBillCollections.Size = new System.Drawing.Size(275, 24);
 			this.mnuBillCollections.Tag = "BILL_COLLECTION";
 			this.mnuBillCollections.Text = "รายการจัดเก็บรายได้แยกตามลูกค้า";
 			this.mnuBillCollections.Click += new System.EventHandler(this.mnu_Click);
@@ -271,6 +272,7 @@
 			// 
 			this.toolStripButton2.AutoSize = false;
 			this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+			this.toolStripButton2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.toolStripButton2.ForeColor = System.Drawing.Color.Black;
 			this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
 			this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -331,14 +333,14 @@
 			// 
 			this.dgv.BackgroundColor = System.Drawing.Color.White;
 			this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgv.Location = new System.Drawing.Point(2, 43);

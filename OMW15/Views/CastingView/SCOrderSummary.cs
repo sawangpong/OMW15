@@ -1,17 +1,34 @@
-﻿using System;
+﻿using OMControls;
+using OMW15.Controllers.ToolController;
+using OMW15.Models.CastingModel;
+using System;
 using System.Collections;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
-using OMControls;
-using OMW15.Controllers.ToolController;
-using OMW15.Models.CastingModel;
 
 namespace OMW15.Views.CastingView
 {
 	public partial class SCOrderSummary : Form
 	{
+		#region Singleton
+		private static SCOrderSummary _instance;
+		public static SCOrderSummary GetInstance
+		{
+			get
+			{
+				if(_instance == null || _instance.IsDisposed)
+				{
+					_instance = new SCOrderSummary();
+				}
+				return _instance;
+			}
+		}
+
+		#endregion
+
+
 		private readonly ArrayList arrColumnLefts = new ArrayList(); //Used to save left coordinates of columns
 		private readonly ArrayList arrColumnWidths = new ArrayList(); //Used to save column widths
 		private bool bFirstPage; //Used to check whether we are printing first page
@@ -28,13 +45,13 @@ namespace OMW15.Views.CastingView
 		public SCOrderSummary()
 		{
 			InitializeComponent();
+			CenterToParent();
+			OMUtils.SettingDataGridView(ref dgv);
 		}
 
 
 		private void SCOrderSummary_Load(object sender, EventArgs e)
 		{
-			CenterToParent();
-			OMUtils.SettingDataGridView(ref dgv);
 			GetSCYearList();
 			var _mnu = new ContextMenu();
 			pnlMenuLH.ContextMenu = _mnu;
@@ -89,7 +106,7 @@ namespace OMW15.Views.CastingView
 		{
 			try
 			{
-				_fiscyear = (int) tscbxFiscYear.ComboBox.SelectedValue;
+				_fiscyear = (int)tscbxFiscYear.ComboBox.SelectedValue;
 			}
 			catch
 			{
@@ -185,12 +202,12 @@ namespace OMW15.Views.CastingView
 				if (bFirstPage)
 					foreach (DataGridViewColumn GridCol in dgv.Columns)
 					{
-						iTmpWidth = (int) Math.Floor(GridCol.Width /
-						                             (double) iTotalWidth * iTotalWidth *
-						                             (e.MarginBounds.Width / (double) iTotalWidth));
+						iTmpWidth = (int)Math.Floor(GridCol.Width /
+															  (double)iTotalWidth * iTotalWidth *
+															  (e.MarginBounds.Width / (double)iTotalWidth));
 
-						iHeaderHeight = (int) e.Graphics.MeasureString(GridCol.HeaderText,
-							                GridCol.InheritedStyle.Font, iTmpWidth).Height + 11;
+						iHeaderHeight = (int)e.Graphics.MeasureString(GridCol.HeaderText,
+												 GridCol.InheritedStyle.Font, iTmpWidth).Height + 11;
 
 						// Save width and height of headres
 						arrColumnLefts.Add(iLeftMargin);
@@ -218,14 +235,14 @@ namespace OMW15.Views.CastingView
 						// Draw Header
 						e.Graphics.DrawString("Customer Summary", _font,
 							Brushes.Black, e.MarginBounds.Left, e.MarginBounds.Top -
-							                                    e.Graphics.MeasureString("Customer Summary", _font, e.MarginBounds.Width)
-								                                    .Height - 13);
+																			e.Graphics.MeasureString("Customer Summary", _font, e.MarginBounds.Width)
+																				.Height - 13);
 
 						var strDate = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToShortTimeString();
 						//Draw Date
 						e.Graphics.DrawString(strDate, _font,
 							Brushes.Black, e.MarginBounds.Left + (e.MarginBounds.Width -
-							                                      e.Graphics.MeasureString(strDate, _font, e.MarginBounds.Width).Width),
+																			  e.Graphics.MeasureString(strDate, _font, e.MarginBounds.Width).Width),
 							e.MarginBounds.Top -
 							e.Graphics.MeasureString("Customer Summary", _font, e.MarginBounds.Width).Height - 13);
 
@@ -234,17 +251,17 @@ namespace OMW15.Views.CastingView
 						foreach (DataGridViewColumn GridCol in dgv.Columns)
 						{
 							e.Graphics.FillRectangle(new SolidBrush(Color.LightGray),
-								new Rectangle((int) arrColumnLefts[iCount], iTopMargin,
-									(int) arrColumnWidths[iCount], iHeaderHeight));
+								new Rectangle((int)arrColumnLefts[iCount], iTopMargin,
+									(int)arrColumnWidths[iCount], iHeaderHeight));
 
 							e.Graphics.DrawRectangle(Pens.Black,
-								new Rectangle((int) arrColumnLefts[iCount], iTopMargin,
-									(int) arrColumnWidths[iCount], iHeaderHeight));
+								new Rectangle((int)arrColumnLefts[iCount], iTopMargin,
+									(int)arrColumnWidths[iCount], iHeaderHeight));
 
 							e.Graphics.DrawString(GridCol.HeaderText, GridCol.InheritedStyle.Font,
 								new SolidBrush(GridCol.InheritedStyle.ForeColor),
-								new RectangleF((int) arrColumnLefts[iCount], iTopMargin,
-									(int) arrColumnWidths[iCount], iHeaderHeight), strFormat);
+								new RectangleF((int)arrColumnLefts[iCount], iTopMargin,
+									(int)arrColumnWidths[iCount], iHeaderHeight), strFormat);
 							iCount++;
 						}
 						bNewPage = false;
@@ -257,11 +274,11 @@ namespace OMW15.Views.CastingView
 						if (Cel.Value != null)
 							e.Graphics.DrawString(Cel.Value.ToString(), Cel.InheritedStyle.Font,
 								new SolidBrush(Cel.InheritedStyle.ForeColor),
-								new RectangleF((int) arrColumnLefts[iCount], iTopMargin,
-									(int) arrColumnWidths[iCount], iCellHeight), strFormat);
+								new RectangleF((int)arrColumnLefts[iCount], iTopMargin,
+									(int)arrColumnWidths[iCount], iCellHeight), strFormat);
 						//Drawing Cells Borders 
-						e.Graphics.DrawRectangle(Pens.Black, new Rectangle((int) arrColumnLefts[iCount],
-							iTopMargin, (int) arrColumnWidths[iCount], iCellHeight));
+						e.Graphics.DrawRectangle(Pens.Black, new Rectangle((int)arrColumnLefts[iCount],
+							iTopMargin, (int)arrColumnWidths[iCount], iCellHeight));
 
 						iCount++;
 					}

@@ -63,7 +63,7 @@ namespace OMW15.Views.ServiceView
 
 		private void mnuServiceOrder_Click(object sender, EventArgs e)
 		{
-			var _svj = new ServiceJobs();
+			var _svj = ServiceJobs.GetInstance;
 			_svj.WindowState = FormWindowState.Maximized;
 			_svj.MdiParent = this;
 			_svj.Show();

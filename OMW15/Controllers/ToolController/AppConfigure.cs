@@ -20,10 +20,7 @@ namespace OMW15.Controllers.ToolController
 
 		#region class properties
 
-		public bool IsFoundRegistryKey
-		{
-			get; set;
-		}
+		public bool IsFoundRegistryKey{get; set;}
 
 		#endregion
 

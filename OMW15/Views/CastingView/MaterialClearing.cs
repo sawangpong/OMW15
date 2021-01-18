@@ -296,7 +296,7 @@ namespace OMW15.Views.CastingView
 				if (_balance == 0.00m) break;
 			}
 
-			lbMatchItems.Text = string.Format("Match : {0}", _matchItems);
+			lbMatchItems.Text = $"match : {_matchItems}";
 			dgvMatchIssue.SuspendLayout();
 			dgvMatchIssue.DataSource = _dtIssueList;
 			dgvMatchIssue.Columns["SOSEQ"].Visible = false;
@@ -340,7 +340,7 @@ namespace OMW15.Views.CastingView
 				_totalReturnWeight =
 					Convert.ToDecimal(((DataTable) dgvClearList.DataSource).AsEnumerable().Sum(x => x.Field<decimal>("RETURNWEIGHT")));
 
-			lbTotalReturnWeight.Text = $"รวมน้ำหนักที่คืน (กรัม) : {_totalReturnWeight:N2}";
+			lbTotalReturnWeight.Text = $"รวมน้ำหนักคืน (กรัม) : {_totalReturnWeight:N2}";
 		} // end ClearingOrderList
 
 		#endregion

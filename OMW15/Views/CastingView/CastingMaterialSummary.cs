@@ -10,17 +10,34 @@ namespace OMW15.Views.CastingView
 {
 	public partial class CastingMaterialSummary : Form
 	{
+		#region Singleton
+		private static CastingMaterialSummary _instance;
+		public static CastingMaterialSummary GetInstance
+		{
+			get
+			{
+				if (_instance == null || _instance.IsDisposed)
+				{
+					_instance = new CastingMaterialSummary();
+				}
+				return _instance;
+			}
+		}
+		#endregion
+
 		// CONSTRUCTOR
 		public CastingMaterialSummary()
 		{
 			InitializeComponent();
+
+			// setting datagridview
+			OMUtils.SettingDataGridView(ref dgv);
+			OMUtils.SettingDataGridView(ref dgvListSO);
+
 		}
 
 		private void CastingMaterialSummary_Load(object sender, EventArgs e)
 		{
-			// setting datagridview
-			OMUtils.SettingDataGridView(ref dgv);
-			OMUtils.SettingDataGridView(ref dgvListSO);
 
 			// loading material category list (combobox)
 			GetMaterialCategory();

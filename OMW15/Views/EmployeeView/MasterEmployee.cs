@@ -11,7 +11,7 @@ namespace OMW15.Views.EmployeeView
 	public partial class MasterEmployee : Form
 	{
 		#region Singleton
-		public static MasterEmployee _instance;
+		private static MasterEmployee _instance;
 		public static MasterEmployee GetInstance
 		{
 			get
