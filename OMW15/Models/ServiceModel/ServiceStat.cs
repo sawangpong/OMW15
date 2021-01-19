@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OMW15.Models.ToolModel;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -7,6 +8,24 @@ using System.Threading.Tasks;
 
 namespace OMW15.Models.ServiceModel
 {
+	public enum ServiceStatType
+	{
+		SUM_WORKS,
+		ORDER_PIORITY,
+		SUM_SERVICE_INCOME,
+		SUM_SPAREPART_INCOME,
+		SUM_TOTAL_INCOME,
+		COM_SERVICE_INCOME,
+		COM_SPAREPART_INCOME,
+		COM_TOTAL_INCOME,
+		SERVICE_INCOME_BY_CUSTOMER,
+		SPARE_PART_INCOME_BY_CUSTOMER,
+		TOTAL_INCOME_BY_CUSTOMER,
+		SUM_SERVICE_INCOME_BY_YEAR,
+		SUM_SPAREPART_INCOME_BY_YEAR,
+		SUM_INCOME_BY_YEAR
+	}
+
 	public class ServiceStat
 	{
 		private readonly OLDMOONEF1 _om;
@@ -27,12 +46,12 @@ namespace OMW15.Models.ServiceModel
 			result.Columns.Add(new DataColumn("StatName", typeof(System.String)));
 
 			DataRow dr = result.NewRow();
-			dr["StatCode"] = "SUM_WORKS";
+			dr["StatCode"] = ServiceStatType.SUM_WORKS.ToString();
 			dr["StatName"] = "ปริมาณงานประจำปี";
 			result.Rows.Add(dr);
 
 			dr = result.NewRow();
-			dr["StatCode"] = "ORDER_PIORITY";
+			dr["StatCode"] = ServiceStatType.ORDER_PIORITY.ToString();
 			dr["StatName"] = "สรุปประเภทงานประจำปี";
 			result.Rows.Add(dr);
 
@@ -43,17 +62,17 @@ namespace OMW15.Models.ServiceModel
 			result.Rows.Add(dr);
 
 			dr = result.NewRow();
-			dr["StatCode"] = "SUM_SERVICE_INCOME";
+			dr["StatCode"] = ServiceStatType.SUM_SERVICE_INCOME.ToString();
 			dr["StatName"] = "รายได้ค่าบริการประจำปี";
 			result.Rows.Add(dr);
 
 			dr = result.NewRow();
-			dr["StatCode"] = "SUM_SPAREPART_INCOME";
+			dr["StatCode"] = ServiceStatType.SUM_SPAREPART_INCOME.ToString();
 			dr["StatName"] = "รายได้ค่าอะไหล่ประจำปี";
 			result.Rows.Add(dr);
 
 			dr = result.NewRow();
-			dr["StatCode"] = "SUM_TOTAL_INCOME";
+			dr["StatCode"] = ServiceStatType.SUM_TOTAL_INCOME.ToString();
 			dr["StatName"] = "รายได้รวมประจำปี";
 			result.Rows.Add(dr);
 
@@ -63,17 +82,17 @@ namespace OMW15.Models.ServiceModel
 			result.Rows.Add(dr);
 
 			dr = result.NewRow();
-			dr["StatCode"] = "COM_SERVICE_INCOME";
+			dr["StatCode"] = ServiceStatType.COM_SERVICE_INCOME.ToString();
 			dr["StatName"] = "รายได้ค่าบริการสะสมประจำปี";
 			result.Rows.Add(dr);
 
 			dr = result.NewRow();
-			dr["StatCode"] = "COM_SPAREPART_INCOME";
+			dr["StatCode"] = ServiceStatType.COM_SPAREPART_INCOME.ToString();
 			dr["StatName"] = "รายได้ค่าอะไหล่สะสมประจำปี";
 			result.Rows.Add(dr);
 
 			dr = result.NewRow();
-			dr["StatCode"] = "COM_TOTAL_INCOME";
+			dr["StatCode"] = ServiceStatType.COM_TOTAL_INCOME.ToString();
 			dr["StatName"] = "รายได้สะสมประจำปี";
 			result.Rows.Add(dr);
 
@@ -83,17 +102,17 @@ namespace OMW15.Models.ServiceModel
 			result.Rows.Add(dr);
 
 			dr = result.NewRow();
-			dr["StatCode"] = "SERVICE_INCOME_BY_CUSTOMER";
+			dr["StatCode"] = ServiceStatType.SERVICE_INCOME_BY_CUSTOMER.ToString();
 			dr["StatName"] = "รายได้ค่าบริการแยกตามลูกค้า";
 			result.Rows.Add(dr);
 
 			dr = result.NewRow();
-			dr["StatCode"] = "SPARE_PART_INCOME_BY_CUSTOMER";
+			dr["StatCode"] = ServiceStatType.SPARE_PART_INCOME_BY_CUSTOMER.ToString();
 			dr["StatName"] = "รายได้ค่าอะไหล่แยกตามลูกค้า";
 			result.Rows.Add(dr);
 
 			dr = result.NewRow();
-			dr["StatCode"] = "TOTAL_INCOME_BY_CUSTOMER";
+			dr["StatCode"] = ServiceStatType.TOTAL_INCOME_BY_CUSTOMER.ToString();
 			dr["StatName"] = "รายได้สะสมแยกตามลูกค้า";
 			result.Rows.Add(dr);
 
@@ -103,17 +122,17 @@ namespace OMW15.Models.ServiceModel
 			result.Rows.Add(dr);
 
 			dr = result.NewRow();
-			dr["StatCode"] = "SUM_SERVICE_INCOME_BY_YEAR";
+			dr["StatCode"] = ServiceStatType.SUM_SERVICE_INCOME_BY_YEAR.ToString();
 			dr["StatName"] = "สรุปรายได้ค่าบริการแยกรายปี";
 			result.Rows.Add(dr);
 
 			dr = result.NewRow();
-			dr["StatCode"] = "SUM_SPAREPART_INCOME_BY_YEAR";
+			dr["StatCode"] = ServiceStatType.SUM_SPAREPART_INCOME_BY_YEAR.ToString();
 			dr["StatName"] = "สรุปรายได้ค่าอะไหล่แยกรายปี";
 			result.Rows.Add(dr);
 
 			dr = result.NewRow();
-			dr["StatCode"] = "SUM_INCOME_BY_YEAR";
+			dr["StatCode"] = ServiceStatType.SUM_INCOME_BY_YEAR.ToString();
 			dr["StatName"] = "สรุปรายได้แยกรายปี";
 			result.Rows.Add(dr);
   
@@ -132,355 +151,363 @@ namespace OMW15.Models.ServiceModel
 
 		public DataTable getServiceStat(int fiscYear)
 		{
-			DataTable result = new DataTable();
-
-			var stats = from rm in _om.ORDERMAINTENANCEs
-						join oty in _om.ORDERTYPEs on rm.orderCode equals oty.ordertypecode
-						where rm.isdelete == false
-						&& rm.fiscyear == fiscYear
-						orderby rm.orderCode
-						group new
-						{
-							rm,
-							oty
-						} by new
-						{
-							rm.orderCode,
-						} into stat
-						select new
-						{
-							OrderName = stat.Key.orderCode + "-" + stat.FirstOrDefault().oty.ordertypename,
-							Jan = stat.Sum(x => x.rm.period == 1 ? 1 : 0),
-							Feb = stat.Sum(x => x.rm.period == 2 ? 1 : 0),
-							Mar = stat.Sum(x => x.rm.period == 3 ? 1 : 0),
-							Apr = stat.Sum(x => x.rm.period == 4 ? 1 : 0),
-							May = stat.Sum(x => x.rm.period == 5 ? 1 : 0),
-							Jun = stat.Sum(x => x.rm.period == 6 ? 1 : 0),
-							Jul = stat.Sum(x => x.rm.period == 7 ? 1 : 0),
-							Aug = stat.Sum(x => x.rm.period == 8 ? 1 : 0),
-							Sep = stat.Sum(x => x.rm.period == 9 ? 1 : 0),
-							Oct = stat.Sum(x => x.rm.period == 10 ? 1 : 0),
-							Nov = stat.Sum(x => x.rm.period == 11 ? 1 : 0),
-							Dec = stat.Sum(x => x.rm.period == 12 ? 1 : 0),
-							Total = stat.Count()
-						};
-
-			if(stats != null)
-			{
-				result = stats.OrderBy(o => o.OrderName).ToDataTable();
-			}
-			return result;
-
+			return new DataConnect($"EXEC dbo.usp_OM_SERVICE_SERVICE_JOBS_STAT @workyear={fiscYear}", omglobal.SysConnectionString).ToDataTable;
+			//DataTable result = new DataTable();
+			//var stats = from rm in _om.ORDERMAINTENANCEs
+			//			join oty in _om.ORDERTYPEs on rm.orderCode equals oty.ordertypecode
+			//			where rm.isdelete == false
+			//			&& rm.fiscyear == fiscYear
+			//			orderby rm.orderCode
+			//			group new
+			//			{
+			//				rm,
+			//				oty
+			//			} by new
+			//			{
+			//				rm.orderCode,
+			//			} into stat
+			//			select new
+			//			{
+			//				OrderName = stat.Key.orderCode + "-" + stat.FirstOrDefault().oty.ordertypename,
+			//				Jan = stat.Sum(x => x.rm.period == 1 ? 1 : 0),
+			//				Feb = stat.Sum(x => x.rm.period == 2 ? 1 : 0),
+			//				Mar = stat.Sum(x => x.rm.period == 3 ? 1 : 0),
+			//				Apr = stat.Sum(x => x.rm.period == 4 ? 1 : 0),
+			//				May = stat.Sum(x => x.rm.period == 5 ? 1 : 0),
+			//				Jun = stat.Sum(x => x.rm.period == 6 ? 1 : 0),
+			//				Jul = stat.Sum(x => x.rm.period == 7 ? 1 : 0),
+			//				Aug = stat.Sum(x => x.rm.period == 8 ? 1 : 0),
+			//				Sep = stat.Sum(x => x.rm.period == 9 ? 1 : 0),
+			//				Oct = stat.Sum(x => x.rm.period == 10 ? 1 : 0),
+			//				Nov = stat.Sum(x => x.rm.period == 11 ? 1 : 0),
+			//				Dec = stat.Sum(x => x.rm.period == 12 ? 1 : 0),
+			//				Total = stat.Count()
+			//			};
+			//if(stats != null)
+			//{
+			//	result = stats.OrderBy(o => o.OrderName).ToDataTable();
+			//}
+			//return result;
 		} // end getServiceStat
 
 		public DataTable getServiceActionStat(int fiscYear)
 		{
-			DataTable result = new DataTable();
+			return new DataConnect($"EXEC dbo.usp_OM_SERVICE_PIORITY_JOBS_STAT @workyear={fiscYear}", omglobal.SysConnectionString).ToDataTable;
+			//DataTable result = new DataTable();
 
-			var stats = from rm in _om.ORDERMAINTENANCEs
-						join oty in _om.ORDERTYPEs on rm.orderCode equals oty.ordertypecode
-						join ac in _om.ORDERPIORITies on rm.actionpiority equals ac.piorityid
-						where rm.isdelete == false
-						&& rm.fiscyear == fiscYear
-						orderby rm.orderCode
-						group new
-						{
-							rm,
-							oty,
-							ac
-						} by new
-						{
-							rm.orderCode,
-							ac.piorityname
-						} into stat
-						select new
-						{
-							Action = "(" + stat.Key.piorityname + ") " + stat.Key.orderCode + "-" + stat.FirstOrDefault().oty.ordertypename,
-							Jan = stat.Sum(x => x.rm.period == 1 ? 1 : 0),
-							Feb = stat.Sum(x => x.rm.period == 2 ? 1 : 0),
-							Mar = stat.Sum(x => x.rm.period == 3 ? 1 : 0),
-							Apr = stat.Sum(x => x.rm.period == 4 ? 1 : 0),
-							May = stat.Sum(x => x.rm.period == 5 ? 1 : 0),
-							Jun = stat.Sum(x => x.rm.period == 6 ? 1 : 0),
-							Jul = stat.Sum(x => x.rm.period == 7 ? 1 : 0),
-							Aug = stat.Sum(x => x.rm.period == 8 ? 1 : 0),
-							Sep = stat.Sum(x => x.rm.period == 9 ? 1 : 0),
-							Oct = stat.Sum(x => x.rm.period == 10 ? 1 : 0),
-							Nov = stat.Sum(x => x.rm.period == 11 ? 1 : 0),
-							Dec = stat.Sum(x => x.rm.period == 12 ? 1 : 0),
-							Total = stat.Count()
-						};
+			//var stats = from rm in _om.ORDERMAINTENANCEs
+			//			join oty in _om.ORDERTYPEs on rm.orderCode equals oty.ordertypecode
+			//			join ac in _om.ORDERPIORITies on rm.actionpiority equals ac.piorityid
+			//			where rm.isdelete == false
+			//			&& rm.fiscyear == fiscYear
+			//			orderby rm.orderCode
+			//			group new
+			//			{
+			//				rm,
+			//				oty,
+			//				ac
+			//			} by new
+			//			{
+			//				rm.orderCode,
+			//				ac.piorityname
+			//			} into stat
+			//			select new
+			//			{
+			//				Action = "(" + stat.Key.piorityname + ") " + stat.Key.orderCode + "-" + stat.FirstOrDefault().oty.ordertypename,
+			//				Jan = stat.Sum(x => x.rm.period == 1 ? 1 : 0),
+			//				Feb = stat.Sum(x => x.rm.period == 2 ? 1 : 0),
+			//				Mar = stat.Sum(x => x.rm.period == 3 ? 1 : 0),
+			//				Apr = stat.Sum(x => x.rm.period == 4 ? 1 : 0),
+			//				May = stat.Sum(x => x.rm.period == 5 ? 1 : 0),
+			//				Jun = stat.Sum(x => x.rm.period == 6 ? 1 : 0),
+			//				Jul = stat.Sum(x => x.rm.period == 7 ? 1 : 0),
+			//				Aug = stat.Sum(x => x.rm.period == 8 ? 1 : 0),
+			//				Sep = stat.Sum(x => x.rm.period == 9 ? 1 : 0),
+			//				Oct = stat.Sum(x => x.rm.period == 10 ? 1 : 0),
+			//				Nov = stat.Sum(x => x.rm.period == 11 ? 1 : 0),
+			//				Dec = stat.Sum(x => x.rm.period == 12 ? 1 : 0),
+			//				Total = stat.Count()
+			//			};
 
-			if(stats != null)
-			{
-				result = stats.OrderBy(o => o.Action).ToDataTable();
-			}
-			return result;
+			//if(stats != null)
+			//{
+			//	result = stats.OrderBy(o => o.Action).ToDataTable();
+			//}
+			//return result;
 
 		} // end getServiceActionStat
 
 
 
-		public DataTable getServiceIncomeStat(int fiscYear)
+		public DataTable getServiceLaborIncomeStat(int fiscYear)
 		{
-			DataTable result = new DataTable();
+			return new DataConnect($"EXEC dbo.usp_OM_SERVICE_LABOR_INCOME_STAT @workyear={fiscYear}", omglobal.SysConnectionString).ToDataTable;
+			//DataTable result = new DataTable();
+			//var stats = from rm in _om.ORDERMAINTENANCEs
+			//			join oty in _om.ORDERTYPEs on rm.orderCode equals oty.ordertypecode
+			//			where rm.isdelete == false
+			//			&& rm.servicecost > 0
+			//			&& rm.fiscyear == fiscYear
+			//			orderby rm.orderCode
+			//			group new
+			//			{
+			//				rm,
+			//				oty
+			//			} by new
+			//			{
+			//				rm.orderCode,
+			//			} into stat
+			//			select new
+			//			{
+			//				OrderName = stat.Key.orderCode + "-" + stat.FirstOrDefault().oty.ordertypename,
+			//				Jan = stat.Sum(x => x.rm.period == 1 ? x.rm.servicecost : 0),
+			//				Feb = stat.Sum(x => x.rm.period == 2 ? x.rm.servicecost : 0),
+			//				Mar = stat.Sum(x => x.rm.period == 3 ? x.rm.servicecost : 0),
+			//				Apr = stat.Sum(x => x.rm.period == 4 ? x.rm.servicecost : 0),
+			//				May = stat.Sum(x => x.rm.period == 5 ? x.rm.servicecost : 0),
+			//				Jun = stat.Sum(x => x.rm.period == 6 ? x.rm.servicecost : 0),
+			//				Jul = stat.Sum(x => x.rm.period == 7 ? x.rm.servicecost : 0),
+			//				Aug = stat.Sum(x => x.rm.period == 8 ? x.rm.servicecost : 0),
+			//				Sep = stat.Sum(x => x.rm.period == 9 ? x.rm.servicecost : 0),
+			//				Oct = stat.Sum(x => x.rm.period == 10 ? x.rm.servicecost : 0),
+			//				Nov = stat.Sum(x => x.rm.period == 11 ? x.rm.servicecost : 0),
+			//				Dec = stat.Sum(x => x.rm.period == 12 ? x.rm.servicecost : 0),
+			//				Total = stat.Sum(x => x.rm.servicecost)
+			//			};
 
-			var stats = from rm in _om.ORDERMAINTENANCEs
-						join oty in _om.ORDERTYPEs on rm.orderCode equals oty.ordertypecode
-						where rm.isdelete == false
-						&& rm.servicecost > 0
-						&& rm.fiscyear == fiscYear
-						orderby rm.orderCode
-						group new
-						{
-							rm,
-							oty
-						} by new
-						{
-							rm.orderCode,
-						} into stat
-						select new
-						{
-							OrderName = stat.Key.orderCode + "-" + stat.FirstOrDefault().oty.ordertypename,
-							Jan = stat.Sum(x => x.rm.period == 1 ? x.rm.servicecost : 0),
-							Feb = stat.Sum(x => x.rm.period == 2 ? x.rm.servicecost : 0),
-							Mar = stat.Sum(x => x.rm.period == 3 ? x.rm.servicecost : 0),
-							Apr = stat.Sum(x => x.rm.period == 4 ? x.rm.servicecost : 0),
-							May = stat.Sum(x => x.rm.period == 5 ? x.rm.servicecost : 0),
-							Jun = stat.Sum(x => x.rm.period == 6 ? x.rm.servicecost : 0),
-							Jul = stat.Sum(x => x.rm.period == 7 ? x.rm.servicecost : 0),
-							Aug = stat.Sum(x => x.rm.period == 8 ? x.rm.servicecost : 0),
-							Sep = stat.Sum(x => x.rm.period == 9 ? x.rm.servicecost : 0),
-							Oct = stat.Sum(x => x.rm.period == 10 ? x.rm.servicecost : 0),
-							Nov = stat.Sum(x => x.rm.period == 11 ? x.rm.servicecost : 0),
-							Dec = stat.Sum(x => x.rm.period == 12 ? x.rm.servicecost : 0),
-							Total = stat.Sum(x => x.rm.servicecost)
-						};
-
-			if(stats != null)
-			{
-				result = stats.ToDataTable();
-			}
-			return result;
+			//if(stats != null)
+			//{
+			//	result = stats.ToDataTable();
+			//}
+			//return result;
 
 		} // end getServiceIncomeStat
 
 		public DataTable getSparepartIncomeStat(int fiscYear)
 		{
-			DataTable result = new DataTable();
+			return new DataConnect($"EXEC dbo.usp_OM_SERVICE_SPAREPART_INCOME_STAT @workyear={fiscYear}", omglobal.SysConnectionString).ToDataTable;
 
-			var stats = from rm in _om.ORDERMAINTENANCEs
-						join oty in _om.ORDERTYPEs on rm.orderCode equals oty.ordertypecode
-						where rm.isdelete == false
-						&& rm.sparepartcost > 0
-						&& rm.fiscyear == fiscYear
-						orderby rm.orderCode
-						group new
-						{
-							rm,
-							oty
-						} by new
-						{
-							rm.orderCode,
-						} into stat
-						select new
-						{
-							OrderName = stat.Key.orderCode + "-" + stat.FirstOrDefault().oty.ordertypename,
-							Jan = stat.Sum(x => x.rm.period == 1 ? x.rm.sparepartcost : 0),
-							Feb = stat.Sum(x => x.rm.period == 2 ? x.rm.sparepartcost : 0),
-							Mar = stat.Sum(x => x.rm.period == 3 ? x.rm.sparepartcost : 0),
-							Apr = stat.Sum(x => x.rm.period == 4 ? x.rm.sparepartcost : 0),
-							May = stat.Sum(x => x.rm.period == 5 ? x.rm.sparepartcost : 0),
-							Jun = stat.Sum(x => x.rm.period == 6 ? x.rm.sparepartcost : 0),
-							Jul = stat.Sum(x => x.rm.period == 7 ? x.rm.sparepartcost : 0),
-							Aug = stat.Sum(x => x.rm.period == 8 ? x.rm.sparepartcost : 0),
-							Sep = stat.Sum(x => x.rm.period == 9 ? x.rm.sparepartcost : 0),
-							Oct = stat.Sum(x => x.rm.period == 10 ? x.rm.sparepartcost : 0),
-							Nov = stat.Sum(x => x.rm.period == 11 ? x.rm.sparepartcost : 0),
-							Dec = stat.Sum(x => x.rm.period == 12 ? x.rm.sparepartcost : 0),
-							Total = stat.Sum(x => x.rm.sparepartcost)
-						};
 
-			if(stats != null)
-			{
-				result = stats.ToDataTable();
-			}
-			return result;
+			//DataTable result = new DataTable();
+
+			//var stats = from rm in _om.ORDERMAINTENANCEs
+			//			join oty in _om.ORDERTYPEs on rm.orderCode equals oty.ordertypecode
+			//			where rm.isdelete == false
+			//			&& rm.sparepartcost > 0
+			//			&& rm.fiscyear == fiscYear
+			//			orderby rm.orderCode
+			//			group new
+			//			{
+			//				rm,
+			//				oty
+			//			} by new
+			//			{
+			//				rm.orderCode,
+			//			} into stat
+			//			select new
+			//			{
+			//				OrderName = stat.Key.orderCode + "-" + stat.FirstOrDefault().oty.ordertypename,
+			//				Jan = stat.Sum(x => x.rm.period == 1 ? x.rm.sparepartcost : 0),
+			//				Feb = stat.Sum(x => x.rm.period == 2 ? x.rm.sparepartcost : 0),
+			//				Mar = stat.Sum(x => x.rm.period == 3 ? x.rm.sparepartcost : 0),
+			//				Apr = stat.Sum(x => x.rm.period == 4 ? x.rm.sparepartcost : 0),
+			//				May = stat.Sum(x => x.rm.period == 5 ? x.rm.sparepartcost : 0),
+			//				Jun = stat.Sum(x => x.rm.period == 6 ? x.rm.sparepartcost : 0),
+			//				Jul = stat.Sum(x => x.rm.period == 7 ? x.rm.sparepartcost : 0),
+			//				Aug = stat.Sum(x => x.rm.period == 8 ? x.rm.sparepartcost : 0),
+			//				Sep = stat.Sum(x => x.rm.period == 9 ? x.rm.sparepartcost : 0),
+			//				Oct = stat.Sum(x => x.rm.period == 10 ? x.rm.sparepartcost : 0),
+			//				Nov = stat.Sum(x => x.rm.period == 11 ? x.rm.sparepartcost : 0),
+			//				Dec = stat.Sum(x => x.rm.period == 12 ? x.rm.sparepartcost : 0),
+			//				Total = stat.Sum(x => x.rm.sparepartcost)
+			//			};
+
+			//if(stats != null)
+			//{
+			//	result = stats.ToDataTable();
+			//}
+			//return result;
 
 		} // end getSparepartIncomeStat
 
 
 		public DataTable getTotalIncomeStat(int fiscYear)
 		{
-			DataTable result = new DataTable();
+			return new DataConnect($"EXEC dbo.usp_OM_SERVICE_TOTAL_INCOME_STAT @workyear={fiscYear}", omglobal.SysConnectionString).ToDataTable;
+			//DataTable result = new DataTable();
 
-			var stats = from rm in _om.ORDERMAINTENANCEs
-						join oty in _om.ORDERTYPEs on rm.orderCode equals oty.ordertypecode
-						where rm.isdelete == false
-						&& (rm.servicecost + rm.sparepartcost) > 0
-						&& rm.fiscyear == fiscYear
-						orderby rm.orderCode
-						group new
-						{
-							rm,
-							oty
-						} by new
-						{
-							rm.orderCode,
-						} into stat
-						select new
-						{
-							OrderName = stat.Key.orderCode + "-" + stat.FirstOrDefault().oty.ordertypename,
-							Jan = stat.Sum(x => x.rm.period == 1 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							Feb = stat.Sum(x => x.rm.period == 2 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							Mar = stat.Sum(x => x.rm.period == 3 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							Apr = stat.Sum(x => x.rm.period == 4 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							May = stat.Sum(x => x.rm.period == 5 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							Jun = stat.Sum(x => x.rm.period == 6 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							Jul = stat.Sum(x => x.rm.period == 7 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							Aug = stat.Sum(x => x.rm.period == 8 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							Sep = stat.Sum(x => x.rm.period == 9 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							Oct = stat.Sum(x => x.rm.period == 10 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							Nov = stat.Sum(x => x.rm.period == 11 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							Dec = stat.Sum(x => x.rm.period == 12 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							Total = stat.Sum(x => (x.rm.servicecost + x.rm.sparepartcost))
-						};
+			//var stats = from rm in _om.ORDERMAINTENANCEs
+			//			join oty in _om.ORDERTYPEs on rm.orderCode equals oty.ordertypecode
+			//			where rm.isdelete == false
+			//			&& (rm.servicecost + rm.sparepartcost) > 0
+			//			&& rm.fiscyear == fiscYear
+			//			orderby rm.orderCode
+			//			group new
+			//			{
+			//				rm,
+			//				oty
+			//			} by new
+			//			{
+			//				rm.orderCode,
+			//			} into stat
+			//			select new
+			//			{
+			//				OrderName = stat.Key.orderCode + "-" + stat.FirstOrDefault().oty.ordertypename,
+			//				Jan = stat.Sum(x => x.rm.period == 1 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				Feb = stat.Sum(x => x.rm.period == 2 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				Mar = stat.Sum(x => x.rm.period == 3 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				Apr = stat.Sum(x => x.rm.period == 4 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				May = stat.Sum(x => x.rm.period == 5 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				Jun = stat.Sum(x => x.rm.period == 6 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				Jul = stat.Sum(x => x.rm.period == 7 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				Aug = stat.Sum(x => x.rm.period == 8 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				Sep = stat.Sum(x => x.rm.period == 9 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				Oct = stat.Sum(x => x.rm.period == 10 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				Nov = stat.Sum(x => x.rm.period == 11 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				Dec = stat.Sum(x => x.rm.period == 12 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				Total = stat.Sum(x => (x.rm.servicecost + x.rm.sparepartcost))
+			//			};
 
-			if(stats != null)
-			{
-				result = stats.ToDataTable();
-			}
-			return result;
+			//if(stats != null)
+			//{
+			//	result = stats.ToDataTable();
+			//}
+			//return result;
 
 		} // end getTotalIncomeStat
 
 
-		public DataTable getCommulatedServiceIncomeByServiceCode(int fiscYear)
+		public DataTable GetCommulatedServiceIncomeByServiceCode(int fiscYear)
 		{
-			DataTable result = new DataTable();
+			return new DataConnect($"EXEC dbo.usp_OM_SERVICE_LABOR_COM_INCOME_STAT @workyear={fiscYear}", omglobal.SysConnectionString).ToDataTable;
+			//DataTable result = new DataTable();
 
-			var stats = from rm in _om.ORDERMAINTENANCEs
-						join oty in _om.ORDERTYPEs on rm.orderCode equals oty.ordertypecode
-						where rm.isdelete == false
-						&& rm.servicecost > 0
-						&& rm.fiscyear == fiscYear
-						orderby rm.orderCode
-						group new
-						{
-							rm,
-							oty
-						} by new
-						{
-							rm.orderCode,
-						} into stat
-						select new
-						{
-							OrderName = stat.Key.orderCode + "-" + stat.FirstOrDefault().oty.ordertypename,
-							Jan = stat.Sum(x => x.rm.period <= 1 ? x.rm.servicecost : 0),
-							Feb = stat.Sum(x => x.rm.period <= 2 ? x.rm.servicecost : 0),
-							Mar = stat.Sum(x => x.rm.period <= 3 ? x.rm.servicecost : 0),
-							Apr = stat.Sum(x => x.rm.period <= 4 ? x.rm.servicecost : 0),
-							May = stat.Sum(x => x.rm.period <= 5 ? x.rm.servicecost : 0),
-							Jun = stat.Sum(x => x.rm.period <= 6 ? x.rm.servicecost : 0),
-							Jul = stat.Sum(x => x.rm.period <= 7 ? x.rm.servicecost : 0),
-							Aug = stat.Sum(x => x.rm.period <= 8 ? x.rm.servicecost : 0),
-							Sep = stat.Sum(x => x.rm.period <= 9 ? x.rm.servicecost : 0),
-							Oct = stat.Sum(x => x.rm.period <= 10 ? x.rm.servicecost : 0),
-							Nov = stat.Sum(x => x.rm.period <= 11 ? x.rm.servicecost : 0),
-							Dec = stat.Sum(x => x.rm.period <= 12 ? x.rm.servicecost : 0)
-						};
+			//var stats = from rm in _om.ORDERMAINTENANCEs
+			//			join oty in _om.ORDERTYPEs on rm.orderCode equals oty.ordertypecode
+			//			where rm.isdelete == false
+			//			&& rm.servicecost > 0
+			//			&& rm.fiscyear == fiscYear
+			//			orderby rm.orderCode
+			//			group new
+			//			{
+			//				rm,
+			//				oty
+			//			} by new
+			//			{
+			//				rm.orderCode,
+			//			} into stat
+			//			select new
+			//			{
+			//				OrderName = stat.Key.orderCode + "-" + stat.FirstOrDefault().oty.ordertypename,
+			//				Jan = stat.Sum(x => x.rm.period <= 1 ? x.rm.servicecost : 0),
+			//				Feb = stat.Sum(x => x.rm.period <= 2 ? x.rm.servicecost : 0),
+			//				Mar = stat.Sum(x => x.rm.period <= 3 ? x.rm.servicecost : 0),
+			//				Apr = stat.Sum(x => x.rm.period <= 4 ? x.rm.servicecost : 0),
+			//				May = stat.Sum(x => x.rm.period <= 5 ? x.rm.servicecost : 0),
+			//				Jun = stat.Sum(x => x.rm.period <= 6 ? x.rm.servicecost : 0),
+			//				Jul = stat.Sum(x => x.rm.period <= 7 ? x.rm.servicecost : 0),
+			//				Aug = stat.Sum(x => x.rm.period <= 8 ? x.rm.servicecost : 0),
+			//				Sep = stat.Sum(x => x.rm.period <= 9 ? x.rm.servicecost : 0),
+			//				Oct = stat.Sum(x => x.rm.period <= 10 ? x.rm.servicecost : 0),
+			//				Nov = stat.Sum(x => x.rm.period <= 11 ? x.rm.servicecost : 0),
+			//				Dec = stat.Sum(x => x.rm.period <= 12 ? x.rm.servicecost : 0)
+			//			};
 
-			if(stats != null)
-			{
-				result = stats.ToDataTable();
-			}
-			return result;
+			//if(stats != null)
+			//{
+			//	result = stats.ToDataTable();
+			//}
+			//return result;
 		} // end getCommulatedIncomeByServiceCode
 
 
-		public DataTable getCommulatedSparepartIncomeByServiceCode(int fiscYear)
+		public DataTable GetCommulatedSparepartIncomeByServiceCode(int fiscYear)
 		{
-			DataTable result = new DataTable();
+			return new DataConnect($"EXEC dbo.usp_OM_SERVICE_SPAREPART_COM_INCOME_STAT @workyear={fiscYear}", omglobal.SysConnectionString).ToDataTable;
 
-			var stats = from rm in _om.ORDERMAINTENANCEs
-						join oty in _om.ORDERTYPEs on rm.orderCode equals oty.ordertypecode
-						where rm.isdelete == false
-						&& rm.sparepartcost > 0
-						&& rm.fiscyear == fiscYear
-						orderby rm.orderCode
-						group new
-						{
-							rm,
-							oty
-						} by new
-						{
-							rm.orderCode,
-						} into stat
-						select new
-						{
-							OrderName = stat.Key.orderCode + "-" + stat.FirstOrDefault().oty.ordertypename,
-							Jan = stat.Sum(x => x.rm.period <= 1 ? x.rm.sparepartcost : 0),
-							Feb = stat.Sum(x => x.rm.period <= 2 ? x.rm.sparepartcost : 0),
-							Mar = stat.Sum(x => x.rm.period <= 3 ? x.rm.sparepartcost : 0),
-							Apr = stat.Sum(x => x.rm.period <= 4 ? x.rm.sparepartcost : 0),
-							May = stat.Sum(x => x.rm.period <= 5 ? x.rm.sparepartcost : 0),
-							Jun = stat.Sum(x => x.rm.period <= 6 ? x.rm.sparepartcost : 0),
-							Jul = stat.Sum(x => x.rm.period <= 7 ? x.rm.sparepartcost : 0),
-							Aug = stat.Sum(x => x.rm.period <= 8 ? x.rm.sparepartcost : 0),
-							Sep = stat.Sum(x => x.rm.period <= 9 ? x.rm.sparepartcost : 0),
-							Oct = stat.Sum(x => x.rm.period <= 10 ? x.rm.sparepartcost : 0),
-							Nov = stat.Sum(x => x.rm.period <= 11 ? x.rm.sparepartcost : 0),
-							Dec = stat.Sum(x => x.rm.period <= 12 ? x.rm.sparepartcost : 0)
-						};
+			//DataTable result = new DataTable();
 
-			if(stats != null)
-			{
-				result = stats.ToDataTable();
-			}
-			return result;
+			//var stats = from rm in _om.ORDERMAINTENANCEs
+			//			join oty in _om.ORDERTYPEs on rm.orderCode equals oty.ordertypecode
+			//			where rm.isdelete == false
+			//			&& rm.sparepartcost > 0
+			//			&& rm.fiscyear == fiscYear
+			//			orderby rm.orderCode
+			//			group new
+			//			{
+			//				rm,
+			//				oty
+			//			} by new
+			//			{
+			//				rm.orderCode,
+			//			} into stat
+			//			select new
+			//			{
+			//				OrderName = stat.Key.orderCode + "-" + stat.FirstOrDefault().oty.ordertypename,
+			//				Jan = stat.Sum(x => x.rm.period <= 1 ? x.rm.sparepartcost : 0),
+			//				Feb = stat.Sum(x => x.rm.period <= 2 ? x.rm.sparepartcost : 0),
+			//				Mar = stat.Sum(x => x.rm.period <= 3 ? x.rm.sparepartcost : 0),
+			//				Apr = stat.Sum(x => x.rm.period <= 4 ? x.rm.sparepartcost : 0),
+			//				May = stat.Sum(x => x.rm.period <= 5 ? x.rm.sparepartcost : 0),
+			//				Jun = stat.Sum(x => x.rm.period <= 6 ? x.rm.sparepartcost : 0),
+			//				Jul = stat.Sum(x => x.rm.period <= 7 ? x.rm.sparepartcost : 0),
+			//				Aug = stat.Sum(x => x.rm.period <= 8 ? x.rm.sparepartcost : 0),
+			//				Sep = stat.Sum(x => x.rm.period <= 9 ? x.rm.sparepartcost : 0),
+			//				Oct = stat.Sum(x => x.rm.period <= 10 ? x.rm.sparepartcost : 0),
+			//				Nov = stat.Sum(x => x.rm.period <= 11 ? x.rm.sparepartcost : 0),
+			//				Dec = stat.Sum(x => x.rm.period <= 12 ? x.rm.sparepartcost : 0)
+			//			};
+
+			//if(stats != null)
+			//{
+			//	result = stats.ToDataTable();
+			//}
+			//return result;
 
 		} // end getCommulatedSparepartIncomeByServiceCode
 
-		public DataTable getCommulatedIncomeStat(int fiscYear)
+		public DataTable GetCommulatedIncomeStat(int fiscYear)
 		{
-			DataTable result = new DataTable();
+			return new DataConnect($"EXEC dbo.usp_OM_SERVICE_TOTAL_COM_INCOME_STAT @workyear={fiscYear}", omglobal.SysConnectionString).ToDataTable;
 
-			var stats = from rm in _om.ORDERMAINTENANCEs
-						join oty in _om.ORDERTYPEs on rm.orderCode equals oty.ordertypecode
-						where rm.isdelete == false
-						&& (rm.servicecost + rm.sparepartcost) > 0
-						&& rm.fiscyear == fiscYear
-						orderby rm.orderCode
-						group new
-						{
-							rm,
-							oty
-						} by new
-						{
-							rm.orderCode,
-						} into stat
-						select new
-						{
-							OrderName = stat.Key.orderCode + "-" + stat.FirstOrDefault().oty.ordertypename,
-							Jan = stat.Sum(x => x.rm.period <= 1 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							Feb = stat.Sum(x => x.rm.period <= 2 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							Mar = stat.Sum(x => x.rm.period <= 3 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							Apr = stat.Sum(x => x.rm.period <= 4 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							May = stat.Sum(x => x.rm.period <= 5 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							Jun = stat.Sum(x => x.rm.period <= 6 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							Jul = stat.Sum(x => x.rm.period <= 7 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							Aug = stat.Sum(x => x.rm.period <= 8 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							Sep = stat.Sum(x => x.rm.period <= 9 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							Oct = stat.Sum(x => x.rm.period <= 10 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							Nov = stat.Sum(x => x.rm.period <= 11 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-							Dec = stat.Sum(x => x.rm.period <= 12 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
-						};
+			//DataTable result = new DataTable();
 
-			if(stats != null)
-			{
-				result = stats.ToDataTable();
-			}
-			return result;
+			//var stats = from rm in _om.ORDERMAINTENANCEs
+			//			join oty in _om.ORDERTYPEs on rm.orderCode equals oty.ordertypecode
+			//			where rm.isdelete == false
+			//			&& (rm.servicecost + rm.sparepartcost) > 0
+			//			&& rm.fiscyear == fiscYear
+			//			orderby rm.orderCode
+			//			group new
+			//			{
+			//				rm,
+			//				oty
+			//			} by new
+			//			{
+			//				rm.orderCode,
+			//			} into stat
+			//			select new
+			//			{
+			//				OrderName = stat.Key.orderCode + "-" + stat.FirstOrDefault().oty.ordertypename,
+			//				Jan = stat.Sum(x => x.rm.period <= 1 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				Feb = stat.Sum(x => x.rm.period <= 2 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				Mar = stat.Sum(x => x.rm.period <= 3 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				Apr = stat.Sum(x => x.rm.period <= 4 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				May = stat.Sum(x => x.rm.period <= 5 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				Jun = stat.Sum(x => x.rm.period <= 6 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				Jul = stat.Sum(x => x.rm.period <= 7 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				Aug = stat.Sum(x => x.rm.period <= 8 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				Sep = stat.Sum(x => x.rm.period <= 9 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				Oct = stat.Sum(x => x.rm.period <= 10 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				Nov = stat.Sum(x => x.rm.period <= 11 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//				Dec = stat.Sum(x => x.rm.period <= 12 ? (x.rm.servicecost + x.rm.sparepartcost) : 0),
+			//			};
+
+			//if(stats != null)
+			//{
+			//	result = stats.ToDataTable();
+			//}
+			//return result;
 
 		} // end getCommulatedIncomeStat
 

@@ -1,4 +1,5 @@
 ﻿using OMW15.Controllers.ToolController;
+using OMW15.Models.ToolModel;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -115,106 +116,111 @@ namespace OMW15.Models.ServiceModel
 		{
 			return await Task.Run(() =>
 			{
-				var _result = new DataTable();
-				var _ml = (from m in _om.MIXes
-						   join c in _om.CUSTOMERS on m.acccustcode equals c.CUSTCODE
-						   where m.isdelete == false
-						   select new
-						   {
-							   id = m.mix_id,
-							   Status = m.isexpire ? "Expired" : "Active",
-							   Transfer = m.istransfer ? "Y" : "N",
-							   NewMC = m.isnewproduct ? "Y" : "N",
-							   ModelId = m.productid,
-							   Model = m.type,
-							   SerialNo = m.s_no,
-							   c.CUSTID,
-							   CustomerCode = m.acccustcode,
-							   Customer = c.CUSTNAME,
-							   SellDate = m.sale_date.Value,
-							   Expire = m.exp.Value,
-							   m.remark
-						   }).Distinct().AsParallel();
-
-				if (Model == "" && SNFilter == "" && CustomerFilter == "")
-					_result =
-						_ml.OrderBy(o => o.Status)
-							.ThenBy(o => o.Customer)
-							.ThenBy(o => o.Model)
-							.ThenBy(o => o.SerialNo)
-							.AsParallel()
-							.ToDataTable();
-				else if (Model != "" && SNFilter != "" && CustomerFilter != "")
-					_result =
-						_ml.Where(x => x.Model.ToLower() == Model.ToLower()
-								&& x.SerialNo.ToLower().Contains(SNFilter.ToLower())
-								&& x.Customer.Contains(CustomerFilter))
-							.OrderBy(o => o.Status)
-							.ThenBy(o => o.Customer)
-							.ThenBy(o => o.Model)
-							.ThenBy(o => o.SerialNo)
-							.AsParallel()
-							.ToDataTable();
-				else if (Model != "" && SNFilter != "" && CustomerFilter == "")
-					_result =
-						_ml.Where(x => x.Model.ToLower() == Model.ToLower()
-								&& x.SerialNo.ToLower().Contains(SNFilter.ToLower()))
-							.OrderBy(o => o.Status)
-							.ThenBy(o => o.Customer)
-							.ThenBy(o => o.Model)
-							.ThenBy(o => o.SerialNo)
-							.AsParallel()
-							.ToDataTable();
-				else if (Model != "" && SNFilter == "" && CustomerFilter != "")
-					_result =
-						_ml.Where(x => x.Model.ToLower() == Model.ToLower()
-								&& x.Customer.ToLower().Contains(CustomerFilter.ToLower()))
-							.OrderBy(o => o.Status)
-							.ThenBy(o => o.Customer)
-							.ThenBy(o => o.Model)
-							.ThenBy(o => o.SerialNo)
-							.AsParallel()
-							.ToDataTable();
-				else if (Model != "" && SNFilter == "" && CustomerFilter == "")
-					_result =
-						_ml.Where(x => x.Model.ToLower() == Model.ToLower())
-							.OrderBy(o => o.Status)
-							.ThenBy(o => o.Customer)
-							.ThenBy(o => o.Model)
-							.ThenBy(o => o.SerialNo)
-							.AsParallel()
-							.ToDataTable();
-				else if (Model == "" && SNFilter != "" && CustomerFilter != "")
-					_result =
-						_ml.Where(x => x.SerialNo.ToLower().Contains(SNFilter.ToLower())
-							&& x.Customer.ToLower().Contains(CustomerFilter.ToLower()))
-							.OrderBy(o => o.Status)
-							.ThenBy(o => o.Customer)
-							.ThenBy(o => o.Model)
-							.ThenBy(o => o.SerialNo)
-							.AsParallel()
-							.ToDataTable();
-				else if (Model == "" && SNFilter == "" && CustomerFilter != "")
-					_result =
-						_ml.Where(x => x.Customer.ToLower().Contains(CustomerFilter.ToLower()))
-							.OrderBy(o => o.Status)
-							.ThenBy(o => o.Customer)
-							.ThenBy(o => o.Model)
-							.ThenBy(o => o.SerialNo)
-							.AsParallel()
-							.ToDataTable();
-				else if (Model == "" && SNFilter != "" && CustomerFilter == "")
-					_result =
-						_ml.Where(x => x.SerialNo.ToLower().Contains(SNFilter.ToLower()))
-							.OrderBy(o => o.Status)
-							.ThenBy(o => o.Customer)
-							.ThenBy(o => o.Model)
-							.ThenBy(o => o.SerialNo)
-							.AsParallel()
-							.ToDataTable();
-
-				return _result;
+				return new DataConnect($"EXEC dbo.usp_OM_SERVICE_MACHINELIST @machineModel='{Model}',@sn='{SNFilter}',@owner='{CustomerFilter}'", omglobal.SysConnectionString).ToDataTable;
 			});
+			//return await Task.Run(() =>
+			//{
+			//	var _result = new DataTable();
+			//	var _ml = (from m in _om.MIXes
+			//			   join c in _om.CUSTOMERS on m.acccustcode equals c.CUSTCODE
+			//			   where m.isdelete == false
+			//			   select new
+			//			   {
+			//				   id = m.mix_id,
+			//				   Status = m.isexpire ? "Expired" : "Active",
+			//				   Transfer = m.istransfer ? "Y" : "N",
+			//				   NewMC = m.isnewproduct ? "Y" : "N",
+			//				   ModelId = m.productid,
+			//				   Model = m.type,
+			//				   SerialNo = m.s_no,
+			//				   c.CUSTID,
+			//				   CustomerCode = m.acccustcode,
+			//				   Customer = c.CUSTNAME,
+			//				   SellDate = m.sale_date.Value,
+			//				   Expire = m.exp.Value,
+			//				   m.remark
+			//			   }).Distinct().AsParallel();
+
+			//	if (Model == "" && SNFilter == "" && CustomerFilter == "")
+			//		_result =
+			//			_ml.OrderBy(o => o.Status)
+			//				.ThenBy(o => o.Customer)
+			//				.ThenBy(o => o.Model)
+			//				.ThenBy(o => o.SerialNo)
+			//				.AsParallel()
+			//				.ToDataTable();
+			//	else if (Model != "" && SNFilter != "" && CustomerFilter != "")
+			//		_result =
+			//			_ml.Where(x => x.Model.ToLower() == Model.ToLower()
+			//					&& x.SerialNo.ToLower().Contains(SNFilter.ToLower())
+			//					&& x.Customer.Contains(CustomerFilter))
+			//				.OrderBy(o => o.Status)
+			//				.ThenBy(o => o.Customer)
+			//				.ThenBy(o => o.Model)
+			//				.ThenBy(o => o.SerialNo)
+			//				.AsParallel()
+			//				.ToDataTable();
+			//	else if (Model != "" && SNFilter != "" && CustomerFilter == "")
+			//		_result =
+			//			_ml.Where(x => x.Model.ToLower() == Model.ToLower()
+			//					&& x.SerialNo.ToLower().Contains(SNFilter.ToLower()))
+			//				.OrderBy(o => o.Status)
+			//				.ThenBy(o => o.Customer)
+			//				.ThenBy(o => o.Model)
+			//				.ThenBy(o => o.SerialNo)
+			//				.AsParallel()
+			//				.ToDataTable();
+			//	else if (Model != "" && SNFilter == "" && CustomerFilter != "")
+			//		_result =
+			//			_ml.Where(x => x.Model.ToLower() == Model.ToLower()
+			//					&& x.Customer.ToLower().Contains(CustomerFilter.ToLower()))
+			//				.OrderBy(o => o.Status)
+			//				.ThenBy(o => o.Customer)
+			//				.ThenBy(o => o.Model)
+			//				.ThenBy(o => o.SerialNo)
+			//				.AsParallel()
+			//				.ToDataTable();
+			//	else if (Model != "" && SNFilter == "" && CustomerFilter == "")
+			//		_result =
+			//			_ml.Where(x => x.Model.ToLower() == Model.ToLower())
+			//				.OrderBy(o => o.Status)
+			//				.ThenBy(o => o.Customer)
+			//				.ThenBy(o => o.Model)
+			//				.ThenBy(o => o.SerialNo)
+			//				.AsParallel()
+			//				.ToDataTable();
+			//	else if (Model == "" && SNFilter != "" && CustomerFilter != "")
+			//		_result =
+			//			_ml.Where(x => x.SerialNo.ToLower().Contains(SNFilter.ToLower())
+			//				&& x.Customer.ToLower().Contains(CustomerFilter.ToLower()))
+			//				.OrderBy(o => o.Status)
+			//				.ThenBy(o => o.Customer)
+			//				.ThenBy(o => o.Model)
+			//				.ThenBy(o => o.SerialNo)
+			//				.AsParallel()
+			//				.ToDataTable();
+			//	else if (Model == "" && SNFilter == "" && CustomerFilter != "")
+			//		_result =
+			//			_ml.Where(x => x.Customer.ToLower().Contains(CustomerFilter.ToLower()))
+			//				.OrderBy(o => o.Status)
+			//				.ThenBy(o => o.Customer)
+			//				.ThenBy(o => o.Model)
+			//				.ThenBy(o => o.SerialNo)
+			//				.AsParallel()
+			//				.ToDataTable();
+			//	else if (Model == "" && SNFilter != "" && CustomerFilter == "")
+			//		_result =
+			//			_ml.Where(x => x.SerialNo.ToLower().Contains(SNFilter.ToLower()))
+			//				.OrderBy(o => o.Status)
+			//				.ThenBy(o => o.Customer)
+			//				.ThenBy(o => o.Model)
+			//				.ThenBy(o => o.SerialNo)
+			//				.AsParallel()
+			//				.ToDataTable();
+
+			//	return _result;
+			//});
+
 		} // end GetAsyncMachineList
 
 		public DataTable GetCurrentMachineOwner(string Model, string SN)

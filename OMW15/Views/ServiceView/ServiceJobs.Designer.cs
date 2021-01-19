@@ -30,6 +30,7 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServiceJobs));
 			this.pnlHeader = new System.Windows.Forms.Panel();
+			this.btnLoadData = new OMControls.OMFlatButton();
 			this.cbxJobCat = new System.Windows.Forms.ComboBox();
 			this.lbJobCAT = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
@@ -73,7 +74,6 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.dgvByOrderCode = new System.Windows.Forms.DataGridView();
 			this.label1 = new System.Windows.Forms.Label();
-			this.btnLoadData = new OMControls.OMFlatButton();
 			this.pnlHeader.SuspendLayout();
 			this.pnlStatus.SuspendLayout();
 			this.pnlBody.SuspendLayout();
@@ -106,6 +106,21 @@
 			this.pnlHeader.Padding = new System.Windows.Forms.Padding(6);
 			this.pnlHeader.Size = new System.Drawing.Size(941, 38);
 			this.pnlHeader.TabIndex = 0;
+			// 
+			// btnLoadData
+			// 
+			this.btnLoadData.Dock = System.Windows.Forms.DockStyle.Left;
+			this.btnLoadData.FlatAppearance.BorderSize = 0;
+			this.btnLoadData.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
+			this.btnLoadData.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.btnLoadData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnLoadData.Image = ((System.Drawing.Image)(resources.GetObject("btnLoadData.Image")));
+			this.btnLoadData.Location = new System.Drawing.Point(729, 6);
+			this.btnLoadData.Name = "btnLoadData";
+			this.btnLoadData.Size = new System.Drawing.Size(26, 26);
+			this.btnLoadData.TabIndex = 10;
+			this.btnLoadData.UseVisualStyleBackColor = true;
+			this.btnLoadData.Click += new System.EventHandler(this.btnLoadData_Click);
 			// 
 			// cbxJobCat
 			// 
@@ -568,21 +583,6 @@
 			this.label1.TabIndex = 8;
 			this.label1.Text = "สรุปงาน (Active) by รหัส";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// btnLoadData
-			// 
-			this.btnLoadData.Dock = System.Windows.Forms.DockStyle.Left;
-			this.btnLoadData.FlatAppearance.BorderSize = 0;
-			this.btnLoadData.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
-			this.btnLoadData.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.btnLoadData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnLoadData.Image = ((System.Drawing.Image)(resources.GetObject("btnLoadData.Image")));
-			this.btnLoadData.Location = new System.Drawing.Point(729, 6);
-			this.btnLoadData.Name = "btnLoadData";
-			this.btnLoadData.Size = new System.Drawing.Size(26, 26);
-			this.btnLoadData.TabIndex = 10;
-			this.btnLoadData.UseVisualStyleBackColor = true;
-			this.btnLoadData.Click += new System.EventHandler(this.btnLoadData_Click);
 			// 
 			// ServiceJobs
 			// 

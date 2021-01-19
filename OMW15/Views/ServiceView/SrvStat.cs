@@ -1,4 +1,5 @@
 ﻿using OMW15.Controllers.ToolController;
+using OMW15.Models.ServiceModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -47,38 +48,40 @@ namespace OMW15.Views.ServiceView
 
 		private void loadStat(string StatCode, int fiscYear)
 		{
+			lbTag.Text = StatCode;
+
 			switch(StatCode)
 			{
 				case "SUM_WORKS":
-					getStatForServiceOrderByYear(fiscYear);
+					GetStatForServiceOrderByYear(fiscYear);
 					break;
 
 				case "ORDER_PIORITY":
-					getStatForActionServiceByYear(fiscYear);
+					GetStatForActionPiorityServiceByYear(fiscYear);
 					break;
 
 				case "SUM_SERVICE_INCOME":
-					getServiceIncome(fiscYear);
+					GetServiceIncome(fiscYear);
 					break;
 
 				case "SUM_SPAREPART_INCOME":
-					getSparepartIncome(fiscYear);
+					GetSparepartIncome(fiscYear);
 					break;
 
 				case "SUM_TOTAL_INCOME":
-					getTotalServiceIncome(fiscYear);
+					GetTotalServiceIncome(fiscYear);
 					break;
 
 				case "COM_SERVICE_INCOME":
-					getComulatedServiceIncome(fiscYear);
+					GetComulatedServiceIncome(fiscYear);
 					break;
 
 				case "COM_SPAREPART_INCOME":
-					getComulatedSparepartIncome(fiscYear);
+					GetComulatedSparepartIncome(fiscYear);
 					break;
 
 				case "COM_TOTAL_INCOME":
-					getComulatedIncome(fiscYear);
+					GetComulatedIncome(fiscYear);
 					break;
 
 				case "SERVICE_INCOME_BY_CUSTOMER":
@@ -109,12 +112,14 @@ namespace OMW15.Views.ServiceView
 			}
 		}
 
-		private async void getStatForServiceOrderByYear(int fiscYear)
+		//private async void getStatForServiceOrderByYear(int fiscYear)
+		private void GetStatForServiceOrderByYear(int fiscYear)
 		{
 			dgv.SuspendLayout();
 			dgv.DataSource = null;
-			DataTable dt = new Models.ServiceModel.ServiceStat().getServiceStat(fiscYear);
-			dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
+			dgv.DataSource = new Models.ServiceModel.ServiceStat().getServiceStat(fiscYear);
+			//DataTable dt = new Models.ServiceModel.ServiceStat().getServiceStat(fiscYear);
+			//dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
 
 			// formatting column 
 			foreach(DataGridViewColumn dgc in dgv.Columns)
@@ -125,17 +130,18 @@ namespace OMW15.Views.ServiceView
 					dgc.DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.GeneralNumericCellStyle();
 				}
 			}
-
+			dgv.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 			dgv.ResumeLayout();
 
 		} // end getStatForServiceOrderByYear
 
-		private async void getStatForActionServiceByYear(int fiscYear)
+		private void GetStatForActionPiorityServiceByYear(int fiscYear)
 		{
 			dgv.SuspendLayout();
 			dgv.DataSource = null;
-			DataTable dt = new Models.ServiceModel.ServiceStat().getServiceActionStat(fiscYear);
-			dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
+			dgv.DataSource = new Models.ServiceModel.ServiceStat().getServiceActionStat(fiscYear);
+			//DataTable dt = 
+			//dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
 
 			// formatting column 
 			foreach(DataGridViewColumn dgc in dgv.Columns)
@@ -146,18 +152,19 @@ namespace OMW15.Views.ServiceView
 					dgc.DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.GeneralNumericCellStyle();
 				}
 			}
-
+			dgv.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 			dgv.ResumeLayout();
 
 		} // end getStatForActionServiceByYear
 
 
-		private async void getTotalServiceIncome(int fiscYear)
+		private void GetTotalServiceIncome(int fiscYear)
 		{
 			dgv.SuspendLayout();
 			dgv.DataSource = null;
-			DataTable dt = new Models.ServiceModel.ServiceStat().getTotalIncomeStat(fiscYear);
-			dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
+			dgv.DataSource = new Models.ServiceModel.ServiceStat().getTotalIncomeStat(fiscYear);
+			//DataTable dt = new 
+			//dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
 
 			// formatting column 
 			foreach(DataGridViewColumn dgc in dgv.Columns)
@@ -168,7 +175,7 @@ namespace OMW15.Views.ServiceView
 					dgc.DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.GeneralNumericCellStyle();
 				}
 			}
-
+			dgv.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 			dgv.ResumeLayout();
 
 		} // end getTotalServiceIncome	
@@ -236,12 +243,12 @@ namespace OMW15.Views.ServiceView
 
 		} // end getTotalIncomeByCustomer
 
-		private async void getServiceIncome(int fiscYear)
+		private void GetServiceIncome(int fiscYear)
 		{
 			dgv.SuspendLayout();
 			dgv.DataSource = null;
-			DataTable dt = new Models.ServiceModel.ServiceStat().getServiceIncomeStat(fiscYear);
-			dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
+			dgv.DataSource = new Models.ServiceModel.ServiceStat().getServiceLaborIncomeStat(fiscYear);
+			//dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
 
 			// formatting column 
 			foreach(DataGridViewColumn dgc in dgv.Columns)
@@ -258,12 +265,12 @@ namespace OMW15.Views.ServiceView
 		} // end getServiceIncome
 
 
-		private async void getSparepartIncome(int fiscYear)
+		private void GetSparepartIncome(int fiscYear)
 		{
 			dgv.SuspendLayout();
 			dgv.DataSource = null;
-			DataTable dt = new Models.ServiceModel.ServiceStat().getSparepartIncomeStat(fiscYear);
-			dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
+			dgv.DataSource = new Models.ServiceModel.ServiceStat().getSparepartIncomeStat(fiscYear);
+			//dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
 
 			// formatting column 
 			foreach(DataGridViewColumn dgc in dgv.Columns)
@@ -279,12 +286,12 @@ namespace OMW15.Views.ServiceView
 
 		} // end getSparepartIncomev
 
-		private async void getComulatedServiceIncome(int fiscYear)
+		private void GetComulatedServiceIncome(int fiscYear)
 		{
 			dgv.SuspendLayout();
 			dgv.DataSource = null;
-			DataTable dt = new Models.ServiceModel.ServiceStat().getCommulatedServiceIncomeByServiceCode(fiscYear);
-			dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
+			dgv.DataSource = new Models.ServiceModel.ServiceStat().GetCommulatedServiceIncomeByServiceCode(fiscYear);
+			//dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
 
 			// formatting column 
 			foreach(DataGridViewColumn dgc in dgv.Columns)
@@ -300,12 +307,12 @@ namespace OMW15.Views.ServiceView
 
 		} // end getSparepartIncomev
 
-		private async void getComulatedSparepartIncome(int fiscYear)
+		private void GetComulatedSparepartIncome(int fiscYear)
 		{
 			dgv.SuspendLayout();
 			dgv.DataSource = null;
-			DataTable dt = new Models.ServiceModel.ServiceStat().getCommulatedSparepartIncomeByServiceCode(fiscYear);
-			dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
+			dgv.DataSource = new Models.ServiceModel.ServiceStat().GetCommulatedSparepartIncomeByServiceCode(fiscYear);
+			//dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
 
 			// formatting column 
 			foreach(DataGridViewColumn dgc in dgv.Columns)
@@ -321,12 +328,12 @@ namespace OMW15.Views.ServiceView
 
 		} // end getComulatedSparepartIncome
 
-		private async void getComulatedIncome(int fiscYear)
+		private void GetComulatedIncome(int fiscYear)
 		{
 			dgv.SuspendLayout();
 			dgv.DataSource = null;
-			DataTable dt = new Models.ServiceModel.ServiceStat().getCommulatedIncomeStat(fiscYear);
-			dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
+			dgv.DataSource = new Models.ServiceModel.ServiceStat().GetCommulatedIncomeStat(fiscYear);
+			//dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
 
 			// formatting column 
 			foreach(DataGridViewColumn dgc in dgv.Columns)
@@ -426,14 +433,14 @@ namespace OMW15.Views.ServiceView
 		{
 			InitializeComponent();
 
+			// setting datagridview
+			OMControls.OMUtils.SettingDataGridView(ref dgv);
+
 			CenterToParent();
 		}
 
 		private void SrvStat_Load(object sender, EventArgs e)
 		{
-			// setting datagridview
-			OMControls.OMUtils.SettingDataGridView(ref dgv);
-
 			// create stat year list
 			getStatYear();
 

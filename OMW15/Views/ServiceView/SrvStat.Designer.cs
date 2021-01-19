@@ -42,7 +42,9 @@
 			this.pnlBodyLeftHeader = new System.Windows.Forms.Panel();
 			this.cbxYear = new System.Windows.Forms.ComboBox();
 			this.label3 = new System.Windows.Forms.Label();
+			this.lbTag = new System.Windows.Forms.Label();
 			this.pnlHeader.SuspendLayout();
+			this.pnlBottom.SuspendLayout();
 			this.pnlBody.SuspendLayout();
 			this.pnlBodyRight.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -75,6 +77,7 @@
 			// 
 			// pnlBottom
 			// 
+			this.pnlBottom.Controls.Add(this.lbTag);
 			this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.pnlBottom.Location = new System.Drawing.Point(0, 491);
 			this.pnlBottom.Name = "pnlBottom";
@@ -199,6 +202,16 @@
 			this.label3.Text = "Year:";
 			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
+			// lbTag
+			// 
+			this.lbTag.Dock = System.Windows.Forms.DockStyle.Left;
+			this.lbTag.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbTag.Location = new System.Drawing.Point(2, 2);
+			this.lbTag.Name = "lbTag";
+			this.lbTag.Size = new System.Drawing.Size(164, 23);
+			this.lbTag.TabIndex = 0;
+			this.lbTag.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
 			// SrvStat
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -213,6 +226,7 @@
 			this.Text = "งานบริการ";
 			this.Load += new System.EventHandler(this.SrvStat_Load);
 			this.pnlHeader.ResumeLayout(false);
+			this.pnlBottom.ResumeLayout(false);
 			this.pnlBody.ResumeLayout(false);
 			this.pnlBodyRight.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
@@ -239,5 +253,6 @@
 		private System.Windows.Forms.ComboBox cbxYear;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.ListBox lstStatType;
+		private System.Windows.Forms.Label lbTag;
 	}
 }
