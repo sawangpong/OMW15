@@ -31,6 +31,7 @@
 			this.pnlHeader = new System.Windows.Forms.Panel();
 			this.label2 = new System.Windows.Forms.Label();
 			this.pnlBottom = new System.Windows.Forms.Panel();
+			this.lbTag = new System.Windows.Forms.Label();
 			this.pnlBody = new System.Windows.Forms.Panel();
 			this.pnlBodyRight = new System.Windows.Forms.Panel();
 			this.dgv = new System.Windows.Forms.DataGridView();
@@ -42,7 +43,6 @@
 			this.pnlBodyLeftHeader = new System.Windows.Forms.Panel();
 			this.cbxYear = new System.Windows.Forms.ComboBox();
 			this.label3 = new System.Windows.Forms.Label();
-			this.lbTag = new System.Windows.Forms.Label();
 			this.pnlHeader.SuspendLayout();
 			this.pnlBottom.SuspendLayout();
 			this.pnlBody.SuspendLayout();
@@ -84,6 +84,16 @@
 			this.pnlBottom.Padding = new System.Windows.Forms.Padding(2);
 			this.pnlBottom.Size = new System.Drawing.Size(920, 27);
 			this.pnlBottom.TabIndex = 1;
+			// 
+			// lbTag
+			// 
+			this.lbTag.Dock = System.Windows.Forms.DockStyle.Left;
+			this.lbTag.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbTag.Location = new System.Drawing.Point(2, 2);
+			this.lbTag.Name = "lbTag";
+			this.lbTag.Size = new System.Drawing.Size(164, 23);
+			this.lbTag.TabIndex = 0;
+			this.lbTag.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// pnlBody
 			// 
@@ -201,16 +211,6 @@
 			this.label3.TabIndex = 1;
 			this.label3.Text = "Year:";
 			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// lbTag
-			// 
-			this.lbTag.Dock = System.Windows.Forms.DockStyle.Left;
-			this.lbTag.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbTag.Location = new System.Drawing.Point(2, 2);
-			this.lbTag.Name = "lbTag";
-			this.lbTag.Size = new System.Drawing.Size(164, 23);
-			this.lbTag.TabIndex = 0;
-			this.lbTag.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// SrvStat
 			// 

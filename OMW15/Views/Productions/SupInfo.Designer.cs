@@ -47,6 +47,7 @@
 			this.btnSave = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.panel10 = new System.Windows.Forms.Panel();
+			this.txtStep = new System.Windows.Forms.TextBox();
 			this.label16 = new System.Windows.Forms.Label();
 			this.txtBuildDetail = new System.Windows.Forms.TextBox();
 			this.label10 = new System.Windows.Forms.Label();
@@ -82,7 +83,6 @@
 			this.label11 = new System.Windows.Forms.Label();
 			this.panel13 = new System.Windows.Forms.Panel();
 			this.pic = new System.Windows.Forms.PictureBox();
-			this.txtStep = new System.Windows.Forms.TextBox();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.panel3.SuspendLayout();
@@ -185,6 +185,7 @@
 			this.txtAP_NAME.Name = "txtAP_NAME";
 			this.txtAP_NAME.Size = new System.Drawing.Size(581, 25);
 			this.txtAP_NAME.TabIndex = 3;
+			this.txtAP_NAME.TextChanged += new System.EventHandler(this.txt_TextChanged);
 			this.txtAP_NAME.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAP_NAME_KeyPress);
 			// 
 			// lbAP_CODE
@@ -306,6 +307,16 @@
 			this.panel10.Size = new System.Drawing.Size(769, 28);
 			this.panel10.TabIndex = 14;
 			// 
+			// txtStep
+			// 
+			this.txtStep.Dock = System.Windows.Forms.DockStyle.Left;
+			this.txtStep.Location = new System.Drawing.Point(621, 1);
+			this.txtStep.MaxLength = 3;
+			this.txtStep.Name = "txtStep";
+			this.txtStep.Size = new System.Drawing.Size(55, 25);
+			this.txtStep.TabIndex = 14;
+			this.txtStep.Text = "0";
+			// 
 			// label16
 			// 
 			this.label16.Dock = System.Windows.Forms.DockStyle.Left;
@@ -324,6 +335,7 @@
 			this.txtBuildDetail.Name = "txtBuildDetail";
 			this.txtBuildDetail.Size = new System.Drawing.Size(395, 25);
 			this.txtBuildDetail.TabIndex = 5;
+			this.txtBuildDetail.TextChanged += new System.EventHandler(this.txt_TextChanged);
 			// 
 			// label10
 			// 
@@ -428,6 +440,7 @@
 			this.txtOtherCost.TabIndex = 7;
 			this.txtOtherCost.Text = "0.00";
 			this.txtOtherCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.txtOtherCost.TextChanged += new System.EventHandler(this.txt_TextChanged);
 			this.txtOtherCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress);
 			this.txtOtherCost.Leave += new System.EventHandler(this.txt_Leave);
 			// 
@@ -472,6 +485,7 @@
 			this.txtLaborCost.TabIndex = 6;
 			this.txtLaborCost.Text = "0.00";
 			this.txtLaborCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.txtLaborCost.TextChanged += new System.EventHandler(this.txt_TextChanged);
 			this.txtLaborCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress);
 			this.txtLaborCost.Leave += new System.EventHandler(this.txt_Leave);
 			// 
@@ -516,6 +530,7 @@
 			this.txtMatCost.TabIndex = 5;
 			this.txtMatCost.Text = "0.00";
 			this.txtMatCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.txtMatCost.TextChanged += new System.EventHandler(this.txt_TextChanged);
 			this.txtMatCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress);
 			this.txtMatCost.Leave += new System.EventHandler(this.txt_Leave);
 			// 
@@ -598,6 +613,7 @@
 			this.txtQty.TabIndex = 13;
 			this.txtQty.Text = "0.00";
 			this.txtQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.txtQty.TextChanged += new System.EventHandler(this.txt_TextChanged);
 			this.txtQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQty_KeyPress);
 			// 
 			// label9
@@ -751,16 +767,6 @@
 			this.pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.pic.TabIndex = 0;
 			this.pic.TabStop = false;
-			// 
-			// txtStep
-			// 
-			this.txtStep.Dock = System.Windows.Forms.DockStyle.Left;
-			this.txtStep.Location = new System.Drawing.Point(621, 1);
-			this.txtStep.MaxLength = 3;
-			this.txtStep.Name = "txtStep";
-			this.txtStep.Size = new System.Drawing.Size(55, 25);
-			this.txtStep.TabIndex = 14;
-			this.txtStep.Text = "0";
 			// 
 			// SupInfo
 			// 

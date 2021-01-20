@@ -1,13 +1,4 @@
-﻿using OMW15.Controllers.ToolController;
-using OMW15.Models.ServiceModel;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 namespace OMW15.Views.ServiceView
@@ -50,7 +41,7 @@ namespace OMW15.Views.ServiceView
 		{
 			lbTag.Text = StatCode;
 
-			switch(StatCode)
+			switch (StatCode)
 			{
 				case "SUM_WORKS":
 					GetStatForServiceOrderByYear(fiscYear);
@@ -85,27 +76,27 @@ namespace OMW15.Views.ServiceView
 					break;
 
 				case "SERVICE_INCOME_BY_CUSTOMER":
-					getServiceIncomeByCustomer(fiscYear);
+					GetServiceIncomeByCustomer(fiscYear);
 					break;
 
 				case "SPARE_PART_INCOME_BY_CUSTOMER":
-					getSparepartIncomeByCustomer(fiscYear);
+					GetSparepartIncomeByCustomer(fiscYear);
 					break;
 
 				case "TOTAL_INCOME_BY_CUSTOMER":
-					getTotalIncomeByCustomer(fiscYear);
+					GetTotalIncomeByCustomer(fiscYear);
 					break;
 
 				case "SUM_SERVICE_INCOME_BY_YEAR":
-					getServiceIncomeByYear();
+					GetServiceIncomeByYear();
 					break;
 
 				case "SUM_SPAREPART_INCOME_BY_YEAR":
-					getSparepartIncomeByYear();
+					GetSparepartIncomeByYear();
 					break;
 
 				case "SUM_INCOME_BY_YEAR":
-					getTotalIncomeByYear();
+					GetTotalIncomeByYear();
 					break;
 
 
@@ -122,9 +113,9 @@ namespace OMW15.Views.ServiceView
 			//dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
 
 			// formatting column 
-			foreach(DataGridViewColumn dgc in dgv.Columns)
+			foreach (DataGridViewColumn dgc in dgv.Columns)
 			{
-				if((dgc.ValueType == typeof(System.Int32))
+				if ((dgc.ValueType == typeof(System.Int32))
 					|| (dgc.ValueType == typeof(System.Decimal)))
 				{
 					dgc.DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.GeneralNumericCellStyle();
@@ -144,9 +135,9 @@ namespace OMW15.Views.ServiceView
 			//dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
 
 			// formatting column 
-			foreach(DataGridViewColumn dgc in dgv.Columns)
+			foreach (DataGridViewColumn dgc in dgv.Columns)
 			{
-				if((dgc.ValueType == typeof(System.Int32))
+				if ((dgc.ValueType == typeof(System.Int32))
 					|| (dgc.ValueType == typeof(System.Decimal)))
 				{
 					dgc.DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.GeneralNumericCellStyle();
@@ -167,9 +158,9 @@ namespace OMW15.Views.ServiceView
 			//dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
 
 			// formatting column 
-			foreach(DataGridViewColumn dgc in dgv.Columns)
+			foreach (DataGridViewColumn dgc in dgv.Columns)
 			{
-				if((dgc.ValueType == typeof(System.Int32))
+				if ((dgc.ValueType == typeof(System.Int32))
 					|| (dgc.ValueType == typeof(System.Decimal)))
 				{
 					dgc.DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.GeneralNumericCellStyle();
@@ -180,17 +171,17 @@ namespace OMW15.Views.ServiceView
 
 		} // end getTotalServiceIncome	
 
-		private async void getSparepartIncomeByCustomer(int fiscYear)
+		private void GetSparepartIncomeByCustomer(int fiscYear)
 		{
 			dgv.SuspendLayout();
 			dgv.DataSource = null;
-			DataTable dt = new Models.ServiceModel.ServiceStat().getSparepartIncomeByCustomer(fiscYear);
-			dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
+			dgv.DataSource = new Models.ServiceModel.ServiceStat().getSparepartIncomeByCustomer(fiscYear);
+			//dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
 
 			// formatting column 
-			foreach(DataGridViewColumn dgc in dgv.Columns)
+			foreach (DataGridViewColumn dgc in dgv.Columns)
 			{
-				if((dgc.ValueType == typeof(System.Int32))
+				if ((dgc.ValueType == typeof(System.Int32))
 					|| (dgc.ValueType == typeof(System.Decimal)))
 				{
 					dgc.DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.GeneralNumericCellStyle();
@@ -201,17 +192,17 @@ namespace OMW15.Views.ServiceView
 
 		} // end getSparepartIncomeByCustomer
 
-		private async void getServiceIncomeByCustomer(int fiscYear)
+		private void GetServiceIncomeByCustomer(int fiscYear)
 		{
 			dgv.SuspendLayout();
 			dgv.DataSource = null;
-			DataTable dt = new Models.ServiceModel.ServiceStat().getServiceIncomeByCustomer(fiscYear);
-			dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
+			dgv.DataSource = new Models.ServiceModel.ServiceStat().getServiceIncomeByCustomer(fiscYear);
+			//dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
 
 			// formatting column 
-			foreach(DataGridViewColumn dgc in dgv.Columns)
+			foreach (DataGridViewColumn dgc in dgv.Columns)
 			{
-				if((dgc.ValueType == typeof(System.Int32))
+				if ((dgc.ValueType == typeof(System.Int32))
 					|| (dgc.ValueType == typeof(System.Decimal)))
 				{
 					dgc.DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.GeneralNumericCellStyle();
@@ -222,17 +213,17 @@ namespace OMW15.Views.ServiceView
 
 		} // end getServiceIncomeByCustomer
 
-		private async void getTotalIncomeByCustomer(int fiscYear)
+		private void GetTotalIncomeByCustomer(int fiscYear)
 		{
 			dgv.SuspendLayout();
 			dgv.DataSource = null;
-			DataTable dt = new Models.ServiceModel.ServiceStat().getTotalIncomeByCustomer(fiscYear);
-			dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
+			dgv.DataSource = new Models.ServiceModel.ServiceStat().getTotalIncomeByCustomer(fiscYear);
+			//dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
 
 			// formatting column 
-			foreach(DataGridViewColumn dgc in dgv.Columns)
+			foreach (DataGridViewColumn dgc in dgv.Columns)
 			{
-				if((dgc.ValueType == typeof(System.Int32))
+				if ((dgc.ValueType == typeof(System.Int32))
 					|| (dgc.ValueType == typeof(System.Decimal)))
 				{
 					dgc.DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.GeneralNumericCellStyle();
@@ -251,9 +242,9 @@ namespace OMW15.Views.ServiceView
 			//dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
 
 			// formatting column 
-			foreach(DataGridViewColumn dgc in dgv.Columns)
+			foreach (DataGridViewColumn dgc in dgv.Columns)
 			{
-				if((dgc.ValueType == typeof(System.Int32))
+				if ((dgc.ValueType == typeof(System.Int32))
 					|| (dgc.ValueType == typeof(System.Decimal)))
 				{
 					dgc.DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.GeneralNumericCellStyle();
@@ -273,9 +264,9 @@ namespace OMW15.Views.ServiceView
 			//dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
 
 			// formatting column 
-			foreach(DataGridViewColumn dgc in dgv.Columns)
+			foreach (DataGridViewColumn dgc in dgv.Columns)
 			{
-				if((dgc.ValueType == typeof(System.Int32))
+				if ((dgc.ValueType == typeof(System.Int32))
 					|| (dgc.ValueType == typeof(System.Decimal)))
 				{
 					dgc.DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.GeneralNumericCellStyle();
@@ -294,9 +285,9 @@ namespace OMW15.Views.ServiceView
 			//dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
 
 			// formatting column 
-			foreach(DataGridViewColumn dgc in dgv.Columns)
+			foreach (DataGridViewColumn dgc in dgv.Columns)
 			{
-				if((dgc.ValueType == typeof(System.Int32))
+				if ((dgc.ValueType == typeof(System.Int32))
 					|| (dgc.ValueType == typeof(System.Decimal)))
 				{
 					dgc.DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.GeneralNumericCellStyle();
@@ -315,9 +306,9 @@ namespace OMW15.Views.ServiceView
 			//dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
 
 			// formatting column 
-			foreach(DataGridViewColumn dgc in dgv.Columns)
+			foreach (DataGridViewColumn dgc in dgv.Columns)
 			{
-				if((dgc.ValueType == typeof(System.Int32))
+				if ((dgc.ValueType == typeof(System.Int32))
 					|| (dgc.ValueType == typeof(System.Decimal)))
 				{
 					dgc.DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.GeneralNumericCellStyle();
@@ -336,9 +327,9 @@ namespace OMW15.Views.ServiceView
 			//dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
 
 			// formatting column 
-			foreach(DataGridViewColumn dgc in dgv.Columns)
+			foreach (DataGridViewColumn dgc in dgv.Columns)
 			{
-				if((dgc.ValueType == typeof(System.Int32))
+				if ((dgc.ValueType == typeof(System.Int32))
 					|| (dgc.ValueType == typeof(System.Decimal)))
 				{
 					dgc.DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.GeneralNumericCellStyle();
@@ -349,21 +340,21 @@ namespace OMW15.Views.ServiceView
 
 		} // end getComulatedIncome
 
-		private async void getServiceIncomeByYear()
+		private void GetServiceIncomeByYear()
 		{
 			lbTitle.Text = $"{lstStatType.Text}";
 			dgv.SuspendLayout();
 			dgv.DataSource = null;
-			DataTable dt = new Models.ServiceModel.ServiceStat().getServiceIncomeByYear();
-			dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
+			dgv.DataSource = new Models.ServiceModel.ServiceStat().getServiceIncomeByYear();
+			//dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
 
 			// formatting column 
-			foreach(DataGridViewColumn dgc in dgv.Columns)
+			foreach (DataGridViewColumn dgc in dgv.Columns)
 			{
-				if((dgc.ValueType == typeof(System.Int32))
+				if ((dgc.ValueType == typeof(System.Int32))
 					|| (dgc.ValueType == typeof(System.Decimal)))
 				{
-					if(dgc.Name != "Year")
+					if (dgc.Name != "Year")
 					{
 						dgc.DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.GeneralNumericCellStyle();
 					}
@@ -375,21 +366,21 @@ namespace OMW15.Views.ServiceView
 		} // end getServiceIncomeByYear
 
 
-		private async void getSparepartIncomeByYear()
+		private void GetSparepartIncomeByYear()
 		{
 			lbTitle.Text = $"{lstStatType.Text}";
 			dgv.SuspendLayout();
 			dgv.DataSource = null;
-			DataTable dt = new Models.ServiceModel.ServiceStat().getSparepartIncomeByYear();
-			dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
+			dgv.DataSource = new Models.ServiceModel.ServiceStat().getSparepartIncomeByYear();
+			//dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
 
 			// formatting column 
-			foreach(DataGridViewColumn dgc in dgv.Columns)
+			foreach (DataGridViewColumn dgc in dgv.Columns)
 			{
-				if((dgc.ValueType == typeof(System.Int32))
+				if ((dgc.ValueType == typeof(System.Int32))
 					|| (dgc.ValueType == typeof(System.Decimal)))
 				{
-					if(dgc.Name != "Year")
+					if (dgc.Name != "Year")
 					{
 						dgc.DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.GeneralNumericCellStyle();
 					}
@@ -401,21 +392,21 @@ namespace OMW15.Views.ServiceView
 		} // end getSparepartIncomeByYear
 
 
-		private async void getTotalIncomeByYear()
+		private void GetTotalIncomeByYear()
 		{
 			lbTitle.Text = $"{lstStatType.Text}";
 			dgv.SuspendLayout();
 			dgv.DataSource = null;
-			DataTable dt = new Models.ServiceModel.ServiceStat().getTotalIncomeByYear();
-			dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
+			dgv.DataSource = new Models.ServiceModel.ServiceStat().getTotalIncomeByYear();
+			//dgv.DataSource = await DataTableTools.AsyncAddRollup(dt);
 
 			// formatting column 
-			foreach(DataGridViewColumn dgc in dgv.Columns)
+			foreach (DataGridViewColumn dgc in dgv.Columns)
 			{
-				if((dgc.ValueType == typeof(System.Int32))
+				if ((dgc.ValueType == typeof(System.Int32))
 					|| (dgc.ValueType == typeof(System.Decimal)))
 				{
-					if(dgc.Name != "Year")
+					if (dgc.Name != "Year")
 					{
 						dgc.DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.GeneralNumericCellStyle();
 					}
@@ -461,7 +452,7 @@ namespace OMW15.Views.ServiceView
 
 			lbTitle.Text = $"{lstStatType.Text} - {selectStatYear}";
 
-			if(selectedStatCode != "")
+			if (selectedStatCode != "")
 			{
 				loadStat(selectedStatCode, selectStatYear);
 			}
@@ -480,7 +471,7 @@ namespace OMW15.Views.ServiceView
 
 			lbTitle.Text = $"{lstStatType.Text} - {selectStatYear}";
 
-			if(selectedStatCode != "")
+			if (selectedStatCode != "")
 			{
 				loadStat(selectedStatCode, selectStatYear);
 			}

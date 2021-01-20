@@ -654,12 +654,11 @@ namespace OMW15.Views.Productions
 
 		private void GetItemInformation(string itemFilter)
 		{
-			//using (STDParts _p = STDParts(ActionMode.Selection, itemFilter))
-			using (STDParts _p = new STDParts())
+			using (STDParts _p = new STDParts(ActionMode.Selection, itemFilter))
 			{
- 				_p.ViewMode = ActionMode.Selection;
-				_p.Filter = itemFilter;
-				_p.ItemNo = itemFilter;
+				//_p.ViewMode = ActionMode.Selection;
+				//_p.Filter = itemFilter;
+				//_p.ItemNo = itemFilter;
 				_p.StartPosition = FormStartPosition.CenterParent;
 
 				if (_p.ShowDialog(this) == DialogResult.OK)

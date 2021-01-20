@@ -11,20 +11,20 @@ namespace OMW15.Views.Productions
 {
 	public partial class STDParts : Form
 	{
-		#region Singleton
-		private static STDParts _instance;
-		public static STDParts GetInstance
-		{
-			get {
-				if(_instance == null || _instance.IsDisposed)
-				{
-					_instance = new STDParts();
-				}
-				return _instance;
-			}
-		}
+		//#region Singleton
+		//private static STDParts _instance;
+		//public static STDParts GetInstance
+		//{
+		//	get {
+		//		if(_instance == null || _instance.IsDisposed)
+		//		{
+		//			_instance = new STDParts();
+		//		}
+		//		return _instance;
+		//	}
+		//}
  
-		#endregion
+		//#endregion
 
 
 		#region class field member
@@ -186,8 +186,7 @@ namespace OMW15.Views.Productions
 
 
 
-		//public STDParts(ActionMode ViewMode = ActionMode.Recording, string filter = "")
-		public STDParts()
+		public STDParts(ActionMode ViewMode = ActionMode.Recording, string filter = "")
 		{
 			InitializeComponent();
 			OMUtils.SettingDataGridView(ref dgv);
@@ -195,7 +194,7 @@ namespace OMW15.Views.Productions
 
 			FormatGrid();
 
-			//this.ItemNo = filter;
+			this.ItemNo = filter;
 
 			_viewMode = ViewMode;
 			FormBorderStyle = _viewMode == ActionMode.Recording ? FormBorderStyle.Sizable : FormBorderStyle.SizableToolWindow;
@@ -211,7 +210,7 @@ namespace OMW15.Views.Productions
 			CenterToParent();
 
 			IsEmptyResult = true;
-			this.ItemNo = this.Filter;
+			//this.ItemNo = this.Filter;
 
 			// load data - if the filter item is not null or empty
 			if (!String.IsNullOrEmpty(this.ItemNo)) GetSTDParts(this.ItemNo);

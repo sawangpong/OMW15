@@ -102,11 +102,10 @@ namespace OMW15.Views.Productions
 
 		private void GetItemInformation(string itemFilter)
 		{
-			//using (var _p = new STDParts(ActionMode.Selection, itemFilter))
-			using (STDParts _p = new STDParts())
+			using (var _p = new STDParts(ActionMode.Selection, itemFilter))
 			{
-				_p.ViewMode = ActionMode.Selection;
-				_p.Filter = itemFilter;
+				//_p.ViewMode = ActionMode.Selection;
+				//_p.Filter = itemFilter;
 				_p.StartPosition = FormStartPosition.CenterParent;
 				if (_p.ShowDialog(this) == DialogResult.OK)
 				{
@@ -270,6 +269,7 @@ namespace OMW15.Views.Productions
 		{
 			if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Tab)
 			{
+				SumCostOfOutSource();
 				UpdateUI();
 			}
 		}

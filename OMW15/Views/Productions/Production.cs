@@ -76,7 +76,7 @@ namespace OMW15.Views.Productions
 
 		private void mnuStandardItems_Click(object sender, EventArgs e)
 		{
-			STDParts _stdItems = STDParts.GetInstance;
+			STDParts _stdItems = new STDParts();
 			_stdItems.StartPosition = FormStartPosition.CenterParent;
 			_stdItems.MdiParent = this;
 			_stdItems.Show();

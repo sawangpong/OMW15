@@ -329,7 +329,6 @@ namespace OMW15.Views.CastingView
 					break;
 
 				case PrintDocumentType.WorkSummary:
-
 					_dt = await _dal.GetCastingWorkSummaryAsync(Year);
 					var rpt = new WorkSummary();
 					rpt.SetDataSource(_dt);
