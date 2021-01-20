@@ -12,8 +12,6 @@ namespace OMW15.Models.CastingModel
 	public class CastingOrderReportDS : List<CastingOrderReportDataItem>
 	{
 		private readonly OLDMOONEF1 _om;
-
-
 		public CastingOrderReportDS()
 		{
 			_om = new OLDMOONEF1();
@@ -57,73 +55,73 @@ namespace OMW15.Models.CastingModel
 			});
 		} // end GetNumberOfQCJob
 
-		public async Task<DataTable> GetActiveQCJob(int Status, string JobCategory, string CustomerCode, int[] JobList)
-		{
-			return await Task.Run(() =>
-			{
-				var _result = new DataTable();
-				var job = (from j in _om.JOBORDERS
-						   join c in _om.CUSTPRICELISTs on j.ITEMID equals c.PRICESEQ
-						   join ct in _om.CUSTOMERS on j.CUSTCODE equals ct.CUSTCODE
-						   join m in _om.SYSDATAs on j.MATERIALTYPE.ToString() equals m.KEYVALUE
-						   where j.STATUS == Status
-								 && j.ISCANCEL == false
-								 && m.GROUPTITLE == "MATERIAL"
-						   select new
-						   {
-							   j.CUSTCODE,
-							   ct.CUSTNAME,
-							   WORKTYPE = j.ISREWORKS ? "งานซ่อม" : "ปรกติ",
-							   STATUS =
-							   j.STATUS == (int)OMShareJobEnums.JobStatusEnumEN.Active
-								   ? OMShareJobEnums.JobStatusEnumEN.Active.ToString()
-								   : OMShareJobEnums.JobStatusEnumEN.Closed.ToString(),
-							   j.CUSTPO,
-							   j.JOBNO,
-							   j.JOBDATE,
-							   j.DUEDATE,
-							   JOBCAT =
-						   j.PREFIX == "R" ? "ฉีด/หล่อ" : (j.PREFIX == "W" ? "หล่อแวกส์" : (j.PREFIX == "S" ? "ให้เทียน" : (j.PREFIX == "P" ? "3D เรซิ่น" : "ทำก้อนยาง"))),
-							   j.ISPRICEWITHMAT,
-							   j.PREFIX,
-							   j.ITEMNO,
-							   ITEMNUMBER = "[" + j.PREFIX + "]" + j.ITEMNO,
-							   j.ITEMNAME,
-							   MATERIAL = m.THKEYNAME,
-							   j.ORDERUNIT,
-							   j.ORDERQTY,
-							   j.REMARK,
-							   c.IMAGE_LOCATION
-						   }).AsEnumerable().Select(x => new
-						   {
-							   x.CUSTCODE,
-							   x.CUSTNAME,
-							   x.WORKTYPE,
-							   x.STATUS,
-							   x.CUSTPO,
-							   x.JOBNO,
-							   JOBDATE = x.JOBDATE.Num2Date(),
-							   DUEDATE = x.DUEDATE.Num2Date(),
-							   x.JOBCAT,
-							   x.ISPRICEWITHMAT,
-							   x.PREFIX,
-							   x.ITEMNO,
-							   x.ITEMNUMBER,
-							   x.ITEMNAME,
-							   x.MATERIAL,
-							   x.ORDERUNIT,
-							   x.ORDERQTY,
-							   x.REMARK,
-							   PICTURE = PriceListDAL.GetPriceListItemPicture(x.IMAGE_LOCATION).ConvertImage2Byte()
-						   }).OrderBy(o => o.JOBNO).AsParallel();
+		//public async Task<DataTable> GetActiveQCJob(int Status, string JobCategory, string CustomerCode, int[] JobList)
+		//{
+		//	return await Task.Run(() =>
+		//	{
+		//		var _result = new DataTable();
+		//		var job = (from j in _om.JOBORDERS
+		//				   join c in _om.CUSTPRICELISTs on j.ITEMID equals c.PRICESEQ
+		//				   join ct in _om.CUSTOMERS on j.CUSTCODE equals ct.CUSTCODE
+		//				   join m in _om.SYSDATAs on j.MATERIALTYPE.ToString() equals m.KEYVALUE
+		//				   where j.STATUS == Status
+		//						 && j.ISCANCEL == false
+		//						 && m.GROUPTITLE == "MATERIAL"
+		//				   select new
+		//				   {
+		//					   j.CUSTCODE,
+		//					   ct.CUSTNAME,
+		//					   WORKTYPE = j.ISREWORKS ? "งานซ่อม" : "ปรกติ",
+		//					   STATUS =
+		//					   j.STATUS == (int)OMShareJobEnums.JobStatusEnumEN.Active
+		//						   ? OMShareJobEnums.JobStatusEnumEN.Active.ToString()
+		//						   : OMShareJobEnums.JobStatusEnumEN.Closed.ToString(),
+		//					   j.CUSTPO,
+		//					   j.JOBNO,
+		//					   j.JOBDATE,
+		//					   j.DUEDATE,
+		//					   JOBCAT =
+		//				   j.PREFIX == "R" ? "ฉีด/หล่อ" : (j.PREFIX == "W" ? "หล่อแวกส์" : (j.PREFIX == "S" ? "ให้เทียน" : (j.PREFIX == "P" ? "3D เรซิ่น" : "ทำก้อนยาง"))),
+		//					   j.ISPRICEWITHMAT,
+		//					   j.PREFIX,
+		//					   j.ITEMNO,
+		//					   ITEMNUMBER = "[" + j.PREFIX + "]" + j.ITEMNO,
+		//					   j.ITEMNAME,
+		//					   MATERIAL = m.THKEYNAME,
+		//					   j.ORDERUNIT,
+		//					   j.ORDERQTY,
+		//					   j.REMARK,
+		//					   c.IMAGE_LOCATION
+		//				   }).AsEnumerable().Select(x => new
+		//				   {
+		//					   x.CUSTCODE,
+		//					   x.CUSTNAME,
+		//					   x.WORKTYPE,
+		//					   x.STATUS,
+		//					   x.CUSTPO,
+		//					   x.JOBNO,
+		//					   JOBDATE = x.JOBDATE.Num2Date(),
+		//					   DUEDATE = x.DUEDATE.Num2Date(),
+		//					   x.JOBCAT,
+		//					   x.ISPRICEWITHMAT,
+		//					   x.PREFIX,
+		//					   x.ITEMNO,
+		//					   x.ITEMNUMBER,
+		//					   x.ITEMNAME,
+		//					   x.MATERIAL,
+		//					   x.ORDERUNIT,
+		//					   x.ORDERQTY,
+		//					   x.REMARK,
+		//					   PICTURE = PriceListDAL.GetPriceListItemPicture(x.IMAGE_LOCATION).ConvertImage2Byte()
+		//				   }).OrderBy(o => o.JOBNO).AsParallel();
 
-				if (job != null)
-					_result = job.Where(x => JobList.Contains(x.JOBNO)).AsParallel().ToDataTable();
+		//		if (job != null)
+		//			_result = job.Where(x => JobList.Contains(x.JOBNO)).AsParallel().ToDataTable();
 
-				return _result;
-			});
+		//		return _result;
+		//	});
 
-		} // end GetActiveQCJob
+		//} // end GetActiveQCJob
 
 		public DataTable GetJobQCList(int Status)
 		{
@@ -587,7 +585,7 @@ namespace OMW15.Models.CastingModel
 		{
 			return await Task.Run(() =>
 			{
-				return new DataConnect($"EXEC dbo.usp_OM_CASTING_WORK_SCORE {YearReport}", omglobal.SysConnectionString).ToDataTable;
+				return new DataConnect($"EXEC dbo.usp_OM_CASTING_WORK_SCORE @workyear={YearReport}", omglobal.SysConnectionString).ToDataTable;
 			});
 		}
 
