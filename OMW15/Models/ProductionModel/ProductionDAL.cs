@@ -842,6 +842,8 @@ namespace OMW15.Models.ProductionModel
 
 		public DataTable GetProcessMachineList() => (_om.PRDPROCESSes.Where(x => x.MACHINE != null).Select(x => new { x.MACHINE }).Distinct().ToDataTable());
 
+
+
 		#endregion
 
 		#region STANDARD PROCESS FOR EACH PART-NO.
@@ -1064,6 +1066,47 @@ namespace OMW15.Models.ProductionModel
 		}
 
 		#endregion
+
+
+		#region PRODUCTION PLAN
+
+		public DataTable GetMachineColumns() => _om.PRDPROCESSes.ToDataTable();
+
+		public DataTable GetActualMachine(int status, int workyear,string itemno)
+		{
+			return (from pi in _om.PRODUCTIONJOBINFOes
+						join p in _om.PRODUCTIONJOBS on pi.ERP_ORDER equals p.ERP_ORDER
+						join c in _om.PRDPROCESSes on pi.PROCESSID equals c.PRDPROCESSID
+						where p.ITEMNO == itemno
+								&& p.STATUS == status
+								 && (status == 2 ? p.COMPLETEDATE.Value.Year == workyear : p.JOBYEAR == workyear)
+						orderby pi.ERP_ORDER, pi.STEP
+						select new
+						{
+							c.MACHINE
+						}).Distinct().ToDataTable();
+
+		}
+
+		public DataTable GetWorkItem(int status, int workyear)
+		{
+			return (from pj in _om.PRODUCTIONJOBS
+					  join std in _om.PRODUCTIONSTDITEMS on pj.ITEMNO equals std.ItemNo
+					  where pj.STATUS == status
+							 && (status == 2 ? pj.COMPLETEDATE.Value.Year == workyear : pj.JOBYEAR == workyear)
+					  orderby pj.ITEMNO
+					  select new
+					  {
+						  pj.ITEMNO,
+						  ItemName = pj.ITEMNO + " :: " + std.ItemName
+					  }
+				).Distinct().ToDataTable();
+
+		}
+
+		#endregion
+
+
 	}
 
 	public class IssueMap
@@ -1109,6 +1152,9 @@ namespace OMW15.Models.ProductionModel
 		public decimal TotalQty { get; set; }
 
 	}
+
+
+	
 
 }
 

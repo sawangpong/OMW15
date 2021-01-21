@@ -208,5 +208,14 @@ namespace OMW15.Views.Productions
 			_checkWorkTime.StartPosition = FormStartPosition.CenterScreen;
 			_checkWorkTime.Show(this);
 		}
+
+		private void mnuProductionPlan_Click(object sender, EventArgs e)
+		{
+			Production2Plan pp = Production2Plan.GetInstance;
+			pp.StartPosition = FormStartPosition.CenterScreen;
+			pp.WindowState = FormWindowState.Normal;
+			pp.MdiParent = this;
+			pp.Show();
+		}
 	}
 }
