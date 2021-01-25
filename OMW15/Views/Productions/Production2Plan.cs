@@ -6,6 +6,7 @@ using System;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
+using static OMW15.Shared.OMShareProduction;
 
 namespace OMW15.Views.Productions
 {
@@ -31,14 +32,16 @@ namespace OMW15.Views.Productions
 
 		private int _status = 0;
 		private int _jobYear = DateTime.Today.Year;
-		private string _orderNo = string.Empty;
+		private string _currentSelectedOrderNo = string.Empty;
+
 
 		#endregion
 
 		#region class helper
 		private void UpdateUI()
 		{
-
+			lbYear.Visible = (_status != (int)ProductionJobStatus.None);
+			cbxJobYear.Visible = lbYear.Visible;
 		}
 
 		private void GetJobStatus()
@@ -56,17 +59,17 @@ namespace OMW15.Views.Productions
 			this.cbxJobYear.ValueMember = "JobYear";
 		}
 
-		private void GetProductionItems(int status,int workyear)
+		private void GetProductionItems(int status, int workyear = 0)
 		{
 			cbxItemNo.DataSource = new ProductionDAL().GetWorkItem(status, workyear);
 			cbxItemNo.DisplayMember = "ItemName";
 			cbxItemNo.ValueMember = "ItemNo";
 		}
 
-		private void GetPlan(int status, int jobYear,string itemno)
+		private void GetPlan(int status, int jobYear, string itemno)
 		{
 			//DataTable _dtMC = new ProductionDAL().GetProcessMachineList();
-			DataTable _dtMC = new ProductionDAL().GetActualMachine(status, jobYear,itemno);
+			DataTable _dtMC = new ProductionDAL().GetActualMachine(itemno,status, jobYear);
 			StringBuilder s = new StringBuilder();
 
 			s.AppendLine($"SELECT ");
@@ -76,15 +79,24 @@ namespace OMW15.Views.Productions
 
 			foreach (DataRow dr in _dtMC.Rows)
 			{
-				s.AppendLine($", 'STEP='+CAST(pi.STEP AS NVARCHAR(5)) + '::: TOTAL HRS=' + ");
-				s.AppendLine($" FORMAT(SUM(CASE WHEN pc.MACHINE = '{dr[0].ToString()}' THEN pi.TOTAL_HRS END),'#,##0.00') AS [{dr[0].ToString()}]");
+				s.AppendLine($", 'STEP='+CAST(pi.STEP AS NVARCHAR(5)) + '__[TOTAL HRS=' + ");
+				s.AppendLine($" FORMAT(SUM(CASE WHEN pc.MACHINE = '{dr[0].ToString()}' THEN pi.TOTAL_HRS END),'#,##0.00') +']' AS [{dr[0].ToString()}]");
 			}
 			s.AppendLine($" FROM PRODUCTIONJOBINFO pi  ");
 			s.AppendLine($" INNER JOIN PRODUCTIONJOBS p ON pi.ERP_ORDER = p.ERP_ORDER ");
 			s.AppendLine($" INNER JOIN PRDPROCESS pc ON pi.PROCESSID = pc.PRDPROCESSID ");
-			s.AppendLine($" WHERE p.STATUS = {status} AND YEAR(p.COMPLETEDATE) = {jobYear} AND pi.ITEMNO = '{itemno}'");
-			s.AppendLine($" AND YEAR(p.COMPLETEDATE) = {jobYear}");
-			s.AppendLine($" AND pi.ITEMNO = '{itemno}'");
+			s.AppendLine($" WHERE pi.ITEMNO = '{itemno}'");
+			//s.AppendLine($" AND p.STATUS = {status} "); //AND YEAR(p.COMPLETEDATE) = {jobYear} AND pi.ITEMNO = '{itemno}'
+			if (status == (int)ProductionJobStatus.Active)
+			{
+				s.AppendLine($" AND p.STATUS = {status} "); //AND YEAR(p.COMPLETEDATE) = {jobYear} AND pi.ITEMNO = '{itemno}'
+				s.AppendLine($" AND p.JOBYEAR = {jobYear}");
+			}
+			else if (status == (int)ProductionJobStatus.Closed)
+			{
+				s.AppendLine($" AND p.STATUS = {status} "); //AND YEAR(p.COMPLETEDATE) = {jobYear} AND pi.ITEMNO = '{itemno}'
+				s.AppendLine($" AND YEAR(p.COMPLETEDATE) = {jobYear}");
+			}
 			s.AppendLine($" GROUP BY pi.ERP_ORDER,pi.ITEMNO,pc.PROCESSNAME,pi.STEP");
 			s.AppendLine($" ORDER BY pi.ERP_ORDER, pi.STEP");
 
@@ -97,6 +109,26 @@ namespace OMW15.Views.Productions
 
 		}
 
+		private void GetWorkInfoByOrder(string order)
+		{
+			dgvJobInfo.SuspendLayout();
+
+			if (_currentSelectedOrderNo != order) // re-load new order
+			{
+				dgvJobInfo.DataSource = new ProductionDAL().GetProductionTimeItemByOrder(order);
+				_currentSelectedOrderNo = order;
+
+				dgvJobInfo.Columns["RECORDID"].Visible = false;
+				dgvJobInfo.Columns["PRODUCTIONJOB"].Visible = false;
+				dgvJobInfo.Columns["WORKERID"].Visible = false;
+				dgvJobInfo.Columns["ITEMNO"].Visible = false;
+				dgvJobInfo.Columns["ITEMNAME"].Visible = false;
+				dgvJobInfo.Columns["DRAWINGNO"].Visible = false;
+				dgvJobInfo.Columns["PROCESSID"].Visible = false;
+			}
+
+			dgvJobInfo.ResumeLayout();
+		}
 
 		#endregion
 
@@ -119,8 +151,16 @@ namespace OMW15.Views.Productions
 		private void cbxJobStatus_SelectionChangeCommitted(object sender, EventArgs e)
 		{
 			_status = Convert.ToInt32(cbxJobStatus.SelectedValue.ToString());
-			GetProductionYear(_status);
 
+			if (_status != (int)ProductionJobStatus.None)
+			{
+				GetProductionYear(_status);
+			}
+			else
+			{
+				GetProductionItems(_status, (_jobYear = 0));
+			}
+			UpdateUI();
 		}
 
 		private void cbxJobYear_SelectionChangeCommitted(object sender, EventArgs e)
@@ -147,8 +187,9 @@ namespace OMW15.Views.Productions
 
 		private void dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
 		{
-			_orderNo = "";
 			tslbJobNo.Text = dgv["ORDER-NO", e.RowIndex].Value.ToString();
+
+			GetWorkInfoByOrder(tslbJobNo.Text);
 		}
 	}
 }

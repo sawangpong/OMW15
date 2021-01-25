@@ -217,5 +217,10 @@ namespace OMW15.Views.Productions
 			pp.MdiParent = this;
 			pp.Show();
 		}
+
+		private void tsbtnProduction2Plan_Click(object sender, EventArgs e)
+		{
+			mnuProductionPlan.PerformClick();
+		}
 	}
 }

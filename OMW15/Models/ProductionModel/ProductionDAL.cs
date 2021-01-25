@@ -97,12 +97,12 @@ namespace OMW15.Models.ProductionModel
 			var _result = new DataTable();
 
 			var pc = (from pdc in _om.PRDPROCESSes
-					  orderby pdc.PROCESSNAME
-					  select new
-					  {
-						  key = pdc.PRDPROCESSID,
-						  value = pdc.PROCESSNAME
-					  }).AsParallel();
+						 orderby pdc.PROCESSNAME
+						 select new
+						 {
+							 key = pdc.PRDPROCESSID,
+							 value = pdc.PROCESSNAME
+						 }).AsParallel();
 
 			if (pc != null)
 				_result = pc.ToDataTable();
@@ -114,14 +114,14 @@ namespace OMW15.Models.ProductionModel
 		{
 			var _result = new DataTable();
 			var pc = (from p in _om.PRDPROCESSes
-					  orderby p.PROCESSNAME
-					  select new
-					  {
-						  p.PRDPROCESSID,
-						  p.PROCESSNAME,
-						  p.MACHINE,
-						  p.SCORE
-					  }).AsParallel();
+						 orderby p.PROCESSNAME
+						 select new
+						 {
+							 p.PRDPROCESSID,
+							 p.PROCESSNAME,
+							 p.MACHINE,
+							 p.SCORE
+						 }).AsParallel();
 
 			if (pc != null)
 				_result = pc.ToDataTable();
@@ -347,18 +347,18 @@ namespace OMW15.Models.ProductionModel
 			return await Task.Run(() =>
 			{
 				var issue = (from di in _erp.DOCINFOes
-							 join trh in _erp.TRANSTKHs on di.DI_KEY equals trh.TRH_DI
-							 join trd in _erp.TRANSTKDs on trh.TRH_KEY equals trd.TRD_TRH
-							 where trd.TRD_REFER_REF != null
-							 && OMShareProduction.ProductionRequestCode.Contains(trd.TRD_REFER_REF.Substring(0, 4))
-							 select new
-							 {
-								 ReqNo = trd.TRD_REFER_REF,
-								 ReqId = trd.TRD_REFER_DI.Value,
-								 IssueNo = di.DI_REF,
-								 IssueId = di.DI_KEY,
-								 DocYear = di.DI_DATE.Year
-							 }).Distinct().OrderBy(o => o.ReqNo);
+								 join trh in _erp.TRANSTKHs on di.DI_KEY equals trh.TRH_DI
+								 join trd in _erp.TRANSTKDs on trh.TRH_KEY equals trd.TRD_TRH
+								 where trd.TRD_REFER_REF != null
+								 && OMShareProduction.ProductionRequestCode.Contains(trd.TRD_REFER_REF.Substring(0, 4))
+								 select new
+								 {
+									 ReqNo = trd.TRD_REFER_REF,
+									 ReqId = trd.TRD_REFER_DI.Value,
+									 IssueNo = di.DI_REF,
+									 IssueId = di.DI_KEY,
+									 DocYear = di.DI_DATE.Year
+								 }).Distinct().OrderBy(o => o.ReqNo);
 
 				if (year == 0)
 				{
@@ -391,13 +391,13 @@ namespace OMW15.Models.ProductionModel
 			{
 				var _result = new DataTable();
 				var pt = (from d in _erp.DOCTYPEs
-						  orderby d.DT_PREFIX
-						  where CodeList.Contains(d.DT_DOCCODE)
-						  select new
-						  {
-							  d.DT_DOCCODE,
-							  Name = d.DT_THAIDESC
-						  }).AsParallel();
+							 orderby d.DT_PREFIX
+							 where CodeList.Contains(d.DT_DOCCODE)
+							 select new
+							 {
+								 d.DT_DOCCODE,
+								 Name = d.DT_THAIDESC
+							 }).AsParallel();
 
 				if (pt != null)
 					_result = pt.ToDataTable();
@@ -490,8 +490,8 @@ namespace OMW15.Models.ProductionModel
 			try
 			{
 				var productionHeader = (from p in _om.PRODUCTIONJOBS
-										where p.ERP_ORDER == ProductionOrder
-										select p).Single();
+												where p.ERP_ORDER == ProductionOrder
+												select p).Single();
 				_om.PRODUCTIONJOBS.Remove(productionHeader);
 				_result = _om.SaveChanges();
 			}
@@ -508,28 +508,28 @@ namespace OMW15.Models.ProductionModel
 		{
 			var _result = new DataTable();
 			var phItem = (from p in _om.PRODUCTIONJOBINFOes
-						  orderby p.DATETIME_START
-						  where p.ERP_ORDER == ProductionOrder
-						  select new
-						  {
-							  Id = p.PRDINFOID,
-							  p.WORKERID,
-							  p.WORKERNAME,
-							  p.PROCESSID,
-							  p.PROCESSNAME,
-							  p.TIME_CAT,
-							  starttime = p.DATETIME_START.Value,
-							  endtime = p.TOTAL_OT_HR == 0.00m ? p.DATETIME_END.Value : p.OT_END.Value,
-							  HourRate = p.REGULAR_HR_RATE,
-							  NORMAL = p.TOTAL_NORMAL_HR,
-							  OT = p.TOTAL_OT_HR,
-							  TOTAL = p.TOTAL_HRS,
-							  HOURCOST = p.TOTAL_COST,
-							  p.INPROCESS_QTY,
-							  p.GOOD_QTY,
-							  p.BAD_QTY,
-							  p.TOTALQTY
-						  }).AsNoTracking();
+							  orderby p.DATETIME_START
+							  where p.ERP_ORDER == ProductionOrder
+							  select new
+							  {
+								  Id = p.PRDINFOID,
+								  p.WORKERID,
+								  p.WORKERNAME,
+								  p.PROCESSID,
+								  p.PROCESSNAME,
+								  p.TIME_CAT,
+								  starttime = p.DATETIME_START.Value,
+								  endtime = p.TOTAL_OT_HR == 0.00m ? p.DATETIME_END.Value : p.OT_END.Value,
+								  HourRate = p.REGULAR_HR_RATE,
+								  NORMAL = p.TOTAL_NORMAL_HR,
+								  OT = p.TOTAL_OT_HR,
+								  TOTAL = p.TOTAL_HRS,
+								  HOURCOST = p.TOTAL_COST,
+								  p.INPROCESS_QTY,
+								  p.GOOD_QTY,
+								  p.BAD_QTY,
+								  p.TOTALQTY
+							  }).AsNoTracking();
 
 			if (phItem != null)
 				_result = phItem.ToDataTable();
@@ -541,29 +541,29 @@ namespace OMW15.Models.ProductionModel
 		public DataTable ProductionHourStatByOrder(string productionJob)
 		{
 			var h = (from j in _om.PRODUCTIONJOBINFOes.AsEnumerable()
-					 where j.ERP_ORDER == productionJob
-					 select new
-					 {
-						 j.WORKERNAME,
-						 WorkDay = Convert.ToDateTime(j.DATETIME_START.Value.ToShortDateString()).Day,
-						 j.TOTAL_NORMAL_HR,
-						 j.TOTAL_OT_HR,
-						 j.TOTAL_HRS
-					 }).ToList();
+						where j.ERP_ORDER == productionJob
+						select new
+						{
+							j.WORKERNAME,
+							WorkDay = Convert.ToDateTime(j.DATETIME_START.Value.ToShortDateString()).Day,
+							j.TOTAL_NORMAL_HR,
+							j.TOTAL_OT_HR,
+							j.TOTAL_HRS
+						}).ToList();
 
 
 			var p = (from j in h
-					 group j by j.WORKERNAME into jstat
-					 select new
-					 {
-						 Name = jstat.Key,
-						 Days = jstat.Count(),
-						 NormalTime = jstat.Sum(x => x.TOTAL_NORMAL_HR),
-						 Overtime = jstat.Sum(x => x.TOTAL_OT_HR),
-						 TotalTime = jstat.Sum(x => x.TOTAL_HRS),
-						 AvgHourDay = jstat.Sum(x => x.TOTAL_NORMAL_HR) / (jstat.Count() == 0 ? 1 : jstat.Count()),
-						 AvgOTDay = jstat.Sum(x => x.TOTAL_OT_HR) / (jstat.Count() == 0 ? 1 : jstat.Count()),
-					 }).OrderBy(o => o.TotalTime).ToDataTable();
+						group j by j.WORKERNAME into jstat
+						select new
+						{
+							Name = jstat.Key,
+							Days = jstat.Count(),
+							NormalTime = jstat.Sum(x => x.TOTAL_NORMAL_HR),
+							Overtime = jstat.Sum(x => x.TOTAL_OT_HR),
+							TotalTime = jstat.Sum(x => x.TOTAL_HRS),
+							AvgHourDay = jstat.Sum(x => x.TOTAL_NORMAL_HR) / (jstat.Count() == 0 ? 1 : jstat.Count()),
+							AvgOTDay = jstat.Sum(x => x.TOTAL_OT_HR) / (jstat.Count() == 0 ? 1 : jstat.Count()),
+						}).OrderBy(o => o.TotalTime).ToDataTable();
 			return p;
 		}
 
@@ -577,7 +577,7 @@ namespace OMW15.Models.ProductionModel
 		}
 
 		public PRODUCTIONJOBINFO GetProductionHourItemInfo(int ItemId) => _om.PRODUCTIONJOBINFOes.Single(x => x.PRDINFOID == ItemId);
-	
+
 		public int UpdateProductionHourItem(PRODUCTIONJOBINFO ph)
 		{
 			var _result = 0;
@@ -650,6 +650,11 @@ namespace OMW15.Models.ProductionModel
 			return new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_WORKTIMEBYWORKER '{workerCode}',{workYear},{workMonth}", omglobal.SysConnectionString).ToDataTable;
 		}
 
+		public DataTable GetProductionTimeItemByOrder(string workOrder)
+		{
+			return new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_WORKTIME_BY_ORDER @workOrder='{workOrder}'", omglobal.SysConnectionString).ToDataTable;
+		}
+
 		//public List<TimeRecordInfo> GetProductionTimeItemByWorker(string workerCode, int workYear, int workMonth)
 		//{
 		//	return (from p in _om.PRODUCTIONJOBINFOes.AsEnumerable()
@@ -695,8 +700,8 @@ namespace OMW15.Models.ProductionModel
 			try
 			{
 				var groupdelete = (from p in _om.PRODUCTIONJOBINFOes
-								   where p.ERP_ORDER == ProductionOrder
-								   select p).ToList();
+										 where p.ERP_ORDER == ProductionOrder
+										 select p).ToList();
 				_om.PRODUCTIONJOBINFOes.RemoveRange(groupdelete);
 				_result = _om.SaveChanges();
 			}
@@ -764,17 +769,17 @@ namespace OMW15.Models.ProductionModel
 			return _result;
 		} // end UpdatePartItemInfo
 
-		public async Task<DataTable> GetWorkHistory(string filter = "")	 => await Task.Run(() =>
-		{
-			return new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_WORK_HISTORY '{filter}'", omglobal.SysConnectionString).ToDataTable;
-		});
+		public async Task<DataTable> GetWorkHistory(string filter = "") => await Task.Run(() =>
+	{
+		return new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_WORK_HISTORY '{filter}'", omglobal.SysConnectionString).ToDataTable;
+	});
 
 		public DataTable GetProductionItemList(string filter = "") => new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_STD_ITEMS '{filter}'", omglobal.SysConnectionString).ToDataTable;
 
 		public DataTable GetProductionItemProperty(string filter = "") => new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_STD_ITEM '{filter}'", omglobal.SysConnectionString).ToDataTable;
 
 		public PRODUCTIONSTDITEM GetProductionItemInfo(int ItemId) => _om.PRODUCTIONSTDITEMS.Single(x => x.ItemId == ItemId);
-		
+
 		#endregion
 
 		#region Production Process
@@ -788,37 +793,37 @@ namespace OMW15.Models.ProductionModel
 			return await Task.Run(() =>
 			{
 				var p = (from pj in _om.PRODUCTIONJOBINFOes.AsEnumerable()
-						 join ph in _om.PRODUCTIONJOBS on pj.ERP_ORDER equals ph.ERP_ORDER
-						 orderby pj.ERP_ORDER, pj.DATETIME_START
-						 where pj.WORKYEAR == year
-						 select new
-						 {
-							 pj.ERP_ORDER,
-							 ph.ERP_ORDERINFO,
-							 pj.WORKERID,
-							 pj.WORKERNAME,
-							 pj.PROCESSNAME,
-							 pj.PROCESSDETAIL,
-							 DayName = ((int)pj.DATETIME_START.Value.DayOfWeek).ToString() + " " + pj.DATETIME_START.Value.DayOfWeek.ToString(),
-							 IsHoliday = (int)pj.DATETIME_START.Value.DayOfWeek == 0 ? true : false,
-							 WorkDate = pj.DATETIME_START.Value.DayOfWeek.ToString().Substring(0, 3) + " - " + pj.DATETIME_START.Value.ToShortDateString(),
-							 pj.TOTAL_NORMAL_HR,
-							 pj.TOTAL_OT_HR
-						 }).ToList();
+							join ph in _om.PRODUCTIONJOBS on pj.ERP_ORDER equals ph.ERP_ORDER
+							orderby pj.ERP_ORDER, pj.DATETIME_START
+							where pj.WORKYEAR == year
+							select new
+							{
+								pj.ERP_ORDER,
+								ph.ERP_ORDERINFO,
+								pj.WORKERID,
+								pj.WORKERNAME,
+								pj.PROCESSNAME,
+								pj.PROCESSDETAIL,
+								DayName = ((int)pj.DATETIME_START.Value.DayOfWeek).ToString() + " " + pj.DATETIME_START.Value.DayOfWeek.ToString(),
+								IsHoliday = (int)pj.DATETIME_START.Value.DayOfWeek == 0 ? true : false,
+								WorkDate = pj.DATETIME_START.Value.DayOfWeek.ToString().Substring(0, 3) + " - " + pj.DATETIME_START.Value.ToShortDateString(),
+								pj.TOTAL_NORMAL_HR,
+								pj.TOTAL_OT_HR
+							}).ToList();
 
 				DataTable hc = (from pd in p
-								join e in _om.EMPLOYEEs on pd.WORKERID equals e.EMPCODE
-								select new
-								{
-									pd.ERP_ORDER,
-									pd.ERP_ORDERINFO,
-									pd.WORKERNAME,
-									pd.PROCESSNAME,
-									pd.PROCESSDETAIL,
-									pd.WorkDate,
-									NormalTimeCost = pd.IsHoliday ? pd.TOTAL_NORMAL_HR * e.GetHolidayHourRate() : pd.TOTAL_NORMAL_HR * e.GetHourRate(),
-									OvertimeCost = pd.IsHoliday ? pd.TOTAL_OT_HR * e.GetHolidayOTHourRate() : pd.TOTAL_OT_HR * e.GetOTHourRate()
-								}).ToDataTable();
+									 join e in _om.EMPLOYEEs on pd.WORKERID equals e.EMPCODE
+									 select new
+									 {
+										 pd.ERP_ORDER,
+										 pd.ERP_ORDERINFO,
+										 pd.WORKERNAME,
+										 pd.PROCESSNAME,
+										 pd.PROCESSDETAIL,
+										 pd.WorkDate,
+										 NormalTimeCost = pd.IsHoliday ? pd.TOTAL_NORMAL_HR * e.GetHolidayHourRate() : pd.TOTAL_NORMAL_HR * e.GetHourRate(),
+										 OvertimeCost = pd.IsHoliday ? pd.TOTAL_OT_HR * e.GetHolidayOTHourRate() : pd.TOTAL_OT_HR * e.GetOTHourRate()
+									 }).ToDataTable();
 
 
 				return hc ?? hc;
@@ -833,11 +838,11 @@ namespace OMW15.Models.ProductionModel
 		public DataTable GetMaterialForProduction()
 		{
 			return (from mat in _om.PRODUCTIONSTDITEMS
-					where mat.Material != null
-					select new
-					{
-						mat.Material
-					}).Distinct().ToDataTable();
+					  where mat.Material != null
+					  select new
+					  {
+						  mat.Material
+					  }).Distinct().ToDataTable();
 		}
 
 		public DataTable GetProcessMachineList() => (_om.PRDPROCESSes.Where(x => x.MACHINE != null).Select(x => new { x.MACHINE }).Distinct().ToDataTable());
@@ -879,22 +884,22 @@ namespace OMW15.Models.ProductionModel
 		public DataTable GetStdProcessList(string itemNo)
 		{
 			return (from std in _om.PDITEMPROCESSes
-					join p in _om.PRDPROCESSes on std.REF_PROCESS equals p.PRDPROCESSID
-					orderby std.STEP
-					where std.REF_STDITEMNO == itemNo
-					select new
-					{
-						std.ID,
-						std.STEP,
-						std.REF_STDITEM,
-						std.REF_STDITEMNO,
-						std.REF_PROCESS,
-						p.PROCESSNAME,
-						p.MACHINE,
-						std.WORKMINT,
-						std.STD_HR,
-						std.STEP_COST
-					}).ToDataTable();
+					  join p in _om.PRDPROCESSes on std.REF_PROCESS equals p.PRDPROCESSID
+					  orderby std.STEP
+					  where std.REF_STDITEMNO == itemNo
+					  select new
+					  {
+						  std.ID,
+						  std.STEP,
+						  std.REF_STDITEM,
+						  std.REF_STDITEMNO,
+						  std.REF_PROCESS,
+						  p.PROCESSNAME,
+						  p.MACHINE,
+						  std.WORKMINT,
+						  std.STD_HR,
+						  std.STEP_COST
+					  }).ToDataTable();
 		}
 
 		public int UpdateStdProcess(PDITEMPROCESS stdProcess)
@@ -1072,35 +1077,67 @@ namespace OMW15.Models.ProductionModel
 
 		public DataTable GetMachineColumns() => _om.PRDPROCESSes.ToDataTable();
 
-		public DataTable GetActualMachine(int status, int workyear,string itemno)
+		public DataTable GetActualMachine(string itemno, int status = 0, int workyear = 0)
 		{
-			return (from pi in _om.PRODUCTIONJOBINFOes
-						join p in _om.PRODUCTIONJOBS on pi.ERP_ORDER equals p.ERP_ORDER
-						join c in _om.PRDPROCESSes on pi.PROCESSID equals c.PRDPROCESSID
-						where p.ITEMNO == itemno
-								&& p.STATUS == status
-								 && (status == 2 ? p.COMPLETEDATE.Value.Year == workyear : p.JOBYEAR == workyear)
-						orderby pi.ERP_ORDER, pi.STEP
-						select new
-						{
-							c.MACHINE
-						}).Distinct().ToDataTable();
-
+			if ((status != (int)ProductionJobStatus.None) && (workyear != 0))
+			{
+				return (from pi in _om.PRODUCTIONJOBINFOes
+						  join p in _om.PRODUCTIONJOBS on pi.ERP_ORDER equals p.ERP_ORDER
+						  join c in _om.PRDPROCESSes on pi.PROCESSID equals c.PRDPROCESSID
+						  where p.ITEMNO == itemno
+								  && p.STATUS == status
+									&& (status == 2 ? p.COMPLETEDATE.Value.Year == workyear : p.JOBYEAR == workyear)
+						  orderby pi.STEP, pi.ERP_ORDER
+						  select new
+						  {
+							  c.MACHINE
+						  }).Distinct().ToDataTable();
+			}
+			else
+			{
+				return (from pi in _om.PRODUCTIONJOBINFOes
+						  join p in _om.PRODUCTIONJOBS on pi.ERP_ORDER equals p.ERP_ORDER
+						  join c in _om.PRDPROCESSes on pi.PROCESSID equals c.PRDPROCESSID
+						  where p.ITEMNO == itemno
+							  orderby pi.STEP, pi.ERP_ORDER
+						  select new
+						  {
+							  c.MACHINE
+						  }).Distinct().ToDataTable();
+			}
 		}
 
-		public DataTable GetWorkItem(int status, int workyear)
+		public DataTable GetWorkItem(int status, int workyear = 0)
 		{
-			return (from pj in _om.PRODUCTIONJOBS
-					  join std in _om.PRODUCTIONSTDITEMS on pj.ITEMNO equals std.ItemNo
-					  where pj.STATUS == status
-							 && (status == 2 ? pj.COMPLETEDATE.Value.Year == workyear : pj.JOBYEAR == workyear)
-					  orderby pj.ITEMNO
-					  select new
-					  {
-						  pj.ITEMNO,
-						  ItemName = pj.ITEMNO + " :: " + std.ItemName
-					  }
-				).Distinct().ToDataTable();
+			if (workyear > 0)
+			{
+				return (from pj in _om.PRODUCTIONJOBS
+						  join std in _om.PRODUCTIONSTDITEMS on pj.ITEMNO equals std.ItemNo
+						  where pj.STATUS == status
+								 && (status == 2 ? pj.COMPLETEDATE.Value.Year == workyear : pj.JOBYEAR == workyear)
+						  orderby pj.ITEMNO
+						  select new
+						  {
+							  pj.ITEMNO,
+							  ItemName = pj.ITEMNO + " :: " + std.ItemName
+						  }
+					).Distinct().ToDataTable();
+			}
+			else
+			{
+				return (from pj in _om.PRODUCTIONJOBS
+						  join std in _om.PRODUCTIONSTDITEMS on pj.ITEMNO equals std.ItemNo
+						  //where pj.STATUS == status
+						  orderby pj.ITEMNO
+						  select new
+						  {
+							  pj.ITEMNO,
+							  ItemName = pj.ITEMNO + " :: " + std.ItemName
+						  }
+					).Distinct().ToDataTable();
+			}
+
+			//(status == 2 ? pj.COMPLETEDATE.Value.Year == workyear : pj.JOBYEAR == workyear)
 
 		}
 
@@ -1154,7 +1191,7 @@ namespace OMW15.Models.ProductionModel
 	}
 
 
-	
+
 
 }
 

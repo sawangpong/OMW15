@@ -32,33 +32,33 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.panel3 = new System.Windows.Forms.Panel();
-			this.panel4 = new System.Windows.Forms.Panel();
-			this.panel5 = new System.Windows.Forms.Panel();
-			this.cbxJobStatus = new System.Windows.Forms.ComboBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.cbxJobYear = new System.Windows.Forms.ComboBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.dgv = new System.Windows.Forms.DataGridView();
-			this.cbxItemNo = new System.Windows.Forms.ComboBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.btnSQL = new System.Windows.Forms.Button();
-			this.btnClose = new System.Windows.Forms.Button();
-			this.splitter1 = new System.Windows.Forms.Splitter();
 			this.panel6 = new System.Windows.Forms.Panel();
-			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.dgvJobInfo = new System.Windows.Forms.DataGridView();
+			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.tslbJobNo = new System.Windows.Forms.ToolStripLabel();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.tslbRows = new System.Windows.Forms.ToolStripLabel();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.splitter1 = new System.Windows.Forms.Splitter();
+			this.dgv = new System.Windows.Forms.DataGridView();
+			this.panel4 = new System.Windows.Forms.Panel();
+			this.btnClose = new System.Windows.Forms.Button();
+			this.btnSQL = new System.Windows.Forms.Button();
+			this.panel5 = new System.Windows.Forms.Panel();
+			this.cbxItemNo = new System.Windows.Forms.ComboBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.cbxJobYear = new System.Windows.Forms.ComboBox();
+			this.lbYear = new System.Windows.Forms.Label();
+			this.cbxJobStatus = new System.Windows.Forms.ComboBox();
+			this.label2 = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			this.panel3.SuspendLayout();
+			this.panel6.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvJobInfo)).BeginInit();
+			this.toolStrip1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
 			this.panel4.SuspendLayout();
 			this.panel5.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
-			this.panel6.SuspendLayout();
-			this.toolStrip1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dgvJobInfo)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -106,151 +106,26 @@
 			this.panel3.Size = new System.Drawing.Size(955, 449);
 			this.panel3.TabIndex = 2;
 			// 
-			// panel4
-			// 
-			this.panel4.Controls.Add(this.btnClose);
-			this.panel4.Controls.Add(this.btnSQL);
-			this.panel4.Controls.Add(this.panel5);
-			this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel4.Location = new System.Drawing.Point(2, 2);
-			this.panel4.Name = "panel4";
-			this.panel4.Padding = new System.Windows.Forms.Padding(2);
-			this.panel4.Size = new System.Drawing.Size(951, 58);
-			this.panel4.TabIndex = 0;
-			// 
-			// panel5
-			// 
-			this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.panel5.Controls.Add(this.cbxItemNo);
-			this.panel5.Controls.Add(this.label4);
-			this.panel5.Controls.Add(this.cbxJobYear);
-			this.panel5.Controls.Add(this.label3);
-			this.panel5.Controls.Add(this.cbxJobStatus);
-			this.panel5.Controls.Add(this.label2);
-			this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel5.Location = new System.Drawing.Point(2, 26);
-			this.panel5.Name = "panel5";
-			this.panel5.Padding = new System.Windows.Forms.Padding(2);
-			this.panel5.Size = new System.Drawing.Size(947, 30);
-			this.panel5.TabIndex = 1;
-			// 
-			// cbxJobStatus
-			// 
-			this.cbxJobStatus.Dock = System.Windows.Forms.DockStyle.Left;
-			this.cbxJobStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbxJobStatus.FormattingEnabled = true;
-			this.cbxJobStatus.Location = new System.Drawing.Point(82, 2);
-			this.cbxJobStatus.Name = "cbxJobStatus";
-			this.cbxJobStatus.Size = new System.Drawing.Size(125, 25);
-			this.cbxJobStatus.TabIndex = 2;
-			this.cbxJobStatus.SelectionChangeCommitted += new System.EventHandler(this.cbxJobStatus_SelectionChangeCommitted);
-			// 
-			// label2
-			// 
-			this.label2.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label2.Location = new System.Drawing.Point(2, 2);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(80, 24);
-			this.label2.TabIndex = 1;
-			this.label2.Text = "Job status: ";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// cbxJobYear
-			// 
-			this.cbxJobYear.Dock = System.Windows.Forms.DockStyle.Left;
-			this.cbxJobYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbxJobYear.FormattingEnabled = true;
-			this.cbxJobYear.Location = new System.Drawing.Point(262, 2);
-			this.cbxJobYear.Name = "cbxJobYear";
-			this.cbxJobYear.Size = new System.Drawing.Size(90, 25);
-			this.cbxJobYear.TabIndex = 4;
-			this.cbxJobYear.SelectionChangeCommitted += new System.EventHandler(this.cbxJobYear_SelectionChangeCommitted);
-			// 
-			// label3
-			// 
-			this.label3.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label3.Location = new System.Drawing.Point(207, 2);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(55, 24);
-			this.label3.TabIndex = 3;
-			this.label3.Text = "year: ";
-			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// dgv
-			// 
-			this.dgv.BackgroundColor = System.Drawing.Color.White;
-			this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgv.Dock = System.Windows.Forms.DockStyle.Top;
-			this.dgv.Location = new System.Drawing.Point(2, 60);
-			this.dgv.Name = "dgv";
-			this.dgv.Size = new System.Drawing.Size(951, 197);
-			this.dgv.TabIndex = 1;
-			this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEnter);
-			// 
-			// cbxItemNo
-			// 
-			this.cbxItemNo.Dock = System.Windows.Forms.DockStyle.Left;
-			this.cbxItemNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbxItemNo.FormattingEnabled = true;
-			this.cbxItemNo.Location = new System.Drawing.Point(432, 2);
-			this.cbxItemNo.Name = "cbxItemNo";
-			this.cbxItemNo.Size = new System.Drawing.Size(425, 25);
-			this.cbxItemNo.TabIndex = 6;
-			this.cbxItemNo.SelectionChangeCommitted += new System.EventHandler(this.cbxItemNo_SelectionChangeCommitted);
-			// 
-			// label4
-			// 
-			this.label4.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label4.Location = new System.Drawing.Point(352, 2);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(80, 24);
-			this.label4.TabIndex = 5;
-			this.label4.Text = "Item-no.: ";
-			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// btnSQL
-			// 
-			this.btnSQL.Dock = System.Windows.Forms.DockStyle.Left;
-			this.btnSQL.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnSQL.Location = new System.Drawing.Point(2, 2);
-			this.btnSQL.Name = "btnSQL";
-			this.btnSQL.Size = new System.Drawing.Size(82, 24);
-			this.btnSQL.TabIndex = 2;
-			this.btnSQL.Text = "SQL";
-			this.btnSQL.UseVisualStyleBackColor = true;
-			this.btnSQL.Click += new System.EventHandler(this.btnSQL_Click);
-			// 
-			// btnClose
-			// 
-			this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
-			this.btnClose.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnClose.Location = new System.Drawing.Point(867, 2);
-			this.btnClose.Name = "btnClose";
-			this.btnClose.Size = new System.Drawing.Size(82, 24);
-			this.btnClose.TabIndex = 3;
-			this.btnClose.Text = "&Close";
-			this.btnClose.UseVisualStyleBackColor = true;
-			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-			// 
-			// splitter1
-			// 
-			this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.splitter1.Location = new System.Drawing.Point(2, 257);
-			this.splitter1.Name = "splitter1";
-			this.splitter1.Size = new System.Drawing.Size(951, 10);
-			this.splitter1.TabIndex = 6;
-			this.splitter1.TabStop = false;
-			// 
 			// panel6
 			// 
 			this.panel6.Controls.Add(this.dgvJobInfo);
 			this.panel6.Controls.Add(this.toolStrip1);
 			this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel6.Location = new System.Drawing.Point(2, 267);
+			this.panel6.Location = new System.Drawing.Point(2, 261);
 			this.panel6.Name = "panel6";
 			this.panel6.Padding = new System.Windows.Forms.Padding(3);
-			this.panel6.Size = new System.Drawing.Size(951, 180);
+			this.panel6.Size = new System.Drawing.Size(951, 186);
 			this.panel6.TabIndex = 7;
+			// 
+			// dgvJobInfo
+			// 
+			this.dgvJobInfo.BackgroundColor = System.Drawing.Color.White;
+			this.dgvJobInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvJobInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dgvJobInfo.Location = new System.Drawing.Point(3, 28);
+			this.dgvJobInfo.Name = "dgvJobInfo";
+			this.dgvJobInfo.Size = new System.Drawing.Size(945, 155);
+			this.dgvJobInfo.TabIndex = 2;
 			// 
 			// toolStrip1
 			// 
@@ -266,16 +141,6 @@
 			this.toolStrip1.Size = new System.Drawing.Size(945, 25);
 			this.toolStrip1.TabIndex = 0;
 			this.toolStrip1.Text = "toolStrip1";
-			// 
-			// dgvJobInfo
-			// 
-			this.dgvJobInfo.BackgroundColor = System.Drawing.Color.White;
-			this.dgvJobInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgvJobInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dgvJobInfo.Location = new System.Drawing.Point(3, 28);
-			this.dgvJobInfo.Name = "dgvJobInfo";
-			this.dgvJobInfo.Size = new System.Drawing.Size(945, 149);
-			this.dgvJobInfo.TabIndex = 2;
 			// 
 			// tslbJobNo
 			// 
@@ -301,6 +166,141 @@
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
 			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
 			// 
+			// splitter1
+			// 
+			this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
+			this.splitter1.Location = new System.Drawing.Point(2, 251);
+			this.splitter1.Name = "splitter1";
+			this.splitter1.Size = new System.Drawing.Size(951, 10);
+			this.splitter1.TabIndex = 6;
+			this.splitter1.TabStop = false;
+			// 
+			// dgv
+			// 
+			this.dgv.BackgroundColor = System.Drawing.Color.White;
+			this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgv.Dock = System.Windows.Forms.DockStyle.Top;
+			this.dgv.Location = new System.Drawing.Point(2, 60);
+			this.dgv.Name = "dgv";
+			this.dgv.Size = new System.Drawing.Size(951, 191);
+			this.dgv.TabIndex = 1;
+			this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEnter);
+			// 
+			// panel4
+			// 
+			this.panel4.Controls.Add(this.btnClose);
+			this.panel4.Controls.Add(this.btnSQL);
+			this.panel4.Controls.Add(this.panel5);
+			this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel4.Location = new System.Drawing.Point(2, 2);
+			this.panel4.Name = "panel4";
+			this.panel4.Padding = new System.Windows.Forms.Padding(2);
+			this.panel4.Size = new System.Drawing.Size(951, 58);
+			this.panel4.TabIndex = 0;
+			// 
+			// btnClose
+			// 
+			this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
+			this.btnClose.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnClose.Location = new System.Drawing.Point(867, 2);
+			this.btnClose.Name = "btnClose";
+			this.btnClose.Size = new System.Drawing.Size(82, 24);
+			this.btnClose.TabIndex = 3;
+			this.btnClose.Text = "&Close";
+			this.btnClose.UseVisualStyleBackColor = true;
+			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+			// 
+			// btnSQL
+			// 
+			this.btnSQL.Dock = System.Windows.Forms.DockStyle.Left;
+			this.btnSQL.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnSQL.Location = new System.Drawing.Point(2, 2);
+			this.btnSQL.Name = "btnSQL";
+			this.btnSQL.Size = new System.Drawing.Size(82, 24);
+			this.btnSQL.TabIndex = 2;
+			this.btnSQL.Text = "SQL";
+			this.btnSQL.UseVisualStyleBackColor = true;
+			this.btnSQL.Click += new System.EventHandler(this.btnSQL_Click);
+			// 
+			// panel5
+			// 
+			this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.panel5.Controls.Add(this.cbxItemNo);
+			this.panel5.Controls.Add(this.label4);
+			this.panel5.Controls.Add(this.cbxJobYear);
+			this.panel5.Controls.Add(this.lbYear);
+			this.panel5.Controls.Add(this.cbxJobStatus);
+			this.panel5.Controls.Add(this.label2);
+			this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.panel5.Location = new System.Drawing.Point(2, 26);
+			this.panel5.Name = "panel5";
+			this.panel5.Padding = new System.Windows.Forms.Padding(2, 2, 20, 2);
+			this.panel5.Size = new System.Drawing.Size(947, 30);
+			this.panel5.TabIndex = 1;
+			// 
+			// cbxItemNo
+			// 
+			this.cbxItemNo.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.cbxItemNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbxItemNo.FormattingEnabled = true;
+			this.cbxItemNo.Location = new System.Drawing.Point(432, 2);
+			this.cbxItemNo.Name = "cbxItemNo";
+			this.cbxItemNo.Size = new System.Drawing.Size(493, 25);
+			this.cbxItemNo.TabIndex = 6;
+			this.cbxItemNo.SelectionChangeCommitted += new System.EventHandler(this.cbxItemNo_SelectionChangeCommitted);
+			// 
+			// label4
+			// 
+			this.label4.Dock = System.Windows.Forms.DockStyle.Left;
+			this.label4.Location = new System.Drawing.Point(352, 2);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(80, 24);
+			this.label4.TabIndex = 5;
+			this.label4.Text = "Item-no.: ";
+			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// cbxJobYear
+			// 
+			this.cbxJobYear.Dock = System.Windows.Forms.DockStyle.Left;
+			this.cbxJobYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbxJobYear.FormattingEnabled = true;
+			this.cbxJobYear.Location = new System.Drawing.Point(262, 2);
+			this.cbxJobYear.Name = "cbxJobYear";
+			this.cbxJobYear.Size = new System.Drawing.Size(90, 25);
+			this.cbxJobYear.TabIndex = 4;
+			this.cbxJobYear.SelectionChangeCommitted += new System.EventHandler(this.cbxJobYear_SelectionChangeCommitted);
+			// 
+			// lbYear
+			// 
+			this.lbYear.Dock = System.Windows.Forms.DockStyle.Left;
+			this.lbYear.Location = new System.Drawing.Point(207, 2);
+			this.lbYear.Name = "lbYear";
+			this.lbYear.Size = new System.Drawing.Size(55, 24);
+			this.lbYear.TabIndex = 3;
+			this.lbYear.Text = "year: ";
+			this.lbYear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// cbxJobStatus
+			// 
+			this.cbxJobStatus.Dock = System.Windows.Forms.DockStyle.Left;
+			this.cbxJobStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbxJobStatus.FormattingEnabled = true;
+			this.cbxJobStatus.Location = new System.Drawing.Point(82, 2);
+			this.cbxJobStatus.Name = "cbxJobStatus";
+			this.cbxJobStatus.Size = new System.Drawing.Size(125, 25);
+			this.cbxJobStatus.TabIndex = 2;
+			this.cbxJobStatus.SelectionChangeCommitted += new System.EventHandler(this.cbxJobStatus_SelectionChangeCommitted);
+			// 
+			// label2
+			// 
+			this.label2.Dock = System.Windows.Forms.DockStyle.Left;
+			this.label2.Location = new System.Drawing.Point(2, 2);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(80, 24);
+			this.label2.TabIndex = 1;
+			this.label2.Text = "Job status: ";
+			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
 			// Production2Plan
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -316,14 +316,14 @@
 			this.Load += new System.EventHandler(this.Production2Plan_Load);
 			this.panel1.ResumeLayout(false);
 			this.panel3.ResumeLayout(false);
-			this.panel4.ResumeLayout(false);
-			this.panel5.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
 			this.panel6.ResumeLayout(false);
 			this.panel6.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvJobInfo)).EndInit();
 			this.toolStrip1.ResumeLayout(false);
 			this.toolStrip1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dgvJobInfo)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+			this.panel4.ResumeLayout(false);
+			this.panel5.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -339,7 +339,7 @@
 		private System.Windows.Forms.ComboBox cbxJobStatus;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.ComboBox cbxJobYear;
-		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label lbYear;
 		private System.Windows.Forms.DataGridView dgv;
 		private System.Windows.Forms.ComboBox cbxItemNo;
 		private System.Windows.Forms.Label label4;
