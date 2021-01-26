@@ -1087,9 +1087,11 @@ namespace OMW15.Models.ProductionModel
 						  where p.ITEMNO == itemno
 								  && p.STATUS == status
 									&& (status == 2 ? p.COMPLETEDATE.Value.Year == workyear : p.JOBYEAR == workyear)
-						  orderby pi.STEP, pi.ERP_ORDER
+						  orderby pi.STEP
 						  select new
 						  {
+							  pi.STEP,
+							  c.PROCESSNAME,
 							  c.MACHINE
 						  }).Distinct().ToDataTable();
 			}
@@ -1099,9 +1101,11 @@ namespace OMW15.Models.ProductionModel
 						  join p in _om.PRODUCTIONJOBS on pi.ERP_ORDER equals p.ERP_ORDER
 						  join c in _om.PRDPROCESSes on pi.PROCESSID equals c.PRDPROCESSID
 						  where p.ITEMNO == itemno
-							  orderby pi.STEP, pi.ERP_ORDER
+						  orderby pi.STEP
 						  select new
 						  {
+							  pi.STEP,
+							  c.PROCESSNAME,
 							  c.MACHINE
 						  }).Distinct().ToDataTable();
 			}
@@ -1136,9 +1140,45 @@ namespace OMW15.Models.ProductionModel
 						  }
 					).Distinct().ToDataTable();
 			}
+		}
 
-			//(status == 2 ? pj.COMPLETEDATE.Value.Year == workyear : pj.JOBYEAR == workyear)
+		public DataTable GetProductionPlan(int status, int jobYear, string itemno)
+		{
+			DataTable _dtMC = GetActualMachine(itemno, status, jobYear);
+			StringBuilder s = new StringBuilder();
 
+			s.AppendLine($"SELECT ");
+			s.AppendLine($"pi.ERP_ORDER AS [ORDER-NO]");
+			s.AppendLine($",pi.ITEMNO ");
+			s.AppendLine($",p.QORDER AS [QTY]");
+			foreach (DataRow dr in _dtMC.Rows)
+			{
+				s.AppendLine($",SUM(CASE WHEN pc.MACHINE = '{dr[2]}' THEN pi.TOTAL_HRS END) AS [STEP={dr[0]}-{dr[1]}-{dr[2]}]");
+			}
+			s.AppendLine($",SUM(pi.TOTAL_HRS) AS [TOTAL-HRs]");
+			s.AppendLine($",CASE WHEN (SUM(pi.TOTAL_HRS)/(CASE WHEN p.QORDER = 0 THEN 1 ELSE p.QORDER END) >= 1) ");
+			s.AppendLine($" THEN FORMAT(CAST(SUM(pi.TOTAL_HRS)/(CASE WHEN p.QORDER = 0 THEN 1 ELSE p.QORDER END) AS INT),'00') + ");
+			s.AppendLine($" FORMAT((SUM(pi.TOTAL_HRS)/(CASE WHEN p.QORDER = 0 THEN 1 ELSE p.QORDER END) - ");
+			s.AppendLine($" CAST(SUM(pi.TOTAL_HRS)/(CASE WHEN p.QORDER = 0 THEN 1 ELSE p.QORDER END) AS INT))*60,':0#') ");
+			s.AppendLine($" ELSE '00'+ FORMAT(CAST((SUM(pi.TOTAL_HRS)/(CASE WHEN p.QORDER = 0 THEN 1 ELSE p.QORDER END) * 60) AS INT),':0#' ) END ");
+			s.AppendLine($" AS [AVG (HR/UNIT)]");
+			s.AppendLine($" FROM PRODUCTIONJOBINFO pi  ");
+			s.AppendLine($" INNER JOIN PRODUCTIONJOBS p ON pi.ERP_ORDER = p.ERP_ORDER ");
+			s.AppendLine($" INNER JOIN PRDPROCESS pc ON pi.PROCESSID = pc.PRDPROCESSID ");
+			s.AppendLine($" WHERE pi.ITEMNO = '{itemno}'");
+			if (status == (int)ProductionJobStatus.Active)
+			{
+				s.AppendLine($" AND p.STATUS = {status} ");
+				s.AppendLine($" AND p.JOBYEAR = {jobYear}");
+			}
+			else if (status == (int)ProductionJobStatus.Closed)
+			{
+				s.AppendLine($" AND p.STATUS = {status} ");
+				s.AppendLine($" AND YEAR(p.COMPLETEDATE) = {jobYear}");
+			}
+			s.AppendLine($" GROUP BY pi.ERP_ORDER,pi.ITEMNO,p.QORDER");
+
+			return new DataConnect(s.ToString(), omglobal.SysConnectionString).ToDataTable;
 		}
 
 		#endregion
@@ -1164,7 +1204,6 @@ namespace OMW15.Models.ProductionModel
 	{
 		public int JobYear { get; set; }
 	}
-
 
 	public class TimeRecordInfo
 	{

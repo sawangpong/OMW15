@@ -104,14 +104,10 @@ namespace OMW15.Views.Productions
 			// load data
 			/////////////////////////////
 			///
-
-
-
 			_isFirstLoad = _mode == ActionMode.Edit ? true : false;
 			GetProductionHourRecord(this.RecordId);
 
 			_isFirstLoad = false;
-
 		}
 
 		private void dtpWorkTime_ValueChanged(object sender, EventArgs e)
@@ -181,10 +177,8 @@ namespace OMW15.Views.Productions
 
 		private void dtpWorkDate_ValueChanged(object sender, EventArgs e)
 		{
-
 			// initial normal hour for giving worker code
 			_normalHourRate = Convert.ToDouble(GetWorkerHourRate(dtpWorkTimeStart.Value, this.WorkerCode));
-
 
 			if (!string.IsNullOrEmpty(txtProductionJob.Text))
 			{
@@ -234,7 +228,6 @@ namespace OMW15.Views.Productions
 
 			// update hour rate
 			txtHourRate.Text = $"{ GetWorkerHourRate(dtpWorkDate.Value, this.WorkerCode):N2}";
-
 
 			UpdateUI();
 		}
