@@ -1144,6 +1144,7 @@ namespace OMW15.Models.ProductionModel
 
 		public DataTable GetProductionPlan(int status, int jobYear, string itemno)
 		{
+			/*
 			DataTable _dtMC = GetActualMachine(itemno, status, jobYear);
 			StringBuilder s = new StringBuilder();
 
@@ -1177,8 +1178,8 @@ namespace OMW15.Models.ProductionModel
 				s.AppendLine($" AND YEAR(p.COMPLETEDATE) = {jobYear}");
 			}
 			s.AppendLine($" GROUP BY pi.ERP_ORDER,pi.ITEMNO,p.QORDER");
-
-			return new DataConnect(s.ToString(), omglobal.SysConnectionString).ToDataTable;
+			*/
+			return new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_MACHINE_PLAN @jobstatus={status},@jobyear={jobYear},@itemnumber='{itemno}'", omglobal.SysConnectionString).ToDataTable;
 		}
 
 		#endregion

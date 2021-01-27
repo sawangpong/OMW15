@@ -105,17 +105,24 @@ namespace OMW15.Views.Productions
 			//s.AppendLine($" GROUP BY pi.ERP_ORDER,pi.ITEMNO,p.QORDER");
 			#endregion
 
+			// clear data in datagridview - jobinfo
+			dgvJobInfo.DataSource = null;
+
 			dgv.SuspendLayout();
+
+			// clear data in main datagridview
 			dgv.DataSource = null;
+
+			// binding new data
 			dgv.DataSource = new ProductionDAL().GetProductionPlan(status, jobYear, itemno);
 
+			// formating columns in datagridview
 			foreach (DataGridViewColumn dgc in dgv.Columns)
 			{
 				if (dgc.Index > 1) dgc.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 			}
 
 			dgv.ResumeLayout();
-
 		}
 
 		private void GetWorkInfoByOrder(string order)
@@ -141,11 +148,6 @@ namespace OMW15.Views.Productions
 
 				foreach (DataGridViewColumn dgc in dgvJobInfo.Columns)
 				{
-					//if (dgc.Index == 1)
-					//	dgc.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-					//else if (dgc.Index >= 4 && dgc.Index <= 7)
-					//	dgc.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-					//else 
 					if (dgc.Name == "STEP")
 					{
 						dgc.HeaderText = "ลำดับขั้นตอน";
