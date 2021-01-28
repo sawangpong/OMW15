@@ -1,6 +1,6 @@
 ﻿namespace OMW15.Views.Productions
 {
-	partial class Production2Plan
+	partial class MCToolsPlan
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -39,6 +39,8 @@
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.tslbRows = new System.Windows.Forms.ToolStripLabel();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.tsbtnRefresh = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.splitter1 = new System.Windows.Forms.Splitter();
 			this.dgv = new System.Windows.Forms.DataGridView();
 			this.panel4 = new System.Windows.Forms.Panel();
@@ -50,8 +52,6 @@
 			this.lbYear = new System.Windows.Forms.Label();
 			this.cbxJobStatus = new System.Windows.Forms.ComboBox();
 			this.label2 = new System.Windows.Forms.Label();
-			this.tsbtnRefresh = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.panel1.SuspendLayout();
 			this.panel3.SuspendLayout();
 			this.panel6.SuspendLayout();
@@ -81,7 +81,7 @@
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(235, 50);
 			this.label1.TabIndex = 0;
-			this.label1.Text = "Production 2 Plan";
+			this.label1.Text = "Machine && Tools Plan";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			// 
 			// panel2
@@ -172,6 +172,21 @@
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
 			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 35);
 			// 
+			// tsbtnRefresh
+			// 
+			this.tsbtnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.tsbtnRefresh.Image = global::OMW15.Properties.Resources.REFRESH;
+			this.tsbtnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbtnRefresh.Name = "tsbtnRefresh";
+			this.tsbtnRefresh.Size = new System.Drawing.Size(23, 32);
+			this.tsbtnRefresh.ToolTipText = "Refresh";
+			this.tsbtnRefresh.Click += new System.EventHandler(this.tsbtnRefresh_Click);
+			// 
+			// toolStripSeparator3
+			// 
+			this.toolStripSeparator3.Name = "toolStripSeparator3";
+			this.toolStripSeparator3.Size = new System.Drawing.Size(6, 35);
+			// 
 			// splitter1
 			// 
 			this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -205,11 +220,11 @@
 			// 
 			// btnClose
 			// 
-			this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
+			this.btnClose.Dock = System.Windows.Forms.DockStyle.Left;
 			this.btnClose.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnClose.Location = new System.Drawing.Point(867, 2);
+			this.btnClose.Location = new System.Drawing.Point(2, 2);
 			this.btnClose.Name = "btnClose";
-			this.btnClose.Size = new System.Drawing.Size(82, 24);
+			this.btnClose.Size = new System.Drawing.Size(83, 24);
 			this.btnClose.TabIndex = 3;
 			this.btnClose.Text = "&Close";
 			this.btnClose.UseVisualStyleBackColor = true;
@@ -295,22 +310,7 @@
 			this.label2.Text = "Job status: ";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// tsbtnRefresh
-			// 
-			this.tsbtnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.tsbtnRefresh.Image = global::OMW15.Properties.Resources.REFRESH;
-			this.tsbtnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbtnRefresh.Name = "tsbtnRefresh";
-			this.tsbtnRefresh.Size = new System.Drawing.Size(23, 32);
-			this.tsbtnRefresh.ToolTipText = "Refresh";
-			this.tsbtnRefresh.Click += new System.EventHandler(this.tsbtnRefresh_Click);
-			// 
-			// toolStripSeparator3
-			// 
-			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(6, 35);
-			// 
-			// Production2Plan
+			// MCToolsPlan
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -320,9 +320,9 @@
 			this.Controls.Add(this.panel1);
 			this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-			this.Name = "Production2Plan";
-			this.Text = "Production 2 Plan";
-			this.Load += new System.EventHandler(this.Production2Plan_Load);
+			this.Name = "MCToolsPlan";
+			this.Text = "Machine & Tools Plan";
+			this.Load += new System.EventHandler(this.MCToolsPlan_Load);
 			this.panel1.ResumeLayout(false);
 			this.panel3.ResumeLayout(false);
 			this.panel6.ResumeLayout(false);

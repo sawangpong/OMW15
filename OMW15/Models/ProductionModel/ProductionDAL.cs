@@ -1123,7 +1123,7 @@ namespace OMW15.Models.ProductionModel
 						  select new
 						  {
 							  pj.ITEMNO,
-							  ItemName = pj.ITEMNO + " :: " + std.ItemName
+							  ItemName = "["+pj.ITEMNO.Trim() + "] ## " + std.ItemName.Trim()
 						  }
 					).Distinct().ToDataTable();
 			}

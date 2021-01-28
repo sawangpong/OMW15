@@ -33,7 +33,7 @@
 			this.mnu = new System.Windows.Forms.MenuStrip();
 			this.mnuProduction = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuProductionTasks = new System.Windows.Forms.ToolStripMenuItem();
-			this.mnuProductionPlan = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuMCToolsPlan = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuBOM = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuStandardItems = new System.Windows.Forms.ToolStripMenuItem();
@@ -105,7 +105,7 @@
 			// 
 			this.mnuProduction.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuProductionTasks,
-            this.mnuProductionPlan,
+            this.mnuMCToolsPlan,
             this.toolStripMenuItem1,
             this.mnuBOM,
             this.mnuStandardItems,
@@ -129,12 +129,12 @@
 			this.mnuProductionTasks.Text = "ใบสั่งผลิต (Production order)";
 			this.mnuProductionTasks.Click += new System.EventHandler(this.mnuProductionTasks_Click);
 			// 
-			// mnuProductionPlan
+			// mnuMCToolsPlan
 			// 
-			this.mnuProductionPlan.Name = "mnuProductionPlan";
-			this.mnuProductionPlan.Size = new System.Drawing.Size(234, 22);
-			this.mnuProductionPlan.Text = "Production Plan";
-			this.mnuProductionPlan.Click += new System.EventHandler(this.mnuProductionPlan_Click);
+			this.mnuMCToolsPlan.Name = "mnuMCToolsPlan";
+			this.mnuMCToolsPlan.Size = new System.Drawing.Size(234, 22);
+			this.mnuMCToolsPlan.Text = "Machine && Tools Plan";
+			this.mnuMCToolsPlan.Click += new System.EventHandler(this.mnuMCToolsPlan_Click);
 			// 
 			// toolStripMenuItem1
 			// 
@@ -455,7 +455,7 @@
 			this.tsbtnProduction2Plan.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.tsbtnProduction2Plan.Name = "tsbtnProduction2Plan";
 			this.tsbtnProduction2Plan.Size = new System.Drawing.Size(100, 42);
-			this.tsbtnProduction2Plan.Text = "Prod. 2 Plan";
+			this.tsbtnProduction2Plan.Text = "M/C Plan";
 			this.tsbtnProduction2Plan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
 			this.tsbtnProduction2Plan.Click += new System.EventHandler(this.tsbtnProduction2Plan_Click);
 			// 
@@ -532,7 +532,7 @@
 		private System.Windows.Forms.ToolStripButton tsbtnReport;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
 		private System.Windows.Forms.ToolStripMenuItem mnuCheckWorkTime;
-		private System.Windows.Forms.ToolStripMenuItem mnuProductionPlan;
+		private System.Windows.Forms.ToolStripMenuItem mnuMCToolsPlan;
 		private System.Windows.Forms.ToolStripButton tsbtnProduction2Plan;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
 	}

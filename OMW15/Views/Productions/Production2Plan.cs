@@ -7,23 +7,22 @@ using static OMW15.Shared.OMShareProduction;
 
 namespace OMW15.Views.Productions
 {
-	public partial class Production2Plan : Form
+	public partial class MCToolsPlan : Form
 	{
 		#region Sigleton
-		private static Production2Plan _instance;
-		public static Production2Plan GetInstance
+		private static MCToolsPlan _instance;
+		public static MCToolsPlan GetInstance
 		{
 			get
 			{
 				if (_instance == null || _instance.IsDisposed)
 				{
-					_instance = new Production2Plan();
+					_instance = new MCToolsPlan();
 				}
 				return _instance;
 			}
 		}
 		#endregion
-
 
 		#region class field
 
@@ -222,8 +221,7 @@ namespace OMW15.Views.Productions
 
 		#endregion
 
-
-		public Production2Plan()
+		public MCToolsPlan()
 		{
 			InitializeComponent();
 
@@ -233,7 +231,7 @@ namespace OMW15.Views.Productions
 			GetJobStatus();
 		}
 
-		private void Production2Plan_Load(object sender, EventArgs e)
+		private void MCToolsPlan_Load(object sender, EventArgs e)
 		{
 
 		}
