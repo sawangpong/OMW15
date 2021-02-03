@@ -28,9 +28,13 @@ namespace OMW15.Views.Productions
 
 		#region class fields
 
+#pragma warning disable CS0414 // The field 'ItemStat._searchType' is assigned but its value is never used
 		private OMShareProduction.SearchSTDItem _searchType = OMShareProduction.SearchSTDItem.None;
+#pragma warning restore CS0414 // The field 'ItemStat._searchType' is assigned but its value is never used
 		private string _selectedStdItemNo = "";
+#pragma warning disable CS0414 // The field 'ItemStat._selectedItemNo' is assigned but its value is never used
 		private string _selectedItemNo = "";
+#pragma warning restore CS0414 // The field 'ItemStat._selectedItemNo' is assigned but its value is never used
 		private int _selectedYearProduction = DateTime.Today.Year;
 		private int _selectedMonthProduction = DateTime.Today.Month;
 

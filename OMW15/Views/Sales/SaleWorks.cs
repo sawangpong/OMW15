@@ -141,10 +141,11 @@ namespace OMW15.Views.Sales
 
 		private void tsMCRecord_Click(object sender, EventArgs e)
 		{
-			Views.ServiceView.MCInfo mc = new ServiceView.MCInfo();
-			mc.StartPosition = FormStartPosition.CenterParent;
-			mc.MdiParent = this;
-			mc.Show();
+			//Views.ServiceView.MCInfo mc = new ServiceView.MCInfo();
+			//mc.StartPosition = FormStartPosition.CenterParent;
+			//mc.MdiParent = this;
+			//mc.Show();
+			mnuMachineRecords.PerformClick();
 		}
 
 		private void mnuSaleMachines_Click(object sender, EventArgs e)
@@ -176,6 +177,14 @@ namespace OMW15.Views.Sales
 			saleHist.StartPosition = FormStartPosition.CenterScreen;
 			saleHist.Show();
 
+		}
+
+		private void mnuMachineRecords_Click(object sender, EventArgs e)
+		{
+			Views.ServiceView.MCInfo mc = new ServiceView.MCInfo();
+			mc.StartPosition = FormStartPosition.CenterParent;
+			mc.MdiParent = this;
+			mc.Show();
 		}
 	}
 }

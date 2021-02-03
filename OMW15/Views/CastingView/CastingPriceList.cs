@@ -30,7 +30,9 @@ namespace OMW15.Views.CastingView
 
 		private bool _selectedItemHasImage;
 
+#pragma warning disable CS0169 // The field 'CastingPriceList._selectedCustomerMatId' is never used
 		private int _selectedCustomerMatId; // all materials
+#pragma warning restore CS0169 // The field 'CastingPriceList._selectedCustomerMatId' is never used
 		private int _erpCustomerId;
 		private int _internalCustomerId;
 		private int _selectedPriceListItemId;

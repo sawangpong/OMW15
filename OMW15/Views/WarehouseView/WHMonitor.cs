@@ -27,7 +27,9 @@ namespace OMW15.Views.WarehouseView
 		#region class field member
 		private string _selectedCategoryCode = "";
 		private string _selectedItemNo = "";
+#pragma warning disable CS0414 // The field 'WHMonitor._selectedItemId' is assigned but its value is never used
 		private int _selectedItemId = 0;
+#pragma warning restore CS0414 // The field 'WHMonitor._selectedItemId' is assigned but its value is never used
 		private int _selectedSearchIndex = 0;
 
 		private DataTable dt = new DataTable();

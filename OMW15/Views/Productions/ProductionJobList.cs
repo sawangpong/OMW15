@@ -31,7 +31,9 @@ namespace OMW15.Views.Productions
 
 		#region class field member
 
+#pragma warning disable CS0169 // The field 'ProductionJobList._ctmTask' is never used
 		private ContextMenu _ctmTask;
+#pragma warning restore CS0169 // The field 'ProductionJobList._ctmTask' is never used
 		private OMShareProduction.SearchType _searchType = OMShareProduction.SearchType.None;
 		private int _status = (int)OMShareProduction.ProductionJobStatus.None;
 		private int _selectedJobYear = DateTime.Today.Year;

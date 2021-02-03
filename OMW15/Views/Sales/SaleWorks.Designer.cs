@@ -46,6 +46,7 @@
 			this.mnuSaleMachines = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuSaleReport = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuSaleSummary = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuSaleHistory = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuSetting = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuProductList = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuWindows = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,7 +66,6 @@
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsMCRecord = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-			this.mnuSaleHistory = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnu.SuspendLayout();
@@ -182,6 +182,7 @@
 			this.mnuMachineRecords.Name = "mnuMachineRecords";
 			this.mnuMachineRecords.Size = new System.Drawing.Size(258, 22);
 			this.mnuMachineRecords.Text = "บันทึกเครื่องจักร";
+			this.mnuMachineRecords.Click += new System.EventHandler(this.mnuMachineRecords_Click);
 			// 
 			// mnuSaleMachines
 			// 
@@ -202,9 +203,16 @@
 			// mnuSaleSummary
 			// 
 			this.mnuSaleSummary.Name = "mnuSaleSummary";
-			this.mnuSaleSummary.Size = new System.Drawing.Size(180, 22);
+			this.mnuSaleSummary.Size = new System.Drawing.Size(179, 22);
 			this.mnuSaleSummary.Text = "สรุปยอดขายตามกลุ่ม";
 			this.mnuSaleSummary.Click += new System.EventHandler(this.mnuSaleSummary_Click);
+			// 
+			// mnuSaleHistory
+			// 
+			this.mnuSaleHistory.Name = "mnuSaleHistory";
+			this.mnuSaleHistory.Size = new System.Drawing.Size(179, 22);
+			this.mnuSaleHistory.Text = "ประวัติการขาย";
+			this.mnuSaleHistory.Click += new System.EventHandler(this.mnuSaleHistory_Click);
 			// 
 			// mnuSetting
 			// 
@@ -376,13 +384,6 @@
 			// 
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
 			this.toolStripSeparator5.Size = new System.Drawing.Size(6, 45);
-			// 
-			// mnuSaleHistory
-			// 
-			this.mnuSaleHistory.Name = "mnuSaleHistory";
-			this.mnuSaleHistory.Size = new System.Drawing.Size(180, 22);
-			this.mnuSaleHistory.Text = "ประวัติการขาย";
-			this.mnuSaleHistory.Click += new System.EventHandler(this.mnuSaleHistory_Click);
 			// 
 			// toolStripButton1
 			// 

@@ -26,7 +26,9 @@ namespace OMW15.Views.CastingView
 		private string _code = string.Empty;
 		private int _id;
 
+#pragma warning disable CS0414 // The field 'CastingSaleOrderItemInfo._notFoundCastingPriceItem' is assigned but its value is never used
 		private bool _notFoundCastingPriceItem = false;
+#pragma warning restore CS0414 // The field 'CastingSaleOrderItemInfo._notFoundCastingPriceItem' is assigned but its value is never used
 		private int _selectPriceTableRowId = 0;
 	
 

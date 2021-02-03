@@ -172,16 +172,18 @@ namespace OMW15.Views.Productions
 
 		private void StepAlert(int totalStep)
 		{
-			if (totalStep > 0)
+			if (_jobType != ProductionJobType.Project)
 			{
-				lbTotalStep.Text = $"มี {totalStep} ขั้นตอนการผลิต";
-			}
-			else
-			{
-				MessageBox.Show($"รายการนี้ไม่มีการระบุขั้นตอนการผลิตทำให้ไม่สามารถเปิดใบงานได้ \n\n กรุณาตรวจสอบขั้นตอนการผลิตในชิ้นส่วนมาตรฐานก่อน", "PRODUCTION STEP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				if (totalStep > 0)
+				{
+					lbTotalStep.Text = $"มี {totalStep} ขั้นตอนการผลิต";
+				}
+				else
+				{
+					MessageBox.Show($"รายการนี้ไม่มีการระบุขั้นตอนการผลิตทำให้ไม่สามารถเปิดใบงานได้ \n\n กรุณาตรวจสอบขั้นตอนการผลิตในชิ้นส่วนมาตรฐานก่อน", "PRODUCTION STEP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
 			}
 		}
-
 
 		private void txt_TextChanged(object sender, EventArgs e)
 		{

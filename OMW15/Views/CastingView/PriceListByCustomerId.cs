@@ -93,7 +93,9 @@ namespace OMW15.Views.CastingView
 		private string _customerCode = string.Empty;
 		private string _customerName = string.Empty;
 		private string _title = "Select ? -->";
+#pragma warning disable CS0649 // Field 'PriceListByCustomerId._rowCount' is never assigned to, and will always have its default value 0
 		private int _rowCount;
+#pragma warning restore CS0649 // Field 'PriceListByCustomerId._rowCount' is never assigned to, and will always have its default value 0
 
 		#endregion
 
@@ -178,7 +180,9 @@ namespace OMW15.Views.CastingView
 		//} // end GetPriceListItemData
 
 
+#pragma warning disable CS1998 // This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.
 		private async void GetData(string CustomerCode)
+#pragma warning restore CS1998 // This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.
 		{
 			// update control
 			dgv.SuspendLayout();
