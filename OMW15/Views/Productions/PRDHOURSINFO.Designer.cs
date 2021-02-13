@@ -372,10 +372,11 @@
 			// lbValidTime
 			// 
 			this.lbValidTime.Dock = System.Windows.Forms.DockStyle.Right;
-			this.lbValidTime.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-			this.lbValidTime.Location = new System.Drawing.Point(433, 404);
+			this.lbValidTime.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbValidTime.ForeColor = System.Drawing.Color.Indigo;
+			this.lbValidTime.Location = new System.Drawing.Point(352, 404);
 			this.lbValidTime.Name = "lbValidTime";
-			this.lbValidTime.Size = new System.Drawing.Size(350, 26);
+			this.lbValidTime.Size = new System.Drawing.Size(468, 26);
 			this.lbValidTime.TabIndex = 17;
 			this.lbValidTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
@@ -384,9 +385,9 @@
 			this.lbActualAvgHourRate.Dock = System.Windows.Forms.DockStyle.Right;
 			this.lbActualAvgHourRate.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbActualAvgHourRate.ForeColor = System.Drawing.SystemColors.ControlDark;
-			this.lbActualAvgHourRate.Location = new System.Drawing.Point(783, 404);
+			this.lbActualAvgHourRate.Location = new System.Drawing.Point(820, 404);
 			this.lbActualAvgHourRate.Name = "lbActualAvgHourRate";
-			this.lbActualAvgHourRate.Size = new System.Drawing.Size(145, 26);
+			this.lbActualAvgHourRate.Size = new System.Drawing.Size(108, 26);
 			this.lbActualAvgHourRate.TabIndex = 16;
 			this.lbActualAvgHourRate.Text = "0";
 			this.lbActualAvgHourRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -398,7 +399,7 @@
 			this.label29.ForeColor = System.Drawing.Color.DarkBlue;
 			this.label29.Location = new System.Drawing.Point(10, 404);
 			this.label29.Name = "label29";
-			this.label29.Size = new System.Drawing.Size(341, 26);
+			this.label29.Size = new System.Drawing.Size(305, 26);
 			this.label29.TabIndex = 15;
 			this.label29.Text = "** ต้องมีข้อมูล  ";
 			this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

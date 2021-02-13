@@ -195,7 +195,11 @@ namespace OMW15.Views.Productions
 
 					if (canProcessInfo)
 					{
-						lbValidTime.Text = $"{_timeCheckIn} - {_timeCheckOut} - {_validHour:N2}";
+						string _chkIn = _timeCheckIn.ToString("dd/MM/yyyy HH:mm");
+						string _chkOut = _timeCheckOut.ToString("dd/MM/yyyy HH:mm");
+
+
+						lbValidTime.Text = $"เข้า: {_chkIn} - ออก: {_chkOut} - รวม: {_validHour:N2} ชั่วโมง";
 
 						grpTimeRecord.Enabled = true;
 						_currentDayOfWeek = (int)dtpWorkDate.Value.DayOfWeek;
@@ -309,7 +313,7 @@ namespace OMW15.Views.Productions
 				case ProductionJobType.Project:
 					btnSave.Enabled = !string.IsNullOrEmpty(txtProductionJob.Text)
 										&& !string.IsNullOrEmpty(txtWorker.Text)
-										&& (!string.IsNullOrEmpty(txtProcess.Text) || !string.IsNullOrEmpty(txtProcessDetail.Text))
+										&& (!string.IsNullOrEmpty(txtProcessDetail.Text))
 										&& (Convert.ToDecimal(txtInprocessQty.Text) == 0m 
 											? (Convert.ToDecimal(txtGoodQty.Text) >= 0m && Convert.ToDecimal(txtTotalQty.Text) > 0m)
 											: Convert.ToDecimal(txtInprocessQty.Text) > 0)
