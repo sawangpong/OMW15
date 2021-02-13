@@ -273,23 +273,12 @@ namespace OMW15.Models.ProductionModel
 			return new DataConnect(s.ToString(), omglobal.SysConnectionString).ToDataTable;
 		}
 
-
 		public DataTable GetProductionOutSource(string ERPOrder)
 		{
 			StringBuilder s = new StringBuilder();
 			s.AppendLine($"EXECUTE dbo.usp_OM_PRODUCTION_OUTSOURCE @OrderNumber = '{ERPOrder}'");
 			return new DataConnect(s.ToString(), omglobal.SysConnectionString).ToDataTable;
 		}
-
-		//public async Task<DataTable> GetProductionSummaryForOTAsync(int y, int m, string connectionString)
-		//{
-		//	return await Task.Run(() =>
-		//	{
-		//		StringBuilder s = new StringBuilder();
-		//		s.AppendLine($" EXEC dbo.usp_summary_production_OT_hours {y},{m}");
-		//		return new DataConnect(s.ToString(), connectionString).ToDataTable;
-		//	});
-		//}
 
 
 		public DataTable GetWorkByMonthData(int yearWork, int monthWork)

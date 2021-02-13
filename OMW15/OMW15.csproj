@@ -28,13 +28,13 @@
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>\\om-srv-app\SmartWork17\</UpdateUrl>
     <SupportUrl>\\om-srv-app\SmartWork17\</SupportUrl>
-    <ProductName>SmartWorks17 %28LAN%29 - 2021-02-03</ProductName>
+    <ProductName>SmartWorks17 %28LAN%29 - 2021-02-13</ProductName>
     <PublisherName>OMW2017</PublisherName>
     <SuiteName>Old Moon Suite</SuiteName>
     <MinimumRequiredVersion>4.0.0.0</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationRevision>8</ApplicationRevision>
     <ApplicationVersion>4.3.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -1060,6 +1060,12 @@
     </Compile>
     <Compile Include="Views\Productions\ItemStat.Designer.cs">
       <DependentUpon>ItemStat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\MissReportInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\MissReportInfo.Designer.cs">
+      <DependentUpon>MissReportInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Productions\PDTimeRecord.cs">
       <SubType>Form</SubType>
@@ -2240,6 +2246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Productions\ItemStat.resx">
       <DependentUpon>ItemStat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\MissReportInfo.resx">
+      <DependentUpon>MissReportInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Productions\PDTimeRecord.resx">
       <DependentUpon>PDTimeRecord.cs</DependentUpon>

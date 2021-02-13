@@ -222,5 +222,14 @@ namespace OMW15.Views.Productions
 		{
 			mnuMCToolsPlan.PerformClick();
 		}
+
+		private void mnuProductionMissReport_Click(object sender, EventArgs e)
+		{
+			MissReportInfo missReportInfo = MissReportInfo.GetInstance;
+			missReportInfo.StartPosition = FormStartPosition.CenterScreen;
+			missReportInfo.WindowState = FormWindowState.Normal;
+			missReportInfo.MdiParent = this;
+			missReportInfo.Show();
+		}
 	}
 }

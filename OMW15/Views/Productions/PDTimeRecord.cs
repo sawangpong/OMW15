@@ -46,12 +46,19 @@ namespace OMW15.Views.Productions
 
 		#endregion
 
+		#region class property
+		public string Empcode { get; set; }
+		public DateTime MissingDate { get; set; }
+
+		#endregion
 
 		#region class helper
 
 		private void UpdateUI()
 		{
-			btnFindData.Enabled = (!String.IsNullOrEmpty(selectedWorkerCode) && (selectedWorkYear > 0) && (selectedWorkMonth > 0));
+			btnFindData.Enabled = (!String.IsNullOrEmpty(selectedWorkerCode)
+											&& (selectedWorkYear > 0)
+											&& (selectedWorkMonth > 0));
 			btnAdd.Enabled = !String.IsNullOrEmpty(lbCode.Text);
 			btnEdit.Enabled = (selectedTimeRecordId > 0);
 			btnDelete.Enabled = btnEdit.Enabled;
@@ -85,7 +92,6 @@ namespace OMW15.Views.Productions
 			}
 		}
 
-
 		private void YearValueChanged(object sender, EventArgs e)
 		{
 			try
@@ -95,8 +101,6 @@ namespace OMW15.Views.Productions
 
 				selectedWorkYear = Convert.ToInt32(cbxYear.SelectedValue);
 				lbWorkYear.Text = $"{selectedWorkYear}";
-
-
 				GetWorkMonth(selectedWorkerCode, selectedWorkYear);
 			}
 			catch
@@ -203,11 +207,6 @@ namespace OMW15.Views.Productions
 
 		}
 
-		//private void ReloadTimeRecord()
-		//{
-		//	GetWorkYear(selectedWorkerCode);
-		//}
-
 		private int DeleteTimeRecordRow(int rowId)
 		{
 			int _result = 0;
@@ -235,8 +234,6 @@ namespace OMW15.Views.Productions
 
 			_firstView = true;
 			chkShowTimeRecord.Checked = false;
-
-			this.GetWorker();
 		}
 
 		private void PDTimeRecord_Load(object sender, EventArgs e)
@@ -245,7 +242,28 @@ namespace OMW15.Views.Productions
 
 			lbWorkYear.Text = $"{selectedWorkYear}";
 			lbWorkMonth.Text = $"{selectedWorkMonth}";
-			cbxWorker.SelectedIndex = 0;
+			this.GetWorker();
+
+			if (String.IsNullOrEmpty(this.Empcode))
+			{
+				cbxWorker.SelectedIndex = 0;
+			}
+			else
+			{
+				selectedWorkerCode = this.Empcode;
+				selectedWorkYear = this.MissingDate.Year;
+				selectedWorkMonth = this.MissingDate.Month;
+
+				cbxWorker.SelectedValue = this.selectedWorkerCode;
+
+				if(cbxYear.DataSource == null) GetWorkYear(selectedWorkerCode);
+				cbxYear.SelectedValue = this.selectedWorkYear;
+
+				if(cbxMonth.DataSource == null )	GetWorkMonth(selectedWorkerName, selectedWorkYear);
+				cbxMonth.SelectedValue = this.selectedWorkMonth;
+
+				GetTimeRecords(selectedWorkerCode, selectedWorkYear, selectedWorkMonth);
+			}
 		}
 
 		private void cbxYear_SelectedValueChanged(object sender, EventArgs e)
@@ -264,7 +282,6 @@ namespace OMW15.Views.Productions
 					GetWorkMonth(selectedWorkerCode, selectedWorkYear);
 					_previousSelectedWorkYear = selectedWorkYear;
 				}
-
 			}
 			catch
 			{
@@ -272,8 +289,6 @@ namespace OMW15.Views.Productions
 
 			UpdateUI();
 		}
-
-
 
 		private void cbxMonth_SelectedValueChanged(object sender, EventArgs e)
 		{
@@ -286,9 +301,7 @@ namespace OMW15.Views.Productions
 				lbWorkMonth.Text = $"{selectedWorkMonth}";
 			}
 			catch
-			{
-
-			}
+			{ }
 
 			UpdateUI();
 		}
@@ -380,7 +393,7 @@ namespace OMW15.Views.Productions
 		private void chkShowTimeRecord_CheckedChanged(object sender, EventArgs e)
 		{
 			pnlList.Visible = chkShowTimeRecord.Checked;
-			pnlDetail.Dock = pnlList.Visible == true ? DockStyle.Top :  DockStyle.Fill;
+			pnlDetail.Dock = pnlList.Visible == true ? DockStyle.Top : DockStyle.Fill;
 
 			if (chkShowTimeRecord.Checked)
 			{

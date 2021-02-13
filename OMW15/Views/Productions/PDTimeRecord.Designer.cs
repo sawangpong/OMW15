@@ -46,6 +46,7 @@
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.pnlDetailRight = new System.Windows.Forms.Panel();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.chkShowTimeRecord = new System.Windows.Forms.CheckBox();
 			this.btnClose = new System.Windows.Forms.Button();
 			this.btnFindData = new OMControls.OMFlatButton();
 			this.cbxMonth = new System.Windows.Forms.ComboBox();
@@ -58,7 +59,6 @@
 			this.splitter1 = new System.Windows.Forms.Splitter();
 			this.pnlList = new System.Windows.Forms.Panel();
 			this.pnlChart = new System.Windows.Forms.Panel();
-			this.chkShowTimeRecord = new System.Windows.Forms.CheckBox();
 			this.workerTimeRecord1 = new OMW15.Views.Productions.ProductionUserControl.WorkerTimeRecord();
 			this.pnlHeader.SuspendLayout();
 			this.pnlDetail.SuspendLayout();
@@ -74,6 +74,7 @@
 			// 
 			// pnlHeader
 			// 
+			this.pnlHeader.BackColor = System.Drawing.SystemColors.ControlDarkDark;
 			this.pnlHeader.Controls.Add(this.lbWorkMonth);
 			this.pnlHeader.Controls.Add(this.lbWorkYear);
 			this.pnlHeader.Controls.Add(this.label1);
@@ -82,7 +83,7 @@
 			this.pnlHeader.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.pnlHeader.Name = "pnlHeader";
 			this.pnlHeader.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-			this.pnlHeader.Size = new System.Drawing.Size(1133, 48);
+			this.pnlHeader.Size = new System.Drawing.Size(1133, 45);
 			this.pnlHeader.TabIndex = 0;
 			// 
 			// lbWorkMonth
@@ -91,7 +92,7 @@
 			this.lbWorkMonth.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbWorkMonth.Location = new System.Drawing.Point(278, 4);
 			this.lbWorkMonth.Name = "lbWorkMonth";
-			this.lbWorkMonth.Size = new System.Drawing.Size(40, 40);
+			this.lbWorkMonth.Size = new System.Drawing.Size(40, 37);
 			this.lbWorkMonth.TabIndex = 9;
 			this.lbWorkMonth.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			// 
@@ -101,29 +102,29 @@
 			this.lbWorkYear.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbWorkYear.Location = new System.Drawing.Point(238, 4);
 			this.lbWorkYear.Name = "lbWorkYear";
-			this.lbWorkYear.Size = new System.Drawing.Size(40, 40);
+			this.lbWorkYear.Size = new System.Drawing.Size(40, 37);
 			this.lbWorkYear.TabIndex = 8;
 			this.lbWorkYear.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			// 
 			// label1
 			// 
 			this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.ForeColor = System.Drawing.Color.White;
 			this.label1.Location = new System.Drawing.Point(3, 4);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(235, 40);
+			this.label1.Size = new System.Drawing.Size(235, 37);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "บันทึกเวลาทำงาน";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			// 
 			// pnlDetail
 			// 
-			this.pnlDetail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.pnlDetail.Controls.Add(this.pnlDetailLeft);
 			this.pnlDetail.Controls.Add(this.pnlDetailRight);
 			this.pnlDetail.Controls.Add(this.panel1);
 			this.pnlDetail.Dock = System.Windows.Forms.DockStyle.Top;
-			this.pnlDetail.Location = new System.Drawing.Point(0, 48);
+			this.pnlDetail.Location = new System.Drawing.Point(0, 45);
 			this.pnlDetail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.pnlDetail.Name = "pnlDetail";
 			this.pnlDetail.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -138,7 +139,7 @@
 			this.pnlDetailLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.pnlDetailLeft.Name = "pnlDetailLeft";
 			this.pnlDetailLeft.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-			this.pnlDetailLeft.Size = new System.Drawing.Size(921, 318);
+			this.pnlDetailLeft.Size = new System.Drawing.Size(923, 320);
 			this.pnlDetailLeft.TabIndex = 4;
 			// 
 			// pnlData
@@ -150,7 +151,7 @@
 			this.pnlData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.pnlData.Name = "pnlData";
 			this.pnlData.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-			this.pnlData.Size = new System.Drawing.Size(915, 310);
+			this.pnlData.Size = new System.Drawing.Size(917, 312);
 			this.pnlData.TabIndex = 5;
 			// 
 			// dgv
@@ -165,7 +166,7 @@
 			this.dgv.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Blue;
 			this.dgv.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
 			this.dgv.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dgv.Size = new System.Drawing.Size(909, 263);
+			this.dgv.Size = new System.Drawing.Size(911, 265);
 			this.dgv.TabIndex = 4;
 			this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEnter);
 			this.dgv.DoubleClick += new System.EventHandler(this.dgv_DoubleClick);
@@ -182,7 +183,7 @@
 			this.panel6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.panel6.Name = "panel6";
 			this.panel6.Padding = new System.Windows.Forms.Padding(4);
-			this.panel6.Size = new System.Drawing.Size(909, 39);
+			this.panel6.Size = new System.Drawing.Size(911, 39);
 			this.panel6.TabIndex = 3;
 			// 
 			// panel2
@@ -190,7 +191,7 @@
 			this.panel2.Controls.Add(this.lbRecordSelected);
 			this.panel2.Controls.Add(this.lbRecordCount);
 			this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-			this.panel2.Location = new System.Drawing.Point(752, 4);
+			this.panel2.Location = new System.Drawing.Point(754, 4);
 			this.panel2.Name = "panel2";
 			this.panel2.Padding = new System.Windows.Forms.Padding(1);
 			this.panel2.Size = new System.Drawing.Size(151, 29);
@@ -296,9 +297,9 @@
 			// 
 			this.pnlDetailRight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.pnlDetailRight.Dock = System.Windows.Forms.DockStyle.Right;
-			this.pnlDetailRight.Location = new System.Drawing.Point(924, 40);
+			this.pnlDetailRight.Location = new System.Drawing.Point(926, 40);
 			this.pnlDetailRight.Name = "pnlDetailRight";
-			this.pnlDetailRight.Size = new System.Drawing.Size(204, 318);
+			this.pnlDetailRight.Size = new System.Drawing.Size(204, 320);
 			this.pnlDetailRight.TabIndex = 3;
 			this.pnlDetailRight.Visible = false;
 			// 
@@ -319,9 +320,26 @@
 			this.panel1.Location = new System.Drawing.Point(3, 4);
 			this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.panel1.Name = "panel1";
-			this.panel1.Padding = new System.Windows.Forms.Padding(3);
-			this.panel1.Size = new System.Drawing.Size(1125, 36);
+			this.panel1.Padding = new System.Windows.Forms.Padding(4);
+			this.panel1.Size = new System.Drawing.Size(1127, 36);
 			this.panel1.TabIndex = 0;
+			// 
+			// chkShowTimeRecord
+			// 
+			this.chkShowTimeRecord.AutoSize = true;
+			this.chkShowTimeRecord.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.chkShowTimeRecord.Checked = true;
+			this.chkShowTimeRecord.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.chkShowTimeRecord.Dock = System.Windows.Forms.DockStyle.Left;
+			this.chkShowTimeRecord.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.chkShowTimeRecord.Location = new System.Drawing.Point(797, 4);
+			this.chkShowTimeRecord.Name = "chkShowTimeRecord";
+			this.chkShowTimeRecord.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+			this.chkShowTimeRecord.Size = new System.Drawing.Size(129, 28);
+			this.chkShowTimeRecord.TabIndex = 13;
+			this.chkShowTimeRecord.Text = "แสดง chart ";
+			this.chkShowTimeRecord.UseVisualStyleBackColor = true;
+			this.chkShowTimeRecord.CheckedChanged += new System.EventHandler(this.chkShowTimeRecord_CheckedChanged);
 			// 
 			// btnClose
 			// 
@@ -334,14 +352,14 @@
 			this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Yellow;
 			this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CadetBlue;
 			this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnClose.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnClose.Image = global::OMW15.Properties.Resources.CLOSE;
 			this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnClose.Location = new System.Drawing.Point(1025, 3);
+			this.btnClose.Location = new System.Drawing.Point(1026, 4);
 			this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Padding = new System.Windows.Forms.Padding(2);
-			this.btnClose.Size = new System.Drawing.Size(97, 30);
+			this.btnClose.Size = new System.Drawing.Size(97, 28);
 			this.btnClose.TabIndex = 12;
 			this.btnClose.Text = "&Close";
 			this.btnClose.UseVisualStyleBackColor = true;
@@ -355,10 +373,10 @@
 			this.btnFindData.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.btnFindData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnFindData.Image = ((System.Drawing.Image)(resources.GetObject("btnFindData.Image")));
-			this.btnFindData.Location = new System.Drawing.Point(768, 3);
+			this.btnFindData.Location = new System.Drawing.Point(769, 4);
 			this.btnFindData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.btnFindData.Name = "btnFindData";
-			this.btnFindData.Size = new System.Drawing.Size(30, 30);
+			this.btnFindData.Size = new System.Drawing.Size(28, 28);
 			this.btnFindData.TabIndex = 11;
 			this.btnFindData.UseVisualStyleBackColor = true;
 			this.btnFindData.Click += new System.EventHandler(this.btnFindData_Click);
@@ -369,7 +387,7 @@
 			this.cbxMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbxMonth.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cbxMonth.FormattingEnabled = true;
-			this.cbxMonth.Location = new System.Drawing.Point(633, 3);
+			this.cbxMonth.Location = new System.Drawing.Point(634, 4);
 			this.cbxMonth.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.cbxMonth.Name = "cbxMonth";
 			this.cbxMonth.Size = new System.Drawing.Size(135, 28);
@@ -380,9 +398,9 @@
 			// 
 			this.label4.Dock = System.Windows.Forms.DockStyle.Left;
 			this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label4.Location = new System.Drawing.Point(576, 3);
+			this.label4.Location = new System.Drawing.Point(577, 4);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(57, 30);
+			this.label4.Size = new System.Drawing.Size(57, 28);
 			this.label4.TabIndex = 9;
 			this.label4.Text = "เดือน :";
 			this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -393,7 +411,7 @@
 			this.cbxYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbxYear.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cbxYear.FormattingEnabled = true;
-			this.cbxYear.Location = new System.Drawing.Point(486, 3);
+			this.cbxYear.Location = new System.Drawing.Point(487, 4);
 			this.cbxYear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.cbxYear.Name = "cbxYear";
 			this.cbxYear.Size = new System.Drawing.Size(90, 28);
@@ -404,9 +422,9 @@
 			// 
 			this.label3.Dock = System.Windows.Forms.DockStyle.Left;
 			this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label3.Location = new System.Drawing.Point(429, 3);
+			this.label3.Location = new System.Drawing.Point(430, 4);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(57, 30);
+			this.label3.Size = new System.Drawing.Size(57, 28);
 			this.label3.TabIndex = 7;
 			this.label3.Text = "ปี :";
 			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -416,7 +434,7 @@
 			this.cbxWorker.Dock = System.Windows.Forms.DockStyle.Left;
 			this.cbxWorker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbxWorker.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cbxWorker.Location = new System.Drawing.Point(142, 3);
+			this.cbxWorker.Location = new System.Drawing.Point(143, 4);
 			this.cbxWorker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.cbxWorker.Name = "cbxWorker";
 			this.cbxWorker.Size = new System.Drawing.Size(287, 28);
@@ -427,9 +445,9 @@
 			// 
 			this.label2.Dock = System.Windows.Forms.DockStyle.Left;
 			this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label2.Location = new System.Drawing.Point(51, 3);
+			this.label2.Location = new System.Drawing.Point(52, 4);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(91, 30);
+			this.label2.Size = new System.Drawing.Size(91, 28);
 			this.label2.TabIndex = 3;
 			this.label2.Text = "ผู้ปฏิบัติงาน :";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -439,16 +457,16 @@
 			this.lbCode.BackColor = System.Drawing.SystemColors.Control;
 			this.lbCode.Dock = System.Windows.Forms.DockStyle.Left;
 			this.lbCode.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbCode.Location = new System.Drawing.Point(3, 3);
+			this.lbCode.Location = new System.Drawing.Point(4, 4);
 			this.lbCode.Name = "lbCode";
-			this.lbCode.Size = new System.Drawing.Size(48, 30);
+			this.lbCode.Size = new System.Drawing.Size(48, 28);
 			this.lbCode.TabIndex = 2;
 			this.lbCode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// splitter1
 			// 
 			this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.splitter1.Location = new System.Drawing.Point(0, 412);
+			this.splitter1.Location = new System.Drawing.Point(0, 409);
 			this.splitter1.Name = "splitter1";
 			this.splitter1.Size = new System.Drawing.Size(1133, 6);
 			this.splitter1.TabIndex = 3;
@@ -459,11 +477,11 @@
 			this.pnlList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.pnlList.Controls.Add(this.pnlChart);
 			this.pnlList.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pnlList.Location = new System.Drawing.Point(0, 418);
+			this.pnlList.Location = new System.Drawing.Point(0, 415);
 			this.pnlList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.pnlList.Name = "pnlList";
 			this.pnlList.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-			this.pnlList.Size = new System.Drawing.Size(1133, 246);
+			this.pnlList.Size = new System.Drawing.Size(1133, 249);
 			this.pnlList.TabIndex = 4;
 			// 
 			// pnlChart
@@ -472,25 +490,8 @@
 			this.pnlChart.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pnlChart.Location = new System.Drawing.Point(3, 4);
 			this.pnlChart.Name = "pnlChart";
-			this.pnlChart.Size = new System.Drawing.Size(1125, 236);
+			this.pnlChart.Size = new System.Drawing.Size(1125, 239);
 			this.pnlChart.TabIndex = 0;
-			// 
-			// chkShowTimeRecord
-			// 
-			this.chkShowTimeRecord.AutoSize = true;
-			this.chkShowTimeRecord.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.chkShowTimeRecord.Checked = true;
-			this.chkShowTimeRecord.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.chkShowTimeRecord.Dock = System.Windows.Forms.DockStyle.Left;
-			this.chkShowTimeRecord.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.chkShowTimeRecord.Location = new System.Drawing.Point(798, 3);
-			this.chkShowTimeRecord.Name = "chkShowTimeRecord";
-			this.chkShowTimeRecord.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-			this.chkShowTimeRecord.Size = new System.Drawing.Size(129, 30);
-			this.chkShowTimeRecord.TabIndex = 13;
-			this.chkShowTimeRecord.Text = "แสดง chart ";
-			this.chkShowTimeRecord.UseVisualStyleBackColor = true;
-			this.chkShowTimeRecord.CheckedChanged += new System.EventHandler(this.chkShowTimeRecord_CheckedChanged);
 			// 
 			// workerTimeRecord1
 			// 
@@ -499,7 +500,7 @@
 			this.workerTimeRecord1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.workerTimeRecord1.Name = "workerTimeRecord1";
 			this.workerTimeRecord1.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-			this.workerTimeRecord1.Size = new System.Drawing.Size(1125, 236);
+			this.workerTimeRecord1.Size = new System.Drawing.Size(1125, 239);
 			this.workerTimeRecord1.TabIndex = 0;
 			this.workerTimeRecord1.WorkerCode = null;
 			this.workerTimeRecord1.WorkerName = null;

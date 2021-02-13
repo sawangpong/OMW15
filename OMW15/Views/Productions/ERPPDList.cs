@@ -57,12 +57,12 @@ namespace OMW15.Views.Productions
 			//_dtERP_Orders = new ProductionDAL().GetPendingProductionOrderList(omglobal.SysConnectionString);
 
 			_dtERP_Orders = new ProductionDAL().GetPendingProductionOrderList1();
+
 			rdoTransform.Checked = true;
 		}
 
 		private void dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
 		{
-
 			switch (_jobType)
 			{
 				case ProductionJobType.Production:

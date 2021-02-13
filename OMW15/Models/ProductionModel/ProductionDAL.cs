@@ -1123,7 +1123,7 @@ namespace OMW15.Models.ProductionModel
 						  select new
 						  {
 							  pj.ITEMNO,
-							  ItemName = "["+pj.ITEMNO.Trim() + "] ## " + std.ItemName.Trim()
+							  ItemName = "[" + pj.ITEMNO.Trim() + "] ## " + std.ItemName.Trim()
 						  }
 					).Distinct().ToDataTable();
 			}
@@ -1182,6 +1182,20 @@ namespace OMW15.Models.ProductionModel
 			return new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_MACHINE_PLAN @jobstatus={status},@jobyear={jobYear},@itemnumber='{itemno}'", omglobal.SysConnectionString).ToDataTable;
 		}
 
+		#endregion
+
+
+		#region Miss Report
+
+		public DataTable GetProductionMissReport()
+		{
+			return new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_MISS_REPORT", omglobal.SysConnectionString).ToDataTable;
+		}
+
+		public DataTable GetProductionMissReportDetails(string empId)
+		{
+				return new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_MISS_REPORT_DETAILS @empCode='{empId}'", omglobal.SysConnectionString).ToDataTable;
+		}
 		#endregion
 
 
