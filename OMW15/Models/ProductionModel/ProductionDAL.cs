@@ -1020,45 +1020,49 @@ namespace OMW15.Models.ProductionModel
 			return dt;
 		}
 
-		public async Task<DataTable> GetIssueItemsAsync(string issueNo)
+		public async Task<DataTable> GetIssueItemsAsync(string issueNo,string itemno)
 		{
-			return await Task.Run(() =>
+			return await Task.Run(()=>
 			{
-				var _issue = _om.OM_ERP_WH_ISSUE_ITEMS.AsEnumerable()
-						.Where(x => x.DOCUMENTNO == issueNo && x.ICCODE != "ST03")
-						.Select((r, i) => new IssueItem
-						{
-							Index = ++i,
-							DepartmentCode = r.DEPARTMENTCODE,
-							DepartmentId = r.DEPARTMENTID,
-							DocumentDate = r.DOCUMENTDATE,
-							DocumentKey = r.DOCUMENTKEY,
-							DocumentNo = r.DOCUMENTNO,
-							ICCode = r.ICCODE,
-							ICKey = r.ICKEY,
-							ICName = r.ICNAME,
-							IssueLineId = r.ISSUELINEID,
-							OrderNumber = r.ORDERNUMBER,
-							ProjectNo = r.PROJECTNO,
-							ShipGrandTotal = r.SHIPGRANDTOTAL,
-							ShipItemNo = r.SHIPITEMNO,
-							ShipItemName = r.SHIPITEMNAME,
-							ShipUnit = r.SHIPUNIT,
-							ShipQty = r.SHIPQTY,
-							ShipUnitPrice = r.SHIPUNITPRICE,
-							ShipTotalVAT = r.SHIPTOTALVAT,
-							ShipTotalValue = r.SHIPTOTALVALUE
-						})
-						.OrderBy(o => o.Index).ToList();
-
-				DataTable dt = new DataTable();
-
-				if (_issue.Count == 0) dt = null;
-
-				if (_issue.Count > 0) dt = _issue.ToDataTable();
-
-				return dt;
+				return new DataConnect($"EXEC dbo.usp_OM_ERP_WH_ISSUE_ITEMS @issueno='{issueNo}',@itemno='{itemno}'",omglobal.SysConnectionString).ToDataTable;
 			});
+			//return await Task.Run(() =>
+			//{
+			//	var _issue = _om.OM_ERP_WH_ISSUE_ITEMS.AsEnumerable()
+			//			.Where(x => x.DOCUMENTNO == issueNo && x.ICCODE != "ST03")
+			//			.Select((r, i) => new IssueItem
+			//			{
+			//				Index = ++i,
+			//				DepartmentCode = r.DEPARTMENTCODE,
+			//				DepartmentId = r.DEPARTMENTID,
+			//				DocumentDate = r.DOCUMENTDATE,
+			//				DocumentKey = r.DOCUMENTKEY,
+			//				DocumentNo = r.DOCUMENTNO,
+			//				ICCode = r.ICCODE,
+			//				ICKey = r.ICKEY,
+			//				ICName = r.ICNAME,
+			//				IssueLineId = r.ISSUELINEID,
+			//				OrderNumber = r.ORDERNUMBER,
+			//				ProjectNo = r.PROJECTNO,
+			//				ShipGrandTotal = r.SHIPGRANDTOTAL,
+			//				ShipItemNo = r.SHIPITEMNO,
+			//				ShipItemName = r.SHIPITEMNAME,
+			//				ShipUnit = r.SHIPUNIT,
+			//				ShipQty = r.SHIPQTY,
+			//				ShipUnitPrice = r.SHIPUNITPRICE,
+			//				ShipTotalVAT = r.SHIPTOTALVAT,
+			//				ShipTotalValue = r.SHIPTOTALVALUE
+			//			})
+			//			.OrderBy(o => o.Index).ToList();
+
+			//	DataTable dt = new DataTable();
+
+			//	if (_issue.Count == 0) dt = null;
+
+			//	if (_issue.Count > 0) dt = _issue.ToDataTable();
+
+			//	return dt;
+			//});
 		}
 
 		public decimal GetAvgActualHourCostByWorker(DateTime workDate, string workerId)

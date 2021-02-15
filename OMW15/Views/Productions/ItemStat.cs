@@ -25,7 +25,6 @@ namespace OMW15.Views.Productions
 
 		#endregion
 
-
 		#region class fields
 
 #pragma warning disable CS0414 // The field 'ItemStat._searchType' is assigned but its value is never used
@@ -76,91 +75,6 @@ namespace OMW15.Views.Productions
 			this.sbstdlbCount.Text = $"found: {this.dgvSTD.Rows.Count}";
 
 		}
-
-		//private async void getStandardItemProperty(OMShareProduction.SearchSTDItem searchType = OMShareProduction.SearchSTDItem.None, string filterString = "")
-		//{
-		//	this.dgvSTD.SuspendLayout();
-
-		//	var _pd = new ProductionDAL();
-		//	var dt = await _pd.GetProductionItemListAsync(searchType, filterString);
-
-		//	if (dt == null || dt.Rows.Count == 0)
-		//	{
-		//		this.dgvSTD.DataSource = null;
-		//	}
-
-		//	dgvSTD.DataSource = dt;
-		//	dgvSTD.Columns["ISLOCK"].Visible = false;
-		//	dgvSTD.Columns["ITEMID"].Visible = false;
-		//	dgvSTD.Columns["STATUS"].Visible = false;
-		//	dgvSTD.Columns["DRAWINGREV"].Visible = false;
-		//	dgvSTD.Columns["DRAWINGNO"].Visible = false;
-		//	dgvSTD.Columns["SHEETNO"].Visible = false;
-		//	dgvSTD.Columns["MATERIAL"].Visible = false;
-
-		//	dgvSTD.Columns["STDPRODUCTHOURS"].HeaderText = "STD Hours";
-		//	dgvSTD.Columns["STDPRODUCTHOURS"].DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
-
-		//	dgvSTD.Columns["MATERIALCOST"].HeaderText = "Material Cost";
-		//	dgvSTD.Columns["MATERIALCOST"].DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
-
-		//	this.dgvSTD.ResumeLayout();
-
-		//	this.sbstdlbCount.Text = $"found: {this.dgvSTD.Rows.Count}";
-		//}
-
-		//private async void getItemStat(string itemFilter)
-		//{
-		//	this.dgvSTAT.SuspendLayout();
-
-		//	var _pd = new ProductionDAL();
-		//	var dt = await _pd.GetProductionSummaryAsync(itemFilter, omglobal.SysConnectionString);
-
-		//	if (dt == null || dt.Rows.Count == 0)
-		//	{
-		//		this.dgvSTAT.DataSource = null;
-		//	}
-
-		//	this.dgvSTAT.DataSource = dt;
-
-		//	// formatting cell for numerial value
-		//	foreach (DataGridViewColumn dgc in this.dgvSTAT.Columns)
-		//	{
-		//		if (dgc.ValueType == typeof(decimal))
-		//		{
-		//			dgc.DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
-		//		}
-		//	}
-
-		//	this.dgvSTAT.ResumeLayout();
-		//}
-
-		//private async void getItemAvgByYear(string itemFilter)
-		//{
-		//	this.dgvStatByYear.SuspendLayout();
-
-		//	var _pd = new ProductionDAL();
-		//	var dt = await _pd.GetProductionAvgByYearAsync(itemFilter, omglobal.SysConnectionString);
-
-		//	if (dt == null || dt.Rows.Count == 0)
-		//	{
-		//		this.dgvStatByYear.DataSource = null;
-		//	}
-
-		//	this.dgvStatByYear.DataSource = dt;
-
-		//	// formatting cell for numerial value
-		//	foreach (DataGridViewColumn dgc in this.dgvStatByYear.Columns)
-		//	{
-		//		if (dgc.ValueType == typeof(decimal))
-		//		{
-		//			dgc.DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
-		//		}
-		//	}
-
-		//	this.dgvStatByYear.ResumeLayout();
-		//}
-
 
 		private async void GetProductionHistoryAsync(string itemno)
 		{
@@ -322,15 +236,10 @@ namespace OMW15.Views.Productions
 			OMUtils.SettingDataGridView(ref dgvSTD);
 			OMUtils.SettingDataGridView(ref dgvProduction);
 			OMUtils.SettingDataGridView(ref dgvCompare);
-
-
-			//OMUtils.SettingDataGridView(ref dgvStatByYear);
-
 		}
 
 		private void ItemStat_Load(object sender, EventArgs e)
 		{
-			//getStandardItemProperty();
 		}
 
 		private void toolStripButton1_Click(object sender, EventArgs e)

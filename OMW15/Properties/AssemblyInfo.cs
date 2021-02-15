@@ -8,7 +8,7 @@ using log4net;
 // associated with an assembly.
 
 [assembly: AssemblyTitle("Smart Works")]
-[assembly: AssemblyDescription("Old moon work Suit (LAN) - 2021-02-13")]
+[assembly: AssemblyDescription("Old moon work Suit (LAN) - 2021-02-15")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Old Moon Co Ltd.")]
 [assembly: AssemblyProduct("OMW2017")]

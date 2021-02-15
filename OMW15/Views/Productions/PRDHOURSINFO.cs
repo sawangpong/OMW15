@@ -12,28 +12,22 @@ namespace OMW15.Views.Productions
 	{
 		#region class field member
 
+		private PRODUCTIONJOBINFO _hr;
 		private ActionMode _mode = ActionMode.None;
 		private ProductionJobType _jobType = ProductionJobType.Production;
 		private WorkingDayCategory _timeCat = WorkingDayCategory.NormalDay;
+		private DataTable _dtValidTime = null;
+		private DateTime _timeCheckIn = DateTime.Today;
+		private DateTime _timeCheckOut = DateTime.Today;
 		private int step = 1;
 		private bool canProcessInfo = false;
 		private bool _canSaveRecord = false;
+		private bool _isFirstLoad = false;
 		private int _currentDayOfWeek;
-		private DataTable _dtValidTime = null;
 		private string _checkin = "";
 		private string _checkout = "";
-		private DateTime _timeCheckIn = DateTime.Today;
-		private DateTime _timeCheckOut = DateTime.Today;
 		private double _normalHourRate = 0d;
-
 		private decimal _validHour = 0m;
-		//private decimal _hour_in = 0m;
-		//private decimal _min_in = 0;
-		//private decimal _hour_out = 0m;
-		//private decimal _min_out = 0m;
-		private PRODUCTIONJOBINFO _hr;
-
-		private bool _isFirstLoad = false;
 
 		#endregion
 
@@ -325,6 +319,31 @@ namespace OMW15.Views.Productions
 			btnWorkSource.Visible = false;
  
 		} // end UpdateUI
+
+		private bool IsValidWorkInfo()
+		{
+			if(_jobType == ProductionJobType.Project)
+			{
+				return (txtProcessDetail.Text.Length > 0);
+			}
+			else
+			{
+				return true;
+			}
+		}
+
+		private bool IsValidProcess()
+		{
+			if (_jobType == ProductionJobType.Production)
+			{
+				return (txtProcess.Text.Length > 0);
+			}
+			else
+			{
+				return true;
+			}
+		}
+
 
 		private void GetProductionHourRecord(int ProductionHourItem)
 		{
@@ -773,5 +792,31 @@ namespace OMW15.Views.Productions
 		{
 			UpdateUI();
 		}
+
+		private void txtProcessDetail_Validated(object sender, EventArgs e)
+		{
+			if (IsValidWorkInfo())
+			{
+				workInfoErrorProvider.SetError(this.txtProcessDetail, string.Empty);
+			}
+			else
+			{
+				workInfoErrorProvider.SetError(this.txtProcessDetail, "ในกรณีที่เป็นงาน Project ต้องใส่รายละเอียดการทำงาน");
+			}
+		}
+
+		private void txtProcess_Validated(object sender, EventArgs e)
+		{
+			if (IsValidProcess())
+			{
+				ProcessErrorProvider.SetError(this.txtProcess, string.Empty);
+			}
+			else
+			{
+				ProcessErrorProvider.SetError(this.txtProcess, "ในกรณีที่เป็นงาน Production ต้องใส่ขั้นตอนการทำงาน");
+			}
+		}
+
+
 	}
 }

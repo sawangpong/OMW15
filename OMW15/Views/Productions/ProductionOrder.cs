@@ -160,7 +160,7 @@ namespace OMW15.Views.Productions
 
 					if (_issue != null)
 					{
-						GetIssueItems(_issue.ISSUENO);
+						GetIssueItems(_issue.ISSUENO,_job.ITEMNO);
 						_job.ISSUE_ID = _issue.ISSUEID;
 						_job.ERP_ISSUE = _issue.ISSUENO;
 					}
@@ -391,7 +391,7 @@ namespace OMW15.Views.Productions
 
 							tc.TabPages[0].Text = $"Production Hours ({_issue.ISSUEID} : {_issue.ISSUENO})";
 
-							GetIssueItems(_issue.ISSUENO);
+							GetIssueItems(_issue.ISSUENO, _job.ITEMNO);
 						}
 					}
 					else
@@ -558,10 +558,10 @@ namespace OMW15.Views.Productions
 			GetJobHours(productionJob);
 		}
 
-		private async void GetIssueItems(string issueNo)
+		private async void GetIssueItems(string issueNo,string itemno)
 		{
 			dgvIssueItems.SuspendLayout();
-			DataTable dt = await new ProductionDAL().GetIssueItemsAsync(issueNo);
+			DataTable dt = await new ProductionDAL().GetIssueItemsAsync(issueNo,itemno);
 
 			if (dt == null)
 			{

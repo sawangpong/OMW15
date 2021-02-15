@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PRDHOURSINFO));
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.btnCancel = new System.Windows.Forms.Button();
@@ -136,6 +137,8 @@
 			this.dtpWorkDate = new System.Windows.Forms.DateTimePicker();
 			this.label2 = new System.Windows.Forms.Label();
 			this.chkWorkTime = new System.Windows.Forms.CheckBox();
+			this.workInfoErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+			this.ProcessErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
 			this.panel1.SuspendLayout();
 			this.pnlHeader.SuspendLayout();
 			this.panel22.SuspendLayout();
@@ -167,6 +170,8 @@
 			this.panel3.SuspendLayout();
 			this.pnlWorkingSource.SuspendLayout();
 			this.panel2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.workInfoErrorProvider)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ProcessErrorProvider)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -1315,12 +1320,14 @@
 			// txtProcessDetail
 			// 
 			this.txtProcessDetail.Dock = System.Windows.Forms.DockStyle.Left;
+			this.workInfoErrorProvider.SetError(this.txtProcessDetail, "ในกรณีที่เป็นงาน Project ต้อวใส่รายละเอียดการทำงาน");
 			this.txtProcessDetail.Location = new System.Drawing.Point(475, 1);
 			this.txtProcessDetail.MaxLength = 150;
 			this.txtProcessDetail.Name = "txtProcessDetail";
 			this.txtProcessDetail.Size = new System.Drawing.Size(375, 25);
 			this.txtProcessDetail.TabIndex = 8;
 			this.txtProcessDetail.TextChanged += new System.EventHandler(this.txtProcess_TextChanged);
+			this.txtProcessDetail.Validated += new System.EventHandler(this.txtProcessDetail_Validated);
 			// 
 			// label25
 			// 
@@ -1351,6 +1358,7 @@
 			// txtProcess
 			// 
 			this.txtProcess.Dock = System.Windows.Forms.DockStyle.Left;
+			this.ProcessErrorProvider.SetError(this.txtProcess, "Must have process");
 			this.txtProcess.Location = new System.Drawing.Point(132, 1);
 			this.txtProcess.MaxLength = 50;
 			this.txtProcess.Name = "txtProcess";
@@ -1358,6 +1366,7 @@
 			this.txtProcess.Size = new System.Drawing.Size(183, 25);
 			this.txtProcess.TabIndex = 5;
 			this.txtProcess.TextChanged += new System.EventHandler(this.txtProcess_TextChanged);
+			this.txtProcess.Validated += new System.EventHandler(this.txtProcess_Validated);
 			// 
 			// lbStep
 			// 
@@ -1556,6 +1565,14 @@
 			this.chkWorkTime.Text = "Work Time";
 			this.chkWorkTime.UseVisualStyleBackColor = true;
 			// 
+			// workInfoErrorProvider
+			// 
+			this.workInfoErrorProvider.ContainerControl = this;
+			// 
+			// ProcessErrorProvider
+			// 
+			this.ProcessErrorProvider.ContainerControl = this;
+			// 
 			// PRDHOURSINFO
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1617,6 +1634,8 @@
 			this.pnlWorkingSource.ResumeLayout(false);
 			this.panel2.ResumeLayout(false);
 			this.panel2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.workInfoErrorProvider)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ProcessErrorProvider)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -1730,5 +1749,7 @@
 		private System.Windows.Forms.Label label20;
 		private System.Windows.Forms.Label lbValidTime;
 		private System.Windows.Forms.Label lbEmpId;
+		private System.Windows.Forms.ErrorProvider workInfoErrorProvider;
+		private System.Windows.Forms.ErrorProvider ProcessErrorProvider;
 	}
 }
