@@ -87,7 +87,7 @@ namespace OMW15
 		// PRODUCTION HOUR RATE
 		public static decimal PRODUCTION_HOUR_RATE = 0.00m;
 		public static decimal NORMAL_OT_FACTOR = 1.50m;
-		public static decimal HOLIDAY_OT_FACTOR = 2.00m;
+		public static decimal HOLIDAY_OT_FACTOR = 3.00m;
 		public static decimal HOLIDAY_WORK_FACTOR = 2.00m;
 		public static decimal WORK_HOUR_DAY = 8.0m;
 		public static decimal TOTAL_MONTH_HOURS = 240.0m;			// 30d * 8h/d = 240 h/m

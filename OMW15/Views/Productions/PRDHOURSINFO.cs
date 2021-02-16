@@ -192,7 +192,6 @@ namespace OMW15.Views.Productions
 						string _chkIn = _timeCheckIn.ToString("dd/MM/yyyy HH:mm");
 						string _chkOut = _timeCheckOut.ToString("dd/MM/yyyy HH:mm");
 
-
 						lbValidTime.Text = $"เข้า: {_chkIn} - ออก: {_chkOut} - รวม: {_validHour:N2} ชั่วโมง";
 
 						grpTimeRecord.Enabled = true;
@@ -297,9 +296,9 @@ namespace OMW15.Views.Productions
 										&& !string.IsNullOrEmpty(txtItemNo.Text)
 										&& !string.IsNullOrEmpty(txtWorker.Text)
 										&& !string.IsNullOrEmpty(txtProcess.Text)
-										&& ( Convert.ToDecimal(txtInprocessQty.Text) == 0m 
-											? (Convert.ToDecimal(txtGoodQty.Text) >= 0m && Convert.ToDecimal(txtTotalQty.Text) > 0m )
-											: Convert.ToDecimal(txtInprocessQty.Text) > 0 )
+										&& (Convert.ToDecimal(txtInprocessQty.Text) == 0m
+											? (Convert.ToDecimal(txtGoodQty.Text) >= 0m && Convert.ToDecimal(txtTotalQty.Text) > 0m)
+											: Convert.ToDecimal(txtInprocessQty.Text) > 0)
 										&& Convert.ToDecimal(txtTotalWorkHours.Text) > 0m
 										&& _canSaveRecord;
 					break;
@@ -308,7 +307,7 @@ namespace OMW15.Views.Productions
 					btnSave.Enabled = !string.IsNullOrEmpty(txtProductionJob.Text)
 										&& !string.IsNullOrEmpty(txtWorker.Text)
 										&& (!string.IsNullOrEmpty(txtProcessDetail.Text))
-										&& (Convert.ToDecimal(txtInprocessQty.Text) == 0m 
+										&& (Convert.ToDecimal(txtInprocessQty.Text) == 0m
 											? (Convert.ToDecimal(txtGoodQty.Text) >= 0m && Convert.ToDecimal(txtTotalQty.Text) > 0m)
 											: Convert.ToDecimal(txtInprocessQty.Text) > 0)
 									&& Convert.ToDecimal(txtTotalWorkHours.Text) > 0m
@@ -317,12 +316,12 @@ namespace OMW15.Views.Productions
 			}
 
 			btnWorkSource.Visible = false;
- 
+
 		} // end UpdateUI
 
 		private bool IsValidWorkInfo()
 		{
-			if(_jobType == ProductionJobType.Project)
+			if (_jobType == ProductionJobType.Project)
 			{
 				return (txtProcessDetail.Text.Length > 0);
 			}
@@ -494,24 +493,14 @@ namespace OMW15.Views.Productions
 				// Overtime Block
 				DateTime _otIn = new DateTime(dtpWorkDate.Value.Year, dtpWorkDate.Value.Month, dtpWorkDate.Value.Day, dtpOTStart.Value.Hour, dtpOTStart.Value.Minute, 0);
 				DateTime _otOut = new DateTime(dtpWorkDate.Value.Year, dtpWorkDate.Value.Month, dtpWorkDate.Value.Day, dtpOTEnd.Value.Hour, dtpOTEnd.Value.Minute, 0);
-
-				//if (_timeCheckIn.CompareTo(_otIn) <= 0 && _timeCheckOut.CompareTo(_otOut) >= 0)
-				//{
-					lbOTCheck.Text = "OK";
-					var _otTime = dtpOTEnd.Value.Subtract(dtpOTStart.Value);
-					_otHour = _otTime.TotalHours -
-							  (Information.IsNumeric(txtOTBreak.Text) ? Convert.ToDouble(txtOTBreak.Text) / 60 : 0.00D);
-					if (_otHour < 0d)
-					{
-						MessageBox.Show("ชั่วโมงงานต้องไม่เป็นค่าติดลบ", "Overtime-hour Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					}
-				//}
-				//else
-				//{
-				//	lbOTCheck.Text = "-";
-				//	_otHour = 0d;
-				//	MessageBox.Show("เวลาไม่ตรงกับฐานข้อมูล, โปรดปรับช่วงเวลาให้ถูกต้อง", "OT Time input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				//}
+				lbOTCheck.Text = "OK";
+				var _otTime = dtpOTEnd.Value.Subtract(dtpOTStart.Value);
+				_otHour = _otTime.TotalHours -
+						  (Information.IsNumeric(txtOTBreak.Text) ? Convert.ToDouble(txtOTBreak.Text) / 60 : 0.00D);
+				if (_otHour < 0d)
+				{
+					MessageBox.Show("ชั่วโมงงานต้องไม่เป็นค่าติดลบ", "Overtime-hour Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
 			}
 
 			txtTotalNormalHours.Text = $"{_normalHour:N2}";

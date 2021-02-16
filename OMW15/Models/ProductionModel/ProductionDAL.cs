@@ -15,27 +15,14 @@ namespace OMW15.Models.ProductionModel
 {
 	public class ProductionDAL
 	{
-		#region class field member
-
+		#region constructor
 		private readonly OLDMOONEF1 _om;
 		private readonly ERP _erp;
-
-		//private enum DocumentStatus
-		//{
-		//	Action = 0,
-		//	Modify = 1,
-		//	Cancel = 2
-		//}
-
-		#region constructor
-
 		public ProductionDAL()
 		{
 			_om = new OLDMOONEF1();
 			_erp = new ERP();
 		}
-
-		#endregion
 
 		#endregion
 
@@ -245,6 +232,30 @@ namespace OMW15.Models.ProductionModel
 			s.AppendLine(" ORDER BY PRJ_CODE ");
 
 			return new DataConnect(s.ToString(), connectionString).ToDataTable;
+		}
+
+		public DataTable GetProductionWorkYear()
+		{
+			return _om.PRODUCTIONJOBINFOes.Select(x => new
+			{
+				x.WORKYEAR
+			}).Distinct().OrderByDescending(o => o.WORKYEAR).ToDataTable();
+		}
+
+		public DataTable GetWokerByYear(int workYear)
+		{
+			return _om.PRODUCTIONJOBINFOes
+						.Where(x => x.WORKYEAR == workYear)
+						.Select(x => new
+						{
+							x.WORKERID,
+							x.WORKERNAME
+						}).Distinct().OrderBy(o => o.WORKERNAME).ToDataTable();
+		}
+
+		public DataTable GetWorkInfo(int workYear, string workerId)
+		{
+			return new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_WORKINFO @workyear={workYear},@workerid='{workerId}'", omglobal.SysConnectionString).ToDataTable;
 		}
 
 
@@ -1020,11 +1031,11 @@ namespace OMW15.Models.ProductionModel
 			return dt;
 		}
 
-		public async Task<DataTable> GetIssueItemsAsync(string issueNo,string itemno)
+		public async Task<DataTable> GetIssueItemsAsync(string issueNo, string itemno)
 		{
-			return await Task.Run(()=>
+			return await Task.Run(() =>
 			{
-				return new DataConnect($"EXEC dbo.usp_OM_ERP_WH_ISSUE_ITEMS @issueno='{issueNo}',@itemno='{itemno}'",omglobal.SysConnectionString).ToDataTable;
+				return new DataConnect($"EXEC dbo.usp_OM_ERP_WH_ISSUE_ITEMS @issueno='{issueNo}',@itemno='{itemno}'", omglobal.SysConnectionString).ToDataTable;
 			});
 			//return await Task.Run(() =>
 			//{
@@ -1198,7 +1209,7 @@ namespace OMW15.Models.ProductionModel
 
 		public DataTable GetProductionMissReportDetails(string empId)
 		{
-				return new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_MISS_REPORT_DETAILS @empCode='{empId}'", omglobal.SysConnectionString).ToDataTable;
+			return new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_MISS_REPORT_DETAILS @empCode='{empId}'", omglobal.SysConnectionString).ToDataTable;
 		}
 		#endregion
 

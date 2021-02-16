@@ -231,5 +231,13 @@ namespace OMW15.Views.Productions
 			missReportInfo.MdiParent = this;
 			missReportInfo.Show();
 		}
+
+		private void mnuUpdateJobHrs_Click(object sender, EventArgs e)
+		{
+			UpdateJobHrs updateJobHrs = UpdateJobHrs.GetInstance;
+			updateJobHrs.StartPosition = FormStartPosition.CenterScreen;
+			updateJobHrs.MdiParent = this;
+			updateJobHrs.Show();
+		}
 	}
 }
