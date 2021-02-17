@@ -144,6 +144,7 @@ namespace OMW15
         public virtual DbSet<SYSDATA> SYSDATAs { get; set; }
         public virtual DbSet<CUSTPRICETAB> CUSTPRICETABs { get; set; }
         public virtual DbSet<SOLINE> SOLINES { get; set; }
+        public virtual DbSet<PRODUCTION_WH_RECEIVE> PRODUCTION_WH_RECEIVE { get; set; }
     
         public virtual ObjectResult<usp_GetServiceJobList_Result> usp_GetServiceJobList(Nullable<int> selectedYear, string jobcode, string orderstatus)
         {

@@ -12,6 +12,41 @@ namespace OMW15.Views.WarehouseView
 {
 	public partial class SPIssueList : Form
 	{
+
+		#region Class Constructor
+
+		public SPIssueList(int DocumentKey,
+			OMShareWarehouseEnums.WarehouseSPViewMode ViewMode = OMShareWarehouseEnums.WarehouseSPViewMode.View)
+		{
+			InitializeComponent();
+			_viewMode = ViewMode;
+			_selectedDocumentKey = DocumentKey;
+			_selectedDocumentCode = string.Empty;
+		}
+
+		public SPIssueList(string DocumentCode,
+			OMShareWarehouseEnums.WarehouseSPViewMode ViewMode = OMShareWarehouseEnums.WarehouseSPViewMode.View)
+		{
+			InitializeComponent();
+			_viewMode = ViewMode;
+			_selectedDocumentCode = DocumentCode;
+			_selectedDocumentKey = new WHDDAL().GetDocumentId(_selectedDocumentCode);
+		}
+
+		public SPIssueList(string[] IssueCode,
+			OMShareWarehouseEnums.WarehouseSPViewMode ViewMode = OMShareWarehouseEnums.WarehouseSPViewMode.View,
+			string AppCall = "")
+		{
+			InitializeComponent();
+			_viewMode = ViewMode;
+			_issuecode = IssueCode;
+			_appCall = AppCall;
+
+			if (_appCall == "SERVICE") CreateIssueMenuForService(_issuecode);
+		}
+
+		#endregion
+
 		private void tsbtnClose_Click(object sender, EventArgs e)
 		{
 			Close();
@@ -333,38 +368,6 @@ namespace OMW15.Views.WarehouseView
 
 		#endregion
 
-		#region Class Constructor
-
-		public SPIssueList(int DocumentKey,
-			OMShareWarehouseEnums.WarehouseSPViewMode ViewMode = OMShareWarehouseEnums.WarehouseSPViewMode.View)
-		{
-			InitializeComponent();
-			_viewMode = ViewMode;
-			_selectedDocumentKey = DocumentKey;
-			_selectedDocumentCode = string.Empty;
-		}
-
-		public SPIssueList(string DocumentCode,
-			OMShareWarehouseEnums.WarehouseSPViewMode ViewMode = OMShareWarehouseEnums.WarehouseSPViewMode.View)
-		{
-			InitializeComponent();
-			_viewMode = ViewMode;
-			_selectedDocumentCode = DocumentCode;
-			_selectedDocumentKey = new WHDDAL().GetDocumentId(_selectedDocumentCode);
-		}
-
-		public SPIssueList(string[] IssueCode,
-			OMShareWarehouseEnums.WarehouseSPViewMode ViewMode = OMShareWarehouseEnums.WarehouseSPViewMode.View,
-			string AppCall = "")
-		{
-			InitializeComponent();
-			_viewMode = ViewMode;
-			_issuecode = IssueCode;
-			_appCall = AppCall;
-
-			if (_appCall == "SERVICE") CreateIssueMenuForService(_issuecode);
-		}
-
-		#endregion
+		
 	}
 }

@@ -30,12 +30,8 @@ namespace OMW15.Models.ProductionModel
 
 		#region call sproc
 
-		public DataTable GetYearForTimeRecord(string workerCode) => new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_WORKER_WORKYEARS '{workerCode}'", omglobal.SysConnectionString).ToDataTable;
-		//{
-		//	StringBuilder s = new StringBuilder();
-		//	s.AppendLine($" EXEC dbo.usp_OM_PRODUCTION_WORKER_WORKYEARS '{workerCode}'");
-		//	return new DataConnect(s.ToString(), omglobal.SysConnectionString).ToDataTable;
-		//}
+		public DataTable GetYearForTimeRecord(string workerCode) => 
+			new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_WORKER_WORKYEARS '{workerCode}'", omglobal.SysConnectionString).ToDataTable;
 
 		public DataTable GetMonthForTimeRecord(string workerCode, int jobYear)
 		{
@@ -258,88 +254,7 @@ namespace OMW15.Models.ProductionModel
 			return new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_WORKINFO @workyear={workYear},@workerid='{workerId}'", omglobal.SysConnectionString).ToDataTable;
 		}
 
-
-		//public DataTable GetPendingProductionOrderList(string connectionString)
-		//{
-		//	StringBuilder s = new StringBuilder();
-		//	s.AppendLine(" SELECT ");
-		//	s.AppendLine(" di.DI_KEY");
-		//	s.AppendLine(" ,CASE WHEN di.DI_ACTIVE = 2 THEN 'CANCELED' ELSE 'ACTIVE' END AS [STATUS]");
-		//	s.AppendLine(",SUBSTRING(di.DI_REF, 1, 4) AS [CODE]");
-		//	s.AppendLine(",di.DI_REF");
-		//	s.AppendLine(",CAST(di.DI_DATE AS DATE) AS [REQ_DATE]");
-		//	s.AppendLine(",trd.TRD_SH_CODE AS [PART-NO]");
-		//	s.AppendLine(",trd.TRD_SH_NAME AS [PARTNAME]");
-		//	s.AppendLine(",trd.TRD_QTY AS [QTY]");
-		//	s.AppendLine(",trd.TRD_UTQNAME AS [UNIT]");
-		//	s.AppendLine(",ISNULL(di.DI_REMARK, '') AS [REMARK]");
-		//	s.AppendLine(" FROM ERP.dbo.DOCINFO AS di ");
-		//	s.AppendLine(" LEFT JOIN ERP.dbo.TRANSTKH trh ON trh.TRH_DI = di.DI_KEY");
-		//	s.AppendLine(" LEFT JOIN ERP.dbo.TRANSTKD trd ON trd.TRD_TRH = trh.TRH_KEY");
-		//	s.AppendLine(" WHERE (SUBSTRING(DI_REF, 1, 4) IN ('RMFG', 'RMMG', 'RMPS')) ");
-		//	s.AppendLine(" AND trd.TRD_SEQ = 1");
-		//	s.AppendLine(" AND (di.DI_KEY NOT IN (SELECT pj.ERP_DI FROM dbo.PRODUCTIONJOBS AS pj WHERE (SUBSTRING(pj.ERP_ORDER, 1, 4) IN ('RMFG', 'RMMG', 'RMPS'))))");
-		//	s.AppendLine(" AND di.DI_REF NOT IN (SELECT DISTINCT trd.TRD_REFER_REF FROM ERP.dbo.TRANSTKD trd WHERE (trd.TRD_REFER_REF IS NOT NULL) AND (SUBSTRING(trd.TRD_REFER_REF, 1, 4) IN ('RMFG', 'RMMG', 'RMPS')))");
-		//	s.AppendLine(" ORDER BY di.DI_REF ");
-		//	return new DataConnect(s.ToString(), connectionString).ToDataTable;
-
-		//} // end GetProductionOrderList
-
-
 		public DataTable GetPendingProductionOrderList1() => _om.OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST.ToDataTable();
-		//{
-		//string[] containCode = new string[] { "RMFG", "RMMG", "RMPS" };
-
-		//var existOrder = (from pj in _om.PRODUCTIONJOBS
-		//				  where containCode.Contains(pj.ERP_ORDER.Substring(0, 4))
-		//				  select new
-		//				  {
-		//					  pj.ERP_DI
-		//				  }).ToList();
-
-		//var existDI = (from trd in _erp.TRANSTKDs
-		//			   where trd.TRD_REFER_REF != null
-		//			   && containCode.Contains(trd.TRD_REFER_REF.Substring(0, 4))
-		//			   select new
-		//			   {
-		//				   trd.TRD_REFER_REF
-		//			   }).Distinct().ToList();
-
-		//var pendinglist = (from di in _erp.DOCINFOes
-		//				   join trh in _erp.TRANSTKHs on di.DI_KEY equals trh.TRH_DI
-		//				   join trd in _erp.TRANSTKDs on trh.TRH_KEY equals trd.TRD_TRH
-		//				   where containCode.Contains(di.DI_REF.Substring(0, 4))
-		//				   && trd.TRD_SEQ == 1
-
-		//				   //&& !existOrder.Select(x => x.ERP_DI).Contains(di.DI_KEY)
-		//				   //&& !existDI.Select(x => x.TRD_REFER_REF).Contains(di.DI_REF)
-		//				   //orderby di.DI_REF
-
-		//				   select new 
-		//				   {
-		//					   DiKey= di.DI_KEY,
-		//					   STATUS = di.DI_ACTIVE == 1 ? "CANCELED" : "ACTIVE",
-		//					   CODE = di.DI_REF.Substring(0, 4),
-		//					   DiRef = di.DI_REF,
-		//					   REQ_DATE = di.DI_DATE,
-		//					   PARTNO = trd.TRD_SH_CODE,
-		//					   PARTNAME = trd.TRD_SH_NAME,
-		//					   QTY = trd.TRD_QTY,
-		//					   UNIT = trd.TRD_UTQNAME,
-		//					   REMARK = di.DI_REMARK ?? di.DI_REMARK
-		//				   }).ToList();
-
-		//var result = pendinglist
-		//			.Where(k => !existOrder.Any(x => x.ERP_DI == k.DiKey)
-		//		&& !existDI.Any(x => x.TRD_REFER_REF == k.DiRef)).ToDataTable();
-
-
-
-
-		//return _om.OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST.ToDataTable();
-		//		}
-
-		//public DataTable GetProductionOrderList(string prefixDICode, int ProductionYear, string connectionString)
 
 		public DataTable GetProductionOrderList(string prefixDICode, string connectionString)
 		{
@@ -666,39 +581,6 @@ namespace OMW15.Models.ProductionModel
 			return new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_WORKTIME_BY_ORDER @workOrder='{workOrder}'", omglobal.SysConnectionString).ToDataTable;
 		}
 
-		//public List<TimeRecordInfo> GetProductionTimeItemByWorker(string workerCode, int workYear, int workMonth)
-		//{
-		//	return (from p in _om.PRODUCTIONJOBINFOes.AsEnumerable()
-		//			join j in _om.PRODUCTIONJOBS.AsEnumerable() on p.ERP_ORDER equals j.ERP_ORDER
-		//			orderby p.DATETIME_START
-		//			where p.WORKERID == workerCode
-		//			&& p.WORKYEAR == workYear
-		//			&& p.WORKPERIOD == workMonth
-		//			select new TimeRecordInfo
-		//			{
-		//				RecordId = p.PRDINFOID,
-		//				ProductionJob = p.ERP_ORDER,
-		//				WorkDate = p.DATETIME_START.Value,
-		//				WorkerId = p.WORKERID,
-		//				WorkerName = p.WORKERNAME,
-		//				ItemNo = j.ITEMNO.Trim(),
-		//				ItemName = j.ITEMNAME.Trim(),
-		//				DrawingNo = String.IsNullOrEmpty(p.DRAWINGNO) ? j.DRAWINGNO.Trim() : p.DRAWINGNO.Trim(),
-		//				ProcessId = p.PROCESSID,
-		//				ProcessName = p.PROCESSNAME.Trim() + " " + p.PROCESSDETAIL.Trim(),
-		//				FromTime = p.DATETIME_START.Value,
-		//				ToTime = p.DATETIME_END.Value,
-		//				OTFrom = p.OT_START.Value.Equals(p.OT_END.Value) ? "" : p.OT_START.Value.ToString("HH:mm"),
-		//				OTEnd = p.OT_START.Value.Equals(p.OT_END.Value) ? "" : p.OT_END.Value.ToString("HH:mm"),
-		//				TotalTime = p.TOTAL_HRS,
-		//				InWorkProcessQty = p.INPROCESS_QTY,
-		//				GoodQty = p.GOOD_QTY,
-		//				BadQty = p.BAD_QTY,
-		//				TotalQty = p.TOTALQTY
-		//			}).ToList();
-
-		//} // end GetProductionTimeItemByWorker
-
 		public int RemoveTimeRecord(int recordId)
 		{
 			_om.PRODUCTIONJOBINFOes.Remove(_om.PRODUCTIONJOBINFOes.Find(recordId));
@@ -859,7 +741,6 @@ namespace OMW15.Models.ProductionModel
 		public DataTable GetProcessMachineList() => (_om.PRDPROCESSes.Where(x => x.MACHINE != null).Select(x => new { x.MACHINE }).Distinct().ToDataTable());
 
 
-
 		#endregion
 
 		#region STANDARD PROCESS FOR EACH PART-NO.
@@ -968,6 +849,46 @@ namespace OMW15.Models.ProductionModel
 		#endregion
 
 		#region Producion Used Material
+
+		public DataTable GetSend2WHList(string orderNo) => 
+			new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_TO_WH @docno='{orderNo}'", omglobal.SysConnectionString).ToDataTable;
+
+		public PRODUCTION_WH_RECEIVE GetReceiveItem(string receiveNo) => _om.PRODUCTION_WH_RECEIVE.Where(x => x.RECEIVE_NO == receiveNo).FirstOrDefault();
+
+		public int UpdateReceiveItem(PRODUCTION_WH_RECEIVE item)
+		{
+			if(item.RECEIVEID == 0)
+			{
+				_om.PRODUCTION_WH_RECEIVE.Add(item);
+			}
+			else
+			{
+				PRODUCTION_WH_RECEIVE _item = GetReceiveItem(item.RECEIVE_NO);
+				_item.RECEIVE_AVG_UCOST = item.RECEIVE_AVG_UCOST;
+				_item.RECEIVE_BY = item.RECEIVE_BY;
+				_item.RECEIVE_COST = item.RECEIVE_COST;
+				_item.RECEIVE_DATE = item.RECEIVE_DATE;
+				_item.RECEIVE_QTY = item.RECEIVE_QTY;
+				_item.RECEIVE_UNIT = item.RECEIVE_UNIT;
+				_item.REF_ISSUE_ID = item.REF_ISSUE_ID;
+				_item.REF_TRANSFER_DOC = item.REF_TRANSFER_DOC;
+			}
+
+			return _om.SaveChanges();
+		}
+
+		public int DeleteReceiveItem(PRODUCTION_WH_RECEIVE item)
+		{
+			_om.PRODUCTION_WH_RECEIVE.Remove(GetReceiveItem(item.RECEIVE_NO));
+			return _om.SaveChanges();
+		}
+
+		public DataTable GetReceiveItemCost(string itemno, string docNo)
+		{
+			return new DataConnect($"EXEC dbo.usp_OM_WH_RECEIVE_ITEM @itemno='{itemno}',@docfilter='{docNo}'", omglobal.SysConnectionString).ToDataTable;
+		}
+
+
 		public IssueRequestHeader FindIssueHeader(string productionJobNo)
 		{
 			IssueRequestHeader _result;
@@ -1037,43 +958,6 @@ namespace OMW15.Models.ProductionModel
 			{
 				return new DataConnect($"EXEC dbo.usp_OM_ERP_WH_ISSUE_ITEMS @issueno='{issueNo}',@itemno='{itemno}'", omglobal.SysConnectionString).ToDataTable;
 			});
-			//return await Task.Run(() =>
-			//{
-			//	var _issue = _om.OM_ERP_WH_ISSUE_ITEMS.AsEnumerable()
-			//			.Where(x => x.DOCUMENTNO == issueNo && x.ICCODE != "ST03")
-			//			.Select((r, i) => new IssueItem
-			//			{
-			//				Index = ++i,
-			//				DepartmentCode = r.DEPARTMENTCODE,
-			//				DepartmentId = r.DEPARTMENTID,
-			//				DocumentDate = r.DOCUMENTDATE,
-			//				DocumentKey = r.DOCUMENTKEY,
-			//				DocumentNo = r.DOCUMENTNO,
-			//				ICCode = r.ICCODE,
-			//				ICKey = r.ICKEY,
-			//				ICName = r.ICNAME,
-			//				IssueLineId = r.ISSUELINEID,
-			//				OrderNumber = r.ORDERNUMBER,
-			//				ProjectNo = r.PROJECTNO,
-			//				ShipGrandTotal = r.SHIPGRANDTOTAL,
-			//				ShipItemNo = r.SHIPITEMNO,
-			//				ShipItemName = r.SHIPITEMNAME,
-			//				ShipUnit = r.SHIPUNIT,
-			//				ShipQty = r.SHIPQTY,
-			//				ShipUnitPrice = r.SHIPUNITPRICE,
-			//				ShipTotalVAT = r.SHIPTOTALVAT,
-			//				ShipTotalValue = r.SHIPTOTALVALUE
-			//			})
-			//			.OrderBy(o => o.Index).ToList();
-
-			//	DataTable dt = new DataTable();
-
-			//	if (_issue.Count == 0) dt = null;
-
-			//	if (_issue.Count > 0) dt = _issue.ToDataTable();
-
-			//	return dt;
-			//});
 		}
 
 		public decimal GetAvgActualHourCostByWorker(DateTime workDate, string workerId)
@@ -1159,41 +1043,6 @@ namespace OMW15.Models.ProductionModel
 
 		public DataTable GetProductionPlan(int status, int jobYear, string itemno)
 		{
-			/*
-			DataTable _dtMC = GetActualMachine(itemno, status, jobYear);
-			StringBuilder s = new StringBuilder();
-
-			s.AppendLine($"SELECT ");
-			s.AppendLine($"pi.ERP_ORDER AS [ORDER-NO]");
-			s.AppendLine($",pi.ITEMNO ");
-			s.AppendLine($",p.QORDER AS [QTY]");
-			foreach (DataRow dr in _dtMC.Rows)
-			{
-				s.AppendLine($",SUM(CASE WHEN pc.MACHINE = '{dr[2]}' THEN pi.TOTAL_HRS END) AS [STEP={dr[0]}-{dr[1]}-{dr[2]}]");
-			}
-			s.AppendLine($",SUM(pi.TOTAL_HRS) AS [TOTAL-HRs]");
-			s.AppendLine($",CASE WHEN (SUM(pi.TOTAL_HRS)/(CASE WHEN p.QORDER = 0 THEN 1 ELSE p.QORDER END) >= 1) ");
-			s.AppendLine($" THEN FORMAT(CAST(SUM(pi.TOTAL_HRS)/(CASE WHEN p.QORDER = 0 THEN 1 ELSE p.QORDER END) AS INT),'00') + ");
-			s.AppendLine($" FORMAT((SUM(pi.TOTAL_HRS)/(CASE WHEN p.QORDER = 0 THEN 1 ELSE p.QORDER END) - ");
-			s.AppendLine($" CAST(SUM(pi.TOTAL_HRS)/(CASE WHEN p.QORDER = 0 THEN 1 ELSE p.QORDER END) AS INT))*60,':0#') ");
-			s.AppendLine($" ELSE '00'+ FORMAT(CAST((SUM(pi.TOTAL_HRS)/(CASE WHEN p.QORDER = 0 THEN 1 ELSE p.QORDER END) * 60) AS INT),':0#' ) END ");
-			s.AppendLine($" AS [AVG (HR/UNIT)]");
-			s.AppendLine($" FROM PRODUCTIONJOBINFO pi  ");
-			s.AppendLine($" INNER JOIN PRODUCTIONJOBS p ON pi.ERP_ORDER = p.ERP_ORDER ");
-			s.AppendLine($" INNER JOIN PRDPROCESS pc ON pi.PROCESSID = pc.PRDPROCESSID ");
-			s.AppendLine($" WHERE pi.ITEMNO = '{itemno}'");
-			if (status == (int)ProductionJobStatus.Active)
-			{
-				s.AppendLine($" AND p.STATUS = {status} ");
-				s.AppendLine($" AND p.JOBYEAR = {jobYear}");
-			}
-			else if (status == (int)ProductionJobStatus.Closed)
-			{
-				s.AppendLine($" AND p.STATUS = {status} ");
-				s.AppendLine($" AND YEAR(p.COMPLETEDATE) = {jobYear}");
-			}
-			s.AppendLine($" GROUP BY pi.ERP_ORDER,pi.ITEMNO,p.QORDER");
-			*/
 			return new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_MACHINE_PLAN @jobstatus={status},@jobyear={jobYear},@itemnumber='{itemno}'", omglobal.SysConnectionString).ToDataTable;
 		}
 
@@ -1212,7 +1061,6 @@ namespace OMW15.Models.ProductionModel
 			return new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_MISS_REPORT_DETAILS @empCode='{empId}'", omglobal.SysConnectionString).ToDataTable;
 		}
 		#endregion
-
 
 	}
 

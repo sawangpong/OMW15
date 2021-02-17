@@ -368,7 +368,7 @@ namespace OMW15.Views.Productions
 
 		private void btnUpdateAllJobs_Click(object sender, EventArgs e)
 		{
-			UpdateProductionJobHours();
+			//UpdateProductionJobHours();
 		}
 
 		private void tsbtnReport_Click(object sender, EventArgs e)

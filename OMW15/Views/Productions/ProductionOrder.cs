@@ -156,14 +156,14 @@ namespace OMW15.Views.Productions
 					// loading production order
 					GetProductionOrderHeaderInfo(_productionOrderNo);
 
-					IssueRequestHeader _issue = new ProductionDAL().FindIssueHeader(_job.ERP_ORDER);
+					//IssueRequestHeader _issue = new ProductionDAL().FindIssueHeader(_job.ERP_ORDER);
 
-					if (_issue != null)
-					{
-						GetIssueItems(_issue.ISSUENO,_job.ITEMNO);
-						_job.ISSUE_ID = _issue.ISSUEID;
-						_job.ERP_ISSUE = _issue.ISSUENO;
-					}
+					//if (_issue != null)
+					//{
+					//	GetIssueItems(_issue.ISSUENO,_job.ITEMNO);
+					//	_job.ISSUE_ID = _issue.ISSUEID;
+					//	_job.ERP_ISSUE = _issue.ISSUENO;
+					//}
 				}
 			}
 		}
@@ -261,7 +261,7 @@ namespace OMW15.Views.Productions
 							_job.RECEIVEDBY = omglobal.UserName;
 						if (_job.RECEIVEDDATE == null)
 							_job.RECEIVEDDATE = DateTime.Today;
-						ReceivedFG();
+						//ReceivedFG();
 					}
 					break;
 				default:
@@ -269,31 +269,7 @@ namespace OMW15.Views.Productions
 			}
 		}
 
-		private void ReceivedFG()
-		{
-			using (var _receive = new Receive2WH())
-			{
-				_receive.ReceivedDate = _job.RECEIVEDDATE.Value;
-				_receive.ReceivedBy = String.IsNullOrEmpty(_job.RECEIVEDBY) ? omglobal.UserName : _job.RECEIVEDBY;
-				_receive.ReceiveQty = _job.SHIPQTY;
-
-				_receive.StartPosition = FormStartPosition.CenterScreen;
-				if (_receive.ShowDialog(this) == DialogResult.OK)
-				{
-					_job.RECEIVEDBY = _receive.ReceivedBy;
-					dtpCompleteDate.Value = _receive.ReceivedDate;
-					_job.SHIPQTY = _receive.ReceiveQty;
-					_job.RECEIVEDDATE = _receive.ReceivedDate;
-					ntxtReceivedQty.Text = $"{_job.SHIPQTY:N2}";
-				}
-				else
-				{
-					_job.RECEIVEDBY = "";
-					_job.SHIPQTY = 0m;
-					_job.RECEIVEDDATE = null;
-				}
-			}
-		}
+		
 
 		private void UpdateUI()
 		{
@@ -356,7 +332,7 @@ namespace OMW15.Views.Productions
 
 			txtERP_ISSUE.Text = String.IsNullOrEmpty(_job.ERP_ISSUE) ? "" : _job.ERP_ISSUE;
 
-			ntxtReceivedQty.Text = $"{_job.SHIPQTY:N2}";
+			//ntxtReceivedQty.Text = $"{_job.SHIPQTY:N2}";
 			txtOutsourceCost.Text = $"{(_job == null ? 0.00m : _job.TOTAL_OUTSOURCE_COST):N2}";
 			txtTotalMatCost.Text = $"{(_job == null ? 0.00m : _job.TOTAL_MAT_COST):N2}";
 			txtTotalProductionHrs.Text = $"{(_job == null ? 0.00m : _job.TOTAL_HOURS):N2}";
@@ -383,16 +359,14 @@ namespace OMW15.Views.Productions
 					{
 						// check and retrieve data for issue items for this order
 						//
-						IssueRequestHeader _issue = new ProductionDAL().FindIssueHeader(_job.ERP_ORDER);
-						if (_issue != null)
-						{
-							_job.ERP_ISSUE = _issue.ISSUENO;
-							_job.ISSUE_ID = _issue.ISSUEID;
-
-							tc.TabPages[0].Text = $"Production Hours ({_issue.ISSUEID} : {_issue.ISSUENO})";
-
-							GetIssueItems(_issue.ISSUENO, _job.ITEMNO);
-						}
+						//IssueRequestHeader _issue = new ProductionDAL().FindIssueHeader(_job.ERP_ORDER);
+						//if (_issue != null)
+						//{
+						//	_job.ERP_ISSUE = _issue.ISSUENO;
+						//	_job.ISSUE_ID = _issue.ISSUEID;
+						//	tc.TabPages[0].Text = $"Production Hours"; // ({_issue.ISSUEID} : {_issue.ISSUENO})";
+						// GetIssueItems(_issue.ISSUENO, _job.ITEMNO);
+						//}
 					}
 					else
 					{
@@ -558,71 +532,71 @@ namespace OMW15.Views.Productions
 			GetJobHours(productionJob);
 		}
 
-		private async void GetIssueItems(string issueNo,string itemno)
-		{
-			dgvIssueItems.SuspendLayout();
-			DataTable dt = await new ProductionDAL().GetIssueItemsAsync(issueNo,itemno);
+		//private async void GetIssueItems(string issueNo,string itemno)
+		//{
+		//	dgvIssueItems.SuspendLayout();
+		//	DataTable dt = await new ProductionDAL().GetIssueItemsAsync(issueNo,itemno);
 
-			if (dt == null)
-			{
-				dgvIssueItems.DataSource = null;
-				return;
-			}
+		//	if (dt == null)
+		//	{
+		//		dgvIssueItems.DataSource = null;
+		//		return;
+		//	}
 
-			dgvIssueItems.DataSource = dt;
+		//	dgvIssueItems.DataSource = dt;
 
-			// formatting DataGridView
-			dgvIssueItems.Columns["ISSUELINEID"].Visible = false;
-			dgvIssueItems.Columns["ORDERNUMBER"].Visible = false;
-			dgvIssueItems.Columns["PROJECTNO"].Visible = false;
-			dgvIssueItems.Columns["DOCUMENTKEY"].Visible = false;
-			dgvIssueItems.Columns["DOCUMENTNO"].Visible = false;
-			dgvIssueItems.Columns["DEPARTMENTID"].Visible = false;
-			dgvIssueItems.Columns["DEPARTMENTCODE"].Visible = false;
-			dgvIssueItems.Columns["SHIPTOTALVAT"].Visible = false;
-			dgvIssueItems.Columns["SHIPGRANDTOTAL"].Visible = false;
-			dgvIssueItems.Columns["ICCODE"].Visible = false;
-			dgvIssueItems.Columns["ICKEY"].Visible = false;
+		//	// formatting DataGridView
+		//	dgvIssueItems.Columns["ISSUELINEID"].Visible = false;
+		//	dgvIssueItems.Columns["ORDERNUMBER"].Visible = false;
+		//	dgvIssueItems.Columns["PROJECTNO"].Visible = false;
+		//	dgvIssueItems.Columns["DOCUMENTKEY"].Visible = false;
+		//	dgvIssueItems.Columns["DOCUMENTNO"].Visible = false;
+		//	dgvIssueItems.Columns["DEPARTMENTID"].Visible = false;
+		//	dgvIssueItems.Columns["DEPARTMENTCODE"].Visible = false;
+		//	dgvIssueItems.Columns["SHIPTOTALVAT"].Visible = false;
+		//	dgvIssueItems.Columns["SHIPGRANDTOTAL"].Visible = false;
+		//	dgvIssueItems.Columns["ICCODE"].Visible = false;
+		//	dgvIssueItems.Columns["ICKEY"].Visible = false;
 
-			dgvIssueItems.Columns["Index"].HeaderText = "#";
-			dgvIssueItems.Columns["ICNAME"].HeaderText = "ประเภท";
-			dgvIssueItems.Columns["DOCUMENTDATE"].HeaderText = "วันที่เบิก";
-			dgvIssueItems.Columns["SHIPITEMNO"].HeaderText = "รหัสสินค้า";
-			dgvIssueItems.Columns["SHIPITEMNAME"].HeaderText = "วัสดุ";
-			dgvIssueItems.Columns["SHIPUNIT"].HeaderText = "หน่วย";
-			dgvIssueItems.Columns["SHIPQTY"].HeaderText = "จำนวนที่ใช้";
-			dgvIssueItems.Columns["SHIPUNITPRICE"].HeaderText = "ต้นทุน/หน่วย";
-			dgvIssueItems.Columns["SHIPTOTALVALUE"].HeaderText = "มูลค่ารวม";
+		//	dgvIssueItems.Columns["Index"].HeaderText = "#";
+		//	dgvIssueItems.Columns["ICNAME"].HeaderText = "ประเภท";
+		//	dgvIssueItems.Columns["DOCUMENTDATE"].HeaderText = "วันที่เบิก";
+		//	dgvIssueItems.Columns["SHIPITEMNO"].HeaderText = "รหัสสินค้า";
+		//	dgvIssueItems.Columns["SHIPITEMNAME"].HeaderText = "วัสดุ";
+		//	dgvIssueItems.Columns["SHIPUNIT"].HeaderText = "หน่วย";
+		//	dgvIssueItems.Columns["SHIPQTY"].HeaderText = "จำนวนที่ใช้";
+		//	dgvIssueItems.Columns["SHIPUNITPRICE"].HeaderText = "ต้นทุน/หน่วย";
+		//	dgvIssueItems.Columns["SHIPTOTALVALUE"].HeaderText = "มูลค่ารวม";
 
-			dgvIssueItems.Columns["SHIPQTY"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-			dgvIssueItems.Columns["SHIPQTY"].DefaultCellStyle.Format = "N2";
+		//	dgvIssueItems.Columns["SHIPQTY"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+		//	dgvIssueItems.Columns["SHIPQTY"].DefaultCellStyle.Format = "N2";
 
-			dgvIssueItems.Columns["SHIPUNITPRICE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-			dgvIssueItems.Columns["SHIPUNITPRICE"].DefaultCellStyle.Format = "N2";
+		//	dgvIssueItems.Columns["SHIPUNITPRICE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+		//	dgvIssueItems.Columns["SHIPUNITPRICE"].DefaultCellStyle.Format = "N2";
 
-			dgvIssueItems.Columns["SHIPTOTALVALUE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-			dgvIssueItems.Columns["SHIPTOTALVALUE"].DefaultCellStyle.Format = "N2";
+		//	dgvIssueItems.Columns["SHIPTOTALVALUE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+		//	dgvIssueItems.Columns["SHIPTOTALVALUE"].DefaultCellStyle.Format = "N2";
 
-			dgvIssueItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+		//	dgvIssueItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-			lbIssue.Text = $"เลขที่ใบแปร: {_job.ISSUE_ID} :: {_job.ERP_ISSUE}";
+		//	lbIssue.Text = $"เลขที่ใบแปร: {_job.ISSUE_ID} :: {_job.ERP_ISSUE}";
 
-			txtERP_ISSUE.Text = _job.ERP_ISSUE;
+		//	txtERP_ISSUE.Text = _job.ERP_ISSUE;
 
-			dgvIssueItems.ResumeLayout();
+		//	dgvIssueItems.ResumeLayout();
 
-			decimal _totalMatCost = 0m;
-			foreach (DataRow dr in dt.Rows)
-			{
-				_totalMatCost += Convert.ToDecimal(dr["SHIPTOTALVALUE"].ToString());
-			}
-			_job.TOTAL_MAT_COST = _totalMatCost;
-			_job.STD_MATCOST = _totalMatCost / (_job.QORDER == 0 ? 1 : _job.QORDER);
+		//	decimal _totalMatCost = 0m;
+		//	foreach (DataRow dr in dt.Rows)
+		//	{
+		//		_totalMatCost += Convert.ToDecimal(dr["SHIPTOTALVALUE"].ToString());
+		//	}
+		//	_job.TOTAL_MAT_COST = _totalMatCost;
+		//	_job.STD_MATCOST = _totalMatCost / (_job.QORDER == 0 ? 1 : _job.QORDER);
 
-			lbIssueCount.Text = $"วัสดุ: {dt.Rows.Count} รายการ";
-			txtTotalMatCost.Text = $"{_job.TOTAL_MAT_COST:N2}";
-			txtMatCost.Text = $"{_job.STD_MATCOST:N2}";
-		}
+		//	lbIssueCount.Text = $"วัสดุ: {dt.Rows.Count} รายการ";
+		//	txtTotalMatCost.Text = $"{_job.TOTAL_MAT_COST:N2}";
+		//	txtMatCost.Text = $"{_job.STD_MATCOST:N2}";
+		//}
 
 		private void GetJobHours(string erpOrder)
 		{
@@ -905,6 +879,24 @@ namespace OMW15.Views.Productions
 		private void dgvOutsourceItems_DoubleClick(object sender, EventArgs e)
 		{
 			tsbtnEditSup.PerformClick();
+		}
+
+		private void btnReceiveStock_Click(object sender, EventArgs e)
+		{
+			using(var _receiveStock = new ProductionSendStock(_job.ERP_ORDER,_job.ITEMNO,_job.UNITORDER))
+			{
+				_receiveStock.StartPosition = FormStartPosition.CenterScreen;
+				if(_receiveStock.ShowDialog() == DialogResult.OK)
+				{
+					_job.TOTAL_MAT_COST = _receiveStock.TotalReceiveCost;
+					_job.STD_MATCOST = _receiveStock.AvgReceiveUCost;
+					_job.SHIPQTY = _receiveStock.TotalReceiveQty;
+
+					txtTotalMatCost.Text = $"{_receiveStock.TotalReceiveCost:N2}";
+					txtMatCost.Text = $"{_receiveStock.AvgReceiveUCost:N2}";
+					txtTotalReceiveQty.Text = $"{_receiveStock.TotalReceiveQty:N2}";
+				}
+			}
 		}
 	}
 }

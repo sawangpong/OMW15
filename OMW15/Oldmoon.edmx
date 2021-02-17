@@ -1117,6 +1117,21 @@
           <Property Name="OTHER_COST" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="TOTAL_COST" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
+        <EntityType Name="PRODUCTION_WH_RECEIVE">
+          <Key>
+            <PropertyRef Name="RECEIVE_NO" />
+          </Key>
+          <Property Name="RECEIVEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REF_TRANSFER_DOC" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="REF_ISSUE_ID" Type="int" Nullable="false" />
+          <Property Name="RECEIVE_NO" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="RECEIVE_DATE" Type="date" />
+          <Property Name="RECEIVE_UNIT" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="RECEIVE_QTY" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="RECEIVE_COST" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="RECEIVE_AVG_UCOST" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="RECEIVE_BY" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="PRODUCTIONJOBINFO">
           <Key>
             <PropertyRef Name="PRDINFOID" />
@@ -2927,6 +2942,7 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <EntitySet Name="PRINTLOGS" EntityType="Self.PRINTLOGS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCTGROUPS" EntityType="Self.PRODUCTGROUPS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCTION_OUTSOURCE" EntityType="Self.PRODUCTION_OUTSOURCE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTION_WH_RECEIVE" EntityType="Self.PRODUCTION_WH_RECEIVE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCTIONJOBINFO" EntityType="Self.PRODUCTIONJOBINFO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCTIONJOBS" EntityType="Self.PRODUCTIONJOBS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCTIONSTDITEMS" EntityType="Self.PRODUCTIONSTDITEMS" Schema="dbo" store:Type="Tables" />
@@ -5448,6 +5464,7 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <EntitySet Name="SYSDATAs" EntityType="Oldmoon.SYSDATA" />
           <EntitySet Name="CUSTPRICETABs" EntityType="Oldmoon.CUSTPRICETAB" />
           <EntitySet Name="SOLINES" EntityType="Oldmoon.SOLINE" />
+          <EntitySet Name="PRODUCTION_WH_RECEIVE" EntityType="Oldmoon.PRODUCTION_WH_RECEIVE" />
         </EntityContainer>
         <ComplexType Name="usp_GetServiceJobList_Result">
           <Property Type="Int32" Name="orderid" Nullable="false" />
@@ -6798,6 +6815,21 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <Property Name="AUDITDATE" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="MODIUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MODIDATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PRODUCTION_WH_RECEIVE">
+          <Key>
+            <PropertyRef Name="RECEIVE_NO" />
+          </Key>
+          <Property Name="RECEIVEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REF_TRANSFER_DOC" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="REF_ISSUE_ID" Type="Int32" Nullable="false" />
+          <Property Name="RECEIVE_NO" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="RECEIVE_DATE" Type="DateTime" Precision="0" />
+          <Property Name="RECEIVE_UNIT" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="RECEIVE_QTY" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="RECEIVE_COST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="RECEIVE_AVG_UCOST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="RECEIVE_BY" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -9355,6 +9387,22 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
                 <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
                 <ScalarProperty Name="ISCOMPLETE" ColumnName="ISCOMPLETE" />
                 <ScalarProperty Name="SOLINESEQ" ColumnName="SOLINESEQ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTION_WH_RECEIVE">
+            <EntityTypeMapping TypeName="Oldmoon.PRODUCTION_WH_RECEIVE">
+              <MappingFragment StoreEntitySet="PRODUCTION_WH_RECEIVE">
+                <ScalarProperty Name="RECEIVE_BY" ColumnName="RECEIVE_BY" />
+                <ScalarProperty Name="RECEIVE_AVG_UCOST" ColumnName="RECEIVE_AVG_UCOST" />
+                <ScalarProperty Name="RECEIVE_COST" ColumnName="RECEIVE_COST" />
+                <ScalarProperty Name="RECEIVE_QTY" ColumnName="RECEIVE_QTY" />
+                <ScalarProperty Name="RECEIVE_UNIT" ColumnName="RECEIVE_UNIT" />
+                <ScalarProperty Name="RECEIVE_DATE" ColumnName="RECEIVE_DATE" />
+                <ScalarProperty Name="RECEIVE_NO" ColumnName="RECEIVE_NO" />
+                <ScalarProperty Name="REF_ISSUE_ID" ColumnName="REF_ISSUE_ID" />
+                <ScalarProperty Name="REF_TRANSFER_DOC" ColumnName="REF_TRANSFER_DOC" />
+                <ScalarProperty Name="RECEIVEID" ColumnName="RECEIVEID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

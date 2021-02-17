@@ -93,8 +93,6 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.panel8 = new System.Windows.Forms.Panel();
 			this.pnlStockReceive = new System.Windows.Forms.Panel();
-			this.ntxtReceivedQty = new OMControls.Controls.NumericTextBox();
-			this.label23 = new System.Windows.Forms.Label();
 			this.lbAvgHourCost = new System.Windows.Forms.Label();
 			this.btnUnit = new OMControls.OMFlatButton();
 			this.txtUnit = new System.Windows.Forms.TextBox();
@@ -148,6 +146,8 @@
 			this.btnSearchDocNo = new OMControls.OMFlatButton();
 			this.txtDINumber = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
+			this.btnReceiveStock = new System.Windows.Forms.Button();
+			this.txtTotalReceiveQty = new System.Windows.Forms.TextBox();
 			this.pnlBody.SuspendLayout();
 			this.pnlData.SuspendLayout();
 			this.pnlJobHeader.SuspendLayout();
@@ -346,7 +346,7 @@
 			this.tpRawmat.Padding = new System.Windows.Forms.Padding(5);
 			this.tpRawmat.Size = new System.Drawing.Size(1023, 188);
 			this.tpRawmat.TabIndex = 0;
-			this.tpRawmat.Text = "รายการวัสดุที่ใช้";
+			this.tpRawmat.Text = "ใบแปร";
 			this.tpRawmat.UseVisualStyleBackColor = true;
 			// 
 			// pnlIssueItems
@@ -1009,49 +1009,15 @@
 			// 
 			// pnlStockReceive
 			// 
-			this.pnlStockReceive.Controls.Add(this.ntxtReceivedQty);
-			this.pnlStockReceive.Controls.Add(this.label23);
+			this.pnlStockReceive.Controls.Add(this.txtTotalReceiveQty);
+			this.pnlStockReceive.Controls.Add(this.btnReceiveStock);
 			this.pnlStockReceive.Dock = System.Windows.Forms.DockStyle.Right;
 			this.pnlStockReceive.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.pnlStockReceive.Location = new System.Drawing.Point(530, 1);
 			this.pnlStockReceive.Name = "pnlStockReceive";
-			this.pnlStockReceive.Padding = new System.Windows.Forms.Padding(1);
+			this.pnlStockReceive.Padding = new System.Windows.Forms.Padding(20, 1, 1, 1);
 			this.pnlStockReceive.Size = new System.Drawing.Size(284, 26);
 			this.pnlStockReceive.TabIndex = 19;
-			// 
-			// ntxtReceivedQty
-			// 
-			this.ntxtReceivedQty.AllowControl = true;
-			this.ntxtReceivedQty.AllowDecimal = true;
-			this.ntxtReceivedQty.AllowMultipleDecimals = true;
-			this.ntxtReceivedQty.AllowNegation = true;
-			this.ntxtReceivedQty.DecimalValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
-			this.ntxtReceivedQty.Dock = System.Windows.Forms.DockStyle.Left;
-			this.ntxtReceivedQty.Enabled = false;
-			this.ntxtReceivedQty.IntegerValue = 0;
-			this.ntxtReceivedQty.Location = new System.Drawing.Point(161, 1);
-			this.ntxtReceivedQty.MaxLength = 10;
-			this.ntxtReceivedQty.Name = "ntxtReceivedQty";
-			this.ntxtReceivedQty.ReadOnly = true;
-			this.ntxtReceivedQty.Size = new System.Drawing.Size(92, 23);
-			this.ntxtReceivedQty.TabIndex = 8;
-			this.ntxtReceivedQty.Text = "0.00";
-			this.ntxtReceivedQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
-			// label23
-			// 
-			this.label23.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label23.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label23.Location = new System.Drawing.Point(1, 1);
-			this.label23.Name = "label23";
-			this.label23.Size = new System.Drawing.Size(160, 24);
-			this.label23.TabIndex = 7;
-			this.label23.Text = "จำนวนรับเข้าคลังสินค้า:";
-			this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// lbAvgHourCost
 			// 
@@ -1157,6 +1123,7 @@
 			this.txtERP_ISSUE.Name = "txtERP_ISSUE";
 			this.txtERP_ISSUE.Size = new System.Drawing.Size(162, 25);
 			this.txtERP_ISSUE.TabIndex = 6;
+			this.txtERP_ISSUE.Visible = false;
 			// 
 			// label24
 			// 
@@ -1168,6 +1135,7 @@
 			this.label24.TabIndex = 5;
 			this.label24.Text = "เลขที่ใบเบิกสินค้า  :";
 			this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.label24.Visible = false;
 			// 
 			// txtItemName
 			// 
@@ -1684,6 +1652,29 @@
 			this.label1.Text = "*เลขที่ใบขอแปร :";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
+			// btnReceiveStock
+			// 
+			this.btnReceiveStock.Dock = System.Windows.Forms.DockStyle.Left;
+			this.btnReceiveStock.Location = new System.Drawing.Point(20, 1);
+			this.btnReceiveStock.Name = "btnReceiveStock";
+			this.btnReceiveStock.Size = new System.Drawing.Size(119, 24);
+			this.btnReceiveStock.TabIndex = 8;
+			this.btnReceiveStock.Text = "รับเข้าคลังสินค้า";
+			this.btnReceiveStock.UseVisualStyleBackColor = true;
+			this.btnReceiveStock.Click += new System.EventHandler(this.btnReceiveStock_Click);
+			// 
+			// txtTotalReceiveQty
+			// 
+			this.txtTotalReceiveQty.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+			this.txtTotalReceiveQty.Dock = System.Windows.Forms.DockStyle.Left;
+			this.txtTotalReceiveQty.Enabled = false;
+			this.txtTotalReceiveQty.Location = new System.Drawing.Point(139, 1);
+			this.txtTotalReceiveQty.MaxLength = 15;
+			this.txtTotalReceiveQty.Name = "txtTotalReceiveQty";
+			this.txtTotalReceiveQty.Size = new System.Drawing.Size(97, 23);
+			this.txtTotalReceiveQty.TabIndex = 16;
+			this.txtTotalReceiveQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
 			// ProductionOrder
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1847,8 +1838,6 @@
 		private OMControls.Controls.NumericTextBox ntxtActualAvgUnitCost;
 		private System.Windows.Forms.Label label22;
 		private System.Windows.Forms.Panel pnlStockReceive;
-		private OMControls.Controls.NumericTextBox ntxtReceivedQty;
-		private System.Windows.Forms.Label label23;
 		private System.Windows.Forms.TabPage tpSub;
 		private System.Windows.Forms.Panel panel14;
 		private System.Windows.Forms.DataGridView dgvOutsourceItems;
@@ -1878,5 +1867,7 @@
 		private System.Windows.Forms.TextBox txtERP_ISSUE;
 		private System.Windows.Forms.Label label24;
 		private System.Windows.Forms.Label lbTotalStep;
+		private System.Windows.Forms.Button btnReceiveStock;
+		private System.Windows.Forms.TextBox txtTotalReceiveQty;
 	}
 }

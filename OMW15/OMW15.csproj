@@ -619,6 +619,9 @@
     <Compile Include="PRODUCTION_OUTSOURCE.cs">
       <DependentUpon>Oldmoon.tt</DependentUpon>
     </Compile>
+    <Compile Include="PRODUCTION_WH_RECEIVE.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1180,6 +1183,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WorkByMonth.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionSendStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionSendStock.Designer.cs">
+      <DependentUpon>ProductionSendStock.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Productions\ProductionUserControl\WorkerTimeRecord.cs">
       <SubType>UserControl</SubType>
@@ -2320,6 +2329,9 @@
     <EmbeddedResource Include="Views\Productions\ProductionReports\WorkByMonth.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>WorkByMonth.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionSendStock.resx">
+      <DependentUpon>ProductionSendStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Productions\ProductionUserControl\WorkerTimeRecord.resx">
       <DependentUpon>WorkerTimeRecord.cs</DependentUpon>
