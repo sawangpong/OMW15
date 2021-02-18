@@ -5,6 +5,7 @@ using OMW15.Models.WarehouseModel;
 using OMW15.Shared;
 using System;
 using System.Data;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using static OMW15.Shared.OMShareProduction;
@@ -39,7 +40,7 @@ namespace OMW15.Views.Productions
 		{
 			InitializeComponent();
 
-			OMUtils.SettingDataGridView(ref dgvIssueItems);
+			OMUtils.SettingDataGridView(ref dgvIssues);
 			OMUtils.SettingDataGridView(ref dgvWorkHour);
 			OMUtils.SettingDataGridView(ref dgvHourStat);
 			OMUtils.SettingDataGridView(ref dgvOutsourceItems);
@@ -66,12 +67,10 @@ namespace OMW15.Views.Productions
 		private void ProductionOrder_Load(object sender, EventArgs e)
 		{
 			GetProductionStatus();
-
 			if (_mode == ActionMode.Edit)
 			{
 				GetProductionOrderHeaderInfo(_productionOrderNo);
 			}
-
 			UpdateUI();
 		}
 
@@ -137,7 +136,6 @@ namespace OMW15.Views.Productions
 						if (_jobType == ProductionJobType.Production)
 						{
 							DataTable _itemProperty = GetItemProperties(_di.PartNo);
-
 							if (_itemProperty != null)
 							{
 								foreach (DataRow dr in _itemProperty.Rows)
@@ -155,15 +153,6 @@ namespace OMW15.Views.Productions
 
 					// loading production order
 					GetProductionOrderHeaderInfo(_productionOrderNo);
-
-					//IssueRequestHeader _issue = new ProductionDAL().FindIssueHeader(_job.ERP_ORDER);
-
-					//if (_issue != null)
-					//{
-					//	GetIssueItems(_issue.ISSUENO,_job.ITEMNO);
-					//	_job.ISSUE_ID = _issue.ISSUEID;
-					//	_job.ERP_ISSUE = _issue.ISSUENO;
-					//}
 				}
 			}
 		}
@@ -185,26 +174,14 @@ namespace OMW15.Views.Productions
 			}
 		}
 
-		private void txt_TextChanged(object sender, EventArgs e)
-		{
-			UpdateUI();
-		}
+		private void txt_TextChanged(object sender, EventArgs e) => UpdateUI();
 
-		private void btnItemNo_Click(object sender, EventArgs e)
-		{
-			GetItemInformation(txtItemNo.Text);
-		}
+		private void btnItemNo_Click(object sender, EventArgs e) => GetItemInformation(txtItemNo.Text);
 
-		private void btnCancel_Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
+		private void btnCancel_Click(object sender, EventArgs e) => this.Close();
 
-		private void txtDINumber_TextChanged(object sender, EventArgs e)
-		{
-			UpdateUI();
-		}
-
+		private void txtDINumber_TextChanged(object sender, EventArgs e) => UpdateUI();
+	
 		private void btnSave_Click(object sender, EventArgs e)
 		{
 			if (String.IsNullOrEmpty(txtQty.Text)
@@ -253,23 +230,20 @@ namespace OMW15.Views.Productions
 			switch (status)
 			{
 				case (int)ProductionJobStatus.Closed:
-
 					if (MessageBox.Show("ต้องการนำส่งชิ้นงานไปที่คลังสินค้าหรือไม่?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 					{
+						btnReceiveStock.PerformClick();
 						// activate runtine for stock receiving
-						if (String.IsNullOrEmpty(_job.RECEIVEDBY))
-							_job.RECEIVEDBY = omglobal.UserName;
-						if (_job.RECEIVEDDATE == null)
-							_job.RECEIVEDDATE = DateTime.Today;
-						//ReceivedFG();
+						//if (String.IsNullOrEmpty(_job.RECEIVEDBY))
+						//	_job.RECEIVEDBY = omglobal.UserName;
+						//if (_job.RECEIVEDDATE == null)
+						//	_job.RECEIVEDDATE = DateTime.Today;
 					}
 					break;
 				default:
 					break;
 			}
 		}
-
-		
 
 		private void UpdateUI()
 		{
@@ -330,9 +304,9 @@ namespace OMW15.Views.Productions
 			txtQty.Text = $"{(_job == null ? 0.00m : _job.QORDER):N2}";
 			txtUnit.Text = _job == null ? "" : _job.UNITORDER;
 
-			txtERP_ISSUE.Text = String.IsNullOrEmpty(_job.ERP_ISSUE) ? "" : _job.ERP_ISSUE;
+			//txtERP_ISSUE.Text = String.IsNullOrEmpty(_job.ERP_ISSUE) ? "" : _job.ERP_ISSUE;
 
-			//ntxtReceivedQty.Text = $"{_job.SHIPQTY:N2}";
+			txtTotalReceiveQty.Text = $"{_job.SHIPQTY:N2}";
 			txtOutsourceCost.Text = $"{(_job == null ? 0.00m : _job.TOTAL_OUTSOURCE_COST):N2}";
 			txtTotalMatCost.Text = $"{(_job == null ? 0.00m : _job.TOTAL_MAT_COST):N2}";
 			txtTotalProductionHrs.Text = $"{(_job == null ? 0.00m : _job.TOTAL_HOURS):N2}";
@@ -350,13 +324,14 @@ namespace OMW15.Views.Productions
 			}
  
 			// Require permission to display some serect infomation
-
 			if (omglobal.PermisionId >= (int)Shared.OMShareSysConfigEnums.UserPermission.PowerUser)
 			{
 				try
 				{
 					if (int.Parse(_job.JOBTYPE) == (int)ProductionJobType.Production)
 					{
+						GetIssues(_job.ERP_ORDER);
+
 						// check and retrieve data for issue items for this order
 						//
 						//IssueRequestHeader _issue = new ProductionDAL().FindIssueHeader(_job.ERP_ORDER);
@@ -365,7 +340,6 @@ namespace OMW15.Views.Productions
 						//	_job.ERP_ISSUE = _issue.ISSUENO;
 						//	_job.ISSUE_ID = _issue.ISSUEID;
 						//	tc.TabPages[0].Text = $"Production Hours"; // ({_issue.ISSUEID} : {_issue.ISSUENO})";
-						// GetIssueItems(_issue.ISSUENO, _job.ITEMNO);
 						//}
 					}
 					else
@@ -394,7 +368,6 @@ namespace OMW15.Views.Productions
 			UpdateUI();
 
 		} // end GetProductionOrderHeaderInfo
-
 
 		private void GetOutsourceItems(string erpOrder)
 		{
@@ -437,7 +410,6 @@ namespace OMW15.Views.Productions
 			UpdateOutsourceToolBar();
 		}
 
-
 		private decimal GetOutsourceValues()
 		{
 			decimal _result = 0.00m;
@@ -446,7 +418,6 @@ namespace OMW15.Views.Productions
 			{
 				_result += Convert.ToDecimal(dgr.Cells["TOTAL_COST"].Value);
 			}
-
 			return _result;
 		}
 
@@ -532,71 +503,53 @@ namespace OMW15.Views.Productions
 			GetJobHours(productionJob);
 		}
 
-		//private async void GetIssueItems(string issueNo,string itemno)
-		//{
-		//	dgvIssueItems.SuspendLayout();
-		//	DataTable dt = await new ProductionDAL().GetIssueItemsAsync(issueNo,itemno);
+		private void GetIssues(string orderNo)
+		{
+			dgvIssues.SuspendLayout();
+			DataTable dt = new ProductionDAL().GetIssueByProductionOrder(orderNo);
 
-		//	if (dt == null)
-		//	{
-		//		dgvIssueItems.DataSource = null;
-		//		return;
-		//	}
+			if (dt == null)
+			{
+				dgvIssues.DataSource = null;
+				return;
+			}
 
-		//	dgvIssueItems.DataSource = dt;
+			dgvIssues.DataSource = dt;
 
-		//	// formatting DataGridView
-		//	dgvIssueItems.Columns["ISSUELINEID"].Visible = false;
-		//	dgvIssueItems.Columns["ORDERNUMBER"].Visible = false;
-		//	dgvIssueItems.Columns["PROJECTNO"].Visible = false;
-		//	dgvIssueItems.Columns["DOCUMENTKEY"].Visible = false;
-		//	dgvIssueItems.Columns["DOCUMENTNO"].Visible = false;
-		//	dgvIssueItems.Columns["DEPARTMENTID"].Visible = false;
-		//	dgvIssueItems.Columns["DEPARTMENTCODE"].Visible = false;
-		//	dgvIssueItems.Columns["SHIPTOTALVAT"].Visible = false;
-		//	dgvIssueItems.Columns["SHIPGRANDTOTAL"].Visible = false;
-		//	dgvIssueItems.Columns["ICCODE"].Visible = false;
-		//	dgvIssueItems.Columns["ICKEY"].Visible = false;
+			// formatting DataGridView
+			dgvIssues.Columns["RECEIVEID"].Visible = false;
+			dgvIssues.Columns["REF_ISSUE_ID"].Visible = false;
+			dgvIssues.Columns["REF_TRANSFER_DOC"].Visible = false;
+			dgvIssues.Columns["RECEIVE_BY"].Visible = false;
 
-		//	dgvIssueItems.Columns["Index"].HeaderText = "#";
-		//	dgvIssueItems.Columns["ICNAME"].HeaderText = "ประเภท";
-		//	dgvIssueItems.Columns["DOCUMENTDATE"].HeaderText = "วันที่เบิก";
-		//	dgvIssueItems.Columns["SHIPITEMNO"].HeaderText = "รหัสสินค้า";
-		//	dgvIssueItems.Columns["SHIPITEMNAME"].HeaderText = "วัสดุ";
-		//	dgvIssueItems.Columns["SHIPUNIT"].HeaderText = "หน่วย";
-		//	dgvIssueItems.Columns["SHIPQTY"].HeaderText = "จำนวนที่ใช้";
-		//	dgvIssueItems.Columns["SHIPUNITPRICE"].HeaderText = "ต้นทุน/หน่วย";
-		//	dgvIssueItems.Columns["SHIPTOTALVALUE"].HeaderText = "มูลค่ารวม";
+			dgvIssues.Columns["RECEIVE_NO"].HeaderText = "เลขที่ใบแปร";
+			dgvIssues.Columns["RECEIVE_DATE"].HeaderText = "วันที่เบิก";
+			dgvIssues.Columns["RECEIVE_DATE"].DefaultCellStyle.Format = "dd/MM/yyyy";
+			dgvIssues.Columns["RECEIVE_UNIT"].HeaderText = "หน่วย";
+			dgvIssues.Columns["RECEIVE_QTY"].HeaderText = "จำนวนที่ใช้";
+			dgvIssues.Columns["RECEIVE_QTY"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+			dgvIssues.Columns["RECEIVE_QTY"].DefaultCellStyle.Format = "N2";
 
-		//	dgvIssueItems.Columns["SHIPQTY"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-		//	dgvIssueItems.Columns["SHIPQTY"].DefaultCellStyle.Format = "N2";
+			dgvIssues.Columns["RECEIVE_AVG_UCOST"].HeaderText = "ต้นทุน/หน่วย";
+			dgvIssues.Columns["RECEIVE_AVG_UCOST"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+			dgvIssues.Columns["RECEIVE_AVG_UCOST"].DefaultCellStyle.Format = "N2";
 
-		//	dgvIssueItems.Columns["SHIPUNITPRICE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-		//	dgvIssueItems.Columns["SHIPUNITPRICE"].DefaultCellStyle.Format = "N2";
+			dgvIssues.Columns["RECEIVE_COST"].HeaderText = "มูลค่ารวม";
+			dgvIssues.Columns["RECEIVE_COST"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+			dgvIssues.Columns["RECEIVE_COST"].DefaultCellStyle.Format = "N2";
 
-		//	dgvIssueItems.Columns["SHIPTOTALVALUE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-		//	dgvIssueItems.Columns["SHIPTOTALVALUE"].DefaultCellStyle.Format = "N2";
+			dgvIssues.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-		//	dgvIssueItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+			dgvIssues.ResumeLayout();
 
-		//	lbIssue.Text = $"เลขที่ใบแปร: {_job.ISSUE_ID} :: {_job.ERP_ISSUE}";
+			decimal _totalMatCost = dt.AsEnumerable().Sum(x => x.Field<decimal>("RECEIVE_COST"));
+			_job.TOTAL_MAT_COST = _totalMatCost;
+			_job.STD_MATCOST = _totalMatCost / (_job.QORDER == 0 ? 1 : _job.QORDER);
 
-		//	txtERP_ISSUE.Text = _job.ERP_ISSUE;
-
-		//	dgvIssueItems.ResumeLayout();
-
-		//	decimal _totalMatCost = 0m;
-		//	foreach (DataRow dr in dt.Rows)
-		//	{
-		//		_totalMatCost += Convert.ToDecimal(dr["SHIPTOTALVALUE"].ToString());
-		//	}
-		//	_job.TOTAL_MAT_COST = _totalMatCost;
-		//	_job.STD_MATCOST = _totalMatCost / (_job.QORDER == 0 ? 1 : _job.QORDER);
-
-		//	lbIssueCount.Text = $"วัสดุ: {dt.Rows.Count} รายการ";
-		//	txtTotalMatCost.Text = $"{_job.TOTAL_MAT_COST:N2}";
-		//	txtMatCost.Text = $"{_job.STD_MATCOST:N2}";
-		//}
+			lbIssueCount.Text = $"{dt.Rows.Count} รายการ";
+			txtTotalMatCost.Text = $"{_job.TOTAL_MAT_COST:N2}";
+			txtMatCost.Text = $"{_job.STD_MATCOST:N2}";
+		}
 
 		private void GetJobHours(string erpOrder)
 		{
@@ -606,7 +559,6 @@ namespace OMW15.Views.Productions
 			{
 				_job.TOTAL_HOURS = Convert.ToDecimal(dt.Rows[0]["TOTAL_HRS"]);
 				_job.TOTAL_HOUR_COST = Convert.ToDecimal(dt.Rows[0]["TOTAL_ACTUAL_HOUR_COST"]);
-
 				ntxtTotalActualAvgCost.Text = $"{Convert.ToDecimal(dt.Rows[0]["TOTAL_ACTUAL_AVG_HOUR_COST"]):N2}";
 			}
 			else
@@ -614,7 +566,6 @@ namespace OMW15.Views.Productions
 				_job.TOTAL_HOURS = 0m;
 				_job.TOTAL_HOUR_COST = 0m;
 				ntxtTotalActualAvgCost.Text = $"{0:N2}";
-
 			}
 
 			txtTotalProductionHrs.Text = $"{_job.TOTAL_HOURS:N2}";
@@ -625,7 +576,6 @@ namespace OMW15.Views.Productions
 			txtProductionUnitHr.Text = $"{(_job.TOTAL_HOURS / (_job.QORDER == 0 ? 1 : _job.QORDER)):N2}";
 			ntxtProductionHrUnitCost.Text = $"{_unitHourCost:N2}";
 			ntxtActualAvgUnitCost.Text = $"{(Convert.ToDecimal(ntxtTotalActualAvgCost.Text) / (_job.QORDER == 0 ? 1 : _job.QORDER)):N2}";
-
 		}
 
 		private void GetItemInformation(string itemFilter)
@@ -700,10 +650,7 @@ namespace OMW15.Views.Productions
 				MessageBox.Show("Update Production Job Info successfully !!!!", "Message", MessageBoxButtons.OK,
 					  MessageBoxIcon.Information);
 			}
-
-
 		} // end UpdateProductionJobInfo
-
 
 		private void GetProductionStatus()
 		{
@@ -883,7 +830,7 @@ namespace OMW15.Views.Productions
 
 		private void btnReceiveStock_Click(object sender, EventArgs e)
 		{
-			using(var _receiveStock = new ProductionSendStock(_job.ERP_ORDER,_job.ITEMNO,_job.UNITORDER))
+			using(var _receiveStock = new ProductionSendStock(_job))
 			{
 				_receiveStock.StartPosition = FormStartPosition.CenterScreen;
 				if(_receiveStock.ShowDialog() == DialogResult.OK)

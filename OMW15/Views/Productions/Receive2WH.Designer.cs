@@ -117,7 +117,7 @@
 			// lbTitle
 			// 
 			this.lbTitle.Dock = System.Windows.Forms.DockStyle.Left;
-			this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbTitle.ForeColor = System.Drawing.Color.White;
 			this.lbTitle.Location = new System.Drawing.Point(2, 2);
 			this.lbTitle.Name = "lbTitle";

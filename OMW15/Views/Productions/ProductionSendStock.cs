@@ -1,6 +1,8 @@
 ﻿using OMControls;
 using OMW15.Models.ProductionModel;
 using System;
+using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace OMW15.Views.Productions
@@ -45,8 +47,13 @@ namespace OMW15.Views.Productions
 			dgv.Columns["RECEIVE_AVG_UCOST"].HeaderText = "ต้นทุน/หน่วย";
 
 			dgv.Columns["RECEIVE_AVG_UCOST"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+			dgv.Columns["RECEIVE_AVG_UCOST"].DefaultCellStyle.Format = "N2";
+
 			dgv.Columns["RECEIVE_COST"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+			dgv.Columns["RECEIVE_COST"].DefaultCellStyle.Format = "N2";
+
 			dgv.Columns["RECEIVE_QTY"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+			dgv.Columns["RECEIVE_QTY"].DefaultCellStyle.Format = "N2";
 
 			dgv.ResumeLayout();
 
@@ -54,24 +61,26 @@ namespace OMW15.Views.Productions
 
 			UpdateUI();
 
+			stlbRow.Text = $"{dgv.Rows.Count} row{(dgv.Rows.Count > 1 ? "s" : "")}";
+			stlbTotalCost.Text = $"total cost: {((DataTable)dgv.DataSource).AsEnumerable().Sum(x => x.Field<Decimal>("RECEIVE_COST")):N2}";
+
+			stlbTotalQty.Text = $"total qty: {((DataTable)dgv.DataSource).AsEnumerable().Sum(x => x.Field<Decimal>("RECEIVE_QTY")):N2}";
+
 		}
 
 		private void ReceiveItem(string receiveNo)
 		{
-			using (var _receive = new Receive2WH(_orderNo, receiveNo, _itemNo, this.ReceiveUnit))
+			using (var _receive = new Receive2WH(_orderNo,  _itemNo,receiveNo, this.ReceiveUnit))
 			{
 				_receive.StartPosition = FormStartPosition.CenterScreen;
 				if (_receive.ShowDialog(this) == DialogResult.OK)
 				{
-
 				}
 				else
 				{
 				}
 			}
-
 			GetIssueList(_orderNo);
-
 		}
 
 		private void SumMatCost()
@@ -91,18 +100,15 @@ namespace OMW15.Views.Productions
 			}
 		}
 
-
-
 		#endregion
 
-
-		public ProductionSendStock(string orderNo, string itemNo, string unitReceive)
+		public ProductionSendStock(PRODUCTIONJOB job)
 		{
 			InitializeComponent();
 
-			_orderNo = orderNo;
-			_itemNo = itemNo;
-			this.ReceiveUnit = unitReceive;
+			_orderNo = job.ERP_ORDER;
+			_itemNo = job.ITEMNO;
+			this.ReceiveUnit = job.UNITORDER;
 
 			lbTitle.Text = $"ใบแปร (#{_orderNo}) >> {_itemNo}";
 
@@ -149,7 +155,17 @@ namespace OMW15.Views.Productions
 		private void btnReload_Click(object sender, EventArgs e)
 		{
 			GetIssueList(_orderNo);
+		}
 
+		private void btnDelete_Click(object sender, EventArgs e)
+		{
+			if(MessageBox.Show("ต้องการลบใบแปรนี้?","Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+			{
+				if(new ProductionDAL().DeleteReceiveItem(_selectedReceiveNo) > 0)
+				{
+					MessageBox.Show("ลบใบแปรออกจากระบบแล้ว","Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+			}
 		}
 	}
 }

@@ -44,7 +44,7 @@
 			this.lbHourCount = new System.Windows.Forms.Label();
 			this.tpRawmat = new System.Windows.Forms.TabPage();
 			this.pnlIssueItems = new System.Windows.Forms.Panel();
-			this.dgvIssueItems = new System.Windows.Forms.DataGridView();
+			this.dgvIssues = new System.Windows.Forms.DataGridView();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.lbIssueCount = new System.Windows.Forms.Label();
 			this.lbIssue = new System.Windows.Forms.Label();
@@ -93,6 +93,8 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.panel8 = new System.Windows.Forms.Panel();
 			this.pnlStockReceive = new System.Windows.Forms.Panel();
+			this.txtTotalReceiveQty = new System.Windows.Forms.TextBox();
+			this.btnReceiveStock = new System.Windows.Forms.Button();
 			this.lbAvgHourCost = new System.Windows.Forms.Label();
 			this.btnUnit = new OMControls.OMFlatButton();
 			this.txtUnit = new System.Windows.Forms.TextBox();
@@ -146,8 +148,6 @@
 			this.btnSearchDocNo = new OMControls.OMFlatButton();
 			this.txtDINumber = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.btnReceiveStock = new System.Windows.Forms.Button();
-			this.txtTotalReceiveQty = new System.Windows.Forms.TextBox();
 			this.pnlBody.SuspendLayout();
 			this.pnlData.SuspendLayout();
 			this.pnlJobHeader.SuspendLayout();
@@ -162,7 +162,7 @@
 			this.panel19.SuspendLayout();
 			this.tpRawmat.SuspendLayout();
 			this.pnlIssueItems.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dgvIssueItems)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvIssues)).BeginInit();
 			this.panel2.SuspendLayout();
 			this.tpSub.SuspendLayout();
 			this.panel14.SuspendLayout();
@@ -352,7 +352,7 @@
 			// pnlIssueItems
 			// 
 			this.pnlIssueItems.BackColor = System.Drawing.SystemColors.Control;
-			this.pnlIssueItems.Controls.Add(this.dgvIssueItems);
+			this.pnlIssueItems.Controls.Add(this.dgvIssues);
 			this.pnlIssueItems.Controls.Add(this.panel2);
 			this.pnlIssueItems.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pnlIssueItems.Location = new System.Drawing.Point(5, 5);
@@ -361,15 +361,15 @@
 			this.pnlIssueItems.Size = new System.Drawing.Size(1013, 178);
 			this.pnlIssueItems.TabIndex = 22;
 			// 
-			// dgvIssueItems
+			// dgvIssues
 			// 
-			this.dgvIssueItems.BackgroundColor = System.Drawing.Color.White;
-			this.dgvIssueItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgvIssueItems.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dgvIssueItems.Location = new System.Drawing.Point(5, 35);
-			this.dgvIssueItems.Name = "dgvIssueItems";
-			this.dgvIssueItems.Size = new System.Drawing.Size(1003, 138);
-			this.dgvIssueItems.TabIndex = 2;
+			this.dgvIssues.BackgroundColor = System.Drawing.Color.White;
+			this.dgvIssues.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvIssues.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dgvIssues.Location = new System.Drawing.Point(5, 35);
+			this.dgvIssues.Name = "dgvIssues";
+			this.dgvIssues.Size = new System.Drawing.Size(1003, 138);
+			this.dgvIssues.TabIndex = 2;
 			// 
 			// panel2
 			// 
@@ -1019,6 +1019,29 @@
 			this.pnlStockReceive.Size = new System.Drawing.Size(284, 26);
 			this.pnlStockReceive.TabIndex = 19;
 			// 
+			// txtTotalReceiveQty
+			// 
+			this.txtTotalReceiveQty.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+			this.txtTotalReceiveQty.Dock = System.Windows.Forms.DockStyle.Left;
+			this.txtTotalReceiveQty.Enabled = false;
+			this.txtTotalReceiveQty.Location = new System.Drawing.Point(139, 1);
+			this.txtTotalReceiveQty.MaxLength = 15;
+			this.txtTotalReceiveQty.Name = "txtTotalReceiveQty";
+			this.txtTotalReceiveQty.Size = new System.Drawing.Size(97, 23);
+			this.txtTotalReceiveQty.TabIndex = 16;
+			this.txtTotalReceiveQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// btnReceiveStock
+			// 
+			this.btnReceiveStock.Dock = System.Windows.Forms.DockStyle.Left;
+			this.btnReceiveStock.Location = new System.Drawing.Point(20, 1);
+			this.btnReceiveStock.Name = "btnReceiveStock";
+			this.btnReceiveStock.Size = new System.Drawing.Size(119, 24);
+			this.btnReceiveStock.TabIndex = 8;
+			this.btnReceiveStock.Text = "รับเข้าคลังสินค้า";
+			this.btnReceiveStock.UseVisualStyleBackColor = true;
+			this.btnReceiveStock.Click += new System.EventHandler(this.btnReceiveStock_Click);
+			// 
 			// lbAvgHourCost
 			// 
 			this.lbAvgHourCost.Dock = System.Windows.Forms.DockStyle.Right;
@@ -1652,29 +1675,6 @@
 			this.label1.Text = "*เลขที่ใบขอแปร :";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// btnReceiveStock
-			// 
-			this.btnReceiveStock.Dock = System.Windows.Forms.DockStyle.Left;
-			this.btnReceiveStock.Location = new System.Drawing.Point(20, 1);
-			this.btnReceiveStock.Name = "btnReceiveStock";
-			this.btnReceiveStock.Size = new System.Drawing.Size(119, 24);
-			this.btnReceiveStock.TabIndex = 8;
-			this.btnReceiveStock.Text = "รับเข้าคลังสินค้า";
-			this.btnReceiveStock.UseVisualStyleBackColor = true;
-			this.btnReceiveStock.Click += new System.EventHandler(this.btnReceiveStock_Click);
-			// 
-			// txtTotalReceiveQty
-			// 
-			this.txtTotalReceiveQty.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-			this.txtTotalReceiveQty.Dock = System.Windows.Forms.DockStyle.Left;
-			this.txtTotalReceiveQty.Enabled = false;
-			this.txtTotalReceiveQty.Location = new System.Drawing.Point(139, 1);
-			this.txtTotalReceiveQty.MaxLength = 15;
-			this.txtTotalReceiveQty.Name = "txtTotalReceiveQty";
-			this.txtTotalReceiveQty.Size = new System.Drawing.Size(97, 23);
-			this.txtTotalReceiveQty.TabIndex = 16;
-			this.txtTotalReceiveQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
 			// ProductionOrder
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1701,7 +1701,7 @@
 			this.panel19.ResumeLayout(false);
 			this.tpRawmat.ResumeLayout(false);
 			this.pnlIssueItems.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dgvIssueItems)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvIssues)).EndInit();
 			this.panel2.ResumeLayout(false);
 			this.tpSub.ResumeLayout(false);
 			this.panel14.ResumeLayout(false);
@@ -1820,7 +1820,7 @@
 		private System.Windows.Forms.TabControl tpWorkhour;
 		private System.Windows.Forms.TabPage tpRawmat;
 		private System.Windows.Forms.Panel pnlIssueItems;
-		private System.Windows.Forms.DataGridView dgvIssueItems;
+		private System.Windows.Forms.DataGridView dgvIssues;
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.Label lbIssueCount;
 		private System.Windows.Forms.Label lbIssue;

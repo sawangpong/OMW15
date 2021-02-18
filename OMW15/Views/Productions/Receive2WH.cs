@@ -69,13 +69,11 @@ namespace OMW15.Views.Productions
 		private void UpdateReceiveItem(PRODUCTION_WH_RECEIVE item)
 		{
 			int _result = new ProductionDAL().UpdateReceiveItem(item);
-
 		}
-
 
 		#endregion
 
-		public Receive2WH(string orderNo, string receiveNo, string itemNo, string receiveUnit = "")
+		public Receive2WH(string orderNo, string itemNo, string receiveNo, string receiveUnit = "")
 		{
 			InitializeComponent();
 			_orderNo = orderNo;
@@ -92,7 +90,6 @@ namespace OMW15.Views.Productions
 		private void Receive2WH_Load(object sender, EventArgs e)
 		{
 			GetStockReceiveItem(_receiveNo);
-
 		}
 
 		private void txtReceivedBy_TextChanged(object sender, EventArgs e)

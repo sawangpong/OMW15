@@ -669,9 +669,11 @@ namespace OMW15.Models.ProductionModel
 
 		public DataTable GetProductionItemList(string filter = "") => new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_STD_ITEMS '{filter}'", omglobal.SysConnectionString).ToDataTable;
 
-		public DataTable GetProductionItemProperty(string filter = "") => new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_STD_ITEM '{filter}'", omglobal.SysConnectionString).ToDataTable;
+		public DataTable GetProductionItemProperty(string filter = "") => 
+			new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_STD_ITEM @itemfilter='{filter}'", omglobal.SysConnectionString).ToDataTable;
 
-		public PRODUCTIONSTDITEM GetProductionItemInfo(int ItemId) => _om.PRODUCTIONSTDITEMS.Single(x => x.ItemId == ItemId);
+		public PRODUCTIONSTDITEM GetProductionItemInfo(int ItemId) => 
+			_om.PRODUCTIONSTDITEMS.Single(x => x.ItemId == ItemId);
 
 		#endregion
 
@@ -738,14 +740,16 @@ namespace OMW15.Models.ProductionModel
 					  }).Distinct().ToDataTable();
 		}
 
-		public DataTable GetProcessMachineList() => (_om.PRDPROCESSes.Where(x => x.MACHINE != null).Select(x => new { x.MACHINE }).Distinct().ToDataTable());
+		public DataTable GetProcessMachineList() => 
+			(_om.PRDPROCESSes.Where(x => x.MACHINE != null).Select(x => new { x.MACHINE }).Distinct().ToDataTable());
 
 
 		#endregion
 
 		#region STANDARD PROCESS FOR EACH PART-NO.
 
-		public string GetProcessName(int processId) => (_om.PRDPROCESSes.Where(x => x.PRDPROCESSID == processId).FirstOrDefault().PROCESSNAME);
+		public string GetProcessName(int processId) => 
+			(_om.PRDPROCESSes.Where(x => x.PRDPROCESSID == processId).FirstOrDefault().PROCESSNAME);
 
 		public int GetMaxStep(string itemNo)
 		{
@@ -850,10 +854,14 @@ namespace OMW15.Models.ProductionModel
 
 		#region Producion Used Material
 
+		public DataTable GetIssueByProductionOrder(string orderNo) => 
+			new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_ISSUES @orderno ='{orderNo}'", omglobal.SysConnectionString).ToDataTable;
+
 		public DataTable GetSend2WHList(string orderNo) => 
 			new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_TO_WH @docno='{orderNo}'", omglobal.SysConnectionString).ToDataTable;
 
-		public PRODUCTION_WH_RECEIVE GetReceiveItem(string receiveNo) => _om.PRODUCTION_WH_RECEIVE.Where(x => x.RECEIVE_NO == receiveNo).FirstOrDefault();
+		public PRODUCTION_WH_RECEIVE GetReceiveItem(string receiveNo) => 
+			_om.PRODUCTION_WH_RECEIVE.Where(x => x.RECEIVE_NO == receiveNo).FirstOrDefault();
 
 		public int UpdateReceiveItem(PRODUCTION_WH_RECEIVE item)
 		{
@@ -877,9 +885,9 @@ namespace OMW15.Models.ProductionModel
 			return _om.SaveChanges();
 		}
 
-		public int DeleteReceiveItem(PRODUCTION_WH_RECEIVE item)
+		public int DeleteReceiveItem(string receiveNo)
 		{
-			_om.PRODUCTION_WH_RECEIVE.Remove(GetReceiveItem(item.RECEIVE_NO));
+			_om.PRODUCTION_WH_RECEIVE.Remove(GetReceiveItem(receiveNo));
 			return _om.SaveChanges();
 		}
 

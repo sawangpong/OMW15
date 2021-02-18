@@ -39,7 +39,11 @@
 			this.btnAddIssue = new System.Windows.Forms.Button();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.dgv = new System.Windows.Forms.DataGridView();
+			this.stlbRow = new System.Windows.Forms.ToolStripStatusLabel();
+			this.stlbTotalCost = new System.Windows.Forms.ToolStripStatusLabel();
+			this.stlbTotalQty = new System.Windows.Forms.ToolStripStatusLabel();
 			this.panel1.SuspendLayout();
+			this.st.SuspendLayout();
 			this.panel3.SuspendLayout();
 			this.panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -71,6 +75,10 @@
 			// 
 			// st
 			// 
+			this.st.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stlbRow,
+            this.stlbTotalCost,
+            this.stlbTotalQty});
 			this.st.Location = new System.Drawing.Point(0, 334);
 			this.st.Name = "st";
 			this.st.Size = new System.Drawing.Size(687, 22);
@@ -110,6 +118,7 @@
 			this.btnDelete.TabIndex = 3;
 			this.btnDelete.Text = "ลบใบแปร";
 			this.btnDelete.UseVisualStyleBackColor = true;
+			this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
 			// 
 			// btnClose
 			// 
@@ -166,6 +175,24 @@
 			this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEnter);
 			this.dgv.DoubleClick += new System.EventHandler(this.dgv_DoubleClick);
 			// 
+			// stlbRow
+			// 
+			this.stlbRow.Name = "stlbRow";
+			this.stlbRow.Size = new System.Drawing.Size(36, 17);
+			this.stlbRow.Text = "0 row";
+			// 
+			// stlbTotalCost
+			// 
+			this.stlbTotalCost.Name = "stlbTotalCost";
+			this.stlbTotalCost.Size = new System.Drawing.Size(68, 17);
+			this.stlbTotalCost.Text = "total cost: 0";
+			// 
+			// stlbTotalQty
+			// 
+			this.stlbTotalQty.Name = "stlbTotalQty";
+			this.stlbTotalQty.Size = new System.Drawing.Size(63, 17);
+			this.stlbTotalQty.Text = "total qty: 0";
+			// 
 			// ProductionSendStock
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -182,6 +209,8 @@
 			this.Text = "ProductionSendStock";
 			this.Load += new System.EventHandler(this.ProductionSendStock_Load);
 			this.panel1.ResumeLayout(false);
+			this.st.ResumeLayout(false);
+			this.st.PerformLayout();
 			this.panel3.ResumeLayout(false);
 			this.panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
@@ -203,5 +232,8 @@
 		private System.Windows.Forms.Button btnClose;
 		private System.Windows.Forms.Button btnReload;
 		private System.Windows.Forms.Button btnDelete;
+		private System.Windows.Forms.ToolStripStatusLabel stlbRow;
+		private System.Windows.Forms.ToolStripStatusLabel stlbTotalCost;
+		private System.Windows.Forms.ToolStripStatusLabel stlbTotalQty;
 	}
 }
