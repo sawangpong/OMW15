@@ -65,7 +65,6 @@ namespace OMW15.Views.Productions
 			stlbTotalCost.Text = $"total cost: {((DataTable)dgv.DataSource).AsEnumerable().Sum(x => x.Field<Decimal>("RECEIVE_COST")):N2}";
 
 			stlbTotalQty.Text = $"total qty: {((DataTable)dgv.DataSource).AsEnumerable().Sum(x => x.Field<Decimal>("RECEIVE_QTY")):N2}";
-
 		}
 
 		private void ReceiveItem(string receiveNo)
@@ -164,6 +163,7 @@ namespace OMW15.Views.Productions
 				if(new ProductionDAL().DeleteReceiveItem(_selectedReceiveNo) > 0)
 				{
 					MessageBox.Show("ลบใบแปรออกจากระบบแล้ว","Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					GetIssueList(_orderNo);
 				}
 			}
 		}

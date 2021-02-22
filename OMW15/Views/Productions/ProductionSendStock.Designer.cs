@@ -31,6 +31,9 @@
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.st = new System.Windows.Forms.StatusStrip();
+			this.stlbRow = new System.Windows.Forms.ToolStripStatusLabel();
+			this.stlbTotalCost = new System.Windows.Forms.ToolStripStatusLabel();
+			this.stlbTotalQty = new System.Windows.Forms.ToolStripStatusLabel();
 			this.panel3 = new System.Windows.Forms.Panel();
 			this.btnReload = new System.Windows.Forms.Button();
 			this.btnDelete = new System.Windows.Forms.Button();
@@ -39,9 +42,6 @@
 			this.btnAddIssue = new System.Windows.Forms.Button();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.dgv = new System.Windows.Forms.DataGridView();
-			this.stlbRow = new System.Windows.Forms.ToolStripStatusLabel();
-			this.stlbTotalCost = new System.Windows.Forms.ToolStripStatusLabel();
-			this.stlbTotalQty = new System.Windows.Forms.ToolStripStatusLabel();
 			this.panel1.SuspendLayout();
 			this.st.SuspendLayout();
 			this.panel3.SuspendLayout();
@@ -83,6 +83,24 @@
 			this.st.Name = "st";
 			this.st.Size = new System.Drawing.Size(687, 22);
 			this.st.TabIndex = 1;
+			// 
+			// stlbRow
+			// 
+			this.stlbRow.Name = "stlbRow";
+			this.stlbRow.Size = new System.Drawing.Size(36, 17);
+			this.stlbRow.Text = "0 row";
+			// 
+			// stlbTotalCost
+			// 
+			this.stlbTotalCost.Name = "stlbTotalCost";
+			this.stlbTotalCost.Size = new System.Drawing.Size(68, 17);
+			this.stlbTotalCost.Text = "total cost: 0";
+			// 
+			// stlbTotalQty
+			// 
+			this.stlbTotalQty.Name = "stlbTotalQty";
+			this.stlbTotalQty.Size = new System.Drawing.Size(63, 17);
+			this.stlbTotalQty.Text = "total qty: 0";
 			// 
 			// panel3
 			// 
@@ -174,24 +192,6 @@
 			this.dgv.TabIndex = 0;
 			this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEnter);
 			this.dgv.DoubleClick += new System.EventHandler(this.dgv_DoubleClick);
-			// 
-			// stlbRow
-			// 
-			this.stlbRow.Name = "stlbRow";
-			this.stlbRow.Size = new System.Drawing.Size(36, 17);
-			this.stlbRow.Text = "0 row";
-			// 
-			// stlbTotalCost
-			// 
-			this.stlbTotalCost.Name = "stlbTotalCost";
-			this.stlbTotalCost.Size = new System.Drawing.Size(68, 17);
-			this.stlbTotalCost.Text = "total cost: 0";
-			// 
-			// stlbTotalQty
-			// 
-			this.stlbTotalQty.Name = "stlbTotalQty";
-			this.stlbTotalQty.Size = new System.Drawing.Size(63, 17);
-			this.stlbTotalQty.Text = "total qty: 0";
 			// 
 			// ProductionSendStock
 			// 

@@ -39,7 +39,6 @@
 			this.lbJobType = new System.Windows.Forms.Label();
 			this.panel23 = new System.Windows.Forms.Panel();
 			this.txtProductionJob = new System.Windows.Forms.TextBox();
-			this.btnProductionJob = new OMControls.OMFlatButton();
 			this.label28 = new System.Windows.Forms.Label();
 			this.panel21 = new System.Windows.Forms.Panel();
 			this.label1 = new System.Windows.Forms.Label();
@@ -57,26 +56,51 @@
 			this.grbTotalHours = new System.Windows.Forms.GroupBox();
 			this.panel20 = new System.Windows.Forms.Panel();
 			this.lbTotalUnit = new System.Windows.Forms.Label();
-			this.txtTotalQty = new OMControls.Controls.NumericTextBox();
 			this.label23 = new System.Windows.Forms.Label();
 			this.panel19 = new System.Windows.Forms.Panel();
 			this.lbBadUnit = new System.Windows.Forms.Label();
-			this.txtBadQty = new OMControls.Controls.NumericTextBox();
 			this.label26 = new System.Windows.Forms.Label();
 			this.panel18 = new System.Windows.Forms.Panel();
 			this.lbGoodUnit = new System.Windows.Forms.Label();
-			this.txtGoodQty = new OMControls.Controls.NumericTextBox();
 			this.label24 = new System.Windows.Forms.Label();
 			this.panel15 = new System.Windows.Forms.Panel();
 			this.lbUnitProcess = new System.Windows.Forms.Label();
-			this.txtInprocessQty = new OMControls.Controls.NumericTextBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.panel14 = new System.Windows.Forms.Panel();
-			this.txtTotalHourCost = new OMControls.Controls.NumericTextBox();
 			this.lbTotalHrCost = new System.Windows.Forms.Label();
 			this.label13 = new System.Windows.Forms.Label();
-			this.txtTotalWorkHours = new OMControls.Controls.NumericTextBox();
 			this.label14 = new System.Windows.Forms.Label();
+			this.panel10 = new System.Windows.Forms.Panel();
+			this.lbHourRate = new System.Windows.Forms.Label();
+			this.rdoHolidayWork = new System.Windows.Forms.RadioButton();
+			this.rdoWorkingday = new System.Windows.Forms.RadioButton();
+			this.panel4 = new System.Windows.Forms.Panel();
+			this.txtProcessDetail = new System.Windows.Forms.TextBox();
+			this.label25 = new System.Windows.Forms.Label();
+			this.txtProcess = new System.Windows.Forms.TextBox();
+			this.lbStep = new System.Windows.Forms.Label();
+			this.panel3 = new System.Windows.Forms.Panel();
+			this.txtDrawing = new System.Windows.Forms.TextBox();
+			this.label20 = new System.Windows.Forms.Label();
+			this.txtWorker = new System.Windows.Forms.TextBox();
+			this.pnlWorkingSource = new System.Windows.Forms.Panel();
+			this.lbEmpId = new System.Windows.Forms.Label();
+			this.lbWorkerId = new System.Windows.Forms.Label();
+			this.panel2 = new System.Windows.Forms.Panel();
+			this.txtItemName = new System.Windows.Forms.TextBox();
+			this.txtItemNo = new System.Windows.Forms.TextBox();
+			this.label27 = new System.Windows.Forms.Label();
+			this.dtpWorkDate = new System.Windows.Forms.DateTimePicker();
+			this.label2 = new System.Windows.Forms.Label();
+			this.chkWorkTime = new System.Windows.Forms.CheckBox();
+			this.workInfoErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+			this.ProcessErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+			this.txtTotalQty = new OMControls.Controls.NumericTextBox();
+			this.txtBadQty = new OMControls.Controls.NumericTextBox();
+			this.txtGoodQty = new OMControls.Controls.NumericTextBox();
+			this.txtInprocessQty = new OMControls.Controls.NumericTextBox();
+			this.txtTotalHourCost = new OMControls.Controls.NumericTextBox();
+			this.txtTotalWorkHours = new OMControls.Controls.NumericTextBox();
 			this.chkgOT = new OMControls.CheckGroupBox();
 			this.lbOTCheck = new System.Windows.Forms.Label();
 			this.lbNTCheck = new System.Windows.Forms.Label();
@@ -110,35 +134,11 @@
 			this.panel7 = new System.Windows.Forms.Panel();
 			this.dtpWorkTimeStart = new System.Windows.Forms.DateTimePicker();
 			this.label5 = new System.Windows.Forms.Label();
-			this.panel10 = new System.Windows.Forms.Panel();
-			this.lbHourRate = new System.Windows.Forms.Label();
 			this.txtHourRate = new OMControls.Controls.NumericTextBox();
-			this.rdoHolidayWork = new System.Windows.Forms.RadioButton();
-			this.rdoWorkingday = new System.Windows.Forms.RadioButton();
-			this.panel4 = new System.Windows.Forms.Panel();
-			this.txtProcessDetail = new System.Windows.Forms.TextBox();
-			this.label25 = new System.Windows.Forms.Label();
 			this.btnProcess = new OMControls.OMFlatButton();
-			this.txtProcess = new System.Windows.Forms.TextBox();
-			this.lbStep = new System.Windows.Forms.Label();
-			this.panel3 = new System.Windows.Forms.Panel();
-			this.txtDrawing = new System.Windows.Forms.TextBox();
-			this.label20 = new System.Windows.Forms.Label();
 			this.btnWorkSource = new OMControls.OMFlatButton();
-			this.txtWorker = new System.Windows.Forms.TextBox();
-			this.pnlWorkingSource = new System.Windows.Forms.Panel();
-			this.lbEmpId = new System.Windows.Forms.Label();
-			this.lbWorkerId = new System.Windows.Forms.Label();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.txtItemName = new System.Windows.Forms.TextBox();
 			this.btnItemNo = new OMControls.OMFlatButton();
-			this.txtItemNo = new System.Windows.Forms.TextBox();
-			this.label27 = new System.Windows.Forms.Label();
-			this.dtpWorkDate = new System.Windows.Forms.DateTimePicker();
-			this.label2 = new System.Windows.Forms.Label();
-			this.chkWorkTime = new System.Windows.Forms.CheckBox();
-			this.workInfoErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-			this.ProcessErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+			this.btnProductionJob = new OMControls.OMFlatButton();
 			this.panel1.SuspendLayout();
 			this.pnlHeader.SuspendLayout();
 			this.panel22.SuspendLayout();
@@ -155,6 +155,13 @@
 			this.panel18.SuspendLayout();
 			this.panel15.SuspendLayout();
 			this.panel14.SuspendLayout();
+			this.panel10.SuspendLayout();
+			this.panel4.SuspendLayout();
+			this.panel3.SuspendLayout();
+			this.pnlWorkingSource.SuspendLayout();
+			this.panel2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.workInfoErrorProvider)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ProcessErrorProvider)).BeginInit();
 			this.chkgOT.SuspendLayout();
 			this.panel17.SuspendLayout();
 			this.panel11.SuspendLayout();
@@ -165,13 +172,6 @@
 			this.panel9.SuspendLayout();
 			this.panel8.SuspendLayout();
 			this.panel7.SuspendLayout();
-			this.panel10.SuspendLayout();
-			this.panel4.SuspendLayout();
-			this.panel3.SuspendLayout();
-			this.pnlWorkingSource.SuspendLayout();
-			this.panel2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.workInfoErrorProvider)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.ProcessErrorProvider)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -281,22 +281,6 @@
 			this.txtProductionJob.Size = new System.Drawing.Size(231, 33);
 			this.txtProductionJob.TabIndex = 7;
 			this.txtProductionJob.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProductionJob_KeyPress);
-			// 
-			// btnProductionJob
-			// 
-			this.btnProductionJob.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnProductionJob.Dock = System.Windows.Forms.DockStyle.Right;
-			this.btnProductionJob.FlatAppearance.BorderSize = 0;
-			this.btnProductionJob.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
-			this.btnProductionJob.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.btnProductionJob.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnProductionJob.Image = ((System.Drawing.Image)(resources.GetObject("btnProductionJob.Image")));
-			this.btnProductionJob.Location = new System.Drawing.Point(321, 2);
-			this.btnProductionJob.Name = "btnProductionJob";
-			this.btnProductionJob.Size = new System.Drawing.Size(32, 32);
-			this.btnProductionJob.TabIndex = 6;
-			this.btnProductionJob.UseVisualStyleBackColor = true;
-			this.btnProductionJob.Click += new System.EventHandler(this.btnProductionJob_Click);
 			// 
 			// label28
 			// 
@@ -502,30 +486,6 @@
 			this.lbTotalUnit.Text = "ชิ้น";
 			this.lbTotalUnit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// txtTotalQty
-			// 
-			this.txtTotalQty.AllowControl = true;
-			this.txtTotalQty.AllowDecimal = true;
-			this.txtTotalQty.AllowMultipleDecimals = true;
-			this.txtTotalQty.AllowNegation = true;
-			this.txtTotalQty.DecimalValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
-			this.txtTotalQty.Dock = System.Windows.Forms.DockStyle.Left;
-			this.txtTotalQty.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtTotalQty.IntegerValue = 0;
-			this.txtTotalQty.Location = new System.Drawing.Point(179, 1);
-			this.txtTotalQty.MaxLength = 6;
-			this.txtTotalQty.Name = "txtTotalQty";
-			this.txtTotalQty.ReadOnly = true;
-			this.txtTotalQty.Size = new System.Drawing.Size(95, 25);
-			this.txtTotalQty.TabIndex = 5;
-			this.txtTotalQty.Text = "0.00";
-			this.txtTotalQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.txtTotalQty.TextChanged += new System.EventHandler(this.txtTotalQty_TextChanged);
-			// 
 			// label23
 			// 
 			this.label23.Dock = System.Windows.Forms.DockStyle.Left;
@@ -557,29 +517,6 @@
 			this.lbBadUnit.TabIndex = 6;
 			this.lbBadUnit.Text = "ชิ้น";
 			this.lbBadUnit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// txtBadQty
-			// 
-			this.txtBadQty.AllowControl = true;
-			this.txtBadQty.AllowDecimal = true;
-			this.txtBadQty.AllowMultipleDecimals = true;
-			this.txtBadQty.AllowNegation = true;
-			this.txtBadQty.DecimalValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
-			this.txtBadQty.Dock = System.Windows.Forms.DockStyle.Left;
-			this.txtBadQty.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtBadQty.IntegerValue = 0;
-			this.txtBadQty.Location = new System.Drawing.Point(179, 1);
-			this.txtBadQty.MaxLength = 6;
-			this.txtBadQty.Name = "txtBadQty";
-			this.txtBadQty.Size = new System.Drawing.Size(95, 25);
-			this.txtBadQty.TabIndex = 5;
-			this.txtBadQty.Text = "0.00";
-			this.txtBadQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.txtBadQty.TextChanged += new System.EventHandler(this.txtQty_TextChanged);
 			// 
 			// label26
 			// 
@@ -613,29 +550,6 @@
 			this.lbGoodUnit.Text = "ชิ้น";
 			this.lbGoodUnit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// txtGoodQty
-			// 
-			this.txtGoodQty.AllowControl = true;
-			this.txtGoodQty.AllowDecimal = true;
-			this.txtGoodQty.AllowMultipleDecimals = true;
-			this.txtGoodQty.AllowNegation = true;
-			this.txtGoodQty.DecimalValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
-			this.txtGoodQty.Dock = System.Windows.Forms.DockStyle.Left;
-			this.txtGoodQty.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtGoodQty.IntegerValue = 0;
-			this.txtGoodQty.Location = new System.Drawing.Point(179, 1);
-			this.txtGoodQty.MaxLength = 6;
-			this.txtGoodQty.Name = "txtGoodQty";
-			this.txtGoodQty.Size = new System.Drawing.Size(95, 25);
-			this.txtGoodQty.TabIndex = 5;
-			this.txtGoodQty.Text = "0.00";
-			this.txtGoodQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.txtGoodQty.TextChanged += new System.EventHandler(this.txtQty_TextChanged);
-			// 
 			// label24
 			// 
 			this.label24.Dock = System.Windows.Forms.DockStyle.Left;
@@ -668,29 +582,6 @@
 			this.lbUnitProcess.Text = "ชิ้น";
 			this.lbUnitProcess.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// txtInprocessQty
-			// 
-			this.txtInprocessQty.AllowControl = true;
-			this.txtInprocessQty.AllowDecimal = true;
-			this.txtInprocessQty.AllowMultipleDecimals = true;
-			this.txtInprocessQty.AllowNegation = true;
-			this.txtInprocessQty.DecimalValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
-			this.txtInprocessQty.Dock = System.Windows.Forms.DockStyle.Left;
-			this.txtInprocessQty.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtInprocessQty.IntegerValue = 0;
-			this.txtInprocessQty.Location = new System.Drawing.Point(179, 1);
-			this.txtInprocessQty.MaxLength = 6;
-			this.txtInprocessQty.Name = "txtInprocessQty";
-			this.txtInprocessQty.Size = new System.Drawing.Size(95, 25);
-			this.txtInprocessQty.TabIndex = 6;
-			this.txtInprocessQty.Text = "0.00";
-			this.txtInprocessQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.txtInprocessQty.TextChanged += new System.EventHandler(this.txtInprocessQty_TextChanged);
-			// 
 			// label4
 			// 
 			this.label4.Dock = System.Windows.Forms.DockStyle.Left;
@@ -715,6 +606,408 @@
 			this.panel14.Size = new System.Drawing.Size(436, 28);
 			this.panel14.TabIndex = 11;
 			// 
+			// lbTotalHrCost
+			// 
+			this.lbTotalHrCost.Dock = System.Windows.Forms.DockStyle.Left;
+			this.lbTotalHrCost.Location = new System.Drawing.Point(220, 1);
+			this.lbTotalHrCost.Name = "lbTotalHrCost";
+			this.lbTotalHrCost.Size = new System.Drawing.Size(105, 26);
+			this.lbTotalHrCost.TabIndex = 7;
+			this.lbTotalHrCost.Text = "ค่าแรงรวม  (บาท) :";
+			this.lbTotalHrCost.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// label13
+			// 
+			this.label13.Dock = System.Windows.Forms.DockStyle.Left;
+			this.label13.Location = new System.Drawing.Point(179, 1);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(41, 26);
+			this.label13.TabIndex = 6;
+			this.label13.Text = "ช.ม.";
+			this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// label14
+			// 
+			this.label14.Dock = System.Windows.Forms.DockStyle.Left;
+			this.label14.Location = new System.Drawing.Point(1, 1);
+			this.label14.Name = "label14";
+			this.label14.Size = new System.Drawing.Size(108, 26);
+			this.label14.TabIndex = 4;
+			this.label14.Text = "ชั่วโมงทำงานรวม :";
+			this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// panel10
+			// 
+			this.panel10.Controls.Add(this.lbHourRate);
+			this.panel10.Controls.Add(this.txtHourRate);
+			this.panel10.Controls.Add(this.rdoHolidayWork);
+			this.panel10.Controls.Add(this.rdoWorkingday);
+			this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel10.Location = new System.Drawing.Point(10, 28);
+			this.panel10.Name = "panel10";
+			this.panel10.Padding = new System.Windows.Forms.Padding(1);
+			this.panel10.Size = new System.Drawing.Size(878, 28);
+			this.panel10.TabIndex = 6;
+			// 
+			// lbHourRate
+			// 
+			this.lbHourRate.Dock = System.Windows.Forms.DockStyle.Right;
+			this.lbHourRate.Location = new System.Drawing.Point(654, 1);
+			this.lbHourRate.Name = "lbHourRate";
+			this.lbHourRate.Size = new System.Drawing.Size(147, 26);
+			this.lbHourRate.TabIndex = 7;
+			this.lbHourRate.Text = "อัตราค่าแรง / ช.ม. (บาท) : ";
+			this.lbHourRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// rdoHolidayWork
+			// 
+			this.rdoHolidayWork.AutoSize = true;
+			this.rdoHolidayWork.Checked = true;
+			this.rdoHolidayWork.Dock = System.Windows.Forms.DockStyle.Left;
+			this.rdoHolidayWork.Location = new System.Drawing.Point(183, 1);
+			this.rdoHolidayWork.Name = "rdoHolidayWork";
+			this.rdoHolidayWork.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+			this.rdoHolidayWork.Size = new System.Drawing.Size(244, 26);
+			this.rdoHolidayWork.TabIndex = 1;
+			this.rdoHolidayWork.TabStop = true;
+			this.rdoHolidayWork.Tag = "HOLIDAY";
+			this.rdoHolidayWork.Text = "ทำงานวันหยุด (อาทิตย์ และ วันหยุดอื่นๆ)";
+			this.rdoHolidayWork.UseVisualStyleBackColor = true;
+			this.rdoHolidayWork.CheckedChanged += new System.EventHandler(this.rdoWorkingday_CheckedChanged);
+			// 
+			// rdoWorkingday
+			// 
+			this.rdoWorkingday.AutoSize = true;
+			this.rdoWorkingday.Dock = System.Windows.Forms.DockStyle.Left;
+			this.rdoWorkingday.Location = new System.Drawing.Point(1, 1);
+			this.rdoWorkingday.Name = "rdoWorkingday";
+			this.rdoWorkingday.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+			this.rdoWorkingday.Size = new System.Drawing.Size(182, 26);
+			this.rdoWorkingday.TabIndex = 0;
+			this.rdoWorkingday.Tag = "NORMAL";
+			this.rdoWorkingday.Text = "ทำงานปรกติ (จันทร - เสาร์)";
+			this.rdoWorkingday.UseVisualStyleBackColor = true;
+			this.rdoWorkingday.CheckedChanged += new System.EventHandler(this.rdoWorkingday_CheckedChanged);
+			// 
+			// panel4
+			// 
+			this.panel4.Controls.Add(this.txtProcessDetail);
+			this.panel4.Controls.Add(this.label25);
+			this.panel4.Controls.Add(this.btnProcess);
+			this.panel4.Controls.Add(this.txtProcess);
+			this.panel4.Controls.Add(this.lbStep);
+			this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel4.Location = new System.Drawing.Point(10, 84);
+			this.panel4.Name = "panel4";
+			this.panel4.Padding = new System.Windows.Forms.Padding(1);
+			this.panel4.Size = new System.Drawing.Size(918, 28);
+			this.panel4.TabIndex = 3;
+			// 
+			// txtProcessDetail
+			// 
+			this.txtProcessDetail.Dock = System.Windows.Forms.DockStyle.Left;
+			this.workInfoErrorProvider.SetError(this.txtProcessDetail, "ในกรณีที่เป็นงาน Project ต้อวใส่รายละเอียดการทำงาน");
+			this.workInfoErrorProvider.SetIconAlignment(this.txtProcessDetail, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+			this.txtProcessDetail.Location = new System.Drawing.Point(475, 1);
+			this.txtProcessDetail.MaxLength = 150;
+			this.txtProcessDetail.Name = "txtProcessDetail";
+			this.txtProcessDetail.Size = new System.Drawing.Size(375, 25);
+			this.txtProcessDetail.TabIndex = 8;
+			this.txtProcessDetail.TextChanged += new System.EventHandler(this.txtProcess_TextChanged);
+			this.txtProcessDetail.Validated += new System.EventHandler(this.txtProcessDetail_Validated);
+			// 
+			// label25
+			// 
+			this.label25.Dock = System.Windows.Forms.DockStyle.Left;
+			this.label25.Location = new System.Drawing.Point(341, 1);
+			this.label25.Name = "label25";
+			this.label25.Size = new System.Drawing.Size(134, 26);
+			this.label25.TabIndex = 7;
+			this.label25.Text = "รายละเอียด (งาน) :";
+			this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// txtProcess
+			// 
+			this.txtProcess.Dock = System.Windows.Forms.DockStyle.Left;
+			this.ProcessErrorProvider.SetError(this.txtProcess, "Must have process");
+			this.ProcessErrorProvider.SetIconAlignment(this.txtProcess, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+			this.workInfoErrorProvider.SetIconAlignment(this.txtProcess, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+			this.txtProcess.Location = new System.Drawing.Point(132, 1);
+			this.txtProcess.MaxLength = 50;
+			this.txtProcess.Name = "txtProcess";
+			this.txtProcess.ReadOnly = true;
+			this.txtProcess.Size = new System.Drawing.Size(183, 25);
+			this.txtProcess.TabIndex = 5;
+			this.txtProcess.TextChanged += new System.EventHandler(this.txtProcess_TextChanged);
+			this.txtProcess.Validated += new System.EventHandler(this.txtProcess_Validated);
+			// 
+			// lbStep
+			// 
+			this.lbStep.Dock = System.Windows.Forms.DockStyle.Left;
+			this.lbStep.Location = new System.Drawing.Point(1, 1);
+			this.lbStep.Name = "lbStep";
+			this.lbStep.Size = new System.Drawing.Size(131, 26);
+			this.lbStep.TabIndex = 3;
+			this.lbStep.Text = "ขั้นตอนการผลิต (#0):";
+			this.lbStep.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// panel3
+			// 
+			this.panel3.Controls.Add(this.txtDrawing);
+			this.panel3.Controls.Add(this.label20);
+			this.panel3.Controls.Add(this.btnWorkSource);
+			this.panel3.Controls.Add(this.txtWorker);
+			this.panel3.Controls.Add(this.pnlWorkingSource);
+			this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel3.Location = new System.Drawing.Point(10, 56);
+			this.panel3.Name = "panel3";
+			this.panel3.Padding = new System.Windows.Forms.Padding(1);
+			this.panel3.Size = new System.Drawing.Size(918, 28);
+			this.panel3.TabIndex = 2;
+			// 
+			// txtDrawing
+			// 
+			this.txtDrawing.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+			this.txtDrawing.Dock = System.Windows.Forms.DockStyle.Left;
+			this.txtDrawing.Location = new System.Drawing.Point(475, 1);
+			this.txtDrawing.MaxLength = 30;
+			this.txtDrawing.Name = "txtDrawing";
+			this.txtDrawing.Size = new System.Drawing.Size(200, 25);
+			this.txtDrawing.TabIndex = 12;
+			this.txtDrawing.TextChanged += new System.EventHandler(this.txtDrawing_TextChanged);
+			// 
+			// label20
+			// 
+			this.label20.Dock = System.Windows.Forms.DockStyle.Left;
+			this.label20.Location = new System.Drawing.Point(341, 1);
+			this.label20.Name = "label20";
+			this.label20.Size = new System.Drawing.Size(134, 26);
+			this.label20.TabIndex = 11;
+			this.label20.Text = "หมายเลขแบบ :";
+			this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// txtWorker
+			// 
+			this.txtWorker.Dock = System.Windows.Forms.DockStyle.Left;
+			this.txtWorker.Enabled = false;
+			this.txtWorker.Location = new System.Drawing.Point(132, 1);
+			this.txtWorker.MaxLength = 50;
+			this.txtWorker.Name = "txtWorker";
+			this.txtWorker.ReadOnly = true;
+			this.txtWorker.Size = new System.Drawing.Size(183, 25);
+			this.txtWorker.TabIndex = 8;
+			this.txtWorker.TextChanged += new System.EventHandler(this.txtWorker_TextChanged);
+			// 
+			// pnlWorkingSource
+			// 
+			this.pnlWorkingSource.Controls.Add(this.lbEmpId);
+			this.pnlWorkingSource.Controls.Add(this.lbWorkerId);
+			this.pnlWorkingSource.Dock = System.Windows.Forms.DockStyle.Left;
+			this.pnlWorkingSource.Location = new System.Drawing.Point(1, 1);
+			this.pnlWorkingSource.Name = "pnlWorkingSource";
+			this.pnlWorkingSource.Padding = new System.Windows.Forms.Padding(1);
+			this.pnlWorkingSource.Size = new System.Drawing.Size(131, 26);
+			this.pnlWorkingSource.TabIndex = 7;
+			// 
+			// lbEmpId
+			// 
+			this.lbEmpId.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lbEmpId.ForeColor = System.Drawing.SystemColors.ControlDark;
+			this.lbEmpId.Location = new System.Drawing.Point(73, 1);
+			this.lbEmpId.Name = "lbEmpId";
+			this.lbEmpId.Size = new System.Drawing.Size(57, 24);
+			this.lbEmpId.TabIndex = 11;
+			this.lbEmpId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// lbWorkerId
+			// 
+			this.lbWorkerId.Dock = System.Windows.Forms.DockStyle.Left;
+			this.lbWorkerId.Location = new System.Drawing.Point(1, 1);
+			this.lbWorkerId.Name = "lbWorkerId";
+			this.lbWorkerId.Size = new System.Drawing.Size(72, 24);
+			this.lbWorkerId.TabIndex = 2;
+			this.lbWorkerId.Text = "ชื่อช่าง :";
+			this.lbWorkerId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// panel2
+			// 
+			this.panel2.Controls.Add(this.txtItemName);
+			this.panel2.Controls.Add(this.btnItemNo);
+			this.panel2.Controls.Add(this.txtItemNo);
+			this.panel2.Controls.Add(this.label27);
+			this.panel2.Controls.Add(this.dtpWorkDate);
+			this.panel2.Controls.Add(this.label2);
+			this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel2.Location = new System.Drawing.Point(10, 28);
+			this.panel2.Name = "panel2";
+			this.panel2.Padding = new System.Windows.Forms.Padding(1);
+			this.panel2.Size = new System.Drawing.Size(918, 28);
+			this.panel2.TabIndex = 1;
+			// 
+			// txtItemName
+			// 
+			this.txtItemName.Dock = System.Windows.Forms.DockStyle.Left;
+			this.txtItemName.Location = new System.Drawing.Point(475, 1);
+			this.txtItemName.MaxLength = 150;
+			this.txtItemName.Name = "txtItemName";
+			this.txtItemName.ReadOnly = true;
+			this.txtItemName.Size = new System.Drawing.Size(349, 25);
+			this.txtItemName.TabIndex = 11;
+			// 
+			// txtItemNo
+			// 
+			this.txtItemNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+			this.txtItemNo.Dock = System.Windows.Forms.DockStyle.Left;
+			this.txtItemNo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtItemNo.Location = new System.Drawing.Point(337, 1);
+			this.txtItemNo.MaxLength = 35;
+			this.txtItemNo.Name = "txtItemNo";
+			this.txtItemNo.ReadOnly = true;
+			this.txtItemNo.Size = new System.Drawing.Size(112, 25);
+			this.txtItemNo.TabIndex = 9;
+			// 
+			// label27
+			// 
+			this.label27.Dock = System.Windows.Forms.DockStyle.Left;
+			this.label27.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label27.Location = new System.Drawing.Point(243, 1);
+			this.label27.Name = "label27";
+			this.label27.Size = new System.Drawing.Size(94, 26);
+			this.label27.TabIndex = 8;
+			this.label27.Text = "รหัสชิ้นงาน :";
+			this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// dtpWorkDate
+			// 
+			this.dtpWorkDate.Dock = System.Windows.Forms.DockStyle.Left;
+			this.dtpWorkDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+			this.dtpWorkDate.Location = new System.Drawing.Point(132, 1);
+			this.dtpWorkDate.Name = "dtpWorkDate";
+			this.dtpWorkDate.Size = new System.Drawing.Size(111, 25);
+			this.dtpWorkDate.TabIndex = 2;
+			this.dtpWorkDate.ValueChanged += new System.EventHandler(this.dtpWorkDate_ValueChanged);
+			// 
+			// label2
+			// 
+			this.label2.Dock = System.Windows.Forms.DockStyle.Left;
+			this.label2.Location = new System.Drawing.Point(1, 1);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(131, 26);
+			this.label2.TabIndex = 1;
+			this.label2.Text = "** วันที่ทำงาน :";
+			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// chkWorkTime
+			// 
+			this.chkWorkTime.AutoSize = true;
+			this.chkWorkTime.Location = new System.Drawing.Point(10, 0);
+			this.chkWorkTime.Name = "chkWorkTime";
+			this.chkWorkTime.Size = new System.Drawing.Size(90, 21);
+			this.chkWorkTime.TabIndex = 12;
+			this.chkWorkTime.Text = "Work Time";
+			this.chkWorkTime.UseVisualStyleBackColor = true;
+			// 
+			// workInfoErrorProvider
+			// 
+			this.workInfoErrorProvider.ContainerControl = this;
+			// 
+			// ProcessErrorProvider
+			// 
+			this.ProcessErrorProvider.ContainerControl = this;
+			// 
+			// txtTotalQty
+			// 
+			this.txtTotalQty.AllowControl = true;
+			this.txtTotalQty.AllowDecimal = true;
+			this.txtTotalQty.AllowMultipleDecimals = true;
+			this.txtTotalQty.AllowNegation = true;
+			this.txtTotalQty.DecimalValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+			this.txtTotalQty.Dock = System.Windows.Forms.DockStyle.Left;
+			this.txtTotalQty.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtTotalQty.IntegerValue = 0;
+			this.txtTotalQty.Location = new System.Drawing.Point(179, 1);
+			this.txtTotalQty.MaxLength = 6;
+			this.txtTotalQty.Name = "txtTotalQty";
+			this.txtTotalQty.ReadOnly = true;
+			this.txtTotalQty.Size = new System.Drawing.Size(95, 25);
+			this.txtTotalQty.TabIndex = 5;
+			this.txtTotalQty.Text = "0.00";
+			this.txtTotalQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.txtTotalQty.TextChanged += new System.EventHandler(this.txtTotalQty_TextChanged);
+			// 
+			// txtBadQty
+			// 
+			this.txtBadQty.AllowControl = true;
+			this.txtBadQty.AllowDecimal = true;
+			this.txtBadQty.AllowMultipleDecimals = true;
+			this.txtBadQty.AllowNegation = true;
+			this.txtBadQty.DecimalValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+			this.txtBadQty.Dock = System.Windows.Forms.DockStyle.Left;
+			this.txtBadQty.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtBadQty.IntegerValue = 0;
+			this.txtBadQty.Location = new System.Drawing.Point(179, 1);
+			this.txtBadQty.MaxLength = 6;
+			this.txtBadQty.Name = "txtBadQty";
+			this.txtBadQty.Size = new System.Drawing.Size(95, 25);
+			this.txtBadQty.TabIndex = 5;
+			this.txtBadQty.Text = "0.00";
+			this.txtBadQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.txtBadQty.TextChanged += new System.EventHandler(this.txtQty_TextChanged);
+			// 
+			// txtGoodQty
+			// 
+			this.txtGoodQty.AllowControl = true;
+			this.txtGoodQty.AllowDecimal = true;
+			this.txtGoodQty.AllowMultipleDecimals = true;
+			this.txtGoodQty.AllowNegation = true;
+			this.txtGoodQty.DecimalValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+			this.txtGoodQty.Dock = System.Windows.Forms.DockStyle.Left;
+			this.txtGoodQty.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtGoodQty.IntegerValue = 0;
+			this.txtGoodQty.Location = new System.Drawing.Point(179, 1);
+			this.txtGoodQty.MaxLength = 6;
+			this.txtGoodQty.Name = "txtGoodQty";
+			this.txtGoodQty.Size = new System.Drawing.Size(95, 25);
+			this.txtGoodQty.TabIndex = 5;
+			this.txtGoodQty.Text = "0.00";
+			this.txtGoodQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.txtGoodQty.TextChanged += new System.EventHandler(this.txtQty_TextChanged);
+			// 
+			// txtInprocessQty
+			// 
+			this.txtInprocessQty.AllowControl = true;
+			this.txtInprocessQty.AllowDecimal = true;
+			this.txtInprocessQty.AllowMultipleDecimals = true;
+			this.txtInprocessQty.AllowNegation = true;
+			this.txtInprocessQty.DecimalValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+			this.txtInprocessQty.Dock = System.Windows.Forms.DockStyle.Left;
+			this.txtInprocessQty.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtInprocessQty.IntegerValue = 0;
+			this.txtInprocessQty.Location = new System.Drawing.Point(179, 1);
+			this.txtInprocessQty.MaxLength = 6;
+			this.txtInprocessQty.Name = "txtInprocessQty";
+			this.txtInprocessQty.Size = new System.Drawing.Size(95, 25);
+			this.txtInprocessQty.TabIndex = 6;
+			this.txtInprocessQty.Text = "0.00";
+			this.txtInprocessQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.txtInprocessQty.TextChanged += new System.EventHandler(this.txtInprocessQty_TextChanged);
+			// 
 			// txtTotalHourCost
 			// 
 			this.txtTotalHourCost.AllowControl = true;
@@ -737,26 +1030,6 @@
 			this.txtTotalHourCost.TabIndex = 8;
 			this.txtTotalHourCost.Text = "0.00";
 			this.txtTotalHourCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
-			// lbTotalHrCost
-			// 
-			this.lbTotalHrCost.Dock = System.Windows.Forms.DockStyle.Left;
-			this.lbTotalHrCost.Location = new System.Drawing.Point(220, 1);
-			this.lbTotalHrCost.Name = "lbTotalHrCost";
-			this.lbTotalHrCost.Size = new System.Drawing.Size(105, 26);
-			this.lbTotalHrCost.TabIndex = 7;
-			this.lbTotalHrCost.Text = "ค่าแรงรวม  (บาท) :";
-			this.lbTotalHrCost.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// label13
-			// 
-			this.label13.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label13.Location = new System.Drawing.Point(179, 1);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(41, 26);
-			this.label13.TabIndex = 6;
-			this.label13.Text = "ช.ม.";
-			this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// txtTotalWorkHours
 			// 
@@ -781,16 +1054,6 @@
 			this.txtTotalWorkHours.Text = "0.00";
 			this.txtTotalWorkHours.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.txtTotalWorkHours.TextChanged += new System.EventHandler(this.txtTotalWorkHours_TextChanged);
-			// 
-			// label14
-			// 
-			this.label14.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label14.Location = new System.Drawing.Point(1, 1);
-			this.label14.Name = "label14";
-			this.label14.Size = new System.Drawing.Size(108, 26);
-			this.label14.TabIndex = 4;
-			this.label14.Text = "ชั่วโมงทำงานรวม :";
-			this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// chkgOT
 			// 
@@ -1227,29 +1490,6 @@
 			this.label5.Text = "เริ่ม :";
 			this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// panel10
-			// 
-			this.panel10.Controls.Add(this.lbHourRate);
-			this.panel10.Controls.Add(this.txtHourRate);
-			this.panel10.Controls.Add(this.rdoHolidayWork);
-			this.panel10.Controls.Add(this.rdoWorkingday);
-			this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel10.Location = new System.Drawing.Point(10, 28);
-			this.panel10.Name = "panel10";
-			this.panel10.Padding = new System.Windows.Forms.Padding(1);
-			this.panel10.Size = new System.Drawing.Size(878, 28);
-			this.panel10.TabIndex = 6;
-			// 
-			// lbHourRate
-			// 
-			this.lbHourRate.Dock = System.Windows.Forms.DockStyle.Right;
-			this.lbHourRate.Location = new System.Drawing.Point(654, 1);
-			this.lbHourRate.Name = "lbHourRate";
-			this.lbHourRate.Size = new System.Drawing.Size(147, 26);
-			this.lbHourRate.TabIndex = 7;
-			this.lbHourRate.Text = "อัตราค่าแรง / ช.ม. (บาท) : ";
-			this.lbHourRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
 			// txtHourRate
 			// 
 			this.txtHourRate.AllowControl = true;
@@ -1273,72 +1513,6 @@
 			this.txtHourRate.Text = "0.00";
 			this.txtHourRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// rdoHolidayWork
-			// 
-			this.rdoHolidayWork.AutoSize = true;
-			this.rdoHolidayWork.Checked = true;
-			this.rdoHolidayWork.Dock = System.Windows.Forms.DockStyle.Left;
-			this.rdoHolidayWork.Location = new System.Drawing.Point(183, 1);
-			this.rdoHolidayWork.Name = "rdoHolidayWork";
-			this.rdoHolidayWork.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-			this.rdoHolidayWork.Size = new System.Drawing.Size(244, 26);
-			this.rdoHolidayWork.TabIndex = 1;
-			this.rdoHolidayWork.TabStop = true;
-			this.rdoHolidayWork.Tag = "HOLIDAY";
-			this.rdoHolidayWork.Text = "ทำงานวันหยุด (อาทิตย์ และ วันหยุดอื่นๆ)";
-			this.rdoHolidayWork.UseVisualStyleBackColor = true;
-			this.rdoHolidayWork.CheckedChanged += new System.EventHandler(this.rdoWorkingday_CheckedChanged);
-			// 
-			// rdoWorkingday
-			// 
-			this.rdoWorkingday.AutoSize = true;
-			this.rdoWorkingday.Dock = System.Windows.Forms.DockStyle.Left;
-			this.rdoWorkingday.Location = new System.Drawing.Point(1, 1);
-			this.rdoWorkingday.Name = "rdoWorkingday";
-			this.rdoWorkingday.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-			this.rdoWorkingday.Size = new System.Drawing.Size(182, 26);
-			this.rdoWorkingday.TabIndex = 0;
-			this.rdoWorkingday.Tag = "NORMAL";
-			this.rdoWorkingday.Text = "ทำงานปรกติ (จันทร - เสาร์)";
-			this.rdoWorkingday.UseVisualStyleBackColor = true;
-			this.rdoWorkingday.CheckedChanged += new System.EventHandler(this.rdoWorkingday_CheckedChanged);
-			// 
-			// panel4
-			// 
-			this.panel4.Controls.Add(this.txtProcessDetail);
-			this.panel4.Controls.Add(this.label25);
-			this.panel4.Controls.Add(this.btnProcess);
-			this.panel4.Controls.Add(this.txtProcess);
-			this.panel4.Controls.Add(this.lbStep);
-			this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel4.Location = new System.Drawing.Point(10, 84);
-			this.panel4.Name = "panel4";
-			this.panel4.Padding = new System.Windows.Forms.Padding(1);
-			this.panel4.Size = new System.Drawing.Size(918, 28);
-			this.panel4.TabIndex = 3;
-			// 
-			// txtProcessDetail
-			// 
-			this.txtProcessDetail.Dock = System.Windows.Forms.DockStyle.Left;
-			this.workInfoErrorProvider.SetError(this.txtProcessDetail, "ในกรณีที่เป็นงาน Project ต้อวใส่รายละเอียดการทำงาน");
-			this.txtProcessDetail.Location = new System.Drawing.Point(475, 1);
-			this.txtProcessDetail.MaxLength = 150;
-			this.txtProcessDetail.Name = "txtProcessDetail";
-			this.txtProcessDetail.Size = new System.Drawing.Size(375, 25);
-			this.txtProcessDetail.TabIndex = 8;
-			this.txtProcessDetail.TextChanged += new System.EventHandler(this.txtProcess_TextChanged);
-			this.txtProcessDetail.Validated += new System.EventHandler(this.txtProcessDetail_Validated);
-			// 
-			// label25
-			// 
-			this.label25.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label25.Location = new System.Drawing.Point(341, 1);
-			this.label25.Name = "label25";
-			this.label25.Size = new System.Drawing.Size(134, 26);
-			this.label25.TabIndex = 7;
-			this.label25.Text = "รายละเอียด (งาน) :";
-			this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
 			// btnProcess
 			// 
 			this.btnProcess.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1355,64 +1529,6 @@
 			this.btnProcess.UseVisualStyleBackColor = true;
 			this.btnProcess.Click += new System.EventHandler(this.btnProcess_Click);
 			// 
-			// txtProcess
-			// 
-			this.txtProcess.Dock = System.Windows.Forms.DockStyle.Left;
-			this.ProcessErrorProvider.SetError(this.txtProcess, "Must have process");
-			this.txtProcess.Location = new System.Drawing.Point(132, 1);
-			this.txtProcess.MaxLength = 50;
-			this.txtProcess.Name = "txtProcess";
-			this.txtProcess.ReadOnly = true;
-			this.txtProcess.Size = new System.Drawing.Size(183, 25);
-			this.txtProcess.TabIndex = 5;
-			this.txtProcess.TextChanged += new System.EventHandler(this.txtProcess_TextChanged);
-			this.txtProcess.Validated += new System.EventHandler(this.txtProcess_Validated);
-			// 
-			// lbStep
-			// 
-			this.lbStep.Dock = System.Windows.Forms.DockStyle.Left;
-			this.lbStep.Location = new System.Drawing.Point(1, 1);
-			this.lbStep.Name = "lbStep";
-			this.lbStep.Size = new System.Drawing.Size(131, 26);
-			this.lbStep.TabIndex = 3;
-			this.lbStep.Text = "ขั้นตอนการผลิต (#0):";
-			this.lbStep.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// panel3
-			// 
-			this.panel3.Controls.Add(this.txtDrawing);
-			this.panel3.Controls.Add(this.label20);
-			this.panel3.Controls.Add(this.btnWorkSource);
-			this.panel3.Controls.Add(this.txtWorker);
-			this.panel3.Controls.Add(this.pnlWorkingSource);
-			this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel3.Location = new System.Drawing.Point(10, 56);
-			this.panel3.Name = "panel3";
-			this.panel3.Padding = new System.Windows.Forms.Padding(1);
-			this.panel3.Size = new System.Drawing.Size(918, 28);
-			this.panel3.TabIndex = 2;
-			// 
-			// txtDrawing
-			// 
-			this.txtDrawing.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-			this.txtDrawing.Dock = System.Windows.Forms.DockStyle.Left;
-			this.txtDrawing.Location = new System.Drawing.Point(475, 1);
-			this.txtDrawing.MaxLength = 30;
-			this.txtDrawing.Name = "txtDrawing";
-			this.txtDrawing.Size = new System.Drawing.Size(200, 25);
-			this.txtDrawing.TabIndex = 12;
-			this.txtDrawing.TextChanged += new System.EventHandler(this.txtDrawing_TextChanged);
-			// 
-			// label20
-			// 
-			this.label20.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label20.Location = new System.Drawing.Point(341, 1);
-			this.label20.Name = "label20";
-			this.label20.Size = new System.Drawing.Size(134, 26);
-			this.label20.TabIndex = 11;
-			this.label20.Text = "หมายเลขแบบ :";
-			this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
 			// btnWorkSource
 			// 
 			this.btnWorkSource.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1427,74 +1543,6 @@
 			this.btnWorkSource.Size = new System.Drawing.Size(26, 26);
 			this.btnWorkSource.TabIndex = 9;
 			this.btnWorkSource.UseVisualStyleBackColor = true;
-			// 
-			// txtWorker
-			// 
-			this.txtWorker.Dock = System.Windows.Forms.DockStyle.Left;
-			this.txtWorker.Enabled = false;
-			this.txtWorker.Location = new System.Drawing.Point(132, 1);
-			this.txtWorker.MaxLength = 50;
-			this.txtWorker.Name = "txtWorker";
-			this.txtWorker.ReadOnly = true;
-			this.txtWorker.Size = new System.Drawing.Size(183, 25);
-			this.txtWorker.TabIndex = 8;
-			this.txtWorker.TextChanged += new System.EventHandler(this.txtWorker_TextChanged);
-			// 
-			// pnlWorkingSource
-			// 
-			this.pnlWorkingSource.Controls.Add(this.lbEmpId);
-			this.pnlWorkingSource.Controls.Add(this.lbWorkerId);
-			this.pnlWorkingSource.Dock = System.Windows.Forms.DockStyle.Left;
-			this.pnlWorkingSource.Location = new System.Drawing.Point(1, 1);
-			this.pnlWorkingSource.Name = "pnlWorkingSource";
-			this.pnlWorkingSource.Padding = new System.Windows.Forms.Padding(1);
-			this.pnlWorkingSource.Size = new System.Drawing.Size(131, 26);
-			this.pnlWorkingSource.TabIndex = 7;
-			// 
-			// lbEmpId
-			// 
-			this.lbEmpId.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.lbEmpId.ForeColor = System.Drawing.SystemColors.ControlDark;
-			this.lbEmpId.Location = new System.Drawing.Point(73, 1);
-			this.lbEmpId.Name = "lbEmpId";
-			this.lbEmpId.Size = new System.Drawing.Size(57, 24);
-			this.lbEmpId.TabIndex = 11;
-			this.lbEmpId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// lbWorkerId
-			// 
-			this.lbWorkerId.Dock = System.Windows.Forms.DockStyle.Left;
-			this.lbWorkerId.Location = new System.Drawing.Point(1, 1);
-			this.lbWorkerId.Name = "lbWorkerId";
-			this.lbWorkerId.Size = new System.Drawing.Size(72, 24);
-			this.lbWorkerId.TabIndex = 2;
-			this.lbWorkerId.Text = "ชื่อช่าง :";
-			this.lbWorkerId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// panel2
-			// 
-			this.panel2.Controls.Add(this.txtItemName);
-			this.panel2.Controls.Add(this.btnItemNo);
-			this.panel2.Controls.Add(this.txtItemNo);
-			this.panel2.Controls.Add(this.label27);
-			this.panel2.Controls.Add(this.dtpWorkDate);
-			this.panel2.Controls.Add(this.label2);
-			this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel2.Location = new System.Drawing.Point(10, 28);
-			this.panel2.Name = "panel2";
-			this.panel2.Padding = new System.Windows.Forms.Padding(1);
-			this.panel2.Size = new System.Drawing.Size(918, 28);
-			this.panel2.TabIndex = 1;
-			// 
-			// txtItemName
-			// 
-			this.txtItemName.Dock = System.Windows.Forms.DockStyle.Left;
-			this.txtItemName.Location = new System.Drawing.Point(475, 1);
-			this.txtItemName.MaxLength = 150;
-			this.txtItemName.Name = "txtItemName";
-			this.txtItemName.ReadOnly = true;
-			this.txtItemName.Size = new System.Drawing.Size(349, 25);
-			this.txtItemName.TabIndex = 11;
 			// 
 			// btnItemNo
 			// 
@@ -1512,66 +1560,21 @@
 			this.btnItemNo.UseVisualStyleBackColor = true;
 			this.btnItemNo.Visible = false;
 			// 
-			// txtItemNo
+			// btnProductionJob
 			// 
-			this.txtItemNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-			this.txtItemNo.Dock = System.Windows.Forms.DockStyle.Left;
-			this.txtItemNo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtItemNo.Location = new System.Drawing.Point(337, 1);
-			this.txtItemNo.MaxLength = 35;
-			this.txtItemNo.Name = "txtItemNo";
-			this.txtItemNo.ReadOnly = true;
-			this.txtItemNo.Size = new System.Drawing.Size(112, 25);
-			this.txtItemNo.TabIndex = 9;
-			// 
-			// label27
-			// 
-			this.label27.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label27.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label27.Location = new System.Drawing.Point(243, 1);
-			this.label27.Name = "label27";
-			this.label27.Size = new System.Drawing.Size(94, 26);
-			this.label27.TabIndex = 8;
-			this.label27.Text = "รหัสชิ้นงาน :";
-			this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// dtpWorkDate
-			// 
-			this.dtpWorkDate.Dock = System.Windows.Forms.DockStyle.Left;
-			this.dtpWorkDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dtpWorkDate.Location = new System.Drawing.Point(132, 1);
-			this.dtpWorkDate.Name = "dtpWorkDate";
-			this.dtpWorkDate.Size = new System.Drawing.Size(111, 25);
-			this.dtpWorkDate.TabIndex = 2;
-			this.dtpWorkDate.ValueChanged += new System.EventHandler(this.dtpWorkDate_ValueChanged);
-			// 
-			// label2
-			// 
-			this.label2.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label2.Location = new System.Drawing.Point(1, 1);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(131, 26);
-			this.label2.TabIndex = 1;
-			this.label2.Text = "** วันที่ทำงาน :";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// chkWorkTime
-			// 
-			this.chkWorkTime.AutoSize = true;
-			this.chkWorkTime.Location = new System.Drawing.Point(10, 0);
-			this.chkWorkTime.Name = "chkWorkTime";
-			this.chkWorkTime.Size = new System.Drawing.Size(90, 21);
-			this.chkWorkTime.TabIndex = 12;
-			this.chkWorkTime.Text = "Work Time";
-			this.chkWorkTime.UseVisualStyleBackColor = true;
-			// 
-			// workInfoErrorProvider
-			// 
-			this.workInfoErrorProvider.ContainerControl = this;
-			// 
-			// ProcessErrorProvider
-			// 
-			this.ProcessErrorProvider.ContainerControl = this;
+			this.btnProductionJob.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnProductionJob.Dock = System.Windows.Forms.DockStyle.Right;
+			this.btnProductionJob.FlatAppearance.BorderSize = 0;
+			this.btnProductionJob.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
+			this.btnProductionJob.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
+			this.btnProductionJob.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnProductionJob.Image = ((System.Drawing.Image)(resources.GetObject("btnProductionJob.Image")));
+			this.btnProductionJob.Location = new System.Drawing.Point(321, 2);
+			this.btnProductionJob.Name = "btnProductionJob";
+			this.btnProductionJob.Size = new System.Drawing.Size(32, 32);
+			this.btnProductionJob.TabIndex = 6;
+			this.btnProductionJob.UseVisualStyleBackColor = true;
+			this.btnProductionJob.Click += new System.EventHandler(this.btnProductionJob_Click);
 			// 
 			// PRDHOURSINFO
 			// 
@@ -1611,6 +1614,17 @@
 			this.panel15.PerformLayout();
 			this.panel14.ResumeLayout(false);
 			this.panel14.PerformLayout();
+			this.panel10.ResumeLayout(false);
+			this.panel10.PerformLayout();
+			this.panel4.ResumeLayout(false);
+			this.panel4.PerformLayout();
+			this.panel3.ResumeLayout(false);
+			this.panel3.PerformLayout();
+			this.pnlWorkingSource.ResumeLayout(false);
+			this.panel2.ResumeLayout(false);
+			this.panel2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.workInfoErrorProvider)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ProcessErrorProvider)).EndInit();
 			this.chkgOT.ResumeLayout(false);
 			this.panel17.ResumeLayout(false);
 			this.panel17.PerformLayout();
@@ -1625,17 +1639,6 @@
 			this.panel9.PerformLayout();
 			this.panel8.ResumeLayout(false);
 			this.panel7.ResumeLayout(false);
-			this.panel10.ResumeLayout(false);
-			this.panel10.PerformLayout();
-			this.panel4.ResumeLayout(false);
-			this.panel4.PerformLayout();
-			this.panel3.ResumeLayout(false);
-			this.panel3.PerformLayout();
-			this.pnlWorkingSource.ResumeLayout(false);
-			this.panel2.ResumeLayout(false);
-			this.panel2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.workInfoErrorProvider)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.ProcessErrorProvider)).EndInit();
 			this.ResumeLayout(false);
 
 		}

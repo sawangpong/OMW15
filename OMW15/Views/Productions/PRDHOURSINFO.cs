@@ -92,6 +92,7 @@ namespace OMW15.Views.Productions
 
 			lbTotalHourError.Visible = false;
 
+			rdoWorkingday.Checked = true;
 			grpPdHour.Text = $"Production Time Record : [{this.RecordId}]";
 
 			/////////////////////////////
@@ -133,6 +134,7 @@ namespace OMW15.Views.Productions
 				if (rdo.Tag.ToString() == "NORMAL")
 				{
 					_timeCat = OMShareProduction.WorkingDayCategory.NormalDay;
+					chkgNormalTime.Checked = true;
 				}
 				else
 				{

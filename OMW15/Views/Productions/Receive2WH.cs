@@ -153,5 +153,10 @@ namespace OMW15.Views.Productions
 				btnReceiveNo.PerformClick();
 			}
 		}
+
+		private void txtReceivedBy_TextChanged_1(object sender, EventArgs e)
+		{
+			UpdateUI();
+		}
 	}
 }

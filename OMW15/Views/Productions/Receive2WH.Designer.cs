@@ -227,6 +227,7 @@
 			this.txtReceivedBy.Name = "txtReceivedBy";
 			this.txtReceivedBy.Size = new System.Drawing.Size(187, 23);
 			this.txtReceivedBy.TabIndex = 2;
+			this.txtReceivedBy.TextChanged += new System.EventHandler(this.txtReceivedBy_TextChanged_1);
 			// 
 			// label2
 			// 
