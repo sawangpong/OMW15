@@ -57,7 +57,7 @@ namespace OMW15.Models.ServiceModel
 
 
 		public DataTable GetServiceJobList(int SelectedYear, string JobCode, OMShareServiceEnums.OrderStatusEnum Status) =>
-				new DataConnect($"EXEC dbo.usp_OM_SERVICE_JOB_BY_STATUS @year={SelectedYear},@jobprefix={JobCode},@status={(int)Status}", omglobal.SysConnectionString).ToDataTable;
+				new DataConnect($"EXEC dbo.usp_OM_SERVICE_JOB_BY_STATUS @year={SelectedYear},@jobprefix='{JobCode}',@status={(int)Status}", omglobal.SysConnectionString).ToDataTable;
 
 
 		public string GetJobFixed(int JobId)
