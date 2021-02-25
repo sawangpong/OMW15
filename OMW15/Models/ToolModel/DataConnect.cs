@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 
+
 namespace OMW15.Models.ToolModel
 {
 	public class DataConnect
@@ -31,6 +32,10 @@ namespace OMW15.Models.ToolModel
 					SqlDataReader rd = cmd.ExecuteReader();
 					_dbTable = new DataTable();
 					_dbTable.Load(rd, LoadOption.OverwriteChanges);
+
+
+					cmd.Connection.Close();
+
 				}
 				catch (SqlException ex)
 				{
