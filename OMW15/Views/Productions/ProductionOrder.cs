@@ -650,6 +650,13 @@ namespace OMW15.Views.Productions
 				MessageBox.Show("Update Production Job Info successfully !!!!", "Message", MessageBoxButtons.OK,
 					  MessageBoxIcon.Information);
 			}
+
+			if (_job.STATUS == (int)OMShareProduction.ProductionJobStatus.Closed)
+			{
+				new ProductionDAL().UpdateItemStandardHour(_job.ITEMNO);
+			}
+
+
 		} // end UpdateProductionJobInfo
 
 		private void GetProductionStatus()

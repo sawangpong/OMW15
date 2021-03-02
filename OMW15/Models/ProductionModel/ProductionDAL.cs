@@ -31,7 +31,7 @@ namespace OMW15.Models.ProductionModel
 		#region call sproc
 
 		public DataTable GetYearForTimeRecord(string workerCode) => 
-			new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_WORKER_WORKYEARS '{workerCode}'", omglobal.SysConnectionString).ToDataTable;
+			new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_WORKER_WORKYEARS @workerid='{workerCode}'", omglobal.SysConnectionString).ToDataTable;
 
 		public DataTable GetMonthForTimeRecord(string workerCode, int jobYear)
 		{
@@ -168,9 +168,7 @@ namespace OMW15.Models.ProductionModel
 		{
 			return await Task.Run(() =>
 			{
-				StringBuilder s = new StringBuilder();
-				s.AppendLine($" EXEC dbo.usp_OM_PRODUCTION_HIST_COMPARE '{itemNo}'");
-				return new DataConnect(s.ToString(), omglobal.SysConnectionString).ToDataTable;
+				return new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_HIST_COMPARE @itemNo='{itemNo}'", omglobal.SysConnectionString).ToDataTable;
 			});
 		}
 
@@ -178,9 +176,7 @@ namespace OMW15.Models.ProductionModel
 		{
 			return await Task.Run(() =>
 			{
-				StringBuilder s = new StringBuilder();
-				s.AppendLine($" EXEC dbo.usp_OM_PRODUCTION_JOB_HISTORY '{itemNo}'");
-				return new DataConnect(s.ToString(), omglobal.SysConnectionString).ToDataTable;
+				return new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_JOB_HISTORY @itemno='{itemNo}'", omglobal.SysConnectionString).ToDataTable;
 			});
 		}
 
@@ -188,10 +184,7 @@ namespace OMW15.Models.ProductionModel
 		{
 			return await Task.Run(() =>
 			{
-				StringBuilder s = new StringBuilder();
-				s.AppendLine($"EXEC dbo.usp_OM_PRODUCTION_JOBORDERS {Status},{jobYear},'{filter}'");
-
-				return new DataConnect(s.ToString(), omglobal.SysConnectionString).ToDataTable;
+				return new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_JOBORDERS @JobStatus={Status},@JobYear={jobYear},@JobFilter='{filter}'", omglobal.SysConnectionString).ToDataTable;
 			});
 		}
 
@@ -337,19 +330,19 @@ namespace OMW15.Models.ProductionModel
 
 		#region PRODUCTION DATA
 
+		public int UpdateItemStandardHour(string itemno = "")
+		{
+			return DataConnect.ExcuteSP($" EXEC dbo.usp_OM_PRODUCTION_UPDATE_STD_ITEM_HOUR_WORK @itemno='{itemno}'", omglobal.SysConnectionString);
+		}
+
 		public int UpdateProductionJobHours()
 		{
-			StringBuilder s = new StringBuilder();
-			s.AppendLine($" EXECUTE dbo.usp_OM_PRODUCTION_UPDATE_JOBHOURS ");
-
-			return DataConnect.ExcuteSP(s.ToString(), omglobal.SysConnectionString);
+			return DataConnect.ExcuteSP($" EXECUTE dbo.usp_OM_PRODUCTION_UPDATE_JOBHOURS ", omglobal.SysConnectionString);
 		}
 
 		public DataTable ActualTimeRecord(DateTime workDate, string empCode)
 		{
-			StringBuilder s = new StringBuilder();
-			s.AppendLine($" EXECUTE dbo.usp_ValidTimeRecord '{empCode}',{workDate.Year},{workDate.Month},{workDate.Day}");
-			return new DataConnect(s.ToString(), omglobal.SysConnectionString).ToDataTable;
+			return new DataConnect($" EXECUTE dbo.usp_ValidTimeRecord @EmpCode='{empCode}',@Y={workDate.Year},@M={workDate.Month},@D={workDate.Day}", omglobal.SysConnectionString).ToDataTable;
 		}
 
 		public PRODUCTIONJOB GetProductionJobHeader(string eprOrderNo) => _om.PRODUCTIONJOBS.SingleOrDefault(x => x.ERP_ORDER == eprOrderNo);
@@ -573,7 +566,7 @@ namespace OMW15.Models.ProductionModel
 
 		public DataTable GetProductionTimeItemByWorker(string workerCode, int workYear, int workMonth)
 		{
-			return new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_WORKTIMEBYWORKER '{workerCode}',{workYear},{workMonth}", omglobal.SysConnectionString).ToDataTable;
+			return new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_WORKTIMEBYWORKER @workercide='{workerCode}',@workyear={workYear},@workmonth={workMonth}", omglobal.SysConnectionString).ToDataTable;
 		}
 
 		public DataTable GetProductionTimeItemByOrder(string workOrder)
@@ -664,10 +657,10 @@ namespace OMW15.Models.ProductionModel
 
 		public async Task<DataTable> GetWorkHistory(string filter = "") => await Task.Run(() =>
 	{
-		return new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_WORK_HISTORY '{filter}'", omglobal.SysConnectionString).ToDataTable;
+		return new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_WORK_HISTORY @filter='{filter}'", omglobal.SysConnectionString).ToDataTable;
 	});
 
-		public DataTable GetProductionItemList(string filter = "") => new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_STD_ITEMS '{filter}'", omglobal.SysConnectionString).ToDataTable;
+		public DataTable GetProductionItemList(string filter = "") => new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_STD_ITEMS @itemfilter='{filter}'", omglobal.SysConnectionString).ToDataTable;
 
 		public DataTable GetProductionItemProperty(string filter = "") => 
 			new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_STD_ITEM @itemfilter='{filter}'", omglobal.SysConnectionString).ToDataTable;

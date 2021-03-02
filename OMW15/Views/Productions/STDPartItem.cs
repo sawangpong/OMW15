@@ -52,6 +52,10 @@ namespace OMW15.Views.Productions
 
 		private void GetStdProcessList(string itemNo)
 		{
+			// update std hour of each process
+			new ProductionDAL().UpdateItemStandardHour(itemNo);
+
+			// load std item and process
 			dgvSTDProcess.DataSource = new ProductionDAL().GetStdProcessList(itemNo);
 			dgvSTDProcess.Columns["ID"].Visible = false;
 			dgvSTDProcess.Columns["REF_STDITEM"].Visible = false;
