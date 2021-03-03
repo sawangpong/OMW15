@@ -28,13 +28,13 @@
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>\\om-srv-app\SmartWork17\</UpdateUrl>
     <SupportUrl>\\om-srv-app\SmartWork17\</SupportUrl>
-    <ProductName>SmartWorks17 %28LAN%29 - 2021-03-01</ProductName>
+    <ProductName>SmartWorks17 %28LAN%29 - 2021-03-02</ProductName>
     <PublisherName>OMW2017</PublisherName>
     <SuiteName>Old Moon Suite</SuiteName>
     <MinimumRequiredVersion>4.0.0.0</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>14</ApplicationRevision>
+    <ApplicationRevision>15</ApplicationRevision>
     <ApplicationVersion>4.3.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -400,6 +400,7 @@
     <Compile Include="Models\ProductionModel\BOMDal.cs" />
     <Compile Include="Models\ProductionModel\IssueItem.cs" />
     <Compile Include="Models\ProductionModel\ItemProcessInfo.cs" />
+    <Compile Include="Models\ProductionModel\ProductionCostModel.cs" />
     <Compile Include="Models\ProductionModel\ProductionDAL.cs" />
     <Compile Include="Models\ProductionModel\ProductionStatDAL.cs" />
     <Compile Include="Models\ProductionModel\SupplierDAL.cs" />
@@ -1124,6 +1125,12 @@
     <Compile Include="Views\Productions\ProductionProcessInfo.Designer.cs">
       <DependentUpon>ProductionProcessInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Productions\ProductionReports\ProductionCost.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductionCost.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Views\Productions\ProductionReports\ProductionJob2.cs">
       <DependentUpon>ProductionJob2.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1177,6 +1184,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ProductionSub.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionReports\ReportQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionReports\ReportQuery.Designer.cs">
+      <DependentUpon>ReportQuery.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Productions\ProductionReports\WorkByMonth.cs">
       <AutoGen>True</AutoGen>
@@ -2292,6 +2305,10 @@
     <EmbeddedResource Include="Views\Productions\ProductionProcessInfo.resx">
       <DependentUpon>ProductionProcessInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionReports\ProductionCost.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProductionCost.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Productions\ProductionReports\ProductionJob2.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ProductionJob2.cs</LastGenOutput>
@@ -2325,6 +2342,9 @@
     <EmbeddedResource Include="Views\Productions\ProductionReports\ProductionSub.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ProductionSub.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionReports\ReportQuery.resx">
+      <DependentUpon>ReportQuery.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Productions\ProductionReports\WorkByMonth.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

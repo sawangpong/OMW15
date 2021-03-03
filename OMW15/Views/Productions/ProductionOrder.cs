@@ -813,7 +813,7 @@ namespace OMW15.Views.Productions
 			}
 		}
 
-		private void toolStripButton1_Click(object sender, EventArgs e)
+		private void tsbtnRefresh_Click(object sender, EventArgs e)
 		{
 			GetOutsourceItems(_job.ERP_ORDER);
 		}

@@ -7,6 +7,17 @@ using static OMW15.Shared.OMShareProduction;
 
 namespace OMW15.Views.Productions.ProductionReports
 {
+	public enum ProductionReportType
+	{
+		None = 0,
+		ByProductionProcess = 1,
+		ByWorker = 2,
+		ByOrderType = 3,
+		ProductionCostByYear = 4,
+		ProductionCostByMonth = 5
+	}
+
+
 	public partial class ProductionReport : Form
 	{
 		#region class field
@@ -17,6 +28,8 @@ namespace OMW15.Views.Productions.ProductionReports
 		private int _reportMonth = DateTime.Today.Month;
 		private ReportDisplayType _displayFlag = ReportDisplayType.AllRecords;
 		private int _selectedJobStatus = 0;
+
+		private ProductionReportType _reportType = ProductionReportType.None;
 
 		#endregion
 
@@ -45,7 +58,7 @@ namespace OMW15.Views.Productions.ProductionReports
 			{
 				btnShowReport.Enabled = (!String.IsNullOrEmpty(txtProductionJob.Text));
 			}
-			else if(_mnuIndex == 2 && !String.IsNullOrEmpty(cbxMonth.Text))
+			else if (_mnuIndex == 2 && !String.IsNullOrEmpty(cbxMonth.Text))
 			{
 				btnShowReport.Enabled = true;
 			}
@@ -87,9 +100,18 @@ namespace OMW15.Views.Productions.ProductionReports
 		}
 
 
-		private void ShowProductionReport(int reportIndex, int yearReport, int monthReport = 0, int jobStatus = 0, string jobNo = "", ReportDisplayType _reportFlag = ReportDisplayType.AllRecords)
+		//private void ShowProductionReport(int reportIndex, int yearReport, int monthReport = 0, int jobStatus = 0, string jobNo = "", ReportDisplayType _reportFlag = ReportDisplayType.AllRecords)
+		//{
+		//	ProductionReportViewer _report = new ProductionReportViewer(reportIndex, yearReport, monthReport, jobStatus, _reportFlag, jobNo);
+		//	_report.WindowState = FormWindowState.Normal;
+		//	_report.StartPosition = FormStartPosition.CenterScreen;
+		//	_report.Show();
+
+		//}
+
+		private void ShowProductionReport(ProductionReportType reportType, int yearReport, int monthReport = 0, int jobStatus = 0, string jobNo = "", ReportDisplayType _reportFlag = ReportDisplayType.AllRecords)
 		{
-			ProductionReportViewer _report = new ProductionReportViewer(reportIndex, yearReport, monthReport, jobStatus, _reportFlag, jobNo);
+			ProductionReportViewer _report = new ProductionReportViewer(reportType, yearReport, monthReport, jobStatus, _reportFlag, jobNo);
 			_report.WindowState = FormWindowState.Normal;
 			_report.StartPosition = FormStartPosition.CenterScreen;
 			_report.Show();
@@ -130,6 +152,8 @@ namespace OMW15.Views.Productions.ProductionReports
 			pnlJobStatus.Visible = (_mnuIndex == 3);
 			pnlJobSearch.Visible = pnlJobStatus.Visible;
 
+			_reportType = (ProductionReportType)Enum.Parse(typeof(ProductionReportType), Enum.GetName(typeof(ProductionReportType), _mnuIndex));
+
 			switch (_mnuIndex)
 			{
 				case 1:
@@ -152,7 +176,8 @@ namespace OMW15.Views.Productions.ProductionReports
 
 		private void btnShowReport_Click(object sender, EventArgs e)
 		{
-			ShowProductionReport(_mnuIndex, _reportYear, _reportMonth, _selectedJobStatus, txtProductionJob.Text,_displayFlag);
+			//ShowProductionReport(_mnuIndex, _reportYear, _reportMonth, _selectedJobStatus, txtProductionJob.Text, _displayFlag);
+			ShowProductionReport(_reportType, _reportYear, _reportMonth, _selectedJobStatus, txtProductionJob.Text, _displayFlag);
 		}
 
 		private void btnSearchJob_Click(object sender, EventArgs e)
@@ -174,7 +199,7 @@ namespace OMW15.Views.Productions.ProductionReports
 
 			_displayFlag = _tag == "A" ? ReportDisplayType.AllRecords : ReportDisplayType.SingleRecord;
 
-			txtProductionJob.Visible = (_displayFlag ==  ReportDisplayType.SingleRecord);
+			txtProductionJob.Visible = (_displayFlag == ReportDisplayType.SingleRecord);
 			btnSearchJob.Visible = txtProductionJob.Visible;
 
 			switch (_tag)

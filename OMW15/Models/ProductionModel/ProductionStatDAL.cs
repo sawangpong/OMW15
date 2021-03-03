@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using static OMW15.Shared.OMShareProduction;
 
 namespace OMW15.Models.ProductionModel
@@ -44,6 +45,54 @@ namespace OMW15.Models.ProductionModel
 			return _dt;
 
 		}
+
+		public DataTable GetWorkYear(int status)
+		{
+			DataTable _years = new DataTable();
+			if (status == 1)
+			{
+				_years = _om.PRODUCTIONJOBS
+								.Select(x => new
+								{
+									y = x.JOBYEAR
+								})
+								.Distinct()
+								.OrderByDescending(o => o.y)
+								.ToDataTable();
+			}
+			else
+			{
+				_years = _om.PRODUCTIONJOBS.AsEnumerable()
+								.Where(x => x.COMPLETEDATE != null)
+								.Select(x => new
+								{
+									y = x.COMPLETEDATE.Value.Year
+								})
+								.Distinct()
+								.OrderByDescending(o => o.y)
+								.ToDataTable();
+			}
+
+			return _years;
+		}
+
+		public DataTable GetWorkMonth(int status, int year)
+		{
+			return _om.PRODUCTIONJOBS.AsEnumerable()
+													.Where( x => x.COMPLETEDATE != null 
+																&& (status == 1 ? x.JOBYEAR == year : x.COMPLETEDATE.Value.Year == year))
+													.Select(x => new
+													{
+														y = (status == 1 ? x.JOBYEAR : x.COMPLETEDATE.Value.Year),
+														m = (status == 1 ? x.RELEASEDATE.Value.Month : x.COMPLETEDATE.Value.Month),
+														Name = (status == 1 ? x.RELEASEDATE.Value.Month.GetThaiMonthName() : x.COMPLETEDATE.Value.Month.GetThaiMonthName())
+													})
+												.Distinct()
+												.OrderByDescending(o => o.m)
+												.ToDataTable();
+
+		}
+
 
 		public DataTable GetWorkYear() => _om.PRODUCTIONJOBINFOes
 													.Select(x => new { x.WORKYEAR })
@@ -140,6 +189,12 @@ namespace OMW15.Models.ProductionModel
 		#endregion
 
 		#region Report Data
+
+		public DataTable GetProductionJobCostDataSource(int y, int m)
+		{
+			return new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_PRODUCTION_COST @y={y},@m={m}", omglobal.SysConnectionString).ToDataTable;
+		}
+
 
 		public DataTable GetDataReportByProcess(int year)
 		{

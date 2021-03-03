@@ -59,7 +59,7 @@
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbtnDeleteSup = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+			this.tsbtnRefresh = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.lbOutsourceRows = new System.Windows.Forms.Label();
 			this.tpWorkStat = new System.Windows.Forms.TabPage();
@@ -466,7 +466,7 @@
             this.toolStripSeparator2,
             this.tsbtnDeleteSup,
             this.toolStripSeparator3,
-            this.toolStripButton1,
+            this.tsbtnRefresh,
             this.toolStripSeparator4});
 			this.tsSupplier.Location = new System.Drawing.Point(2, 2);
 			this.tsSupplier.Name = "tsSupplier";
@@ -522,15 +522,15 @@
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
 			this.toolStripSeparator3.Size = new System.Drawing.Size(6, 36);
 			// 
-			// toolStripButton1
+			// tsbtnRefresh
 			// 
-			this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.toolStripButton1.Image = global::OMW15.Properties.Resources.REFRESH;
-			this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton1.Name = "toolStripButton1";
-			this.toolStripButton1.Size = new System.Drawing.Size(23, 33);
-			this.toolStripButton1.ToolTipText = "Refresh outsource items";
-			this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+			this.tsbtnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.tsbtnRefresh.Image = global::OMW15.Properties.Resources.REFRESH;
+			this.tsbtnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbtnRefresh.Name = "tsbtnRefresh";
+			this.tsbtnRefresh.Size = new System.Drawing.Size(23, 33);
+			this.tsbtnRefresh.ToolTipText = "Refresh outsource items";
+			this.tsbtnRefresh.Click += new System.EventHandler(this.tsbtnRefresh_Click);
 			// 
 			// toolStripSeparator4
 			// 
@@ -1862,7 +1862,7 @@
 		private System.Windows.Forms.Label label5;
 		private OMControls.Controls.NumericTextBox txtTotalMatCost;
 		private System.Windows.Forms.Label label15;
-		private System.Windows.Forms.ToolStripButton toolStripButton1;
+		private System.Windows.Forms.ToolStripButton tsbtnRefresh;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
 		private System.Windows.Forms.TextBox txtERP_ISSUE;
 		private System.Windows.Forms.Label label24;

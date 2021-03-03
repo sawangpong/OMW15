@@ -70,12 +70,16 @@
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbtnStat = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-			this.tsbtnReport = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbtnWorkHistory = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbtnProduction2Plan = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+			this.mnuProductionCostReport = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsbtnReport = new System.Windows.Forms.ToolStripDropDownButton();
+			this.tsmnuProductionJobReport = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsmnuProductionCostReport = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuProductionJobReport = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnu.SuspendLayout();
 			this.ts.SuspendLayout();
 			this.SuspendLayout();
@@ -200,6 +204,9 @@
 			// 
 			// mnuReports
 			// 
+			this.mnuReports.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuProductionJobReport,
+            this.mnuProductionCostReport});
 			this.mnuReports.Image = global::OMW15.Properties.Resources.CommentHS;
 			this.mnuReports.Name = "mnuReports";
 			this.mnuReports.Size = new System.Drawing.Size(234, 22);
@@ -434,17 +441,6 @@
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
 			this.toolStripSeparator5.Size = new System.Drawing.Size(6, 45);
 			// 
-			// tsbtnReport
-			// 
-			this.tsbtnReport.AutoSize = false;
-			this.tsbtnReport.Image = global::OMW15.Properties.Resources.CommentHS;
-			this.tsbtnReport.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbtnReport.Name = "tsbtnReport";
-			this.tsbtnReport.Size = new System.Drawing.Size(100, 42);
-			this.tsbtnReport.Text = "&Reports";
-			this.tsbtnReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.tsbtnReport.Click += new System.EventHandler(this.tsbtnReport_Click);
-			// 
 			// toolStripSeparator7
 			// 
 			this.toolStripSeparator7.Name = "toolStripSeparator7";
@@ -481,6 +477,48 @@
 			// 
 			this.toolStripSeparator8.Name = "toolStripSeparator8";
 			this.toolStripSeparator8.Size = new System.Drawing.Size(6, 45);
+			// 
+			// mnuProductionCostReport
+			// 
+			this.mnuProductionCostReport.Name = "mnuProductionCostReport";
+			this.mnuProductionCostReport.Size = new System.Drawing.Size(180, 22);
+			this.mnuProductionCostReport.Text = "Production Cost";
+			this.mnuProductionCostReport.Click += new System.EventHandler(this.mnuProductionCostReport_Click);
+			// 
+			// tsbtnReport
+			// 
+			this.tsbtnReport.AutoSize = false;
+			this.tsbtnReport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmnuProductionJobReport,
+            this.tsmnuProductionCostReport});
+			this.tsbtnReport.Image = global::OMW15.Properties.Resources.CommentHS;
+			this.tsbtnReport.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbtnReport.Name = "tsbtnReport";
+			this.tsbtnReport.Size = new System.Drawing.Size(100, 42);
+			this.tsbtnReport.Text = "&Reports";
+			this.tsbtnReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+			this.tsbtnReport.Click += new System.EventHandler(this.tsbtnReport_Click);
+			// 
+			// tsmnuProductionJobReport
+			// 
+			this.tsmnuProductionJobReport.Name = "tsmnuProductionJobReport";
+			this.tsmnuProductionJobReport.Size = new System.Drawing.Size(213, 22);
+			this.tsmnuProductionJobReport.Text = "Production Job Report";
+			this.tsmnuProductionJobReport.Click += new System.EventHandler(this.tsmnuProductionJobReport_Click);
+			// 
+			// tsmnuProductionCostReport
+			// 
+			this.tsmnuProductionCostReport.Name = "tsmnuProductionCostReport";
+			this.tsmnuProductionCostReport.Size = new System.Drawing.Size(213, 22);
+			this.tsmnuProductionCostReport.Text = "Production Cost Report";
+			this.tsmnuProductionCostReport.Click += new System.EventHandler(this.tsmnuProductionCostReport_Click);
+			// 
+			// mnuProductionJobReport
+			// 
+			this.mnuProductionJobReport.Name = "mnuProductionJobReport";
+			this.mnuProductionJobReport.Size = new System.Drawing.Size(180, 22);
+			this.mnuProductionJobReport.Text = "Production Jobs";
+			this.mnuProductionJobReport.Click += new System.EventHandler(this.mnuProductionJobReport_Click);
 			// 
 			// Production
 			// 
@@ -547,7 +585,6 @@
 		  private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
 		  private System.Windows.Forms.ToolStripButton tsbtnWorkHistory;
 		  private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-		private System.Windows.Forms.ToolStripButton tsbtnReport;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
 		private System.Windows.Forms.ToolStripMenuItem mnuCheckWorkTime;
 		private System.Windows.Forms.ToolStripMenuItem mnuMCToolsPlan;
@@ -555,5 +592,10 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
 		private System.Windows.Forms.ToolStripMenuItem mnuProductionMissReport;
 		private System.Windows.Forms.ToolStripMenuItem mnuUpdateJobHrs;
+		private System.Windows.Forms.ToolStripMenuItem mnuProductionCostReport;
+		private System.Windows.Forms.ToolStripDropDownButton tsbtnReport;
+		private System.Windows.Forms.ToolStripMenuItem tsmnuProductionJobReport;
+		private System.Windows.Forms.ToolStripMenuItem tsmnuProductionCostReport;
+		private System.Windows.Forms.ToolStripMenuItem mnuProductionJobReport;
 	}
 }

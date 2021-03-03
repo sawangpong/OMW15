@@ -17,6 +17,7 @@ namespace OMW15.Views.Productions.ProductionReports
 		private int _jobStatus = (int)ProductionJobStatus.None;
 		private string _jobNo = "";
 		private ReportDisplayType _reportFlag = ReportDisplayType.AllRecords;
+		private ProductionReportType _reportType = ProductionReportType.None;
 
 		#endregion
 
@@ -96,8 +97,36 @@ namespace OMW15.Views.Productions.ProductionReports
 			crv.ReportSource = _rpt;
 		}
 
+		private void ProductionJobCost(int yearReport, int monthReport)
+		{
+			ReportDocument _rpt = new ProductionCost();     // main report document
+
+			DataTable _dt = new DataTable();                // datasource for report header
+
+			// retrieve data to main report
+			_dt = new ProductionStatDAL().GetProductionJobCostDataSource(yearReport, monthReport);
+
+			_rpt.SetDataSource(_dt);
+
+			crv.ReportSource = _rpt;
+		}
+
+
+
 		#endregion
 
+
+		public ProductionReportViewer(ProductionReportType reportType, int yearReport, int monthReport = 0, int jobStatus = 0, ReportDisplayType reportFlag = ReportDisplayType.AllRecords, string jobNo = "")
+		{
+			InitializeComponent();
+			_reportType = reportType;
+			_reportIndex = (int)reportType;
+			_yearReport = yearReport;
+			_monthReport = monthReport;
+			_jobStatus = jobStatus;
+			_jobNo = jobNo;
+			_reportFlag = reportFlag;
+		}
 
 		public ProductionReportViewer(int reportIndex, int yearReport, int monthReport = 0, int jobStatus = 0, ReportDisplayType reportFlag = ReportDisplayType.AllRecords , string jobNo = "")
 		{
@@ -112,6 +141,7 @@ namespace OMW15.Views.Productions.ProductionReports
 
 		private void ProductionReportViewer_Load(object sender, EventArgs e)
 		{
+			/*
 			switch (_reportIndex)
 			{
 				case 1:
@@ -126,6 +156,33 @@ namespace OMW15.Views.Productions.ProductionReports
 					ProductionJobReport(_yearReport, _jobStatus, _jobNo, _reportFlag);
 					break;
 			}
+			*/
+
+			switch (_reportType)
+			{
+				case ProductionReportType.ByProductionProcess:
+					WorkProcessReport(_yearReport);
+					break;
+
+				case ProductionReportType.ByWorker:
+					ProductionWorkByMonth(_yearReport, _monthReport);
+					break;
+
+				case ProductionReportType.ByOrderType:
+					ProductionJobReport(_yearReport, _jobStatus, _jobNo, _reportFlag);
+					break;
+
+				case ProductionReportType.ProductionCostByYear:
+					ProductionJobCost(_yearReport, _monthReport = 0);
+					break;
+
+				case ProductionReportType.ProductionCostByMonth:
+					ProductionJobCost(_yearReport, _monthReport);
+					break;
+					
+			}
+
+
 
 		}
 	}

@@ -192,14 +192,11 @@ namespace OMW15.Views.Productions
 
 		private void mnuReports_Click(object sender, EventArgs e)
 		{
-			var _reports = ProductionReport.GetInstance;
-			_reports.StartPosition = FormStartPosition.CenterScreen;
-			_reports.ShowDialog(this);
+
 		}
 
 		private void tsbtnReport_Click(object sender, EventArgs e)
 		{
-			mnuReports.PerformClick();
 		}
 
 		private void mnuCheckWorkTime_Click(object sender, EventArgs e)
@@ -238,6 +235,30 @@ namespace OMW15.Views.Productions
 			updateJobHrs.StartPosition = FormStartPosition.CenterScreen;
 			updateJobHrs.MdiParent = this;
 			updateJobHrs.Show();
+		}
+
+		private void tsmnuProductionJobReport_Click(object sender, EventArgs e)
+		{
+			mnuProductionJobReport.PerformClick();
+		}
+
+		private void mnuProductionJobReport_Click(object sender, EventArgs e)
+		{
+			var _reports = ProductionReport.GetInstance;
+			_reports.StartPosition = FormStartPosition.CenterScreen;
+			_reports.ShowDialog(this);
+		}
+
+		private void mnuProductionCostReport_Click(object sender, EventArgs e)
+		{
+			var _query = ReportQuery.GetInstance;
+			_query.StartPosition = FormStartPosition.CenterScreen;
+			_query.Show(this);
+		}
+
+		private void tsmnuProductionCostReport_Click(object sender, EventArgs e)
+		{
+			mnuProductionCostReport.PerformClick();
 		}
 	}
 }
