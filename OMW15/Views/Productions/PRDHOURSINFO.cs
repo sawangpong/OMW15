@@ -807,7 +807,5 @@ namespace OMW15.Views.Productions
 				ProcessErrorProvider.SetError(this.txtProcess, "ในกรณีที่เป็นงาน Production ต้องใส่ขั้นตอนการทำงาน");
 			}
 		}
-
-
 	}
 }

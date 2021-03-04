@@ -337,6 +337,7 @@
 			this.txtReceiveCost.Name = "txtReceiveCost";
 			this.txtReceiveCost.Size = new System.Drawing.Size(149, 23);
 			this.txtReceiveCost.TabIndex = 2;
+			this.txtReceiveCost.TextChanged += new System.EventHandler(this.txtReceiveCost_TextChanged);
 			// 
 			// label6
 			// 

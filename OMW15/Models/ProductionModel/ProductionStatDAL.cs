@@ -195,7 +195,6 @@ namespace OMW15.Models.ProductionModel
 			return new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_PRODUCTION_COST @y={y},@m={m}", omglobal.SysConnectionString).ToDataTable;
 		}
 
-
 		public DataTable GetDataReportByProcess(int year)
 		{
 			StringBuilder s = new StringBuilder();
@@ -228,7 +227,6 @@ namespace OMW15.Models.ProductionModel
 
 			return new DataConnect(s.ToString(), omglobal.SysConnectionString).ToDataTable;
 		}
-
 
 		public DataTable GetDataReportByWorker(int year)
 		{
@@ -334,7 +332,6 @@ namespace OMW15.Models.ProductionModel
 			s.AppendLine($"EXECUTE dbo.usp_OM_PRODUCTION_OUTSOURCE @OrderNumber = '{ERPOrder}'");
 			return new DataConnect(s.ToString(), omglobal.SysConnectionString).ToDataTable;
 		}
-
 
 		public DataTable GetWorkByMonthData(int yearWork, int monthWork)
 		{

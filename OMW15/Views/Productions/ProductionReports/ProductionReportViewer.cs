@@ -107,7 +107,7 @@ namespace OMW15.Views.Productions.ProductionReports
 			_dt = new ProductionStatDAL().GetProductionJobCostDataSource(yearReport, monthReport);
 
 			_rpt.SetDataSource(_dt);
-
+			_rpt.SetParameterValue(0, $"ประจำงวด {yearReport}{(monthReport > 0 ? "/"+ monthReport.ToString() : "")}");
 			crv.ReportSource = _rpt;
 		}
 

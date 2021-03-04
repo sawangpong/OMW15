@@ -20,7 +20,6 @@ namespace OMW15.Views.Productions
 
 		#endregion
 
-
 		#region class properties
 
 
@@ -64,12 +63,34 @@ namespace OMW15.Views.Productions
 			dtpReceiveDate.Value = _receiveItem.RECEIVE_DATE.Value;
 			txtReceiveNo.Text = _receiveItem.RECEIVE_NO;
 			txtReceiveUnit.Text = _receiveItem.RECEIVE_UNIT;
+
+			if(_mode == ActionMode.Edit)
+			{
+				btnReceiveNo.PerformClick();
+			}
+
 		}
 
 		private void UpdateReceiveItem(PRODUCTION_WH_RECEIVE item)
 		{
 			int _result = new ProductionDAL().UpdateReceiveItem(item);
 		}
+
+		private decimal CalAvgUnitCost()
+		{
+			decimal _avgCost = 0m;
+			if (ntxtReceiveQty.Text.IsNumeric())
+			{
+				_receiveItem.RECEIVE_QTY = Convert.ToDecimal(ntxtReceiveQty.Text);
+				if (_receiveItem.RECEIVE_QTY > 0m)
+				{
+					_avgCost = _receiveItem.RECEIVE_COST / _receiveItem.RECEIVE_QTY;
+				}
+			}
+
+			return _avgCost;
+		}
+
 
 		#endregion
 
@@ -104,15 +125,8 @@ namespace OMW15.Views.Productions
 
 		private void ntxtReceiveQty_TextChanged(object sender, EventArgs e)
 		{
-			if (ntxtReceiveQty.Text.IsNumeric())
-			{
-				_receiveItem.RECEIVE_QTY = Convert.ToDecimal(ntxtReceiveQty.Text);
-				if (_receiveItem.RECEIVE_QTY > 0m)
-				{
-					_receiveItem.RECEIVE_AVG_UCOST = _receiveItem.RECEIVE_COST / _receiveItem.RECEIVE_QTY;
-				}
-				txtAvgUnitCost.Text = $"{_receiveItem.RECEIVE_AVG_UCOST:N2}";
-			}
+			_receiveItem.RECEIVE_AVG_UCOST = CalAvgUnitCost();
+			txtAvgUnitCost.Text = $"{_receiveItem.RECEIVE_AVG_UCOST:N2}";
 
 			UpdateUI();
 		}
@@ -136,12 +150,25 @@ namespace OMW15.Views.Productions
 		{
 			DataTable _dt = new ProductionDAL().GetReceiveItemCost(_itemNo, txtReceiveNo.Text);
 
-			_receiveItem.RECEIVE_COST = _dt.AsEnumerable().Sum(x => x.Field<decimal>("TRD_SH_GSELL"));
+			decimal _matCosts = 0m;
+			foreach(DataRow dr in _dt.Rows)
+			{
+				_matCosts += Convert.ToDecimal(dr["TRD_SH_GSELL"].ToString());
+			}
+
+			_receiveItem.RECEIVE_COST = _matCosts; //_dt.AsEnumerable().Sum(x => x.Field<decimal>("TRD_SH_GSELL"));
 			_receiveItem.RECEIVE_DATE = _dt.Rows[0].Field<DateTime>("DI_DATE");
 			_receiveItem.REF_ISSUE_ID = _dt.Rows[0].Field<Int32>("DI_KEY");
-
+		
 			txtReceiveCost.Text = $"{_receiveItem.RECEIVE_COST:N2}";
 			dtpReceiveDate.Value = _receiveItem.RECEIVE_DATE.Value;
+
+			if(_receiveItem.RECEIVE_QTY > 0)
+			{
+				_receiveItem.RECEIVE_AVG_UCOST = _receiveItem.RECEIVE_COST / _receiveItem.RECEIVE_QTY;
+				txtAvgUnitCost.Text = $"{_receiveItem.RECEIVE_AVG_UCOST:N2}";
+			}
+
 
 			UpdateUI();
 		}
@@ -157,6 +184,13 @@ namespace OMW15.Views.Productions
 		private void txtReceivedBy_TextChanged_1(object sender, EventArgs e)
 		{
 			UpdateUI();
+		}
+
+		private void txtReceiveCost_TextChanged(object sender, EventArgs e)
+		{
+			//_receiveItem.RECEIVE_AVG_UCOST = CalAvgUnitCost();
+			//txtAvgUnitCost.Text = $"{_receiveItem.RECEIVE_AVG_UCOST:N2}";
+			//UpdateUI();
 		}
 	}
 }

@@ -566,7 +566,7 @@ namespace OMW15.Models.ProductionModel
 
 		public DataTable GetProductionTimeItemByWorker(string workerCode, int workYear, int workMonth)
 		{
-			return new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_WORKTIMEBYWORKER @workercide='{workerCode}',@workyear={workYear},@workmonth={workMonth}", omglobal.SysConnectionString).ToDataTable;
+			return new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_WORKTIMEBYWORKER @workercode='{workerCode}',@workyear={workYear},@workmonth={workMonth}", omglobal.SysConnectionString).ToDataTable;
 		}
 
 		public DataTable GetProductionTimeItemByOrder(string workOrder)
@@ -716,7 +716,6 @@ namespace OMW15.Models.ProductionModel
 
 				return hc ?? hc;
 			});
-
 		}
 
 		#endregion
