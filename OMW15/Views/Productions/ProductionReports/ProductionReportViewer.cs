@@ -27,9 +27,7 @@ namespace OMW15.Views.Productions.ProductionReports
 		private void WorkProcessReport(int yearReport)
 		{
 			ReportDocument _rpt = new ProductionProcessHours();
-
 			DataTable _dt = new ProductionStatDAL().GetDataReportByProcess(yearReport);
-
 			_rpt.SetDataSource(_dt);
 			_rpt.SetParameterValue(0, $"ประจำปี {yearReport}");
 			_rpt.SetParameterValue(1, $"รายงานโดย : {Environment.MachineName}\\{omglobal.UserName}");
@@ -60,61 +58,45 @@ namespace OMW15.Views.Productions.ProductionReports
 
 					// retrive data for production process
 					_dtProcess = new ProductionStatDAL().GetProductionJobInfo(jobNo);
-
 					_rpt = new ProductionJob3();
 
 					// assign data to subreport
 					_rpt.Subreports[1].SetDataSource(_dtSubReport);
-
 					_rpt.Subreports[0].SetDataSource(_dtProcess);
 					break;
-
 			}
 
 			// assign data to main report
 			_rpt.SetDataSource(_dt);
-
 			// assign data to report parameter
 			_rpt.SetParameterValue(0, $"ประจำปี {yearReport}");
 			_rpt.SetParameterValue(1, $"รายงานโดย : {Environment.MachineName}\\{omglobal.UserName}");
-
 			// map report to reportviewer
 			crv.ReportSource = _rpt;
-
 			crv.Refresh();
-
 		}
 
 		private void ProductionWorkByMonth(int yearReport, int monthReport)
 		{
 			ReportDocument _rpt = new WorkByMonth();
-
 			DataTable _dt = new ProductionStatDAL().GetWorkByMonthData(yearReport, monthReport);
-
 			_rpt.SetDataSource(_dt);
 			_rpt.SetParameterValue(0, $"ประจำงวด {yearReport}/{monthReport.GetThaiMonthName()}");
-
 			crv.ReportSource = _rpt;
 		}
 
 		private void ProductionJobCost(int yearReport, int monthReport)
 		{
 			ReportDocument _rpt = new ProductionCost();     // main report document
-
 			DataTable _dt = new DataTable();                // datasource for report header
-
 			// retrieve data to main report
 			_dt = new ProductionStatDAL().GetProductionJobCostDataSource(yearReport, monthReport);
-
 			_rpt.SetDataSource(_dt);
 			_rpt.SetParameterValue(0, $"ประจำงวด {yearReport}{(monthReport > 0 ? "/"+ monthReport.ToString() : "")}");
 			crv.ReportSource = _rpt;
 		}
 
-
-
 		#endregion
-
 
 		public ProductionReportViewer(ProductionReportType reportType, int yearReport, int monthReport = 0, int jobStatus = 0, ReportDisplayType reportFlag = ReportDisplayType.AllRecords, string jobNo = "")
 		{
@@ -181,9 +163,6 @@ namespace OMW15.Views.Productions.ProductionReports
 					break;
 					
 			}
-
-
-
 		}
 	}
 }

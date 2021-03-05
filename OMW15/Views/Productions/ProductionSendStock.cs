@@ -21,6 +21,7 @@ namespace OMW15.Views.Productions
 		public decimal TotalReceiveQty { get; set; }
 		public decimal TotalReceiveCost { get; set; }
 		public decimal AvgReceiveUCost { get; set; }
+		public DateTime ReceiveDate { get; set; }
 		#endregion
 
 		#region class helper
@@ -92,6 +93,7 @@ namespace OMW15.Views.Productions
 				{
 					_receiveQty += Convert.ToDecimal(dgr.Cells["RECEIVE_QTY"].Value);
 					_receiveCost += Convert.ToDecimal(dgr.Cells["RECEIVE_COST"].Value);
+					this.ReceiveDate = Convert.ToDateTime(dgr.Cells["RECEIVE_DATE"].Value.ToString());
 				}
 				this.AvgReceiveUCost = _receiveCost / (_receiveQty == 0m ? 1m : _receiveQty);
 				this.TotalReceiveCost = _receiveCost;

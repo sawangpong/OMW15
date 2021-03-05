@@ -963,9 +963,7 @@ namespace OMW15.Models.ProductionModel
 		public decimal GetAvgActualHourCostByWorker(DateTime workDate, string workerId)
 		{
 			var _record = _om.EMPSALs.Where(x => x.YEARSAL == workDate.Year && x.EMPCODE == workerId).ToList();
-
 			if (_record == null || _record.Count == 0) return 0m;
-
 			return _record.Select(x => new { x.ACTUALAVGHOURCOST }).Single().ACTUALAVGHOURCOST;
 		}
 

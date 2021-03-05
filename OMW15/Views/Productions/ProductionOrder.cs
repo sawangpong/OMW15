@@ -275,6 +275,11 @@ namespace OMW15.Views.Productions
 				_totalProductionHrs = _job.TOTAL_HOURS;
 				_totalOutsourceCost = _job.TOTAL_OUTSOURCE_COST;
 				_jobStatus = _job.STATUS;
+
+				if(_jobStatus == 2) // close
+				{
+					dtpCompleteDate.Value = _job.COMPLETEDATE.Value;
+				}
 			}
 
 			dtpReleaseDate.Value = _job.RELEASEDATE.Value;
@@ -845,7 +850,9 @@ namespace OMW15.Views.Productions
 					_job.TOTAL_MAT_COST = _receiveStock.TotalReceiveCost;
 					_job.STD_MATCOST = _receiveStock.AvgReceiveUCost;
 					_job.SHIPQTY = _receiveStock.TotalReceiveQty;
+					_job.COMPLETEDATE = _receiveStock.ReceiveDate;
 
+					dtpCompleteDate.Value = _job.COMPLETEDATE.Value;
 					txtTotalMatCost.Text = $"{_receiveStock.TotalReceiveCost:N2}";
 					txtMatCost.Text = $"{_receiveStock.AvgReceiveUCost:N2}";
 					txtTotalReceiveQty.Text = $"{_receiveStock.TotalReceiveQty:N2}";

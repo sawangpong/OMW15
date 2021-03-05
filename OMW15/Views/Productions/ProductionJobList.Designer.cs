@@ -128,6 +128,7 @@
 			this.btnUpdateAllJobs.TabIndex = 8;
 			this.btnUpdateAllJobs.Text = "ปรับปรุงข้อมูลทั้งหมด";
 			this.btnUpdateAllJobs.UseVisualStyleBackColor = true;
+			this.btnUpdateAllJobs.Visible = false;
 			this.btnUpdateAllJobs.Click += new System.EventHandler(this.btnUpdateAllJobs_Click);
 			// 
 			// btnLoadData
