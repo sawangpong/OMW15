@@ -9,6 +9,7 @@ using System.Data.Entity.Core;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using static OMW15.Shared.OMShareProduction;
 
 namespace OMW15.Models.ProductionModel
@@ -247,7 +248,35 @@ namespace OMW15.Models.ProductionModel
 			return new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_WORKINFO @workyear={workYear},@workerid='{workerId}'", omglobal.SysConnectionString).ToDataTable;
 		}
 
-		public DataTable GetPendingProductionOrderList1() => _om.OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST.ToDataTable();
+		//public DataTable GetPendingProductionOrderList1() => _om.OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST.ToDataTable();
+
+		public DataTable GetPendingProductionOrderList1()
+		{
+			StringBuilder s = new StringBuilder();
+			s.AppendLine(" SELECT ");
+			s.AppendLine(" di.DI_KEY ");
+			s.AppendLine(",di.DI_ACTIVE ");
+			s.AppendLine(",CASE WHEN di.DI_ACTIVE = 2 THEN 'CANCELED' ELSE 'ACTIVE' END AS [STATUS] ");
+			s.AppendLine(",SUBSTRING(di.DI_REF,1,4) AS [CODE] ");
+			s.AppendLine(",di.DI_REF ");
+			s.AppendLine(",CAST(di.DI_DATE AS DATE) AS [REQ_DATE] ");
+			s.AppendLine(",MONTH(di.DI_DATE) AS [PERIOD]");
+			s.AppendLine(",YEAR(di.DI_DATE) AS [YEAR]");
+			s.AppendLine(",trd.TRD_KEYIN AS [PARTNO]");
+			s.AppendLine(",trd.TRD_SH_NAME AS [PARTNAME]");
+			s.AppendLine(",trd.TRD_QTY AS [QTY]");
+			s.AppendLine(",trd.TRD_UTQNAME AS [UNIT]");
+			s.AppendLine(",ISNULL(di.DI_REMARK,'') AS [REMARK]");
+			s.AppendLine(" FROM ERP.dbo.DOCINFO AS di ");
+			s.AppendLine(" LEFT JOIN ERP.dbo.TRANSTKH AS trh ON di.DI_KEY = trh.TRH_DI ");
+			s.AppendLine(" LEFT JOIN ERP.dbo.TRANSTKD AS trd ON trh.TRH_KEY = trd.TRD_TRH ");
+			s.AppendLine(" WHERE (SUBSTRING(di.DI_REF,1,4) IN ('RMFG','RMMG','RMPS'))");
+			s.AppendLine(" AND trd.TRD_SEQ = 1");
+			s.AppendLine(" AND di.DI_KEY NOT IN (SELECT p.ERP_DI FROM dbo.PRODUCTIONJOBS p WHERE SUBSTRING(p.ERP_ORDER,1,4) IN ('RMFG','RMMG','RMPS'))");
+			s.AppendLine(" AND di.DI_REF NOT IN (SELECT DISTINCT t.TRD_REFER_REF FROM ERP.dbo.TRANSTKD t WHERE (t.TRD_REFER_REF IS NOT NULL) AND (SUBSTRING(t.TRD_REFER_REF,1,4) IN ('RMFG','RMMG','RMPS'))) ");
+			s.AppendLine(" ORDER BY di.DI_REF");
+			return new DataConnect(s.ToString(), omglobal.SysConnectionString).ToDataTable;
+		}
 
 		public DataTable GetProductionOrderList(string prefixDICode, string connectionString)
 		{
