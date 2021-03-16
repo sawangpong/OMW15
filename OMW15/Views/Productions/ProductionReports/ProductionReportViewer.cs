@@ -114,6 +114,30 @@ namespace OMW15.Views.Productions.ProductionReports
 		{
 			InitializeComponent();
 			_reportIndex = reportIndex;
+
+			switch (_reportIndex)
+			{
+				case 0:
+					_reportType = ProductionReportType.None;
+					break;
+				case 1:
+					_reportType = ProductionReportType.ByProductionProcess;
+					break;
+				case 2:
+					_reportType = ProductionReportType.ByWorker;
+					break;
+				case 3:
+					_reportType = ProductionReportType.ByOrderType;
+					break;
+				case 4:
+					_reportType = ProductionReportType.ProductionCostByYear;
+					break;
+				case 5:
+					_reportType = ProductionReportType.ProductionCostByMonth;
+					break;
+			}
+
+
 			_yearReport = yearReport;
 			_monthReport = monthReport;
 			_jobStatus = jobStatus;
