@@ -14,8 +14,15 @@ namespace OMW15.Views.Sales
 		public PriceList(ActionMode viewMode = ActionMode.Selection)
 		{
 			InitializeComponent();
+
 			_viewMode = viewMode;
+
 			lbMode.Text = _viewMode.ToString();
+
+			OMUtils.SettingDataGridView(ref dgv);
+
+			dgv.BorderStyle = BorderStyle.FixedSingle;
+
 		}
 
 		private void tsbtnClose_Click(object sender, EventArgs e)
@@ -25,8 +32,6 @@ namespace OMW15.Views.Sales
 
 		private void PriceList_Load(object sender, EventArgs e)
 		{
-			OMUtils.SettingDataGridView(ref dgv);
-			dgv.BorderStyle = BorderStyle.FixedSingle;
 			CreateSearchTypeList();
 			tsbtnRefresh.PerformClick();
 			UpdateUI();
@@ -93,14 +98,13 @@ namespace OMW15.Views.Sales
 			switch(searchIndex)
 			{
 				case 0:
-					((DataTable)dgv.DataSource).DefaultView.RowFilter = string.Format("{0} LIKE '%{1}%'", "ITEMID", txtFilter.Text);
+					((DataTable)dgv.DataSource).DefaultView.RowFilter = $"ITEMID LIKE '%{txtFilter.Text}%'";
 					break;
 				case 1:
-					((DataTable)dgv.DataSource).DefaultView.RowFilter = string.Format("{0} LIKE '%{1}%'", "ITEMNAME", txtFilter.Text);
+					((DataTable)dgv.DataSource).DefaultView.RowFilter = $"ITEMNAME LIKE '%{txtFilter.Text}%'";
 					break;
 				case 2:
-					((DataTable)dgv.DataSource).DefaultView.RowFilter = string.Format("{0} LIKE '%{1}%'", "FOR_MACHINE",
-						txtFilter.Text);
+					((DataTable)dgv.DataSource).DefaultView.RowFilter = $"FOR_MACHINE LIKE '%{txtFilter.Text}%'";
 					break;
 			}
 		}

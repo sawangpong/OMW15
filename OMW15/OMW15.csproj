@@ -404,6 +404,7 @@
     <Compile Include="Models\ProductionModel\ProductionDAL.cs" />
     <Compile Include="Models\ProductionModel\ProductionStatDAL.cs" />
     <Compile Include="Models\ProductionModel\SupplierDAL.cs" />
+    <Compile Include="Models\ProductModel\ProductionMachineDAL.cs" />
     <Compile Include="Models\SaleModel\ERPPriceDAL.cs" />
     <Compile Include="Models\SaleModel\SalemanDAL.cs" />
     <Compile Include="Models\SaleModel\SalePIDataItem.cs" />
@@ -615,6 +616,12 @@
       <DependentUpon>Oldmoon.tt</DependentUpon>
     </Compile>
     <Compile Include="PRODUCTIONSTDITEM.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRODUCTION_MACHINEGROUP.cs">
+      <DependentUpon>Oldmoon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRODUCTION_MC_MEMBER.cs">
       <DependentUpon>Oldmoon.tt</DependentUpon>
     </Compile>
     <Compile Include="PRODUCTION_OUTSOURCE.cs">
@@ -1065,6 +1072,18 @@
     <Compile Include="Views\Productions\ItemStat.Designer.cs">
       <DependentUpon>ItemStat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Productions\MachineGroupInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\MachineGroupInfo.Designer.cs">
+      <DependentUpon>MachineGroupInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\MachineGroupMemberInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\MachineGroupMemberInfo.Designer.cs">
+      <DependentUpon>MachineGroupMemberInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Productions\MissReportInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1107,11 +1126,23 @@
     <Compile Include="Views\Productions\Production2Plan.Designer.cs">
       <DependentUpon>Production2Plan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Productions\ProductionDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionDashboard.Designer.cs">
+      <DependentUpon>ProductionDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Productions\ProductionJobList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Productions\ProductionJobList.Designer.cs">
       <DependentUpon>ProductionJobList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionMachineGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionMachineGroup.Designer.cs">
+      <DependentUpon>ProductionMachineGroup.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Productions\ProductionOrder.cs">
       <SubType>Form</SubType>
@@ -2275,6 +2306,12 @@
     <EmbeddedResource Include="Views\Productions\ItemStat.resx">
       <DependentUpon>ItemStat.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\MachineGroupInfo.resx">
+      <DependentUpon>MachineGroupInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\MachineGroupMemberInfo.resx">
+      <DependentUpon>MachineGroupMemberInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Productions\MissReportInfo.resx">
       <DependentUpon>MissReportInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -2296,8 +2333,14 @@
     <EmbeddedResource Include="Views\Productions\Production2Plan.resx">
       <DependentUpon>Production2Plan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionDashboard.resx">
+      <DependentUpon>ProductionDashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Productions\ProductionJobList.resx">
       <DependentUpon>ProductionJobList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionMachineGroup.resx">
+      <DependentUpon>ProductionMachineGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Productions\ProductionOrder.resx">
       <DependentUpon>ProductionOrder.cs</DependentUpon>
@@ -3008,6 +3051,10 @@
       <DependentUpon>Oldmoon.edmx</DependentUpon>
       <LastGenOutput>Oldmoon.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\dashboard.png" />
+    <None Include="Resources\materials.png" />
+    <None Include="Resources\software.png" />
+    <None Include="Resources\History.png" />
     <Content Include="UNUSED_CODE\ProductionDAL_UnusedCode.txt" />
     <None Include="Resources\logo-1.png" />
   </ItemGroup>

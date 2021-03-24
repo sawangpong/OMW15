@@ -1073,6 +1073,7 @@
           </Key>
           <Property Name="PRDPROCESSID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PROCESSNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MACHINE_GROUP" Type="int" />
           <Property Name="MACHINE" Type="varchar" MaxLength="150" />
           <Property Name="STDHOUR" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="SCORE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
@@ -1093,6 +1094,22 @@
           </Key>
           <Property Name="PRODUCTGROUPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PRODUCTGROUPNAME" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCTION_MACHINEGROUP">
+          <Key>
+            <PropertyRef Name="MC_GROUPID" />
+          </Key>
+          <Property Name="MC_GROUPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MC_GROUPNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCTION_MC_MEMBER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MC_GROUP" Type="int" Nullable="false" />
+          <Property Name="MC_NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MC_NUMBER" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="PRODUCTION_OUTSOURCE">
           <Key>
@@ -2941,6 +2958,8 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <EntitySet Name="PRDPROCESS" EntityType="Self.PRDPROCESS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRINTLOGS" EntityType="Self.PRINTLOGS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCTGROUPS" EntityType="Self.PRODUCTGROUPS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTION_MACHINEGROUP" EntityType="Self.PRODUCTION_MACHINEGROUP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTION_MC_MEMBER" EntityType="Self.PRODUCTION_MC_MEMBER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCTION_OUTSOURCE" EntityType="Self.PRODUCTION_OUTSOURCE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCTION_WH_RECEIVE" EntityType="Self.PRODUCTION_WH_RECEIVE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCTIONJOBINFO" EntityType="Self.PRODUCTIONJOBINFO" Schema="dbo" store:Type="Tables" />
@@ -4847,16 +4866,6 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <Property Name="LASTMODIFY" Type="DateTime" Precision="3" />
           <NavigationProperty Name="PMMC" Relationship="Self.FK_PMSCHEDULE_PMMC" FromRole="PMSCHEDULE" ToRole="PMMC" />
         </EntityType>
-        <EntityType Name="PRDPROCESS">
-          <Key>
-            <PropertyRef Name="PROCESSNAME" />
-          </Key>
-          <Property Name="PRDPROCESSID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PROCESSNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MACHINE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="STDHOUR" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="SCORE" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-        </EntityType>
         <EntityType Name="PRINTLOG">
           <Key>
             <PropertyRef Name="LOGID" />
@@ -5347,7 +5356,6 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <EntitySet Name="PMCONTRACTs" EntityType="Self.PMCONTRACT" />
           <EntitySet Name="PMMCs" EntityType="Self.PMMC" />
           <EntitySet Name="PMSCHEDULEs" EntityType="Self.PMSCHEDULE" />
-          <EntitySet Name="PRDPROCESSes" EntityType="Self.PRDPROCESS" />
           <EntitySet Name="PRINTLOGS" EntityType="Self.PRINTLOG" />
           <EntitySet Name="PRODUCTGROUPS" EntityType="Self.PRODUCTGROUP" />
           <EntitySet Name="PRODUCTIONSTDITEMS" EntityType="Self.PRODUCTIONSTDITEM" />
@@ -5465,6 +5473,9 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <EntitySet Name="CUSTPRICETABs" EntityType="Oldmoon.CUSTPRICETAB" />
           <EntitySet Name="SOLINES" EntityType="Oldmoon.SOLINE" />
           <EntitySet Name="PRODUCTION_WH_RECEIVE" EntityType="Oldmoon.PRODUCTION_WH_RECEIVE" />
+          <EntitySet Name="PRODUCTION_MACHINEGROUP" EntityType="Oldmoon.PRODUCTION_MACHINEGROUP" />
+          <EntitySet Name="PRODUCTION_MC_MEMBER" EntityType="Oldmoon.PRODUCTION_MC_MEMBER" />
+          <EntitySet Name="PRDPROCESSes" EntityType="Oldmoon.PRDPROCESS" />
         </EntityContainer>
         <ComplexType Name="usp_GetServiceJobList_Result">
           <Property Type="Int32" Name="orderid" Nullable="false" />
@@ -6831,6 +6842,33 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <Property Name="RECEIVE_AVG_UCOST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="RECEIVE_BY" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="PRODUCTION_MACHINEGROUP">
+          <Key>
+            <PropertyRef Name="MC_GROUPID" />
+          </Key>
+          <Property Name="MC_GROUPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MC_GROUPNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PRODUCTION_MC_MEMBER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MC_GROUP" Type="Int32" Nullable="false" />
+          <Property Name="MC_NAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MC_NUMBER" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PRDPROCESS">
+          <Key>
+            <PropertyRef Name="PROCESSNAME" />
+          </Key>
+          <Property Name="PRDPROCESSID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PROCESSNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MACHINE_GROUP" Type="Int32" />
+          <Property Name="MACHINE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="STDHOUR" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="SCORE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -7891,17 +7929,6 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
                 <ScalarProperty Name="PMJobNo" ColumnName="PMJobNo" />
                 <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
                 <ScalarProperty Name="LASTMODIFY" ColumnName="LASTMODIFY" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PRDPROCESSes">
-            <EntityTypeMapping TypeName="Oldmoon.PRDPROCESS">
-              <MappingFragment StoreEntitySet="PRDPROCESS">
-                <ScalarProperty Name="PRDPROCESSID" ColumnName="PRDPROCESSID" />
-                <ScalarProperty Name="PROCESSNAME" ColumnName="PROCESSNAME" />
-                <ScalarProperty Name="MACHINE" ColumnName="MACHINE" />
-                <ScalarProperty Name="STDHOUR" ColumnName="STDHOUR" />
-                <ScalarProperty Name="SCORE" ColumnName="SCORE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -9403,6 +9430,36 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
                 <ScalarProperty Name="REF_ISSUE_ID" ColumnName="REF_ISSUE_ID" />
                 <ScalarProperty Name="REF_TRANSFER_DOC" ColumnName="REF_TRANSFER_DOC" />
                 <ScalarProperty Name="RECEIVEID" ColumnName="RECEIVEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTION_MACHINEGROUP">
+            <EntityTypeMapping TypeName="Oldmoon.PRODUCTION_MACHINEGROUP">
+              <MappingFragment StoreEntitySet="PRODUCTION_MACHINEGROUP">
+                <ScalarProperty Name="MC_GROUPNAME" ColumnName="MC_GROUPNAME" />
+                <ScalarProperty Name="MC_GROUPID" ColumnName="MC_GROUPID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTION_MC_MEMBER">
+            <EntityTypeMapping TypeName="Oldmoon.PRODUCTION_MC_MEMBER">
+              <MappingFragment StoreEntitySet="PRODUCTION_MC_MEMBER">
+                <ScalarProperty Name="MC_NUMBER" ColumnName="MC_NUMBER" />
+                <ScalarProperty Name="MC_NAME" ColumnName="MC_NAME" />
+                <ScalarProperty Name="MC_GROUP" ColumnName="MC_GROUP" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRDPROCESSes">
+            <EntityTypeMapping TypeName="Oldmoon.PRDPROCESS">
+              <MappingFragment StoreEntitySet="PRDPROCESS">
+                <ScalarProperty Name="SCORE" ColumnName="SCORE" />
+                <ScalarProperty Name="STDHOUR" ColumnName="STDHOUR" />
+                <ScalarProperty Name="MACHINE" ColumnName="MACHINE" />
+                <ScalarProperty Name="MACHINE_GROUP" ColumnName="MACHINE_GROUP" />
+                <ScalarProperty Name="PROCESSNAME" ColumnName="PROCESSNAME" />
+                <ScalarProperty Name="PRDPROCESSID" ColumnName="PRDPROCESSID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

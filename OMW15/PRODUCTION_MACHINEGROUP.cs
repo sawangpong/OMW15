@@ -12,13 +12,9 @@ namespace OMW15
     using System;
     using System.Collections.Generic;
     
-    public partial class PRDPROCESS
+    public partial class PRODUCTION_MACHINEGROUP
     {
-        public int PRDPROCESSID { get; set; }
-        public string PROCESSNAME { get; set; }
-        public Nullable<int> MACHINE_GROUP { get; set; }
-        public string MACHINE { get; set; }
-        public decimal STDHOUR { get; set; }
-        public decimal SCORE { get; set; }
+        public int MC_GROUPID { get; set; }
+        public string MC_GROUPNAME { get; set; }
     }
 }

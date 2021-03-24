@@ -28,10 +28,11 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Production));
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.mnu = new System.Windows.Forms.MenuStrip();
 			this.mnuProduction = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuProductionDashboard = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuProductionTasks = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuMCToolsPlan = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -44,9 +45,12 @@
 			this.mnuWorkStat = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuReports = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuProductionJobReport = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuProductionCostReport = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuTools = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuProductionProcess = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuMachineGroup = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuProductionMembers = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuCheckWorkTime = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,6 +64,8 @@
 			this.mnuHorizontalWindowList = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuClose = new System.Windows.Forms.ToolStripMenuItem();
 			this.ts = new System.Windows.Forms.ToolStrip();
+			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbtnProductionTask = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbtnSTDTime = new System.Windows.Forms.ToolStripButton();
@@ -70,16 +76,14 @@
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbtnStat = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+			this.tsbtnReport = new System.Windows.Forms.ToolStripDropDownButton();
+			this.tsmnuProductionJobReport = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsmnuProductionCostReport = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbtnWorkHistory = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbtnProduction2Plan = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-			this.mnuProductionCostReport = new System.Windows.Forms.ToolStripMenuItem();
-			this.tsbtnReport = new System.Windows.Forms.ToolStripDropDownButton();
-			this.tsmnuProductionJobReport = new System.Windows.Forms.ToolStripMenuItem();
-			this.tsmnuProductionCostReport = new System.Windows.Forms.ToolStripMenuItem();
-			this.mnuProductionJobReport = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnu.SuspendLayout();
 			this.ts.SuspendLayout();
 			this.SuspendLayout();
@@ -110,6 +114,8 @@
 			// mnuProduction
 			// 
 			this.mnuProduction.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuProductionDashboard,
+            this.toolStripMenuItem7,
             this.mnuProductionTasks,
             this.mnuMCToolsPlan,
             this.toolStripMenuItem1,
@@ -126,6 +132,18 @@
 			this.mnuProduction.Name = "mnuProduction";
 			this.mnuProduction.Size = new System.Drawing.Size(83, 21);
 			this.mnuProduction.Text = "Production";
+			// 
+			// mnuProductionDashboard
+			// 
+			this.mnuProductionDashboard.Name = "mnuProductionDashboard";
+			this.mnuProductionDashboard.Size = new System.Drawing.Size(234, 22);
+			this.mnuProductionDashboard.Text = "Dashboard";
+			this.mnuProductionDashboard.Click += new System.EventHandler(this.mnuProductionDashboard_Click);
+			// 
+			// toolStripMenuItem7
+			// 
+			this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+			this.toolStripMenuItem7.Size = new System.Drawing.Size(231, 6);
 			// 
 			// mnuProductionTasks
 			// 
@@ -213,6 +231,20 @@
 			this.mnuReports.Text = "Reports";
 			this.mnuReports.Click += new System.EventHandler(this.mnuReports_Click);
 			// 
+			// mnuProductionJobReport
+			// 
+			this.mnuProductionJobReport.Name = "mnuProductionJobReport";
+			this.mnuProductionJobReport.Size = new System.Drawing.Size(170, 22);
+			this.mnuProductionJobReport.Text = "Production Jobs";
+			this.mnuProductionJobReport.Click += new System.EventHandler(this.mnuProductionJobReport_Click);
+			// 
+			// mnuProductionCostReport
+			// 
+			this.mnuProductionCostReport.Name = "mnuProductionCostReport";
+			this.mnuProductionCostReport.Size = new System.Drawing.Size(170, 22);
+			this.mnuProductionCostReport.Text = "Production Cost";
+			this.mnuProductionCostReport.Click += new System.EventHandler(this.mnuProductionCostReport_Click);
+			// 
 			// mnuExit
 			// 
 			this.mnuExit.Image = global::OMW15.Properties.Resources.CLOSE;
@@ -225,6 +257,7 @@
 			// 
 			this.mnuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuProductionProcess,
+            this.mnuMachineGroup,
             this.toolStripMenuItem3,
             this.mnuProductionMembers,
             this.mnuCheckWorkTime,
@@ -242,6 +275,13 @@
 			this.mnuProductionProcess.Size = new System.Drawing.Size(290, 22);
 			this.mnuProductionProcess.Text = "ขั้นตอนการทำงาน";
 			this.mnuProductionProcess.Click += new System.EventHandler(this.mnuProductionProcess_Click);
+			// 
+			// mnuMachineGroup
+			// 
+			this.mnuMachineGroup.Name = "mnuMachineGroup";
+			this.mnuMachineGroup.Size = new System.Drawing.Size(290, 22);
+			this.mnuMachineGroup.Text = "กลุ่มเครื่องจักร";
+			this.mnuMachineGroup.Click += new System.EventHandler(this.mnuMachineGroup_Click);
 			// 
 			// toolStripMenuItem3
 			// 
@@ -335,6 +375,8 @@
 			this.ts.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ts.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
 			this.ts.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1,
+            this.toolStripSeparator9,
             this.tsbtnProductionTask,
             this.toolStripSeparator1,
             this.tsbtnSTDTime,
@@ -356,6 +398,22 @@
 			this.ts.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
 			this.ts.Size = new System.Drawing.Size(1155, 45);
 			this.ts.TabIndex = 7;
+			// 
+			// toolStripButton1
+			// 
+			this.toolStripButton1.AutoSize = false;
+			this.toolStripButton1.Image = global::OMW15.Properties.Resources.dashboard;
+			this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton1.Name = "toolStripButton1";
+			this.toolStripButton1.Size = new System.Drawing.Size(100, 42);
+			this.toolStripButton1.Text = "Dashboard";
+			this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+			this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+			// 
+			// toolStripSeparator9
+			// 
+			this.toolStripSeparator9.Name = "toolStripSeparator9";
+			this.toolStripSeparator9.Size = new System.Drawing.Size(6, 45);
 			// 
 			// tsbtnProductionTask
 			// 
@@ -394,7 +452,7 @@
 			// tsbtnBOM
 			// 
 			this.tsbtnBOM.AutoSize = false;
-			this.tsbtnBOM.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnBOM.Image")));
+			this.tsbtnBOM.Image = global::OMW15.Properties.Resources.materials;
 			this.tsbtnBOM.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.tsbtnBOM.Name = "tsbtnBOM";
 			this.tsbtnBOM.Size = new System.Drawing.Size(100, 42);
@@ -441,50 +499,6 @@
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
 			this.toolStripSeparator5.Size = new System.Drawing.Size(6, 45);
 			// 
-			// toolStripSeparator7
-			// 
-			this.toolStripSeparator7.Name = "toolStripSeparator7";
-			this.toolStripSeparator7.Size = new System.Drawing.Size(6, 45);
-			// 
-			// tsbtnWorkHistory
-			// 
-			this.tsbtnWorkHistory.AutoSize = false;
-			this.tsbtnWorkHistory.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnWorkHistory.Image")));
-			this.tsbtnWorkHistory.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbtnWorkHistory.Name = "tsbtnWorkHistory";
-			this.tsbtnWorkHistory.Size = new System.Drawing.Size(100, 42);
-			this.tsbtnWorkHistory.Text = "Work History";
-			this.tsbtnWorkHistory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.tsbtnWorkHistory.Click += new System.EventHandler(this.tsbtnWorkHistory_Click);
-			// 
-			// toolStripSeparator6
-			// 
-			this.toolStripSeparator6.Name = "toolStripSeparator6";
-			this.toolStripSeparator6.Size = new System.Drawing.Size(6, 45);
-			// 
-			// tsbtnProduction2Plan
-			// 
-			this.tsbtnProduction2Plan.AutoSize = false;
-			this.tsbtnProduction2Plan.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnProduction2Plan.Image")));
-			this.tsbtnProduction2Plan.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.tsbtnProduction2Plan.Name = "tsbtnProduction2Plan";
-			this.tsbtnProduction2Plan.Size = new System.Drawing.Size(100, 42);
-			this.tsbtnProduction2Plan.Text = "M/C Plan";
-			this.tsbtnProduction2Plan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.tsbtnProduction2Plan.Click += new System.EventHandler(this.tsbtnProduction2Plan_Click);
-			// 
-			// toolStripSeparator8
-			// 
-			this.toolStripSeparator8.Name = "toolStripSeparator8";
-			this.toolStripSeparator8.Size = new System.Drawing.Size(6, 45);
-			// 
-			// mnuProductionCostReport
-			// 
-			this.mnuProductionCostReport.Name = "mnuProductionCostReport";
-			this.mnuProductionCostReport.Size = new System.Drawing.Size(180, 22);
-			this.mnuProductionCostReport.Text = "Production Cost";
-			this.mnuProductionCostReport.Click += new System.EventHandler(this.mnuProductionCostReport_Click);
-			// 
 			// tsbtnReport
 			// 
 			this.tsbtnReport.AutoSize = false;
@@ -513,12 +527,42 @@
 			this.tsmnuProductionCostReport.Text = "Production Cost Report";
 			this.tsmnuProductionCostReport.Click += new System.EventHandler(this.tsmnuProductionCostReport_Click);
 			// 
-			// mnuProductionJobReport
+			// toolStripSeparator7
 			// 
-			this.mnuProductionJobReport.Name = "mnuProductionJobReport";
-			this.mnuProductionJobReport.Size = new System.Drawing.Size(180, 22);
-			this.mnuProductionJobReport.Text = "Production Jobs";
-			this.mnuProductionJobReport.Click += new System.EventHandler(this.mnuProductionJobReport_Click);
+			this.toolStripSeparator7.Name = "toolStripSeparator7";
+			this.toolStripSeparator7.Size = new System.Drawing.Size(6, 45);
+			// 
+			// tsbtnWorkHistory
+			// 
+			this.tsbtnWorkHistory.AutoSize = false;
+			this.tsbtnWorkHistory.Image = global::OMW15.Properties.Resources.History;
+			this.tsbtnWorkHistory.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbtnWorkHistory.Name = "tsbtnWorkHistory";
+			this.tsbtnWorkHistory.Size = new System.Drawing.Size(100, 42);
+			this.tsbtnWorkHistory.Text = "Work History";
+			this.tsbtnWorkHistory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+			this.tsbtnWorkHistory.Click += new System.EventHandler(this.tsbtnWorkHistory_Click);
+			// 
+			// toolStripSeparator6
+			// 
+			this.toolStripSeparator6.Name = "toolStripSeparator6";
+			this.toolStripSeparator6.Size = new System.Drawing.Size(6, 45);
+			// 
+			// tsbtnProduction2Plan
+			// 
+			this.tsbtnProduction2Plan.AutoSize = false;
+			this.tsbtnProduction2Plan.Image = global::OMW15.Properties.Resources.software;
+			this.tsbtnProduction2Plan.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbtnProduction2Plan.Name = "tsbtnProduction2Plan";
+			this.tsbtnProduction2Plan.Size = new System.Drawing.Size(100, 42);
+			this.tsbtnProduction2Plan.Text = "M/C Plan";
+			this.tsbtnProduction2Plan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+			this.tsbtnProduction2Plan.Click += new System.EventHandler(this.tsbtnProduction2Plan_Click);
+			// 
+			// toolStripSeparator8
+			// 
+			this.toolStripSeparator8.Name = "toolStripSeparator8";
+			this.toolStripSeparator8.Size = new System.Drawing.Size(6, 45);
 			// 
 			// Production
 			// 
@@ -597,5 +641,10 @@
 		private System.Windows.Forms.ToolStripMenuItem tsmnuProductionJobReport;
 		private System.Windows.Forms.ToolStripMenuItem tsmnuProductionCostReport;
 		private System.Windows.Forms.ToolStripMenuItem mnuProductionJobReport;
+		private System.Windows.Forms.ToolStripMenuItem mnuProductionDashboard;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
+		private System.Windows.Forms.ToolStripButton toolStripButton1;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+		private System.Windows.Forms.ToolStripMenuItem mnuMachineGroup;
 	}
 }

@@ -31,6 +31,7 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PriceList));
 			this.pnlTop = new System.Windows.Forms.Panel();
 			this.panel3 = new System.Windows.Forms.Panel();
+			this.lbMode = new System.Windows.Forms.Label();
 			this.pnlHeader = new System.Windows.Forms.Panel();
 			this.cbxSearchType = new System.Windows.Forms.ComboBox();
 			this.label2 = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@
 			this.pnlSelect = new System.Windows.Forms.Panel();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.btnSelect = new System.Windows.Forms.Button();
-			this.lbMode = new System.Windows.Forms.Label();
 			this.pnlTop.SuspendLayout();
 			this.panel3.SuspendLayout();
 			this.pnlHeader.SuspendLayout();
@@ -88,6 +88,18 @@
 			this.panel3.Padding = new System.Windows.Forms.Padding(2);
 			this.panel3.Size = new System.Drawing.Size(942, 52);
 			this.panel3.TabIndex = 1;
+			// 
+			// lbMode
+			// 
+			this.lbMode.Dock = System.Windows.Forms.DockStyle.Right;
+			this.lbMode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbMode.ForeColor = System.Drawing.Color.Gold;
+			this.lbMode.Location = new System.Drawing.Point(845, 2);
+			this.lbMode.Name = "lbMode";
+			this.lbMode.Size = new System.Drawing.Size(95, 20);
+			this.lbMode.TabIndex = 2;
+			this.lbMode.Text = "Mode";
+			this.lbMode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// pnlHeader
 			// 
@@ -330,18 +342,6 @@
 			this.btnSelect.TabIndex = 0;
 			this.btnSelect.Text = "&Select";
 			this.btnSelect.UseVisualStyleBackColor = true;
-			// 
-			// lbMode
-			// 
-			this.lbMode.Dock = System.Windows.Forms.DockStyle.Right;
-			this.lbMode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbMode.ForeColor = System.Drawing.Color.Gold;
-			this.lbMode.Location = new System.Drawing.Point(845, 2);
-			this.lbMode.Name = "lbMode";
-			this.lbMode.Size = new System.Drawing.Size(95, 20);
-			this.lbMode.TabIndex = 2;
-			this.lbMode.Text = "Mode";
-			this.lbMode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// PriceList
 			// 

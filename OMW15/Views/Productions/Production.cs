@@ -260,5 +260,26 @@ namespace OMW15.Views.Productions
 		{
 			mnuProductionCostReport.PerformClick();
 		}
+
+		private void mnuProductionDashboard_Click(object sender, EventArgs e)
+		{
+			ProductionDashboard productionDashboard = ProductionDashboard.GetInstance;
+			productionDashboard.StartPosition = FormStartPosition.CenterScreen;
+			productionDashboard.MdiParent = this;
+			productionDashboard.Show();
+		}
+
+		private void toolStripButton1_Click(object sender, EventArgs e)
+		{
+			mnuProductionDashboard.PerformClick();
+		}
+
+		private void mnuMachineGroup_Click(object sender, EventArgs e)
+		{
+			ProductionMachineGroup productionMachineGroup = ProductionMachineGroup.GetInstance;
+			productionMachineGroup.StartPosition = FormStartPosition.CenterScreen;
+			productionMachineGroup.MdiParent = this;
+			productionMachineGroup.Show();
+		}
 	}
 }

@@ -17,8 +17,8 @@ namespace OMW15.Views.Sales
 		#region class field
 		private ActionMode mode = ActionMode.None;
 		private string codeFilter = "";
-		private string nameFilter = "";
-		private int selectedSearchCat = 0;
+		//private string nameFilter = "";
+		//private int selectedSearchCat = 0;
 
 		#endregion
 
@@ -62,33 +62,33 @@ namespace OMW15.Views.Sales
 			tsbtnClose.Visible = !pnlCommand.Visible;
 			tsSepClose.Visible = tsbtnClose.Visible;
 
-			if(selectedSearchCat == (int)Shared.OMShareSaleEnum.PriceListItemFilterCategory.AllCategory)
-			{
-				txtFilter.Enabled = false;
-				btnSearch.Enabled = true;
-			}
-			else
-			{
+			//if(selectedSearchCat == (int)Shared.OMShareSaleEnum.PriceListItemFilterCategory.AllCategory)
+			//{
+			//	txtFilter.Enabled = false;
+			//	btnSearch.Enabled = true;
+			//}
+			//else
+			//{
 				txtFilter.Enabled = true;
 				btnSearch.Enabled = !string.IsNullOrEmpty(txtFilter.Text);
-			}
+			//}
 
 		} // end UpdateUI
 
-		private void createFilterList()
-		{
-			cbxSearchCat.DataSource = EnumWithName<Shared.OMShareSaleEnum.PriceListItemFilterCategory>.ParseEnum().ToDataTable();
-			cbxSearchCat.DisplayMember = "Name";
-			cbxSearchCat.ValueMember = "Value";
-			cbxSearchCat.SelectedIndex = 0;
-		}
+		//private void createFilterList()
+		//{
+		//	cbxSearchCat.DataSource = EnumWithName<Shared.OMShareSaleEnum.PriceListItemFilterCategory>.ParseEnum().ToDataTable();
+		//	cbxSearchCat.DisplayMember = "Name";
+		//	cbxSearchCat.ValueMember = "Value";
+		//	cbxSearchCat.SelectedIndex = 0;
+		//}
 
 
-		private void loadErpPriceList(string codeFilter, string nameFilter)
+		private void loadErpPriceList(string codeFilter) //, string nameFilter)
 		{
 			dgv.SuspendLayout();
 
-			dgv.DataSource = new Models.SaleModel.ERPPriceDAL().getErpPriceList(codeFilter, nameFilter);
+			dgv.DataSource = new Models.SaleModel.ERPPriceDAL().getErpPriceList(codeFilter); //, nameFilter);
 
 			foreach(DataGridViewColumn dgc in dgv.Columns)
 			{
@@ -116,6 +116,11 @@ namespace OMW15.Views.Sales
 			OMShareWarehouseEnums.StockAppCall App = OMShareWarehouseEnums.StockAppCall.StockMaster)
 		{
 			InitializeComponent();
+
+			CenterToParent();
+			// setting
+			OMControls.OMUtils.SettingDataGridView(ref dgv);
+
 			mode = Mode;
 		}
 
@@ -126,12 +131,9 @@ namespace OMW15.Views.Sales
 
 		private void STDPriceList_Load(object sender, EventArgs e)
 		{
-			CenterToParent();
-			// setting
-			OMControls.OMUtils.SettingDataGridView(ref dgv);
 
 			// create filter list
-			createFilterList();
+			//createFilterList();
 
 			updateUI();
 
@@ -144,23 +146,23 @@ namespace OMW15.Views.Sales
 
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
-			switch(selectedSearchCat)
-			{
-				case (int)Shared.OMShareSaleEnum.PriceListItemFilterCategory.AllCategory:
-					codeFilter = "";
-					nameFilter = "";
-					break;
-				case (int)Shared.OMShareSaleEnum.PriceListItemFilterCategory.ByItemName:
-					codeFilter = "";
-					nameFilter = txtFilter.Text;
-					break;
-				case (int)Shared.OMShareSaleEnum.PriceListItemFilterCategory.ByItemNo:
-					codeFilter = txtFilter.Text;
-					nameFilter = "";
-					break;
-			}
-
-			loadErpPriceList(codeFilter, nameFilter);
+			//switch(selectedSearchCat)
+			//{
+			//	case (int)Shared.OMShareSaleEnum.PriceListItemFilterCategory.AllCategory:
+			//		codeFilter = "";
+			//		nameFilter = "";
+			//		break;
+			//	case (int)Shared.OMShareSaleEnum.PriceListItemFilterCategory.ByItemName:
+			//		codeFilter = "";
+			//		nameFilter = txtFilter.Text;
+			//		break;
+			//	case (int)Shared.OMShareSaleEnum.PriceListItemFilterCategory.ByItemNo:
+			//		codeFilter = txtFilter.Text;
+			//		nameFilter = "";
+			//		break;
+			//}
+			codeFilter = txtFilter.Text;
+			loadErpPriceList(codeFilter); //, nameFilter);
 		}
 
 		private void txtFilter_TextChanged(object sender, EventArgs e)
@@ -172,25 +174,26 @@ namespace OMW15.Views.Sales
 		{
 			if(e.KeyChar == (char)Keys.Enter)
 			{
+				codeFilter = txtFilter.Text;
 				btnSearch.PerformClick();
 			}
 		}
 
-		private void cbxSearchCat_SelectedValueChanged(object sender, EventArgs e)
-		{
-			try
-			{
-				selectedSearchCat = Convert.ToInt32(cbxSearchCat.SelectedValue);
-			}
-			catch
-			{
-				selectedSearchCat = 0;
-			}
+		//private void cbxSearchCat_SelectedValueChanged(object sender, EventArgs e)
+		//{
+		//	try
+		//	{
+		//		selectedSearchCat = Convert.ToInt32(cbxSearchCat.SelectedValue);
+		//	}
+		//	catch
+		//	{
+		//		selectedSearchCat = 0;
+		//	}
 
-			lbSearchTitle.Text = $"ค้นหา:({selectedSearchCat})";
+		//	lbSearchTitle.Text = $"ค้นหา:({selectedSearchCat})";
 
-			updateUI();
-		}
+		//	updateUI();
+		//}
 
 		private void dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
 		{
@@ -200,8 +203,6 @@ namespace OMW15.Views.Sales
 			this.ThUnitCost = Convert.ToDecimal(dgv["UnitCostTH", e.RowIndex].Value);
 			this.ThUnitPrice = Convert.ToDecimal(dgv["UnitPriceTH", e.RowIndex].Value);
 			this.ItemImage = pic.Image = new Models.WarehouseModel.WHDDAL().getItemMasterImage(this.PartNo);
-
-
 		}
 
 		private void dgv_DoubleClick(object sender, EventArgs e)

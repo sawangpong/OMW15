@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using OMW15.Models.ToolModel;
+using System.Data;
 using System.Linq;
 
 namespace OMW15.Models.SaleModel
@@ -19,6 +20,12 @@ namespace OMW15.Models.SaleModel
 
 		#region class helper
 
+		public DataTable getErpPriceList(string filter)
+		{
+			return new DataConnect($"EXEC dbo.usp_OM_ERP_WH_MASTER_ERP_PRICELIST @filter='{filter}'", omglobal.SysConnectionString).ToDataTable;
+		}
+
+		/*
 		public DataTable getErpPriceList(string codeFilter, string nameFilter)
 		{
 			var goods = from good in erp.GOODSMASTERs
@@ -83,7 +90,7 @@ namespace OMW15.Models.SaleModel
 
 			return null;
 		}
-
+		*/
 
 		#endregion
 

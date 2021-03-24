@@ -130,7 +130,7 @@
 			this.cbxSearchCat.Name = "cbxSearchCat";
 			this.cbxSearchCat.Size = new System.Drawing.Size(160, 25);
 			this.cbxSearchCat.TabIndex = 3;
-			this.cbxSearchCat.SelectedValueChanged += new System.EventHandler(this.cbxSearchCat_SelectedValueChanged);
+			this.cbxSearchCat.Visible = false;
 			// 
 			// lbSearchTitle
 			// 
@@ -139,7 +139,7 @@
 			this.lbSearchTitle.Name = "lbSearchTitle";
 			this.lbSearchTitle.Size = new System.Drawing.Size(66, 25);
 			this.lbSearchTitle.TabIndex = 0;
-			this.lbSearchTitle.Text = "ค้นหา : (0)";
+			this.lbSearchTitle.Text = "ค้นหา : ";
 			this.lbSearchTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// toolStrip1

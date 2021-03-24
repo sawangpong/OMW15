@@ -56,7 +56,6 @@
         <EntityTypeShape EntityType="Oldmoon.PMCONTRACT" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Oldmoon.PMMC" Width="1.5" PointX="8" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Oldmoon.PMSCHEDULE" Width="1.5" PointX="10.25" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Oldmoon.PRDPROCESS" Width="1.5" PointX="15.75" PointY="24.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Oldmoon.PRINTLOG" Width="1.5" PointX="17.75" PointY="24.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Oldmoon.PRODUCTGROUP" Width="1.5" PointX="24.75" PointY="19.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Oldmoon.PRODUCTIONSTDITEM" Width="2" PointX="26.75" PointY="0.75" IsExpanded="true" />
@@ -133,6 +132,9 @@
         <EntityTypeShape EntityType="Oldmoon.CUSTPRICETAB" Width="1.5" PointX="14.375" PointY="31.75" />
         <EntityTypeShape EntityType="Oldmoon.SOLINE" Width="1.5" PointX="17.375" PointY="31.75" />
         <EntityTypeShape EntityType="Oldmoon.PRODUCTION_WH_RECEIVE" Width="1.5" PointX="19.375" PointY="31.75" />
+        <EntityTypeShape EntityType="Oldmoon.PRODUCTION_MACHINEGROUP" Width="1.5" PointX="21.375" PointY="29.75" />
+        <EntityTypeShape EntityType="Oldmoon.PRODUCTION_MC_MEMBER" Width="1.5" PointX="23.375" PointY="29.75" />
+        <EntityTypeShape EntityType="Oldmoon.PRDPROCESS" Width="1.5" PointX="39.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
