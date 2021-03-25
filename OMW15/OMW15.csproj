@@ -404,7 +404,7 @@
     <Compile Include="Models\ProductionModel\ProductionDAL.cs" />
     <Compile Include="Models\ProductionModel\ProductionStatDAL.cs" />
     <Compile Include="Models\ProductionModel\SupplierDAL.cs" />
-    <Compile Include="Models\ProductModel\ProductionMachineDAL.cs" />
+    <Compile Include="Models\ProductionModel\ProductionMachineDAL.cs" />
     <Compile Include="Models\SaleModel\ERPPriceDAL.cs" />
     <Compile Include="Models\SaleModel\SalemanDAL.cs" />
     <Compile Include="Models\SaleModel\SalePIDataItem.cs" />

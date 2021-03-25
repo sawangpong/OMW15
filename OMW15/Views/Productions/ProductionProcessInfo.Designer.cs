@@ -41,7 +41,7 @@
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.btnMachine = new OMControls.OMFlatButton();
 			this.txtMachine = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
+			this.lbMCGroup = new System.Windows.Forms.Label();
 			this.panel4 = new System.Windows.Forms.Panel();
 			this.txtScore = new OMControls.Controls.NumericTextBox();
 			this.label2 = new System.Windows.Forms.Label();
@@ -132,10 +132,10 @@
 			// 
 			this.txtProcessName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.txtProcessName.Dock = System.Windows.Forms.DockStyle.Left;
-			this.txtProcessName.Location = new System.Drawing.Point(109, 1);
+			this.txtProcessName.Location = new System.Drawing.Point(126, 1);
 			this.txtProcessName.MaxLength = 50;
 			this.txtProcessName.Name = "txtProcessName";
-			this.txtProcessName.Size = new System.Drawing.Size(367, 25);
+			this.txtProcessName.Size = new System.Drawing.Size(338, 25);
 			this.txtProcessName.TabIndex = 1;
 			this.txtProcessName.TextChanged += new System.EventHandler(this.txtProcessName_TextChanged);
 			// 
@@ -144,7 +144,7 @@
 			this.label1.Dock = System.Windows.Forms.DockStyle.Left;
 			this.label1.Location = new System.Drawing.Point(1, 1);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(108, 26);
+			this.label1.Size = new System.Drawing.Size(125, 26);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "ขั้นตอนการผลิต :";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -153,7 +153,7 @@
 			// 
 			this.panel2.Controls.Add(this.btnMachine);
 			this.panel2.Controls.Add(this.txtMachine);
-			this.panel2.Controls.Add(this.label3);
+			this.panel2.Controls.Add(this.lbMCGroup);
 			this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panel2.Location = new System.Drawing.Point(5, 86);
 			this.panel2.Name = "panel2";
@@ -169,7 +169,7 @@
 			this.btnMachine.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.btnMachine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnMachine.Image = ((System.Drawing.Image)(resources.GetObject("btnMachine.Image")));
-			this.btnMachine.Location = new System.Drawing.Point(447, 1);
+			this.btnMachine.Location = new System.Drawing.Point(464, 1);
 			this.btnMachine.Name = "btnMachine";
 			this.btnMachine.Size = new System.Drawing.Size(26, 26);
 			this.btnMachine.TabIndex = 3;
@@ -180,21 +180,21 @@
 			// 
 			this.txtMachine.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.txtMachine.Dock = System.Windows.Forms.DockStyle.Left;
-			this.txtMachine.Location = new System.Drawing.Point(109, 1);
+			this.txtMachine.Location = new System.Drawing.Point(126, 1);
 			this.txtMachine.MaxLength = 150;
 			this.txtMachine.Name = "txtMachine";
 			this.txtMachine.Size = new System.Drawing.Size(338, 25);
 			this.txtMachine.TabIndex = 2;
 			// 
-			// label3
+			// lbMCGroup
 			// 
-			this.label3.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label3.Location = new System.Drawing.Point(1, 1);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(108, 26);
-			this.label3.TabIndex = 1;
-			this.label3.Text = "เครื่องจักร :";
-			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.lbMCGroup.Dock = System.Windows.Forms.DockStyle.Left;
+			this.lbMCGroup.Location = new System.Drawing.Point(1, 1);
+			this.lbMCGroup.Name = "lbMCGroup";
+			this.lbMCGroup.Size = new System.Drawing.Size(125, 26);
+			this.lbMCGroup.TabIndex = 1;
+			this.lbMCGroup.Text = "กลุ่มเครื่องจักร [0] :";
+			this.lbMCGroup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// panel4
 			// 
@@ -220,7 +220,7 @@
             0});
 			this.txtScore.Dock = System.Windows.Forms.DockStyle.Left;
 			this.txtScore.IntegerValue = 0;
-			this.txtScore.Location = new System.Drawing.Point(109, 1);
+			this.txtScore.Location = new System.Drawing.Point(126, 1);
 			this.txtScore.MaxLength = 5;
 			this.txtScore.Name = "txtScore";
 			this.txtScore.Size = new System.Drawing.Size(84, 25);
@@ -232,7 +232,7 @@
 			this.label2.Dock = System.Windows.Forms.DockStyle.Left;
 			this.label2.Location = new System.Drawing.Point(1, 1);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(108, 26);
+			this.label2.Size = new System.Drawing.Size(125, 26);
 			this.label2.TabIndex = 1;
 			this.label2.Text = "ระดับคะแนน :";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -282,7 +282,7 @@
 		private System.Windows.Forms.Panel panel2;
 		private OMControls.OMFlatButton btnMachine;
 		private System.Windows.Forms.TextBox txtMachine;
-		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label lbMCGroup;
 		private System.Windows.Forms.Panel panel4;
 		private OMControls.Controls.NumericTextBox txtScore;
 		private System.Windows.Forms.Label label2;

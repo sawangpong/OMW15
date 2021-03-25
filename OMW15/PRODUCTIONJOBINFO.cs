@@ -21,6 +21,9 @@ namespace OMW15
         public int STEP { get; set; }
         public string PROCESSNAME { get; set; }
         public string PROCESSDETAIL { get; set; }
+        public Nullable<int> MACHINEID { get; set; }
+        public Nullable<int> MACHINEGROUP { get; set; }
+        public string MACHINENAME { get; set; }
         public string COSTCENTER { get; set; }
         public string WORKERID { get; set; }
         public string WORKERNAME { get; set; }

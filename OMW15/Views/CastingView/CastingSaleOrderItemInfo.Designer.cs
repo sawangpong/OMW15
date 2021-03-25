@@ -96,6 +96,7 @@
 			this.lbItemMode = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.lbJobNo = new System.Windows.Forms.Label();
+			this.lbImgPath = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			this.panel20.SuspendLayout();
 			this.panel21.SuspendLayout();
@@ -128,17 +129,17 @@
 			this.panel1.Location = new System.Drawing.Point(4, 4);
 			this.panel1.Name = "panel1";
 			this.panel1.Padding = new System.Windows.Forms.Padding(3);
-			this.panel1.Size = new System.Drawing.Size(704, 55);
+			this.panel1.Size = new System.Drawing.Size(704, 50);
 			this.panel1.TabIndex = 0;
 			// 
 			// label5
 			// 
 			this.label5.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label5.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label5.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label5.ForeColor = System.Drawing.Color.White;
 			this.label5.Location = new System.Drawing.Point(3, 3);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(227, 49);
+			this.label5.Size = new System.Drawing.Size(227, 44);
 			this.label5.TabIndex = 1;
 			this.label5.Text = "รายละเอียดสินค้า";
 			this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -150,7 +151,7 @@
 			this.panel20.Dock = System.Windows.Forms.DockStyle.Right;
 			this.panel20.Location = new System.Drawing.Point(518, 3);
 			this.panel20.Name = "panel20";
-			this.panel20.Size = new System.Drawing.Size(183, 49);
+			this.panel20.Size = new System.Drawing.Size(183, 44);
 			this.panel20.TabIndex = 0;
 			// 
 			// lbRefSEQ
@@ -160,7 +161,7 @@
 			this.lbRefSEQ.ForeColor = System.Drawing.Color.White;
 			this.lbRefSEQ.Location = new System.Drawing.Point(0, 0);
 			this.lbRefSEQ.Name = "lbRefSEQ";
-			this.lbRefSEQ.Size = new System.Drawing.Size(183, 21);
+			this.lbRefSEQ.Size = new System.Drawing.Size(183, 16);
 			this.lbRefSEQ.TabIndex = 1;
 			this.lbRefSEQ.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
@@ -168,7 +169,7 @@
 			// 
 			this.panel21.Controls.Add(this.lbHeaderMode);
 			this.panel21.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel21.Location = new System.Drawing.Point(0, 21);
+			this.panel21.Location = new System.Drawing.Point(0, 16);
 			this.panel21.Name = "panel21";
 			this.panel21.Size = new System.Drawing.Size(183, 28);
 			this.panel21.TabIndex = 0;
@@ -188,6 +189,7 @@
 			// 
 			// panel2
 			// 
+			this.panel2.Controls.Add(this.lbImgPath);
 			this.panel2.Controls.Add(this.btnSave);
 			this.panel2.Controls.Add(this.btnCancel);
 			this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -224,10 +226,10 @@
 			// 
 			this.panel3.Controls.Add(this.pic);
 			this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-			this.panel3.Location = new System.Drawing.Point(522, 59);
+			this.panel3.Location = new System.Drawing.Point(522, 54);
 			this.panel3.Name = "panel3";
 			this.panel3.Padding = new System.Windows.Forms.Padding(5);
-			this.panel3.Size = new System.Drawing.Size(186, 438);
+			this.panel3.Size = new System.Drawing.Size(186, 443);
 			this.panel3.TabIndex = 2;
 			// 
 			// pic
@@ -257,10 +259,10 @@
 			this.panel4.Controls.Add(this.panel6);
 			this.panel4.Controls.Add(this.panel5);
 			this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel4.Location = new System.Drawing.Point(4, 59);
+			this.panel4.Location = new System.Drawing.Point(4, 54);
 			this.panel4.Name = "panel4";
 			this.panel4.Padding = new System.Windows.Forms.Padding(3);
-			this.panel4.Size = new System.Drawing.Size(518, 438);
+			this.panel4.Size = new System.Drawing.Size(518, 443);
 			this.panel4.TabIndex = 3;
 			// 
 			// panel18
@@ -962,6 +964,17 @@
 			this.lbJobNo.TabIndex = 0;
 			this.lbJobNo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
+			// lbImgPath
+			// 
+			this.lbImgPath.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lbImgPath.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbImgPath.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+			this.lbImgPath.Location = new System.Drawing.Point(3, 3);
+			this.lbImgPath.Name = "lbImgPath";
+			this.lbImgPath.Size = new System.Drawing.Size(446, 33);
+			this.lbImgPath.TabIndex = 2;
+			this.lbImgPath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
 			// CastingSaleOrderItemInfo
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1080,5 +1093,6 @@
 		private System.Windows.Forms.Label lbPriceItemId;
 		private System.Windows.Forms.Label lbItemId;
 		private System.Windows.Forms.Label lbCPTID;
+		private System.Windows.Forms.Label lbImgPath;
 	}
 }

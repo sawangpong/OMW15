@@ -19,6 +19,7 @@ namespace OMW15.Views.Productions
 		public int ProcessId { get; set; }
 		public string ProcessName { get; set; }
 		public decimal StdHr { get; set; }
+		public int SelectedMachineGroupId { get; set; } = 0;
 		#endregion
 
 		#region class helper
@@ -41,6 +42,7 @@ namespace OMW15.Views.Productions
 			dgv.Columns["STD_HR"].Visible = false;
 			dgv.Columns["WORKMINT"].Visible = false;
 			dgv.Columns["STEP_COST"].Visible = false;
+			dgv.Columns["MACHINE_GROUP"].Visible = false;
 
 			dgv.Columns["STEP"].HeaderText = "ลำดับที่";
 			dgv.Columns["PROCESSNAME"].HeaderText = "ขั้นตอนการผลิต";
@@ -50,7 +52,7 @@ namespace OMW15.Views.Productions
 			//dgv.Columns["STD_HR"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 			//dgv.Columns["STD_HR"].DefaultCellStyle = Controllers.ToolController.DataGridViewSettingStyle.NumericCellStyle();
 
-			dgv.Columns["MACHINE"].HeaderText = "เครื่องจักร";
+			dgv.Columns["MACHINE"].HeaderText = "กลุ่มเครื่องจักร";
 			dgv.Columns["MACHINE"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
 
 			//dgv.Columns["WORKMINT"].HeaderText = "เวลาme'koมาตรฐาน (นาที)";
@@ -80,19 +82,17 @@ namespace OMW15.Views.Productions
 		public WorkProcess(int itemId, string itemNo, string itemName)
 		{
 			InitializeComponent();
+			OMUtils.SettingDataGridView(ref dgv);
 
 			_itemId = itemId;
 			_itemNo = itemNo;
 			_itemName = itemName;
+			lbItemNo.Text = $"{_itemId} {_itemNo} {_itemName}";
 		}
 
 		private void WorkProcess_Load(object sender, EventArgs e)
 		{
-			OMUtils.SettingDataGridView(ref dgv);
-			lbItemNo.Text = $"{_itemId} {_itemNo} {_itemName}";
-
 			GetProcessList(_itemNo);
-
 		}
 
 		private void dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
@@ -101,7 +101,7 @@ namespace OMW15.Views.Productions
 			this.ProcessName = dgv["PROCESSNAME", e.RowIndex].Value.ToString();
 			this.Step = Convert.ToInt32(dgv["STEP", e.RowIndex].Value);
 			this.StdHr = Convert.ToDecimal(dgv["STD_HR", e.RowIndex].Value);
-
+			this.SelectedMachineGroupId = Convert.ToInt32(dgv["MACHINE_GROUP", e.RowIndex].Value);
 			this.UpdateUI();
 		}
 

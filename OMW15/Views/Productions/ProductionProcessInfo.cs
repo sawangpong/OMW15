@@ -36,7 +36,9 @@ namespace OMW15.Views.Productions
 			}
 			txtProcessName.Text = _pc.PROCESSNAME;
 			txtMachine.Text = _pc.MACHINE;
+			txtMachine.Tag = _pc.MACHINE_GROUP;
 			txtScore.Text = _pc.SCORE.ToString();
+			lbMCGroup.Text = $"กลุ่มเครื่องจักร [{_pc.MACHINE_GROUP}] :";
 
 			UpdateUI();
 
@@ -59,6 +61,7 @@ namespace OMW15.Views.Productions
 
 			_pc.PROCESSNAME = txtProcessName.Text;
 			_pc.MACHINE = txtMachine.Text;
+			_pc.MACHINE_GROUP = Convert.ToInt32(txtMachine.Tag.ToString());
 			_pc.SCORE = Convert.ToDecimal(txtScore.Text);
 			_pc.STDHOUR = 0.00m;
 
@@ -108,6 +111,8 @@ namespace OMW15.Views.Productions
 				if(option.ShowDialog(this) == DialogResult.OK)
 				{
 					txtMachine.Text = option.SelectedItem;
+					txtMachine.Tag = option.SelecedItemId;
+					lbMCGroup.Text = $"กลุ่มเครื่องจักร [{option.SelecedItemId}] :";
 				}
 			}
 		}

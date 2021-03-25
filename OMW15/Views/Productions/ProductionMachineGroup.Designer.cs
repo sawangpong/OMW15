@@ -43,7 +43,6 @@
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.btnClose = new System.Windows.Forms.Button();
 			this.panel4 = new System.Windows.Forms.Panel();
-			this.panel5 = new System.Windows.Forms.Panel();
 			this.dgvMember = new System.Windows.Forms.DataGridView();
 			this.splitter1 = new System.Windows.Forms.Splitter();
 			this.dgv = new System.Windows.Forms.DataGridView();
@@ -51,7 +50,6 @@
 			this.panel2.SuspendLayout();
 			this.pnlMCMemberCommand.SuspendLayout();
 			this.panel4.SuspendLayout();
-			this.panel5.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvMember)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
 			this.SuspendLayout();
@@ -110,7 +108,7 @@
 			this.pnlMCMemberCommand.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pnlMCMemberCommand.Location = new System.Drawing.Point(10, 140);
 			this.pnlMCMemberCommand.Name = "pnlMCMemberCommand";
-			this.pnlMCMemberCommand.Padding = new System.Windows.Forms.Padding(5, 20, 5, 5);
+			this.pnlMCMemberCommand.Padding = new System.Windows.Forms.Padding(0, 20, 0, 5);
 			this.pnlMCMemberCommand.Size = new System.Drawing.Size(133, 141);
 			this.pnlMCMemberCommand.TabIndex = 7;
 			// 
@@ -118,9 +116,9 @@
 			// 
 			this.btnDeleteMember.Dock = System.Windows.Forms.DockStyle.Top;
 			this.btnDeleteMember.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnDeleteMember.Location = new System.Drawing.Point(5, 80);
+			this.btnDeleteMember.Location = new System.Drawing.Point(0, 80);
 			this.btnDeleteMember.Name = "btnDeleteMember";
-			this.btnDeleteMember.Size = new System.Drawing.Size(123, 30);
+			this.btnDeleteMember.Size = new System.Drawing.Size(133, 30);
 			this.btnDeleteMember.TabIndex = 2;
 			this.btnDeleteMember.Text = "Delete Member";
 			this.btnDeleteMember.UseVisualStyleBackColor = true;
@@ -130,9 +128,9 @@
 			// 
 			this.btnEditMember.Dock = System.Windows.Forms.DockStyle.Top;
 			this.btnEditMember.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnEditMember.Location = new System.Drawing.Point(5, 50);
+			this.btnEditMember.Location = new System.Drawing.Point(0, 50);
 			this.btnEditMember.Name = "btnEditMember";
-			this.btnEditMember.Size = new System.Drawing.Size(123, 30);
+			this.btnEditMember.Size = new System.Drawing.Size(133, 30);
 			this.btnEditMember.TabIndex = 1;
 			this.btnEditMember.Text = "Edit Member";
 			this.btnEditMember.UseVisualStyleBackColor = true;
@@ -142,9 +140,9 @@
 			// 
 			this.btnAddMember.Dock = System.Windows.Forms.DockStyle.Top;
 			this.btnAddMember.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnAddMember.Location = new System.Drawing.Point(5, 20);
+			this.btnAddMember.Location = new System.Drawing.Point(0, 20);
 			this.btnAddMember.Name = "btnAddMember";
-			this.btnAddMember.Size = new System.Drawing.Size(123, 30);
+			this.btnAddMember.Size = new System.Drawing.Size(133, 30);
 			this.btnAddMember.TabIndex = 0;
 			this.btnAddMember.Text = "Add Member";
 			this.btnAddMember.UseVisualStyleBackColor = true;
@@ -225,7 +223,7 @@
 			// 
 			// panel4
 			// 
-			this.panel4.Controls.Add(this.panel5);
+			this.panel4.Controls.Add(this.dgvMember);
 			this.panel4.Controls.Add(this.splitter1);
 			this.panel4.Controls.Add(this.dgv);
 			this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -235,23 +233,13 @@
 			this.panel4.Size = new System.Drawing.Size(403, 321);
 			this.panel4.TabIndex = 6;
 			// 
-			// panel5
-			// 
-			this.panel5.Controls.Add(this.dgvMember);
-			this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel5.Location = new System.Drawing.Point(3, 146);
-			this.panel5.Name = "panel5";
-			this.panel5.Padding = new System.Windows.Forms.Padding(2);
-			this.panel5.Size = new System.Drawing.Size(397, 172);
-			this.panel5.TabIndex = 8;
-			// 
 			// dgvMember
 			// 
 			this.dgvMember.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvMember.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dgvMember.Location = new System.Drawing.Point(2, 2);
+			this.dgvMember.Location = new System.Drawing.Point(3, 146);
 			this.dgvMember.Name = "dgvMember";
-			this.dgvMember.Size = new System.Drawing.Size(393, 168);
+			this.dgvMember.Size = new System.Drawing.Size(397, 172);
 			this.dgvMember.TabIndex = 0;
 			this.dgvMember.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMember_CellEnter);
 			this.dgvMember.DoubleClick += new System.EventHandler(this.dgvMember_DoubleClick);
@@ -298,7 +286,6 @@
 			this.panel2.ResumeLayout(false);
 			this.pnlMCMemberCommand.ResumeLayout(false);
 			this.panel4.ResumeLayout(false);
-			this.panel5.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgvMember)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
 			this.ResumeLayout(false);
@@ -320,7 +307,6 @@
 		private System.Windows.Forms.Panel panel4;
 		private System.Windows.Forms.DataGridView dgv;
 		private System.Windows.Forms.Panel pnlMCMemberCommand;
-		private System.Windows.Forms.Panel panel5;
 		private System.Windows.Forms.Splitter splitter1;
 		private System.Windows.Forms.Button btnDeleteMember;
 		private System.Windows.Forms.Button btnEditMember;

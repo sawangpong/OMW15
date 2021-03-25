@@ -2,7 +2,7 @@
 using System.Data;
 using System.Linq;
 
-namespace OMW15.Models.ProductModel
+namespace OMW15.Models.ProductionModel
 {
 	public class ProductionMachineDAL
 	{
@@ -63,6 +63,21 @@ namespace OMW15.Models.ProductModel
 		{
 			return _om.PRODUCTION_MC_MEMBER.Where(x => x.MC_GROUP == groupId).ToDataTable();
 		}
+
+		public DataTable GetMachineMemberByGroup(int groupId)
+		{
+			return _om.PRODUCTION_MC_MEMBER
+						.Where(x => x.MC_GROUP == groupId)
+						.Select(c => new
+						{
+							c.ID,
+							c.MC_NUMBER,
+							MachineDetail = c.MC_NUMBER + "::" + c.MC_NAME
+						})
+						.OrderBy(o => o.MC_NUMBER)
+						.ToDataTable();
+		}
+
 
 		public PRODUCTION_MC_MEMBER GetMachineGroupMemberInfo(int id)
 		{

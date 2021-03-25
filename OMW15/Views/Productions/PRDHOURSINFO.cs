@@ -20,6 +20,8 @@ namespace OMW15.Views.Productions
 		private DateTime _timeCheckIn = DateTime.Today;
 		private DateTime _timeCheckOut = DateTime.Today;
 		private int step = 1;
+		private int _selectedMachineGroup = 0;
+		private int _selectedMachineId = 0;
 		private bool canProcessInfo = false;
 		private bool _canSaveRecord = false;
 		private bool _isFirstLoad = false;
@@ -325,6 +327,7 @@ namespace OMW15.Views.Productions
 		{
 			if (_jobType == ProductionJobType.Project)
 			{
+				lbMachineGroup.Text = $"{11}";
 				return (txtProcessDetail.Text.Length > 0);
 			}
 			else
@@ -345,6 +348,12 @@ namespace OMW15.Views.Productions
 			}
 		}
 
+		private void GetMachineByGroup(int mcGroupId)
+		{
+			cbxMachine.DataSource = new ProductionMachineDAL().GetMachineMemberByGroup(mcGroupId);
+			cbxMachine.DisplayMember = "MachineDetail";
+			cbxMachine.ValueMember = "ID";
+		}
 
 		private void GetProductionHourRecord(int ProductionHourItem)
 		{
@@ -358,6 +367,9 @@ namespace OMW15.Views.Productions
 					_hr.PROCESSID = 0;
 					_hr.PROCESSNAME = string.Empty;
 					_hr.PROCESSDETAIL = "";
+					_hr.MACHINEGROUP = 0;
+					_hr.MACHINEID = 0;
+					_hr.MACHINENAME = string.Empty;
 					_hr.TIME_CAT = WorkingDayCategory.NormalDay.ToString();
 					_hr.DATETIME_START = new DateTime(dtpWorkDate.Value.Year, dtpWorkDate.Value.Month, dtpWorkDate.Value.Day, 8, 0, 0);
 					_hr.DATETIME_END = _hr.DATETIME_START;
@@ -390,6 +402,9 @@ namespace OMW15.Views.Productions
 					break;
 			}
 
+			GetMachineByGroup(_hr.MACHINEGROUP.Value);
+			cbxMachine.SelectedValue = _hr.MACHINEID;
+
 			_jobType = (ProductionJobType)Enum.Parse(typeof(ProductionJobType), _hr.WORKCAT.ToString(), true);
 			lbJobType.Text = _jobType.ToString();
 			txtProductionJob.Text = _hr.ERP_ORDER;
@@ -400,6 +415,7 @@ namespace OMW15.Views.Productions
 			txtItemName.Text = this.ItemName;
 			txtProcess.Text = _hr.PROCESSNAME;
 			txtProcessDetail.Text = _hr.PROCESSDETAIL;
+			lbMachineGroup.Text = $"{_hr.MACHINEGROUP}";
 			txtProcess.Tag = _hr.PROCESSID;
 			step = _hr.STEP;
 			lbStep.Text = $"ขั้นตอนการผลิต: #({step})";
@@ -540,6 +556,7 @@ namespace OMW15.Views.Productions
 			string _process = txtProcess.Text;
 			int _processId = Convert.ToInt32(txtProcess.Tag);
 			int _step = step;
+			int _machineGroup = 0;
 
 			using (WorkProcess workProcess = new WorkProcess(itemId, itemNo, itemName))
 			{
@@ -548,17 +565,21 @@ namespace OMW15.Views.Productions
 					txtProcess.Text = workProcess.ProcessName;
 					txtProcess.Tag = workProcess.ProcessId;
 					step = workProcess.Step;
+					_machineGroup = workProcess.SelectedMachineGroupId;
+					lbMachineGroup.Text = $"{_machineGroup}";
 				}
 				else
 				{
 					txtProcess.Text = _process;
 					txtProcess.Tag = _processId;
 					step = _step;
+					lbMachineGroup.Text = $"{_machineGroup}";
 				}
 
 				_hr.STEP = step;
 				_hr.PROCESSID = Convert.ToInt32(txtProcess.Tag.ToString());
 				_hr.PROCESSNAME = txtProcess.Text;
+				_hr.MACHINEGROUP = _machineGroup;
 
 				lbStep.Text = $"ขั้นตอนการผลิต:({_hr.STEP})";
 			}
@@ -604,6 +625,11 @@ namespace OMW15.Views.Productions
 			_hr.PROCESSID = Convert.ToInt32(txtProcess.Tag.ToString());
 			_hr.PROCESSNAME = txtProcess.Text;
 			_hr.PROCESSDETAIL = txtProcessDetail.Text;
+
+			_hr.MACHINEGROUP = Convert.ToInt32(lbMachineGroup.Text);
+			_hr.MACHINEID = _selectedMachineId;
+			_hr.MACHINENAME = cbxMachine.Text;
+
 			_hr.INPROCESS_QTY = Convert.ToDecimal(txtInprocessQty.Text);
 			_hr.GOOD_QTY = Convert.ToDecimal(txtGoodQty.Text);
 			_hr.BAD_QTY = Convert.ToDecimal(txtBadQty.Text);
@@ -806,6 +832,19 @@ namespace OMW15.Views.Productions
 			{
 				ProcessErrorProvider.SetError(this.txtProcess, "ในกรณีที่เป็นงาน Production ต้องใส่ขั้นตอนการทำงาน");
 			}
+		}
+
+		private void cbxMachine_SelectedValueChanged(object sender, EventArgs e)
+		{
+			try
+			{
+				_selectedMachineId = Convert.ToInt32(cbxMachine.SelectedValue);
+			}
+			catch
+			{
+				_selectedMachineId = 0;
+			}
+
 		}
 	}
 }

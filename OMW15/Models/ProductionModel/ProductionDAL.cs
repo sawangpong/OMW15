@@ -103,6 +103,7 @@ namespace OMW15.Models.ProductionModel
 						 {
 							 p.PRDPROCESSID,
 							 p.PROCESSNAME,
+							 p.MACHINE_GROUP,
 							 p.MACHINE,
 							 p.SCORE
 						 }).AsParallel();
@@ -132,6 +133,7 @@ namespace OMW15.Models.ProductionModel
 					var p = _om.PRDPROCESSes.FirstOrDefault(x => x.PRDPROCESSID == PrdProcess.PRDPROCESSID);
 					p.PROCESSNAME = PrdProcess.PROCESSNAME;
 					p.MACHINE = PrdProcess.MACHINE;
+					p.MACHINE_GROUP = PrdProcess.MACHINE_GROUP;
 					p.SCORE = PrdProcess.SCORE;
 					p.STDHOUR = PrdProcess.STDHOUR;
 					_result = _om.SaveChanges();
@@ -565,6 +567,11 @@ namespace OMW15.Models.ProductionModel
 					pi.NET85_HR_RATE = ph.NET85_HR_RATE;
 					pi.PROCESSNAME = ph.PROCESSNAME;
 					pi.PROCESSDETAIL = ph.PROCESSDETAIL;
+
+					pi.MACHINEGROUP = ph.MACHINEGROUP;
+					pi.MACHINEID = ph.MACHINEID;
+					pi.MACHINENAME = ph.MACHINENAME;
+
 					pi.REGULAR_HR_RATE = ph.REGULAR_HR_RATE;
 					pi.TOTAL_COST75 = ph.TOTAL_COST75;
 					pi.TOTAL_AVG_COST75 = ph.TOTAL_AVG_COST75;
@@ -761,10 +768,22 @@ namespace OMW15.Models.ProductionModel
 					  }).Distinct().ToDataTable();
 		}
 
-		public DataTable GetProcessMachineList() => 
-			(_om.PRDPROCESSes.Where(x => x.MACHINE != null).Select(x => new { x.MACHINE }).Distinct().ToDataTable());
+		//public DataTable GetProcessMachineList() => 
+		//	(_om.PRDPROCESSes.Where(x => x.MACHINE != null).Select(x => new { x.MACHINE }).Distinct().ToDataTable());
 
+		public DataTable GetProcessMachineList()
+		{
+			//_om.PRDPROCESSes.Where(x => x.MACHINE != null).Select(x => new { x.MACHINE }).Distinct().ToDataTable());
 
+			return _om.PRODUCTION_MACHINEGROUP
+						.Select(x => new
+						{
+							x.MC_GROUPID,
+							x.MC_GROUPNAME
+						})
+						.OrderBy(o => o.MC_GROUPNAME)
+						.ToDataTable();
+		}
 		#endregion
 
 		#region STANDARD PROCESS FOR EACH PART-NO.
@@ -812,6 +831,7 @@ namespace OMW15.Models.ProductionModel
 						  std.REF_STDITEMNO,
 						  std.REF_PROCESS,
 						  p.PROCESSNAME,
+						  p.MACHINE_GROUP,
 						  p.MACHINE,
 						  std.WORKMINT,
 						  std.STD_HR,

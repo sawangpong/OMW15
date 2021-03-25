@@ -26,11 +26,14 @@ namespace OMW15.Views.CastingView
 		private string _code = string.Empty;
 		private int _id;
 
+		private decimal _castingPrice = 0m;
+		private decimal _castingPriceWithMat = 0m;
+
 #pragma warning disable CS0414 // The field 'CastingSaleOrderItemInfo._notFoundCastingPriceItem' is assigned but its value is never used
 		private bool _notFoundCastingPriceItem = false;
 #pragma warning restore CS0414 // The field 'CastingSaleOrderItemInfo._notFoundCastingPriceItem' is assigned but its value is never used
 		private int _selectPriceTableRowId = 0;
-	
+
 
 		#endregion
 
@@ -62,7 +65,7 @@ namespace OMW15.Views.CastingView
 
 		public decimal TotalWeight { get; set; }
 
-		public int  PriceListItemId { get; set; }
+		public int PriceListItemId { get; set; }
 
 		#endregion
 
@@ -70,10 +73,10 @@ namespace OMW15.Views.CastingView
 
 		private void UpdateUI()
 		{
-			btnItemNo.Visible = SaleType == OMShareCastingEnums.SaleTypeEnum.ขายวัสดุ;
+			btnItemNo.Visible = (SaleType == OMShareCastingEnums.SaleTypeEnum.ขายวัสดุ);
 			cbxMaterial.Enabled = btnItemNo.Enabled;
 			//btnUnitPrice.Visible = (SaleType == OMShareCastingEnums.SaleTypeEnum.ขายวัสดุ	 && !string.IsNullOrEmpty(lbItemNo.Text));
-			pic.Visible = !btnUnitPrice.Visible;
+			pic.Visible = !(SaleType == OMShareCastingEnums.SaleTypeEnum.ขายวัสดุ && !string.IsNullOrEmpty(lbItemNo.Text));
 			lbPrefix.Visible = pic.Visible;
 			pnlMaterial.Visible = pic.Visible;
 			lbFGOnHand.Visible = pic.Visible;
@@ -90,7 +93,6 @@ namespace OMW15.Views.CastingView
 				cbxMaterial.SelectedIndex = 0;
 			}
 		} // end GetMaterial
-
 
 		private void GetSOLineItemDetail(int Id)
 		{
@@ -129,14 +131,12 @@ namespace OMW15.Views.CastingView
 			_selectedMatId = _sl.MATTYPE;
 			_soId = _sl.SOSEQ;
 			_refId = _sl.REFSOKEY;
-			lbSaleType.Text = _sl != null ? _sl.SALETYPE.ToString() : ((int)SaleType).ToString();
+			lbSaleType.Text = (_sl != null ? _sl.SALETYPE.ToString() : ((int)SaleType).ToString());
 			lbJobNo.Text = _sl.JOBNO.ToString();
 			lbPrefix.Text = _sl.PREFIX;
 			lbItemNo.Text = _sl.ITEMNO;
 			lbMaterialId.Text = _sl.MATTYPE.ToString();
-
 			lbCPTID.Text = $"{_sl.SL_CPT}";
-
 			txtItemName.Text = _sl.ITEMNAME;
 			txtUnit.Text = _sl.UNIT;
 			txtDeliveryQty.Text = $"{_sl.DELIVEREDQTY:N2}";
@@ -151,14 +151,16 @@ namespace OMW15.Views.CastingView
 			txtAVGPriceWT.Text = $"{_sl.AVGPRICEUNITWEIGHT:N2}";
 			txtRemark.Text = _sl.SOLINEREMARK;
 
-			pic.Image = _sl.SALETYPE == (int)OMShareCastingEnums.SaleTypeEnum.ขายวัสดุ ? null : GetPictureForItemSelected(_itemId);
+			pic.Image = (_sl.SALETYPE == (int)OMShareCastingEnums.SaleTypeEnum.ขายวัสดุ ? null : GetPictureForItemSelected(_itemId));
 			UpdateUI();
+
 		} // end GetSOLineItemDetail
 
 		private Image GetPictureForItemSelected(int ItemId)
 		{
 			// get more property info for PriceListItem
 			var cp = new PriceListDAL().GetCustomerPriceListItemInfo(ItemId);
+			lbImgPath.Text = cp.IMAGE_LOCATION;
 			return PriceListDAL.GetPriceListItemPicture(cp.IMAGE_LOCATION);
 		} // end GetPictureForItemSelected
 
@@ -216,7 +218,7 @@ namespace OMW15.Views.CastingView
 
 			_sl.MODIDATE = DateTime.Now;
 			_sl.MODIUSER = omglobal.UserInfo;
-			_sl.ITEMID = SaleType == OMShareCastingEnums.SaleTypeEnum.ขายวัสดุ ? MaterialId : _itemId;
+			_sl.ITEMID = (SaleType == OMShareCastingEnums.SaleTypeEnum.ขายวัสดุ ? MaterialId : _itemId);
 			_sl.PREFIX = lbPrefix.Text;
 			_sl.ITEMNO = lbItemNo.Text;
 			_sl.ITEMNAME = txtItemName.Text;
@@ -259,17 +261,18 @@ namespace OMW15.Views.CastingView
 		public CastingSaleOrderItemInfo(int SOLineItemId, ActionMode SOHeaderMode)
 		{
 			InitializeComponent();
+
+			CenterToParent();
+
 			SOLineId = SOLineItemId;
 			_headerMode = SOHeaderMode;
-			_itemMode = SOLineId == 0 ? ActionMode.Add : ActionMode.Edit;
+			_itemMode = (SOLineId == 0 ? ActionMode.Add : ActionMode.Edit);
 			lbItemMode.Text = _itemMode.ToString().Substring(0, 1);
 			lbHeaderMode.Text = _headerMode.ToString();
 		}
 
 		private void CastingSaleOrderItemInfo_Load(object sender, EventArgs e)
 		{
-			CenterToParent();
-
 			lbSaleOrderNumber.Text = SaleOrderNumber;
 			lbRefSEQ.Text = SaleOrderId.ToString();
 			lbSOLineSEQ.Text = SOLineId.ToString();
@@ -346,10 +349,6 @@ namespace OMW15.Views.CastingView
 			UpdateUI();
 		}
 
-
-		private decimal _castingPrice = 0m;
-		private decimal _castingPriceWithMat = 0m;
-
 		private void btnUnitPrice_Click(object sender, EventArgs e)
 		{
 			if (SaleType == OMShareCastingEnums.SaleTypeEnum.ขายวัสดุ
@@ -359,8 +358,7 @@ namespace OMW15.Views.CastingView
 			}
 			else
 			{
-	//			using (var cpt = new CastingPriceItemList(_itemId, this.MaterialId, this.OrderDate.Year, txtUnit.Text, this.MaterialName))
-				using (var cpt = new CastingPriceItemList(_itemId, this.MaterialId,this.MaterialName,this.txtUnit.Text))
+				using (var cpt = new CastingPriceItemList(_itemId, this.MaterialId, this.MaterialName, this.txtUnit.Text))
 				{
 					if (cpt.ShowDialog(this) == DialogResult.OK)
 					{

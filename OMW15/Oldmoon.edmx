@@ -1160,6 +1160,9 @@
           <Property Name="STEP" Type="int" Nullable="false" />
           <Property Name="PROCESSNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PROCESSDETAIL" Type="nvarchar" MaxLength="150" />
+          <Property Name="MACHINEID" Type="int" />
+          <Property Name="MACHINEGROUP" Type="int" />
+          <Property Name="MACHINENAME" Type="nvarchar" MaxLength="50" />
           <Property Name="COSTCENTER" Type="nvarchar" MaxLength="10" />
           <Property Name="WORKERID" Type="nvarchar" MaxLength="50" />
           <Property Name="WORKERNAME" Type="nvarchar" MaxLength="50" />
@@ -5466,7 +5469,6 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <EntitySet Name="EMPSALs" EntityType="Oldmoon.EMPSAL" />
           <EntitySet Name="PRODUCTIONJOBS" EntityType="Oldmoon.PRODUCTIONJOB" />
           <EntitySet Name="PRODUCTION_OUTSOURCE" EntityType="Oldmoon.PRODUCTION_OUTSOURCE" />
-          <EntitySet Name="PRODUCTIONJOBINFOes" EntityType="Oldmoon.PRODUCTIONJOBINFO" />
           <EntitySet Name="OM_ERP_PRODUCTION_TRANSFER_REQUEST" EntityType="Oldmoon.OM_ERP_PRODUCTION_TRANSFER_REQUEST" />
           <EntitySet Name="OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST" EntityType="Oldmoon.OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST" />
           <EntitySet Name="SYSDATAs" EntityType="Oldmoon.SYSDATA" />
@@ -5476,6 +5478,7 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <EntitySet Name="PRODUCTION_MACHINEGROUP" EntityType="Oldmoon.PRODUCTION_MACHINEGROUP" />
           <EntitySet Name="PRODUCTION_MC_MEMBER" EntityType="Oldmoon.PRODUCTION_MC_MEMBER" />
           <EntitySet Name="PRDPROCESSes" EntityType="Oldmoon.PRDPROCESS" />
+          <EntitySet Name="PRODUCTIONJOBINFOes" EntityType="Oldmoon.PRODUCTIONJOBINFO" />
         </EntityContainer>
         <ComplexType Name="usp_GetServiceJobList_Result">
           <Property Type="Int32" Name="orderid" Nullable="false" />
@@ -6664,55 +6667,6 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <Property Name="OTHER_COST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="TOTAL_COST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
         </EntityType>
-        <EntityType Name="PRODUCTIONJOBINFO">
-          <Key>
-            <PropertyRef Name="PRDINFOID" />
-          </Key>
-          <Property Name="PRDINFOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="WORKCAT" Type="Int32" Nullable="false" />
-          <Property Name="ERP_ORDER" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PROCESSID" Type="Int32" Nullable="false" />
-          <Property Name="STEP" Type="Int32" Nullable="false" />
-          <Property Name="PROCESSNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PROCESSDETAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="COSTCENTER" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="WORKERID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="WORKERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ITEMNO" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
-          <Property Name="DRAWINGNO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="TIME_CAT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DATETIME_START" Type="DateTime" Precision="3" />
-          <Property Name="DATETIME_END" Type="DateTime" Precision="3" />
-          <Property Name="TOTAL_NORMAL_HR" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="BREAK_HRS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="OT_START" Type="DateTime" Precision="3" />
-          <Property Name="OT_END" Type="DateTime" Precision="3" />
-          <Property Name="OT_BREAK" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="TOTAL_OT_HR" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="WORKYEAR" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="WORKPERIOD" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="WORKDAY" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="INPROCESS_QTY" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="GOOD_QTY" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="BAD_QTY" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="TOTALQTY" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="TOTAL_HRS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="REGULAR_HR_RATE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="NET85_HR_RATE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="NET75_HR_RATE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="AVG85_HR_RATE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="AVG75_HR_RATE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="TOTAL_COST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="TOTAL_COST85" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="TOTAL_COST75" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="TOTAL_AVG_COST85" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="TOTAL_AVG_COST75" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="REMARK" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CREATEUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CREATEDATE" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="MODIUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MODIDATE" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
         <EntityType Name="OM_ERP_PRODUCTION_TRANSFER_REQUEST">
           <Key>
             <PropertyRef Name="DI_KEY" />
@@ -6868,6 +6822,58 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <Property Name="MACHINE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="STDHOUR" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="SCORE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="PRODUCTIONJOBINFO">
+          <Key>
+            <PropertyRef Name="PRDINFOID" />
+          </Key>
+          <Property Name="PRDINFOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WORKCAT" Type="Int32" Nullable="false" />
+          <Property Name="ERP_ORDER" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PROCESSID" Type="Int32" Nullable="false" />
+          <Property Name="STEP" Type="Int32" Nullable="false" />
+          <Property Name="PROCESSNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PROCESSDETAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MACHINEID" Type="Int32" />
+          <Property Name="MACHINEGROUP" Type="Int32" />
+          <Property Name="MACHINENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COSTCENTER" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="WORKERID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WORKERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ITEMNO" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Name="DRAWINGNO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TIME_CAT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DATETIME_START" Type="DateTime" Precision="3" />
+          <Property Name="DATETIME_END" Type="DateTime" Precision="3" />
+          <Property Name="TOTAL_NORMAL_HR" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="BREAK_HRS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="OT_START" Type="DateTime" Precision="3" />
+          <Property Name="OT_END" Type="DateTime" Precision="3" />
+          <Property Name="OT_BREAK" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TOTAL_OT_HR" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="WORKYEAR" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="WORKPERIOD" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="WORKDAY" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="INPROCESS_QTY" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="GOOD_QTY" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="BAD_QTY" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TOTALQTY" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TOTAL_HRS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="REGULAR_HR_RATE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="NET85_HR_RATE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="NET75_HR_RATE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="AVG85_HR_RATE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="AVG75_HR_RATE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TOTAL_COST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TOTAL_COST85" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TOTAL_COST75" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TOTAL_AVG_COST85" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TOTAL_AVG_COST75" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="REMARK" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CREATEUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CREATEDATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MODIUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MODIDATE" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -9256,56 +9262,6 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PRODUCTIONJOBINFOes">
-            <EntityTypeMapping TypeName="Oldmoon.PRODUCTIONJOBINFO">
-              <MappingFragment StoreEntitySet="PRODUCTIONJOBINFO">
-                <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
-                <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
-                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
-                <ScalarProperty Name="CREATEUSER" ColumnName="CREATEUSER" />
-                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
-                <ScalarProperty Name="TOTAL_AVG_COST75" ColumnName="TOTAL_AVG_COST75" />
-                <ScalarProperty Name="TOTAL_AVG_COST85" ColumnName="TOTAL_AVG_COST85" />
-                <ScalarProperty Name="TOTAL_COST75" ColumnName="TOTAL_COST75" />
-                <ScalarProperty Name="TOTAL_COST85" ColumnName="TOTAL_COST85" />
-                <ScalarProperty Name="TOTAL_COST" ColumnName="TOTAL_COST" />
-                <ScalarProperty Name="AVG75_HR_RATE" ColumnName="AVG75_HR_RATE" />
-                <ScalarProperty Name="AVG85_HR_RATE" ColumnName="AVG85_HR_RATE" />
-                <ScalarProperty Name="NET75_HR_RATE" ColumnName="NET75_HR_RATE" />
-                <ScalarProperty Name="NET85_HR_RATE" ColumnName="NET85_HR_RATE" />
-                <ScalarProperty Name="REGULAR_HR_RATE" ColumnName="REGULAR_HR_RATE" />
-                <ScalarProperty Name="TOTAL_HRS" ColumnName="TOTAL_HRS" />
-                <ScalarProperty Name="TOTALQTY" ColumnName="TOTALQTY" />
-                <ScalarProperty Name="BAD_QTY" ColumnName="BAD_QTY" />
-                <ScalarProperty Name="GOOD_QTY" ColumnName="GOOD_QTY" />
-                <ScalarProperty Name="INPROCESS_QTY" ColumnName="INPROCESS_QTY" />
-                <ScalarProperty Name="WORKDAY" ColumnName="WORKDAY" />
-                <ScalarProperty Name="WORKPERIOD" ColumnName="WORKPERIOD" />
-                <ScalarProperty Name="WORKYEAR" ColumnName="WORKYEAR" />
-                <ScalarProperty Name="TOTAL_OT_HR" ColumnName="TOTAL_OT_HR" />
-                <ScalarProperty Name="OT_BREAK" ColumnName="OT_BREAK" />
-                <ScalarProperty Name="OT_END" ColumnName="OT_END" />
-                <ScalarProperty Name="OT_START" ColumnName="OT_START" />
-                <ScalarProperty Name="BREAK_HRS" ColumnName="BREAK_HRS" />
-                <ScalarProperty Name="TOTAL_NORMAL_HR" ColumnName="TOTAL_NORMAL_HR" />
-                <ScalarProperty Name="DATETIME_END" ColumnName="DATETIME_END" />
-                <ScalarProperty Name="DATETIME_START" ColumnName="DATETIME_START" />
-                <ScalarProperty Name="TIME_CAT" ColumnName="TIME_CAT" />
-                <ScalarProperty Name="DRAWINGNO" ColumnName="DRAWINGNO" />
-                <ScalarProperty Name="ITEMNO" ColumnName="ITEMNO" />
-                <ScalarProperty Name="WORKERNAME" ColumnName="WORKERNAME" />
-                <ScalarProperty Name="WORKERID" ColumnName="WORKERID" />
-                <ScalarProperty Name="COSTCENTER" ColumnName="COSTCENTER" />
-                <ScalarProperty Name="PROCESSDETAIL" ColumnName="PROCESSDETAIL" />
-                <ScalarProperty Name="PROCESSNAME" ColumnName="PROCESSNAME" />
-                <ScalarProperty Name="STEP" ColumnName="STEP" />
-                <ScalarProperty Name="PROCESSID" ColumnName="PROCESSID" />
-                <ScalarProperty Name="ERP_ORDER" ColumnName="ERP_ORDER" />
-                <ScalarProperty Name="WORKCAT" ColumnName="WORKCAT" />
-                <ScalarProperty Name="PRDINFOID" ColumnName="PRDINFOID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="OM_ERP_PRODUCTION_TRANSFER_REQUEST">
             <EntityTypeMapping TypeName="Oldmoon.OM_ERP_PRODUCTION_TRANSFER_REQUEST">
               <MappingFragment StoreEntitySet="OM_ERP_PRODUCTION_TRANSFER_REQUEST">
@@ -9460,6 +9416,59 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
                 <ScalarProperty Name="MACHINE_GROUP" ColumnName="MACHINE_GROUP" />
                 <ScalarProperty Name="PROCESSNAME" ColumnName="PROCESSNAME" />
                 <ScalarProperty Name="PRDPROCESSID" ColumnName="PRDPROCESSID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTIONJOBINFOes">
+            <EntityTypeMapping TypeName="Oldmoon.PRODUCTIONJOBINFO">
+              <MappingFragment StoreEntitySet="PRODUCTIONJOBINFO">
+                <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+                <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="CREATEUSER" ColumnName="CREATEUSER" />
+                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+                <ScalarProperty Name="TOTAL_AVG_COST75" ColumnName="TOTAL_AVG_COST75" />
+                <ScalarProperty Name="TOTAL_AVG_COST85" ColumnName="TOTAL_AVG_COST85" />
+                <ScalarProperty Name="TOTAL_COST75" ColumnName="TOTAL_COST75" />
+                <ScalarProperty Name="TOTAL_COST85" ColumnName="TOTAL_COST85" />
+                <ScalarProperty Name="TOTAL_COST" ColumnName="TOTAL_COST" />
+                <ScalarProperty Name="AVG75_HR_RATE" ColumnName="AVG75_HR_RATE" />
+                <ScalarProperty Name="AVG85_HR_RATE" ColumnName="AVG85_HR_RATE" />
+                <ScalarProperty Name="NET75_HR_RATE" ColumnName="NET75_HR_RATE" />
+                <ScalarProperty Name="NET85_HR_RATE" ColumnName="NET85_HR_RATE" />
+                <ScalarProperty Name="REGULAR_HR_RATE" ColumnName="REGULAR_HR_RATE" />
+                <ScalarProperty Name="TOTAL_HRS" ColumnName="TOTAL_HRS" />
+                <ScalarProperty Name="TOTALQTY" ColumnName="TOTALQTY" />
+                <ScalarProperty Name="BAD_QTY" ColumnName="BAD_QTY" />
+                <ScalarProperty Name="GOOD_QTY" ColumnName="GOOD_QTY" />
+                <ScalarProperty Name="INPROCESS_QTY" ColumnName="INPROCESS_QTY" />
+                <ScalarProperty Name="WORKDAY" ColumnName="WORKDAY" />
+                <ScalarProperty Name="WORKPERIOD" ColumnName="WORKPERIOD" />
+                <ScalarProperty Name="WORKYEAR" ColumnName="WORKYEAR" />
+                <ScalarProperty Name="TOTAL_OT_HR" ColumnName="TOTAL_OT_HR" />
+                <ScalarProperty Name="OT_BREAK" ColumnName="OT_BREAK" />
+                <ScalarProperty Name="OT_END" ColumnName="OT_END" />
+                <ScalarProperty Name="OT_START" ColumnName="OT_START" />
+                <ScalarProperty Name="BREAK_HRS" ColumnName="BREAK_HRS" />
+                <ScalarProperty Name="TOTAL_NORMAL_HR" ColumnName="TOTAL_NORMAL_HR" />
+                <ScalarProperty Name="DATETIME_END" ColumnName="DATETIME_END" />
+                <ScalarProperty Name="DATETIME_START" ColumnName="DATETIME_START" />
+                <ScalarProperty Name="TIME_CAT" ColumnName="TIME_CAT" />
+                <ScalarProperty Name="DRAWINGNO" ColumnName="DRAWINGNO" />
+                <ScalarProperty Name="ITEMNO" ColumnName="ITEMNO" />
+                <ScalarProperty Name="WORKERNAME" ColumnName="WORKERNAME" />
+                <ScalarProperty Name="WORKERID" ColumnName="WORKERID" />
+                <ScalarProperty Name="COSTCENTER" ColumnName="COSTCENTER" />
+                <ScalarProperty Name="MACHINENAME" ColumnName="MACHINENAME" />
+                <ScalarProperty Name="MACHINEGROUP" ColumnName="MACHINEGROUP" />
+                <ScalarProperty Name="MACHINEID" ColumnName="MACHINEID" />
+                <ScalarProperty Name="PROCESSDETAIL" ColumnName="PROCESSDETAIL" />
+                <ScalarProperty Name="PROCESSNAME" ColumnName="PROCESSNAME" />
+                <ScalarProperty Name="STEP" ColumnName="STEP" />
+                <ScalarProperty Name="PROCESSID" ColumnName="PROCESSID" />
+                <ScalarProperty Name="ERP_ORDER" ColumnName="ERP_ORDER" />
+                <ScalarProperty Name="WORKCAT" ColumnName="WORKCAT" />
+                <ScalarProperty Name="PRDINFOID" ColumnName="PRDINFOID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

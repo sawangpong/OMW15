@@ -14,7 +14,7 @@ namespace OMW15.Views.ToolViews
 		#region class field
 
 		private const int _groupHeight = 190;
-		private const int _parentHeight = 540;
+		private const int _parentHeight = 550;
 
 		//private LOGINEF  _log;
 
@@ -150,11 +150,11 @@ namespace OMW15.Views.ToolViews
 
 			// get user name from default environment
 			// production programm
-			txtUserName.Text = ""; 
+			//txtUserName.Text = ""; 
 
 			// testing programm - auto input username
-			//txtUserName.Text = "sawangpong";
-			
+			txtUserName.Text = "sawangpong";
+
 			txtPassword.Text = string.Empty;
 			lbProductInfo.Text = $"Product : {omglobal.AssemblyInformation}";
 		}
@@ -280,12 +280,14 @@ namespace OMW15.Views.ToolViews
 		private void cgrb1_CollapsedChanged(object sender, EventArgs e)
 		{
 			if (cgrb1.Collapsed)
+			{
 				Size = new Size(Size.Width, _parentHeight - _groupHeight);
+			}
 			else
+			{
 				Size = new Size(Size.Width, _parentHeight);
+			}
 			StartPosition = FormStartPosition.CenterParent;
 		}
-
-
 	}
 }

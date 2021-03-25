@@ -1,5 +1,5 @@
 ﻿using OMControls;
-using OMW15.Models.ProductModel;
+using OMW15.Models.ProductionModel;
 using System;
 using System.Windows.Forms;
 
@@ -32,24 +32,19 @@ namespace OMW15.Views.Productions
 
 		#endregion
 
-
 		#region class helper
 		private void UpdateUI()
 		{
-			pnlMCMemberCommand.Enabled = !_isGroupFocus;
-			btnAdd.Enabled = !pnlMCMemberCommand.Enabled;
-			btnEdit.Enabled = btnAdd.Enabled;
-			btnDelete.Enabled = btnAdd.Enabled;
-			btnRefresh.Enabled = btnAdd.Enabled;
-			btnClose.Enabled = btnAdd.Enabled;
-			btnEdit.Enabled = (_selectedMachineGroup > 0 & _isGroupFocus);
+			btnAdd.Enabled = _isGroupFocus;
+			btnEdit.Enabled = (btnAdd.Enabled && (_selectedMachineGroup > 0));
 			btnDelete.Enabled = btnEdit.Enabled;
+			btnRefresh.Enabled = btnAdd.Enabled;
+			//btnClose.Enabled = btnAdd.Enabled;
 
-			if (_isMemberFocus)
-			{
-				btnEditMember.Enabled = (_selectedMachineMemberId > 0);
-				btnDeleteMember.Enabled = btnEditMember.Enabled;
-			}
+			btnAddMember.Enabled = (_selectedMachineGroup > 0);
+			btnEditMember.Enabled = ((_selectedMachineMemberId > 0) && (dgvMember.Rows.Count > 0));
+			btnDeleteMember.Enabled = btnEditMember.Enabled;
+
 		}
 
 		private void GetMachineGroup()
@@ -68,7 +63,6 @@ namespace OMW15.Views.Productions
 			_isMemberFocus = !_isMemberFocus;
 
 			UpdateUI();
-
 		}
 
 		private void GetMachineMember(int group)
@@ -86,16 +80,14 @@ namespace OMW15.Views.Productions
 
 		private void MachineGroupInfo(int id, string info)
 		{
-			using(var _mg = new MachineGroupInfo(id, info))
+			using (var _mg = new MachineGroupInfo(id, info))
 			{
 				_mg.StartPosition = FormStartPosition.CenterScreen;
-				if(_mg.ShowDialog(this) != DialogResult.OK)
+				if (_mg.ShowDialog(this) == DialogResult.OK)
 				{
-					//MessageBox.Show("Cancel", "Cancel", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-					// Re-load
+					GetMachineGroup();
 				}
 			}
-			GetMachineGroup();
 		}
 
 		private void MachineGroupMemberInfo(int machineGroupId, string machineGroupName, int machineMemberId)
@@ -103,9 +95,10 @@ namespace OMW15.Views.Productions
 			using (MachineGroupMemberInfo _mcMember = new MachineGroupMemberInfo(machineGroupId, machineGroupName, machineMemberId))
 			{
 				_mcMember.StartPosition = FormStartPosition.CenterScreen;
-				if(_mcMember.ShowDialog(this) == DialogResult.OK)
+				if (_mcMember.ShowDialog(this) == DialogResult.OK)
 				{
 					GetMachineMember(machineGroupId);
+					GetMachineGroup();
 				}
 			}
 		}
@@ -120,16 +113,10 @@ namespace OMW15.Views.Productions
 			OMUtils.SettingDataGridView(ref dgvMember);
 		}
 
-		private void btnClose_Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
+		private void btnClose_Click(object sender, EventArgs e) => this.Close();
 
-		private void ProductionMachineGroup_Load(object sender, EventArgs e)
-		{
-			GetMachineGroup();
-		}
-
+		private void ProductionMachineGroup_Load(object sender, EventArgs e) => GetMachineGroup();
+		
 		private void dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
 		{
 			_selectedMachineGroup = Convert.ToInt32(dgv["MC_GROUPID", e.RowIndex].Value.ToString());
@@ -140,10 +127,7 @@ namespace OMW15.Views.Productions
 			UpdateUI();
 		}
 
-		private void btnRefresh_Click(object sender, EventArgs e)
-		{
-			GetMachineGroup();
-		}
+		private void btnRefresh_Click(object sender, EventArgs e) => GetMachineGroup();
 
 		private void dgv_Enter(object sender, EventArgs e)
 		{
@@ -172,14 +156,11 @@ namespace OMW15.Views.Productions
 			MachineGroupInfo(_selectedMachineGroup, _selectedMachineGroupName);
 		}
 
-		private void dgv_DoubleClick(object sender, EventArgs e)
-		{
-			btnEdit.PerformClick();
-		}
+		private void dgv_DoubleClick(object sender, EventArgs e) => btnEdit.PerformClick();
 
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
-			if (MessageBox.Show("You want to delete this Machine Group?","Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+			if (MessageBox.Show("You want to delete this Machine Group?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
 			{
 				if (new ProductionMachineDAL().RemoveMachineGroup(_selectedMachineGroup) > 0)
 				{
@@ -193,16 +174,16 @@ namespace OMW15.Views.Productions
 		{
 			_selectedMachineMemberId = 0;
 
-			MachineGroupMemberInfo(_selectedMachineGroup,_selectedMachineGroupName,_selectedMachineMemberId);
+			MachineGroupMemberInfo(_selectedMachineGroup, _selectedMachineGroupName, _selectedMachineMemberId);
 		}
 
 		private void btnDeleteMember_Click(object sender, EventArgs e)
 		{
-			if(MessageBox.Show("You want to delete this machine member?","Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+			if (MessageBox.Show("You want to delete this machine member?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 			{
-				if(new ProductionMachineDAL().RemoveMachineGroupMember(_selectedMachineMemberId) == 0)
+				if (new ProductionMachineDAL().RemoveMachineGroupMember(_selectedMachineMemberId) == 0)
 				{
-					MessageBox.Show("Remove record failed!","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Remove record failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 		}
@@ -210,13 +191,9 @@ namespace OMW15.Views.Productions
 		private void btnEditMember_Click(object sender, EventArgs e)
 		{
 			MachineGroupMemberInfo(_selectedMachineGroup, _selectedMachineGroupName, _selectedMachineMemberId);
-
 		}
 
-		private void dgvMember_DoubleClick(object sender, EventArgs e)
-		{
-			btnEditMember.PerformClick();
-		}
+		private void dgvMember_DoubleClick(object sender, EventArgs e) => btnEditMember.PerformClick();
 
 		private void dgvMember_CellEnter(object sender, DataGridViewCellEventArgs e)
 		{

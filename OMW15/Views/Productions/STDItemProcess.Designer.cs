@@ -81,14 +81,14 @@
 			// 
 			// pnlHeader
 			// 
-			this.pnlHeader.BackColor = System.Drawing.Color.Brown;
+			this.pnlHeader.BackColor = System.Drawing.SystemColors.ControlDarkDark;
 			this.pnlHeader.Controls.Add(this.lbHeader);
 			this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
 			this.pnlHeader.Location = new System.Drawing.Point(0, 0);
 			this.pnlHeader.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.pnlHeader.Name = "pnlHeader";
 			this.pnlHeader.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-			this.pnlHeader.Size = new System.Drawing.Size(614, 60);
+			this.pnlHeader.Size = new System.Drawing.Size(614, 50);
 			this.pnlHeader.TabIndex = 0;
 			// 
 			// lbHeader
@@ -99,7 +99,7 @@
 			this.lbHeader.ForeColor = System.Drawing.Color.White;
 			this.lbHeader.Location = new System.Drawing.Point(2, 3);
 			this.lbHeader.Name = "lbHeader";
-			this.lbHeader.Size = new System.Drawing.Size(492, 54);
+			this.lbHeader.Size = new System.Drawing.Size(492, 44);
 			this.lbHeader.TabIndex = 3;
 			this.lbHeader.Text = "ขั้นตอนการผลิตมาตรฐาน";
 			this.lbHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -186,10 +186,10 @@
 			this.panel2.Controls.Add(this.pnlMat);
 			this.panel2.Controls.Add(this.panel3);
 			this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel2.Location = new System.Drawing.Point(0, 60);
+			this.panel2.Location = new System.Drawing.Point(0, 50);
 			this.panel2.Name = "panel2";
 			this.panel2.Padding = new System.Windows.Forms.Padding(25, 5, 5, 5);
-			this.panel2.Size = new System.Drawing.Size(614, 211);
+			this.panel2.Size = new System.Drawing.Size(614, 221);
 			this.panel2.TabIndex = 2;
 			// 
 			// panel6

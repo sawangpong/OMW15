@@ -35,14 +35,14 @@
 			this.lbMode = new System.Windows.Forms.Label();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.panel3 = new System.Windows.Forms.Panel();
+			this.txtMachineGroup = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.panel4 = new System.Windows.Forms.Panel();
-			this.panel5 = new System.Windows.Forms.Panel();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.txtMachineGroup = new System.Windows.Forms.TextBox();
 			this.txtMachineName = new System.Windows.Forms.TextBox();
+			this.label2 = new System.Windows.Forms.Label();
+			this.panel5 = new System.Windows.Forms.Panel();
 			this.txtMachineNumber = new System.Windows.Forms.TextBox();
+			this.label3 = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.panel3.SuspendLayout();
@@ -131,6 +131,17 @@
 			this.panel3.Size = new System.Drawing.Size(538, 30);
 			this.panel3.TabIndex = 2;
 			// 
+			// txtMachineGroup
+			// 
+			this.txtMachineGroup.Dock = System.Windows.Forms.DockStyle.Left;
+			this.txtMachineGroup.Location = new System.Drawing.Point(162, 2);
+			this.txtMachineGroup.MaxLength = 50;
+			this.txtMachineGroup.Name = "txtMachineGroup";
+			this.txtMachineGroup.ReadOnly = true;
+			this.txtMachineGroup.Size = new System.Drawing.Size(303, 25);
+			this.txtMachineGroup.TabIndex = 1;
+			this.txtMachineGroup.TextChanged += new System.EventHandler(this.txt_TextChanged);
+			// 
 			// label1
 			// 
 			this.label1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -152,16 +163,15 @@
 			this.panel4.Size = new System.Drawing.Size(538, 30);
 			this.panel4.TabIndex = 3;
 			// 
-			// panel5
+			// txtMachineName
 			// 
-			this.panel5.Controls.Add(this.txtMachineNumber);
-			this.panel5.Controls.Add(this.label3);
-			this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel5.Location = new System.Drawing.Point(0, 110);
-			this.panel5.Name = "panel5";
-			this.panel5.Padding = new System.Windows.Forms.Padding(2);
-			this.panel5.Size = new System.Drawing.Size(538, 30);
-			this.panel5.TabIndex = 4;
+			this.txtMachineName.Dock = System.Windows.Forms.DockStyle.Left;
+			this.txtMachineName.Location = new System.Drawing.Point(162, 2);
+			this.txtMachineName.MaxLength = 50;
+			this.txtMachineName.Name = "txtMachineName";
+			this.txtMachineName.Size = new System.Drawing.Size(303, 25);
+			this.txtMachineName.TabIndex = 2;
+			this.txtMachineName.TextChanged += new System.EventHandler(this.txt_TextChanged);
 			// 
 			// label2
 			// 
@@ -173,34 +183,16 @@
 			this.label2.Text = "ชื่อเครื่องจักร :";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
-			// label3
+			// panel5
 			// 
-			this.label3.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label3.Location = new System.Drawing.Point(2, 2);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(160, 26);
-			this.label3.TabIndex = 1;
-			this.label3.Text = "หมายเลขเครื่องจักร :";
-			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// txtMachineGroup
-			// 
-			this.txtMachineGroup.Dock = System.Windows.Forms.DockStyle.Left;
-			this.txtMachineGroup.Location = new System.Drawing.Point(162, 2);
-			this.txtMachineGroup.MaxLength = 50;
-			this.txtMachineGroup.Name = "txtMachineGroup";
-			this.txtMachineGroup.ReadOnly = true;
-			this.txtMachineGroup.Size = new System.Drawing.Size(303, 25);
-			this.txtMachineGroup.TabIndex = 1;
-			// 
-			// txtMachineName
-			// 
-			this.txtMachineName.Dock = System.Windows.Forms.DockStyle.Left;
-			this.txtMachineName.Location = new System.Drawing.Point(162, 2);
-			this.txtMachineName.MaxLength = 50;
-			this.txtMachineName.Name = "txtMachineName";
-			this.txtMachineName.Size = new System.Drawing.Size(303, 25);
-			this.txtMachineName.TabIndex = 2;
+			this.panel5.Controls.Add(this.txtMachineNumber);
+			this.panel5.Controls.Add(this.label3);
+			this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel5.Location = new System.Drawing.Point(0, 110);
+			this.panel5.Name = "panel5";
+			this.panel5.Padding = new System.Windows.Forms.Padding(2);
+			this.panel5.Size = new System.Drawing.Size(538, 30);
+			this.panel5.TabIndex = 4;
 			// 
 			// txtMachineNumber
 			// 
@@ -210,6 +202,17 @@
 			this.txtMachineNumber.Name = "txtMachineNumber";
 			this.txtMachineNumber.Size = new System.Drawing.Size(303, 25);
 			this.txtMachineNumber.TabIndex = 2;
+			this.txtMachineNumber.TextChanged += new System.EventHandler(this.txt_TextChanged);
+			// 
+			// label3
+			// 
+			this.label3.Dock = System.Windows.Forms.DockStyle.Left;
+			this.label3.Location = new System.Drawing.Point(2, 2);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(160, 26);
+			this.label3.TabIndex = 1;
+			this.label3.Text = "หมายเลขเครื่องจักร :";
+			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// MachineGroupMemberInfo
 			// 

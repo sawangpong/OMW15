@@ -1,8 +1,8 @@
-﻿using System;
+﻿using OMControls;
+using OMW15.Shared;
+using System;
 using System.Data;
 using System.Windows.Forms;
-using OMControls;
-using OMW15.Shared;
 
 namespace OMW15.Views.Productions
 {
@@ -10,7 +10,7 @@ namespace OMW15.Views.Productions
 	{
 		#region class field member
 
-		private readonly OMShareProduction.ProductionOptionEnum _option = OMShareProduction.ProductionOptionEnum.None ;
+		private readonly OMShareProduction.ProductionOptionEnum _option = OMShareProduction.ProductionOptionEnum.None;
 		private int _rowCount;
 
 		#endregion
@@ -18,10 +18,9 @@ namespace OMW15.Views.Productions
 		#region class property
 
 		public DataTable DataSource { get; set; }
-
 		public bool IsEmptyItem { get; set; }
-
-		public string SelectedItem { get; set; }
+		public string SelectedItem { get; set; } = string.Empty;
+		public int SelecedItemId { get; set; } = 0;
 
 		#endregion
 
@@ -35,6 +34,12 @@ namespace OMW15.Views.Productions
 			dgv.DataSource = DataSource;
 
 			dgv.ColumnHeadersVisible = false;
+
+			if (_option == OMShareProduction.ProductionOptionEnum.Machine)
+			{
+				dgv.Columns["MC_GROUPID"].Visible = false;
+			}
+
 			dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 			dgv.ResumeLayout();
 
@@ -47,8 +52,6 @@ namespace OMW15.Views.Productions
 		} // end UpdateUI
 
 		#endregion
-
-
 
 		public PrdOption(OMShareProduction.ProductionOptionEnum Option)
 		{
@@ -85,18 +88,22 @@ namespace OMW15.Views.Productions
 		{
 			if (_rowCount == dgv.Rows.Count)
 			{
-				SelectedItem = dgv[0, e.RowIndex].Value.ToString();
+				if (_option == OMShareProduction.ProductionOptionEnum.Machine)
+				{
+					this.SelectedItem = dgv["MC_GROUPNAME", e.RowIndex].Value.ToString();
+					this.SelecedItemId = Convert.ToInt32(dgv["MC_GROUPID", e.RowIndex].Value.ToString());
+				}
+				else
+				{
+					this.SelectedItem = dgv[0, e.RowIndex].Value.ToString();
+				}
 				IsEmptyItem = false;
 			}
 
 			UpdateUI();
 		}
 
-		private void dgv_DoubleClick(object sender, EventArgs e)
-		{
-			btnSelect.PerformClick();
-		}
-
+		private void dgv_DoubleClick(object sender, EventArgs e) => btnSelect.PerformClick();
 
 	}
 }

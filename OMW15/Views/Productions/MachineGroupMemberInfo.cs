@@ -1,13 +1,6 @@
-﻿using OMW15.Models.ProductModel;
+﻿using OMW15.Models.ProductionModel;
 using OMW15.Shared;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OMW15.Views.Productions
@@ -19,7 +12,7 @@ namespace OMW15.Views.Productions
 		private ActionMode _mode = ActionMode.None;
 		private int _machineMemberId = 0;
 		private int _machineGroupId = 0;
-		private string _machineGroupName = string.Empty;	
+		private string _machineGroupName = string.Empty;
 
 		#endregion
 
@@ -27,10 +20,9 @@ namespace OMW15.Views.Productions
 
 		private void UpdateUI()
 		{
-			btnSave.Enabled = (!String.IsNullOrEmpty(txtMachineName.Text) 
+			btnSave.Enabled = (!String.IsNullOrEmpty(txtMachineName.Text)
 									&& !String.IsNullOrEmpty(txtMachineNumber.Text)
-									&& !string.IsNullOrEmpty(txtMachineGroup.Text)
-									);
+									&& !String.IsNullOrEmpty(txtMachineGroup.Text));
 		}
 
 		private void GetMCGroupMemberInfo(int id)
@@ -54,15 +46,11 @@ namespace OMW15.Views.Productions
 			txtMachineNumber.Text = _mcMember.MC_NUMBER;
 
 			UpdateUI();
-
 		}
-
 
 		#endregion
 
-
-
-		public MachineGroupMemberInfo(int machineGroupId,string machineGroupName, int machineMemberId)
+		public MachineGroupMemberInfo(int machineGroupId, string machineGroupName, int machineMemberId)
 		{
 			InitializeComponent();
 			_machineGroupName = machineGroupName;
@@ -74,23 +62,22 @@ namespace OMW15.Views.Productions
 			lbMode.Text = _mode.ToString().Substring(0, 1).ToUpper();
 
 			GetMCGroupMemberInfo(_machineMemberId);
-
 		}
 
-		private void MachineGroupMemberInfo_Load(object sender, EventArgs e)
-		{
-			UpdateUI();
-		}
+		private void MachineGroupMemberInfo_Load(object sender, EventArgs e) => UpdateUI();
 
 		private void btnSave_Click(object sender, EventArgs e)
 		{
 			_mcMember.MC_NAME = txtMachineName.Text;
 			_mcMember.MC_NUMBER = txtMachineNumber.Text;
 
-			if(new ProductionMachineDAL().UpdateMachineGroupMember(_mcMember) > 0)
+			if (new ProductionMachineDAL().UpdateMachineGroupMember(_mcMember) > 0)
 			{
-				MessageBox.Show($"{(_mode == ActionMode.Add ? "Machine member added to group": "Update Machine member successfully!")}", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show($"{(_mode == ActionMode.Add ? "Machine member added to group" : "Update Machine member successfully!")}", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 		}
+
+		private void txt_TextChanged(object sender, EventArgs e) => UpdateUI();
+
 	}
 }

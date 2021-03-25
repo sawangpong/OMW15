@@ -116,11 +116,16 @@
 			this.rdoHolidayWork = new System.Windows.Forms.RadioButton();
 			this.rdoWorkingday = new System.Windows.Forms.RadioButton();
 			this.panel4 = new System.Windows.Forms.Panel();
-			this.txtProcessDetail = new System.Windows.Forms.TextBox();
-			this.label25 = new System.Windows.Forms.Label();
+			this.panel25 = new System.Windows.Forms.Panel();
+			this.cbxMachine = new System.Windows.Forms.ComboBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.lbMachineGroup = new System.Windows.Forms.Label();
 			this.btnProcess = new OMControls.OMFlatButton();
 			this.txtProcess = new System.Windows.Forms.TextBox();
 			this.lbStep = new System.Windows.Forms.Label();
+			this.panel24 = new System.Windows.Forms.Panel();
+			this.txtProcessDetail = new System.Windows.Forms.TextBox();
+			this.label25 = new System.Windows.Forms.Label();
 			this.panel3 = new System.Windows.Forms.Panel();
 			this.txtDrawing = new System.Windows.Forms.TextBox();
 			this.label20 = new System.Windows.Forms.Label();
@@ -167,6 +172,8 @@
 			this.panel7.SuspendLayout();
 			this.panel10.SuspendLayout();
 			this.panel4.SuspendLayout();
+			this.panel25.SuspendLayout();
+			this.panel24.SuspendLayout();
 			this.panel3.SuspendLayout();
 			this.pnlWorkingSource.SuspendLayout();
 			this.panel2.SuspendLayout();
@@ -216,18 +223,20 @@
 			this.pnlHeader.Controls.Add(this.panel22);
 			this.pnlHeader.Controls.Add(this.panel21);
 			this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
+			this.pnlHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.pnlHeader.Location = new System.Drawing.Point(4, 4);
 			this.pnlHeader.Name = "pnlHeader";
 			this.pnlHeader.Padding = new System.Windows.Forms.Padding(2);
-			this.pnlHeader.Size = new System.Drawing.Size(958, 80);
+			this.pnlHeader.Size = new System.Drawing.Size(958, 50);
 			this.pnlHeader.TabIndex = 1;
 			// 
 			// lbQOrder
 			// 
+			this.lbQOrder.BackColor = System.Drawing.SystemColors.ControlDarkDark;
 			this.lbQOrder.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.lbQOrder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbQOrder.ForeColor = System.Drawing.SystemColors.HighlightText;
-			this.lbQOrder.Location = new System.Drawing.Point(361, 42);
+			this.lbQOrder.Location = new System.Drawing.Point(361, 12);
 			this.lbQOrder.Name = "lbQOrder";
 			this.lbQOrder.Size = new System.Drawing.Size(334, 36);
 			this.lbQOrder.TabIndex = 6;
@@ -242,7 +251,7 @@
 			this.panel22.Location = new System.Drawing.Point(2, 2);
 			this.panel22.Name = "panel22";
 			this.panel22.Padding = new System.Windows.Forms.Padding(2);
-			this.panel22.Size = new System.Drawing.Size(359, 76);
+			this.panel22.Size = new System.Drawing.Size(359, 46);
 			this.panel22.TabIndex = 3;
 			// 
 			// lbJobType
@@ -252,7 +261,7 @@
 			this.lbJobType.ForeColor = System.Drawing.SystemColors.ButtonFace;
 			this.lbJobType.Location = new System.Drawing.Point(2, 2);
 			this.lbJobType.Name = "lbJobType";
-			this.lbJobType.Size = new System.Drawing.Size(355, 36);
+			this.lbJobType.Size = new System.Drawing.Size(355, 6);
 			this.lbJobType.TabIndex = 6;
 			this.lbJobType.Text = ".";
 			this.lbJobType.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -263,7 +272,7 @@
 			this.panel23.Controls.Add(this.btnProductionJob);
 			this.panel23.Controls.Add(this.label28);
 			this.panel23.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel23.Location = new System.Drawing.Point(2, 38);
+			this.panel23.Location = new System.Drawing.Point(2, 8);
 			this.panel23.Name = "panel23";
 			this.panel23.Padding = new System.Windows.Forms.Padding(2);
 			this.panel23.Size = new System.Drawing.Size(355, 36);
@@ -274,11 +283,11 @@
 			this.txtProductionJob.BackColor = System.Drawing.Color.Silver;
 			this.txtProductionJob.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.txtProductionJob.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.txtProductionJob.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtProductionJob.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtProductionJob.Location = new System.Drawing.Point(90, 2);
 			this.txtProductionJob.MaxLength = 30;
 			this.txtProductionJob.Name = "txtProductionJob";
-			this.txtProductionJob.Size = new System.Drawing.Size(231, 33);
+			this.txtProductionJob.Size = new System.Drawing.Size(231, 29);
 			this.txtProductionJob.TabIndex = 7;
 			this.txtProductionJob.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProductionJob_KeyPress);
 			// 
@@ -301,7 +310,7 @@
 			// label28
 			// 
 			this.label28.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label28.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label28.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label28.ForeColor = System.Drawing.SystemColors.ButtonFace;
 			this.label28.Location = new System.Drawing.Point(2, 2);
 			this.label28.Name = "label28";
@@ -318,17 +327,17 @@
 			this.panel21.Location = new System.Drawing.Point(695, 2);
 			this.panel21.Name = "panel21";
 			this.panel21.Padding = new System.Windows.Forms.Padding(2);
-			this.panel21.Size = new System.Drawing.Size(261, 76);
+			this.panel21.Size = new System.Drawing.Size(261, 46);
 			this.panel21.TabIndex = 2;
 			// 
 			// label1
 			// 
 			this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
 			this.label1.Location = new System.Drawing.Point(2, 2);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(257, 36);
+			this.label1.Size = new System.Drawing.Size(257, 21);
 			this.label1.TabIndex = 3;
 			this.label1.Text = "Production Time Record";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -336,11 +345,11 @@
 			// lbMode
 			// 
 			this.lbMode.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.lbMode.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbMode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbMode.ForeColor = System.Drawing.Color.Yellow;
-			this.lbMode.Location = new System.Drawing.Point(2, 38);
+			this.lbMode.Location = new System.Drawing.Point(2, 23);
 			this.lbMode.Name = "lbMode";
-			this.lbMode.Size = new System.Drawing.Size(257, 36);
+			this.lbMode.Size = new System.Drawing.Size(257, 21);
 			this.lbMode.TabIndex = 2;
 			this.lbMode.Text = "Mode";
 			this.lbMode.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -349,10 +358,10 @@
 			// 
 			this.pnlDetails.Controls.Add(this.grpPdHour);
 			this.pnlDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pnlDetails.Location = new System.Drawing.Point(4, 84);
+			this.pnlDetails.Location = new System.Drawing.Point(4, 54);
 			this.pnlDetails.Name = "pnlDetails";
 			this.pnlDetails.Padding = new System.Windows.Forms.Padding(10);
-			this.pnlDetails.Size = new System.Drawing.Size(958, 460);
+			this.pnlDetails.Size = new System.Drawing.Size(958, 490);
 			this.pnlDetails.TabIndex = 3;
 			// 
 			// grpPdHour
@@ -369,7 +378,7 @@
 			this.grpPdHour.Location = new System.Drawing.Point(10, 10);
 			this.grpPdHour.Name = "grpPdHour";
 			this.grpPdHour.Padding = new System.Windows.Forms.Padding(10);
-			this.grpPdHour.Size = new System.Drawing.Size(938, 440);
+			this.grpPdHour.Size = new System.Drawing.Size(938, 470);
 			this.grpPdHour.TabIndex = 4;
 			this.grpPdHour.TabStop = false;
 			this.grpPdHour.Text = "Production Working Time : [id] [erp-number]";
@@ -379,9 +388,9 @@
 			this.lbValidTime.Dock = System.Windows.Forms.DockStyle.Right;
 			this.lbValidTime.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbValidTime.ForeColor = System.Drawing.Color.Indigo;
-			this.lbValidTime.Location = new System.Drawing.Point(352, 404);
+			this.lbValidTime.Location = new System.Drawing.Point(352, 429);
 			this.lbValidTime.Name = "lbValidTime";
-			this.lbValidTime.Size = new System.Drawing.Size(468, 26);
+			this.lbValidTime.Size = new System.Drawing.Size(468, 31);
 			this.lbValidTime.TabIndex = 17;
 			this.lbValidTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
@@ -390,9 +399,9 @@
 			this.lbActualAvgHourRate.Dock = System.Windows.Forms.DockStyle.Right;
 			this.lbActualAvgHourRate.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbActualAvgHourRate.ForeColor = System.Drawing.SystemColors.ControlDark;
-			this.lbActualAvgHourRate.Location = new System.Drawing.Point(820, 404);
+			this.lbActualAvgHourRate.Location = new System.Drawing.Point(820, 429);
 			this.lbActualAvgHourRate.Name = "lbActualAvgHourRate";
-			this.lbActualAvgHourRate.Size = new System.Drawing.Size(108, 26);
+			this.lbActualAvgHourRate.Size = new System.Drawing.Size(108, 31);
 			this.lbActualAvgHourRate.TabIndex = 16;
 			this.lbActualAvgHourRate.Text = "0";
 			this.lbActualAvgHourRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -402,9 +411,9 @@
 			this.label29.Dock = System.Windows.Forms.DockStyle.Left;
 			this.label29.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label29.ForeColor = System.Drawing.Color.DarkBlue;
-			this.label29.Location = new System.Drawing.Point(10, 404);
+			this.label29.Location = new System.Drawing.Point(10, 429);
 			this.label29.Name = "label29";
-			this.label29.Size = new System.Drawing.Size(305, 26);
+			this.label29.Size = new System.Drawing.Size(305, 31);
 			this.label29.TabIndex = 15;
 			this.label29.Text = "** ต้องมีข้อมูล  ";
 			this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -414,7 +423,7 @@
 			this.panel6.Controls.Add(this.txtRemark);
 			this.panel6.Controls.Add(this.label15);
 			this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel6.Location = new System.Drawing.Point(10, 376);
+			this.panel6.Location = new System.Drawing.Point(10, 401);
 			this.panel6.Name = "panel6";
 			this.panel6.Padding = new System.Windows.Forms.Padding(1);
 			this.panel6.Size = new System.Drawing.Size(918, 28);
@@ -443,10 +452,10 @@
 			// 
 			this.panel5.Controls.Add(this.grpTimeRecord);
 			this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel5.Location = new System.Drawing.Point(10, 112);
+			this.panel5.Location = new System.Drawing.Point(10, 142);
 			this.panel5.Name = "panel5";
 			this.panel5.Padding = new System.Windows.Forms.Padding(10);
-			this.panel5.Size = new System.Drawing.Size(918, 264);
+			this.panel5.Size = new System.Drawing.Size(918, 259);
 			this.panel5.TabIndex = 4;
 			// 
 			// grpTimeRecord
@@ -1305,40 +1314,61 @@
 			// 
 			// panel4
 			// 
-			this.panel4.Controls.Add(this.txtProcessDetail);
-			this.panel4.Controls.Add(this.label25);
-			this.panel4.Controls.Add(this.btnProcess);
-			this.panel4.Controls.Add(this.txtProcess);
-			this.panel4.Controls.Add(this.lbStep);
+			this.panel4.Controls.Add(this.panel25);
+			this.panel4.Controls.Add(this.panel24);
 			this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panel4.Location = new System.Drawing.Point(10, 84);
 			this.panel4.Name = "panel4";
 			this.panel4.Padding = new System.Windows.Forms.Padding(1);
-			this.panel4.Size = new System.Drawing.Size(918, 28);
+			this.panel4.Size = new System.Drawing.Size(918, 58);
 			this.panel4.TabIndex = 3;
 			// 
-			// txtProcessDetail
+			// panel25
 			// 
-			this.txtProcessDetail.Dock = System.Windows.Forms.DockStyle.Left;
-			this.workInfoErrorProvider.SetError(this.txtProcessDetail, "ในกรณีที่เป็นงาน Project ต้อวใส่รายละเอียดการทำงาน");
-			this.workInfoErrorProvider.SetIconAlignment(this.txtProcessDetail, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
-			this.txtProcessDetail.Location = new System.Drawing.Point(475, 1);
-			this.txtProcessDetail.MaxLength = 150;
-			this.txtProcessDetail.Name = "txtProcessDetail";
-			this.txtProcessDetail.Size = new System.Drawing.Size(375, 25);
-			this.txtProcessDetail.TabIndex = 8;
-			this.txtProcessDetail.TextChanged += new System.EventHandler(this.txtProcess_TextChanged);
-			this.txtProcessDetail.Validated += new System.EventHandler(this.txtProcessDetail_Validated);
+			this.panel25.Controls.Add(this.cbxMachine);
+			this.panel25.Controls.Add(this.label3);
+			this.panel25.Controls.Add(this.lbMachineGroup);
+			this.panel25.Controls.Add(this.btnProcess);
+			this.panel25.Controls.Add(this.txtProcess);
+			this.panel25.Controls.Add(this.lbStep);
+			this.panel25.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel25.Location = new System.Drawing.Point(1, 1);
+			this.panel25.Name = "panel25";
+			this.panel25.Padding = new System.Windows.Forms.Padding(1);
+			this.panel25.Size = new System.Drawing.Size(916, 28);
+			this.panel25.TabIndex = 10;
 			// 
-			// label25
+			// cbxMachine
 			// 
-			this.label25.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label25.Location = new System.Drawing.Point(341, 1);
-			this.label25.Name = "label25";
-			this.label25.Size = new System.Drawing.Size(134, 26);
-			this.label25.TabIndex = 7;
-			this.label25.Text = "รายละเอียด (งาน) :";
-			this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.cbxMachine.Dock = System.Windows.Forms.DockStyle.Left;
+			this.cbxMachine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbxMachine.FormattingEnabled = true;
+			this.cbxMachine.Location = new System.Drawing.Point(497, 1);
+			this.cbxMachine.Name = "cbxMachine";
+			this.cbxMachine.Size = new System.Drawing.Size(167, 25);
+			this.cbxMachine.TabIndex = 15;
+			this.cbxMachine.SelectedValueChanged += new System.EventHandler(this.cbxMachine_SelectedValueChanged);
+			// 
+			// label3
+			// 
+			this.label3.Dock = System.Windows.Forms.DockStyle.Left;
+			this.label3.Location = new System.Drawing.Point(406, 1);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(91, 26);
+			this.label3.TabIndex = 12;
+			this.label3.Text = "เครื่องจักร :";
+			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// lbMachineGroup
+			// 
+			this.lbMachineGroup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.lbMachineGroup.Dock = System.Windows.Forms.DockStyle.Left;
+			this.lbMachineGroup.Location = new System.Drawing.Point(363, 1);
+			this.lbMachineGroup.Name = "lbMachineGroup";
+			this.lbMachineGroup.Size = new System.Drawing.Size(43, 26);
+			this.lbMachineGroup.TabIndex = 8;
+			this.lbMachineGroup.Text = "0";
+			this.lbMachineGroup.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// btnProcess
 			// 
@@ -1349,10 +1379,10 @@
 			this.btnProcess.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.btnProcess.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnProcess.Image = ((System.Drawing.Image)(resources.GetObject("btnProcess.Image")));
-			this.btnProcess.Location = new System.Drawing.Point(315, 1);
+			this.btnProcess.Location = new System.Drawing.Point(337, 1);
 			this.btnProcess.Name = "btnProcess";
 			this.btnProcess.Size = new System.Drawing.Size(26, 26);
-			this.btnProcess.TabIndex = 6;
+			this.btnProcess.TabIndex = 7;
 			this.btnProcess.UseVisualStyleBackColor = true;
 			this.btnProcess.Click += new System.EventHandler(this.btnProcess_Click);
 			// 
@@ -1362,12 +1392,12 @@
 			this.ProcessErrorProvider.SetError(this.txtProcess, "Must have process");
 			this.ProcessErrorProvider.SetIconAlignment(this.txtProcess, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
 			this.workInfoErrorProvider.SetIconAlignment(this.txtProcess, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
-			this.txtProcess.Location = new System.Drawing.Point(132, 1);
+			this.txtProcess.Location = new System.Drawing.Point(154, 1);
 			this.txtProcess.MaxLength = 50;
 			this.txtProcess.Name = "txtProcess";
 			this.txtProcess.ReadOnly = true;
 			this.txtProcess.Size = new System.Drawing.Size(183, 25);
-			this.txtProcess.TabIndex = 5;
+			this.txtProcess.TabIndex = 6;
 			this.txtProcess.TextChanged += new System.EventHandler(this.txtProcess_TextChanged);
 			this.txtProcess.Validated += new System.EventHandler(this.txtProcess_Validated);
 			// 
@@ -1376,10 +1406,43 @@
 			this.lbStep.Dock = System.Windows.Forms.DockStyle.Left;
 			this.lbStep.Location = new System.Drawing.Point(1, 1);
 			this.lbStep.Name = "lbStep";
-			this.lbStep.Size = new System.Drawing.Size(131, 26);
-			this.lbStep.TabIndex = 3;
+			this.lbStep.Size = new System.Drawing.Size(153, 26);
+			this.lbStep.TabIndex = 4;
 			this.lbStep.Text = "ขั้นตอนการผลิต (#0):";
 			this.lbStep.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// panel24
+			// 
+			this.panel24.Controls.Add(this.txtProcessDetail);
+			this.panel24.Controls.Add(this.label25);
+			this.panel24.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.panel24.Location = new System.Drawing.Point(1, 29);
+			this.panel24.Name = "panel24";
+			this.panel24.Padding = new System.Windows.Forms.Padding(1);
+			this.panel24.Size = new System.Drawing.Size(916, 28);
+			this.panel24.TabIndex = 9;
+			// 
+			// txtProcessDetail
+			// 
+			this.txtProcessDetail.Dock = System.Windows.Forms.DockStyle.Left;
+			this.workInfoErrorProvider.SetError(this.txtProcessDetail, "ในกรณีที่เป็นงาน Project ต้อวใส่รายละเอียดการทำงาน");
+			this.workInfoErrorProvider.SetIconAlignment(this.txtProcessDetail, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+			this.txtProcessDetail.Location = new System.Drawing.Point(154, 1);
+			this.txtProcessDetail.MaxLength = 150;
+			this.txtProcessDetail.Name = "txtProcessDetail";
+			this.txtProcessDetail.Size = new System.Drawing.Size(694, 25);
+			this.txtProcessDetail.TabIndex = 9;
+			this.txtProcessDetail.Validated += new System.EventHandler(this.txtProcessDetail_Validated);
+			// 
+			// label25
+			// 
+			this.label25.Dock = System.Windows.Forms.DockStyle.Left;
+			this.label25.Location = new System.Drawing.Point(1, 1);
+			this.label25.Name = "label25";
+			this.label25.Size = new System.Drawing.Size(153, 26);
+			this.label25.TabIndex = 8;
+			this.label25.Text = "รายละเอียด (งาน) :";
+			this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// panel3
 			// 
@@ -1399,19 +1462,19 @@
 			// 
 			this.txtDrawing.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.txtDrawing.Dock = System.Windows.Forms.DockStyle.Left;
-			this.txtDrawing.Location = new System.Drawing.Point(475, 1);
+			this.txtDrawing.Location = new System.Drawing.Point(528, 1);
 			this.txtDrawing.MaxLength = 30;
 			this.txtDrawing.Name = "txtDrawing";
-			this.txtDrawing.Size = new System.Drawing.Size(200, 25);
+			this.txtDrawing.Size = new System.Drawing.Size(167, 25);
 			this.txtDrawing.TabIndex = 12;
 			this.txtDrawing.TextChanged += new System.EventHandler(this.txtDrawing_TextChanged);
 			// 
 			// label20
 			// 
 			this.label20.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label20.Location = new System.Drawing.Point(341, 1);
+			this.label20.Location = new System.Drawing.Point(363, 1);
 			this.label20.Name = "label20";
-			this.label20.Size = new System.Drawing.Size(134, 26);
+			this.label20.Size = new System.Drawing.Size(165, 26);
 			this.label20.TabIndex = 11;
 			this.label20.Text = "หมายเลขแบบ :";
 			this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1425,7 +1488,7 @@
 			this.btnWorkSource.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.btnWorkSource.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnWorkSource.Image = ((System.Drawing.Image)(resources.GetObject("btnWorkSource.Image")));
-			this.btnWorkSource.Location = new System.Drawing.Point(315, 1);
+			this.btnWorkSource.Location = new System.Drawing.Point(337, 1);
 			this.btnWorkSource.Name = "btnWorkSource";
 			this.btnWorkSource.Size = new System.Drawing.Size(26, 26);
 			this.btnWorkSource.TabIndex = 9;
@@ -1435,11 +1498,11 @@
 			// 
 			this.txtWorker.Dock = System.Windows.Forms.DockStyle.Left;
 			this.txtWorker.Enabled = false;
-			this.txtWorker.Location = new System.Drawing.Point(132, 1);
+			this.txtWorker.Location = new System.Drawing.Point(155, 1);
 			this.txtWorker.MaxLength = 50;
 			this.txtWorker.Name = "txtWorker";
 			this.txtWorker.ReadOnly = true;
-			this.txtWorker.Size = new System.Drawing.Size(183, 25);
+			this.txtWorker.Size = new System.Drawing.Size(182, 25);
 			this.txtWorker.TabIndex = 8;
 			this.txtWorker.TextChanged += new System.EventHandler(this.txtWorker_TextChanged);
 			// 
@@ -1451,16 +1514,16 @@
 			this.pnlWorkingSource.Location = new System.Drawing.Point(1, 1);
 			this.pnlWorkingSource.Name = "pnlWorkingSource";
 			this.pnlWorkingSource.Padding = new System.Windows.Forms.Padding(1);
-			this.pnlWorkingSource.Size = new System.Drawing.Size(131, 26);
+			this.pnlWorkingSource.Size = new System.Drawing.Size(154, 26);
 			this.pnlWorkingSource.TabIndex = 7;
 			// 
 			// lbEmpId
 			// 
 			this.lbEmpId.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.lbEmpId.ForeColor = System.Drawing.SystemColors.ControlDark;
-			this.lbEmpId.Location = new System.Drawing.Point(73, 1);
+			this.lbEmpId.Location = new System.Drawing.Point(100, 1);
 			this.lbEmpId.Name = "lbEmpId";
-			this.lbEmpId.Size = new System.Drawing.Size(57, 24);
+			this.lbEmpId.Size = new System.Drawing.Size(53, 24);
 			this.lbEmpId.TabIndex = 11;
 			this.lbEmpId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
@@ -1469,7 +1532,7 @@
 			this.lbWorkerId.Dock = System.Windows.Forms.DockStyle.Left;
 			this.lbWorkerId.Location = new System.Drawing.Point(1, 1);
 			this.lbWorkerId.Name = "lbWorkerId";
-			this.lbWorkerId.Size = new System.Drawing.Size(72, 24);
+			this.lbWorkerId.Size = new System.Drawing.Size(99, 24);
 			this.lbWorkerId.TabIndex = 2;
 			this.lbWorkerId.Text = "ชื่อช่าง :";
 			this.lbWorkerId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1492,7 +1555,7 @@
 			// txtItemName
 			// 
 			this.txtItemName.Dock = System.Windows.Forms.DockStyle.Left;
-			this.txtItemName.Location = new System.Drawing.Point(475, 1);
+			this.txtItemName.Location = new System.Drawing.Point(498, 1);
 			this.txtItemName.MaxLength = 150;
 			this.txtItemName.Name = "txtItemName";
 			this.txtItemName.ReadOnly = true;
@@ -1508,7 +1571,7 @@
 			this.btnItemNo.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.btnItemNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnItemNo.Image = ((System.Drawing.Image)(resources.GetObject("btnItemNo.Image")));
-			this.btnItemNo.Location = new System.Drawing.Point(449, 1);
+			this.btnItemNo.Location = new System.Drawing.Point(472, 1);
 			this.btnItemNo.Name = "btnItemNo";
 			this.btnItemNo.Size = new System.Drawing.Size(26, 26);
 			this.btnItemNo.TabIndex = 10;
@@ -1520,7 +1583,7 @@
 			this.txtItemNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.txtItemNo.Dock = System.Windows.Forms.DockStyle.Left;
 			this.txtItemNo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtItemNo.Location = new System.Drawing.Point(337, 1);
+			this.txtItemNo.Location = new System.Drawing.Point(360, 1);
 			this.txtItemNo.MaxLength = 35;
 			this.txtItemNo.Name = "txtItemNo";
 			this.txtItemNo.ReadOnly = true;
@@ -1531,7 +1594,7 @@
 			// 
 			this.label27.Dock = System.Windows.Forms.DockStyle.Left;
 			this.label27.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label27.Location = new System.Drawing.Point(243, 1);
+			this.label27.Location = new System.Drawing.Point(266, 1);
 			this.label27.Name = "label27";
 			this.label27.Size = new System.Drawing.Size(94, 26);
 			this.label27.TabIndex = 8;
@@ -1542,7 +1605,7 @@
 			// 
 			this.dtpWorkDate.Dock = System.Windows.Forms.DockStyle.Left;
 			this.dtpWorkDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dtpWorkDate.Location = new System.Drawing.Point(132, 1);
+			this.dtpWorkDate.Location = new System.Drawing.Point(155, 1);
 			this.dtpWorkDate.Name = "dtpWorkDate";
 			this.dtpWorkDate.Size = new System.Drawing.Size(111, 25);
 			this.dtpWorkDate.TabIndex = 2;
@@ -1553,7 +1616,7 @@
 			this.label2.Dock = System.Windows.Forms.DockStyle.Left;
 			this.label2.Location = new System.Drawing.Point(1, 1);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(131, 26);
+			this.label2.Size = new System.Drawing.Size(154, 26);
 			this.label2.TabIndex = 1;
 			this.label2.Text = "** วันที่ทำงาน :";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1631,7 +1694,10 @@
 			this.panel10.ResumeLayout(false);
 			this.panel10.PerformLayout();
 			this.panel4.ResumeLayout(false);
-			this.panel4.PerformLayout();
+			this.panel25.ResumeLayout(false);
+			this.panel25.PerformLayout();
+			this.panel24.ResumeLayout(false);
+			this.panel24.PerformLayout();
 			this.panel3.ResumeLayout(false);
 			this.panel3.PerformLayout();
 			this.pnlWorkingSource.ResumeLayout(false);
@@ -1658,9 +1724,6 @@
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.DateTimePicker dtpWorkDate;
 		private System.Windows.Forms.Label label2;
-		private OMControls.OMFlatButton btnProcess;
-		private System.Windows.Forms.TextBox txtProcess;
-		private System.Windows.Forms.Label lbStep;
 		private System.Windows.Forms.GroupBox grpTimeRecord;
 		private System.Windows.Forms.Panel panel10;
 		private System.Windows.Forms.RadioButton rdoHolidayWork;
@@ -1718,8 +1781,6 @@
 		private System.Windows.Forms.Label lbTotalUnit;
 		private OMControls.Controls.NumericTextBox txtTotalQty;
 		private System.Windows.Forms.Label label23;
-		private System.Windows.Forms.TextBox txtProcessDetail;
-		private System.Windows.Forms.Label label25;
 		private System.Windows.Forms.TextBox txtItemNo;
 		private System.Windows.Forms.Label label27;
 		private OMControls.OMFlatButton btnItemNo;
@@ -1754,5 +1815,15 @@
 		private System.Windows.Forms.Label lbEmpId;
 		private System.Windows.Forms.ErrorProvider workInfoErrorProvider;
 		private System.Windows.Forms.ErrorProvider ProcessErrorProvider;
+		private System.Windows.Forms.Panel panel25;
+		private OMControls.OMFlatButton btnProcess;
+		private System.Windows.Forms.TextBox txtProcess;
+		private System.Windows.Forms.Label lbStep;
+		private System.Windows.Forms.Panel panel24;
+		private System.Windows.Forms.TextBox txtProcessDetail;
+		private System.Windows.Forms.Label label25;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label lbMachineGroup;
+		private System.Windows.Forms.ComboBox cbxMachine;
 	}
 }

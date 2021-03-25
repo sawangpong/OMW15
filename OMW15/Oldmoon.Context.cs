@@ -137,7 +137,6 @@ namespace OMW15
         public virtual DbSet<EMPSAL> EMPSALs { get; set; }
         public virtual DbSet<PRODUCTIONJOB> PRODUCTIONJOBS { get; set; }
         public virtual DbSet<PRODUCTION_OUTSOURCE> PRODUCTION_OUTSOURCE { get; set; }
-        public virtual DbSet<PRODUCTIONJOBINFO> PRODUCTIONJOBINFOes { get; set; }
         public virtual DbSet<OM_ERP_PRODUCTION_TRANSFER_REQUEST> OM_ERP_PRODUCTION_TRANSFER_REQUEST { get; set; }
         public virtual DbSet<OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST> OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST { get; set; }
         public virtual DbSet<SYSDATA> SYSDATAs { get; set; }
@@ -147,6 +146,7 @@ namespace OMW15
         public virtual DbSet<PRODUCTION_MACHINEGROUP> PRODUCTION_MACHINEGROUP { get; set; }
         public virtual DbSet<PRODUCTION_MC_MEMBER> PRODUCTION_MC_MEMBER { get; set; }
         public virtual DbSet<PRDPROCESS> PRDPROCESSes { get; set; }
+        public virtual DbSet<PRODUCTIONJOBINFO> PRODUCTIONJOBINFOes { get; set; }
     
         public virtual ObjectResult<usp_GetServiceJobList_Result> usp_GetServiceJobList(Nullable<int> selectedYear, string jobcode, string orderstatus)
         {

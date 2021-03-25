@@ -40,12 +40,12 @@ namespace OMW15.Views.Productions
 			dgv.Columns["PRDPROCESSID"].Visible = false;
 			dgv.Columns["PROCESSNAME"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 			dgv.Columns["PROCESSNAME"].HeaderText = "ขั้นตอนการผลิต";
-			dgv.Columns["MACHINE"].HeaderText = "เครื่องจักร";
+			dgv.Columns["MACHINE"].HeaderText = "กลุ่มเครื่องจักร";
+			dgv.Columns["MACHINE_GROUP"].HeaderText = "หมายเลขกลุ่ม";
 			dgv.Columns["SCORE"].HeaderText = "คะแนน";
 			dgv.Columns["SCORE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
 			dgv.ResumeLayout();
-
 
 			UpdateUI();
 		} // end GetProcessList
@@ -68,8 +68,6 @@ namespace OMW15.Views.Productions
 				pinfo.StartPosition = FormStartPosition.CenterScreen;
 				pinfo.ShowDialog();
 			}
-
-
 			tsbtnRefresh.PerformClick();
 		} // end GetProductionProcessInfo
 
@@ -78,6 +76,9 @@ namespace OMW15.Views.Productions
 		public Prdprocess()
 		{
 			InitializeComponent();
+			OMUtils.SettingDataGridView(ref dgv);
+
+			GetProcessList();
 		}
 
 		private void tsbtnClose_Click(object sender, EventArgs e)
@@ -87,9 +88,7 @@ namespace OMW15.Views.Productions
 
 		private void Prdprocess_Load(object sender, EventArgs e)
 		{
-			OMUtils.SettingDataGridView(ref dgv);
-
-			GetProcessList();
+			UpdateUI();
 		}
 
 		private void dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
@@ -135,9 +134,5 @@ namespace OMW15.Views.Productions
 		{
 			GetProductionProcessInfo(_selectedProductionProcessId);
 		}
-
-	
-
-
 	}
 }
