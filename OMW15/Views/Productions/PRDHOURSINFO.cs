@@ -100,32 +100,22 @@ namespace OMW15.Views.Productions
 			/////////////////////////////
 			// load data
 			/////////////////////////////
-			///
+
 			_isFirstLoad = _mode == ActionMode.Edit ? true : false;
+			GetMachineGroup();
 			GetProductionHourRecord(this.RecordId);
 
 			_isFirstLoad = false;
 		}
 
-		private void dtpWorkTime_ValueChanged(object sender, EventArgs e)
-		{
-			CalWorkTime(dtpWorkTimeStart.Value);
-		}
+		private void dtpWorkTime_ValueChanged(object sender, EventArgs e) => CalWorkTime(dtpWorkTimeStart.Value);
 
 		private void btnProcess_Click(object sender, EventArgs e)
-		{
-			GetWorkProcess(this.ItemId, this.txtItemNo.Text, this.txtItemName.Text);
-		}
+			=> GetWorkProcess(this.ItemId, this.txtItemNo.Text, this.txtItemName.Text);
 
-		private void txtWorker_TextChanged(object sender, EventArgs e)
-		{
-			UpdateUI();
-		}
+		private void txtWorker_TextChanged(object sender, EventArgs e) => UpdateUI();
 
-		private void btnSave_Click(object sender, EventArgs e)
-		{
-			UpdateProductionTimeInfo();
-		}
+		private void btnSave_Click(object sender, EventArgs e) => UpdateProductionTimeInfo();
 
 		private void rdoWorkingday_CheckedChanged(object sender, EventArgs e)
 		{
@@ -160,10 +150,7 @@ namespace OMW15.Views.Productions
 			UpdateUI();
 		}
 
-		private void txtProcess_TextChanged(object sender, EventArgs e)
-		{
-			UpdateUI();
-		}
+		private void txtProcess_TextChanged(object sender, EventArgs e) => UpdateUI();
 
 		private void ResetTimeValidDisplay()
 		{
@@ -235,7 +222,8 @@ namespace OMW15.Views.Productions
 
 		#region class helper method
 
-		private decimal GetWorkerHourRate(DateTime validDateTime, string workerId) => new ProductionDAL().GetAvgActualHourCostByWorker(validDateTime, workerId);
+		private decimal GetWorkerHourRate(DateTime validDateTime, string workerId)
+			=> new ProductionDAL().GetAvgActualHourCostByWorker(validDateTime, workerId);
 
 		private bool CheckValidWoringDate(string workerId, DateTime workDate)
 		{
@@ -286,11 +274,15 @@ namespace OMW15.Views.Productions
 			lbGoodUnit.Text = lbBadUnit.Text;
 			lbTotalUnit.Text = lbBadUnit.Text;
 			lbUnitProcess.Text = lbBadUnit.Text;
-
+			btnWorkSource.Enabled = false;
 			btnProductionJob.Enabled = (_mode == ActionMode.Add);
 			txtItemNo.Enabled = String.IsNullOrEmpty(this.ItemNo);
 			txtItemName.Enabled = txtItemNo.Enabled;
+
+			// PROCESS BUTTON
 			btnProcess.Enabled = (canProcessInfo && txtProductionJob.Text.ToUpper().Substring(0, 3) != "PDT");
+			cbxMachineGroup.Enabled = (_jobType == ProductionJobType.Project);
+
 			txtProcessDetail.Enabled = (canProcessInfo || !btnProcess.Enabled);
 
 			switch (_jobType)
@@ -304,6 +296,7 @@ namespace OMW15.Views.Productions
 											? (Convert.ToDecimal(txtGoodQty.Text) >= 0m && Convert.ToDecimal(txtTotalQty.Text) > 0m)
 											: Convert.ToDecimal(txtInprocessQty.Text) > 0)
 										&& Convert.ToDecimal(txtTotalWorkHours.Text) > 0m
+										&& (_selectedMachineGroup > 0)
 										&& _canSaveRecord;
 					break;
 
@@ -315,11 +308,10 @@ namespace OMW15.Views.Productions
 											? (Convert.ToDecimal(txtGoodQty.Text) >= 0m && Convert.ToDecimal(txtTotalQty.Text) > 0m)
 											: Convert.ToDecimal(txtInprocessQty.Text) > 0)
 									&& Convert.ToDecimal(txtTotalWorkHours.Text) > 0m
+										&& (_selectedMachineGroup > 0)
 										&& _canSaveRecord;
 					break;
 			}
-
-			btnWorkSource.Visible = false;
 
 		} // end UpdateUI
 
@@ -327,7 +319,6 @@ namespace OMW15.Views.Productions
 		{
 			if (_jobType == ProductionJobType.Project)
 			{
-				lbMachineGroup.Text = $"{11}";
 				return (txtProcessDetail.Text.Length > 0);
 			}
 			else
@@ -346,6 +337,13 @@ namespace OMW15.Views.Productions
 			{
 				return true;
 			}
+		}
+
+		private void GetMachineGroup()
+		{
+			cbxMachineGroup.DataSource = new ProductionMachineDAL().GetMachineGroup();
+			cbxMachineGroup.DisplayMember = "MC_GROUPNAME";
+			cbxMachineGroup.ValueMember = "MC_GROUPID";
 		}
 
 		private void GetMachineByGroup(int mcGroupId)
@@ -389,6 +387,16 @@ namespace OMW15.Views.Productions
 					_hr.CREATEDATE = DateTime.Now;
 					_hr.MODIDATE = DateTime.Now;
 					_hr.MODIUSER = omglobal.UserName;
+
+					switch (_jobType)
+					{
+						case ProductionJobType.Production:
+							_hr.MACHINEGROUP = 0;
+							break;
+						case ProductionJobType.Project:
+							_hr.MACHINEGROUP = 11;
+							break;
+					}
 					break;
 
 				case ActionMode.Edit:
@@ -402,11 +410,9 @@ namespace OMW15.Views.Productions
 					break;
 			}
 
-			GetMachineByGroup(_hr.MACHINEGROUP.Value);
-			cbxMachine.SelectedValue = _hr.MACHINEID;
-
 			_jobType = (ProductionJobType)Enum.Parse(typeof(ProductionJobType), _hr.WORKCAT.ToString(), true);
 			lbJobType.Text = _jobType.ToString();
+
 			txtProductionJob.Text = _hr.ERP_ORDER;
 			txtWorker.Text = _hr.WORKERNAME;
 			txtWorker.Tag = _hr.WORKERID;
@@ -414,11 +420,17 @@ namespace OMW15.Views.Productions
 			txtDrawing.Text = String.IsNullOrEmpty(_hr.DRAWINGNO) ? "" : _hr.DRAWINGNO;
 			txtItemName.Text = this.ItemName;
 			txtProcess.Text = _hr.PROCESSNAME;
-			txtProcessDetail.Text = _hr.PROCESSDETAIL;
-			lbMachineGroup.Text = $"{_hr.MACHINEGROUP}";
 			txtProcess.Tag = _hr.PROCESSID;
+			txtProcessDetail.Text = _hr.PROCESSDETAIL;
+			cbxMachineGroup.SelectedValue = _hr.MACHINEGROUP;
+
+			GetMachineByGroup(_hr.MACHINEGROUP.Value);
+			cbxMachine.SelectedValue = _hr.MACHINEID;
+			lbMachineGroup.Text = $"กลุ่มงาน #[{_hr.MACHINEGROUP}] :";
+
 			step = _hr.STEP;
-			lbStep.Text = $"ขั้นตอนการผลิต: #({step})";
+			lbStep.Text = $"ขั้นตอนการผลิต: #[{step}] :";
+
 			dtpWorkDate.Value = _hr.DATETIME_START.Value;
 
 			if (_hr.TIME_CAT == WorkingDayCategory.NormalDay.ToString())
@@ -556,7 +568,6 @@ namespace OMW15.Views.Productions
 			string _process = txtProcess.Text;
 			int _processId = Convert.ToInt32(txtProcess.Tag);
 			int _step = step;
-			int _machineGroup = 0;
 
 			using (WorkProcess workProcess = new WorkProcess(itemId, itemNo, itemName))
 			{
@@ -565,23 +576,26 @@ namespace OMW15.Views.Productions
 					txtProcess.Text = workProcess.ProcessName;
 					txtProcess.Tag = workProcess.ProcessId;
 					step = workProcess.Step;
-					_machineGroup = workProcess.SelectedMachineGroupId;
-					lbMachineGroup.Text = $"{_machineGroup}";
+					_selectedMachineGroup = workProcess.SelectedMachineGroupId;
+
+					cbxMachineGroup.SelectedValue = _selectedMachineGroup;
 				}
 				else
 				{
 					txtProcess.Text = _process;
 					txtProcess.Tag = _processId;
 					step = _step;
-					lbMachineGroup.Text = $"{_machineGroup}";
 				}
 
 				_hr.STEP = step;
 				_hr.PROCESSID = Convert.ToInt32(txtProcess.Tag.ToString());
 				_hr.PROCESSNAME = txtProcess.Text;
-				_hr.MACHINEGROUP = _machineGroup;
+				_hr.MACHINEGROUP = _selectedMachineGroup;
 
-				lbStep.Text = $"ขั้นตอนการผลิต:({_hr.STEP})";
+				lbMachineGroup.Text = $"กลุ่มงาน #[{_selectedMachineGroup}] :";
+				GetMachineByGroup(_selectedMachineGroup);
+
+				lbStep.Text = $"ขั้นตอนการผลิต #[{_hr.STEP}] :";
 			}
 
 			UpdateUI();
@@ -598,7 +612,6 @@ namespace OMW15.Views.Productions
 					break;
 
 				case ActionMode.Edit:
-					//_hr = new ProductionDAL().GetProductionHourItemInfo(RecordId);
 					break;
 			}
 
@@ -626,7 +639,7 @@ namespace OMW15.Views.Productions
 			_hr.PROCESSNAME = txtProcess.Text;
 			_hr.PROCESSDETAIL = txtProcessDetail.Text;
 
-			_hr.MACHINEGROUP = Convert.ToInt32(lbMachineGroup.Text);
+			_hr.MACHINEGROUP = _selectedMachineGroup;
 			_hr.MACHINEID = _selectedMachineId;
 			_hr.MACHINENAME = cbxMachine.Text;
 
@@ -695,7 +708,6 @@ namespace OMW15.Views.Productions
 			lbQOrder.Text = $"Order Qty: {this.QOrder} {this.UnitOrder}";
 
 			UpdateUI();
-
 		}
 
 		private void txtProductionJob_KeyPress(object sender, KeyPressEventArgs e)
@@ -706,20 +718,11 @@ namespace OMW15.Views.Productions
 			}
 		}
 
-		private void txtTotalWorkHours_TextChanged(object sender, EventArgs e)
-		{
-			UpdateUI();
-		}
+		private void txtTotalWorkHours_TextChanged(object sender, EventArgs e) => UpdateUI();
 
-		private void btnCancel_Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
+		private void btnCancel_Click(object sender, EventArgs e) => this.Close();
 
-		private void chkgNormalTime_CheckedChanged(object sender, EventArgs e)
-		{
-			txtBreak1.Text = "0";
-		}
+		private void chkgNormalTime_CheckedChanged(object sender, EventArgs e) => txtBreak1.Text = "0";
 
 		private void txtTotalNormalHours_TextChanged(object sender, EventArgs e)
 		{
@@ -750,49 +753,13 @@ namespace OMW15.Views.Productions
 			UpdateUI();
 		}
 
-		private void dtpWorkTimeStart_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-		{
-			//DateTimePicker dInput = sender as DateTimePicker;
-			//DateTime _currentDT = dInput.Value.Date;
-			//canProcessInfo = CheckValidWoringDate(this.WorkerCode, _currentDT);
+		private void dtpWorkTimeEnd_ValueChanged(object sender, EventArgs e) => CalWorkTime(dtpWorkTimeEnd.Value);
 
-			//if ((_currentDT > DateTime.Today) || (canProcessInfo == false))
-			//{
-			//	e.Cancel = true;
-			//}
-		}
+		private void dtpOTStart_ValueChanged(object sender, EventArgs e) => CalWorkTime(dtpOTStart.Value);
 
-		private void dtpWorkTimeEnd_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-		{
-			//DateTimePicker dInput = sender as DateTimePicker;
-			//DateTime _currentDT = dInput.Value.Date;
-			//canProcessInfo = CheckValidWoringDate(this.WorkerCode, _currentDT);
+		private void dtpOTEnd_ValueChanged(object sender, EventArgs e) => CalWorkTime(dtpOTEnd.Value);
 
-			//if ((_currentDT > DateTime.Today) || (canProcessInfo == false))
-			//{
-			//	e.Cancel = true;
-			//}
-		}
-
-		private void dtpWorkTimeEnd_ValueChanged(object sender, EventArgs e)
-		{
-			CalWorkTime(dtpWorkTimeEnd.Value);
-		}
-
-		private void dtpOTStart_ValueChanged(object sender, EventArgs e)
-		{
-			CalWorkTime(dtpOTStart.Value);
-		}
-
-		private void dtpOTEnd_ValueChanged(object sender, EventArgs e)
-		{
-			CalWorkTime(dtpOTEnd.Value);
-		}
-
-		private void txtDrawing_TextChanged(object sender, EventArgs e)
-		{
-			this.DrawingNo = txtDrawing.Text;
-		}
+		private void txtDrawing_TextChanged(object sender, EventArgs e) => this.DrawingNo = txtDrawing.Text;
 
 		private void txtTotalOTHours_TextChanged(object sender, EventArgs e)
 		{
@@ -800,15 +767,9 @@ namespace OMW15.Views.Productions
 			UpdateUI();
 		}
 
-		private void txtInprocessQty_TextChanged(object sender, EventArgs e)
-		{
-			UpdateUI();
-		}
+		private void txtInprocessQty_TextChanged(object sender, EventArgs e) => UpdateUI();
 
-		private void txtTotalQty_TextChanged(object sender, EventArgs e)
-		{
-			UpdateUI();
-		}
+		private void txtTotalQty_TextChanged(object sender, EventArgs e) => UpdateUI();
 
 		private void txtProcessDetail_Validated(object sender, EventArgs e)
 		{
@@ -824,13 +785,16 @@ namespace OMW15.Views.Productions
 
 		private void txtProcess_Validated(object sender, EventArgs e)
 		{
-			if (IsValidProcess())
+			if (_jobType == ProductionJobType.Production)
 			{
-				ProcessErrorProvider.SetError(this.txtProcess, string.Empty);
-			}
-			else
-			{
-				ProcessErrorProvider.SetError(this.txtProcess, "ในกรณีที่เป็นงาน Production ต้องใส่ขั้นตอนการทำงาน");
+				if (IsValidProcess())
+				{
+					ProcessErrorProvider.SetError(this.txtProcess, string.Empty);
+				}
+				else
+				{
+					ProcessErrorProvider.SetError(this.txtProcess, "ในกรณีที่เป็นงาน Production ต้องใส่ขั้นตอนการทำงาน");
+				}
 			}
 		}
 
@@ -839,12 +803,26 @@ namespace OMW15.Views.Productions
 			try
 			{
 				_selectedMachineId = Convert.ToInt32(cbxMachine.SelectedValue);
+				_hr.MACHINEID = _selectedMachineId;
 			}
 			catch
 			{
 				_selectedMachineId = 0;
 			}
+		}
 
+		private void cbxMachineGroup_SelectedValueChanged(object sender, EventArgs e)
+		{
+			try
+			{
+				_selectedMachineGroup = Convert.ToInt32(cbxMachineGroup.SelectedValue.ToString());
+				_hr.MACHINEGROUP = _selectedMachineGroup;
+			}
+			catch { }
+
+			GetMachineByGroup(_selectedMachineGroup);
+
+			lbMachineGroup.Text = $"กลุ่มงาน #[{_selectedMachineGroup}] :";
 		}
 	}
 }

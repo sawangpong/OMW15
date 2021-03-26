@@ -150,10 +150,10 @@ namespace OMW15.Views.ToolViews
 
 			// get user name from default environment
 			// production programm
-			//txtUserName.Text = ""; 
+			txtUserName.Text = ""; 
 
 			// testing programm - auto input username
-			txtUserName.Text = "sawangpong";
+			//txtUserName.Text = "sawangpong";
 
 			txtPassword.Text = string.Empty;
 			lbProductInfo.Text = $"Product : {omglobal.AssemblyInformation}";

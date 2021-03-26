@@ -36,14 +36,15 @@
 			this.pnlHeader = new System.Windows.Forms.Panel();
 			this.lbQOrder = new System.Windows.Forms.Label();
 			this.panel22 = new System.Windows.Forms.Panel();
-			this.lbJobType = new System.Windows.Forms.Label();
 			this.panel23 = new System.Windows.Forms.Panel();
 			this.txtProductionJob = new System.Windows.Forms.TextBox();
 			this.btnProductionJob = new OMControls.OMFlatButton();
 			this.label28 = new System.Windows.Forms.Label();
 			this.panel21 = new System.Windows.Forms.Panel();
-			this.label1 = new System.Windows.Forms.Label();
+			this.panel26 = new System.Windows.Forms.Panel();
+			this.lbJobType = new System.Windows.Forms.Label();
 			this.lbMode = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
 			this.pnlDetails = new System.Windows.Forms.Panel();
 			this.grpPdHour = new System.Windows.Forms.GroupBox();
 			this.lbValidTime = new System.Windows.Forms.Label();
@@ -119,6 +120,7 @@
 			this.panel25 = new System.Windows.Forms.Panel();
 			this.cbxMachine = new System.Windows.Forms.ComboBox();
 			this.label3 = new System.Windows.Forms.Label();
+			this.cbxMachineGroup = new System.Windows.Forms.ComboBox();
 			this.lbMachineGroup = new System.Windows.Forms.Label();
 			this.btnProcess = new OMControls.OMFlatButton();
 			this.txtProcess = new System.Windows.Forms.TextBox();
@@ -149,6 +151,7 @@
 			this.panel22.SuspendLayout();
 			this.panel23.SuspendLayout();
 			this.panel21.SuspendLayout();
+			this.panel26.SuspendLayout();
 			this.pnlDetails.SuspendLayout();
 			this.grpPdHour.SuspendLayout();
 			this.panel6.SuspendLayout();
@@ -218,7 +221,7 @@
 			// 
 			// pnlHeader
 			// 
-			this.pnlHeader.BackColor = System.Drawing.Color.DimGray;
+			this.pnlHeader.BackColor = System.Drawing.SystemColors.ControlDarkDark;
 			this.pnlHeader.Controls.Add(this.lbQOrder);
 			this.pnlHeader.Controls.Add(this.panel22);
 			this.pnlHeader.Controls.Add(this.panel21);
@@ -233,19 +236,18 @@
 			// lbQOrder
 			// 
 			this.lbQOrder.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.lbQOrder.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.lbQOrder.Dock = System.Windows.Forms.DockStyle.Left;
 			this.lbQOrder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbQOrder.ForeColor = System.Drawing.SystemColors.HighlightText;
-			this.lbQOrder.Location = new System.Drawing.Point(361, 12);
+			this.lbQOrder.Location = new System.Drawing.Point(361, 2);
 			this.lbQOrder.Name = "lbQOrder";
-			this.lbQOrder.Size = new System.Drawing.Size(334, 36);
+			this.lbQOrder.Size = new System.Drawing.Size(171, 46);
 			this.lbQOrder.TabIndex = 6;
 			this.lbQOrder.Text = "0";
-			this.lbQOrder.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.lbQOrder.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			// 
 			// panel22
 			// 
-			this.panel22.Controls.Add(this.lbJobType);
 			this.panel22.Controls.Add(this.panel23);
 			this.panel22.Dock = System.Windows.Forms.DockStyle.Left;
 			this.panel22.Location = new System.Drawing.Point(2, 2);
@@ -254,28 +256,16 @@
 			this.panel22.Size = new System.Drawing.Size(359, 46);
 			this.panel22.TabIndex = 3;
 			// 
-			// lbJobType
-			// 
-			this.lbJobType.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.lbJobType.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbJobType.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.lbJobType.Location = new System.Drawing.Point(2, 2);
-			this.lbJobType.Name = "lbJobType";
-			this.lbJobType.Size = new System.Drawing.Size(355, 6);
-			this.lbJobType.TabIndex = 6;
-			this.lbJobType.Text = ".";
-			this.lbJobType.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-			// 
 			// panel23
 			// 
 			this.panel23.Controls.Add(this.txtProductionJob);
 			this.panel23.Controls.Add(this.btnProductionJob);
 			this.panel23.Controls.Add(this.label28);
 			this.panel23.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel23.Location = new System.Drawing.Point(2, 8);
+			this.panel23.Location = new System.Drawing.Point(2, 14);
 			this.panel23.Name = "panel23";
-			this.panel23.Padding = new System.Windows.Forms.Padding(2);
-			this.panel23.Size = new System.Drawing.Size(355, 36);
+			this.panel23.Padding = new System.Windows.Forms.Padding(1);
+			this.panel23.Size = new System.Drawing.Size(355, 30);
 			this.panel23.TabIndex = 0;
 			// 
 			// txtProductionJob
@@ -283,11 +273,11 @@
 			this.txtProductionJob.BackColor = System.Drawing.Color.Silver;
 			this.txtProductionJob.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.txtProductionJob.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.txtProductionJob.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtProductionJob.Location = new System.Drawing.Point(90, 2);
+			this.txtProductionJob.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtProductionJob.Location = new System.Drawing.Point(89, 1);
 			this.txtProductionJob.MaxLength = 30;
 			this.txtProductionJob.Name = "txtProductionJob";
-			this.txtProductionJob.Size = new System.Drawing.Size(231, 29);
+			this.txtProductionJob.Size = new System.Drawing.Size(237, 27);
 			this.txtProductionJob.TabIndex = 7;
 			this.txtProductionJob.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProductionJob_KeyPress);
 			// 
@@ -300,9 +290,9 @@
 			this.btnProductionJob.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
 			this.btnProductionJob.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnProductionJob.Image = ((System.Drawing.Image)(resources.GetObject("btnProductionJob.Image")));
-			this.btnProductionJob.Location = new System.Drawing.Point(321, 2);
+			this.btnProductionJob.Location = new System.Drawing.Point(326, 1);
 			this.btnProductionJob.Name = "btnProductionJob";
-			this.btnProductionJob.Size = new System.Drawing.Size(32, 32);
+			this.btnProductionJob.Size = new System.Drawing.Size(28, 28);
 			this.btnProductionJob.TabIndex = 6;
 			this.btnProductionJob.UseVisualStyleBackColor = true;
 			this.btnProductionJob.Click += new System.EventHandler(this.btnProductionJob_Click);
@@ -310,49 +300,73 @@
 			// label28
 			// 
 			this.label28.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label28.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label28.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label28.ForeColor = System.Drawing.SystemColors.ButtonFace;
-			this.label28.Location = new System.Drawing.Point(2, 2);
+			this.label28.Location = new System.Drawing.Point(1, 1);
 			this.label28.Name = "label28";
-			this.label28.Size = new System.Drawing.Size(88, 32);
+			this.label28.Size = new System.Drawing.Size(88, 28);
 			this.label28.TabIndex = 4;
 			this.label28.Text = "ใบสั่งผลิต";
 			this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// panel21
 			// 
+			this.panel21.Controls.Add(this.panel26);
 			this.panel21.Controls.Add(this.label1);
-			this.panel21.Controls.Add(this.lbMode);
 			this.panel21.Dock = System.Windows.Forms.DockStyle.Right;
-			this.panel21.Location = new System.Drawing.Point(695, 2);
+			this.panel21.Location = new System.Drawing.Point(738, 2);
 			this.panel21.Name = "panel21";
 			this.panel21.Padding = new System.Windows.Forms.Padding(2);
-			this.panel21.Size = new System.Drawing.Size(261, 46);
+			this.panel21.Size = new System.Drawing.Size(218, 46);
 			this.panel21.TabIndex = 2;
+			// 
+			// panel26
+			// 
+			this.panel26.Controls.Add(this.lbJobType);
+			this.panel26.Controls.Add(this.lbMode);
+			this.panel26.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panel26.Location = new System.Drawing.Point(2, 23);
+			this.panel26.Name = "panel26";
+			this.panel26.Padding = new System.Windows.Forms.Padding(1);
+			this.panel26.Size = new System.Drawing.Size(214, 21);
+			this.panel26.TabIndex = 4;
+			// 
+			// lbJobType
+			// 
+			this.lbJobType.BackColor = System.Drawing.Color.DimGray;
+			this.lbJobType.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lbJobType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbJobType.ForeColor = System.Drawing.SystemColors.ButtonFace;
+			this.lbJobType.Location = new System.Drawing.Point(1, 1);
+			this.lbJobType.Name = "lbJobType";
+			this.lbJobType.Size = new System.Drawing.Size(142, 19);
+			this.lbJobType.TabIndex = 8;
+			this.lbJobType.Text = ".";
+			this.lbJobType.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			// 
+			// lbMode
+			// 
+			this.lbMode.Dock = System.Windows.Forms.DockStyle.Right;
+			this.lbMode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbMode.ForeColor = System.Drawing.Color.Yellow;
+			this.lbMode.Location = new System.Drawing.Point(143, 1);
+			this.lbMode.Name = "lbMode";
+			this.lbMode.Size = new System.Drawing.Size(70, 19);
+			this.lbMode.TabIndex = 3;
+			this.lbMode.Text = "Mode";
+			this.lbMode.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			// 
 			// label1
 			// 
-			this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.label1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
 			this.label1.Location = new System.Drawing.Point(2, 2);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(257, 21);
+			this.label1.Size = new System.Drawing.Size(214, 21);
 			this.label1.TabIndex = 3;
 			this.label1.Text = "Production Time Record";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// lbMode
-			// 
-			this.lbMode.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.lbMode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbMode.ForeColor = System.Drawing.Color.Yellow;
-			this.lbMode.Location = new System.Drawing.Point(2, 23);
-			this.lbMode.Name = "lbMode";
-			this.lbMode.Size = new System.Drawing.Size(257, 21);
-			this.lbMode.TabIndex = 2;
-			this.lbMode.Text = "Mode";
-			this.lbMode.TextAlign = System.Drawing.ContentAlignment.BottomRight;
 			// 
 			// pnlDetails
 			// 
@@ -1188,7 +1202,6 @@
 			this.dtpWorkTimeEnd.Size = new System.Drawing.Size(116, 25);
 			this.dtpWorkTimeEnd.TabIndex = 6;
 			this.dtpWorkTimeEnd.ValueChanged += new System.EventHandler(this.dtpWorkTimeEnd_ValueChanged);
-			this.dtpWorkTimeEnd.Validating += new System.ComponentModel.CancelEventHandler(this.dtpWorkTimeEnd_Validating);
 			// 
 			// label6
 			// 
@@ -1223,7 +1236,6 @@
 			this.dtpWorkTimeStart.Size = new System.Drawing.Size(116, 25);
 			this.dtpWorkTimeStart.TabIndex = 5;
 			this.dtpWorkTimeStart.ValueChanged += new System.EventHandler(this.dtpWorkTime_ValueChanged);
-			this.dtpWorkTimeStart.Validating += new System.ComponentModel.CancelEventHandler(this.dtpWorkTimeStart_Validating);
 			// 
 			// label5
 			// 
@@ -1327,6 +1339,7 @@
 			// 
 			this.panel25.Controls.Add(this.cbxMachine);
 			this.panel25.Controls.Add(this.label3);
+			this.panel25.Controls.Add(this.cbxMachineGroup);
 			this.panel25.Controls.Add(this.lbMachineGroup);
 			this.panel25.Controls.Add(this.btnProcess);
 			this.panel25.Controls.Add(this.txtProcess);
@@ -1343,32 +1356,41 @@
 			this.cbxMachine.Dock = System.Windows.Forms.DockStyle.Left;
 			this.cbxMachine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbxMachine.FormattingEnabled = true;
-			this.cbxMachine.Location = new System.Drawing.Point(497, 1);
+			this.cbxMachine.Location = new System.Drawing.Point(729, 1);
 			this.cbxMachine.Name = "cbxMachine";
 			this.cbxMachine.Size = new System.Drawing.Size(167, 25);
-			this.cbxMachine.TabIndex = 15;
-			this.cbxMachine.SelectedValueChanged += new System.EventHandler(this.cbxMachine_SelectedValueChanged);
+			this.cbxMachine.TabIndex = 22;
 			// 
 			// label3
 			// 
 			this.label3.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label3.Location = new System.Drawing.Point(406, 1);
+			this.label3.Location = new System.Drawing.Point(638, 1);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(91, 26);
-			this.label3.TabIndex = 12;
+			this.label3.TabIndex = 21;
 			this.label3.Text = "เครื่องจักร :";
 			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
+			// cbxMachineGroup
+			// 
+			this.cbxMachineGroup.Dock = System.Windows.Forms.DockStyle.Left;
+			this.cbxMachineGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbxMachineGroup.FormattingEnabled = true;
+			this.cbxMachineGroup.Location = new System.Drawing.Point(471, 1);
+			this.cbxMachineGroup.Name = "cbxMachineGroup";
+			this.cbxMachineGroup.Size = new System.Drawing.Size(167, 25);
+			this.cbxMachineGroup.TabIndex = 20;
+			this.cbxMachineGroup.SelectedValueChanged += new System.EventHandler(this.cbxMachineGroup_SelectedValueChanged);
+			// 
 			// lbMachineGroup
 			// 
-			this.lbMachineGroup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.lbMachineGroup.Dock = System.Windows.Forms.DockStyle.Left;
 			this.lbMachineGroup.Location = new System.Drawing.Point(363, 1);
 			this.lbMachineGroup.Name = "lbMachineGroup";
-			this.lbMachineGroup.Size = new System.Drawing.Size(43, 26);
-			this.lbMachineGroup.TabIndex = 8;
-			this.lbMachineGroup.Text = "0";
-			this.lbMachineGroup.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.lbMachineGroup.Size = new System.Drawing.Size(108, 26);
+			this.lbMachineGroup.TabIndex = 17;
+			this.lbMachineGroup.Text = "กลุ่มงาน #[0] :";
+			this.lbMachineGroup.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// btnProcess
 			// 
@@ -1408,7 +1430,7 @@
 			this.lbStep.Name = "lbStep";
 			this.lbStep.Size = new System.Drawing.Size(153, 26);
 			this.lbStep.TabIndex = 4;
-			this.lbStep.Text = "ขั้นตอนการผลิต (#0):";
+			this.lbStep.Text = "ขั้นตอนการผลิต #[0] :";
 			this.lbStep.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// panel24
@@ -1430,7 +1452,7 @@
 			this.txtProcessDetail.Location = new System.Drawing.Point(154, 1);
 			this.txtProcessDetail.MaxLength = 150;
 			this.txtProcessDetail.Name = "txtProcessDetail";
-			this.txtProcessDetail.Size = new System.Drawing.Size(694, 25);
+			this.txtProcessDetail.Size = new System.Drawing.Size(742, 25);
 			this.txtProcessDetail.TabIndex = 9;
 			this.txtProcessDetail.Validated += new System.EventHandler(this.txtProcessDetail_Validated);
 			// 
@@ -1441,7 +1463,7 @@
 			this.label25.Name = "label25";
 			this.label25.Size = new System.Drawing.Size(153, 26);
 			this.label25.TabIndex = 8;
-			this.label25.Text = "รายละเอียด (งาน) :";
+			this.label25.Text = "รายละเอียด (ทำงาน) :";
 			this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// panel3
@@ -1462,7 +1484,7 @@
 			// 
 			this.txtDrawing.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.txtDrawing.Dock = System.Windows.Forms.DockStyle.Left;
-			this.txtDrawing.Location = new System.Drawing.Point(528, 1);
+			this.txtDrawing.Location = new System.Drawing.Point(472, 1);
 			this.txtDrawing.MaxLength = 30;
 			this.txtDrawing.Name = "txtDrawing";
 			this.txtDrawing.Size = new System.Drawing.Size(167, 25);
@@ -1474,7 +1496,7 @@
 			this.label20.Dock = System.Windows.Forms.DockStyle.Left;
 			this.label20.Location = new System.Drawing.Point(363, 1);
 			this.label20.Name = "label20";
-			this.label20.Size = new System.Drawing.Size(165, 26);
+			this.label20.Size = new System.Drawing.Size(109, 26);
 			this.label20.TabIndex = 11;
 			this.label20.Text = "หมายเลขแบบ :";
 			this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1559,7 +1581,7 @@
 			this.txtItemName.MaxLength = 150;
 			this.txtItemName.Name = "txtItemName";
 			this.txtItemName.ReadOnly = true;
-			this.txtItemName.Size = new System.Drawing.Size(349, 25);
+			this.txtItemName.Size = new System.Drawing.Size(399, 25);
 			this.txtItemName.TabIndex = 11;
 			// 
 			// btnItemNo
@@ -1660,6 +1682,7 @@
 			this.panel23.ResumeLayout(false);
 			this.panel23.PerformLayout();
 			this.panel21.ResumeLayout(false);
+			this.panel26.ResumeLayout(false);
 			this.pnlDetails.ResumeLayout(false);
 			this.grpPdHour.ResumeLayout(false);
 			this.panel6.ResumeLayout(false);
@@ -1786,7 +1809,6 @@
 		private OMControls.OMFlatButton btnItemNo;
 		private System.Windows.Forms.Panel panel21;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label lbMode;
 		private System.Windows.Forms.Panel panel22;
 		private System.Windows.Forms.Panel panel23;
 		private System.Windows.Forms.Label label28;
@@ -1804,7 +1826,6 @@
 		private System.Windows.Forms.Label lbOTCheck;
 		private System.Windows.Forms.Label lbNTCheck;
 		private System.Windows.Forms.Label lbQOrder;
-		private System.Windows.Forms.Label lbJobType;
 		private OMControls.OMFlatButton btnWorkSource;
 		private System.Windows.Forms.TextBox txtWorker;
 		private System.Windows.Forms.Panel pnlWorkingSource;
@@ -1822,8 +1843,12 @@
 		private System.Windows.Forms.Panel panel24;
 		private System.Windows.Forms.TextBox txtProcessDetail;
 		private System.Windows.Forms.Label label25;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label lbMachineGroup;
 		private System.Windows.Forms.ComboBox cbxMachine;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.ComboBox cbxMachineGroup;
+		private System.Windows.Forms.Label lbMachineGroup;
+		private System.Windows.Forms.Panel panel26;
+		private System.Windows.Forms.Label lbJobType;
+		private System.Windows.Forms.Label lbMode;
 	}
 }

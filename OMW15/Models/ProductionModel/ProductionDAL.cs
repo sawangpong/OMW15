@@ -31,8 +31,8 @@ namespace OMW15.Models.ProductionModel
 
 		#region call sproc
 
-		public DataTable GetYearForTimeRecord(string workerCode) => 
-			new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_WORKER_WORKYEARS @workerid='{workerCode}'", omglobal.SysConnectionString).ToDataTable;
+		public DataTable GetYearForTimeRecord(string workerCode) 
+			=> new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_WORKER_WORKYEARS @workerid='{workerCode}'", omglobal.SysConnectionString).ToDataTable;
 
 		public DataTable GetMonthForTimeRecord(string workerCode, int jobYear)
 		{
