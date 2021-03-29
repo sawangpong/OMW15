@@ -1,5 +1,7 @@
 ﻿using OMW15.Models.ProductionModel;
+using OMW15.Views.Productions.ProductionUserControl;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using TableDependency.SqlClient;
@@ -29,42 +31,51 @@ namespace OMW15.Views.Productions
 		#region class field
 
 		private bool _isUpdate = false;
-		private SqlTableDependency<PRODUCTIONJOBINFO> dep;
-
+		private SqlTableDependency<PRODUCTIONJOBINFO> _notifier;
+		private string _isState = string.Empty;
+		private DataTable _data;
 
 		#endregion
 
 
 		#region class helper
 
-		private void UpdateData1()
+		private void UpdatePanelData()
 		{
-			DataTable _dt = new ProductionDashboardDAL().GetProductionJobInfoDataChanged();
-			decimal _q1 = 0m;
-			decimal _q2 = 0m;
-
-			//lbG1Unit.Text = $"ชิ้น";
-			//lbMachineGroup1.Text = $"งานตัด";
-
-			foreach (DataRow dr in _dt.Rows)
+			_data = new ProductionDashboardDAL().GetProductionJobInfoDataChanged();
+			foreach (Control c in flp.Controls)
 			{
-				switch(Convert.ToInt32(dr["MACHINE_GROUP"].ToString()))
+				UpdatePanel p = (UpdatePanel)c;
+
+				foreach (DataRow dr in _data.Rows)
 				{
-					case 1:
-						_q1 += Convert.ToDecimal(dr["Q_REMAIN"].ToString());
-						lbMachineGroup1.Text = $"{dr["MC_GROUPNAME"].ToString()}";
-						lbG1Unit.Text = $"{dr["UNITORDER"].ToString()}";
+					if (Convert.ToInt32(p.Tag) == Convert.ToInt32(dr["MACHINE_GROUP"].ToString()))
+					{
+
+						p.TotalQty = Convert.ToDecimal(dr["REMAINQTY"].ToString());
+						p.HourNeed = Convert.ToDecimal(dr["HOUR_NEED"].ToString());
 						break;
-					case 2:
-						_q2 += Convert.ToDecimal(dr["Q_REMAIN"].ToString());
-						lbMachineGroup2.Text = $"{dr["MC_GROUPNAME"].ToString()}";
-						lbG2Unit.Text = $"{dr["UNITORDER"].ToString()}";
-						break;
+					}
 				}
 			}
+		}
 
-			lbQG1.Text = $"{_q1:N0}";
-			lbQG2.Text = $"{_q2:N0}";
+		private void GetMachineGroup()
+		{
+			DataTable dtGroup = new ProductionMachineDAL().GetMachineGroup();
+			List<Control> _panels = new List<Control>();
+
+			foreach (DataRow dr in dtGroup.Rows)
+			{
+				var pnl = new UpdatePanel();
+				pnl.Title = dr["MC_GROUPNAME"].ToString();
+				pnl.Tag = dr["MC_GROUPID"].ToString();
+				_panels.Add((Control)pnl);
+			}
+
+			flp.Controls.AddRange(_panels.ToArray());
+
+			UpdatePanelData();
 		}
 
 
@@ -74,33 +85,24 @@ namespace OMW15.Views.Productions
 		public ProductionDashboard()
 		{
 			InitializeComponent();
+
 		}
 
 		private void ProductionDashboard_Load(object sender, System.EventArgs e)
 		{
-			UpdateData1();
-			dep = new SqlTableDependency<PRODUCTIONJOBINFO>(omglobal.SysConnectionString, "PRODUCTIONJOBINFO");
-			dep.OnChanged += Changed;
-			dep.Start();
+
+			_notifier = new SqlTableDependency<PRODUCTIONJOBINFO>(omglobal.SysConnectionString, "PRODUCTIONJOBINFO");
+			_notifier.OnChanged += Changed;
+			_notifier.Start();
+			GetMachineGroup();
 
 		}
 
-		private void Changed(object sender, RecordChangedEventArgs<PRODUCTIONJOBINFO> e)
-		{
-			var changedEntity = e.Entity;
-
-			_isUpdate = true;
-
-			if (_isUpdate)
-			{
-				UpdateData1();
-			}
-
-		}
+		private void Changed(object sender, RecordChangedEventArgs<PRODUCTIONJOBINFO> e) => UpdatePanelData();
 
 		private void btnClose_Click(object sender, EventArgs e)
 		{
-			dep.Stop();
+			_notifier.Stop();
 			this.Close();
 		}
 	}

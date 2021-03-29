@@ -22,7 +22,7 @@ namespace OMW15.Models.ProductionModel
 		#region Class MethodHelper
 
 		public DataTable GetProductionJobInfoDataChanged() 
-			=> new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_MCGROUP_DEMAND ", omglobal.SysConnectionString).ToDataTable;
+			=> new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_SUMMARY_DEMAND_BY_MCGROUP ", omglobal.SysConnectionString).ToDataTable;
 
 
 		#endregion

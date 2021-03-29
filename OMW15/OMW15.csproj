@@ -1247,6 +1247,18 @@
     <Compile Include="Views\Productions\ProductionSendStock.Designer.cs">
       <DependentUpon>ProductionSendStock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Productions\ProductionUserControl\MissReportControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionUserControl\MissReportControl.Designer.cs">
+      <DependentUpon>MissReportControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionUserControl\UpdatePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionUserControl\UpdatePanel.Designer.cs">
+      <DependentUpon>UpdatePanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Productions\ProductionUserControl\WorkerTimeRecord.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2408,6 +2420,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Productions\ProductionSendStock.resx">
       <DependentUpon>ProductionSendStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionUserControl\UpdatePanel.resx">
+      <DependentUpon>UpdatePanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Productions\ProductionUserControl\WorkerTimeRecord.resx">
       <DependentUpon>WorkerTimeRecord.cs</DependentUpon>
