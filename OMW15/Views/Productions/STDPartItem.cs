@@ -60,9 +60,10 @@ namespace OMW15.Views.Productions
 			dgvSTDProcess.Columns["ID"].Visible = false;
 			dgvSTDProcess.Columns["REF_STDITEM"].Visible = false;
 			dgvSTDProcess.Columns["REF_PROCESS"].Visible = false;
+			dgvSTDProcess.Columns["MACHINE_GROUP"].Visible = false;
 			dgvSTDProcess.Columns["REF_STDITEMNO"].Visible = false;
 
-			dgvSTDProcess.Columns["MACHINE"].HeaderText = "เครื่องจักร";
+			dgvSTDProcess.Columns["MACHINE"].HeaderText = "กลุ่มงาน";
 
 			dgvSTDProcess.Columns["STEP"].HeaderText = "ลำดับ";
 			dgvSTDProcess.Columns["PROCESSNAME"].HeaderText = "ขั้นตอนการทำงาน";

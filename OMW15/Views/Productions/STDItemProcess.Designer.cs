@@ -444,7 +444,7 @@
 			this.txtMaterial.MaxLength = 100;
 			this.txtMaterial.Name = "txtMaterial";
 			this.txtMaterial.ReadOnly = true;
-			this.txtMaterial.Size = new System.Drawing.Size(247, 25);
+			this.txtMaterial.Size = new System.Drawing.Size(209, 25);
 			this.txtMaterial.TabIndex = 12;
 			// 
 			// btnMatNo
@@ -500,7 +500,7 @@
 			this.txtPartName.Location = new System.Drawing.Point(154, 2);
 			this.txtPartName.MaxLength = 150;
 			this.txtPartName.Name = "txtPartName";
-			this.txtPartName.Size = new System.Drawing.Size(414, 25);
+			this.txtPartName.Size = new System.Drawing.Size(376, 25);
 			this.txtPartName.TabIndex = 1;
 			// 
 			// label1

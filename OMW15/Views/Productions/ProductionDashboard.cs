@@ -78,6 +78,13 @@ namespace OMW15.Views.Productions
 			UpdatePanelData();
 		}
 
+		private void GetWorkerMissReport()
+		{
+			var _missReport = new MissReportControl();
+			flp.Controls.Add((Control)_missReport);
+		}
+
+
 
 		#endregion
 
@@ -95,7 +102,7 @@ namespace OMW15.Views.Productions
 			_notifier.OnChanged += Changed;
 			_notifier.Start();
 			GetMachineGroup();
-
+			GetWorkerMissReport();
 		}
 
 		private void Changed(object sender, RecordChangedEventArgs<PRODUCTIONJOBINFO> e) => UpdatePanelData();

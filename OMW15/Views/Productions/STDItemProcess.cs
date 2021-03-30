@@ -126,6 +126,7 @@ namespace OMW15.Views.Productions
 			_process.STD_HR = Convert.ToDecimal(txtStdHr.Text);
 			_process.STEP_COST = Convert.ToDecimal(txtStepCost.Text);
 			_process.HOUR_FACTOR = hourFactor.Value;
+			
 
 			if (_actionMode == ActionMode.Add)
 			{

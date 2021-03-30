@@ -2421,6 +2421,9 @@
     <EmbeddedResource Include="Views\Productions\ProductionSendStock.resx">
       <DependentUpon>ProductionSendStock.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionUserControl\MissReportControl.resx">
+      <DependentUpon>MissReportControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Productions\ProductionUserControl\UpdatePanel.resx">
       <DependentUpon>UpdatePanel.cs</DependentUpon>
     </EmbeddedResource>

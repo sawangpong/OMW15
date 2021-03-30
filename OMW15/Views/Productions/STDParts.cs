@@ -250,7 +250,7 @@ namespace OMW15.Views.Productions
 
 		private void tsbtnRefresh_Click(object sender, EventArgs e)
 		{
-			this.ItemNo = "";
+			//this.ItemNo = "";
 			GetSTDParts(this.ItemNo);
 		}
 
