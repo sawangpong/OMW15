@@ -1145,6 +1145,12 @@
     <Compile Include="Views\Productions\ProductionDashboard.Designer.cs">
       <DependentUpon>ProductionDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Productions\ProductionFormula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionFormula.Designer.cs">
+      <DependentUpon>ProductionFormula.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Productions\ProductionJobList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2361,6 +2367,9 @@
     <EmbeddedResource Include="Views\Productions\ProductionDashboard.resx">
       <DependentUpon>ProductionDashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionFormula.resx">
+      <DependentUpon>ProductionFormula.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Productions\ProductionJobList.resx">
       <DependentUpon>ProductionJobList.cs</DependentUpon>
     </EmbeddedResource>
@@ -3086,6 +3095,9 @@
     <None Include="Resources\materials.png" />
     <None Include="Resources\software.png" />
     <None Include="Resources\History.png" />
+    <None Include="Resources\clear_white_24.png" />
+    <None Include="Resources\crop_white_24.png" />
+    <None Include="Resources\remove_white_24.png" />
     <Content Include="UNUSED_CODE\ProductionDAL_UnusedCode.txt" />
     <None Include="Resources\logo-1.png" />
   </ItemGroup>

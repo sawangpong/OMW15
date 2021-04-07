@@ -10,9 +10,80 @@ namespace OMW15.Views.Sales
 {
 	public partial class Quotations : Form
 	{
+		#region class field members
+
+		//private string _isMaster = "N";
+		private OMShareSaleEnum.QoutationStatus _selectedQTStatus = OMShareSaleEnum.QoutationStatus.None;
+		private OMShareSaleEnum.QuotationType _qtType = OMShareSaleEnum.QuotationType.Unknow;
+		private int _rowCount;
+
+		#endregion
+
+		#region class helper methods
+
+		private void UpdateMenuItems()
+		{
+			mnuMasterQT.Enabled = omglobal.PermisionId >= (int)OMShareSysConfigEnums.UserPermission.Manager;
+			mnuAllQT.Enabled = mnuMasterQT.Enabled;
+
+			UpdateUI();
+		} // end UpdateMenuItems
+
+		private void UpdateUI()
+		{
+			tsbtnEdit.Enabled = (QuotationId > 0);
+			tsbtnPrintQT.Enabled = tsbtnEdit.Enabled;
+
+			// display selected menuitem
+			stlbStatus.Text = $"id={QuotationId} [status {_selectedQTStatus}:{_selectedQTStatus}]";
+		} // end UpdateUI
+
+
+		private void GetQuotationList(OMShareSaleEnum.QuotationType QTType)
+		{
+			dgv.SuspendLayout();
+
+			// load data
+			dgv.DataSource = new SaleQTDAL().GetQuotationList(QTType);
+			_rowCount = dgv.Rows.Count;
+			// formatting DataGridView
+			dgv.Columns["QT_ID"].Visible = false;
+			dgv.Columns["MASTER"].Visible = false;
+			dgv.Columns["QT_PREFIX"].Visible = false;
+			dgv.Columns["QT_STATUS"].Visible = false;
+
+			dgv.Columns["CUSTOMER"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+			dgv.Columns["CURRENCY"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+			dgv.Columns["NET_VALUE"].DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
+			dgv.Columns["VAT"].DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
+			dgv.Columns["GOODSAMOUNT"].DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
+			dgv.Columns["PACKING"].DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
+			dgv.Columns["DELIVERY"].DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
+			dgv.Columns["TOTALAMOUNT"].DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
+
+			dgv.ResumeLayout();
+
+			UpdateUI();
+		} // end GetQuotationList
+
+		private void GetQTInfo(int QTHeaderId)
+		{
+			var _qtInfo = new QTInfo(QTHeaderId);
+			_qtInfo.StartPosition = FormStartPosition.CenterScreen;
+
+			if (_qtInfo.ShowDialog(this) == DialogResult.OK)
+			{
+			}
+
+			tsbtnRefresh.PerformClick();
+		} // end GetQTInfo
+
+		#endregion
+
 		public Quotations()
 		{
 			InitializeComponent();
+			OMUtils.SettingDataGridView(ref dgv);
 		}
 
 		#region class property
@@ -28,7 +99,6 @@ namespace OMW15.Views.Sales
 
 		private void Quotations_Load(object sender, EventArgs e)
 		{
-			OMUtils.SettingDataGridView(ref dgv);
 
 			UpdateMenuItems();
 		}
@@ -85,7 +155,6 @@ namespace OMW15.Views.Sales
 				_selectedQTStatus =
 					(OMShareSaleEnum.QoutationStatus)
 					Enum.Parse(typeof(OMShareSaleEnum.QoutationStatus), dgv["QT_STATUS", e.RowIndex].Value.ToString());
-				//_isMaster = this.dgv["MASTER", e.RowIndex].Value.ToString();
 			}
 
 			UpdateUI();
@@ -106,71 +175,6 @@ namespace OMW15.Views.Sales
 			_rptv.Show();
 		}
 
-		#region class field members
-
-		//private string _isMaster = "N";
-		private OMShareSaleEnum.QoutationStatus _selectedQTStatus = OMShareSaleEnum.QoutationStatus.None;
-		private OMShareSaleEnum.QuotationType _qtType = OMShareSaleEnum.QuotationType.Unknow;
-		private int _rowCount;
-
-		#endregion
-
-		#region class helper methods
-
-		private void UpdateMenuItems()
-		{
-			mnuMasterQT.Enabled = omglobal.PermisionId >= (int) OMShareSysConfigEnums.UserPermission.Manager;
-			//this.mnuSep1.Visible = (this.mnuMasterQT.Visible == true);
-			mnuAllQT.Enabled = mnuMasterQT.Enabled;
-
-			UpdateUI();
-		} // end UpdateMenuItems
-
-		private void UpdateUI()
-		{
-			tsbtnEdit.Enabled = QuotationId > 0;
-			tsbtnPrintQT.Enabled = tsbtnEdit.Enabled;
-
-			// display selected menuitem
-			stlbStatus.Text = string.Format("id={0} [status {1}:{2}]", QuotationId, (int) _selectedQTStatus, _selectedQTStatus);
-		} // end UpdateUI
-
-
-		private void GetQuotationList(OMShareSaleEnum.QuotationType QTType)
-		{
-			dgv.SuspendLayout();
-
-			// load data
-			dgv.DataSource = new SaleQTDAL().GetQuotationList(QTType);
-			_rowCount = dgv.Rows.Count;
-			// formatting DataGridView
-			dgv.Columns["QT_ID"].Visible = false;
-			dgv.Columns["MASTER"].Visible = false;
-			dgv.Columns["QT_PREFIX"].Visible = false;
-			dgv.Columns["QT_STATUS"].Visible = false;
-
-			dgv.Columns["CUSTOMER"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-			dgv.Columns["CURRENCY"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-			dgv.Columns["TOTALAMOUNT"].DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
-
-
-			dgv.ResumeLayout();
-
-			UpdateUI();
-		} // end GetQuotationList
-
-		private void GetQTInfo(int QTHeaderId)
-		{
-			var _qtInfo = new QTInfo(QTHeaderId);
-			_qtInfo.StartPosition = FormStartPosition.CenterScreen;
-
-			if (_qtInfo.ShowDialog(this) == DialogResult.OK)
-			{
-			}
-
-			tsbtnRefresh.PerformClick();
-		} // end GetQTInfo
-
-		#endregion
+		
 	}
 }

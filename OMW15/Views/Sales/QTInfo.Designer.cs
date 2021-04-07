@@ -97,15 +97,6 @@
 			this.gpItemInfo = new System.Windows.Forms.GroupBox();
 			this.txtItemInfo = new System.Windows.Forms.TextBox();
 			this.pnlValues = new System.Windows.Forms.Panel();
-			this.panel29 = new System.Windows.Forms.Panel();
-			this.lbAmount = new System.Windows.Forms.Label();
-			this.txtQTTotalAmont = new OMControls.Controls.NumericTextBox();
-			this.panel28 = new System.Windows.Forms.Panel();
-			this.lbShipping = new System.Windows.Forms.Label();
-			this.txtShippingCost = new OMControls.Controls.NumericTextBox();
-			this.panel27 = new System.Windows.Forms.Panel();
-			this.lbPacking = new System.Windows.Forms.Label();
-			this.txtPackingCost = new OMControls.Controls.NumericTextBox();
 			this.panel26 = new System.Windows.Forms.Panel();
 			this.lbNett = new System.Windows.Forms.Label();
 			this.txtNetQTLineTotal = new OMControls.Controls.NumericTextBox();
@@ -162,6 +153,23 @@
 			this.label13 = new System.Windows.Forms.Label();
 			this.tslbSelectedQTLineIndex = new System.Windows.Forms.ToolStripLabel();
 			this.tp1 = new System.Windows.Forms.ToolTip(this.components);
+			this.panel2 = new System.Windows.Forms.Panel();
+			this.ntxtVatValue = new OMControls.Controls.NumericTextBox();
+			this.cbxVAT = new System.Windows.Forms.ComboBox();
+			this.label14 = new System.Windows.Forms.Label();
+			this.panel16 = new System.Windows.Forms.Panel();
+			this.label15 = new System.Windows.Forms.Label();
+			this.ntxtTotalGoodAmount = new OMControls.Controls.NumericTextBox();
+			this.panel29 = new System.Windows.Forms.Panel();
+			this.lbAmount = new System.Windows.Forms.Label();
+			this.txtQTTotalAmont = new OMControls.Controls.NumericTextBox();
+			this.panel28 = new System.Windows.Forms.Panel();
+			this.lbShipping = new System.Windows.Forms.Label();
+			this.txtShippingCost = new OMControls.Controls.NumericTextBox();
+			this.panel27 = new System.Windows.Forms.Panel();
+			this.lbPacking = new System.Windows.Forms.Label();
+			this.txtPackingCost = new OMControls.Controls.NumericTextBox();
+			this.lbVATFactor = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			this.pnlHeader.SuspendLayout();
 			this.panel3.SuspendLayout();
@@ -185,9 +193,6 @@
 			this.panel34.SuspendLayout();
 			this.gpItemInfo.SuspendLayout();
 			this.pnlValues.SuspendLayout();
-			this.panel29.SuspendLayout();
-			this.panel28.SuspendLayout();
-			this.panel27.SuspendLayout();
 			this.panel26.SuspendLayout();
 			this.panel33.SuspendLayout();
 			this.panel7.SuspendLayout();
@@ -206,6 +211,11 @@
 			this.panel24.SuspendLayout();
 			this.panel19.SuspendLayout();
 			this.panel17.SuspendLayout();
+			this.panel2.SuspendLayout();
+			this.panel16.SuspendLayout();
+			this.panel29.SuspendLayout();
+			this.panel28.SuspendLayout();
+			this.panel27.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -214,7 +224,7 @@
 			this.panel1.Controls.Add(this.btnSave);
 			this.panel1.Controls.Add(this.btnCancel);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel1.Location = new System.Drawing.Point(0, 554);
+			this.panel1.Location = new System.Drawing.Point(0, 606);
 			this.panel1.Name = "panel1";
 			this.panel1.Padding = new System.Windows.Forms.Padding(5);
 			this.panel1.Size = new System.Drawing.Size(943, 45);
@@ -298,7 +308,7 @@
 			this.panel3.Location = new System.Drawing.Point(0, 42);
 			this.panel3.Name = "panel3";
 			this.panel3.Padding = new System.Windows.Forms.Padding(5);
-			this.panel3.Size = new System.Drawing.Size(943, 512);
+			this.panel3.Size = new System.Drawing.Size(943, 564);
 			this.panel3.TabIndex = 2;
 			// 
 			// tabControl1
@@ -310,7 +320,7 @@
 			this.tabControl1.Location = new System.Drawing.Point(5, 5);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(933, 502);
+			this.tabControl1.Size = new System.Drawing.Size(933, 554);
 			this.tabControl1.TabIndex = 0;
 			// 
 			// tpHeader
@@ -934,7 +944,7 @@
 			this.tpItems.Location = new System.Drawing.Point(4, 26);
 			this.tpItems.Name = "tpItems";
 			this.tpItems.Padding = new System.Windows.Forms.Padding(10);
-			this.tpItems.Size = new System.Drawing.Size(925, 472);
+			this.tpItems.Size = new System.Drawing.Size(925, 524);
 			this.tpItems.TabIndex = 1;
 			this.tpItems.Text = "Quotation Items";
 			// 
@@ -946,7 +956,7 @@
 			this.panel34.Location = new System.Drawing.Point(10, 230);
 			this.panel34.Name = "panel34";
 			this.panel34.Padding = new System.Windows.Forms.Padding(4);
-			this.panel34.Size = new System.Drawing.Size(905, 232);
+			this.panel34.Size = new System.Drawing.Size(905, 284);
 			this.panel34.TabIndex = 8;
 			// 
 			// gpItemInfo
@@ -957,7 +967,7 @@
 			this.gpItemInfo.Location = new System.Drawing.Point(4, 4);
 			this.gpItemInfo.Name = "gpItemInfo";
 			this.gpItemInfo.Padding = new System.Windows.Forms.Padding(5);
-			this.gpItemInfo.Size = new System.Drawing.Size(572, 224);
+			this.gpItemInfo.Size = new System.Drawing.Size(572, 276);
 			this.gpItemInfo.TabIndex = 9;
 			this.gpItemInfo.TabStop = false;
 			this.gpItemInfo.Text = "Item Information";
@@ -972,7 +982,7 @@
 			this.txtItemInfo.Name = "txtItemInfo";
 			this.txtItemInfo.ReadOnly = true;
 			this.txtItemInfo.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.txtItemInfo.Size = new System.Drawing.Size(562, 196);
+			this.txtItemInfo.Size = new System.Drawing.Size(562, 248);
 			this.txtItemInfo.TabIndex = 0;
 			// 
 			// pnlValues
@@ -980,6 +990,8 @@
 			this.pnlValues.Controls.Add(this.panel29);
 			this.pnlValues.Controls.Add(this.panel28);
 			this.pnlValues.Controls.Add(this.panel27);
+			this.pnlValues.Controls.Add(this.panel16);
+			this.pnlValues.Controls.Add(this.panel2);
 			this.pnlValues.Controls.Add(this.panel26);
 			this.pnlValues.Controls.Add(this.panel33);
 			this.pnlValues.Controls.Add(this.panel7);
@@ -987,108 +999,8 @@
 			this.pnlValues.Dock = System.Windows.Forms.DockStyle.Right;
 			this.pnlValues.Location = new System.Drawing.Point(576, 4);
 			this.pnlValues.Name = "pnlValues";
-			this.pnlValues.Size = new System.Drawing.Size(325, 224);
+			this.pnlValues.Size = new System.Drawing.Size(325, 276);
 			this.pnlValues.TabIndex = 8;
-			// 
-			// panel29
-			// 
-			this.panel29.Controls.Add(this.lbAmount);
-			this.panel29.Controls.Add(this.txtQTTotalAmont);
-			this.panel29.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel29.Location = new System.Drawing.Point(0, 168);
-			this.panel29.Name = "panel29";
-			this.panel29.Padding = new System.Windows.Forms.Padding(1);
-			this.panel29.Size = new System.Drawing.Size(325, 28);
-			this.panel29.TabIndex = 24;
-			// 
-			// lbAmount
-			// 
-			this.lbAmount.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.lbAmount.Location = new System.Drawing.Point(1, 1);
-			this.lbAmount.Name = "lbAmount";
-			this.lbAmount.Size = new System.Drawing.Size(194, 26);
-			this.lbAmount.TabIndex = 10;
-			this.lbAmount.Text = "Total Amount :";
-			this.lbAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// txtQTTotalAmont
-			// 
-			this.txtQTTotalAmont.Dock = System.Windows.Forms.DockStyle.Right;
-			this.txtQTTotalAmont.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtQTTotalAmont.Location = new System.Drawing.Point(195, 1);
-			this.txtQTTotalAmont.MaxLength = 15;
-			this.txtQTTotalAmont.Name = "txtQTTotalAmont";
-			this.txtQTTotalAmont.ReadOnly = true;
-			this.txtQTTotalAmont.Size = new System.Drawing.Size(129, 25);
-			this.txtQTTotalAmont.TabIndex = 8;
-			this.txtQTTotalAmont.Text = "0.00";
-			this.txtQTTotalAmont.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
-			// panel28
-			// 
-			this.panel28.Controls.Add(this.lbShipping);
-			this.panel28.Controls.Add(this.txtShippingCost);
-			this.panel28.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel28.Location = new System.Drawing.Point(0, 140);
-			this.panel28.Name = "panel28";
-			this.panel28.Padding = new System.Windows.Forms.Padding(1);
-			this.panel28.Size = new System.Drawing.Size(325, 28);
-			this.panel28.TabIndex = 23;
-			// 
-			// lbShipping
-			// 
-			this.lbShipping.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.lbShipping.Location = new System.Drawing.Point(1, 1);
-			this.lbShipping.Name = "lbShipping";
-			this.lbShipping.Size = new System.Drawing.Size(194, 26);
-			this.lbShipping.TabIndex = 18;
-			this.lbShipping.Text = "Shipping Cost :";
-			this.lbShipping.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// txtShippingCost
-			// 
-			this.txtShippingCost.Dock = System.Windows.Forms.DockStyle.Right;
-			this.txtShippingCost.Location = new System.Drawing.Point(195, 1);
-			this.txtShippingCost.MaxLength = 15;
-			this.txtShippingCost.Name = "txtShippingCost";
-			this.txtShippingCost.Size = new System.Drawing.Size(129, 25);
-			this.txtShippingCost.TabIndex = 16;
-			this.txtShippingCost.Text = "0.00";
-			this.txtShippingCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.txtShippingCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress);
-			// 
-			// panel27
-			// 
-			this.panel27.Controls.Add(this.lbPacking);
-			this.panel27.Controls.Add(this.txtPackingCost);
-			this.panel27.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel27.Location = new System.Drawing.Point(0, 112);
-			this.panel27.Name = "panel27";
-			this.panel27.Padding = new System.Windows.Forms.Padding(1);
-			this.panel27.Size = new System.Drawing.Size(325, 28);
-			this.panel27.TabIndex = 22;
-			// 
-			// lbPacking
-			// 
-			this.lbPacking.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.lbPacking.Location = new System.Drawing.Point(1, 1);
-			this.lbPacking.Name = "lbPacking";
-			this.lbPacking.Size = new System.Drawing.Size(194, 26);
-			this.lbPacking.TabIndex = 18;
-			this.lbPacking.Text = "Packing Cost :";
-			this.lbPacking.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// txtPackingCost
-			// 
-			this.txtPackingCost.Dock = System.Windows.Forms.DockStyle.Right;
-			this.txtPackingCost.Location = new System.Drawing.Point(195, 1);
-			this.txtPackingCost.MaxLength = 15;
-			this.txtPackingCost.Name = "txtPackingCost";
-			this.txtPackingCost.Size = new System.Drawing.Size(129, 25);
-			this.txtPackingCost.TabIndex = 16;
-			this.txtPackingCost.Text = "0.00";
-			this.txtPackingCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.txtPackingCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress);
 			// 
 			// panel26
 			// 
@@ -1113,7 +1025,17 @@
 			// 
 			// txtNetQTLineTotal
 			// 
+			this.txtNetQTLineTotal.AllowControl = true;
+			this.txtNetQTLineTotal.AllowDecimal = true;
+			this.txtNetQTLineTotal.AllowMultipleDecimals = true;
+			this.txtNetQTLineTotal.AllowNegation = true;
+			this.txtNetQTLineTotal.DecimalValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
 			this.txtNetQTLineTotal.Dock = System.Windows.Forms.DockStyle.Right;
+			this.txtNetQTLineTotal.IntegerValue = 0;
 			this.txtNetQTLineTotal.Location = new System.Drawing.Point(195, 1);
 			this.txtNetQTLineTotal.MaxLength = 15;
 			this.txtNetQTLineTotal.Name = "txtNetQTLineTotal";
@@ -1122,6 +1044,7 @@
 			this.txtNetQTLineTotal.TabIndex = 17;
 			this.txtNetQTLineTotal.Text = "0.00";
 			this.txtNetQTLineTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.txtNetQTLineTotal.TextChanged += new System.EventHandler(this.txt_TextChanged);
 			// 
 			// panel33
 			// 
@@ -1146,7 +1069,17 @@
 			// 
 			// txtExtraDiscount
 			// 
+			this.txtExtraDiscount.AllowControl = true;
+			this.txtExtraDiscount.AllowDecimal = true;
+			this.txtExtraDiscount.AllowMultipleDecimals = true;
+			this.txtExtraDiscount.AllowNegation = true;
+			this.txtExtraDiscount.DecimalValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
 			this.txtExtraDiscount.Dock = System.Windows.Forms.DockStyle.Right;
+			this.txtExtraDiscount.IntegerValue = 0;
 			this.txtExtraDiscount.Location = new System.Drawing.Point(195, 1);
 			this.txtExtraDiscount.MaxLength = 15;
 			this.txtExtraDiscount.Name = "txtExtraDiscount";
@@ -1179,7 +1112,17 @@
 			// 
 			// txtDiscount
 			// 
+			this.txtDiscount.AllowControl = true;
+			this.txtDiscount.AllowDecimal = true;
+			this.txtDiscount.AllowMultipleDecimals = true;
+			this.txtDiscount.AllowNegation = true;
+			this.txtDiscount.DecimalValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
 			this.txtDiscount.Dock = System.Windows.Forms.DockStyle.Right;
+			this.txtDiscount.IntegerValue = 0;
 			this.txtDiscount.Location = new System.Drawing.Point(195, 1);
 			this.txtDiscount.MaxLength = 15;
 			this.txtDiscount.Name = "txtDiscount";
@@ -1212,7 +1155,17 @@
 			// 
 			// txtQTLineTotal
 			// 
+			this.txtQTLineTotal.AllowControl = true;
+			this.txtQTLineTotal.AllowDecimal = true;
+			this.txtQTLineTotal.AllowMultipleDecimals = true;
+			this.txtQTLineTotal.AllowNegation = true;
+			this.txtQTLineTotal.DecimalValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
 			this.txtQTLineTotal.Dock = System.Windows.Forms.DockStyle.Right;
+			this.txtQTLineTotal.IntegerValue = 0;
 			this.txtQTLineTotal.Location = new System.Drawing.Point(195, 1);
 			this.txtQTLineTotal.MaxLength = 15;
 			this.txtQTLineTotal.Name = "txtQTLineTotal";
@@ -1702,11 +1655,253 @@
 			this.tslbSelectedQTLineIndex.Size = new System.Drawing.Size(31, 33);
 			this.tslbSelectedQTLineIndex.Text = "idx:0";
 			// 
+			// panel2
+			// 
+			this.panel2.Controls.Add(this.lbVATFactor);
+			this.panel2.Controls.Add(this.label14);
+			this.panel2.Controls.Add(this.cbxVAT);
+			this.panel2.Controls.Add(this.ntxtVatValue);
+			this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel2.Location = new System.Drawing.Point(0, 112);
+			this.panel2.Name = "panel2";
+			this.panel2.Padding = new System.Windows.Forms.Padding(1);
+			this.panel2.Size = new System.Drawing.Size(325, 28);
+			this.panel2.TabIndex = 25;
+			// 
+			// ntxtVatValue
+			// 
+			this.ntxtVatValue.AllowControl = true;
+			this.ntxtVatValue.AllowDecimal = true;
+			this.ntxtVatValue.AllowMultipleDecimals = true;
+			this.ntxtVatValue.AllowNegation = true;
+			this.ntxtVatValue.DecimalValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+			this.ntxtVatValue.Dock = System.Windows.Forms.DockStyle.Right;
+			this.ntxtVatValue.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ntxtVatValue.IntegerValue = 0;
+			this.ntxtVatValue.Location = new System.Drawing.Point(195, 1);
+			this.ntxtVatValue.MaxLength = 15;
+			this.ntxtVatValue.Name = "ntxtVatValue";
+			this.ntxtVatValue.ReadOnly = true;
+			this.ntxtVatValue.Size = new System.Drawing.Size(129, 25);
+			this.ntxtVatValue.TabIndex = 8;
+			this.ntxtVatValue.Text = "0.00";
+			this.ntxtVatValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ntxtVatValue.TextChanged += new System.EventHandler(this.txt_TextChanged);
+			// 
+			// cbxVAT
+			// 
+			this.cbxVAT.Dock = System.Windows.Forms.DockStyle.Right;
+			this.cbxVAT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbxVAT.FormattingEnabled = true;
+			this.cbxVAT.Location = new System.Drawing.Point(107, 1);
+			this.cbxVAT.Name = "cbxVAT";
+			this.cbxVAT.Size = new System.Drawing.Size(88, 25);
+			this.cbxVAT.TabIndex = 11;
+			this.cbxVAT.SelectedValueChanged += new System.EventHandler(this.cbxVAT_SelectedValueChanged);
+			// 
+			// label14
+			// 
+			this.label14.Dock = System.Windows.Forms.DockStyle.Right;
+			this.label14.Location = new System.Drawing.Point(31, 1);
+			this.label14.Name = "label14";
+			this.label14.Size = new System.Drawing.Size(76, 26);
+			this.label14.TabIndex = 12;
+			this.label14.Text = "VAT %:";
+			this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// panel16
+			// 
+			this.panel16.Controls.Add(this.label15);
+			this.panel16.Controls.Add(this.ntxtTotalGoodAmount);
+			this.panel16.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel16.Location = new System.Drawing.Point(0, 140);
+			this.panel16.Name = "panel16";
+			this.panel16.Padding = new System.Windows.Forms.Padding(1);
+			this.panel16.Size = new System.Drawing.Size(325, 28);
+			this.panel16.TabIndex = 29;
+			// 
+			// label15
+			// 
+			this.label15.Dock = System.Windows.Forms.DockStyle.Right;
+			this.label15.Location = new System.Drawing.Point(40, 1);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(155, 26);
+			this.label15.TabIndex = 10;
+			this.label15.Text = "Total Goods Amount :";
+			this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// ntxtTotalGoodAmount
+			// 
+			this.ntxtTotalGoodAmount.AllowControl = true;
+			this.ntxtTotalGoodAmount.AllowDecimal = true;
+			this.ntxtTotalGoodAmount.AllowMultipleDecimals = true;
+			this.ntxtTotalGoodAmount.AllowNegation = true;
+			this.ntxtTotalGoodAmount.DecimalValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+			this.ntxtTotalGoodAmount.Dock = System.Windows.Forms.DockStyle.Right;
+			this.ntxtTotalGoodAmount.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ntxtTotalGoodAmount.IntegerValue = 0;
+			this.ntxtTotalGoodAmount.Location = new System.Drawing.Point(195, 1);
+			this.ntxtTotalGoodAmount.MaxLength = 15;
+			this.ntxtTotalGoodAmount.Name = "ntxtTotalGoodAmount";
+			this.ntxtTotalGoodAmount.ReadOnly = true;
+			this.ntxtTotalGoodAmount.Size = new System.Drawing.Size(129, 25);
+			this.ntxtTotalGoodAmount.TabIndex = 8;
+			this.ntxtTotalGoodAmount.Text = "0.00";
+			this.ntxtTotalGoodAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// panel29
+			// 
+			this.panel29.Controls.Add(this.lbAmount);
+			this.panel29.Controls.Add(this.txtQTTotalAmont);
+			this.panel29.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel29.Location = new System.Drawing.Point(0, 224);
+			this.panel29.Name = "panel29";
+			this.panel29.Padding = new System.Windows.Forms.Padding(1);
+			this.panel29.Size = new System.Drawing.Size(325, 28);
+			this.panel29.TabIndex = 32;
+			// 
+			// lbAmount
+			// 
+			this.lbAmount.Dock = System.Windows.Forms.DockStyle.Right;
+			this.lbAmount.Location = new System.Drawing.Point(68, 1);
+			this.lbAmount.Name = "lbAmount";
+			this.lbAmount.Size = new System.Drawing.Size(127, 26);
+			this.lbAmount.TabIndex = 10;
+			this.lbAmount.Text = "Total Amount :";
+			this.lbAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// txtQTTotalAmont
+			// 
+			this.txtQTTotalAmont.AllowControl = true;
+			this.txtQTTotalAmont.AllowDecimal = true;
+			this.txtQTTotalAmont.AllowMultipleDecimals = true;
+			this.txtQTTotalAmont.AllowNegation = true;
+			this.txtQTTotalAmont.DecimalValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+			this.txtQTTotalAmont.Dock = System.Windows.Forms.DockStyle.Right;
+			this.txtQTTotalAmont.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtQTTotalAmont.IntegerValue = 0;
+			this.txtQTTotalAmont.Location = new System.Drawing.Point(195, 1);
+			this.txtQTTotalAmont.MaxLength = 15;
+			this.txtQTTotalAmont.Name = "txtQTTotalAmont";
+			this.txtQTTotalAmont.ReadOnly = true;
+			this.txtQTTotalAmont.Size = new System.Drawing.Size(129, 25);
+			this.txtQTTotalAmont.TabIndex = 8;
+			this.txtQTTotalAmont.Text = "0.00";
+			this.txtQTTotalAmont.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// panel28
+			// 
+			this.panel28.Controls.Add(this.lbShipping);
+			this.panel28.Controls.Add(this.txtShippingCost);
+			this.panel28.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel28.Location = new System.Drawing.Point(0, 196);
+			this.panel28.Name = "panel28";
+			this.panel28.Padding = new System.Windows.Forms.Padding(1);
+			this.panel28.Size = new System.Drawing.Size(325, 28);
+			this.panel28.TabIndex = 31;
+			// 
+			// lbShipping
+			// 
+			this.lbShipping.Dock = System.Windows.Forms.DockStyle.Right;
+			this.lbShipping.Location = new System.Drawing.Point(37, 1);
+			this.lbShipping.Name = "lbShipping";
+			this.lbShipping.Size = new System.Drawing.Size(158, 26);
+			this.lbShipping.TabIndex = 18;
+			this.lbShipping.Text = "Shipping Cost :";
+			this.lbShipping.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// txtShippingCost
+			// 
+			this.txtShippingCost.AllowControl = true;
+			this.txtShippingCost.AllowDecimal = true;
+			this.txtShippingCost.AllowMultipleDecimals = true;
+			this.txtShippingCost.AllowNegation = true;
+			this.txtShippingCost.DecimalValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+			this.txtShippingCost.Dock = System.Windows.Forms.DockStyle.Right;
+			this.txtShippingCost.IntegerValue = 0;
+			this.txtShippingCost.Location = new System.Drawing.Point(195, 1);
+			this.txtShippingCost.MaxLength = 15;
+			this.txtShippingCost.Name = "txtShippingCost";
+			this.txtShippingCost.Size = new System.Drawing.Size(129, 25);
+			this.txtShippingCost.TabIndex = 16;
+			this.txtShippingCost.Text = "0.00";
+			this.txtShippingCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// panel27
+			// 
+			this.panel27.Controls.Add(this.lbPacking);
+			this.panel27.Controls.Add(this.txtPackingCost);
+			this.panel27.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel27.Location = new System.Drawing.Point(0, 168);
+			this.panel27.Name = "panel27";
+			this.panel27.Padding = new System.Windows.Forms.Padding(1);
+			this.panel27.Size = new System.Drawing.Size(325, 28);
+			this.panel27.TabIndex = 30;
+			// 
+			// lbPacking
+			// 
+			this.lbPacking.Dock = System.Windows.Forms.DockStyle.Right;
+			this.lbPacking.Location = new System.Drawing.Point(34, 1);
+			this.lbPacking.Name = "lbPacking";
+			this.lbPacking.Size = new System.Drawing.Size(161, 26);
+			this.lbPacking.TabIndex = 18;
+			this.lbPacking.Text = "Packing Cost :";
+			this.lbPacking.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// txtPackingCost
+			// 
+			this.txtPackingCost.AllowControl = true;
+			this.txtPackingCost.AllowDecimal = true;
+			this.txtPackingCost.AllowMultipleDecimals = true;
+			this.txtPackingCost.AllowNegation = true;
+			this.txtPackingCost.DecimalValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+			this.txtPackingCost.Dock = System.Windows.Forms.DockStyle.Right;
+			this.txtPackingCost.IntegerValue = 0;
+			this.txtPackingCost.Location = new System.Drawing.Point(195, 1);
+			this.txtPackingCost.MaxLength = 15;
+			this.txtPackingCost.Name = "txtPackingCost";
+			this.txtPackingCost.Size = new System.Drawing.Size(129, 25);
+			this.txtPackingCost.TabIndex = 16;
+			this.txtPackingCost.Text = "0.00";
+			this.txtPackingCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// lbVATFactor
+			// 
+			this.lbVATFactor.AutoSize = true;
+			this.lbVATFactor.Dock = System.Windows.Forms.DockStyle.Left;
+			this.lbVATFactor.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbVATFactor.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+			this.lbVATFactor.Location = new System.Drawing.Point(1, 1);
+			this.lbVATFactor.Name = "lbVATFactor";
+			this.lbVATFactor.Size = new System.Drawing.Size(13, 13);
+			this.lbVATFactor.TabIndex = 13;
+			this.lbVATFactor.Text = "0";
+			// 
 			// QTInfo
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(943, 599);
+			this.ClientSize = new System.Drawing.Size(943, 651);
 			this.Controls.Add(this.panel3);
 			this.Controls.Add(this.pnlHeader);
 			this.Controls.Add(this.panel1);
@@ -1754,12 +1949,6 @@
 			this.gpItemInfo.ResumeLayout(false);
 			this.gpItemInfo.PerformLayout();
 			this.pnlValues.ResumeLayout(false);
-			this.panel29.ResumeLayout(false);
-			this.panel29.PerformLayout();
-			this.panel28.ResumeLayout(false);
-			this.panel28.PerformLayout();
-			this.panel27.ResumeLayout(false);
-			this.panel27.PerformLayout();
 			this.panel26.ResumeLayout(false);
 			this.panel26.PerformLayout();
 			this.panel33.ResumeLayout(false);
@@ -1790,6 +1979,16 @@
 			this.panel19.PerformLayout();
 			this.panel17.ResumeLayout(false);
 			this.panel17.PerformLayout();
+			this.panel2.ResumeLayout(false);
+			this.panel2.PerformLayout();
+			this.panel16.ResumeLayout(false);
+			this.panel16.PerformLayout();
+			this.panel29.ResumeLayout(false);
+			this.panel29.PerformLayout();
+			this.panel28.ResumeLayout(false);
+			this.panel28.PerformLayout();
+			this.panel27.ResumeLayout(false);
+			this.panel27.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -1904,12 +2103,6 @@
 		private System.Windows.Forms.GroupBox gpItemInfo;
 		private System.Windows.Forms.TextBox txtItemInfo;
 		private System.Windows.Forms.Panel pnlValues;
-		private System.Windows.Forms.Panel panel29;
-		private OMControls.Controls.NumericTextBox txtQTTotalAmont;
-		private System.Windows.Forms.Panel panel28;
-		private OMControls.Controls.NumericTextBox txtShippingCost;
-		private System.Windows.Forms.Panel panel27;
-		private OMControls.Controls.NumericTextBox txtPackingCost;
 		private System.Windows.Forms.Panel panel26;
 		private OMControls.Controls.NumericTextBox txtNetQTLineTotal;
 		private System.Windows.Forms.Panel panel33;
@@ -1918,9 +2111,6 @@
 		private OMControls.Controls.NumericTextBox txtDiscount;
 		private System.Windows.Forms.Panel panel18;
 		private OMControls.Controls.NumericTextBox txtQTLineTotal;
-		private System.Windows.Forms.Label lbAmount;
-		private System.Windows.Forms.Label lbShipping;
-		private System.Windows.Forms.Label lbPacking;
 		private System.Windows.Forms.Label lbNett;
 		private System.Windows.Forms.Label lbExtra;
 		private System.Windows.Forms.Label lbDiscount;
@@ -1928,5 +2118,22 @@
 		private System.Windows.Forms.RadioButton rdoMaster;
 		private System.Windows.Forms.Label lbCurrency;
 		private System.Windows.Forms.LinkLabel lnkCopyFromMaster;
+		private System.Windows.Forms.Panel panel29;
+		private System.Windows.Forms.Label lbAmount;
+		private OMControls.Controls.NumericTextBox txtQTTotalAmont;
+		private System.Windows.Forms.Panel panel28;
+		private System.Windows.Forms.Label lbShipping;
+		private OMControls.Controls.NumericTextBox txtShippingCost;
+		private System.Windows.Forms.Panel panel27;
+		private System.Windows.Forms.Label lbPacking;
+		private OMControls.Controls.NumericTextBox txtPackingCost;
+		private System.Windows.Forms.Panel panel16;
+		private System.Windows.Forms.Label label15;
+		private OMControls.Controls.NumericTextBox ntxtTotalGoodAmount;
+		private System.Windows.Forms.Panel panel2;
+		private System.Windows.Forms.Label label14;
+		private System.Windows.Forms.ComboBox cbxVAT;
+		private OMControls.Controls.NumericTextBox ntxtVatValue;
+		private System.Windows.Forms.Label lbVATFactor;
 	}
 }

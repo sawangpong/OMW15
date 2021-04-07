@@ -84,9 +84,9 @@
 			this.pmlMessage.Controls.Add(this.lbNodeCount);
 			this.pmlMessage.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.pmlMessage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.pmlMessage.Location = new System.Drawing.Point(2, 494);
+			this.pmlMessage.Location = new System.Drawing.Point(2, 480);
 			this.pmlMessage.Name = "pmlMessage";
-			this.pmlMessage.Size = new System.Drawing.Size(845, 24);
+			this.pmlMessage.Size = new System.Drawing.Size(992, 24);
 			this.pmlMessage.TabIndex = 1;
 			// 
 			// lbNodeId
@@ -104,7 +104,7 @@
 			this.tvBom.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tvBom.Location = new System.Drawing.Point(2, 2);
 			this.tvBom.Name = "tvBom";
-			this.tvBom.Size = new System.Drawing.Size(378, 488);
+			this.tvBom.Size = new System.Drawing.Size(378, 474);
 			this.tvBom.TabIndex = 0;
 			this.tvBom.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvBom_NodeMouseClick);
 			// 
@@ -112,7 +112,7 @@
 			// 
 			this.splitter1.Location = new System.Drawing.Point(384, 2);
 			this.splitter1.Name = "splitter1";
-			this.splitter1.Size = new System.Drawing.Size(6, 492);
+			this.splitter1.Size = new System.Drawing.Size(6, 478);
 			this.splitter1.TabIndex = 3;
 			this.splitter1.TabStop = false;
 			// 
@@ -123,7 +123,7 @@
 			this.panel3.Location = new System.Drawing.Point(2, 2);
 			this.panel3.Name = "panel3";
 			this.panel3.Padding = new System.Windows.Forms.Padding(2);
-			this.panel3.Size = new System.Drawing.Size(382, 492);
+			this.panel3.Size = new System.Drawing.Size(382, 478);
 			this.panel3.TabIndex = 2;
 			// 
 			// lvBom
@@ -136,7 +136,7 @@
 			this.lvBom.Location = new System.Drawing.Point(0, 0);
 			this.lvBom.MultiSelect = false;
 			this.lvBom.Name = "lvBom";
-			this.lvBom.Size = new System.Drawing.Size(457, 492);
+			this.lvBom.Size = new System.Drawing.Size(604, 478);
 			this.lvBom.TabIndex = 0;
 			this.lvBom.UseCompatibleStateImageBehavior = false;
 			this.lvBom.View = System.Windows.Forms.View.Details;
@@ -147,7 +147,7 @@
 			this.pnlList.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pnlList.Location = new System.Drawing.Point(390, 2);
 			this.pnlList.Name = "pnlList";
-			this.pnlList.Size = new System.Drawing.Size(457, 492);
+			this.pnlList.Size = new System.Drawing.Size(604, 478);
 			this.pnlList.TabIndex = 4;
 			// 
 			// cbxModel
@@ -157,7 +157,7 @@
 			this.cbxModel.FormattingEnabled = true;
 			this.cbxModel.Location = new System.Drawing.Point(106, 2);
 			this.cbxModel.Name = "cbxModel";
-			this.cbxModel.Size = new System.Drawing.Size(185, 25);
+			this.cbxModel.Size = new System.Drawing.Size(276, 25);
 			this.cbxModel.TabIndex = 1;
 			this.cbxModel.SelectionChangeCommitted += new System.EventHandler(this.cbxModel_SelectionChangeCommitted);
 			// 
@@ -171,7 +171,7 @@
 			this.mainPanel.Location = new System.Drawing.Point(0, 68);
 			this.mainPanel.Name = "mainPanel";
 			this.mainPanel.Padding = new System.Windows.Forms.Padding(2);
-			this.mainPanel.Size = new System.Drawing.Size(849, 520);
+			this.mainPanel.Size = new System.Drawing.Size(996, 506);
 			this.mainPanel.TabIndex = 5;
 			// 
 			// label2
@@ -192,7 +192,7 @@
 			this.panel2.Location = new System.Drawing.Point(0, 40);
 			this.panel2.Name = "panel2";
 			this.panel2.Padding = new System.Windows.Forms.Padding(2);
-			this.panel2.Size = new System.Drawing.Size(849, 28);
+			this.panel2.Size = new System.Drawing.Size(996, 28);
 			this.panel2.TabIndex = 4;
 			// 
 			// label1
@@ -249,7 +249,7 @@
             this.toolStripSeparator2});
 			this.toolStrip1.Location = new System.Drawing.Point(79, 2);
 			this.toolStrip1.Name = "toolStrip1";
-			this.toolStrip1.Size = new System.Drawing.Size(768, 36);
+			this.toolStrip1.Size = new System.Drawing.Size(915, 36);
 			this.toolStrip1.TabIndex = 1;
 			this.toolStrip1.Text = "toolStrip1";
 			// 
@@ -262,14 +262,14 @@
 			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Name = "panel1";
 			this.panel1.Padding = new System.Windows.Forms.Padding(2);
-			this.panel1.Size = new System.Drawing.Size(849, 40);
+			this.panel1.Size = new System.Drawing.Size(996, 40);
 			this.panel1.TabIndex = 3;
 			// 
 			// BOM
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(849, 588);
+			this.ClientSize = new System.Drawing.Size(996, 574);
 			this.Controls.Add(this.mainPanel);
 			this.Controls.Add(this.panel2);
 			this.Controls.Add(this.panel1);

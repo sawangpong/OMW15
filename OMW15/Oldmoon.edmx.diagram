@@ -60,7 +60,6 @@
         <EntityTypeShape EntityType="Oldmoon.PRODUCTGROUP" Width="1.5" PointX="24.75" PointY="19.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Oldmoon.PRODUCTIONSTDITEM" Width="2" PointX="26.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Oldmoon.PRODUCT" Width="1.5" PointX="26.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Oldmoon.QUOTATIONHH" Width="1.5" PointX="26.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Oldmoon.QUOTATIONLL" Width="1.5" PointX="26.75" PointY="21.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Oldmoon.RUBBERBASE" Width="1.5" PointX="26.75" PointY="26.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Oldmoon.SALE_CONTACTS" Width="1.5" PointX="7.75" PointY="27.75" IsExpanded="true" />
@@ -135,6 +134,7 @@
         <EntityTypeShape EntityType="Oldmoon.PRODUCTION_MC_MEMBER" Width="2.25" PointX="23.375" PointY="29.75" />
         <EntityTypeShape EntityType="Oldmoon.PRDPROCESS" Width="1.5" PointX="39.375" PointY="6.75" />
         <EntityTypeShape EntityType="Oldmoon.PRODUCTIONJOBINFO" Width="2.5" PointX="37.375" PointY="29.75" />
+        <EntityTypeShape EntityType="Oldmoon.QUOTATIONHH" Width="1.5" PointX="39.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

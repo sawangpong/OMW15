@@ -32,11 +32,11 @@
 			this.stlbStatus = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ts = new System.Windows.Forms.ToolStrip();
 			this.tsmnuQTView = new System.Windows.Forms.ToolStripDropDownButton();
-			this.mnuAllQT = new System.Windows.Forms.ToolStripMenuItem();
-			this.mnuSep1 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuMasterQT = new System.Windows.Forms.ToolStripMenuItem();
-			this.mnuInboundQT = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuSep1 = new System.Windows.Forms.ToolStripSeparator();
+			this.mnuAllQT = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuOutboundQT = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuInboundQT = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbtnClose = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -106,51 +106,51 @@
             this.mnuAllQT,
             this.mnuOutboundQT,
             this.mnuInboundQT});
-			this.tsmnuQTView.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tsmnuQTView.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.tsmnuQTView.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.tsmnuQTView.Name = "tsmnuQTView";
-			this.tsmnuQTView.Size = new System.Drawing.Size(86, 51);
+			this.tsmnuQTView.Size = new System.Drawing.Size(96, 51);
 			this.tsmnuQTView.Tag = "ALL";
 			this.tsmnuQTView.Text = "Quotation :";
 			this.tsmnuQTView.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			// 
-			// mnuAllQT
-			// 
-			this.mnuAllQT.Name = "mnuAllQT";
-			this.mnuAllQT.Size = new System.Drawing.Size(152, 22);
-			this.mnuAllQT.Tag = "ALL";
-			this.mnuAllQT.Text = "All Quotation";
-			this.mnuAllQT.Click += new System.EventHandler(this.mnuQT_Click);
-			// 
-			// mnuSep1
-			// 
-			this.mnuSep1.Name = "mnuSep1";
-			this.mnuSep1.Size = new System.Drawing.Size(149, 6);
 			// 
 			// mnuMasterQT
 			// 
 			this.mnuMasterQT.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.mnuMasterQT.Name = "mnuMasterQT";
-			this.mnuMasterQT.Size = new System.Drawing.Size(152, 22);
+			this.mnuMasterQT.Size = new System.Drawing.Size(180, 24);
 			this.mnuMasterQT.Tag = "MASTER";
 			this.mnuMasterQT.Text = "Master";
 			this.mnuMasterQT.Click += new System.EventHandler(this.mnuQT_Click);
 			// 
-			// mnuInboundQT
+			// mnuSep1
 			// 
-			this.mnuInboundQT.Name = "mnuInboundQT";
-			this.mnuInboundQT.Size = new System.Drawing.Size(152, 22);
-			this.mnuInboundQT.Tag = "LOCAL";
-			this.mnuInboundQT.Text = "Local";
-			this.mnuInboundQT.Click += new System.EventHandler(this.mnuQT_Click);
+			this.mnuSep1.Name = "mnuSep1";
+			this.mnuSep1.Size = new System.Drawing.Size(177, 6);
+			// 
+			// mnuAllQT
+			// 
+			this.mnuAllQT.Name = "mnuAllQT";
+			this.mnuAllQT.Size = new System.Drawing.Size(180, 24);
+			this.mnuAllQT.Tag = "ALL";
+			this.mnuAllQT.Text = "All Quotation";
+			this.mnuAllQT.Click += new System.EventHandler(this.mnuQT_Click);
 			// 
 			// mnuOutboundQT
 			// 
 			this.mnuOutboundQT.Name = "mnuOutboundQT";
-			this.mnuOutboundQT.Size = new System.Drawing.Size(152, 22);
+			this.mnuOutboundQT.Size = new System.Drawing.Size(180, 24);
 			this.mnuOutboundQT.Tag = "INTER";
 			this.mnuOutboundQT.Text = "International";
 			this.mnuOutboundQT.Click += new System.EventHandler(this.mnuQT_Click);
+			// 
+			// mnuInboundQT
+			// 
+			this.mnuInboundQT.Name = "mnuInboundQT";
+			this.mnuInboundQT.Size = new System.Drawing.Size(180, 24);
+			this.mnuInboundQT.Tag = "LOCAL";
+			this.mnuInboundQT.Text = "Local";
+			this.mnuInboundQT.Click += new System.EventHandler(this.mnuQT_Click);
 			// 
 			// toolStripSeparator1
 			// 

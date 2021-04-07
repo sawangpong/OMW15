@@ -84,25 +84,20 @@ namespace OMW15.Views.Productions
 			flp.Controls.Add((Control)_missReport);
 		}
 
-
-
 		#endregion
-
 
 		public ProductionDashboard()
 		{
 			InitializeComponent();
-
 		}
 
 		private void ProductionDashboard_Load(object sender, System.EventArgs e)
 		{
-
 			_notifier = new SqlTableDependency<PRODUCTIONJOBINFO>(omglobal.SysConnectionString, "PRODUCTIONJOBINFO");
 			_notifier.OnChanged += Changed;
 			_notifier.Start();
 			GetMachineGroup();
-			GetWorkerMissReport();
+			//GetWorkerMissReport();
 		}
 
 		private void Changed(object sender, RecordChangedEventArgs<PRODUCTIONJOBINFO> e) => UpdatePanelData();

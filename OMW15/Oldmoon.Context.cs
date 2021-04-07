@@ -82,7 +82,6 @@ namespace OMW15
         public virtual DbSet<PRODUCTGROUP> PRODUCTGROUPS { get; set; }
         public virtual DbSet<PRODUCTIONSTDITEM> PRODUCTIONSTDITEMS { get; set; }
         public virtual DbSet<PRODUCT> PRODUCTS { get; set; }
-        public virtual DbSet<QUOTATIONHH> QUOTATIONHHs { get; set; }
         public virtual DbSet<QUOTATIONLL> QUOTATIONLLs { get; set; }
         public virtual DbSet<RUBBERBASE> RUBBERBASEs { get; set; }
         public virtual DbSet<SALE_CONTACTS> SALE_CONTACTS { get; set; }
@@ -147,6 +146,7 @@ namespace OMW15
         public virtual DbSet<PRODUCTION_MC_MEMBER> PRODUCTION_MC_MEMBER { get; set; }
         public virtual DbSet<PRDPROCESS> PRDPROCESSes { get; set; }
         public virtual DbSet<PRODUCTIONJOBINFO> PRODUCTIONJOBINFOes { get; set; }
+        public virtual DbSet<QUOTATIONHH> QUOTATIONHHs { get; set; }
     
         public virtual ObjectResult<usp_GetServiceJobList_Result> usp_GetServiceJobList(Nullable<int> selectedYear, string jobcode, string orderstatus)
         {

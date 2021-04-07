@@ -1320,6 +1320,9 @@
           <Property Name="QT_TOTALDISCOUNT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="QT_EXTRADISCOUNT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="QT_TOTALNETTVALUES" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="QT_VATRATE" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="QT_VATVALUES" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="QT_TOTALGOODSAMT" Type="decimal" Precision="18" Scale="2" />
           <Property Name="QT_PACKINGVALUE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="QT_SHIPPINGVALUE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="QT_TOTALAMOUNT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
@@ -4929,52 +4932,6 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <Property Name="isBuyForTread" Type="Boolean" Nullable="false" />
           <Property Name="productpic" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="QUOTATIONHH">
-          <Key>
-            <PropertyRef Name="QT_ID" />
-          </Key>
-          <Property Name="QT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="QT_REF_KEY" Type="Int32" Nullable="false" />
-          <Property Name="QT_MASTER" Type="Boolean" Nullable="false" />
-          <Property Name="QT_INBOUND" Type="Boolean" Nullable="false" />
-          <Property Name="QT_STATUS" Type="Int32" Nullable="false" />
-          <Property Name="QT_PREFIX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="QT_NUMBER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="QT_REVISION" Type="Int32" Nullable="false" />
-          <Property Name="QT_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="QT_YEAR" Type="Int32" />
-          <Property Name="QT_DATE" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="QT_VALIDATIONDATE" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="QT_CUSTOMER" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="QT_CUSTID" Type="Int32" Nullable="false" />
-          <Property Name="QT_CUSTCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="QT_ADDRESS" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="QT_COUNTRY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="QT_CONTACT_PERSON" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="QT_CONTACTNO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="QT_CUST_EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="QT_SALE_PERSON" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="QT_SALE_CONTACTNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="QT_SALE_EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="QT_CURRENCY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="QT_TOTALVALUEITEMS" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="QT_TOTALDISCOUNT" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="QT_EXTRADISCOUNT" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="QT_TOTALNETTVALUES" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="QT_PACKINGVALUE" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="QT_SHIPPINGVALUE" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="QT_TOTALAMOUNT" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="QT_DELIVERY_TERM" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="QT_PAYMENT_TERM" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="QT_BANKINFO" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="QT_WARRANTY" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="QT_DELIVERY_TIME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="QT_TRAINING" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="QT_REMARK" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="AUDITUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MODIUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MODIDATE" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="QUOTATIONLL">
           <Key>
             <PropertyRef Name="QL_ID" />
@@ -5363,7 +5320,6 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <EntitySet Name="PRODUCTGROUPS" EntityType="Self.PRODUCTGROUP" />
           <EntitySet Name="PRODUCTIONSTDITEMS" EntityType="Self.PRODUCTIONSTDITEM" />
           <EntitySet Name="PRODUCTS" EntityType="Self.PRODUCT" />
-          <EntitySet Name="QUOTATIONHHs" EntityType="Self.QUOTATIONHH" />
           <EntitySet Name="QUOTATIONLLs" EntityType="Self.QUOTATIONLL" />
           <EntitySet Name="RUBBERBASEs" EntityType="Self.RUBBERBASE" />
           <EntitySet Name="SALE_CONTACTS" EntityType="Self.SALE_CONTACTS" />
@@ -5479,6 +5435,7 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <EntitySet Name="PRODUCTION_MC_MEMBER" EntityType="Oldmoon.PRODUCTION_MC_MEMBER" />
           <EntitySet Name="PRDPROCESSes" EntityType="Oldmoon.PRDPROCESS" />
           <EntitySet Name="PRODUCTIONJOBINFOes" EntityType="Oldmoon.PRODUCTIONJOBINFO" />
+          <EntitySet Name="QUOTATIONHHs" EntityType="Oldmoon.QUOTATIONHH" />
         </EntityContainer>
         <ComplexType Name="usp_GetServiceJobList_Result">
           <Property Type="Int32" Name="orderid" Nullable="false" />
@@ -6875,6 +6832,55 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <Property Name="MODIUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MODIDATE" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="QUOTATIONHH">
+          <Key>
+            <PropertyRef Name="QT_ID" />
+          </Key>
+          <Property Name="QT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QT_REF_KEY" Type="Int32" Nullable="false" />
+          <Property Name="QT_MASTER" Type="Boolean" Nullable="false" />
+          <Property Name="QT_INBOUND" Type="Boolean" Nullable="false" />
+          <Property Name="QT_STATUS" Type="Int32" Nullable="false" />
+          <Property Name="QT_PREFIX" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QT_NUMBER" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QT_REVISION" Type="Int32" Nullable="false" />
+          <Property Name="QT_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="QT_YEAR" Type="Int32" />
+          <Property Name="QT_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="QT_VALIDATIONDATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="QT_CUSTOMER" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="QT_CUSTID" Type="Int32" Nullable="false" />
+          <Property Name="QT_CUSTCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QT_ADDRESS" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QT_COUNTRY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QT_CONTACT_PERSON" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="QT_CONTACTNO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="QT_CUST_EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="QT_SALE_PERSON" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="QT_SALE_CONTACTNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QT_SALE_EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="QT_CURRENCY" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QT_TOTALVALUEITEMS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="QT_TOTALDISCOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="QT_EXTRADISCOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="QT_TOTALNETTVALUES" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="QT_VATRATE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="QT_VATVALUES" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="QT_TOTALGOODSAMT" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="QT_PACKINGVALUE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="QT_SHIPPINGVALUE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="QT_TOTALAMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="QT_DELIVERY_TERM" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="QT_PAYMENT_TERM" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="QT_BANKINFO" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="QT_WARRANTY" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="QT_DELIVERY_TIME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QT_TRAINING" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="QT_REMARK" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="AUDITUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MODIUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MODIDATE" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -7999,53 +8005,6 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
                 <ScalarProperty Name="isSpecialProduct" ColumnName="isSpecialProduct" />
                 <ScalarProperty Name="isBuyForTread" ColumnName="isBuyForTread" />
                 <ScalarProperty Name="productpic" ColumnName="productpic" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="QUOTATIONHHs">
-            <EntityTypeMapping TypeName="Oldmoon.QUOTATIONHH">
-              <MappingFragment StoreEntitySet="QUOTATIONHH">
-                <ScalarProperty Name="QT_ID" ColumnName="QT_ID" />
-                <ScalarProperty Name="QT_REF_KEY" ColumnName="QT_REF_KEY" />
-                <ScalarProperty Name="QT_MASTER" ColumnName="QT_MASTER" />
-                <ScalarProperty Name="QT_INBOUND" ColumnName="QT_INBOUND" />
-                <ScalarProperty Name="QT_STATUS" ColumnName="QT_STATUS" />
-                <ScalarProperty Name="QT_PREFIX" ColumnName="QT_PREFIX" />
-                <ScalarProperty Name="QT_NUMBER" ColumnName="QT_NUMBER" />
-                <ScalarProperty Name="QT_REVISION" ColumnName="QT_REVISION" />
-                <ScalarProperty Name="QT_COUNT" ColumnName="QT_COUNT" />
-                <ScalarProperty Name="QT_YEAR" ColumnName="QT_YEAR" />
-                <ScalarProperty Name="QT_DATE" ColumnName="QT_DATE" />
-                <ScalarProperty Name="QT_VALIDATIONDATE" ColumnName="QT_VALIDATIONDATE" />
-                <ScalarProperty Name="QT_CUSTOMER" ColumnName="QT_CUSTOMER" />
-                <ScalarProperty Name="QT_CUSTID" ColumnName="QT_CUSTID" />
-                <ScalarProperty Name="QT_CUSTCODE" ColumnName="QT_CUSTCODE" />
-                <ScalarProperty Name="QT_ADDRESS" ColumnName="QT_ADDRESS" />
-                <ScalarProperty Name="QT_COUNTRY" ColumnName="QT_COUNTRY" />
-                <ScalarProperty Name="QT_CONTACT_PERSON" ColumnName="QT_CONTACT_PERSON" />
-                <ScalarProperty Name="QT_CONTACTNO" ColumnName="QT_CONTACTNO" />
-                <ScalarProperty Name="QT_CUST_EMAIL" ColumnName="QT_CUST_EMAIL" />
-                <ScalarProperty Name="QT_SALE_PERSON" ColumnName="QT_SALE_PERSON" />
-                <ScalarProperty Name="QT_SALE_CONTACTNO" ColumnName="QT_SALE_CONTACTNO" />
-                <ScalarProperty Name="QT_SALE_EMAIL" ColumnName="QT_SALE_EMAIL" />
-                <ScalarProperty Name="QT_CURRENCY" ColumnName="QT_CURRENCY" />
-                <ScalarProperty Name="QT_TOTALVALUEITEMS" ColumnName="QT_TOTALVALUEITEMS" />
-                <ScalarProperty Name="QT_TOTALDISCOUNT" ColumnName="QT_TOTALDISCOUNT" />
-                <ScalarProperty Name="QT_EXTRADISCOUNT" ColumnName="QT_EXTRADISCOUNT" />
-                <ScalarProperty Name="QT_TOTALNETTVALUES" ColumnName="QT_TOTALNETTVALUES" />
-                <ScalarProperty Name="QT_PACKINGVALUE" ColumnName="QT_PACKINGVALUE" />
-                <ScalarProperty Name="QT_SHIPPINGVALUE" ColumnName="QT_SHIPPINGVALUE" />
-                <ScalarProperty Name="QT_TOTALAMOUNT" ColumnName="QT_TOTALAMOUNT" />
-                <ScalarProperty Name="QT_DELIVERY_TERM" ColumnName="QT_DELIVERY_TERM" />
-                <ScalarProperty Name="QT_PAYMENT_TERM" ColumnName="QT_PAYMENT_TERM" />
-                <ScalarProperty Name="QT_BANKINFO" ColumnName="QT_BANKINFO" />
-                <ScalarProperty Name="QT_WARRANTY" ColumnName="QT_WARRANTY" />
-                <ScalarProperty Name="QT_DELIVERY_TIME" ColumnName="QT_DELIVERY_TIME" />
-                <ScalarProperty Name="QT_TRAINING" ColumnName="QT_TRAINING" />
-                <ScalarProperty Name="QT_REMARK" ColumnName="QT_REMARK" />
-                <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
-                <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
-                <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -9469,6 +9428,56 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
                 <ScalarProperty Name="ERP_ORDER" ColumnName="ERP_ORDER" />
                 <ScalarProperty Name="WORKCAT" ColumnName="WORKCAT" />
                 <ScalarProperty Name="PRDINFOID" ColumnName="PRDINFOID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QUOTATIONHHs">
+            <EntityTypeMapping TypeName="Oldmoon.QUOTATIONHH">
+              <MappingFragment StoreEntitySet="QUOTATIONHH">
+                <ScalarProperty Name="MODIDATE" ColumnName="MODIDATE" />
+                <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+                <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+                <ScalarProperty Name="QT_REMARK" ColumnName="QT_REMARK" />
+                <ScalarProperty Name="QT_TRAINING" ColumnName="QT_TRAINING" />
+                <ScalarProperty Name="QT_DELIVERY_TIME" ColumnName="QT_DELIVERY_TIME" />
+                <ScalarProperty Name="QT_WARRANTY" ColumnName="QT_WARRANTY" />
+                <ScalarProperty Name="QT_BANKINFO" ColumnName="QT_BANKINFO" />
+                <ScalarProperty Name="QT_PAYMENT_TERM" ColumnName="QT_PAYMENT_TERM" />
+                <ScalarProperty Name="QT_DELIVERY_TERM" ColumnName="QT_DELIVERY_TERM" />
+                <ScalarProperty Name="QT_TOTALAMOUNT" ColumnName="QT_TOTALAMOUNT" />
+                <ScalarProperty Name="QT_SHIPPINGVALUE" ColumnName="QT_SHIPPINGVALUE" />
+                <ScalarProperty Name="QT_PACKINGVALUE" ColumnName="QT_PACKINGVALUE" />
+                <ScalarProperty Name="QT_TOTALGOODSAMT" ColumnName="QT_TOTALGOODSAMT" />
+                <ScalarProperty Name="QT_VATVALUES" ColumnName="QT_VATVALUES" />
+                <ScalarProperty Name="QT_VATRATE" ColumnName="QT_VATRATE" />
+                <ScalarProperty Name="QT_TOTALNETTVALUES" ColumnName="QT_TOTALNETTVALUES" />
+                <ScalarProperty Name="QT_EXTRADISCOUNT" ColumnName="QT_EXTRADISCOUNT" />
+                <ScalarProperty Name="QT_TOTALDISCOUNT" ColumnName="QT_TOTALDISCOUNT" />
+                <ScalarProperty Name="QT_TOTALVALUEITEMS" ColumnName="QT_TOTALVALUEITEMS" />
+                <ScalarProperty Name="QT_CURRENCY" ColumnName="QT_CURRENCY" />
+                <ScalarProperty Name="QT_SALE_EMAIL" ColumnName="QT_SALE_EMAIL" />
+                <ScalarProperty Name="QT_SALE_CONTACTNO" ColumnName="QT_SALE_CONTACTNO" />
+                <ScalarProperty Name="QT_SALE_PERSON" ColumnName="QT_SALE_PERSON" />
+                <ScalarProperty Name="QT_CUST_EMAIL" ColumnName="QT_CUST_EMAIL" />
+                <ScalarProperty Name="QT_CONTACTNO" ColumnName="QT_CONTACTNO" />
+                <ScalarProperty Name="QT_CONTACT_PERSON" ColumnName="QT_CONTACT_PERSON" />
+                <ScalarProperty Name="QT_COUNTRY" ColumnName="QT_COUNTRY" />
+                <ScalarProperty Name="QT_ADDRESS" ColumnName="QT_ADDRESS" />
+                <ScalarProperty Name="QT_CUSTCODE" ColumnName="QT_CUSTCODE" />
+                <ScalarProperty Name="QT_CUSTID" ColumnName="QT_CUSTID" />
+                <ScalarProperty Name="QT_CUSTOMER" ColumnName="QT_CUSTOMER" />
+                <ScalarProperty Name="QT_VALIDATIONDATE" ColumnName="QT_VALIDATIONDATE" />
+                <ScalarProperty Name="QT_DATE" ColumnName="QT_DATE" />
+                <ScalarProperty Name="QT_YEAR" ColumnName="QT_YEAR" />
+                <ScalarProperty Name="QT_COUNT" ColumnName="QT_COUNT" />
+                <ScalarProperty Name="QT_REVISION" ColumnName="QT_REVISION" />
+                <ScalarProperty Name="QT_NUMBER" ColumnName="QT_NUMBER" />
+                <ScalarProperty Name="QT_PREFIX" ColumnName="QT_PREFIX" />
+                <ScalarProperty Name="QT_STATUS" ColumnName="QT_STATUS" />
+                <ScalarProperty Name="QT_INBOUND" ColumnName="QT_INBOUND" />
+                <ScalarProperty Name="QT_MASTER" ColumnName="QT_MASTER" />
+                <ScalarProperty Name="QT_REF_KEY" ColumnName="QT_REF_KEY" />
+                <ScalarProperty Name="QT_ID" ColumnName="QT_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

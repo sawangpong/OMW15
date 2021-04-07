@@ -93,6 +93,16 @@ namespace OMW15.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clear_white_24 {
+            get {
+                object obj = ResourceManager.GetObject("clear_white_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap clock {
             get {
                 object obj = ResourceManager.GetObject("clock", resourceCulture);
@@ -126,6 +136,16 @@ namespace OMW15.Properties {
         internal static System.Drawing.Bitmap computer {
             get {
                 object obj = ResourceManager.GetObject("computer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap crop_white_24 {
+            get {
+                object obj = ResourceManager.GetObject("crop_white_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -415,6 +435,16 @@ namespace OMW15.Properties {
         internal static System.Drawing.Bitmap REFRESH {
             get {
                 object obj = ResourceManager.GetObject("REFRESH", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap remove_white_24 {
+            get {
+                object obj = ResourceManager.GetObject("remove_white_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

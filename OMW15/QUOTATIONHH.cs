@@ -42,6 +42,9 @@ namespace OMW15
         public decimal QT_TOTALDISCOUNT { get; set; }
         public decimal QT_EXTRADISCOUNT { get; set; }
         public decimal QT_TOTALNETTVALUES { get; set; }
+        public Nullable<decimal> QT_VATRATE { get; set; }
+        public Nullable<decimal> QT_VATVALUES { get; set; }
+        public Nullable<decimal> QT_TOTALGOODSAMT { get; set; }
         public decimal QT_PACKINGVALUE { get; set; }
         public decimal QT_SHIPPINGVALUE { get; set; }
         public decimal QT_TOTALAMOUNT { get; set; }
