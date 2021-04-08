@@ -27,6 +27,8 @@ namespace OMW15
         public int ERP_DI { get; set; }
         public string ERP_ORDER { get; set; }
         public string ERP_ORDERINFO { get; set; }
+        public Nullable<int> FORMULA_ID { get; set; }
+        public string FORMULA_NUMBER { get; set; }
         public string ERP_ISSUE { get; set; }
         public int ISSUE_ID { get; set; }
         public string JOBTYPE { get; set; }

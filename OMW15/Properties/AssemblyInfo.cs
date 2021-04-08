@@ -8,7 +8,7 @@ using log4net;
 // associated with an assembly.
 
 [assembly: AssemblyTitle("Smart Works")]
-[assembly: AssemblyDescription("Old moon work Suit (LAN) - 2021-03-26")]
+[assembly: AssemblyDescription("Old moon work Suit (LAN) - 2021-04-08")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Old Moon Co Ltd.")]
 [assembly: AssemblyProduct("OMW2017")]
@@ -40,6 +40,6 @@ using log4net;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 
-[assembly: AssemblyVersion("4.4.0.0")]
-[assembly: AssemblyFileVersion("4.4.0.0")]
+[assembly: AssemblyVersion("4.4.1.0")]
+[assembly: AssemblyFileVersion("4.4.1.0")]
 [assembly: NeutralResourcesLanguage("th-TH")]

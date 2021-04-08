@@ -67,6 +67,10 @@ namespace OMW15.Views.Sales
 					cbxQTStatus.Enabled = rdoMaster.Checked ? false : true;
 					break;
 			}
+
+			panelPacking.Visible = (_qtPrefix != "QL");
+			panelShipping.Visible = panelPacking.Visible;
+
 			chkAutoNumber.Enabled = _headerMode == ActionMode.Add;
 			txtQTNO.Enabled = _headerMode == ActionMode.Add
 									&& chkAutoNumber.Checked == false;
@@ -74,8 +78,7 @@ namespace OMW15.Views.Sales
 												 && _headerMode == ActionMode.Add;
 
 
-			lb.Text = string.Format("[id : {0}] [Status : {1}] [Master : {2}]", QuotationId, cbxQTStatus.Text,
-				rdoMaster.Checked ? "Y" : "N");
+			lb.Text = $"[id:{QuotationId}] [Status:{cbxQTStatus.Text}] [Master:{(rdoMaster.Checked ? "Y" : "N")}]";
 
 			btnSave.Enabled = string.IsNullOrEmpty(txtCustomerName.Text) == false;
 		} // end UpdateUI
@@ -142,16 +145,16 @@ namespace OMW15.Views.Sales
 			// binding value
 			lbRefIdx.Text = _refHIndex.ToString();
 
-			txtQTLineTotal.Text = string.Format("{0:N2}", _qtHeader.QT_TOTALVALUEITEMS);
-			txtDiscount.Text = string.Format("{0:N2}", _qtHeader.QT_TOTALDISCOUNT);
-			txtExtraDiscount.Text = string.Format("{0:N2}", _qtHeader.QT_EXTRADISCOUNT);
-			txtNetQTLineTotal.Text = string.Format("{0:N2}", _qtHeader.QT_TOTALNETTVALUES);
+			txtQTLineTotal.Text = $"{_qtHeader.QT_TOTALVALUEITEMS:N2}";
+			txtDiscount.Text = $"{_qtHeader.QT_TOTALDISCOUNT:N2}";
+			txtExtraDiscount.Text = $"{_qtHeader.QT_EXTRADISCOUNT:N2}";
+			txtNetQTLineTotal.Text = $"{_qtHeader.QT_TOTALNETTVALUES:N2}";
 			cbxVAT.SelectedValue = (_qtHeader.QT_VATRATE * 100.0m);
 			ntxtVatValue.Text = $"{_qtHeader.QT_VATVALUES:N2}";
 			ntxtTotalGoodAmount.Text = $"{_qtHeader.QT_TOTALGOODSAMT:N2}";
-			txtPackingCost.Text = string.Format("{0:N2}", _qtHeader.QT_PACKINGVALUE);
-			txtShippingCost.Text = string.Format("{0:N2}", _qtHeader.QT_SHIPPINGVALUE);
-			txtQTTotalAmont.Text = string.Format("{0:N2}", _qtHeader.QT_TOTALAMOUNT);
+			txtPackingCost.Text = $"{_qtHeader.QT_PACKINGVALUE:N2}";
+			txtShippingCost.Text = $"{_qtHeader.QT_SHIPPINGVALUE:N2}";
+			txtQTTotalAmont.Text = $"{_qtHeader.QT_TOTALAMOUNT:N2}";
 
 			txtAddress.Text = _qtHeader.QT_ADDRESS;
 			txtContactPerson.Text = _qtHeader.QT_CONTACT_PERSON;
@@ -181,17 +184,17 @@ namespace OMW15.Views.Sales
 
 		private void UpdateQTLineUI()
 		{
-			tsbtnEdit.Enabled = _selectedQTLineId > 0;
+			tsbtnEdit.Enabled = (_selectedQTLineId > 0);
 			tsbtnDelete.Enabled = tsbtnEdit.Enabled;
 		} // end UpdateQTLineUI
 
 		private void CalQuotationLineValues()
 		{
-			_qtLineTotal = dgv.Rows.Count > 0
+			_qtLineTotal = (dgv.Rows.Count > 0
 				? ((DataTable)dgv.DataSource).AsEnumerable().Sum(x => x.Field<decimal>("TOTAL"))
-				: 0.00m;
+				: 0.00m);
 
-			txtQTLineTotal.Text = string.Format("{0:N2}", _qtLineTotal);
+			txtQTLineTotal.Text = $"{_qtLineTotal:N2}";
 		} // end CalQuotationLineValues
 
 		private void CalQuotationValues(decimal QTLineTotalValues)
@@ -211,12 +214,12 @@ namespace OMW15.Views.Sales
 			_totalAmount = (_totalGoodsValues + _packingCost + _shippingCost);
 
 			// display cal values
-			txtDiscount.Text = string.Format("{0:N2}", _discount);
-			txtExtraDiscount.Text = string.Format("{0:N2}", _extraDiscount);
-			txtNetQTLineTotal.Text = string.Format("{0:N2}", _netQTValues);
-			txtPackingCost.Text = string.Format("{0:N2}", _packingCost);
-			txtShippingCost.Text = string.Format("{0:N2}", _shippingCost);
-			txtQTTotalAmont.Text = string.Format("{0:N2}", _totalAmount);
+			txtDiscount.Text = $"{_discount:N2}";
+			txtExtraDiscount.Text = $"{_extraDiscount:N2}";
+			txtNetQTLineTotal.Text = $"{_netQTValues:N2}";
+			txtPackingCost.Text = $"{_packingCost:N2}";
+			txtShippingCost.Text = $"{_shippingCost:N2}";
+			txtQTTotalAmont.Text = $"{_totalAmount:N2}";
 
 		} // end CalQuotationValues
 
@@ -356,8 +359,12 @@ namespace OMW15.Views.Sales
 					// current QUOTATIONHH ID
 					var _latestQuotationHeaderIndex = new SaleQTDAL().GetLatestQuotationHeaderId();
 					if (dgv.Rows.Count > 0)
+					{
 						if (new SaleQTDAL().UpdateRefQTHeaderIdInQTLine(_latestQuotationHeaderIndex, _refHIndex) > 0)
+						{
 							MessageBox.Show("Update Quotation line completed...", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+						}
+					}
 				}
 
 				MessageBox.Show(string.Format("Complete {0} Quotation!.", _headerMode == ActionMode.Add ? "insert" : "update"),
@@ -369,7 +376,9 @@ namespace OMW15.Views.Sales
 		private void ClearUnpostedQuotation(int QuotationId)
 		{
 			if (new SaleQuotationController().ClearUnpostedQuotationData(QuotationId) > 0)
+			{
 				MessageBox.Show("Un-posting record(s) was cleared....", "MESSAGE", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			}
 		} // end ClearUnpostedQuotation
 
 
@@ -381,12 +390,7 @@ namespace OMW15.Views.Sales
 			CalQuotationValues(Convert.ToDecimal(txtQTLineTotal.Text));
 
 		}
-
-
-
-
 		#endregion
-
 
 		// Constructor
 		public QTInfo(int QTId)
@@ -401,7 +405,7 @@ namespace OMW15.Views.Sales
 
 			_headerMode = QuotationId == 0 ? ActionMode.Add : ActionMode.Edit;
 			_isPosted = _headerMode == ActionMode.Add ? false : true;
-			tpHeader.Text = string.Format("Quotation Header {0}", _isPosted ? "<< POSTED >>" : "");
+			tpHeader.Text = $"Quotation Header {(_isPosted ? " << POSTED >> " : "")}";
 		}
 
 		private void QTInfo_Load(object sender, EventArgs e)
@@ -485,34 +489,30 @@ namespace OMW15.Views.Sales
 			_selectedQTLineId = Convert.ToInt32(dgv["ID", e.RowIndex].Value);
 			txtItemInfo.Text = dgv["ITEMINFO", e.RowIndex].Value.ToString();
 
-			tslbSelectedQTLineIndex.Text = string.Format("idx:{0}", _selectedQTLineId);
+			tslbSelectedQTLineIndex.Text = $"idx:{_selectedQTLineId}";
 			UpdateQTLineUI();
 		}
 
-		private void tsbtnAdd_Click(object sender, EventArgs e)
-		{
-			GetQTLineInfo(_selectedQTLineId = 0, _curr);
-		}
+		private void tsbtnAdd_Click(object sender, EventArgs e) => GetQTLineInfo(_selectedQTLineId = 0, _curr);
 
-		private void tsbtnEdit_Click(object sender, EventArgs e)
-		{
-			GetQTLineInfo(_selectedQTLineId, _curr);
-		}
+		private void tsbtnEdit_Click(object sender, EventArgs e) => GetQTLineInfo(_selectedQTLineId, _curr);
 
 		private void tsbtnDelete_Click(object sender, EventArgs e)
 		{
-			if (
-				MessageBox.Show("Do you want to delele the selected record?", "DELETE", MessageBoxButtons.YesNo,
-					MessageBoxIcon.Question) == DialogResult.Yes)
+			if (MessageBox.Show("Do you want to delele the selected record?",
+										"DELETE",
+										MessageBoxButtons.YesNo,
+										MessageBoxIcon.Question) == DialogResult.Yes)
+			{
 				if (new SaleQTDAL().DeleteQuotationLine(_selectedQTLineId) > 0)
+				{
 					MessageBox.Show("Delete record completed..", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+			}
 			tsbtnRefresh.PerformClick();
 		}
 
-		private void tsbtnRefresh_Click(object sender, EventArgs e)
-		{
-			GetQuotationLines(QuotationId);
-		}
+		private void tsbtnRefresh_Click(object sender, EventArgs e) => GetQuotationLines(QuotationId);
 
 		private void txt_TextChanged(object sender, EventArgs e)
 		{
@@ -538,7 +538,9 @@ namespace OMW15.Views.Sales
 		private void dtpQTDate_ValueChanged(object sender, EventArgs e)
 		{
 			if (Information.IsDate(dtpQTDate.Value))
-				dtpValidate.Value = dtpQTDate.Value.AddMonths(6);
+			{
+				dtpValidate.Value = dtpQTDate.Value.AddMonths(2);
+			}
 		}
 
 		private void btnCustomerFromContact_Click(object sender, EventArgs e)
@@ -566,13 +568,12 @@ namespace OMW15.Views.Sales
 		{
 			var _bank = new BankController(ActionMode.Selection);
 			if (_bank.IsEmptyResult == false)
+			{
 				txtBankInfo.Text = _bank.BankInfo;
+			}
 		}
 
-		private void cbxQTStatus_SelectedValueChanged(object sender, EventArgs e)
-		{
-			UpdateUI();
-		}
+		private void cbxQTStatus_SelectedValueChanged(object sender, EventArgs e) => UpdateUI();
 
 		private void btn_Click(object sender, EventArgs e)
 		{
@@ -704,10 +705,7 @@ namespace OMW15.Views.Sales
 			}
 		}
 
-		private void dgv_DoubleClick(object sender, EventArgs e)
-		{
-			tsbtnEdit.PerformClick();
-		}
+		private void dgv_DoubleClick(object sender, EventArgs e) => tsbtnEdit.PerformClick();
 
 		private void txt_KeyPress(object sender, KeyPressEventArgs e)
 		{
@@ -721,10 +719,15 @@ namespace OMW15.Views.Sales
 		private void btnCancel_Click(object sender, EventArgs e)
 		{
 			if (_isPosted == false)
-				if (
-					MessageBox.Show("Do you want to cancel this quotation without save?", "CANCEL QUOTATION", MessageBoxButtons.YesNo,
-						MessageBoxIcon.Question) == DialogResult.Yes)
+			{
+				if (MessageBox.Show("Do you want to cancel this quotation without save?",
+										"CANCEL QUOTATION",
+										MessageBoxButtons.YesNo,
+										MessageBoxIcon.Question) == DialogResult.Yes)
+				{
 					ClearUnpostedQuotation(QuotationId);
+				}
+			}
 		} // end 
 
 		private void cbxVAT_SelectedValueChanged(object sender, EventArgs e)

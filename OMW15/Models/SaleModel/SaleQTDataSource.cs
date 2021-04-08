@@ -31,6 +31,7 @@ namespace OMW15.Models.SaleModel
 					where qt.QT_ID == QuotationId
 					select new
 					{
+						QTPrefix = qt.QT_PREFIX,
 						QTNumber = qt.QT_PREFIX + qt.QT_NUMBER + (qt.QT_REVISION > 0 ? " /R" + qt.QT_REVISION : ""),
 						QTdate = qt.QT_DATE,
 						QTExpire = qt.QT_VALIDATIONDATE,
@@ -49,6 +50,9 @@ namespace OMW15.Models.SaleModel
 						TotalDiscount = qt.QT_TOTALDISCOUNT,
 						ExtraDiscount = qt.QT_EXTRADISCOUNT,
 						QTNetValues = qt.QT_TOTALNETTVALUES,
+						VATRate = qt.QT_VATRATE,
+						VAT = qt.QT_VATVALUES,
+						GOODSAMT = qt.QT_TOTALGOODSAMT,
 						PackingCost = qt.QT_PACKINGVALUE,
 						ShippingCost = qt.QT_SHIPPINGVALUE,
 						QTTotalAmount = qt.QT_TOTALAMOUNT,
@@ -80,6 +84,7 @@ namespace OMW15.Models.SaleModel
 		public SaleQTDataItem(DataRow Source)
 		{
 			// binding source to class properties
+			QTPrefix = Source["QTPrefix"].ToString();
 			QTNumber = Source["QTNUMBER"].ToString();
 			QTdate = Convert.ToDateTime(Source["QTDATE"]);
 			QTExpire = Convert.ToDateTime(Source["QTExpire"]);
@@ -114,9 +119,14 @@ namespace OMW15.Models.SaleModel
 			Qty = Convert.ToDecimal(Source["QTY"]);
 			UnitPrice = Convert.ToDecimal(Source["UNITPRICE"]);
 			LineTotal = Convert.ToDecimal(Source["LINETOTAL"]);
+			VatRate = Convert.ToDecimal(Source["VATRate"]);
+			VATValue = Convert.ToDecimal(Source["VAT"]);
+			GoodsAmt = Convert.ToDecimal(Source["GOODSAMT"]);
 		}
 
 		#region class properties
+
+		public string QTPrefix { get; set; }
 
 		public string QTNumber { get; set; }
 
@@ -185,6 +195,12 @@ namespace OMW15.Models.SaleModel
 		public decimal UnitPrice { get; set; }
 
 		public decimal LineTotal { get; set; }
+
+		public decimal VatRate { get; set; }
+
+		public decimal VATValue { get; set; }
+
+		public decimal GoodsAmt { get; set; }
 
 		#endregion
 	}

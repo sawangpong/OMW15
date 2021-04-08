@@ -52,6 +52,7 @@
 			this.dgv = new System.Windows.Forms.DataGridView();
 			this.pnlHeader = new System.Windows.Forms.Panel();
 			this.label1 = new System.Windows.Forms.Label();
+			this.lbQTCount = new System.Windows.Forms.Label();
 			this.st.SuspendLayout();
 			this.ts.SuspendLayout();
 			this.panel1.SuspendLayout();
@@ -71,6 +72,8 @@
 			// 
 			// stlbStatus
 			// 
+			this.stlbStatus.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.stlbStatus.ForeColor = System.Drawing.SystemColors.ButtonShadow;
 			this.stlbStatus.Name = "stlbStatus";
 			this.stlbStatus.Size = new System.Drawing.Size(0, 17);
 			// 
@@ -101,11 +104,11 @@
 			// 
 			this.tsmnuQTView.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.tsmnuQTView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuMasterQT,
-            this.mnuSep1,
             this.mnuAllQT,
+            this.mnuSep1,
+            this.mnuInboundQT,
             this.mnuOutboundQT,
-            this.mnuInboundQT});
+            this.mnuMasterQT});
 			this.tsmnuQTView.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.tsmnuQTView.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.tsmnuQTView.Name = "tsmnuQTView";
@@ -265,6 +268,7 @@
 			// 
 			// pnlHeader
 			// 
+			this.pnlHeader.Controls.Add(this.lbQTCount);
 			this.pnlHeader.Controls.Add(this.label1);
 			this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
 			this.pnlHeader.Location = new System.Drawing.Point(5, 5);
@@ -275,15 +279,29 @@
 			// 
 			// label1
 			// 
+			this.label1.AutoSize = true;
 			this.label1.Dock = System.Windows.Forms.DockStyle.Left;
 			this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label1.ForeColor = System.Drawing.Color.Blue;
 			this.label1.Location = new System.Drawing.Point(2, 2);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(320, 27);
+			this.label1.Size = new System.Drawing.Size(122, 21);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Quotation List ";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// lbQTCount
+			// 
+			this.lbQTCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.lbQTCount.AutoSize = true;
+			this.lbQTCount.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbQTCount.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+			this.lbQTCount.Location = new System.Drawing.Point(839, 10);
+			this.lbQTCount.Name = "lbQTCount";
+			this.lbQTCount.Size = new System.Drawing.Size(48, 13);
+			this.lbQTCount.TabIndex = 1;
+			this.lbQTCount.Text = "found:0";
+			this.lbQTCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// Quotations
 			// 
@@ -306,6 +324,7 @@
 			this.panel1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
 			this.pnlHeader.ResumeLayout(false);
+			this.pnlHeader.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -337,5 +356,6 @@
 		private System.Windows.Forms.ToolStripMenuItem mnuMasterQT;
 		private System.Windows.Forms.ToolStripMenuItem mnuInboundQT;
 		private System.Windows.Forms.ToolStripMenuItem mnuOutboundQT;
+		private System.Windows.Forms.Label lbQTCount;
 	}
 }

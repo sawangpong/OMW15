@@ -97,7 +97,7 @@ namespace OMW15.Views.Productions
 
 			dgv.ResumeLayout();
 
-			lbBOMItem.Text = $"found: {dgv.Rows.Count} {(dgv.Rows.Count > 1 ? "s" : "")}";
+			tsblbItemCount.Text = $"found: {dgv.Rows.Count} item{(dgv.Rows.Count > 1 ? "s" : "")}";
 		}
 
 

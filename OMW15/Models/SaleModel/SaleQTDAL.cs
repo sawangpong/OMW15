@@ -1,4 +1,5 @@
-﻿using OMW15.Shared;
+﻿using OMW15.Models.ToolModel;
+using OMW15.Shared;
 using System;
 using System.Data;
 using System.Data.Entity;
@@ -33,6 +34,9 @@ namespace OMW15.Models.SaleModel
 
 		public DataTable GetQuotationList(OMShareSaleEnum.QuotationType QTType)
 		{
+			return new DataConnect().GetDataTable($"EXEC dbo.usp_OM_SALE_QUOTATION_LIST @qttype={(int)QTType}");
+			#region UNUSED
+			/*
 			var _qtType = (int)QTType;
 			var _result = new DataTable();
 
@@ -87,6 +91,8 @@ namespace OMW15.Models.SaleModel
 			}
 
 			return _result;
+			*/
+			#endregion
 		} // end GetQuotationList
 
 

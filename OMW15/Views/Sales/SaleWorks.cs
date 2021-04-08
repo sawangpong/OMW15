@@ -71,7 +71,7 @@ namespace OMW15.Views.Sales
 
 		private void mnuQT_Click(object sender, EventArgs e)
 		{
-			var _qt = new Quotations();
+			Quotations _qt = Quotations.GetInstance;
 			_qt.WindowState = FormWindowState.Maximized;
 			_qt.MdiParent = this;
 			_qt.Show();

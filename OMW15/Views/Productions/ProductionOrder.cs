@@ -309,6 +309,9 @@ namespace OMW15.Views.Productions
 			txtQty.Text = $"{(_job == null ? 0.00m : _job.QORDER):N2}";
 			txtUnit.Text = _job == null ? "" : _job.UNITORDER;
 
+			txtFormulaName.Text = _job.FORMULA_NUMBER;
+			txtFormulaName.Tag = _job.FORMULA_ID;
+
 			//txtERP_ISSUE.Text = String.IsNullOrEmpty(_job.ERP_ISSUE) ? "" : _job.ERP_ISSUE;
 
 			txtTotalReceiveQty.Text = $"{_job.SHIPQTY:N2}";
@@ -629,6 +632,8 @@ namespace OMW15.Views.Productions
 			_job.CREATEDATE = Convert.ToDateTime(txtDIDate.Text);
 			_job.MODIUSER = omglobal.UserInfo;
 			_job.LASTMODIFY = DateTime.Now;
+			_job.FORMULA_ID = (txtFormulaName.Tag != null ? Convert.ToInt32(txtFormulaName.Tag.ToString()) : 0);
+			_job.FORMULA_NUMBER = txtFormulaName.Text;
 
 			if (_job.STATUS == (int)OMShareProduction.ProductionJobStatus.Closed)
 			{
@@ -856,6 +861,18 @@ namespace OMW15.Views.Productions
 					txtTotalMatCost.Text = $"{_receiveStock.TotalReceiveCost:N2}";
 					txtMatCost.Text = $"{_receiveStock.AvgReceiveUCost:N2}";
 					txtTotalReceiveQty.Text = $"{_receiveStock.TotalReceiveQty:N2}";
+				}
+			}
+		}
+
+		private void btnFomula_Click(object sender, EventArgs e)
+		{
+			using(var _formular = new ProductionFormulaBox(txtFormulaName.Text))
+			{
+				if(_formular.ShowDialog(this) == DialogResult.OK)
+				{
+					txtFormulaName.Text = _formular.FormulaName;
+					txtFormulaName.Tag = _formular.FormulaKey;
 				}
 			}
 		}

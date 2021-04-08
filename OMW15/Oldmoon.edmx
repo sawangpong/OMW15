@@ -1218,6 +1218,8 @@
           <Property Name="ERP_DI" Type="int" Nullable="false" />
           <Property Name="ERP_ORDER" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ERP_ORDERINFO" Type="nvarchar" MaxLength="250" />
+          <Property Name="FORMULA_ID" Type="int" />
+          <Property Name="FORMULA_NUMBER" Type="nvarchar" MaxLength="50" />
           <Property Name="ERP_ISSUE" Type="nvarchar" MaxLength="50" />
           <Property Name="ISSUE_ID" Type="int" Nullable="false" />
           <Property Name="JOBTYPE" Type="nvarchar" MaxLength="50" />
@@ -5423,7 +5425,6 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
             <Parameter Name="D" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="EMPSALs" EntityType="Oldmoon.EMPSAL" />
-          <EntitySet Name="PRODUCTIONJOBS" EntityType="Oldmoon.PRODUCTIONJOB" />
           <EntitySet Name="PRODUCTION_OUTSOURCE" EntityType="Oldmoon.PRODUCTION_OUTSOURCE" />
           <EntitySet Name="OM_ERP_PRODUCTION_TRANSFER_REQUEST" EntityType="Oldmoon.OM_ERP_PRODUCTION_TRANSFER_REQUEST" />
           <EntitySet Name="OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST" EntityType="Oldmoon.OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST" />
@@ -5436,6 +5437,7 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <EntitySet Name="PRDPROCESSes" EntityType="Oldmoon.PRDPROCESS" />
           <EntitySet Name="PRODUCTIONJOBINFOes" EntityType="Oldmoon.PRODUCTIONJOBINFO" />
           <EntitySet Name="QUOTATIONHHs" EntityType="Oldmoon.QUOTATIONHH" />
+          <EntitySet Name="PRODUCTIONJOBS" EntityType="Oldmoon.PRODUCTIONJOB" />
         </EntityContainer>
         <ComplexType Name="usp_GetServiceJobList_Result">
           <Property Type="Int32" Name="orderid" Nullable="false" />
@@ -6557,50 +6559,6 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <Property Name="MODIUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MODIDATE" Type="DateTime" Precision="0" />
         </EntityType>
-        <EntityType Name="PRODUCTIONJOB">
-          <Key>
-            <PropertyRef Name="ERP_ORDER" />
-          </Key>
-          <Property Name="PDJOBID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="STATUS" Type="Int32" Nullable="false" />
-          <Property Name="CUSTCODE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="CUSTOMERNAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
-          <Property Name="RELEASEDATE" Type="DateTime" Precision="3" />
-          <Property Name="DUEDATE" Type="DateTime" Precision="3" />
-          <Property Name="DAYREMAIN" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="COMPLETEDATE" Type="DateTime" Precision="3" />
-          <Property Name="JOBYEAR" Type="Int32" Nullable="false" />
-          <Property Name="ERP_DI" Type="Int32" Nullable="false" />
-          <Property Name="ERP_ORDER" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ERP_ORDERINFO" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="ERP_ISSUE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ISSUE_ID" Type="Int32" Nullable="false" />
-          <Property Name="JOBTYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DRAWINGNO" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-          <Property Name="DRAWINGREV" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
-          <Property Name="ITEMNO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="ITEMNAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="ITEMNOTE" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
-          <Property Name="SN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="UNITORDER" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="QORDER" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="SHIPQTY" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="REMAINQTY" Type="Decimal" Precision="19" Scale="2" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="RECEIVEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="RECEIVEDDATE" Type="DateTime" Precision="3" />
-          <Property Name="STD_MATCOST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="STD_UNITHOUR" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="TOTAL_OUTSOURCE_COST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="TOTAL_MAT_COST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="TOTAL_HOURS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="TOTAL_HOUR_COST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="TOTAL_PRODUCTION_COST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="LABOUR_HR_COST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="AUDITUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MODIUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LASTMODIFY" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="PRODUCTION_OUTSOURCE">
           <Key>
             <PropertyRef Name="Id" />
@@ -6880,6 +6838,52 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
           <Property Name="AUDITUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MODIUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MODIDATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PRODUCTIONJOB">
+          <Key>
+            <PropertyRef Name="ERP_ORDER" />
+          </Key>
+          <Property Name="PDJOBID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STATUS" Type="Int32" Nullable="false" />
+          <Property Name="CUSTCODE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CUSTOMERNAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+          <Property Name="RELEASEDATE" Type="DateTime" Precision="3" />
+          <Property Name="DUEDATE" Type="DateTime" Precision="3" />
+          <Property Name="DAYREMAIN" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="COMPLETEDATE" Type="DateTime" Precision="3" />
+          <Property Name="JOBYEAR" Type="Int32" Nullable="false" />
+          <Property Name="ERP_DI" Type="Int32" Nullable="false" />
+          <Property Name="ERP_ORDER" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ERP_ORDERINFO" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="FORMULA_ID" Type="Int32" />
+          <Property Name="FORMULA_NUMBER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ERP_ISSUE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ISSUE_ID" Type="Int32" Nullable="false" />
+          <Property Name="JOBTYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DRAWINGNO" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="DRAWINGREV" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="ITEMNO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ITEMNAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ITEMNOTE" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+          <Property Name="SN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UNITORDER" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="QORDER" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="SHIPQTY" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="REMAINQTY" Type="Decimal" Precision="19" Scale="2" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="RECEIVEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RECEIVEDDATE" Type="DateTime" Precision="3" />
+          <Property Name="STD_MATCOST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="STD_UNITHOUR" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TOTAL_OUTSOURCE_COST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TOTAL_MAT_COST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TOTAL_HOURS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TOTAL_HOUR_COST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TOTAL_PRODUCTION_COST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="LABOUR_HR_COST" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="AUDITUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MODIUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LASTMODIFY" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -9152,51 +9156,6 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PRODUCTIONJOBS">
-            <EntityTypeMapping TypeName="Oldmoon.PRODUCTIONJOB">
-              <MappingFragment StoreEntitySet="PRODUCTIONJOBS">
-                <ScalarProperty Name="LASTMODIFY" ColumnName="LASTMODIFY" />
-                <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
-                <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
-                <ScalarProperty Name="LABOUR_HR_COST" ColumnName="LABOUR_HR_COST" />
-                <ScalarProperty Name="TOTAL_PRODUCTION_COST" ColumnName="TOTAL_PRODUCTION_COST" />
-                <ScalarProperty Name="TOTAL_HOUR_COST" ColumnName="TOTAL_HOUR_COST" />
-                <ScalarProperty Name="TOTAL_HOURS" ColumnName="TOTAL_HOURS" />
-                <ScalarProperty Name="TOTAL_MAT_COST" ColumnName="TOTAL_MAT_COST" />
-                <ScalarProperty Name="TOTAL_OUTSOURCE_COST" ColumnName="TOTAL_OUTSOURCE_COST" />
-                <ScalarProperty Name="STD_UNITHOUR" ColumnName="STD_UNITHOUR" />
-                <ScalarProperty Name="STD_MATCOST" ColumnName="STD_MATCOST" />
-                <ScalarProperty Name="RECEIVEDDATE" ColumnName="RECEIVEDDATE" />
-                <ScalarProperty Name="RECEIVEDBY" ColumnName="RECEIVEDBY" />
-                <ScalarProperty Name="REMAINQTY" ColumnName="REMAINQTY" />
-                <ScalarProperty Name="SHIPQTY" ColumnName="SHIPQTY" />
-                <ScalarProperty Name="QORDER" ColumnName="QORDER" />
-                <ScalarProperty Name="UNITORDER" ColumnName="UNITORDER" />
-                <ScalarProperty Name="SN" ColumnName="SN" />
-                <ScalarProperty Name="ITEMNOTE" ColumnName="ITEMNOTE" />
-                <ScalarProperty Name="ITEMNAME" ColumnName="ITEMNAME" />
-                <ScalarProperty Name="ITEMNO" ColumnName="ITEMNO" />
-                <ScalarProperty Name="DRAWINGREV" ColumnName="DRAWINGREV" />
-                <ScalarProperty Name="DRAWINGNO" ColumnName="DRAWINGNO" />
-                <ScalarProperty Name="JOBTYPE" ColumnName="JOBTYPE" />
-                <ScalarProperty Name="ISSUE_ID" ColumnName="ISSUE_ID" />
-                <ScalarProperty Name="ERP_ISSUE" ColumnName="ERP_ISSUE" />
-                <ScalarProperty Name="ERP_ORDERINFO" ColumnName="ERP_ORDERINFO" />
-                <ScalarProperty Name="ERP_ORDER" ColumnName="ERP_ORDER" />
-                <ScalarProperty Name="ERP_DI" ColumnName="ERP_DI" />
-                <ScalarProperty Name="JOBYEAR" ColumnName="JOBYEAR" />
-                <ScalarProperty Name="COMPLETEDATE" ColumnName="COMPLETEDATE" />
-                <ScalarProperty Name="DAYREMAIN" ColumnName="DAYREMAIN" />
-                <ScalarProperty Name="DUEDATE" ColumnName="DUEDATE" />
-                <ScalarProperty Name="RELEASEDATE" ColumnName="RELEASEDATE" />
-                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
-                <ScalarProperty Name="CUSTOMERNAME" ColumnName="CUSTOMERNAME" />
-                <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
-                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
-                <ScalarProperty Name="PDJOBID" ColumnName="PDJOBID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PRODUCTION_OUTSOURCE">
             <EntityTypeMapping TypeName="Oldmoon.PRODUCTION_OUTSOURCE">
               <MappingFragment StoreEntitySet="PRODUCTION_OUTSOURCE">
@@ -9478,6 +9437,53 @@ warning 6002: The table/view 'OLDMOON.dbo.TVIEW_JOBORDERS' does not have a prima
                 <ScalarProperty Name="QT_MASTER" ColumnName="QT_MASTER" />
                 <ScalarProperty Name="QT_REF_KEY" ColumnName="QT_REF_KEY" />
                 <ScalarProperty Name="QT_ID" ColumnName="QT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTIONJOBS">
+            <EntityTypeMapping TypeName="Oldmoon.PRODUCTIONJOB">
+              <MappingFragment StoreEntitySet="PRODUCTIONJOBS">
+                <ScalarProperty Name="LASTMODIFY" ColumnName="LASTMODIFY" />
+                <ScalarProperty Name="MODIUSER" ColumnName="MODIUSER" />
+                <ScalarProperty Name="AUDITUSER" ColumnName="AUDITUSER" />
+                <ScalarProperty Name="LABOUR_HR_COST" ColumnName="LABOUR_HR_COST" />
+                <ScalarProperty Name="TOTAL_PRODUCTION_COST" ColumnName="TOTAL_PRODUCTION_COST" />
+                <ScalarProperty Name="TOTAL_HOUR_COST" ColumnName="TOTAL_HOUR_COST" />
+                <ScalarProperty Name="TOTAL_HOURS" ColumnName="TOTAL_HOURS" />
+                <ScalarProperty Name="TOTAL_MAT_COST" ColumnName="TOTAL_MAT_COST" />
+                <ScalarProperty Name="TOTAL_OUTSOURCE_COST" ColumnName="TOTAL_OUTSOURCE_COST" />
+                <ScalarProperty Name="STD_UNITHOUR" ColumnName="STD_UNITHOUR" />
+                <ScalarProperty Name="STD_MATCOST" ColumnName="STD_MATCOST" />
+                <ScalarProperty Name="RECEIVEDDATE" ColumnName="RECEIVEDDATE" />
+                <ScalarProperty Name="RECEIVEDBY" ColumnName="RECEIVEDBY" />
+                <ScalarProperty Name="REMAINQTY" ColumnName="REMAINQTY" />
+                <ScalarProperty Name="SHIPQTY" ColumnName="SHIPQTY" />
+                <ScalarProperty Name="QORDER" ColumnName="QORDER" />
+                <ScalarProperty Name="UNITORDER" ColumnName="UNITORDER" />
+                <ScalarProperty Name="SN" ColumnName="SN" />
+                <ScalarProperty Name="ITEMNOTE" ColumnName="ITEMNOTE" />
+                <ScalarProperty Name="ITEMNAME" ColumnName="ITEMNAME" />
+                <ScalarProperty Name="ITEMNO" ColumnName="ITEMNO" />
+                <ScalarProperty Name="DRAWINGREV" ColumnName="DRAWINGREV" />
+                <ScalarProperty Name="DRAWINGNO" ColumnName="DRAWINGNO" />
+                <ScalarProperty Name="JOBTYPE" ColumnName="JOBTYPE" />
+                <ScalarProperty Name="ISSUE_ID" ColumnName="ISSUE_ID" />
+                <ScalarProperty Name="ERP_ISSUE" ColumnName="ERP_ISSUE" />
+                <ScalarProperty Name="FORMULA_NUMBER" ColumnName="FORMULA_NUMBER" />
+                <ScalarProperty Name="FORMULA_ID" ColumnName="FORMULA_ID" />
+                <ScalarProperty Name="ERP_ORDERINFO" ColumnName="ERP_ORDERINFO" />
+                <ScalarProperty Name="ERP_ORDER" ColumnName="ERP_ORDER" />
+                <ScalarProperty Name="ERP_DI" ColumnName="ERP_DI" />
+                <ScalarProperty Name="JOBYEAR" ColumnName="JOBYEAR" />
+                <ScalarProperty Name="COMPLETEDATE" ColumnName="COMPLETEDATE" />
+                <ScalarProperty Name="DAYREMAIN" ColumnName="DAYREMAIN" />
+                <ScalarProperty Name="DUEDATE" ColumnName="DUEDATE" />
+                <ScalarProperty Name="RELEASEDATE" ColumnName="RELEASEDATE" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="CUSTOMERNAME" ColumnName="CUSTOMERNAME" />
+                <ScalarProperty Name="CUSTCODE" ColumnName="CUSTCODE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="PDJOBID" ColumnName="PDJOBID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

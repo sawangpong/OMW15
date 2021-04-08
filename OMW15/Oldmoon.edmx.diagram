@@ -122,7 +122,6 @@
         <EntityTypeShape EntityType="Oldmoon.TVIEW_JOBORDERS" Width="3" PointX="20.375" PointY="37.75" />
         <EntityTypeShape EntityType="Oldmoon.LOGIN" Width="1.5" PointX="37.375" PointY="25.75" />
         <EntityTypeShape EntityType="Oldmoon.EMPSAL" Width="1.5" PointX="26.375" PointY="37.75" />
-        <EntityTypeShape EntityType="Oldmoon.PRODUCTIONJOB" Width="1.5" PointX="31.375" PointY="37.75" />
         <EntityTypeShape EntityType="Oldmoon.PRODUCTION_OUTSOURCE" Width="1.5" PointX="17.375" PointY="18.75" />
         <EntityTypeShape EntityType="Oldmoon.OM_ERP_PRODUCTION_TRANSFER_REQUEST" Width="1.5" PointX="18.375" PointY="27.75" />
         <EntityTypeShape EntityType="Oldmoon.OM_ERP_PRODUCTION_REQUEST_TRANSFER_LIST" Width="2.875" PointX="7.375" PointY="38.75" />
@@ -135,6 +134,7 @@
         <EntityTypeShape EntityType="Oldmoon.PRDPROCESS" Width="1.5" PointX="39.375" PointY="6.75" />
         <EntityTypeShape EntityType="Oldmoon.PRODUCTIONJOBINFO" Width="2.5" PointX="37.375" PointY="29.75" />
         <EntityTypeShape EntityType="Oldmoon.QUOTATIONHH" Width="1.5" PointX="39.375" PointY="9.75" />
+        <EntityTypeShape EntityType="Oldmoon.PRODUCTIONJOB" Width="2" PointX="13.375" PointY="39.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

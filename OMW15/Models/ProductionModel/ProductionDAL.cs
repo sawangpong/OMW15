@@ -9,7 +9,6 @@ using System.Data.Entity.Core;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using static OMW15.Shared.OMShareProduction;
 
 namespace OMW15.Models.ProductionModel
@@ -31,7 +30,7 @@ namespace OMW15.Models.ProductionModel
 
 		#region call sproc
 
-		public DataTable GetYearForTimeRecord(string workerCode) 
+		public DataTable GetYearForTimeRecord(string workerCode)
 			=> new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_WORKER_WORKYEARS @workerid='{workerCode}'", omglobal.SysConnectionString).ToDataTable;
 
 		public DataTable GetMonthForTimeRecord(string workerCode, int jobYear)
@@ -386,7 +385,6 @@ namespace OMW15.Models.ProductionModel
 				if (ProductionJobId == 0)
 				{
 					_om.PRODUCTIONJOBS.Add(p);
-					_result = _om.SaveChanges();
 				}
 				else // 
 				{
@@ -400,6 +398,8 @@ namespace OMW15.Models.ProductionModel
 					j.STATUS = p.STATUS;
 					j.DRAWINGNO = p.DRAWINGNO;
 					j.DRAWINGREV = p.DRAWINGREV;
+					j.FORMULA_ID = p.FORMULA_ID;
+					j.FORMULA_NUMBER = p.FORMULA_NUMBER;
 					j.ERP_ISSUE = p.ERP_ISSUE;
 					j.ISSUE_ID = p.ISSUE_ID;
 					j.ITEMNO = p.ITEMNO;
@@ -422,9 +422,8 @@ namespace OMW15.Models.ProductionModel
 					j.TOTAL_MAT_COST = p.TOTAL_MAT_COST;
 					j.TOTAL_PRODUCTION_COST = p.TOTAL_PRODUCTION_COST;
 					j.LABOUR_HR_COST = p.LABOUR_HR_COST;
-
-					_result = _om.SaveChanges();
 				}
+				_result = _om.SaveChanges();
 			}
 			catch (OptimisticConcurrencyException ex)
 			{
@@ -698,10 +697,10 @@ namespace OMW15.Models.ProductionModel
 
 		public DataTable GetProductionItemList(string filter = "") => new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_STD_ITEMS @itemfilter='{filter}'", omglobal.SysConnectionString).ToDataTable;
 
-		public DataTable GetProductionItemProperty(string filter = "") => 
+		public DataTable GetProductionItemProperty(string filter = "") =>
 			new DataConnect($" EXEC dbo.usp_OM_PRODUCTION_STD_ITEM @itemfilter='{filter}'", omglobal.SysConnectionString).ToDataTable;
 
-		public PRODUCTIONSTDITEM GetProductionItemInfo(int ItemId) => 
+		public PRODUCTIONSTDITEM GetProductionItemInfo(int ItemId) =>
 			_om.PRODUCTIONSTDITEMS.Single(x => x.ItemId == ItemId);
 
 		#endregion
@@ -788,7 +787,7 @@ namespace OMW15.Models.ProductionModel
 
 		#region STANDARD PROCESS FOR EACH PART-NO.
 
-		public string GetProcessName(int processId) => 
+		public string GetProcessName(int processId) =>
 			(_om.PRDPROCESSes.Where(x => x.PRDPROCESSID == processId).FirstOrDefault().PROCESSNAME);
 
 		public int GetMaxStep(string itemNo)
@@ -895,18 +894,18 @@ namespace OMW15.Models.ProductionModel
 
 		#region Producion Used Material
 
-		public DataTable GetIssueByProductionOrder(string orderNo) => 
+		public DataTable GetIssueByProductionOrder(string orderNo) =>
 			new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_ISSUES @orderno ='{orderNo}'", omglobal.SysConnectionString).ToDataTable;
 
-		public DataTable GetSend2WHList(string orderNo) => 
+		public DataTable GetSend2WHList(string orderNo) =>
 			new DataConnect($"EXEC dbo.usp_OM_PRODUCTION_TO_WH @docno='{orderNo}'", omglobal.SysConnectionString).ToDataTable;
 
-		public PRODUCTION_WH_RECEIVE GetReceiveItem(string receiveNo) => 
+		public PRODUCTION_WH_RECEIVE GetReceiveItem(string receiveNo) =>
 			_om.PRODUCTION_WH_RECEIVE.Where(x => x.RECEIVE_NO == receiveNo).FirstOrDefault();
 
 		public int UpdateReceiveItem(PRODUCTION_WH_RECEIVE item)
 		{
-			if(item.RECEIVEID == 0)
+			if (item.RECEIVEID == 0)
 			{
 				_om.PRODUCTION_WH_RECEIVE.Add(item);
 			}

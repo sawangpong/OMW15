@@ -10,9 +10,23 @@ namespace OMW15.Views.Sales
 {
 	public partial class Quotations : Form
 	{
+		#region Singleton
+		private static Quotations _instance;
+		public static Quotations GetInstance
+		{
+			get
+			{
+				if(_instance == null || _instance.IsDisposed)
+				{
+					_instance = new Quotations();
+				}
+				return _instance;
+			}
+		}
+		#endregion
+
 		#region class field members
 
-		//private string _isMaster = "N";
 		private OMShareSaleEnum.QoutationStatus _selectedQTStatus = OMShareSaleEnum.QoutationStatus.None;
 		private OMShareSaleEnum.QuotationType _qtType = OMShareSaleEnum.QuotationType.Unknow;
 		private int _rowCount;
@@ -35,7 +49,7 @@ namespace OMW15.Views.Sales
 			tsbtnPrintQT.Enabled = tsbtnEdit.Enabled;
 
 			// display selected menuitem
-			stlbStatus.Text = $"id={QuotationId} [status {_selectedQTStatus}:{_selectedQTStatus}]";
+			stlbStatus.Text = $"id={QuotationId}";
 		} // end UpdateUI
 
 
@@ -58,10 +72,12 @@ namespace OMW15.Views.Sales
 			dgv.Columns["VAT"].DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
 			dgv.Columns["GOODSAMOUNT"].DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
 			dgv.Columns["PACKING"].DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
-			dgv.Columns["DELIVERY"].DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
+			dgv.Columns["SHIPPING"].DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
 			dgv.Columns["TOTALAMOUNT"].DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
 
 			dgv.ResumeLayout();
+
+			lbQTCount.Text = $"found: {dgv.Rows.Count}";
 
 			UpdateUI();
 		} // end GetQuotationList
@@ -92,16 +108,9 @@ namespace OMW15.Views.Sales
 
 		#endregion
 
-		private void tsbtnClose_Click(object sender, EventArgs e)
-		{
-			Close();
-		}
+		private void tsbtnClose_Click(object sender, EventArgs e) => Close();
 
-		private void Quotations_Load(object sender, EventArgs e)
-		{
-
-			UpdateMenuItems();
-		}
+		private void Quotations_Load(object sender, EventArgs e) => UpdateMenuItems();
 
 		private void mnuQT_Click(object sender, EventArgs e)
 		{
@@ -132,20 +141,11 @@ namespace OMW15.Views.Sales
 			GetQuotationList(_qtType);
 		}
 
-		private void tsbtnAdd_Click(object sender, EventArgs e)
-		{
-			GetQTInfo(QuotationId = 0);
-		}
+		private void tsbtnAdd_Click(object sender, EventArgs e) => GetQTInfo(QuotationId = 0);
 
-		private void tsbtnEdit_Click(object sender, EventArgs e)
-		{
-			GetQTInfo(QuotationId);
-		}
+		private void tsbtnEdit_Click(object sender, EventArgs e) => GetQTInfo(QuotationId);
 
-		private void dgv_DoubleClick(object sender, EventArgs e)
-		{
-			tsbtnEdit.PerformClick();
-		}
+		private void dgv_DoubleClick(object sender, EventArgs e) => tsbtnEdit.PerformClick();
 
 		private void dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
 		{
@@ -160,11 +160,7 @@ namespace OMW15.Views.Sales
 			UpdateUI();
 		}
 
-		private void tsbtnRefresh_Click(object sender, EventArgs e)
-		{
-			// load Quotation
-			GetQuotationList(_qtType);
-		}
+		private void tsbtnRefresh_Click(object sender, EventArgs e) => GetQuotationList(_qtType);
 
 		private void tsbtnPrintQT_Click(object sender, EventArgs e)
 		{
@@ -174,7 +170,6 @@ namespace OMW15.Views.Sales
 			_rptv.WindowState = FormWindowState.Maximized;
 			_rptv.Show();
 		}
-
-		
+	
 	}
 }

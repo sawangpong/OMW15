@@ -138,12 +138,14 @@
 			this.mnuProductionDashboard.Name = "mnuProductionDashboard";
 			this.mnuProductionDashboard.Size = new System.Drawing.Size(234, 22);
 			this.mnuProductionDashboard.Text = "Dashboard";
+			this.mnuProductionDashboard.Visible = false;
 			this.mnuProductionDashboard.Click += new System.EventHandler(this.mnuProductionDashboard_Click);
 			// 
 			// toolStripMenuItem7
 			// 
 			this.toolStripMenuItem7.Name = "toolStripMenuItem7";
 			this.toolStripMenuItem7.Size = new System.Drawing.Size(231, 6);
+			this.toolStripMenuItem7.Visible = false;
 			// 
 			// mnuProductionTasks
 			// 
@@ -408,12 +410,14 @@
 			this.toolStripButton1.Size = new System.Drawing.Size(100, 42);
 			this.toolStripButton1.Text = "Dashboard";
 			this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+			this.toolStripButton1.Visible = false;
 			this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
 			// 
 			// toolStripSeparator9
 			// 
 			this.toolStripSeparator9.Name = "toolStripSeparator9";
 			this.toolStripSeparator9.Size = new System.Drawing.Size(6, 45);
+			this.toolStripSeparator9.Visible = false;
 			// 
 			// tsbtnProductionTask
 			// 
