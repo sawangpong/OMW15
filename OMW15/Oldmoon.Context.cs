@@ -145,8 +145,8 @@ namespace OMW15
         public virtual DbSet<PRODUCTION_MC_MEMBER> PRODUCTION_MC_MEMBER { get; set; }
         public virtual DbSet<PRDPROCESS> PRDPROCESSes { get; set; }
         public virtual DbSet<PRODUCTIONJOBINFO> PRODUCTIONJOBINFOes { get; set; }
-        public virtual DbSet<QUOTATIONHH> QUOTATIONHHs { get; set; }
         public virtual DbSet<PRODUCTIONJOB> PRODUCTIONJOBS { get; set; }
+        public virtual DbSet<QUOTATIONHH> QUOTATIONHHs { get; set; }
     
         public virtual ObjectResult<usp_GetServiceJobList_Result> usp_GetServiceJobList(Nullable<int> selectedYear, string jobcode, string orderstatus)
         {

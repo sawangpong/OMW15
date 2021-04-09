@@ -104,6 +104,7 @@ namespace OMW15.Views.Productions
 			dgv.Columns["PDJOBID"].Visible = false;
 			dgv.Columns["STATUS"].Visible = false;
 			dgv.Columns["JOBYEAR"].Visible = false;
+			dgv.Columns["DRAWINGNO"].Visible = false;
 
 			dgv.Columns["ITEMNAME"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
@@ -113,7 +114,7 @@ namespace OMW15.Views.Productions
 			dgv.Columns["OPENDATE"].HeaderText = "วันที่ขอ";
 			dgv.Columns["STARTDATE"].HeaderText = "วันที่เริ่มงาน";
 			dgv.Columns["DUE"].HeaderText = "ครบกำหนด";
-			dgv.Columns["CLOSEDATE"].Visible = Status == (int)OMShareProduction.ProductionJobStatus.Closed;
+			dgv.Columns["CLOSEDATE"].Visible = (Status == (int)OMShareProduction.ProductionJobStatus.Closed);
 			dgv.Columns["CLOSEDATE"].HeaderText = "วันที่เสร็จ";
 			dgv.Columns["ITEMNO"].HeaderText = "รหัสสินค้า";
 			dgv.Columns["ITEMNAME"].HeaderText = "รายละเอียดงาน";

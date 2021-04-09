@@ -122,6 +122,8 @@
 			this.txtExtraDiscount = new OMControls.Controls.NumericTextBox();
 			this.panel7 = new System.Windows.Forms.Panel();
 			this.lbDiscount = new System.Windows.Forms.Label();
+			this.ntxtDiscountPercent = new OMControls.Controls.NumericTextBox();
+			this.label20 = new System.Windows.Forms.Label();
 			this.txtDiscount = new OMControls.Controls.NumericTextBox();
 			this.panel18 = new System.Windows.Forms.Panel();
 			this.lbLinetotal = new System.Windows.Forms.Label();
@@ -1340,6 +1342,8 @@
 			// panel7
 			// 
 			this.panel7.Controls.Add(this.lbDiscount);
+			this.panel7.Controls.Add(this.ntxtDiscountPercent);
+			this.panel7.Controls.Add(this.label20);
 			this.panel7.Controls.Add(this.txtDiscount);
 			this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panel7.Location = new System.Drawing.Point(0, 28);
@@ -1350,13 +1354,46 @@
 			// 
 			// lbDiscount
 			// 
-			this.lbDiscount.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.lbDiscount.Location = new System.Drawing.Point(1, 1);
+			this.lbDiscount.Dock = System.Windows.Forms.DockStyle.Right;
+			this.lbDiscount.Location = new System.Drawing.Point(7, 1);
 			this.lbDiscount.Name = "lbDiscount";
-			this.lbDiscount.Size = new System.Drawing.Size(194, 26);
-			this.lbDiscount.TabIndex = 17;
+			this.lbDiscount.Size = new System.Drawing.Size(106, 26);
+			this.lbDiscount.TabIndex = 20;
 			this.lbDiscount.Text = "Discount  :";
 			this.lbDiscount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// ntxtDiscountPercent
+			// 
+			this.ntxtDiscountPercent.AllowControl = true;
+			this.ntxtDiscountPercent.AllowDecimal = true;
+			this.ntxtDiscountPercent.AllowMultipleDecimals = true;
+			this.ntxtDiscountPercent.AllowNegation = true;
+			this.ntxtDiscountPercent.DecimalValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+			this.ntxtDiscountPercent.Dock = System.Windows.Forms.DockStyle.Right;
+			this.ntxtDiscountPercent.IntegerValue = 0;
+			this.ntxtDiscountPercent.Location = new System.Drawing.Point(113, 1);
+			this.ntxtDiscountPercent.MaxLength = 5;
+			this.ntxtDiscountPercent.Name = "ntxtDiscountPercent";
+			this.ntxtDiscountPercent.Size = new System.Drawing.Size(57, 25);
+			this.ntxtDiscountPercent.TabIndex = 19;
+			this.ntxtDiscountPercent.Text = "0";
+			this.ntxtDiscountPercent.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.ntxtDiscountPercent.TextChanged += new System.EventHandler(this.ntxtDiscountPercent_TextChanged);
+			this.ntxtDiscountPercent.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ntxtDiscountPercent_KeyPress);
+			// 
+			// label20
+			// 
+			this.label20.Dock = System.Windows.Forms.DockStyle.Right;
+			this.label20.Location = new System.Drawing.Point(170, 1);
+			this.label20.Name = "label20";
+			this.label20.Size = new System.Drawing.Size(25, 26);
+			this.label20.TabIndex = 18;
+			this.label20.Text = "%";
+			this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// txtDiscount
 			// 
@@ -1374,6 +1411,7 @@
 			this.txtDiscount.Location = new System.Drawing.Point(195, 1);
 			this.txtDiscount.MaxLength = 15;
 			this.txtDiscount.Name = "txtDiscount";
+			this.txtDiscount.ReadOnly = true;
 			this.txtDiscount.Size = new System.Drawing.Size(129, 25);
 			this.txtDiscount.TabIndex = 15;
 			this.txtDiscount.Text = "0.00";
@@ -2119,7 +2157,6 @@
 		private OMControls.Controls.NumericTextBox txtQTLineTotal;
 		private System.Windows.Forms.Label lbNett;
 		private System.Windows.Forms.Label lbExtra;
-		private System.Windows.Forms.Label lbDiscount;
 		private System.Windows.Forms.Label lbLinetotal;
 		private System.Windows.Forms.RadioButton rdoMaster;
 		private System.Windows.Forms.Label lbCurrency;
@@ -2141,5 +2178,8 @@
 		private System.Windows.Forms.ComboBox cbxVAT;
 		private OMControls.Controls.NumericTextBox ntxtVatValue;
 		private System.Windows.Forms.Label lbVATFactor;
+		private System.Windows.Forms.Label lbDiscount;
+		private OMControls.Controls.NumericTextBox ntxtDiscountPercent;
+		private System.Windows.Forms.Label label20;
 	}
 }

@@ -36,6 +36,7 @@ namespace OMW15.Views.Sales
 		private decimal _shippingCost;
 		private decimal _totalAmount;
 		private decimal _VATFactor = omglobal.DEFAULT_SYSTEM_VAT_FACTOR;
+		private decimal _discountPercent = 0m;
 		#endregion
 
 		#region class property
@@ -146,6 +147,7 @@ namespace OMW15.Views.Sales
 			lbRefIdx.Text = _refHIndex.ToString();
 
 			txtQTLineTotal.Text = $"{_qtHeader.QT_TOTALVALUEITEMS:N2}";
+			ntxtDiscountPercent.Text = $"{_qtHeader.QT_PERCENTDISCOUNT:N2}";
 			txtDiscount.Text = $"{_qtHeader.QT_TOTALDISCOUNT:N2}";
 			txtExtraDiscount.Text = $"{_qtHeader.QT_EXTRADISCOUNT:N2}";
 			txtNetQTLineTotal.Text = $"{_qtHeader.QT_TOTALNETTVALUES:N2}";
@@ -197,15 +199,18 @@ namespace OMW15.Views.Sales
 			txtQTLineTotal.Text = $"{_qtLineTotal:N2}";
 		} // end CalQuotationLineValues
 
+		private decimal CalDiscount(decimal TotalValue, decimal DiscountPercent) => (TotalValue * DiscountPercent);
+
 		private void CalQuotationValues(decimal QTLineTotalValues)
 		{
-			_discount = Information.IsNumeric(txtDiscount.Text) ? Convert.ToDecimal(txtDiscount.Text) : 0.00m;
+			_discount = CalDiscount(QTLineTotalValues, _discountPercent);
+
 			_extraDiscount = Information.IsNumeric(txtExtraDiscount.Text) ? Convert.ToDecimal(txtExtraDiscount.Text) : 0.00m;
 
 			_netQTValues = (QTLineTotalValues - _discount - _extraDiscount);
 
-			_vatValues = Convert.ToDecimal(ntxtVatValue.Text);
-			_totalGoodsValues = Convert.ToDecimal(ntxtTotalGoodAmount.Text);
+			_vatValues = CalQTVAT(_netQTValues, _VATFactor);
+			_totalGoodsValues = (_netQTValues + _vatValues);
 
 			_packingCost = Information.IsNumeric(txtPackingCost.Text) ? Convert.ToDecimal(txtPackingCost.Text) : 0.00m;
 
@@ -217,6 +222,8 @@ namespace OMW15.Views.Sales
 			txtDiscount.Text = $"{_discount:N2}";
 			txtExtraDiscount.Text = $"{_extraDiscount:N2}";
 			txtNetQTLineTotal.Text = $"{_netQTValues:N2}";
+			ntxtVatValue.Text = $"{_vatValues:N2}";
+			ntxtTotalGoodAmount.Text = $"{_totalGoodsValues:N2}";
 			txtPackingCost.Text = $"{_packingCost:N2}";
 			txtShippingCost.Text = $"{_shippingCost:N2}";
 			txtQTTotalAmont.Text = $"{_totalAmount:N2}";
@@ -335,7 +342,8 @@ namespace OMW15.Views.Sales
 			_qt.QT_PAYMENT_TERM = txtPaymentTerm.Text;
 			_qt.QT_TRAINING = txtTraining.Text;
 			_qt.QT_WARRANTY = txtWarranty.Text;
-			_qt.QT_TOTALVALUEITEMS = _netQTValues;
+			_qt.QT_TOTALVALUEITEMS = Convert.ToDecimal(txtQTLineTotal.Text);
+			_qt.QT_PERCENTDISCOUNT = Convert.ToDecimal(ntxtDiscountPercent.Text);
 			_qt.QT_TOTALDISCOUNT = Convert.ToDecimal(txtDiscount.Text);
 			_qt.QT_EXTRADISCOUNT = Convert.ToDecimal(txtExtraDiscount.Text);
 			_qt.QT_TOTALNETTVALUES = Convert.ToDecimal(txtNetQTLineTotal.Text);
@@ -382,14 +390,14 @@ namespace OMW15.Views.Sales
 		} // end ClearUnpostedQuotation
 
 
-		private void CalQTVAT(decimal VATFactor)
-		{
-			ntxtVatValue.Text = $"{(VATFactor * Convert.ToDecimal(txtNetQTLineTotal.Text)):N2}";
-			ntxtTotalGoodAmount.Text = $"{(Convert.ToDecimal(ntxtVatValue.Text) + Convert.ToDecimal(txtNetQTLineTotal.Text)):N2}";
+		private decimal CalQTVAT(decimal netValues, decimal VATFactor) => (netValues * VATFactor);
+		//{
+		//	decimal _netValue = (Convert.ToDecimal(txtQTLineTotal.Text) - Convert.ToDecimal(txtDiscount.Text) - Convert.ToDecimal(txtExtraDiscount.Text);
+		//	ntxtVatValue.Text = $"{(VATFactor * _netValue):N2}";
+		//	ntxtTotalGoodAmount.Text = $"{(Convert.ToDecimal(ntxtVatValue.Text) + _netValue):N2}";
+		//	//CalQuotationValues(Convert.ToDecimal(txtQTLineTotal.Text));
+		//}
 
-			CalQuotationValues(Convert.ToDecimal(txtQTLineTotal.Text));
-
-		}
 		#endregion
 
 		// Constructor
@@ -516,7 +524,7 @@ namespace OMW15.Views.Sales
 
 		private void txt_TextChanged(object sender, EventArgs e)
 		{
-			CalQTVAT(_VATFactor);
+			//CalQTVAT(_VATFactor);
 			CalQuotationValues(Convert.ToDecimal(txtQTLineTotal.Text));
 		}
 
@@ -711,7 +719,7 @@ namespace OMW15.Views.Sales
 		{
 			if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Tab)
 			{
-				CalQTVAT(_VATFactor);
+				//CalQTVAT(_VATFactor);
 				CalQuotationValues(Convert.ToDecimal(txtQTLineTotal.Text));
 			}
 		}
@@ -742,9 +750,38 @@ namespace OMW15.Views.Sales
 				_VATFactor = 0.00m;
 			}
 
-			CalQTVAT(_VATFactor);
+			CalQuotationValues(Convert.ToDecimal(txtQTLineTotal.Text));
+
+			//CalQTVAT(_VATFactor);
 		}
 
+		private void ntxtDiscountPercent_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (e.KeyChar == (char)Keys.Enter)
+			{
+				if (!String.IsNullOrEmpty(ntxtDiscountPercent.Text) && ntxtDiscountPercent.Text.IsNumeric())
+				{
+					_discountPercent = (Convert.ToDecimal(ntxtDiscountPercent.Text) / 100);
+					CalQuotationValues(Convert.ToDecimal(txtQTLineTotal.Text));
+				}
+				else
+				{
+					ntxtDiscountPercent.Text = "0.00";
+				}
+			}
+		}
 
+		private void ntxtDiscountPercent_TextChanged(object sender, EventArgs e)
+		{
+			if (!String.IsNullOrEmpty(ntxtDiscountPercent.Text) && ntxtDiscountPercent.Text.IsNumeric())
+			{
+				_discountPercent = (Convert.ToDecimal(ntxtDiscountPercent.Text) / 100);
+				CalQuotationValues(Convert.ToDecimal(txtQTLineTotal.Text));
+			}
+			else
+			{
+				ntxtDiscountPercent.Text = "0.00";
+			}
+		}
 	} // end class
 } // end namespace

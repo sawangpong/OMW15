@@ -311,6 +311,7 @@ namespace OMW15.Views.Productions
 
 			txtFormulaName.Text = _job.FORMULA_NUMBER;
 			txtFormulaName.Tag = _job.FORMULA_ID;
+			lbFormulaKey.Text = $"{_job.FORMULA_ID}";
 
 			//txtERP_ISSUE.Text = String.IsNullOrEmpty(_job.ERP_ISSUE) ? "" : _job.ERP_ISSUE;
 
@@ -873,6 +874,7 @@ namespace OMW15.Views.Productions
 				{
 					txtFormulaName.Text = _formular.FormulaName;
 					txtFormulaName.Tag = _formular.FormulaKey;
+					lbFormulaKey.Text = $"{_formular.FormulaKey}";
 				}
 			}
 		}

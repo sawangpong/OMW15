@@ -33,19 +33,15 @@ namespace OMW15.Views.Productions
 
 		private void ShowFormulaHeader(string filter)
 		{
-			string _filter = $"FORMULA_ID LIKE '%{filter}%' OR PARTNO LIKE '%{filter}%' OR PART_NAME LIKE '%{filter}%' ";
+			string _filter = $"FORMULA_ID LIKE '%{filter}%' ";
 			_dtFormula.DefaultView.RowFilter = _filter;
 			lbCount.Text = $"{_dtFormula.Rows.Count}";
 
 			dgv.SuspendLayout();
 			dgv.DataSource = _dtFormula;
 			dgv.Columns["DI_KEY"].Visible = false;
-			dgv.Columns["CREATE_DATE"].Visible = false;
-			dgv.Columns["UNIT"].Visible = false;
-			dgv.Columns["IC_CATE"].Visible = false;
-			dgv.Columns["TRD_TO_WL"].Visible = false;
-			dgv.Columns["UNIT_COST"].Visible = false;
-			dgv.Columns["TOTAL_LINE_COST"].Visible = false;
+
+			dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 			dgv.ResumeLayout();
 
 			UpdateUI();

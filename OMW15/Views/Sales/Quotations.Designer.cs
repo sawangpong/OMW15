@@ -32,11 +32,11 @@
 			this.stlbStatus = new System.Windows.Forms.ToolStripStatusLabel();
 			this.ts = new System.Windows.Forms.ToolStrip();
 			this.tsmnuQTView = new System.Windows.Forms.ToolStripDropDownButton();
-			this.mnuMasterQT = new System.Windows.Forms.ToolStripMenuItem();
-			this.mnuSep1 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuAllQT = new System.Windows.Forms.ToolStripMenuItem();
-			this.mnuOutboundQT = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuSep1 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuInboundQT = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuOutboundQT = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuMasterQT = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbtnClose = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -51,8 +51,8 @@
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.dgv = new System.Windows.Forms.DataGridView();
 			this.pnlHeader = new System.Windows.Forms.Panel();
-			this.label1 = new System.Windows.Forms.Label();
 			this.lbQTCount = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
 			this.st.SuspendLayout();
 			this.ts.SuspendLayout();
 			this.panel1.SuspendLayout();
@@ -117,43 +117,43 @@
 			this.tsmnuQTView.Text = "Quotation :";
 			this.tsmnuQTView.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
 			// 
-			// mnuMasterQT
-			// 
-			this.mnuMasterQT.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.mnuMasterQT.Name = "mnuMasterQT";
-			this.mnuMasterQT.Size = new System.Drawing.Size(180, 24);
-			this.mnuMasterQT.Tag = "MASTER";
-			this.mnuMasterQT.Text = "Master";
-			this.mnuMasterQT.Click += new System.EventHandler(this.mnuQT_Click);
-			// 
-			// mnuSep1
-			// 
-			this.mnuSep1.Name = "mnuSep1";
-			this.mnuSep1.Size = new System.Drawing.Size(177, 6);
-			// 
 			// mnuAllQT
 			// 
 			this.mnuAllQT.Name = "mnuAllQT";
-			this.mnuAllQT.Size = new System.Drawing.Size(180, 24);
+			this.mnuAllQT.Size = new System.Drawing.Size(167, 24);
 			this.mnuAllQT.Tag = "ALL";
 			this.mnuAllQT.Text = "All Quotation";
 			this.mnuAllQT.Click += new System.EventHandler(this.mnuQT_Click);
 			// 
-			// mnuOutboundQT
+			// mnuSep1
 			// 
-			this.mnuOutboundQT.Name = "mnuOutboundQT";
-			this.mnuOutboundQT.Size = new System.Drawing.Size(180, 24);
-			this.mnuOutboundQT.Tag = "INTER";
-			this.mnuOutboundQT.Text = "International";
-			this.mnuOutboundQT.Click += new System.EventHandler(this.mnuQT_Click);
+			this.mnuSep1.Name = "mnuSep1";
+			this.mnuSep1.Size = new System.Drawing.Size(164, 6);
 			// 
 			// mnuInboundQT
 			// 
 			this.mnuInboundQT.Name = "mnuInboundQT";
-			this.mnuInboundQT.Size = new System.Drawing.Size(180, 24);
+			this.mnuInboundQT.Size = new System.Drawing.Size(167, 24);
 			this.mnuInboundQT.Tag = "LOCAL";
 			this.mnuInboundQT.Text = "Local";
 			this.mnuInboundQT.Click += new System.EventHandler(this.mnuQT_Click);
+			// 
+			// mnuOutboundQT
+			// 
+			this.mnuOutboundQT.Name = "mnuOutboundQT";
+			this.mnuOutboundQT.Size = new System.Drawing.Size(167, 24);
+			this.mnuOutboundQT.Tag = "INTER";
+			this.mnuOutboundQT.Text = "International";
+			this.mnuOutboundQT.Click += new System.EventHandler(this.mnuQT_Click);
+			// 
+			// mnuMasterQT
+			// 
+			this.mnuMasterQT.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.mnuMasterQT.Name = "mnuMasterQT";
+			this.mnuMasterQT.Size = new System.Drawing.Size(167, 24);
+			this.mnuMasterQT.Tag = "MASTER";
+			this.mnuMasterQT.Text = "Master";
+			this.mnuMasterQT.Click += new System.EventHandler(this.mnuQT_Click);
 			// 
 			// toolStripSeparator1
 			// 
@@ -277,19 +277,6 @@
 			this.pnlHeader.Size = new System.Drawing.Size(892, 31);
 			this.pnlHeader.TabIndex = 1;
 			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.ForeColor = System.Drawing.Color.Blue;
-			this.label1.Location = new System.Drawing.Point(2, 2);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(122, 21);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Quotation List ";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
 			// lbQTCount
 			// 
 			this.lbQTCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -302,6 +289,19 @@
 			this.lbQTCount.TabIndex = 1;
 			this.lbQTCount.Text = "found:0";
 			this.lbQTCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Dock = System.Windows.Forms.DockStyle.Left;
+			this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.ForeColor = System.Drawing.Color.Blue;
+			this.label1.Location = new System.Drawing.Point(2, 2);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(122, 21);
+			this.label1.TabIndex = 0;
+			this.label1.Text = "Quotation List ";
+			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// Quotations
 			// 

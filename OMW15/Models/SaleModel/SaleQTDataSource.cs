@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using OMControls;
 
 namespace OMW15.Models.SaleModel
 {
@@ -27,49 +26,50 @@ namespace OMW15.Models.SaleModel
 			using (var om = new OLDMOONEF1())
 			{
 				var q = (from qt in om.QUOTATIONHHs
-					join ql in om.QUOTATIONLLs on qt.QT_ID equals ql.QL_QT
-					where qt.QT_ID == QuotationId
-					select new
-					{
-						QTPrefix = qt.QT_PREFIX,
-						QTNumber = qt.QT_PREFIX + qt.QT_NUMBER + (qt.QT_REVISION > 0 ? " /R" + qt.QT_REVISION : ""),
-						QTdate = qt.QT_DATE,
-						QTExpire = qt.QT_VALIDATIONDATE,
-						Customer = qt.QT_CUSTOMER,
-						CustomerAddress = qt.QT_ADDRESS,
-						Country = qt.QT_COUNTRY,
-						ContactPerson = qt.QT_CONTACT_PERSON,
-						CustomerContactNo = qt.QT_CONTACTNO,
-						Email = qt.QT_CUST_EMAIL,
-						Saleman = qt.QT_SALE_PERSON,
-						SaleContactNo = qt.QT_SALE_CONTACTNO,
-						SaleEmail = qt.QT_SALE_EMAIL,
-						Currency = qt.QT_CURRENCY,
-						QTRemark = qt.QT_REMARK,
-						TotalItemValues = qt.QT_TOTALVALUEITEMS,
-						TotalDiscount = qt.QT_TOTALDISCOUNT,
-						ExtraDiscount = qt.QT_EXTRADISCOUNT,
-						QTNetValues = qt.QT_TOTALNETTVALUES,
-						VATRate = qt.QT_VATRATE,
-						VAT = qt.QT_VATVALUES,
-						GOODSAMT = qt.QT_TOTALGOODSAMT,
-						PackingCost = qt.QT_PACKINGVALUE,
-						ShippingCost = qt.QT_SHIPPINGVALUE,
-						QTTotalAmount = qt.QT_TOTALAMOUNT,
-						DeliveryTerm = qt.QT_DELIVERY_TERM,
-						DeliverySchedule = qt.QT_DELIVERY_TIME,
-						PaymentTerm = qt.QT_PAYMENT_TERM,
-						BankInfo = qt.QT_BANKINFO,
-						Training = qt.QT_TRAINING,
-						WarrantyTerm = qt.QT_WARRANTY,
-						ItemNo = ql.QL_ITEMNO,
-						ItemName = ql.QL_ITEMNAME,
-						ItemInfo = ql.QL_ITEMINFO,
-						Unit = ql.QL_UNIT,
-						Qty = ql.QL_QTY,
-						UnitPrice = ql.QL_UNITPRICE,
-						LineTotal = ql.QL_TOTAL
-					}).AsNoTracking().AsParallel();
+							join ql in om.QUOTATIONLLs on qt.QT_ID equals ql.QL_QT
+							where qt.QT_ID == QuotationId
+							select new
+							{
+								QTPrefix = qt.QT_PREFIX,
+								QTNumber = qt.QT_PREFIX + qt.QT_NUMBER + (qt.QT_REVISION > 0 ? " /R" + qt.QT_REVISION : ""),
+								QTdate = qt.QT_DATE,
+								QTExpire = qt.QT_VALIDATIONDATE,
+								Customer = qt.QT_CUSTOMER,
+								CustomerAddress = qt.QT_ADDRESS,
+								Country = qt.QT_COUNTRY,
+								ContactPerson = qt.QT_CONTACT_PERSON,
+								CustomerContactNo = qt.QT_CONTACTNO,
+								Email = qt.QT_CUST_EMAIL,
+								Saleman = qt.QT_SALE_PERSON,
+								SaleContactNo = qt.QT_SALE_CONTACTNO,
+								SaleEmail = qt.QT_SALE_EMAIL,
+								Currency = qt.QT_CURRENCY,
+								QTRemark = qt.QT_REMARK,
+								TotalItemValues = qt.QT_TOTALVALUEITEMS,
+								DiscountPercent = qt.QT_PERCENTDISCOUNT,
+								TotalDiscount = qt.QT_TOTALDISCOUNT,
+								ExtraDiscount = qt.QT_EXTRADISCOUNT,
+								QTNetValues = qt.QT_TOTALNETTVALUES,
+								VATRate = qt.QT_VATRATE,
+								VAT = qt.QT_VATVALUES,
+								GOODSAMT = qt.QT_TOTALGOODSAMT,
+								PackingCost = qt.QT_PACKINGVALUE,
+								ShippingCost = qt.QT_SHIPPINGVALUE,
+								QTTotalAmount = qt.QT_TOTALAMOUNT,
+								DeliveryTerm = qt.QT_DELIVERY_TERM,
+								DeliverySchedule = qt.QT_DELIVERY_TIME,
+								PaymentTerm = qt.QT_PAYMENT_TERM,
+								BankInfo = qt.QT_BANKINFO,
+								Training = qt.QT_TRAINING,
+								WarrantyTerm = qt.QT_WARRANTY,
+								ItemNo = ql.QL_ITEMNO,
+								ItemName = ql.QL_ITEMNAME,
+								ItemInfo = ql.QL_ITEMINFO,
+								Unit = ql.QL_UNIT,
+								Qty = ql.QL_QTY,
+								UnitPrice = ql.QL_UNITPRICE,
+								LineTotal = ql.QL_TOTAL
+							}).AsNoTracking().AsParallel();
 
 				if (q != null)
 					_result = q.ToDataTable();
@@ -100,9 +100,13 @@ namespace OMW15.Models.SaleModel
 			Currency = Source["CURRENCY"].ToString();
 			QTRemark = Source["QTREMARK"].ToString();
 			TotalItemValues = Convert.ToDecimal(Source["TOTALITEMVALUES"]);
+			DiscountPercent = Convert.ToDecimal(Source["DISCOUNTPERCENT"]);
 			TotalDiscount = Convert.ToDecimal(Source["TOTALDISCOUNT"]);
 			ExtraDiscount = Convert.ToDecimal(Source["EXTRADISCOUNT"]);
 			QTNetValues = Convert.ToDecimal(Source["QTNetValues"]);
+			VatRate = Convert.ToDecimal(Source["VATRate"]);
+			VATValue = Convert.ToDecimal(Source["VAT"]);
+			GoodsAmt = Convert.ToDecimal(Source["GOODSAMT"]);
 			PackingCost = Convert.ToDecimal(Source["PACKINGCOST"]);
 			ShippingCost = Convert.ToDecimal(Source["SHIPPINGCOST"]);
 			QTTotalAmount = Convert.ToDecimal(Source["QTTOTALAMOUNT"]);
@@ -119,9 +123,7 @@ namespace OMW15.Models.SaleModel
 			Qty = Convert.ToDecimal(Source["QTY"]);
 			UnitPrice = Convert.ToDecimal(Source["UNITPRICE"]);
 			LineTotal = Convert.ToDecimal(Source["LINETOTAL"]);
-			VatRate = Convert.ToDecimal(Source["VATRate"]);
-			VATValue = Convert.ToDecimal(Source["VAT"]);
-			GoodsAmt = Convert.ToDecimal(Source["GOODSAMT"]);
+
 		}
 
 		#region class properties
@@ -158,11 +160,19 @@ namespace OMW15.Models.SaleModel
 
 		public decimal TotalItemValues { get; set; }
 
+		public decimal DiscountPercent { get; set; }
+
 		public decimal TotalDiscount { get; set; }
 
 		public decimal ExtraDiscount { get; set; }
 
 		public decimal QTNetValues { get; set; }
+
+		public decimal VatRate { get; set; }
+
+		public decimal VATValue { get; set; }
+
+		public decimal GoodsAmt { get; set; }
 
 		public decimal PackingCost { get; set; }
 
@@ -196,11 +206,7 @@ namespace OMW15.Models.SaleModel
 
 		public decimal LineTotal { get; set; }
 
-		public decimal VatRate { get; set; }
 
-		public decimal VATValue { get; set; }
-
-		public decimal GoodsAmt { get; set; }
 
 		#endregion
 	}

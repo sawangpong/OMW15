@@ -152,6 +152,8 @@
 			this.btnSearchDocNo = new OMControls.OMFlatButton();
 			this.txtDINumber = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
+			this.label26 = new System.Windows.Forms.Label();
+			this.lbFormulaKey = new System.Windows.Forms.Label();
 			this.pnlBody.SuspendLayout();
 			this.pnlData.SuspendLayout();
 			this.pnlJobHeader.SuspendLayout();
@@ -1484,6 +1486,8 @@
 			// 
 			// panel21
 			// 
+			this.panel21.Controls.Add(this.lbFormulaKey);
+			this.panel21.Controls.Add(this.label26);
 			this.panel21.Controls.Add(this.btnFomula);
 			this.panel21.Controls.Add(this.txtFormulaName);
 			this.panel21.Controls.Add(this.label23);
@@ -1731,6 +1735,26 @@
 			this.label1.Text = "*เลขที่ใบขอแปร :";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
+			// label26
+			// 
+			this.label26.Dock = System.Windows.Forms.DockStyle.Left;
+			this.label26.Location = new System.Drawing.Point(444, 1);
+			this.label26.Name = "label26";
+			this.label26.Size = new System.Drawing.Size(74, 26);
+			this.label26.TabIndex = 13;
+			this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// lbFormulaKey
+			// 
+			this.lbFormulaKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.lbFormulaKey.Dock = System.Windows.Forms.DockStyle.Left;
+			this.lbFormulaKey.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbFormulaKey.Location = new System.Drawing.Point(518, 1);
+			this.lbFormulaKey.Name = "lbFormulaKey";
+			this.lbFormulaKey.Size = new System.Drawing.Size(142, 26);
+			this.lbFormulaKey.TabIndex = 14;
+			this.lbFormulaKey.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
 			// ProductionOrder
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1931,5 +1955,7 @@
 		private System.Windows.Forms.TextBox txtFormulaName;
 		private System.Windows.Forms.Label label23;
 		private OMControls.OMFlatButton btnFomula;
+		private System.Windows.Forms.Label lbFormulaKey;
+		private System.Windows.Forms.Label label26;
 	}
 }

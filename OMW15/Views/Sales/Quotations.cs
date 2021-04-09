@@ -66,8 +66,21 @@ namespace OMW15.Views.Sales
 			dgv.Columns["QT_PREFIX"].Visible = false;
 			dgv.Columns["QT_STATUS"].Visible = false;
 
-			dgv.Columns["CUSTOMER"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+			dgv.Columns["NUMBER"].HeaderText = "OFFER NO.";
+			dgv.Columns["VALIDDATE"].HeaderText = "VALID UNTIL";
+			dgv.Columns["TOTAL_PRICE"].HeaderText = "TOTAL PRICE";
+			dgv.Columns["TOTAL_DISCOUNT"].HeaderText = "DISCOUNT";
+			dgv.Columns["NET_VALUE"].HeaderText = "NET VALUE";
+			dgv.Columns["GOODSAMOUNT"].HeaderText = "TOTAL GOODS AMT";
+			dgv.Columns["TOTALAMOUNT"].HeaderText = "TOTAL AMOUNT";
+
+			dgv.Columns["SALEMAN"].HeaderText = "SALE CONTACT PERSON";
+
+
+			//dgv.Columns["CUSTOMER"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 			dgv.Columns["CURRENCY"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+			dgv.Columns["TOTAL_PRICE"].DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
+			dgv.Columns["TOTAL_DISCOUNT"].DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
 			dgv.Columns["NET_VALUE"].DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
 			dgv.Columns["VAT"].DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
 			dgv.Columns["GOODSAMOUNT"].DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
@@ -77,6 +90,7 @@ namespace OMW15.Views.Sales
 
 			dgv.ResumeLayout();
 
+			dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 			lbQTCount.Text = $"found: {dgv.Rows.Count}";
 
 			UpdateUI();

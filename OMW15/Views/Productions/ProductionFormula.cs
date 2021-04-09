@@ -44,7 +44,9 @@ namespace OMW15.Views.Productions
 
 		private void GetFormularList()
 		{
-			string filter = $"FORMULA_ID LIKE '%{txtFormulaFilter.Text}%' OR PARTNO LIKE '%{txtFormulaFilter.Text}%' OR PART_NAME LIKE '%{txtFormulaFilter.Text}%' ";
+			string filter = $"FORMULA_ID LIKE '%{txtFormulaFilter.Text}%' ";
+			
+			//OR PARTNO LIKE '%{txtFormulaFilter.Text}%' OR PART_NAME LIKE '%{txtFormulaFilter.Text}%' ";
 
 			_dtFormulaHeaderList.DefaultView.RowFilter = filter;
 
@@ -52,12 +54,12 @@ namespace OMW15.Views.Productions
 			dgvFormula.DataSource = _dtFormulaHeaderList;
 
 			dgvFormula.Columns["DI_KEY"].Visible = false;
-			dgvFormula.Columns["CREATE_DATE"].Visible = false;
-			dgvFormula.Columns["UNIT"].Visible = false;
-			dgvFormula.Columns["IC_CATE"].Visible = false;
-			dgvFormula.Columns["TRD_TO_WL"].Visible = false;
-			dgvFormula.Columns["UNIT_COST"].Visible = false;
-			dgvFormula.Columns["TOTAL_LINE_COST"].Visible = false;
+			//dgvFormula.Columns["CREATE_DATE"].Visible = false;
+			//dgvFormula.Columns["UNIT"].Visible = false;
+			//dgvFormula.Columns["IC_CATE"].Visible = false;
+			//dgvFormula.Columns["TRD_TO_WL"].Visible = false;
+			//dgvFormula.Columns["UNIT_COST"].Visible = false;
+			//dgvFormula.Columns["TOTAL_LINE_COST"].Visible = false;
 
 			dgvFormula.ResumeLayout();
 
