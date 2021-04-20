@@ -80,7 +80,7 @@ namespace OMW15.Views.Productions
 			//dgv.Columns["SKU_NAME"].HeaderText = "Part-Name";
 			//dgv.Columns["UTQ_NAME"].HeaderText = "Stock Unit";
 
-			dgv.Columns["UNIT_PRICE"].HeaderText = "Unit Price";
+			dgv.Columns["UNIT_PRICE"].HeaderText = "UNIT PRICE";
 			dgv.Columns["UNIT_PRICE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 			dgv.Columns["UNIT_PRICE"].DefaultCellStyle.Format = "N2";
 
@@ -90,12 +90,16 @@ namespace OMW15.Views.Productions
 			dgv.Columns["DEMAND_QTY"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 			dgv.Columns["DEMAND_QTY"].DefaultCellStyle.Format = "N2";
 
-			dgv.Columns["ON_HAND"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-			dgv.Columns["ON_HAND"].DefaultCellStyle.Format = "N2";
+			/*
+			dgv.Columns["BALANCE_QTY"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+			dgv.Columns["BALANCE_QTY"].DefaultCellStyle.Format = "N2";
 
 			dgv.Columns["AVAILABLE_QTY"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 			dgv.Columns["AVAILABLE_QTY"].DefaultCellStyle.Format = "N2";
 
+			dgv.Columns["ON_ORDER"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+			dgv.Columns["ON_ORDER"].DefaultCellStyle.Format = "N2";
+			*/
 
 			dgv.ResumeLayout();
 

@@ -112,9 +112,9 @@ namespace OMW15.Models.ProductionModel
 			return new DataConnect().GetDataTable($"EXEC dbo.usp_OM_ERP_FORMULA_HEADER ");
 		}
 
-		public DataTable GetProductionFormulaItemDetails(int formularId, decimal demandQty)
+		public DataTable GetProductionFormulaItemDetails(int formulaId, decimal demandQty)
 		{
-			return new DataConnect().GetDataTable($"EXEC dbo.usp_OM_ERP_BOM_REQUEST @formularid={formularId},@demandqty={demandQty} ");
+			return new DataConnect().GetDataTable($"EXEC dbo.usp_OM_ERP_BOM_REQUEST @formulaid={formulaId},@demandqty={demandQty} ");
 		}
 
 		#endregion
