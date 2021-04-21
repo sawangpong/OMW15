@@ -102,9 +102,7 @@ namespace OMW15.Views.Productions
 					txtDIInfo.Text = _di.DocumentInfo;
 					_epr_order_id = _di.ERPOrderId;
 
-					// finding formula info
-					FindFormulaInfo(_di.ERPOrderId);
-
+	
 					if (_mode == ActionMode.Add)
 					{
 						_job = new PRODUCTIONJOB();
@@ -122,6 +120,11 @@ namespace OMW15.Views.Productions
 										? ((int)ProductionJobType.Production).ToString()
 										: ((int)ProductionJobType.Project).ToString();
 						_job.ERP_DI = _epr_order_id;
+						// finding formula info
+						//FindFormulaInfo(_di.ERPOrderId);
+						_job.FORMULA_ID = 0;
+						_job.FORMULA_NUMBER = "";
+
 						_job.ERP_ORDER = _di.DocumentNo;
 						_job.ERP_ORDERINFO = _di.DocumentInfo;
 						_job.ISSUE_ID = _di.ERPOrderId;

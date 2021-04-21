@@ -1,6 +1,7 @@
 ﻿using OMW15.Models.ToolModel;
 using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace OMW15.Models.ProductionModel
 {
@@ -122,6 +123,14 @@ namespace OMW15.Models.ProductionModel
 			return new DataConnect().GetDataTable($"EXEC dbo.usp_OM_ERP_FORMULA_MAP_TO_ORDER @orderid={orderId}");
 		}
 
+		public async Task<DataTable> GetTotalProductionRequirePartsAsync()
+			=> await Task.Run(() =>
+										{
+											return new DataConnect().GetDataTable($"EXEC dbo.usp_PRODUCTION_DEMAND_PARTS");
+										});
+
+		public DataTable GetTotalProductionRequireParts()
+			=> new DataConnect().GetDataTable($"EXEC dbo.usp_PRODUCTION_DEMAND_PARTS");
 
 
 		#endregion

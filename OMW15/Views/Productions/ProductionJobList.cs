@@ -312,5 +312,13 @@ namespace OMW15.Views.Productions
 				btnLoadData.PerformClick();
 			}
 		}
+
+		private void tsbtnMatRequire_Click(object sender, EventArgs e)
+		{
+			ProductionRequireParts _demand = ProductionRequireParts.GetInstance;
+			_demand.MdiParent = this.ParentForm;
+			_demand.StartPosition = FormStartPosition.CenterScreen;
+			_demand.Show();
+		}
 	}
 }

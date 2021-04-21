@@ -1253,6 +1253,12 @@
       <DependentUpon>WorkByMonth.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Views\Productions\ProductionRequireParts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\ProductionRequireParts.Designer.cs">
+      <DependentUpon>ProductionRequireParts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Productions\ProductionSendStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2435,6 +2441,9 @@
     <EmbeddedResource Include="Views\Productions\ProductionReports\WorkByMonth.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>WorkByMonth.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\ProductionRequireParts.resx">
+      <DependentUpon>ProductionRequireParts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Productions\ProductionSendStock.resx">
       <DependentUpon>ProductionSendStock.cs</DependentUpon>

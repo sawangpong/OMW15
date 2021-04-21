@@ -273,8 +273,12 @@ namespace OMW15.Models.ProductionModel
 			s.AppendLine(" LEFT JOIN ERP.dbo.TRANSTKD AS trd ON trh.TRH_KEY = trd.TRD_TRH ");
 			s.AppendLine(" WHERE (SUBSTRING(di.DI_REF,1,4) IN ('RMFG','RMMG','RMPS'))");
 			s.AppendLine(" AND trd.TRD_SEQ = 1");
+
 			s.AppendLine(" AND di.DI_KEY NOT IN (SELECT p.ERP_DI FROM dbo.PRODUCTIONJOBS p WHERE SUBSTRING(p.ERP_ORDER,1,4) IN ('RMFG','RMMG','RMPS'))");
+			
+			// FOR WHAT ??
 			s.AppendLine(" AND di.DI_REF NOT IN (SELECT DISTINCT t.TRD_REFER_REF FROM ERP.dbo.TRANSTKD t WHERE (t.TRD_REFER_REF IS NOT NULL) AND (SUBSTRING(t.TRD_REFER_REF,1,4) IN ('RMFG','RMMG','RMPS'))) ");
+
 			s.AppendLine(" ORDER BY di.DI_REF");
 			return new DataConnect(s.ToString(), omglobal.SysConnectionString).ToDataTable;
 		}

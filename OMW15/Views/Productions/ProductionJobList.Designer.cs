@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductionJobList));
 			this.pnlHeader = new System.Windows.Forms.Panel();
 			this.lbHeader = new System.Windows.Forms.Label();
@@ -58,6 +58,8 @@
 			this.tslbCount = new System.Windows.Forms.ToolStripLabel();
 			this.tsbtnReport = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.tsbtnMatRequire = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.lbJobId = new System.Windows.Forms.Label();
 			this.pnlHeader.SuspendLayout();
@@ -264,14 +266,14 @@
 			this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgv.Location = new System.Drawing.Point(5, 44);
 			this.dgv.Name = "dgv";
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Blue;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Blue;
+			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.dgv.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
 			this.dgv.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
 			this.dgv.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -301,7 +303,9 @@
             this.toolStripSeparator5,
             this.tslbCount,
             this.tsbtnReport,
-            this.toolStripSeparator2});
+            this.toolStripSeparator2,
+            this.tsbtnMatRequire,
+            this.toolStripSeparator6});
 			this.ts.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
 			this.ts.Location = new System.Drawing.Point(5, 5);
 			this.ts.Name = "ts";
@@ -406,6 +410,22 @@
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
 			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
 			// 
+			// tsbtnMatRequire
+			// 
+			this.tsbtnMatRequire.AutoSize = false;
+			this.tsbtnMatRequire.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+			this.tsbtnMatRequire.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnMatRequire.Image")));
+			this.tsbtnMatRequire.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbtnMatRequire.Name = "tsbtnMatRequire";
+			this.tsbtnMatRequire.Size = new System.Drawing.Size(120, 36);
+			this.tsbtnMatRequire.Text = "คำนวนชิ้นส่วน";
+			this.tsbtnMatRequire.Click += new System.EventHandler(this.tsbtnMatRequire_Click);
+			// 
+			// toolStripSeparator6
+			// 
+			this.toolStripSeparator6.Name = "toolStripSeparator6";
+			this.toolStripSeparator6.Size = new System.Drawing.Size(6, 39);
+			// 
 			// panel1
 			// 
 			this.panel1.Controls.Add(this.lbJobId);
@@ -493,5 +513,7 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.TextBox txtFilter;
 		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.ToolStripButton tsbtnMatRequire;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
 	}
 }
