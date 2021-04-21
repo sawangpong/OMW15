@@ -1,11 +1,8 @@
 ﻿using OMControls;
-using OMW15.Controllers.ToolController;
 using OMW15.Models.ProductionModel;
 using OMW15.Shared;
 using OMW15.Views.Productions.ProductionReports;
 using System;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using static OMW15.Shared.OMShareProduction;
 
@@ -19,7 +16,7 @@ namespace OMW15.Views.Productions
 		{
 			get
 			{
-				if(_instance == null || _instance.IsDisposed)
+				if (_instance == null || _instance.IsDisposed)
 				{
 					_instance = new ProductionJobList();
 				}
@@ -29,17 +26,13 @@ namespace OMW15.Views.Productions
 		#endregion
 
 		#region class field member
-
-#pragma warning disable CS0169 // The field 'ProductionJobList._ctmTask' is never used
-		private ContextMenu _ctmTask;
-#pragma warning restore CS0169 // The field 'ProductionJobList._ctmTask' is never used
+		//private ContextMenu _ctmTask;
 		private OMShareProduction.SearchType _searchType = OMShareProduction.SearchType.None;
 		private int _status = (int)OMShareProduction.ProductionJobStatus.Active;
 		private int _selectedJobYear = DateTime.Today.Year;
 		private int _rowCount;
 		private int _selectedJobId;
 		private int _erp_id;
-		//private int _erp_issue_id = 0;
 		private string _selectedERP_ORDER = string.Empty;
 		private string _reportCode = string.Empty;
 		private string _filterText = string.Empty;
@@ -58,13 +51,10 @@ namespace OMW15.Views.Productions
 			tsbtnEditTask.Enabled = _selectedJobId > 0;
 			tsbtnDeleteTask.Enabled = tsbtnEditTask.Enabled;
 			tsbtnReport.Enabled = tsbtnEditTask.Enabled;
-
 			btnLoadData.Enabled = (_status > 0 && _selectedJobYear > 0);
-
 			btnUpdateAllJobs.Visible = (omglobal.PermisionId > (int)OMShareSysConfigEnums.UserPermission.Manager);
 
 		} // end UpdateUI
-
 
 		private string GetDayText(DateTime d, string ColName)
 		{
@@ -79,7 +69,6 @@ namespace OMW15.Views.Productions
 			this.cbxProductionYear.ValueMember = "JobYear";
 		}
 
-
 		private void UpdateProductionJobHours()
 		{
 			if (new ProductionDAL().UpdateProductionJobHours() == 0)
@@ -93,7 +82,7 @@ namespace OMW15.Views.Productions
 		{
 			var _myTask = new ProductionDAL();
 			//var dt = await _myTask.GetProductionJobsAsync(Status, jobYear, SearchWhat, TextFilter);
-			var dt = await _myTask.GetProductionJobsAsync(Status, jobYear,TextFilter);
+			var dt = await _myTask.GetProductionJobsAsync(Status, jobYear, TextFilter);
 
 			_rowCount = dt.Rows.Count;
 
@@ -105,6 +94,7 @@ namespace OMW15.Views.Productions
 			dgv.Columns["STATUS"].Visible = false;
 			dgv.Columns["JOBYEAR"].Visible = false;
 			dgv.Columns["DRAWINGNO"].Visible = false;
+			dgv.Columns["FORMULA_ID"].Visible = false;
 
 			dgv.Columns["ITEMNAME"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
@@ -118,23 +108,34 @@ namespace OMW15.Views.Productions
 			dgv.Columns["CLOSEDATE"].HeaderText = "วันที่เสร็จ";
 			dgv.Columns["ITEMNO"].HeaderText = "รหัสสินค้า";
 			dgv.Columns["ITEMNAME"].HeaderText = "รายละเอียดงาน";
+			dgv.Columns["FORMULA_NUMBER"].HeaderText = "สูตรการผลิต";
 			dgv.Columns["UNITORDER"].HeaderText = "หน่วยนับ";
 			dgv.Columns["QORDER"].HeaderText = "จำนวนผลิต";
+			dgv.Columns["QORDER"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 			dgv.Columns["TOTAL_HOURS"].HeaderText = "ชั่วโมงรวม";
+			dgv.Columns["TOTAL_HOURS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 			dgv.Columns["WorkHourUnit"].HeaderText = "ชั่วโมง/หน่วย";
+			dgv.Columns["WorkHourUnit"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+			dgv.Columns["WorkHourUnit"].DefaultCellStyle.Format = "N2";
 
-			foreach (DataGridViewColumn dgc in dgv.Columns)
-			{
-				if (dgc.ValueType == typeof(decimal))
-				{
-					dgc.DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
-				}
-			}
+			//foreach (DataGridViewColumn dgc in dgv.Columns)
+			//{
+			//	if (dgc.ValueType == typeof(decimal))
+			//	{
+			//		dgc.DefaultCellStyle = DataGridViewSettingStyle.NumericCellStyle();
+			//	}
+			//}
 
 			dgv.ResumeLayout();
 
 			// update Task count
 			tslbCount.Text = $"found :: {dgv.Rows.Count}";
+
+			if(_selectedJobId > 0)
+			{
+			
+			}
+
 
 		} // end GetProductionTaskList
 
@@ -143,17 +144,14 @@ namespace OMW15.Views.Productions
 		{
 			using (var _pOrder = new ProductionOrder(productionJobId, ProductionOrderNo, ERP_DI))
 			{
-				if(_pOrder.ShowDialog() == DialogResult.OK)
+				if (_pOrder.ShowDialog() == DialogResult.OK)
 				{
-					//_selectedJobYear = _pOrder.WorkYear;
-					//cbxProductionYear.SelectedValue = _selectedJobYear;
 				}
 			}
 
-			//_status = (int)ProductionJobStatus.Active;
-			//cbxStatus.SelectedValue = _status;
+			GetProductionOrderList(_status, _selectedJobYear, _searchType, txtFilter.Text);
 
-			btnLoadData.PerformClick();
+			//btnLoadData.PerformClick();
 
 		} // end GetProductionOrderList
 
@@ -183,48 +181,6 @@ namespace OMW15.Views.Productions
 
 		} // end DeleteProductionOrder
 
-		//private void CreateTaskContextMenu()
-		//{
-		//	_ctmTask = new ContextMenu();
-
-		//	var _mnu = new MenuItem("ค้นหาจากหมายเลขงาน", SearchTask);
-
-		//	_ctmTask.MenuItems.Add(_mnu);
-
-		//	_mnu = new MenuItem("ค้นหาจากรหัสสินค้า", SearchItemNo);
-		//	_ctmTask.MenuItems.Add(_mnu);
-
-		//	_mnu = new MenuItem("แสดงทุกรายการ", ReloadProductionTasks);
-		//	_ctmTask.MenuItems.Add(_mnu);
-		//}
-
-		//private void ReloadProductionTasks(object sender, EventArgs e)
-		//{
-		//	_searchType = OMShareProduction.SearchType.None;
-		//	GetProductionOrderList(_status, _selectedJobYear, _searchType, _filterText = "");
-		//}
-
-		//private void SearchTask(object sender, EventArgs e)
-		//{
-		//	_searchType = OMShareProduction.SearchType.TaskNumber;
-
-		//	// get input string filter for task name
-		//	_filterText = OMDataUtils.GetFilter<string>("หมายเลขงาน");
-
-		//	GetProductionOrderList(_status, _selectedJobYear, _searchType, _filterText.ToUpper());
-
-		//} // end CreateTaskContextMenu
-
-		//private void SearchItemNo(object sender, EventArgs e)
-		//{
-		//	_searchType = OMShareProduction.SearchType.ItemNumber;
-
-		//	// get input string filter for task name
-		//	_filterText = OMDataUtils.GetFilter<string>("รหัสสินค้า");
-
-		//	GetProductionOrderList(_status, _selectedJobYear, _searchType, _filterText = "");
-
-		//} // end SearchItemNo
 
 		private void GetStatusList()
 		{
@@ -237,11 +193,10 @@ namespace OMW15.Views.Productions
 
 		private void ShowProductionReport(int reportIndex, int yearReport, int monthReport = 0, int jobStatus = 0, string jobNo = "")
 		{
-			ProductionReportViewer _report = new ProductionReportViewer(reportIndex, yearReport, monthReport, jobStatus,_reportDisplayType, jobNo);
+			ProductionReportViewer _report = new ProductionReportViewer(reportIndex, yearReport, monthReport, jobStatus, _reportDisplayType, jobNo);
 			_report.WindowState = FormWindowState.Normal;
 			_report.StartPosition = FormStartPosition.CenterScreen;
 			_report.Show();
-
 		}
 
 		#endregion
@@ -253,25 +208,12 @@ namespace OMW15.Views.Productions
 			pnlHeader.BackColor = omglobal.OM_ORANGE_COLOR;
 
 			OMUtils.SettingDataGridView(ref dgv);
-
-		}
-
-		private void ProductionJobList_Load(object sender, EventArgs e)
-		{
 			GetStatusList();
-
-			UpdateUI();
 		}
 
-		private void tsbtnClose_Click(object sender, EventArgs e)
-		{
-			Close();
-		}
+		private void ProductionJobList_Load(object sender, EventArgs e) => UpdateUI();
 
-		private void tsbtnTask_Click(object sender, EventArgs e)
-		{
-			//GetProductionOrderList(_status, _selectedJobYear, _searchType, "");
-		}
+		private void tsbtnClose_Click(object sender, EventArgs e) => Close();
 
 		private void dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
 		{
@@ -282,7 +224,7 @@ namespace OMW15.Views.Productions
 				_erp_id = Convert.ToInt32(dgv["ERP_DI", e.RowIndex].Value);
 			}
 
-			lbJobId.Text = $" order : [{_selectedJobId}], issue : [{_erp_id}]";
+			lbJobId.Text = $" Index: [{_selectedJobId}], erp id: [{_erp_id}]";
 			UpdateUI();
 		}
 
@@ -307,39 +249,31 @@ namespace OMW15.Views.Productions
 			}
 		}
 
-		private void dgv_DoubleClick(object sender, EventArgs e)
-		{
-			tsbtnEditTask.PerformClick();
-		}
+					
+		private void dgv_DoubleClick(object sender, EventArgs e) 
+			=> GetProductionOrder(_selectedJobId, _selectedERP_ORDER, _erp_id);
 
-		private void dgv_MouseClick(object sender, MouseEventArgs e)
-		{
-			//if (e.Button == MouseButtons.Right)
-			//{
-			//	CreateTaskContextMenu();
-			//	_ctmTask.Show(dgv, new Point(e.X, e.Y));
-			//}
-		}
+		//tsbtnEditTask.PerformClick();
 
 		private void cbxStatus_SelectedValueChanged(object sender, EventArgs e)
 		{
 			try
 			{
-				_status = Convert.ToInt32(cbxStatus.SelectedValue);
-				GetProductionYear(_status);
+				_status = (int)cbxStatus.SelectedValue;
 			}
 			catch
 			{
 				_status = (int)OMShareProduction.ProductionJobStatus.Active;
 			}
 
+			if (_status != (int)OMShareProduction.ProductionJobStatus.None)
+			{
+				GetProductionYear(_status);
+			}
 			UpdateUI();
 		}
 
-		private void btnClose_Click(object sender, EventArgs e)
-		{
-			Close();
-		}
+		private void btnClose_Click(object sender, EventArgs e) => Close();
 
 		private void cbxProductionYear_SelectedValueChanged(object sender, EventArgs e)
 		{
@@ -362,23 +296,18 @@ namespace OMW15.Views.Productions
 		private void btnLoadData_Click(object sender, EventArgs e)
 		{
 			_filterText = txtFilter.Text;
-
 			GetProductionOrderList(_status, _selectedJobYear, _searchType, _filterText);
 		}
 
-		private void btnUpdateAllJobs_Click(object sender, EventArgs e)
-		{
-			UpdateProductionJobHours();
-		}
+		private void btnUpdateAllJobs_Click(object sender, EventArgs e) => UpdateProductionJobHours();
 
 		private void tsbtnReport_Click(object sender, EventArgs e)
-		{
-			ShowProductionReport(3, _selectedJobYear, 0, _status, _selectedERP_ORDER);
-		}
+			=> ShowProductionReport(3, _selectedJobYear, 0, _status, _selectedERP_ORDER);
+
 
 		private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			if(e.KeyChar == (char)Keys.Enter)
+			if (e.KeyChar == (char)Keys.Enter)
 			{
 				btnLoadData.PerformClick();
 			}

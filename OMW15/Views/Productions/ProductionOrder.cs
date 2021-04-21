@@ -74,6 +74,19 @@ namespace OMW15.Views.Productions
 			UpdateUI();
 		}
 
+		private void FindFormulaInfo(int erpOrderId)
+		{
+			DataTable _formulaDt = new BOMDal().GetFormulaHeaderInfo(erpOrderId);
+
+			foreach(DataRow dr in _formulaDt.Rows)
+			{
+				txtFormulaName.Text = dr["FORMULA_NO"].ToString();
+				txtFormulaName.Tag = $"{dr["TRD_B_GROUP"].ToString()}";
+				lbFormulaKey.Text = $"{dr["TRD_B_GROUP"].ToString()}";
+			}
+		}
+
+
 		private void btnSearchDocNo_Click(object sender, EventArgs e)
 		{
 			using (var _di = new ERPPDList())
@@ -87,7 +100,10 @@ namespace OMW15.Views.Productions
 					txtDINumber.Text = _productionOrderNo = _di.DocumentNo;
 					txtDIDate.Text = _di.DocumentDate.ToShortDateString();
 					txtDIInfo.Text = _di.DocumentInfo;
-					_epr_order_id = _di.IssueId;
+					_epr_order_id = _di.ERPOrderId;
+
+					// finding formula info
+					FindFormulaInfo(_di.ERPOrderId);
 
 					if (_mode == ActionMode.Add)
 					{
@@ -108,7 +124,7 @@ namespace OMW15.Views.Productions
 						_job.ERP_DI = _epr_order_id;
 						_job.ERP_ORDER = _di.DocumentNo;
 						_job.ERP_ORDERINFO = _di.DocumentInfo;
-						_job.ISSUE_ID = _di.IssueId;
+						_job.ISSUE_ID = _di.ERPOrderId;
 						_job.ERP_ISSUE = "";
 						_job.ITEMNAME = _di.PartName;
 						_job.ITEMNO = _di.PartNo;
@@ -309,9 +325,18 @@ namespace OMW15.Views.Productions
 			txtQty.Text = $"{(_job == null ? 0.00m : _job.QORDER):N2}";
 			txtUnit.Text = _job == null ? "" : _job.UNITORDER;
 
-			txtFormulaName.Text = _job.FORMULA_NUMBER;
-			txtFormulaName.Tag = _job.FORMULA_ID;
-			lbFormulaKey.Text = $"{_job.FORMULA_ID}";
+			if (_job.FORMULA_ID == 0)
+			{
+				FindFormulaInfo(_job.ERP_DI);
+				_job.FORMULA_NUMBER = txtFormulaName.Text;
+				_job.FORMULA_ID = Convert.ToInt32(lbFormulaKey.Text);
+			}
+			else
+			{
+				txtFormulaName.Text = _job.FORMULA_NUMBER;
+				txtFormulaName.Tag = _job.FORMULA_ID;
+				lbFormulaKey.Text = $"{_job.FORMULA_ID}";
+			}
 
 			//txtERP_ISSUE.Text = String.IsNullOrEmpty(_job.ERP_ISSUE) ? "" : _job.ERP_ISSUE;
 

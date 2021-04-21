@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductionJobList));
 			this.pnlHeader = new System.Windows.Forms.Panel();
 			this.lbHeader = new System.Windows.Forms.Label();
@@ -264,14 +264,14 @@
 			this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgv.Location = new System.Drawing.Point(5, 44);
 			this.dgv.Name = "dgv";
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Blue;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Blue;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgv.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
 			this.dgv.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
 			this.dgv.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -279,12 +279,11 @@
 			this.dgv.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Blue;
 			this.dgv.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
 			this.dgv.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dgv.Size = new System.Drawing.Size(966, 406);
+			this.dgv.Size = new System.Drawing.Size(966, 416);
 			this.dgv.TabIndex = 6;
 			this.dgv.VirtualMode = true;
 			this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEnter);
 			this.dgv.DoubleClick += new System.EventHandler(this.dgv_DoubleClick);
-			this.dgv.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgv_MouseClick);
 			// 
 			// ts
 			// 
@@ -320,7 +319,6 @@
 			this.tsbtnTask.Name = "tsbtnTask";
 			this.tsbtnTask.Size = new System.Drawing.Size(135, 39);
 			this.tsbtnTask.Text = "รายการใบขอแปร";
-			this.tsbtnTask.Click += new System.EventHandler(this.tsbtnTask_Click);
 			// 
 			// toolStripSeparator1
 			// 
@@ -414,20 +412,21 @@
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.panel1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.panel1.ForeColor = System.Drawing.Color.DimGray;
-			this.panel1.Location = new System.Drawing.Point(5, 450);
+			this.panel1.Location = new System.Drawing.Point(5, 460);
 			this.panel1.Name = "panel1";
 			this.panel1.Padding = new System.Windows.Forms.Padding(2);
-			this.panel1.Size = new System.Drawing.Size(966, 30);
+			this.panel1.Size = new System.Drawing.Size(966, 20);
 			this.panel1.TabIndex = 3;
 			// 
 			// lbJobId
 			// 
+			this.lbJobId.AutoSize = true;
 			this.lbJobId.Dock = System.Windows.Forms.DockStyle.Left;
 			this.lbJobId.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbJobId.ForeColor = System.Drawing.Color.DimGray;
 			this.lbJobId.Location = new System.Drawing.Point(2, 2);
 			this.lbJobId.Name = "lbJobId";
-			this.lbJobId.Size = new System.Drawing.Size(185, 26);
+			this.lbJobId.Size = new System.Drawing.Size(26, 13);
 			this.lbJobId.TabIndex = 0;
 			this.lbJobId.Text = "id:0";
 			this.lbJobId.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -457,6 +456,7 @@
 			this.ts.ResumeLayout(false);
 			this.ts.PerformLayout();
 			this.panel1.ResumeLayout(false);
+			this.panel1.PerformLayout();
 			this.ResumeLayout(false);
 
 		}

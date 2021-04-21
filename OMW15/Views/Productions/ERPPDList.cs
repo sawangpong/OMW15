@@ -30,7 +30,7 @@ namespace OMW15.Views.Productions
 
 		public DateTime DocumentDate { get; set; }
 
-		public int IssueId { get; set; }
+		public int ERPOrderId { get; set; }
 
 		public string DocumentInfo { get; set; }
 		public decimal Qty { get; set; }
@@ -68,7 +68,7 @@ namespace OMW15.Views.Productions
 				case ProductionJobType.Production:
 					this.DocumentNo = dgv["DI_REF", e.RowIndex].Value.ToString();
 					this.DocumentDate = Convert.ToDateTime(dgv["REQ_DATE", e.RowIndex].Value);
-					this.IssueId = Convert.ToInt32(dgv["DI_KEY", e.RowIndex].Value);
+					this.ERPOrderId = Convert.ToInt32(dgv["DI_KEY", e.RowIndex].Value);
 					this.DocumentInfo = dgv["REMARK", e.RowIndex].Value.ToString();
 					this.Qty = Convert.ToDecimal(dgv["Qty", e.RowIndex].Value.ToString());
 					this.PartNo = dgv["PARTNO", e.RowIndex].Value.ToString();
@@ -80,7 +80,7 @@ namespace OMW15.Views.Productions
 				case ProductionJobType.Project:
 					this.DocumentNo = dgv["PRJ_CODE", e.RowIndex].Value.ToString();
 					this.DocumentDate = Convert.ToDateTime(dgv["PRJ_FM_DATE", e.RowIndex].Value);
-					this.IssueId = Convert.ToInt32(dgv["PRJ_KEY", e.RowIndex].Value);
+					this.ERPOrderId = Convert.ToInt32(dgv["PRJ_KEY", e.RowIndex].Value);
 					this.DocumentInfo = $"{dgv["PRJ_NAME", e.RowIndex].Value.ToString()}\n{dgv["PRJ_REMARK", e.RowIndex].Value.ToString()}";
 					this.JobType = _jobType;
 					break;
@@ -99,7 +99,7 @@ namespace OMW15.Views.Productions
 
 		private void UpdateUI()
 		{
-			btnSelect.Enabled = (IssueId > 0);
+			btnSelect.Enabled = (ERPOrderId > 0);
 			txtRequestFilter.Text = (this.dgv.Rows.Count == 0) ? "" : txtRequestFilter.Text;
 			txtRequestFilter.Enabled = (this.dgv.Rows.Count > 0);
 			btnSearchRequest.Enabled = !String.IsNullOrEmpty(txtRequestFilter.Text);

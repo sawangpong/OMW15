@@ -936,7 +936,6 @@ namespace OMW15.Models.ProductionModel
 			return new DataConnect($"EXEC dbo.usp_OM_WH_RECEIVE_ITEM @itemno='{itemno}',@docfilter='{docNo}'", omglobal.SysConnectionString).ToDataTable;
 		}
 
-
 		public IssueRequestHeader FindIssueHeader(string productionJobNo)
 		{
 			IssueRequestHeader _result;

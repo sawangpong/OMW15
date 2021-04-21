@@ -132,6 +132,8 @@
 			this.btnSave = new System.Windows.Forms.Button();
 			this.pnlJobHInfo = new System.Windows.Forms.Panel();
 			this.panel21 = new System.Windows.Forms.Panel();
+			this.lbFormulaKey = new System.Windows.Forms.Label();
+			this.label26 = new System.Windows.Forms.Label();
 			this.btnFomula = new OMControls.OMFlatButton();
 			this.txtFormulaName = new System.Windows.Forms.TextBox();
 			this.label23 = new System.Windows.Forms.Label();
@@ -152,8 +154,6 @@
 			this.btnSearchDocNo = new OMControls.OMFlatButton();
 			this.txtDINumber = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.label26 = new System.Windows.Forms.Label();
-			this.lbFormulaKey = new System.Windows.Forms.Label();
 			this.pnlBody.SuspendLayout();
 			this.pnlData.SuspendLayout();
 			this.pnlJobHeader.SuspendLayout();
@@ -1499,6 +1499,26 @@
 			this.panel21.Size = new System.Drawing.Size(1053, 28);
 			this.panel21.TabIndex = 22;
 			// 
+			// lbFormulaKey
+			// 
+			this.lbFormulaKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.lbFormulaKey.Dock = System.Windows.Forms.DockStyle.Left;
+			this.lbFormulaKey.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbFormulaKey.Location = new System.Drawing.Point(518, 1);
+			this.lbFormulaKey.Name = "lbFormulaKey";
+			this.lbFormulaKey.Size = new System.Drawing.Size(142, 26);
+			this.lbFormulaKey.TabIndex = 14;
+			this.lbFormulaKey.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// label26
+			// 
+			this.label26.Dock = System.Windows.Forms.DockStyle.Left;
+			this.label26.Location = new System.Drawing.Point(444, 1);
+			this.label26.Name = "label26";
+			this.label26.Size = new System.Drawing.Size(74, 26);
+			this.label26.TabIndex = 13;
+			this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
 			// btnFomula
 			// 
 			this.btnFomula.Dock = System.Windows.Forms.DockStyle.Left;
@@ -1512,16 +1532,19 @@
 			this.btnFomula.Size = new System.Drawing.Size(26, 26);
 			this.btnFomula.TabIndex = 11;
 			this.btnFomula.UseVisualStyleBackColor = true;
+			this.btnFomula.Visible = false;
 			this.btnFomula.Click += new System.EventHandler(this.btnFomula_Click);
 			// 
 			// txtFormulaName
 			// 
 			this.txtFormulaName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.txtFormulaName.Dock = System.Windows.Forms.DockStyle.Left;
+			this.txtFormulaName.Enabled = false;
 			this.txtFormulaName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtFormulaName.Location = new System.Drawing.Point(146, 1);
 			this.txtFormulaName.MaxLength = 30;
 			this.txtFormulaName.Name = "txtFormulaName";
+			this.txtFormulaName.ReadOnly = true;
 			this.txtFormulaName.Size = new System.Drawing.Size(272, 25);
 			this.txtFormulaName.TabIndex = 5;
 			// 
@@ -1734,26 +1757,6 @@
 			this.label1.TabIndex = 3;
 			this.label1.Text = "*เลขที่ใบขอแปร :";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// label26
-			// 
-			this.label26.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label26.Location = new System.Drawing.Point(444, 1);
-			this.label26.Name = "label26";
-			this.label26.Size = new System.Drawing.Size(74, 26);
-			this.label26.TabIndex = 13;
-			this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// lbFormulaKey
-			// 
-			this.lbFormulaKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.lbFormulaKey.Dock = System.Windows.Forms.DockStyle.Left;
-			this.lbFormulaKey.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbFormulaKey.Location = new System.Drawing.Point(518, 1);
-			this.lbFormulaKey.Name = "lbFormulaKey";
-			this.lbFormulaKey.Size = new System.Drawing.Size(142, 26);
-			this.lbFormulaKey.TabIndex = 14;
-			this.lbFormulaKey.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// ProductionOrder
 			// 

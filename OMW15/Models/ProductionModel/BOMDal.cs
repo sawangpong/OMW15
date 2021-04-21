@@ -117,6 +117,13 @@ namespace OMW15.Models.ProductionModel
 			return new DataConnect().GetDataTable($"EXEC dbo.usp_OM_ERP_BOM_REQUEST @formulaid={formulaId},@demandqty={demandQty} ");
 		}
 
+		public DataTable GetFormulaHeaderInfo(int orderId)
+		{
+			return new DataConnect().GetDataTable($"EXEC dbo.usp_OM_ERP_FORMULA_MAP_TO_ORDER @orderid={orderId}");
+		}
+
+
+
 		#endregion
 
 	}
