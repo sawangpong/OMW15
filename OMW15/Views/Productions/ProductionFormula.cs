@@ -37,6 +37,7 @@ namespace OMW15.Views.Productions
 		#region field
 		private DataTable _dtFormulaHeaderList;
 		private int _selectedFormulaId = 0;
+		private string _formulaPartNo = string.Empty;	
 
 		#endregion
 
@@ -44,31 +45,24 @@ namespace OMW15.Views.Productions
 
 		private void GetFormularList()
 		{
-			string filter = $"FORMULA_ID LIKE '%{txtFormulaFilter.Text}%' ";
-			
-			//OR PARTNO LIKE '%{txtFormulaFilter.Text}%' OR PART_NAME LIKE '%{txtFormulaFilter.Text}%' ";
-
+			string filter = $"FORMULA_NO LIKE '%{txtFormulaFilter.Text}%' ";
 			_dtFormulaHeaderList.DefaultView.RowFilter = filter;
 
 			dgvFormula.SuspendLayout();
 			dgvFormula.DataSource = _dtFormulaHeaderList;
 
-			dgvFormula.Columns["DI_KEY"].Visible = false;
-			//dgvFormula.Columns["CREATE_DATE"].Visible = false;
-			//dgvFormula.Columns["UNIT"].Visible = false;
-			//dgvFormula.Columns["IC_CATE"].Visible = false;
-			//dgvFormula.Columns["TRD_TO_WL"].Visible = false;
-			//dgvFormula.Columns["UNIT_COST"].Visible = false;
-			//dgvFormula.Columns["TOTAL_LINE_COST"].Visible = false;
+			dgvFormula.Columns["FORMULA_ID"].Visible = false;
+			dgvFormula.Columns["CREATE_DATE"].Visible = false;
+			//dgvFormula.Columns["REMARK"].Visible = false;
 
 			dgvFormula.ResumeLayout();
 
 		}
 
-		private void GetBOMItems(int formulaId, decimal rqQty = 0m)
+		private void GetBOMItems(int formulaId, string itemno ,decimal rqQty = 0m)
 		{
 			dgv.SuspendLayout();
-			dgv.DataSource = new BOMDal().GetProductionFormulaItemDetails(formulaId, rqQty);
+			dgv.DataSource = new BOMDal().GetProductionFormulaItemDetails(formulaId,itemno, rqQty);
 
 			dgv.Columns["DI_KEY"].Visible = false;
 			dgv.Columns["TRH_KEY"].Visible = false;
@@ -127,15 +121,15 @@ namespace OMW15.Views.Productions
 			this.Close();
 		}
 
-		private void btnMinWindow_Click(object sender, EventArgs e)
-		{
-			this.WindowState = FormWindowState.Minimized;
-		}
+		//private void btnMinWindow_Click(object sender, EventArgs e)
+		//{
+		//	this.WindowState = FormWindowState.Minimized;
+		//}
 
-		private void btnMaxWindow_Click(object sender, EventArgs e)
-		{
-			this.WindowState = (this.WindowState == FormWindowState.Normal ? FormWindowState.Maximized : FormWindowState.Normal);
-		}
+		//private void btnMaxWindow_Click(object sender, EventArgs e)
+		//{
+		//	this.WindowState = (this.WindowState == FormWindowState.Normal ? FormWindowState.Maximized : FormWindowState.Normal);
+		//}
 
 		private void panel1_MouseDown(object sender, MouseEventArgs e)
 		{
@@ -158,15 +152,16 @@ namespace OMW15.Views.Productions
 
 		private void dgvFormular_CellEnter(object sender, DataGridViewCellEventArgs e)
 		{
-			_selectedFormulaId = Convert.ToInt32(dgvFormula["DI_KEY", e.RowIndex].Value.ToString());
-			lbFormulaTitle.Text = $"{dgvFormula["FORMULA_ID", e.RowIndex].Value.ToString()} #({_selectedFormulaId})";
+			_selectedFormulaId = Convert.ToInt32(dgvFormula["FORMULA_ID", e.RowIndex].Value.ToString());
+			_formulaPartNo = dgvFormula["PART-NO", e.RowIndex].Value.ToString();
+			lbFormulaTitle.Text = $"{dgvFormula["FORMULA_NO", e.RowIndex].Value.ToString()} #({_selectedFormulaId})";
 		}
 
 		private void txtProductionQty_KeyPress(object sender, KeyPressEventArgs e)
 		{
 			if (e.KeyChar == (char)Keys.Enter)
 			{
-				GetBOMItems(_selectedFormulaId, Convert.ToDecimal(txtProductionQty.Text));
+				GetBOMItems(_selectedFormulaId,_formulaPartNo, Convert.ToDecimal(txtProductionQty.Text));
 			}
 		}
 
@@ -177,7 +172,7 @@ namespace OMW15.Views.Productions
 
 		private void btnCalBOM_Click(object sender, EventArgs e)
 		{
-			GetBOMItems(_selectedFormulaId, Convert.ToDecimal(txtProductionQty.Text));
+			GetBOMItems(_selectedFormulaId,_formulaPartNo, Convert.ToDecimal(txtProductionQty.Text));
 		}
 	}
 }

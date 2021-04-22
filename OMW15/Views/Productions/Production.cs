@@ -137,6 +137,7 @@ namespace OMW15.Views.Productions
 		private void mnuBOM_Click(object sender, EventArgs e)
 		{
 			ProductionFormula bom = ProductionFormula.GetInstance;
+			bom.MdiParent = this;
 			bom.StartPosition = FormStartPosition.CenterScreen;
 			bom.Show();
 		}

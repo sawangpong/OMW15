@@ -120,8 +120,7 @@ namespace OMW15.Views.Productions
 										? ((int)ProductionJobType.Production).ToString()
 										: ((int)ProductionJobType.Project).ToString();
 						_job.ERP_DI = _epr_order_id;
-						// finding formula info
-						//FindFormulaInfo(_di.ERPOrderId);
+	
 						_job.FORMULA_ID = 0;
 						_job.FORMULA_NUMBER = "";
 

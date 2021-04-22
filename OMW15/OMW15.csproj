@@ -28,13 +28,13 @@
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>\\om-srv-app\SmartWork17\</UpdateUrl>
     <SupportUrl>\\om-srv-app\SmartWork17\</SupportUrl>
-    <ProductName>SmartWorks17 %28LAN%29 - 2021-04-21</ProductName>
+    <ProductName>SmartWorks17 %28LAN%29 - 2021-04-22</ProductName>
     <PublisherName>OMW2017</PublisherName>
     <SuiteName>Old Moon Suite</SuiteName>
     <MinimumRequiredVersion>4.0.0.0</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>4.4.2.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
