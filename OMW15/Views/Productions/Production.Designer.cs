@@ -84,6 +84,8 @@
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbtnProduction2Plan = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
+			this.mnuCalParts = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnu.SuspendLayout();
 			this.ts.SuspendLayout();
 			this.SuspendLayout();
@@ -261,6 +263,8 @@
             this.mnuProductionProcess,
             this.mnuMachineGroup,
             this.toolStripMenuItem3,
+            this.mnuCalParts,
+            this.toolStripMenuItem8,
             this.mnuProductionMembers,
             this.mnuCheckWorkTime,
             this.mnuProductionMissReport,
@@ -568,6 +572,18 @@
 			this.toolStripSeparator8.Name = "toolStripSeparator8";
 			this.toolStripSeparator8.Size = new System.Drawing.Size(6, 45);
 			// 
+			// toolStripMenuItem8
+			// 
+			this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+			this.toolStripMenuItem8.Size = new System.Drawing.Size(287, 6);
+			// 
+			// mnuCalParts
+			// 
+			this.mnuCalParts.Name = "mnuCalParts";
+			this.mnuCalParts.Size = new System.Drawing.Size(290, 22);
+			this.mnuCalParts.Text = "คำนวนรายการชิ้นส่วน";
+			this.mnuCalParts.Click += new System.EventHandler(this.mnuCalParts_Click);
+			// 
 			// Production
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -650,5 +666,7 @@
 		private System.Windows.Forms.ToolStripButton toolStripButton1;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
 		private System.Windows.Forms.ToolStripMenuItem mnuMachineGroup;
+		private System.Windows.Forms.ToolStripMenuItem mnuCalParts;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
 	}
 }

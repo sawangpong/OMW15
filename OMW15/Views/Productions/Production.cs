@@ -282,5 +282,13 @@ namespace OMW15.Views.Productions
 			productionMachineGroup.MdiParent = this;
 			productionMachineGroup.Show();
 		}
+
+		private void mnuCalParts_Click(object sender, EventArgs e)
+		{
+			ProductionRequireParts _partRQ = ProductionRequireParts.GetInstance;
+			_partRQ.MdiParent = this;
+			_partRQ.StartPosition = FormStartPosition.CenterScreen;
+			_partRQ.Show();
+		}
 	}
 }

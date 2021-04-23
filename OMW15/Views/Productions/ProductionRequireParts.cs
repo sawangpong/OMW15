@@ -32,9 +32,17 @@ namespace OMW15.Views.Productions
 
 		private async void getProductionPartDemandAsync()
 		{
+			DataTable _dt = await new BOMDal().GetTotalProductionRequirePartsAsync();
+			tslbCount.Text = $"found:{_dt.Rows.Count}";
+
 			dgv.SuspendLayout();
-			dgv.DataSource = await new BOMDal().GetTotalProductionRequirePartsAsync();
-			dgv.DataSource = new BOMDal().GetTotalProductionRequireParts();
+			dgv.Invoke(new MethodInvoker(() => dgv.DataSource = _dt));
+
+			// dgv.LoadData(omglobal.SysConnectionString, $"EXEC dbo.usp_PRODUCTION_DEMAND_PARTS", false);
+
+
+			//dgv.DataSource = _dt;
+			//dgv.DataSource = new BOMDal().GetTotalProductionRequireParts();
 
 			dgv.Columns["PART_ID"].Visible = false;
 
@@ -74,43 +82,59 @@ namespace OMW15.Views.Productions
 
 		private void getProductionPartDemand()
 		{
+			//DataTable _dt = new BOMDal().GetTotalProductionRequireParts();
+			//dgv.Invoke(new MethodInvoker(() => dgv.DataSource = _dt));
+
+			dgv.VirtualMode = true;
+			dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
 			dgv.SuspendLayout();
-			dgv.DataSource = new BOMDal().GetTotalProductionRequireParts();
+			dgv.LoadData(omglobal.SysConnectionString, $"EXEC dbo.usp_PRODUCTION_DEMAND_PARTS", false);
+
+			dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+			dgv.ResumeLayout(false);
+
+			
+
+			//dgv.ResumeLayout();
+
+
+		}
+
+		private void SettingColumnsStyle()
+		{
+			//dgv.Columns
 
 			dgv.Columns["PART_ID"].Visible = false;
 
 			dgv.Columns["ON_HAND"].HeaderText = "จำนวนคงคลัง";
-			dgv.Columns["ON_HAND"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-			dgv.Columns["ON_HAND"].DefaultCellStyle.Format = "N2";
-			dgv.Columns["ON_HAND"].DefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Bold);
-			dgv.Columns["ON_HAND"].DefaultCellStyle.ForeColor = Color.DarkBlue;
-
-			dgv.Columns["TOTAL_DEMAND"].HeaderText = "จำนวนที่ต้องการทั้งหมด";
-			dgv.Columns["TOTAL_DEMAND"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-			dgv.Columns["TOTAL_DEMAND"].DefaultCellStyle.Format = "N2";
-			dgv.Columns["TOTAL_DEMAND"].DefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Bold);
+			//dgv.Columns["ON_HAND"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+			//dgv.Columns["ON_HAND"].DefaultCellStyle.Format = "N2";
+			//dgv.Columns["ON_HAND"].DefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Bold);
+			//dgv.Columns["ON_HAND"].DefaultCellStyle.ForeColor = Color.DarkBlue;
+			//dgv.Columns["TOTAL_DEMAND"].HeaderText = "จำนวนที่ต้องการทั้งหมด";
+			//dgv.Columns["TOTAL_DEMAND"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+			//dgv.Columns["TOTAL_DEMAND"].DefaultCellStyle.Format = "N2";
+			//dgv.Columns["TOTAL_DEMAND"].DefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Bold);
 
 			dgv.Columns["AVAILABLE"].HeaderText = "จำนวนที่ใช้ได้";
-			dgv.Columns["AVAILABLE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-			dgv.Columns["AVAILABLE"].DefaultCellStyle.Format = "N2";
-			dgv.Columns["AVAILABLE"].DefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Bold);
-			dgv.Columns["AVAILABLE"].DefaultCellStyle.ForeColor = Color.Red;
+			//dgv.Columns["AVAILABLE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+			//dgv.Columns["AVAILABLE"].DefaultCellStyle.Format = "N2";
+			//dgv.Columns["AVAILABLE"].DefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Bold);
+			//dgv.Columns["AVAILABLE"].DefaultCellStyle.ForeColor = Color.Red;
 
 			dgv.Columns["ON_PRODUCE"].HeaderText = "จำนวนระหว่างผลิต";
-			dgv.Columns["ON_PRODUCE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-			dgv.Columns["ON_PRODUCE"].DefaultCellStyle.Format = "N2";
-			dgv.Columns["ON_PRODUCE"].DefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Bold);
-			dgv.Columns["ON_PRODUCE"].DefaultCellStyle.ForeColor = SystemColors.ControlDarkDark;
+			//dgv.Columns["ON_PRODUCE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+			//dgv.Columns["ON_PRODUCE"].DefaultCellStyle.Format = "N2";
+			//dgv.Columns["ON_PRODUCE"].DefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Bold);
+			//dgv.Columns["ON_PRODUCE"].DefaultCellStyle.ForeColor = SystemColors.ControlDarkDark;
 
 			dgv.Columns["ON_PO"].HeaderText = "จำนวนที่สั่งซื้อ";
-			dgv.Columns["ON_PO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-			dgv.Columns["ON_PO"].DefaultCellStyle.Format = "N2";
-			dgv.Columns["ON_PO"].DefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Bold);
-			dgv.Columns["ON_PO"].DefaultCellStyle.ForeColor = SystemColors.ActiveCaption;
+			//dgv.Columns["ON_PO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+			//dgv.Columns["ON_PO"].DefaultCellStyle.Format = "N2";
+			//dgv.Columns["ON_PO"].DefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Bold);
+			//dgv.Columns["ON_PO"].DefaultCellStyle.ForeColor = SystemColors.ActiveCaption;
 
-			dgv.Columns["PART NAME"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-			dgv.ResumeLayout();
+			//dgv.Columns["PART NAME"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 		}
 
 
@@ -121,8 +145,10 @@ namespace OMW15.Views.Productions
 		public ProductionRequireParts()
 		{
 			InitializeComponent();
-			OMUtils.SettingDataGridView(ref dgv);
-
+			OMUtils.SettingProgressDataGridView(ref dgv);
+			dgv.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing;
+			dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+			 
 		}
 
 		private void tsbtnClose_Click(object sender, EventArgs e)
@@ -132,7 +158,21 @@ namespace OMW15.Views.Productions
 
 		private void ProductionRequireParts_Load(object sender, EventArgs e)
 		{
-			getProductionPartDemandAsync();
+			//getProductionPartDemandAsync();
+		}
+
+		private void tsbtnCalParts_Click(object sender, EventArgs e)
+		{
+			tslbCount.Text = $"found:0";
+			getProductionPartDemand();
+			tslbCount.Text = $"found:{dgv.Rows.Count}";
+
+			//SettingColumnsStyle();
+		}
+
+		private void toolStripButton1_Click(object sender, EventArgs e)
+		{
+			SettingColumnsStyle();
 		}
 	}
 }

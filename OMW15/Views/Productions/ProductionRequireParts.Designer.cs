@@ -28,15 +28,22 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductionRequireParts));
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.lbTitle = new System.Windows.Forms.Label();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.panelBody = new System.Windows.Forms.Panel();
-			this.dgv = new System.Windows.Forms.DataGridView();
+			this.dgv = new OMControls.Controls.ProgressDataGridView();
 			this.panelCommand = new System.Windows.Forms.Panel();
 			this.ts = new System.Windows.Forms.ToolStrip();
 			this.tsbtnClose = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.tslbCount = new System.Windows.Forms.ToolStripLabel();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+			this.tsbtnCalParts = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.panel1.SuspendLayout();
 			this.panelBody.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -87,7 +94,6 @@
 			// 
 			// dgv
 			// 
-			this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgv.Location = new System.Drawing.Point(3, 39);
 			this.dgv.Name = "dgv";
@@ -109,7 +115,13 @@
 			this.ts.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
 			this.ts.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbtnClose,
-            this.toolStripSeparator1});
+            this.toolStripSeparator1,
+            this.tslbCount,
+            this.toolStripSeparator2,
+            this.tsbtnCalParts,
+            this.toolStripSeparator3,
+            this.toolStripButton1,
+            this.toolStripSeparator4});
 			this.ts.Location = new System.Drawing.Point(0, 0);
 			this.ts.Name = "ts";
 			this.ts.Size = new System.Drawing.Size(927, 34);
@@ -131,6 +143,48 @@
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
 			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 34);
 			// 
+			// tslbCount
+			// 
+			this.tslbCount.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+			this.tslbCount.Name = "tslbCount";
+			this.tslbCount.Size = new System.Drawing.Size(51, 31);
+			this.tslbCount.Text = "found: 0";
+			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 34);
+			// 
+			// tsbtnCalParts
+			// 
+			this.tsbtnCalParts.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+			this.tsbtnCalParts.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnCalParts.Image")));
+			this.tsbtnCalParts.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbtnCalParts.Name = "tsbtnCalParts";
+			this.tsbtnCalParts.Size = new System.Drawing.Size(89, 31);
+			this.tsbtnCalParts.Text = "Calculate parts";
+			this.tsbtnCalParts.Click += new System.EventHandler(this.tsbtnCalParts_Click);
+			// 
+			// toolStripSeparator3
+			// 
+			this.toolStripSeparator3.Name = "toolStripSeparator3";
+			this.toolStripSeparator3.Size = new System.Drawing.Size(6, 34);
+			// 
+			// toolStripButton1
+			// 
+			this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+			this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton1.Name = "toolStripButton1";
+			this.toolStripButton1.Size = new System.Drawing.Size(23, 31);
+			this.toolStripButton1.Text = "toolStripButton1";
+			this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+			// 
+			// toolStripSeparator4
+			// 
+			this.toolStripSeparator4.Name = "toolStripSeparator4";
+			this.toolStripSeparator4.Size = new System.Drawing.Size(6, 34);
+			// 
 			// ProductionRequireParts
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -139,6 +193,7 @@
 			this.Controls.Add(this.panelBody);
 			this.Controls.Add(this.statusStrip1);
 			this.Controls.Add(this.panel1);
+			this.DoubleBuffered = true;
 			this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.Name = "ProductionRequireParts";
@@ -161,10 +216,16 @@
 		private System.Windows.Forms.Label lbTitle;
 		private System.Windows.Forms.StatusStrip statusStrip1;
 		private System.Windows.Forms.Panel panelBody;
-		private System.Windows.Forms.DataGridView dgv;
+		private OMControls.Controls.ProgressDataGridView dgv;
 		private System.Windows.Forms.Panel panelCommand;
 		private System.Windows.Forms.ToolStrip ts;
 		private System.Windows.Forms.ToolStripButton tsbtnClose;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private System.Windows.Forms.ToolStripLabel tslbCount;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+		private System.Windows.Forms.ToolStripButton tsbtnCalParts;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+		private System.Windows.Forms.ToolStripButton toolStripButton1;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
 	}
 }
