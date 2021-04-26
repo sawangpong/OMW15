@@ -132,6 +132,8 @@ namespace OMW15.Models.ProductionModel
 		public DataTable GetTotalProductionRequireParts()
 			=> new DataConnect().GetDataTable($"EXEC dbo.usp_PRODUCTION_DEMAND_PARTS");
 
+		public DataTable GetTrackingProductionOrder(string partno)
+			=> new DataConnect().GetDataTable($"EXEC dbo.usp_OM_PRODUCTION_PARTS_TRACKING @partno='{partno}'");
 
 		#endregion
 

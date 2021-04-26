@@ -28,6 +28,12 @@ namespace OMW15.Views.Productions
 		}
 		#endregion
 
+		#region fields
+
+		private string _selectedPartNo = string.Empty;
+
+		#endregion
+
 		#region Helper Methods
 
 		private async void getProductionPartDemandAsync()
@@ -39,10 +45,8 @@ namespace OMW15.Views.Productions
 			dgv.Invoke(new MethodInvoker(() => dgv.DataSource = _dt));
 
 			// dgv.LoadData(omglobal.SysConnectionString, $"EXEC dbo.usp_PRODUCTION_DEMAND_PARTS", false);
-
-
-			//dgv.DataSource = _dt;
-			//dgv.DataSource = new BOMDal().GetTotalProductionRequireParts();
+			// dgv.DataSource = _dt;
+			// dgv.DataSource = new BOMDal().GetTotalProductionRequireParts();
 
 			dgv.Columns["PART_ID"].Visible = false;
 
@@ -92,11 +96,8 @@ namespace OMW15.Views.Productions
 
 			dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 			dgv.ResumeLayout(false);
-
-			
-
+	
 			//dgv.ResumeLayout();
-
 
 		}
 
@@ -137,18 +138,33 @@ namespace OMW15.Views.Productions
 			//dgv.Columns["PART NAME"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 		}
 
+		private void UpdateUI()
+		{
+			tsbtnViewParentOrder.Enabled = !String.IsNullOrEmpty(_selectedPartNo);
+		}
+
+		private void ViewOrderTracking(string partno)
+		{
+			TrackProductionOrder _trackOrder = new TrackProductionOrder();
+			_trackOrder.StartPosition = FormStartPosition.CenterScreen;
+			_trackOrder.PartNo = partno;
+			_trackOrder.MdiParent = this.ParentForm;
+			_trackOrder.Show();
+		}
+
 
 		#endregion
-
-
 
 		public ProductionRequireParts()
 		{
 			InitializeComponent();
 			OMUtils.SettingProgressDataGridView(ref dgv);
+
+			_selectedPartNo = string.Empty;	
+
+
 			dgv.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing;
 			dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-			 
 		}
 
 		private void tsbtnClose_Click(object sender, EventArgs e)
@@ -158,21 +174,35 @@ namespace OMW15.Views.Productions
 
 		private void ProductionRequireParts_Load(object sender, EventArgs e)
 		{
-			//getProductionPartDemandAsync();
+			UpdateUI();
 		}
 
 		private void tsbtnCalParts_Click(object sender, EventArgs e)
 		{
+			_selectedPartNo = string.Empty;
+
 			tslbCount.Text = $"found:0";
 			getProductionPartDemand();
 			tslbCount.Text = $"found:{dgv.Rows.Count}";
 
-			//SettingColumnsStyle();
+			UpdateUI();
 		}
 
-		private void toolStripButton1_Click(object sender, EventArgs e)
+		private void tsbtnViewParentOrder_Click(object sender, EventArgs e)
 		{
-			SettingColumnsStyle();
+			ViewOrderTracking(_selectedPartNo);
+		}
+
+		private void dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
+		{
+			_selectedPartNo = dgv["PART NO.", e.RowIndex].Value.ToString();
+
+			UpdateUI();
+		}
+
+		private void dgv_DoubleClick(object sender, EventArgs e)
+		{
+			ViewOrderTracking(_selectedPartNo);
 		}
 	}
 }

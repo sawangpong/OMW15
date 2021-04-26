@@ -42,7 +42,7 @@
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbtnCalParts = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+			this.tsbtnViewParentOrder = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.panel1.SuspendLayout();
 			this.panelBody.SuspendLayout();
@@ -99,6 +99,8 @@
 			this.dgv.Name = "dgv";
 			this.dgv.Size = new System.Drawing.Size(927, 474);
 			this.dgv.TabIndex = 1;
+			this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEnter);
+			this.dgv.DoubleClick += new System.EventHandler(this.dgv_DoubleClick);
 			// 
 			// panelCommand
 			// 
@@ -120,7 +122,7 @@
             this.toolStripSeparator2,
             this.tsbtnCalParts,
             this.toolStripSeparator3,
-            this.toolStripButton1,
+            this.tsbtnViewParentOrder,
             this.toolStripSeparator4});
 			this.ts.Location = new System.Drawing.Point(0, 0);
 			this.ts.Name = "ts";
@@ -158,10 +160,11 @@
 			// tsbtnCalParts
 			// 
 			this.tsbtnCalParts.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+			this.tsbtnCalParts.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.tsbtnCalParts.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnCalParts.Image")));
 			this.tsbtnCalParts.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.tsbtnCalParts.Name = "tsbtnCalParts";
-			this.tsbtnCalParts.Size = new System.Drawing.Size(89, 31);
+			this.tsbtnCalParts.Size = new System.Drawing.Size(98, 31);
 			this.tsbtnCalParts.Text = "Calculate parts";
 			this.tsbtnCalParts.Click += new System.EventHandler(this.tsbtnCalParts_Click);
 			// 
@@ -170,15 +173,16 @@
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
 			this.toolStripSeparator3.Size = new System.Drawing.Size(6, 34);
 			// 
-			// toolStripButton1
+			// tsbtnViewParentOrder
 			// 
-			this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-			this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton1.Name = "toolStripButton1";
-			this.toolStripButton1.Size = new System.Drawing.Size(23, 31);
-			this.toolStripButton1.Text = "toolStripButton1";
-			this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+			this.tsbtnViewParentOrder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+			this.tsbtnViewParentOrder.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tsbtnViewParentOrder.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnViewParentOrder.Image")));
+			this.tsbtnViewParentOrder.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.tsbtnViewParentOrder.Name = "tsbtnViewParentOrder";
+			this.tsbtnViewParentOrder.Size = new System.Drawing.Size(145, 31);
+			this.tsbtnViewParentOrder.Text = "View parent Job Order";
+			this.tsbtnViewParentOrder.Click += new System.EventHandler(this.tsbtnViewParentOrder_Click);
 			// 
 			// toolStripSeparator4
 			// 
@@ -225,7 +229,7 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripButton tsbtnCalParts;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-		private System.Windows.Forms.ToolStripButton toolStripButton1;
+		private System.Windows.Forms.ToolStripButton tsbtnViewParentOrder;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
 	}
 }

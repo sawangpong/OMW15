@@ -1325,6 +1325,12 @@
     <Compile Include="Views\Productions\SupplierList.Designer.cs">
       <DependentUpon>SupplierList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Productions\TrackProductionOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Productions\TrackProductionOrder.Designer.cs">
+      <DependentUpon>TrackProductionOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Productions\UpdateJobHrs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2477,6 +2483,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Productions\SupplierList.resx">
       <DependentUpon>SupplierList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Productions\TrackProductionOrder.resx">
+      <DependentUpon>TrackProductionOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Productions\UpdateJobHrs.resx">
       <DependentUpon>UpdateJobHrs.cs</DependentUpon>
