@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using OMControls;
 using OMW15.Models.ProductionModel;
+using WPFControls.Views;
 
 namespace OMW15.Views.Productions
 {
@@ -179,30 +180,34 @@ namespace OMW15.Views.Productions
 
 		private void tsbtnCalParts_Click(object sender, EventArgs e)
 		{
-			_selectedPartNo = string.Empty;
+			//_selectedPartNo = string.Empty;
+			//tslbCount.Text = $"found:0";
+			//getProductionPartDemand();
+			//tslbCount.Text = $"found:{dgv.Rows.Count}";
 
-			tslbCount.Text = $"found:0";
-			getProductionPartDemand();
-			tslbCount.Text = $"found:{dgv.Rows.Count}";
+			DemandPart demandPart = new DemandPart();
+			demandPart.ConnectionString = omglobal.SysConnectionString;
+			elementHost1.Child = demandPart;
+
 
 			UpdateUI();
 		}
 
 		private void tsbtnViewParentOrder_Click(object sender, EventArgs e)
 		{
-			ViewOrderTracking(_selectedPartNo);
+			//ViewOrderTracking(_selectedPartNo);
 		}
 
 		private void dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
 		{
-			_selectedPartNo = dgv["PART NO.", e.RowIndex].Value.ToString();
+			//_selectedPartNo = dgv["PART NO.", e.RowIndex].Value.ToString();
 
 			UpdateUI();
 		}
 
 		private void dgv_DoubleClick(object sender, EventArgs e)
 		{
-			ViewOrderTracking(_selectedPartNo);
+			//ViewOrderTracking(_selectedPartNo);
 		}
 	}
 }

@@ -10,6 +10,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OMW15", "OMW15\OMW15.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OMControls", "..\OMControls\OMControls.csproj", "{85CDDB55-0B9E-47BB-A315-E154B15F8291}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFControls", "..\WPFControls\WPFControls.csproj", "{65F6AD23-9CC7-4F3B-9486-75EC0087A30E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OMLibUtils", "..\OMLibUtils\OMLibUtils.csproj", "{F7022CFE-03BC-4527-89DC-53F9769C5929}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +38,22 @@ Global
 		{85CDDB55-0B9E-47BB-A315-E154B15F8291}.Release|Any CPU.Deploy.0 = Release|x86
 		{85CDDB55-0B9E-47BB-A315-E154B15F8291}.Release|x86.ActiveCfg = Release|x86
 		{85CDDB55-0B9E-47BB-A315-E154B15F8291}.Release|x86.Build.0 = Release|x86
+		{65F6AD23-9CC7-4F3B-9486-75EC0087A30E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65F6AD23-9CC7-4F3B-9486-75EC0087A30E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65F6AD23-9CC7-4F3B-9486-75EC0087A30E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{65F6AD23-9CC7-4F3B-9486-75EC0087A30E}.Debug|x86.Build.0 = Debug|Any CPU
+		{65F6AD23-9CC7-4F3B-9486-75EC0087A30E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65F6AD23-9CC7-4F3B-9486-75EC0087A30E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65F6AD23-9CC7-4F3B-9486-75EC0087A30E}.Release|x86.ActiveCfg = Release|Any CPU
+		{65F6AD23-9CC7-4F3B-9486-75EC0087A30E}.Release|x86.Build.0 = Release|Any CPU
+		{F7022CFE-03BC-4527-89DC-53F9769C5929}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7022CFE-03BC-4527-89DC-53F9769C5929}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7022CFE-03BC-4527-89DC-53F9769C5929}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F7022CFE-03BC-4527-89DC-53F9769C5929}.Debug|x86.Build.0 = Debug|Any CPU
+		{F7022CFE-03BC-4527-89DC-53F9769C5929}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7022CFE-03BC-4527-89DC-53F9769C5929}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7022CFE-03BC-4527-89DC-53F9769C5929}.Release|x86.ActiveCfg = Release|Any CPU
+		{F7022CFE-03BC-4527-89DC-53F9769C5929}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

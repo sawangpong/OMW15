@@ -3128,6 +3128,12 @@
     <Content Include="UNUSED_CODE\ProductionDAL_UnusedCode.txt" />
     <None Include="Resources\logo-1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\WPFControls\WPFControls.csproj">
+      <Project>{65f6ad23-9cc7-4f3b-9486-75ec0087a30e}</Project>
+      <Name>WPFControls</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

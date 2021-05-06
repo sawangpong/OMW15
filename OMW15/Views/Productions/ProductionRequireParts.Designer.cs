@@ -44,6 +44,7 @@
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsbtnViewParentOrder = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+			this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
 			this.panel1.SuspendLayout();
 			this.panelBody.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -83,6 +84,7 @@
 			// 
 			// panelBody
 			// 
+			this.panelBody.Controls.Add(this.elementHost1);
 			this.panelBody.Controls.Add(this.dgv);
 			this.panelBody.Controls.Add(this.panelCommand);
 			this.panelBody.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -94,10 +96,9 @@
 			// 
 			// dgv
 			// 
-			this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgv.Location = new System.Drawing.Point(3, 39);
 			this.dgv.Name = "dgv";
-			this.dgv.Size = new System.Drawing.Size(927, 474);
+			this.dgv.Size = new System.Drawing.Size(927, 61);
 			this.dgv.TabIndex = 1;
 			this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEnter);
 			this.dgv.DoubleClick += new System.EventHandler(this.dgv_DoubleClick);
@@ -189,6 +190,16 @@
 			this.toolStripSeparator4.Name = "toolStripSeparator4";
 			this.toolStripSeparator4.Size = new System.Drawing.Size(6, 34);
 			// 
+			// elementHost1
+			// 
+			this.elementHost1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.elementHost1.Location = new System.Drawing.Point(3, 39);
+			this.elementHost1.Name = "elementHost1";
+			this.elementHost1.Size = new System.Drawing.Size(927, 474);
+			this.elementHost1.TabIndex = 2;
+			this.elementHost1.Text = "elementHost1";
+			this.elementHost1.Child = null;
+			// 
 			// ProductionRequireParts
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -231,5 +242,6 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 		private System.Windows.Forms.ToolStripButton tsbtnViewParentOrder;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+		private System.Windows.Forms.Integration.ElementHost elementHost1;
 	}
 }
