@@ -115,7 +115,7 @@ namespace OMW15.Models.ProductionModel
 
 		public DataTable GetProductionFormulaItemDetails(int formulaId, string itemno,decimal demandQty)
 		{
-			return new DataConnect().GetDataTable($"EXEC dbo.usp_OM_ERP_BOM_REQUEST @formulaid={formulaId},@partno='{itemno}',@demandqty={demandQty} ");
+			return new DataConnect().GetDataTable($"EXEC dbo.usp_OM_ERP_BOM_REQUEST_EXTEND @formulaid={formulaId},@partno='{itemno}',@demandqty={demandQty} ");
 		}
 
 		public DataTable GetFormulaHeaderInfo(int orderId)

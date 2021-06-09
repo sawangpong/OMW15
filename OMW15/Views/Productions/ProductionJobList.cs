@@ -36,6 +36,7 @@ namespace OMW15.Views.Productions
 		private string _selectedERP_ORDER = string.Empty;
 		private string _reportCode = string.Empty;
 		private string _filterText = string.Empty;
+		private int _formula_id = 0;
 		private ReportDisplayType _reportDisplayType = ReportDisplayType.SingleRecord;
 		#endregion
 
@@ -222,8 +223,9 @@ namespace OMW15.Views.Productions
 				_selectedJobId = Convert.ToInt32(dgv["PDJOBID", e.RowIndex].Value);
 				_selectedERP_ORDER = dgv["ERP_ORDER", e.RowIndex].Value.ToString();
 				_erp_id = Convert.ToInt32(dgv["ERP_DI", e.RowIndex].Value);
+				_formula_id = ( Convert.IsDBNull(dgv["FORMULA_ID", e.RowIndex].Value) ? 0 :  Convert.ToInt32(dgv["FORMULA_ID", e.RowIndex].Value));
 			}
-
+			lbFormulaId.Text = $"formula-id:{_formula_id}";
 			lbJobId.Text = $" Index: [{_selectedJobId}], erp id: [{_erp_id}]";
 			UpdateUI();
 		}

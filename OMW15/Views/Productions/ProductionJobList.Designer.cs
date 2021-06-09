@@ -62,6 +62,7 @@
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.lbJobId = new System.Windows.Forms.Label();
+			this.lbFormulaId = new System.Windows.Forms.Label();
 			this.pnlHeader.SuspendLayout();
 			this.pnlToolMenu.SuspendLayout();
 			this.pnlMenu.SuspendLayout();
@@ -428,6 +429,7 @@
 			// 
 			// panel1
 			// 
+			this.panel1.Controls.Add(this.lbFormulaId);
 			this.panel1.Controls.Add(this.lbJobId);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.panel1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -450,6 +452,19 @@
 			this.lbJobId.TabIndex = 0;
 			this.lbJobId.Text = "id:0";
 			this.lbJobId.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+			// 
+			// lbFormulaId
+			// 
+			this.lbFormulaId.AutoSize = true;
+			this.lbFormulaId.Dock = System.Windows.Forms.DockStyle.Right;
+			this.lbFormulaId.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbFormulaId.ForeColor = System.Drawing.Color.DimGray;
+			this.lbFormulaId.Location = new System.Drawing.Point(908, 2);
+			this.lbFormulaId.Name = "lbFormulaId";
+			this.lbFormulaId.Size = new System.Drawing.Size(56, 13);
+			this.lbFormulaId.TabIndex = 1;
+			this.lbFormulaId.Text = "formula:0";
+			this.lbFormulaId.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			// 
 			// ProductionJobList
 			// 
@@ -515,5 +530,6 @@
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.ToolStripButton tsbtnMatRequire;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+		private System.Windows.Forms.Label lbFormulaId;
 	}
 }

@@ -100,7 +100,6 @@ namespace OMW15.Views.Productions
 			tsblbItemCount.Text = $"found: {dgv.Rows.Count} item{(dgv.Rows.Count > 1 ? "s" : "")}";
 		}
 
-
 		#endregion
 
 		public ProductionFormula()
@@ -154,6 +153,7 @@ namespace OMW15.Views.Productions
 		{
 			_selectedFormulaId = Convert.ToInt32(dgvFormula["FORMULA_ID", e.RowIndex].Value.ToString());
 			_formulaPartNo = dgvFormula["PART-NO", e.RowIndex].Value.ToString();
+
 			lbFormulaTitle.Text = $"{dgvFormula["FORMULA_NO", e.RowIndex].Value.ToString()} #({_selectedFormulaId})";
 		}
 
